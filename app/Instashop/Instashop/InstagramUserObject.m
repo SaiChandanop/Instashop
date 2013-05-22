@@ -8,6 +8,7 @@
 
 #import "InstagramUserObject.h"
 #import "GroupDiskManager.h"
+#import "Utils.h"
 
 #define CURRENT_USER_OBJECT_STORAGE_KEY @"CURRENT_USER_OBJECT_STORAGE_KEY"
 
@@ -64,10 +65,36 @@
     return self;
 }
 
+-(NSString *)userObjectAsPostString
+{
+    NSLog(@"self.username: %@", self.username);
+    
+    NSMutableString *string = [NSMutableString stringWithCapacity:0];
+    [string appendString:[NSString stringWithFormat:@"bio=%@", self.bio]];
+    [string appendString:[NSString stringWithFormat:@"&"]];
+//    [string appendString:[NSString stringWithFormat:@"counts=%@", self.counts]];
+//    [string appendString:[NSString stringWithFormat:@"@&"]];
+    [string appendString:[NSString stringWithFormat:@"fullName=%@", self.fullName]];
+    [string appendString:[NSString stringWithFormat:@"&"]];
+    [string appendString:[NSString stringWithFormat:@"userID=%@", self.userID]];
+    [string appendString:[NSString stringWithFormat:@"&"]];
+    [string appendString:[NSString stringWithFormat:@"profilePicture=%@", self.profilePicture]];
+    [string appendString:[NSString stringWithFormat:@"&"]];
+    [string appendString:[NSString stringWithFormat:@"username=%@", self.username]];
+    [string appendString:[NSString stringWithFormat:@"&"]];
+    [string appendString:[NSString stringWithFormat:@"website=%@", [Utils getEscapedStringFromUnescapedString:self.website]]];
+    
+    return string;
+}
 
 +(InstagramUserObject *)getStoredUserObject
 {
     return [[GroupDiskManager sharedManager] loadDataFromDiskWithKey:CURRENT_USER_OBJECT_STORAGE_KEY];
+}
+
+-(void)setAsStoredUser
+{
+    [[GroupDiskManager sharedManager] saveDataToDiskWithObject:self withKey:CURRENT_USER_OBJECT_STORAGE_KEY];
 }
 
 -(NSString *)description

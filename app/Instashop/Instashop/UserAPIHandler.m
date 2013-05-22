@@ -12,14 +12,13 @@
 
 +(void)makeUserCreateRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"user_admin/index.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"user_admin/create_buyer.php"];
     NSLog(@"urlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
-    URLRequest.HTTPMethod = @"GET";
-/*    NSString *postString = [NSString stringWithFormat:@"email=%@&password=%@", username, password];
+    URLRequest.HTTPMethod = @"POST";
+    NSString *postString = [instagramUserObject userObjectAsPostString];
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@"postString: %@", postString);
-  */  
     
     UserAPIHandler *userAPIHandler = [[UserAPIHandler alloc] init];
     userAPIHandler.delegate = theDelegate;

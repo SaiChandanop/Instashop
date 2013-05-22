@@ -33,6 +33,8 @@
 		7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7456174D52E3005E90B9 /* RootAPIHandler.m */; };
 		7B7A745A174D52E3005E90B9 /* SMWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7458174D52E3005E90B9 /* SMWebRequest.m */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
+		7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D371174D74410045C4B4 /* JSONKit.m */; };
+		7BE3D377174D772B0045C4B4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D376174D772B0045C4B4 /* Utils.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +79,10 @@
 		7B7A7458174D52E3005E90B9 /* SMWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWebRequest.m; sourceTree = "<group>"; };
 		7BE3D36C174D537D0045C4B4 /* UserAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAPIHandler.h; sourceTree = "<group>"; };
 		7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIHandler.m; sourceTree = "<group>"; };
+		7BE3D370174D74410045C4B4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
+		7BE3D371174D74410045C4B4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
+		7BE3D375174D772B0045C4B4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		7BE3D376174D772B0045C4B4 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,7 @@
 		7B61EE4C174D2162002A483D /* Instashop */ = {
 			isa = PBXGroup;
 			children = (
+				7BE3D36F174D74340045C4B4 /* Utils */,
 				7B7A7448174D4EAE005E90B9 /* VCs */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
 				7B7A7454174D52D2005E90B9 /* Net */,
@@ -244,6 +251,25 @@
 			name = User;
 			sourceTree = "<group>";
 		};
+		7BE3D36F174D74340045C4B4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				7BE3D373174D77110045C4B4 /* JSONKit */,
+				7BE3D370174D74410045C4B4 /* JSONKit.h */,
+				7BE3D371174D74410045C4B4 /* JSONKit.m */,
+				7BE3D375174D772B0045C4B4 /* Utils.h */,
+				7BE3D376174D772B0045C4B4 /* Utils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		7BE3D373174D77110045C4B4 /* JSONKit */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = JSONKit;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -328,6 +354,8 @@
 				7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */,
 				7B7A745A174D52E3005E90B9 /* SMWebRequest.m in Sources */,
 				7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */,
+				7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */,
+				7BE3D377174D772B0045C4B4 /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "InstagramUserObject.h"
 #import "UserAPIHandler.h"
-
+#import "GroupDiskManager.h"
 @interface AuthenticationViewController ()
 
 @end
@@ -38,12 +38,16 @@
     
     appDelegate.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
     appDelegate.instagram.sessionDelegate = self;
-/*    if ([appDelegate.instagram isSessionValid]) {
-        
+    if ([appDelegate.instagram isSessionValid]) {
         NSLog(@"isValid!");
+        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
+        
+        NSLog(@"InstagramUserObject getStoredUserObject]: %@", [InstagramUserObject getStoredUserObject]);
+        
+        
     }
     else
-  */      [appDelegate.instagram authorize:[NSArray arrayWithObjects:@"comments", @"likes", nil]];
+      [appDelegate.instagram authorize:[NSArray arrayWithObjects:@"comments", @"likes", nil]];
     
 }
 
@@ -99,10 +103,10 @@
         NSLog(@"userDict: %@", userDict);
         
         InstagramUserObject *instagramUserObject = [[InstagramUserObject alloc] initWithDictionary:userDict];
+        [instagramUserObject setAsStoredUser];
         NSLog(@"instagramUserObject: %@", instagramUserObject);
         
         [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
-        
         
     }
 }

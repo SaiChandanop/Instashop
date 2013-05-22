@@ -19,7 +19,10 @@
     NSString *website;
 }
 
+-(NSString *)userObjectAsPostString;
 -(id)initWithDictionary:(NSDictionary *)theDict;
++(InstagramUserObject *)getStoredUserObject;
+-(void)setAsStoredUser;
 
 @property (nonatomic, retain) NSString *bio;
 @property (nonatomic, retain) NSDictionary *counts;
