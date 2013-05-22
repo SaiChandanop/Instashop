@@ -24,6 +24,8 @@
 		7B61EE6B174D2162002A483D /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE6A174D2162002A483D /* second@2x.png */; };
 		7B61EE6E174D2162002A483D /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE6C174D2162002A483D /* FirstViewController.xib */; };
 		7B61EE71174D2162002A483D /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE6F174D2162002A483D /* SecondViewController.xib */; };
+		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
+		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,11 @@
 		7B61EE6A174D2162002A483D /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
 		7B61EE6D174D2162002A483D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
 		7B61EE70174D2162002A483D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
+		7B7A7438174D42F2005E90B9 /* IGConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGConnect.h; sourceTree = "<group>"; };
+		7B7A7439174D42F2005E90B9 /* IGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRequest.h; sourceTree = "<group>"; };
+		7B7A743A174D42F2005E90B9 /* IGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRequest.m; sourceTree = "<group>"; };
+		7B7A743B174D42F2005E90B9 /* Instagram.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Instagram.h; sourceTree = "<group>"; };
+		7B7A743C174D42F2005E90B9 /* Instagram.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Instagram.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +103,7 @@
 		7B61EE4C174D2162002A483D /* Instashop */ = {
 			isa = PBXGroup;
 			children = (
+				7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */,
 				7B61EE55174D2162002A483D /* AppDelegate.h */,
 				7B61EE56174D2162002A483D /* AppDelegate.m */,
 				7B61EE5E174D2162002A483D /* FirstViewController.h */,
@@ -125,6 +133,18 @@
 				7B61EE5C174D2162002A483D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */ = {
+			isa = PBXGroup;
+			children = (
+				7B7A7438174D42F2005E90B9 /* IGConnect.h */,
+				7B7A7439174D42F2005E90B9 /* IGRequest.h */,
+				7B7A743A174D42F2005E90B9 /* IGRequest.m */,
+				7B7A743B174D42F2005E90B9 /* Instagram.h */,
+				7B7A743C174D42F2005E90B9 /* Instagram.m */,
+			);
+			path = "instagram-ios-sdk";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +222,8 @@
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
 				7B61EE60174D2162002A483D /* FirstViewController.m in Sources */,
 				7B61EE67174D2162002A483D /* SecondViewController.m in Sources */,
+				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
+				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,6 +352,7 @@
 				7B61EE76174D2162002A483D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

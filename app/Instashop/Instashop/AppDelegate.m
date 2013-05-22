@@ -14,6 +14,15 @@
 
 @implementation AppDelegate
 
+@synthesize instagram;
+
+
+#define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
+#define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
+//WEBSITE URL	http://instashop.com
+//REDIRECT URI	igd63f114e63814512b820b717a73e3ada://authorize
+
+
 - (void)dealloc
 {
     [_window release];
@@ -25,6 +34,11 @@
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
     // Override point for customization after application launch.
+    self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID
+                                                delegate:nil];
+
+    
+    
     UIViewController *viewController1 = [[[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil] autorelease];
     UIViewController *viewController2 = [[[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil] autorelease];
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
@@ -33,6 +47,21 @@
     [self.window makeKeyAndVisible];
     return YES;
 }
+
+
+
+// YOU NEED TO CAPTURE igAPPID:// schema
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSLog(@"HERE1");
+    return [self.instagram handleOpenURL:url];
+}
+
+-(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    NSLog(@"HERE2");
+    return [self.instagram handleOpenURL:url];
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application
 {

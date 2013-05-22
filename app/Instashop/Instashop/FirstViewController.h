@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Instagram.h"
 
-@interface FirstViewController : UIViewController
+@interface FirstViewController : UIViewController <IGSessionDelegate>
 
 @end
