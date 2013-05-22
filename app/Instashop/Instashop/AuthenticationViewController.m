@@ -9,7 +9,7 @@
 #import "AuthenticationViewController.h"
 #import "AppDelegate.h"
 #import "InstagramUserObject.h"
-
+#import "UserAPIHandler.h"
 
 @interface AuthenticationViewController ()
 
@@ -100,6 +100,10 @@
         
         InstagramUserObject *instagramUserObject = [[InstagramUserObject alloc] initWithDictionary:userDict];
         NSLog(@"instagramUserObject: %@", instagramUserObject);
+        
+        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
+        
+        
     }
 }
 

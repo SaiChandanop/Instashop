@@ -74,7 +74,7 @@
 {
     NSString *endlineTerminator = @"\r";
     NSMutableString *string = [NSMutableString stringWithCapacity:0];
-    [string appendString:[NSString stringWithFormat:@"%@InstagramUserObject%@", endlineTerminator]];
+    [string appendString:[NSString stringWithFormat:@"%@InstagramUserObject%@", endlineTerminator, endlineTerminator]];
     [string appendString:[NSString stringWithFormat:@"bio: %@%@", self.bio, endlineTerminator]];
     [string appendString:[NSString stringWithFormat:@"counts: %@%@", self.counts, endlineTerminator]];
     [string appendString:[NSString stringWithFormat:@"fullName: %@%@", self.fullName, endlineTerminator]];
