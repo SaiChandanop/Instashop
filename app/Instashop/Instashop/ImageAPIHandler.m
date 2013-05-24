@@ -24,27 +24,26 @@ static ImageAPIHandler *sharedImageAPIHandler;
     
     if ([sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString])
         referenceImageView.image = [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString];
-
-    
-    NSLog(@"instagramMediaURLString: %@", instagramMediaURLString);
-    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:instagramMediaURLString]];
-    
-    ImageAPIHandler *imageAPIHandler = [[ImageAPIHandler alloc] init];
-    imageAPIHandler.theImageView = referenceImageView;
-    imageAPIHandler.delegate = theDelegate;
-    imageAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:imageAPIHandler context:NULL];
-    [imageAPIHandler.theWebRequest addTarget:imageAPIHandler action:@selector(imageRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
-    [imageAPIHandler.theWebRequest start];
+    else
+    {
+        NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:instagramMediaURLString]];
+        
+        ImageAPIHandler *imageAPIHandler = [[ImageAPIHandler alloc] init];
+        imageAPIHandler.theImageView = referenceImageView;
+        imageAPIHandler.delegate = theDelegate;
+        imageAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:imageAPIHandler context:NULL];
+        [imageAPIHandler.theWebRequest addTarget:imageAPIHandler action:@selector(imageRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+        [imageAPIHandler.theWebRequest start];
+    }
     
 }
 
 
 -(void)imageRequestFinished:(id)obj
 {
-    NSLog(@"imageRequestFinished!");
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
     [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:[self.theWebRequest.request.URL absoluteString]];
-     self.theImageView.image = responseImage;
-    
+    self.theImageView.image = responseImage;
+    self.theImageView.alpha = 1;
 }
 @end

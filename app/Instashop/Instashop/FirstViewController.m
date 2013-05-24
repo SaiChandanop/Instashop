@@ -66,18 +66,11 @@
         cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
     }
     
-    cell.imageView.image = nil;
+    cell.theImageView.image = nil;
 
     NSDictionary *imagesDictionary = [[self.userMediaArray objectAtIndex:indexPath.row] objectForKey:@"images"];
     NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-    
-    
-    
-    NSLog(@"indexPath[%d]: %@", indexPath.row, [self.userMediaArray objectAtIndex:indexPath.row]);
-    
-    
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[startResultionDictionary objectForKey:@"url"] withImageView:cell.theImageView];
-    // Configure the cell...
     
     return cell;
 }
