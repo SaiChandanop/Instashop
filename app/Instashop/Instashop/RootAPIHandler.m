@@ -10,7 +10,7 @@
 
 @implementation RootAPIHandler
 
-@synthesize theWebRequest, delegate, responseData, response;
+@synthesize theWebRequest, delegate, responseData, response, contextObject;
 
 
 - (id)webRequest:(SMWebRequest *)webRequest resultObjectForData:(NSData *)data context:(id)context

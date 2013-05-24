@@ -36,13 +36,15 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    appDelegate.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
+    
     appDelegate.instagram.sessionDelegate = self;
+    
+    NSLog(@"!! appDelegate.instagram isSessionValid: %d", [appDelegate.instagram isSessionValid]);
     if ([appDelegate.instagram isSessionValid]) {
-        NSLog(@"isValid!");
-        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
+//        NSLog(@"isValid!");
+//        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
         
-        NSLog(@"InstagramUserObject getStoredUserObject]: %@", [InstagramUserObject getStoredUserObject]);
+//        NSLog(@"InstagramUserObject getStoredUserObject]: %@", [InstagramUserObject getStoredUserObject]);
         
         
     }

@@ -7,10 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
 #import "FirstViewController.h"
-
 #import "SecondViewController.h"
+#import "InstagramUserObject.h"
 
 @implementation AppDelegate
 
@@ -36,15 +35,19 @@
     // Override point for customization after application launch.
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID
                                                 delegate:nil];
-
+    self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
+    
     
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
-    
     UIViewController *viewController1 = [[[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil] autorelease];
     UIViewController *viewController2 = [[[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil] autorelease];
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = @[viewController1, viewController2];
-    self.window.rootViewController = self.authenticationViewController;
+    
+    if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
+        self.window.rootViewController = self.tabBarController;
+    else
+        self.window.rootViewController = self.authenticationViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

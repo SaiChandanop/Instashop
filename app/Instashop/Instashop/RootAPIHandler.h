@@ -18,6 +18,9 @@
     id delegate;
     NSData *responseData;
     NSURLResponse *response;
+    
+    id contextObject;
+    
 
 }
 
@@ -25,4 +28,6 @@
 @property (nonatomic, retain) id delegate;
 @property (nonatomic, retain) NSData *responseData;
 @property (nonatomic, retain) NSURLResponse *response;
+
+@property (nonatomic, retain) id contextObject;
 @end

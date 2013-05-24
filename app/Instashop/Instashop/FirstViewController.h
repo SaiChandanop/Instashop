@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Instagram.h"
 
-@interface FirstViewController : UIViewController <IGSessionDelegate>
 
+@interface FirstViewController : UIViewController <IGSessionDelegate, IGRequestDelegate, UITableViewDataSource, UITableViewDelegate>
+{
+    NSMutableArray *userMediaArray;
+    UITableView *theTableView;
+}
+@property (nonatomic, retain) NSMutableArray *userMediaArray;
+@property (nonatomic, retain) IBOutlet UITableView *theTableView;
 @end
