@@ -15,6 +15,9 @@
     NSMutableArray *userMediaArray;
     UITableView *theTableView;
 }
+
+-(void)makeDummyRequest;
+
 @property (nonatomic, retain) NSMutableArray *userMediaArray;
 @property (nonatomic, retain) IBOutlet UITableView *theTableView;
 @end

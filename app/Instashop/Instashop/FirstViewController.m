@@ -34,16 +34,20 @@
 {
     [super viewDidLoad];
     
+}
+
+-(void)makeDummyRequest
+{
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-//    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/followed-by", @"method", nil];
+    //    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/followed-by", @"method", nil];
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/32336413/media/recent", @"method", nil];
     
     [appDelegate.instagram requestWithParams:params
                                     delegate:self];
+
     
 }
-
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {

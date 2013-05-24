@@ -17,6 +17,9 @@
 
 @implementation AuthenticationViewController
 
+@synthesize loginWebView;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -41,21 +44,30 @@
     
     NSLog(@"!! appDelegate.instagram isSessionValid: %d", [appDelegate.instagram isSessionValid]);
     if ([appDelegate.instagram isSessionValid]) {
-//        NSLog(@"isValid!");
-//        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
+        NSLog(@"isValid!");
+        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
         
-//        NSLog(@"InstagramUserObject getStoredUserObject]: %@", [InstagramUserObject getStoredUserObject]);
+        NSLog(@"InstagramUserObject getStoredUserObject]: %@", [InstagramUserObject getStoredUserObject]);
         
         
     }
     else
+
       [appDelegate.instagram authorize:[NSArray arrayWithObjects:@"comments", @"likes", nil]];
     
+}
+
+-(void)makeLoginRequestWithURL:(NSURL *)theURL
+{
+    self.loginWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 100)];
+    [self.view addSubview:self.loginWebView];
+    [self.loginWebView loadRequest:[NSURLRequest requestWithURL:theURL]];
 }
 
 
 -(void)igDidLogin
 {
+    [self.loginWebView removeFromSuperview];
     NSLog(@"Instagram did login");
     // here i can store accessToken
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -65,6 +77,9 @@
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self", @"method", nil];
     [appDelegate.instagram requestWithParams:params
                                     delegate:self];
+    
+    [appDelegate userDidLogin];
+    
     
     
 }

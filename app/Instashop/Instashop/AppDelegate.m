@@ -13,7 +13,7 @@
 
 @implementation AppDelegate
 
-@synthesize instagram, authenticationViewController;
+@synthesize instagram, authenticationViewController, firstViewController;
 
 
 #define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
@@ -39,27 +39,47 @@
     
     
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
-    UIViewController *viewController1 = [[[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil] autorelease];
+    self.firstViewController = [[[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil] autorelease];
     UIViewController *viewController2 = [[[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil] autorelease];
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.tabBarController.viewControllers = @[viewController1, viewController2];
+    self.tabBarController.viewControllers = @[self.firstViewController, viewController2];
     
     if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
+    {
         self.window.rootViewController = self.tabBarController;
+        [self.firstViewController makeDummyRequest];
+        
+    }
     else
         self.window.rootViewController = self.authenticationViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
 
+-(void)userDidLogin
+{
+    self.window.rootViewController = self.tabBarController;
+    [self.firstViewController makeDummyRequest];
+    
+}
 
+-(void)makeSafariCallWithURL:(NSURL *)theURL
+{
+    NSLog(@"makeSafariCallWithURL: %@", theURL);
+    [self.authenticationViewController makeLoginRequestWithURL:theURL];
+}
 
 // YOU NEED TO CAPTURE igAPPID:// schema
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    NSLog(@"application: %@, handleOpenURL: %@", application, url);
+    
     return [self.instagram handleOpenURL:url];
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    NSLog(@"application: %@, handleOpenURL: %@, sourceApplication %@, annotation: %@", application, url, sourceApplication, annotation);
     return [self.instagram handleOpenURL:url];
 }
 

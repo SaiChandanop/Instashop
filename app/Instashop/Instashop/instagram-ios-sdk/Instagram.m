@@ -7,7 +7,7 @@
 //
 
 #import "Instagram.h"
-
+#import "AppDelegate.h"
 
 static NSString* kDialogBaseURL         = @"https://instagram.com/";
 static NSString* kRestserverBaseURL     = @"https://api.instagram.com/v1/";
@@ -136,7 +136,10 @@ static void *finishedContext            = @"finishedContext";
     
     BOOL didOpenOtherApp        = NO;
     NSString *igAppUrl          = [IGRequest serializeURL:loginDialogURL params:params];
-    didOpenOtherApp             = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:igAppUrl]];
+//    didOpenOtherApp             = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:igAppUrl]];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate makeSafariCallWithURL:[NSURL URLWithString:igAppUrl]];
 }
 
 - (NSDictionary*)parseURLParams:(NSString *)query {

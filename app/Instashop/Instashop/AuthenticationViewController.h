@@ -10,8 +10,13 @@
 #import "Instagram.h"
 
 @interface AuthenticationViewController : UIViewController <IGSessionDelegate, IGRequestDelegate>
+{
+    UIWebView *loginWebView;
+}
 
 
 -(IBAction) loginButtonHit;
+-(void)makeLoginRequestWithURL:(NSURL *)theURL;
 
+@property (nonatomic, retain) UIWebView *loginWebView;
 @end
