@@ -10,7 +10,7 @@
 #import "FirstViewController.h"
 #import "SecondViewController.h"
 #import "InstagramUserObject.h"
-
+#import "ZenCartAuthenticationAPIHandler.h"
 @implementation AppDelegate
 
 @synthesize instagram, authenticationViewController, firstViewController;
@@ -32,9 +32,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
-    // Override point for customization after application launch.
-    self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID
-                                                delegate:nil];
+
+    
+    [ZenCartAuthenticationAPIHandler makeLoginRequest];
+    
+    self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
     self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
     
     

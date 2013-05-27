@@ -28,6 +28,7 @@
 		7B7A7452174D505D005E90B9 /* GroupDiskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7451174D505D005E90B9 /* GroupDiskManager.m */; };
 		7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7456174D52E3005E90B9 /* RootAPIHandler.m */; };
 		7B7A745A174D52E3005E90B9 /* SMWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7458174D52E3005E90B9 /* SMWebRequest.m */; };
+		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
 		7B96C032174FDD3F00E4EDAD /* asdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C031174FDD3F00E4EDAD /* asdfViewController.m */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
@@ -72,6 +73,8 @@
 		7B7A7456174D52E3005E90B9 /* RootAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootAPIHandler.m; sourceTree = "<group>"; };
 		7B7A7457174D52E3005E90B9 /* SMWebRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMWebRequest.h; sourceTree = "<group>"; };
 		7B7A7458174D52E3005E90B9 /* SMWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWebRequest.m; sourceTree = "<group>"; };
+		7B7B9DF51753E280000F4A3E /* ZenCartAuthenticationAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCartAuthenticationAPIHandler.h; sourceTree = "<group>"; };
+		7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCartAuthenticationAPIHandler.m; sourceTree = "<group>"; };
 		7B96C030174FDD3F00E4EDAD /* asdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asdfViewController.h; sourceTree = "<group>"; };
 		7B96C031174FDD3F00E4EDAD /* asdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = asdfViewController.m; sourceTree = "<group>"; };
 		7B96C034174FDEF800E4EDAD /* ImageAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAPIHandler.h; sourceTree = "<group>"; };
@@ -234,6 +237,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7B7B9DF41753E26F000F4A3E /* ZenCart */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7BE3D36B174D536B0045C4B4 /* User */,
 				7B7A7455174D52E3005E90B9 /* RootAPIHandler.h */,
@@ -242,6 +246,15 @@
 				7B7A7458174D52E3005E90B9 /* SMWebRequest.m */,
 			);
 			name = Net;
+			sourceTree = "<group>";
+		};
+		7B7B9DF41753E26F000F4A3E /* ZenCart */ = {
+			isa = PBXGroup;
+			children = (
+				7B7B9DF51753E280000F4A3E /* ZenCartAuthenticationAPIHandler.h */,
+				7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */,
+			);
+			name = ZenCart;
 			sourceTree = "<group>";
 		};
 		7B96C033174FDEEA00E4EDAD /* Images */ = {
@@ -376,6 +389,7 @@
 				7B96C032174FDD3F00E4EDAD /* asdfViewController.m in Sources */,
 				7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */,
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
+				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
