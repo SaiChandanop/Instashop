@@ -1,0 +1,1 @@
+[27-May-2013 14:30:03 America/Chicago] PHP Fatal error:  Call to a member function Execute() on a non-object in /mnt/stor08-wc1-ord1/690403/www.instashopdev.com/web/content/zen/zenalchemy50admin/includes/classes/currencies.php on line 19
