@@ -46,14 +46,14 @@
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = @[self.firstViewController, viewController2];
     
-  /*  if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
+    if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
     {
         self.window.rootViewController = self.tabBarController;
         [self.firstViewController makeDummyRequest];
         
     }
     else
-    */    self.window.rootViewController = self.authenticationViewController;
+      self.window.rootViewController = self.authenticationViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }

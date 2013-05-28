@@ -35,6 +35,9 @@
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
 		7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D371174D74410045C4B4 /* JSONKit.m */; };
 		7BE3D377174D772B0045C4B4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D376174D772B0045C4B4 /* Utils.m */; };
+		7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F11755473400A7E0AB /* ProductAPIHandler.m */; };
+		7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */; };
+		7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -88,6 +91,11 @@
 		7BE3D371174D74410045C4B4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		7BE3D375174D772B0045C4B4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		7BE3D376174D772B0045C4B4 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		7BE958F01755473400A7E0AB /* ProductAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductAPIHandler.h; sourceTree = "<group>"; };
+		7BE958F11755473400A7E0AB /* ProductAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductAPIHandler.m; sourceTree = "<group>"; };
+		7BE958F4175548B800A7E0AB /* ProductCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateViewController.h; sourceTree = "<group>"; };
+		7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateViewController.m; sourceTree = "<group>"; };
+		7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCreateViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +195,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7BE958F3175548A100A7E0AB /* ProductCreate */,
 				7B7A7453174D51B4005E90B9 /* Old */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 			);
@@ -237,6 +246,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7BE958EF1755470000A7E0AB /* Products */,
 				7B7B9DF41753E26F000F4A3E /* ZenCart */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7BE3D36B174D536B0045C4B4 /* User */,
@@ -304,6 +314,25 @@
 			name = JSONKit;
 			sourceTree = "<group>";
 		};
+		7BE958EF1755470000A7E0AB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7BE958F01755473400A7E0AB /* ProductAPIHandler.h */,
+				7BE958F11755473400A7E0AB /* ProductAPIHandler.m */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7BE958F3175548A100A7E0AB /* ProductCreate */ = {
+			isa = PBXGroup;
+			children = (
+				7BE958F4175548B800A7E0AB /* ProductCreateViewController.h */,
+				7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */,
+				7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */,
+			);
+			name = ProductCreate;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -362,6 +391,7 @@
 				7B61EE6E174D2162002A483D /* FirstViewController.xib in Resources */,
 				7B61EE71174D2162002A483D /* SecondViewController.xib in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
+				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,6 +420,8 @@
 				7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */,
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
+				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
+				7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

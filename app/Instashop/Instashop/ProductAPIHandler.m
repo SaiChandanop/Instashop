@@ -1,0 +1,55 @@
+//
+//  ProductAPIHandler.m
+//  Instashop
+//
+//  Created by Josh Klobe on 5/28/13.
+//  Copyright (c) 2013 Josh Klobe. All rights reserved.
+//
+
+#import "ProductAPIHandler.h"
+#import "InstagramUserObject.h"
+
+@implementation ProductAPIHandler
+
+
++(void)craeteNewProductWithDelegate:(id)delegate withInstagramDataObject:(NSDictionary *)productDict withQuantity:(NSString *)quantity withModel:(NSString *)model withPrice:(NSString *)price withWeight:(NSString *)weight
+{
+ 
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"user_admin/product_admin.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"POST";
+
+    InstagramUserObject *userInstagramObject = [InstagramUserObject getStoredUserObject];
+    
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:[NSString stringWithFormat:@"instagramUserId=%@&", userInstagramObject.userID]];
+    [postString appendString:[NSString stringWithFormat:@"instagramProductId=%@&", [productDict objectForKey:@"id"]]];
+    [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", quantity]];
+    [postString appendString:[NSString stringWithFormat:@"object_model=%@&", model]];
+    [postString appendString:[NSString stringWithFormat:@"object_price=%@&", price]];
+    [postString appendString:[NSString stringWithFormat:@"object_weight=%@", weight]];             
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"postString: %@", postString);
+    
+    ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
+    productAPIHandler.delegate = delegate;
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(productCreateRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+    
+
+}
+
+
+-(void)productCreateRequestFinished:(id)obj
+{
+    NSString* newStr = [[[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSLog(@"newStr: %@", newStr);
+    
+    
+    
+}
+
+@end

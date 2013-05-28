@@ -12,10 +12,7 @@
 
 +(void)makeUserCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject
 {
-    
-    NSLog(@"instagramUserObject: %@", instagramUserObject);
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"user_admin/seller_admin.php"];
-    NSLog(@"urlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     NSString *postString = [instagramUserObject userObjectAsPostString];
@@ -36,7 +33,6 @@
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     NSLog(@"responseDictionary: %@", responseDictionary);
     
-//    [self.delegate loginDidReturnWithDictionary:responseDictionary];
     
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];

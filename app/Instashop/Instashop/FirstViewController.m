@@ -10,6 +10,8 @@
 #import "AppDelegate.h"
 #import "ImagesTableViewCell.h"
 #import "ImageAPIHandler.h"
+#import "ProductCreateViewController.h"
+
 
 @interface FirstViewController ()
 @end
@@ -41,7 +43,7 @@
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     //    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/followed-by", @"method", nil];
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/32336413/media/recent", @"method", nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", nil];
     
     [appDelegate.instagram requestWithParams:params
                                     delegate:self];
@@ -91,6 +93,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"[self.userMediaArray objectAtIndex:indexPath.row]: %@", [self.userMediaArray objectAtIndex:indexPath.row]);
+    
+
+    ProductCreateViewController *productCreateViewController =  [[ProductCreateViewController alloc] initWithNibName:@"ProductCreateViewController" bundle:nil];
+    productCreateViewController.productDictionary = [self.userMediaArray objectAtIndex:indexPath.row];
+    [self presentViewController:productCreateViewController animated:YES completion:nil];
 }
 
 
