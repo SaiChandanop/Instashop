@@ -34,7 +34,7 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 
     
-    [ZenCartAuthenticationAPIHandler makeLoginRequest];
+//    [ZenCartAuthenticationAPIHandler makeLoginRequest];
     
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
     self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
@@ -46,22 +46,24 @@
     self.tabBarController = [[[UITabBarController alloc] init] autorelease];
     self.tabBarController.viewControllers = @[self.firstViewController, viewController2];
     
-    if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
+  /*  if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
     {
         self.window.rootViewController = self.tabBarController;
         [self.firstViewController makeDummyRequest];
         
     }
     else
-        self.window.rootViewController = self.authenticationViewController;
+    */    self.window.rootViewController = self.authenticationViewController;
     [self.window makeKeyAndVisible];
     return YES;
 }
 
 -(void)userDidLogin
 {
-    self.window.rootViewController = self.tabBarController;
-    [self.firstViewController makeDummyRequest];
+    
+    
+//    self.window.rootViewController = self.tabBarController;
+//    [self.firstViewController makeDummyRequest];
     
 }
 

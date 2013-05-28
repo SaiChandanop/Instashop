@@ -21,9 +21,9 @@
         
         self.theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,cellHeight, cellHeight)];
         [self addSubview:self.theImageView];
-        // Initialization code
+
         
-        NSLog(@"creating cell!: %@", self);
+
     }
     return self;
 }

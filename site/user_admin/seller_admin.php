@@ -76,7 +76,7 @@ function showDescriptions($host, $user, $pass, $db)
 }
 
 
-function createZencartSeller($host, $user, $pass, $db)
+function createZencartSeller($host, $user, $pass, $db, $instagramUsername)
 {
 	$con = mysql_connect($host, $user, $pass);
 	if (!$con) {
@@ -91,18 +91,56 @@ function createZencartSeller($host, $user, $pass, $db)
 	} 
 				
 	$query = "insert into categories values ('', '', '0', '0', '', '', '1')";
-	$result = mysql_query($query);
-		
+	$result = mysql_query($query);		
 	$retVal =  mysql_insert_id();
+
+	$query = "insert into categories_description values ('".$retVal ."', '1', '".$instagramUsername . "', '".$instagramUsername ."image')";
+	
+	echo "query: ". $query;
+
+	$result = mysql_query($query);
 
 	echo "new zencart seller id: ".$retVal;
 	echo "<br>";
 
 	return $retVal;
+
+
+}
+
+function checkInshashopForInstagramID($host, $user, $pass, $db, $instagramID)
+{
+
+	$con = mysql_connect($host, $user, $pass);
+	if (!$con) {
+	    echo "Could not connect to server\n";
+	    trigger_error(mysql_error(), E_USER_ERROR);
+	} 
+	
+	$r2 = mysql_select_db($db);
+	if (!$r2) {
+	    echo "Cannot select database\n";
+	    trigger_error(mysql_error(), E_USER_ERROR); 
+	} 
+	
+
+	$retVal = 0;
+	$query = "select * from sellers where instagram_id = '".$instagramID ."'";
+
+	echo "\nquery: ". $query;
+	$result = mysql_query($query);
+		
+	while ($row = mysql_fetch_assoc($result)) {
+		print_r($row);
+		$retVal = 1;
+	}
+
+
+	return $retVal;
 }
 
 
-function createInstashopSeller($host, $user, $pass, $db)
+function createInstashopSeller($host, $user, $pass, $db, $zencartID, $instagramID)
 {
 	$con = mysql_connect($host, $user, $pass);
 	if (!$con) {
@@ -117,23 +155,26 @@ function createInstashopSeller($host, $user, $pass, $db)
 	} 
 	
 
-
-	$query = "insert into sellers values ('12', '1234')"; 
+	$query = "insert into sellers values ('". $zencartID ."', '".$instagramID ."')"; 
 	$result = mysql_query($query);
 
 }
 
 
-//$zencartID = createZencartSeller($zen_host, $zen_user, $zen_pass, $zen_db);
-
-//echo "zencartID: ".$zencartID;
-
-echo "hi";
-//createInstashopSeller($sellers_host, $sellers_user, $sellers_pass, $sellers_db);
+print_r($_POST);
+$userExists = checkInshashopForInstagramID($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $_POST["userID"]);
 
 
+if ($userExists)
+	{
+		echo "user exists!";
+	}
+else
+	{
+		echo "here anyway";
+		$zencartID = createZencartSeller($zen_host, $zen_user, $zen_pass, $zen_db, $_POST["username"]);
+		createInstashopSeller($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $zencartID, $_POST["userID"]);
+	}
 
-
-//showDescriptions($zen_host, $zen_user, $zen_pass, $zen_db);
 
 ?>

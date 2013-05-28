@@ -10,9 +10,11 @@
 
 @implementation UserAPIHandler
 
-+(void)makeUserCreateRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject
++(void)makeUserCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"user_admin/create_buyer.php"];
+    
+    NSLog(@"instagramUserObject: %@", instagramUserObject);
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"user_admin/seller_admin.php"];
     NSLog(@"urlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
@@ -25,7 +27,7 @@
     userAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:userAPIHandler context:NULL];
     [userAPIHandler.theWebRequest addTarget:userAPIHandler action:@selector(userCreateRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
     [userAPIHandler.theWebRequest start];
-    
+
 }
 
 

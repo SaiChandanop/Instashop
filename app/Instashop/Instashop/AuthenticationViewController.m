@@ -42,17 +42,11 @@
     
     appDelegate.instagram.sessionDelegate = self;
     
-    NSLog(@"!! appDelegate.instagram isSessionValid: %d", [appDelegate.instagram isSessionValid]);
     if ([appDelegate.instagram isSessionValid]) {
         NSLog(@"isValid!");
-        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
-        
-        NSLog(@"InstagramUserObject getStoredUserObject]: %@", [InstagramUserObject getStoredUserObject]);
-        
-        
+        [self igDidLogin];
     }
     else
-
       [appDelegate.instagram authorize:[NSArray arrayWithObjects:@"comments", @"likes", nil]];
     
 }
@@ -80,10 +74,30 @@
     
     [appDelegate userDidLogin];
     
+    [self.loginWebView removeFromSuperview];
+ 
+    UIButton *buyerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buyerButton.frame = CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height / 2 - 40, 100, 40);
+    [buyerButton setTitle:@"buyer" forState:UIControlStateNormal];
+    [buyerButton addTarget:self action:@selector(buyerButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buyerButton];
     
+    UIButton *sellerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    sellerButton.frame = CGRectMake(buyerButton.frame.origin.x, buyerButton.frame.origin.y + buyerButton.frame.size.height + 10, buyerButton.frame.size.width, buyerButton.frame.size.height);
+    [sellerButton setTitle:@"seller" forState:UIControlStateNormal];
+    [sellerButton addTarget:self action:@selector(sellerButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sellerButton];
+}
+
+-(void)buyerButtonHit
+{
     
 }
 
+-(void)sellerButtonHit
+{
+    [UserAPIHandler makeUserCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];   
+}
 -(void)igDidNotLogin:(BOOL)cancelled
 {
     
@@ -111,19 +125,19 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSLog(@"Instagram did load: %@", result);
+//    NSLog(@"Instagram did load: %@", result);
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
     {
         NSDictionary *userDict = [result objectForKey:@"data"];
-        NSLog(@"userDict: %@", userDict);
+//        NSLog(@"userDict: %@", userDict);
         
         InstagramUserObject *instagramUserObject = [[InstagramUserObject alloc] initWithDictionary:userDict];
         [instagramUserObject setAsStoredUser];
-        NSLog(@"instagramUserObject: %@", instagramUserObject);
+//        NSLog(@"instagramUserObject: %@", instagramUserObject);
         
-        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
+//        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
         
     }
 }
