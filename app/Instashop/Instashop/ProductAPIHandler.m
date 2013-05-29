@@ -12,7 +12,7 @@
 @implementation ProductAPIHandler
 
 
-+(void)craeteNewProductWithDelegate:(id)delegate withInstagramDataObject:(NSDictionary *)productDict withQuantity:(NSString *)quantity withModel:(NSString *)model withPrice:(NSString *)price withWeight:(NSString *)weight
++(void)createNewProductWithDelegate:(id)delegate withInstagramDataObject:(NSDictionary *)productDict withTitle:(NSString *) title withQuantity:(NSString *)quantity withModel:(NSString *)model withPrice:(NSString *)price withWeight:(NSString *)weight withDescription:(NSString *)description
 {
  
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"user_admin/product_admin.php"];
@@ -24,10 +24,12 @@
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"instagramUserId=%@&", userInstagramObject.userID]];
     [postString appendString:[NSString stringWithFormat:@"instagramProductId=%@&", [productDict objectForKey:@"id"]]];
+    [postString appendString:[NSString stringWithFormat:@"object_title=%@&", title]];
     [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", quantity]];
     [postString appendString:[NSString stringWithFormat:@"object_model=%@&", model]];
     [postString appendString:[NSString stringWithFormat:@"object_price=%@&", price]];
-    [postString appendString:[NSString stringWithFormat:@"object_weight=%@", weight]];             
+    [postString appendString:[NSString stringWithFormat:@"object_weight=%@*", weight]];
+    [postString appendString:[NSString stringWithFormat:@"object_description=%@", description]];             
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@"postString: %@", postString);
     

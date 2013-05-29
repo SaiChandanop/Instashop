@@ -62,19 +62,52 @@ function createNewProduct($host, $user, $pass, $db, $product_quantity, $product_
 	echo "query: ". $query;
 	
 	$result = mysql_query($query);
+	$productID =  mysql_insert_id();	
 
-	
 	mysql_close();
+
+	return $productID;
 }
 
+function updateProductsToCategories($host, $user, $pass, $db, $product_id, $product_owner_id)
+{
+	$con = mysql_connect($host, $user, $pass);
+	$r2 = mysql_select_db($db);
+
+	$query = "insert into products_to_categories values ('$product_id', '$product_owner_id')";
+	$result = mysql_query($query);
+
+	mysql_close();
+
+}
+
+function updateProductsDescription($host, $user, $pass, $db, $product_id, $product_title, $product_description, $product_url)
+{
+	$con = mysql_connect($host, $user, $pass);
+	$r2 = mysql_select_db($db);
+
+	$query = "insert into products_description values ('". $product_id ."', '1', '".$product_title ."', '".$product_description ."', '". $product_url ."', '0')";
+	$result = mysql_query($query);
+
+	mysql_close();
+}
 
 print_r($_POST);
 
 $user_id = getZencartIDFromInstagramID($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $_POST["instagramUserId"]);
+echo "\ngetZencartIDFromInstagramID: user_id: ". $user_id;
 
-echo "user_id: ". $user_id;
+$product_id = createNewProduct($zen_host, $zen_user, $zen_pass, $zen_db, $_POST["object_quantity"], $_POST["object_model"], $_POST["product_image"], $_POST["object_price"], $_POST["product_date"], $_POST["product_weight"], $user_id);
+echo "\ncreateNewProduct product_id: ". $product_id;
 
-createNewProduct($zen_host, $zen_user, $zen_pass, $zen_db, $_POST["object_quantity"], $_POST["object_model"], $_POST["product_image"], $_POST["object_price"], $_POST["product_date"], $_POST["product_weight"], $user_id);
+updateProductsToCategories($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $user_id);
+echo "\nupdateProductsToCategories";
+
+updateProductsDescription($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $_POST["object_title"], $_POST["object_description"], $_POST["object_url"]);
+echo "\n updateProductsDescription";
+
+
+
 
 
 

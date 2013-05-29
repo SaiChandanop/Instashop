@@ -10,6 +10,6 @@
 
 @interface ProductAPIHandler : RootAPIHandler
 
-+(void)craeteNewProductWithDelegate:(id)delegate withInstagramDataObject:(NSDictionary *)productDict withQuantity:(NSString *)quantity withModel:(NSString *)model withPrice:(NSString *)price withWeight:(NSString *)weight;
++(void)createNewProductWithDelegate:(id)delegate withInstagramDataObject:(NSDictionary *)productDict withTitle:(NSString *) title withQuantity:(NSString *)quantity withModel:(NSString *)model withPrice:(NSString *)price withWeight:(NSString *)weight withDescription:(NSString *)description;
 
 @end

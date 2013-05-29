@@ -16,8 +16,8 @@
 
 @implementation ProductCreateViewController
 
-
-@synthesize quantityTextField, modelTextField, priceTextField, weightField;
+@synthesize contentScrollView;
+@synthesize titleTextField, quantityTextField, modelTextField, priceTextField, weightField, descriptionTextView;
 @synthesize productDictionary;
 
 
@@ -33,10 +33,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    NSLog(@"self.contentScrollView: %@", self.contentScrollView);
+    
+    NSLog(@"self.contentScrollView.contentSize1: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
+    
+//    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 10);
+    
+    NSLog(@"self.contentScrollView.contentSize2: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
 }
 
 
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    
+    [self.contentScrollView setContentOffset:CGPointMake(0, 275) animated:YES];
+    
+    return YES;
+}
 -(IBAction)goButtonHit
 {
     NSLog(@"quantityTextField: %@", quantityTextField.text);
@@ -44,11 +58,13 @@
     NSLog(@"priceTextField: %@", priceTextField.text);
     NSLog(@"weightField: %@", weightField.text);
     
+    if ([self.titleTextField.text length] > 0)
     if ([quantityTextField.text length] > 0)
         if ([modelTextField.text length] > 0)
             if ([priceTextField.text length] > 0)
                 if ([weightField.text length] > 0)
-                    [ProductAPIHandler craeteNewProductWithDelegate:self withInstagramDataObject:self.productDictionary withQuantity:quantityTextField.text withModel:modelTextField.text withPrice:priceTextField.text withWeight:weightField.text];
+                    if ([descriptionTextView.text length] > 0)
+                        [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:self.productDictionary withTitle:self.titleTextField.text withQuantity:quantityTextField.text withModel:modelTextField.text withPrice:priceTextField.text withWeight:weightField.text withDescription:self.descriptionTextView.text];
     
 }
 
@@ -62,10 +78,5 @@
 }
 
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-    
+
 @end
