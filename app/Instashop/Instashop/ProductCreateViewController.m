@@ -34,20 +34,32 @@
 {
     [super viewDidLoad];
 
+    self.contentScrollView.backgroundColor = [UIColor clearColor];
+    
     NSLog(@"self.contentScrollView: %@", self.contentScrollView);
     
     NSLog(@"self.contentScrollView.contentSize1: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
     
-//    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 10);
+
     
-    NSLog(@"self.contentScrollView.contentSize2: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
+
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    NSLog(@"textFieldShouldBeginEditing");
+    NSLog(@"self.contentScrollView.contentSize1: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
+    
+    if (self.contentScrollView.contentSize.height < 569)
+        self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
+    
+    return YES;
 }
 
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
     
-    [self.contentScrollView setContentOffset:CGPointMake(0, 275) animated:YES];
     
     return YES;
 }

@@ -57,7 +57,7 @@ function createNewProduct($host, $user, $pass, $db, $product_quantity, $product_
 	    trigger_error(mysql_error(), E_USER_ERROR); 
 	} 
 
-	$query = "insert into products values ('', '', '". $product_quantity ."', '" . $product_model ."', '". $product_image ."', '". $product_price ."', '" . $product_date ."', '', '', '" . $product_weight ."', '', '','','','','','','','', '', '', '', '', '', '', '', '', '". $product_price ."', '" . $product_owner_id ."', '','','','','','')";
+	$query = "insert into products values ('', '', '". $product_quantity ."', '" . $product_model ."', '". $product_image ."', '". $product_price ."', '" . $product_date ."', '', '', '" . $product_weight ."', '', '1','','','','','','','', '', '', '', '', '', '', '', '', '". $product_price ."', '" . $product_owner_id ."', '','','','','','')";
 				
 	echo "query: ". $query;
 	
@@ -92,6 +92,18 @@ function updateProductsDescription($host, $user, $pass, $db, $product_id, $produ
 	mysql_close();
 }
 
+function updateSellersProducts($host, $user, $pass, $db, $instagram_user_id, $zencart_id, $product_id)
+{
+	$con = mysql_connect($host, $user, $pass);
+	$r2 = mysql_select_db($db);
+
+	$query = "insert into sellers_products values ('$instagram_user_id', '$zencart_id', '$product_id')";
+	echo "\n update sellers query: ". $query;
+	$result = mysql_query($query);
+
+	mysql_close();
+
+}
 print_r($_POST);
 
 $user_id = getZencartIDFromInstagramID($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $_POST["instagramUserId"]);
@@ -106,7 +118,7 @@ echo "\nupdateProductsToCategories";
 updateProductsDescription($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $_POST["object_title"], $_POST["object_description"], $_POST["object_url"]);
 echo "\n updateProductsDescription";
 
-
+updateSellersProducts($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $_POST["instagramUserId"], $user_id, $product_id);
 
 
 

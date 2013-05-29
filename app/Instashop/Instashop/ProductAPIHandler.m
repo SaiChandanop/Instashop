@@ -28,7 +28,7 @@
     [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", quantity]];
     [postString appendString:[NSString stringWithFormat:@"object_model=%@&", model]];
     [postString appendString:[NSString stringWithFormat:@"object_price=%@&", price]];
-    [postString appendString:[NSString stringWithFormat:@"object_weight=%@*", weight]];
+    [postString appendString:[NSString stringWithFormat:@"object_weight=%@&", weight]];
     [postString appendString:[NSString stringWithFormat:@"object_description=%@", description]];             
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@"postString: %@", postString);
