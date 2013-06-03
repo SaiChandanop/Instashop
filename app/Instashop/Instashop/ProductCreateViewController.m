@@ -35,14 +35,6 @@
     [super viewDidLoad];
 
     self.contentScrollView.backgroundColor = [UIColor clearColor];
-    
-    NSLog(@"self.contentScrollView: %@", self.contentScrollView);
-    
-    NSLog(@"self.contentScrollView.contentSize1: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
-    
-
-    
-
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField

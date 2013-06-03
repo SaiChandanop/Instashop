@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B4908591758FE2E0047ED3B /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4908571758FE2E0047ED3B /* FeedViewController.m */; };
+		7B49085A1758FE2E0047ED3B /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4908581758FE2E0047ED3B /* FeedViewController.xib */; };
+		7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B49085C1758FE5B0047ED3B /* NotificationsViewController.m */; };
+		7B49085F1758FE5B0047ED3B /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B49085D1758FE5B0047ED3B /* NotificationsViewController.xib */; };
+		7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4908611758FE650047ED3B /* DiscoverViewController.m */; };
+		7B4908641758FE650047ED3B /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4908621758FE650047ED3B /* DiscoverViewController.xib */; };
+		7B4908681758FE6C0047ED3B /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4908661758FE6C0047ED3B /* ProfileViewController.m */; };
+		7B4908691758FE6C0047ED3B /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4908671758FE6C0047ED3B /* ProfileViewController.xib */; };
+		7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */; };
+		7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D2E13175CFCD1005DE4B6 /* HomeViewController.m */; };
+		7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */; };
+		7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */; };
 		7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE46174D2162002A483D /* UIKit.framework */; };
 		7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE48174D2162002A483D /* Foundation.framework */; };
 		7B61EE4B174D2162002A483D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE4A174D2162002A483D /* CoreGraphics.framework */; };
@@ -29,7 +41,6 @@
 		7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7456174D52E3005E90B9 /* RootAPIHandler.m */; };
 		7B7A745A174D52E3005E90B9 /* SMWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7458174D52E3005E90B9 /* SMWebRequest.m */; };
 		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
-		7B96C032174FDD3F00E4EDAD /* asdfViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C031174FDD3F00E4EDAD /* asdfViewController.m */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
@@ -41,6 +52,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B4908561758FE2E0047ED3B /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
+		7B4908571758FE2E0047ED3B /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
+		7B4908581758FE2E0047ED3B /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
+		7B49085B1758FE5B0047ED3B /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		7B49085C1758FE5B0047ED3B /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
+		7B49085D1758FE5B0047ED3B /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
+		7B4908601758FE650047ED3B /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		7B4908611758FE650047ED3B /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		7B4908621758FE650047ED3B /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
+		7B4908651758FE6C0047ED3B /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		7B4908661758FE6C0047ED3B /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		7B4908671758FE6C0047ED3B /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRootViewController.h; sourceTree = "<group>"; };
+		7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppRootViewController.m; sourceTree = "<group>"; };
+		7B4D2E12175CFCD1005DE4B6 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		7B4D2E13175CFCD1005DE4B6 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedtopbar.png; sourceTree = "<group>"; };
 		7B61EE43174D2162002A483D /* Instashop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instashop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B61EE46174D2162002A483D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B61EE48174D2162002A483D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -78,8 +107,6 @@
 		7B7A7458174D52E3005E90B9 /* SMWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWebRequest.m; sourceTree = "<group>"; };
 		7B7B9DF51753E280000F4A3E /* ZenCartAuthenticationAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCartAuthenticationAPIHandler.h; sourceTree = "<group>"; };
 		7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCartAuthenticationAPIHandler.m; sourceTree = "<group>"; };
-		7B96C030174FDD3F00E4EDAD /* asdfViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = asdfViewController.h; sourceTree = "<group>"; };
-		7B96C031174FDD3F00E4EDAD /* asdfViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = asdfViewController.m; sourceTree = "<group>"; };
 		7B96C034174FDEF800E4EDAD /* ImageAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAPIHandler.h; sourceTree = "<group>"; };
 		7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAPIHandler.m; sourceTree = "<group>"; };
 		7B96C037174FE0B100E4EDAD /* ImageRequestorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageRequestorProtocol.h; sourceTree = "<group>"; };
@@ -112,6 +139,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B4908521758FDF50047ED3B /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				7B4908561758FE2E0047ED3B /* FeedViewController.h */,
+				7B4908571758FE2E0047ED3B /* FeedViewController.m */,
+				7B4908581758FE2E0047ED3B /* FeedViewController.xib */,
+			);
+			name = Feed;
+			sourceTree = "<group>";
+		};
+		7B4908531758FE010047ED3B /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				7B4908601758FE650047ED3B /* DiscoverViewController.h */,
+				7B4908611758FE650047ED3B /* DiscoverViewController.m */,
+				7B4908621758FE650047ED3B /* DiscoverViewController.xib */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
+		7B4908541758FE0A0047ED3B /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				7B49085B1758FE5B0047ED3B /* NotificationsViewController.h */,
+				7B49085C1758FE5B0047ED3B /* NotificationsViewController.m */,
+				7B49085D1758FE5B0047ED3B /* NotificationsViewController.xib */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
+		7B4908551758FE100047ED3B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7B4908651758FE6C0047ED3B /* ProfileViewController.h */,
+				7B4908661758FE6C0047ED3B /* ProfileViewController.m */,
+				7B4908671758FE6C0047ED3B /* ProfileViewController.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		7B4D2E0D175CFCAA005DE4B6 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				7B4D2E12175CFCD1005DE4B6 /* HomeViewController.h */,
+				7B4D2E13175CFCD1005DE4B6 /* HomeViewController.m */,
+				7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		7B4D2E17175CFFBE005DE4B6 /* shittyimages */ = {
+			isa = PBXGroup;
+			children = (
+				7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */,
+			);
+			name = shittyimages;
+			sourceTree = "<group>";
+		};
 		7B61EE3A174D2161002A483D = {
 			isa = PBXGroup;
 			children = (
@@ -144,13 +229,12 @@
 			children = (
 				7BE3D36F174D74340045C4B4 /* Utils */,
 				7B7A7448174D4EAE005E90B9 /* VCs */,
+				7B7A7453174D51B4005E90B9 /* Old */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
 				7B7A7454174D52D2005E90B9 /* Net */,
 				7B61EE55174D2162002A483D /* AppDelegate.h */,
 				7B61EE56174D2162002A483D /* AppDelegate.m */,
 				7B61EE4D174D2162002A483D /* Supporting Files */,
-				7B96C030174FDD3F00E4EDAD /* asdfViewController.h */,
-				7B96C031174FDD3F00E4EDAD /* asdfViewController.m */,
 			);
 			path = Instashop;
 			sourceTree = "<group>";
@@ -158,6 +242,7 @@
 		7B61EE4D174D2162002A483D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B4D2E17175CFFBE005DE4B6 /* shittyimages */,
 				7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */,
 				7B61EE4E174D2162002A483D /* Instashop-Info.plist */,
 				7B61EE4F174D2162002A483D /* InfoPlist.strings */,
@@ -195,9 +280,15 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B4908521758FDF50047ED3B /* Feed */,
+				7B4D2E0D175CFCAA005DE4B6 /* Home */,
+				7B4908531758FE010047ED3B /* Discover */,
+				7B4908541758FE0A0047ED3B /* Notifications */,
+				7B4908551758FE100047ED3B /* Profile */,
 				7BE958F3175548A100A7E0AB /* ProductCreate */,
-				7B7A7453174D51B4005E90B9 /* Old */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
+				7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */,
+				7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */,
 			);
 			name = VCs;
 			sourceTree = "<group>";
@@ -392,6 +483,12 @@
 				7B61EE71174D2162002A483D /* SecondViewController.xib in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
+				7B49085A1758FE2E0047ED3B /* FeedViewController.xib in Resources */,
+				7B49085F1758FE5B0047ED3B /* NotificationsViewController.xib in Resources */,
+				7B4908641758FE650047ED3B /* DiscoverViewController.xib in Resources */,
+				7B4908691758FE6C0047ED3B /* ProfileViewController.xib in Resources */,
+				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
+				7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -416,12 +513,17 @@
 				7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */,
 				7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */,
 				7BE3D377174D772B0045C4B4 /* Utils.m in Sources */,
-				7B96C032174FDD3F00E4EDAD /* asdfViewController.m in Sources */,
 				7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */,
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
 				7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */,
+				7B4908591758FE2E0047ED3B /* FeedViewController.m in Sources */,
+				7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */,
+				7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */,
+				7B4908681758FE6C0047ED3B /* ProfileViewController.m in Sources */,
+				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
+				7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

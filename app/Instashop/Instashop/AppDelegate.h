@@ -9,25 +9,29 @@
 #import <UIKit/UIKit.h>
 #import "Instagram.h"
 #import "AuthenticationViewController.h"
-#import "FirstViewController.h"
+#import "AppRootViewController.h"
+
+
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
 {
     Instagram *instagram;
-    AuthenticationViewController *authenticationViewController;
     
-    FirstViewController *firstViewController;
+    AuthenticationViewController *authenticationViewController;
+    AppRootViewController *appRootViewController;
 }
 
 -(void)userDidLogin;
 -(void)makeSafariCallWithURL:(NSURL *)theURL;
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) UITabBarController *tabBarController;
 
 @property (strong, nonatomic) Instagram *instagram;
-@property (strong, nonatomic) AuthenticationViewController *authenticationViewController;
 
-@property (strong, nonatomic) FirstViewController *firstViewController;
+@property (strong, nonatomic) AuthenticationViewController *authenticationViewController;
+@property (strong, nonatomic) AppRootViewController *appRootViewController;
+
+
+
 @end

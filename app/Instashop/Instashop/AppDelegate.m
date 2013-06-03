@@ -11,10 +11,6 @@
 #import "SecondViewController.h"
 #import "InstagramUserObject.h"
 #import "ZenCartAuthenticationAPIHandler.h"
-@implementation AppDelegate
-
-@synthesize instagram, authenticationViewController, firstViewController;
-
 
 #define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
 #define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
@@ -22,38 +18,32 @@
 //REDIRECT URI	igd63f114e63814512b820b717a73e3ada://authorize
 
 
-- (void)dealloc
-{
-    [_window release];
-    [_tabBarController release];
-    [super dealloc];
-}
+
+@implementation AppDelegate
+
+@synthesize instagram, authenticationViewController, appRootViewController;
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 
-    
 //    [ZenCartAuthenticationAPIHandler makeLoginRequest];
     
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
     self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
     
-    
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
-    self.firstViewController = [[[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil] autorelease];
-    UIViewController *viewController2 = [[[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil] autorelease];
-    self.tabBarController = [[[UITabBarController alloc] init] autorelease];
-    self.tabBarController.viewControllers = @[self.firstViewController, viewController2];
+    self.appRootViewController = [[AppRootViewController alloc] initWithNibName:nil bundle:nil];
+    
     
     if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
-    {
-        self.window.rootViewController = self.tabBarController;
-        [self.firstViewController makeDummyRequest];
-        
-    }
+        self.window.rootViewController = self.appRootViewController;
     else
       self.window.rootViewController = self.authenticationViewController;
+    
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -115,6 +105,15 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+- (void)dealloc
+{
+    [_window release];
+    [super dealloc];
+}
+
+
+
 
 /*
 // Optional UITabBarControllerDelegate method.
