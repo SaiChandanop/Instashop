@@ -10,12 +10,17 @@
 #import "AppDelegate.h"
 #import "ImagesTableViewCell.h"
 #import "ImageAPIHandler.h"
+#import "ProductCreateViewController.h"
+
 
 @interface ProductSelectTableViewController ()
 
 @end
 
 @implementation ProductSelectTableViewController
+
+
+@synthesize parentController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -61,7 +66,7 @@
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error
 {
-    NSLog(@"request did fail with error: %@", self);    
+    NSLog(@"%@ request did fail with error: %@", self, error);
 }
 
 #pragma mark - Table view data source
@@ -108,22 +113,11 @@
 }
 
 
-
-
-
-
 #pragma mark - Table view delegate
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     [detailViewController release];
-     */
+    NSLog(@"parentController: %@", self.parentController);
+    [self.parentController tableViewProductSelectedWithDataDictionary:[self.userMediaArray objectAtIndex:indexPath.row]];
 }
 
 @end

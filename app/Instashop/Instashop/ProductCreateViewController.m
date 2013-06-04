@@ -17,7 +17,8 @@
 
 @implementation ProductCreateViewController
 
-@synthesize contentScrollView, productSelectTableViewController;
+@synthesize productSelectTableViewController, productDetailsViewController;
+@synthesize contentScrollView;
 @synthesize titleTextField, quantityTextField, modelTextField, priceTextField, weightField, descriptionTextView;
 @synthesize productDictionary;
 
@@ -36,6 +37,40 @@
     [super viewDidLoad];
 
     self.contentScrollView.backgroundColor = [UIColor clearColor];
+    
+    self.productSelectTableViewController.parentController = self;
+}
+
+-(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary
+{
+    if ([self.productDetailsViewController.view superview] == nil)
+    {
+        self.productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
+        [self.view addSubview:self.productDetailsViewController.view];
+    }
+
+    self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);
+    self.productDetailsViewController.parentController = self;
+    [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];
+
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.456];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.productDetailsViewController.view.frame = CGRectMake(0, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
+    [UIView commitAnimations];
+
+}
+
+-(void)productDetailsViewControllerBackButtonHit
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.456];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.productDetailsViewController.view.frame = CGRectMake(self.productDetailsViewController.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
+    [UIView commitAnimations];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
