@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface ProductSelectTableViewController : UITableViewController
 
+@interface ProductSelectTableViewController : UITableViewController <IGRequestDelegate>
+{
+    NSMutableArray *userMediaArray;
+    
+}
+@property (nonatomic, retain) NSMutableArray *userMediaArray;
 @end

@@ -7,6 +7,9 @@
 //
 
 #import "ProductSelectTableViewController.h"
+#import "AppDelegate.h"
+#import "ImagesTableViewCell.h"
+#import "ImageAPIHandler.h"
 
 @interface ProductSelectTableViewController ()
 
@@ -18,7 +21,8 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+
+       
     }
     return self;
 }
@@ -27,42 +31,68 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.userMediaArray = [[NSMutableArray alloc] initWithCapacity:0];    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", nil];
+    
+    NSLog(@"view did load: %@", self);
+
+    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    [theAppDelegate.instagram requestWithParams:params delegate:self];
+
 }
 
-- (void)didReceiveMemoryWarning
+- (void)request:(IGRequest *)request didLoad:(id)result {
+    
+    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+    int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
+    NSLog(@"responseCode: %d", responseCode);
+    
+    if (responseCode == 200)
+    {
+        NSArray *dataArray = [result objectForKey:@"data"];
+        [self.userMediaArray removeAllObjects];
+        [self.userMediaArray addObjectsFromArray:dataArray];
+        [self.tableView reloadData];
+    }
+    
+    
+}
+
+- (void)request:(IGRequest *)request didFailWithError:(NSError *)error
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"request did fail with error: %@", self);    
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
-    // Return the number of rows in the section.
-    return 5;
+    return [self.userMediaArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    ImagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+        cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
     }
+    
+    cell.theImageView.image = nil;
+    
+    NSDictionary *imagesDictionary = [[self.userMediaArray objectAtIndex:indexPath.row] objectForKey:@"images"];
+    NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[startResultionDictionary objectForKey:@"url"] withImageView:cell.theImageView];
+
+    
     
     cell.textLabel.text = [NSString stringWithFormat:@"row: %d", indexPath.row];
     // Configure the cell...
@@ -70,44 +100,17 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    return  306;
 }
-*/
 
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
+
+
+
+
 
 #pragma mark - Table view delegate
 

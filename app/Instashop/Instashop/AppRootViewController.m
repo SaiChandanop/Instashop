@@ -66,7 +66,6 @@ float transitionTime = .456;
 -(void)ceaseTransition
 {
     self.areViewsTransitioning = NO;
-    NSLog(@"notificationsViewController: %@", self.notificationsViewController.view);
 }
 -(void)homeButtonHit
 {
