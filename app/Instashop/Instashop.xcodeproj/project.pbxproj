@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */; };
 		7B4908591758FE2E0047ED3B /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4908571758FE2E0047ED3B /* FeedViewController.m */; };
 		7B49085A1758FE2E0047ED3B /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4908581758FE2E0047ED3B /* FeedViewController.xib */; };
 		7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B49085C1758FE5B0047ED3B /* NotificationsViewController.m */; };
@@ -52,6 +53,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectPhotoHeaderBar.png; sourceTree = "<group>"; };
 		7B4908561758FE2E0047ED3B /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		7B4908571758FE2E0047ED3B /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		7B4908581758FE2E0047ED3B /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
@@ -139,6 +141,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B1072AB175E664400D9DC5D /* MainVCs */ = {
+			isa = PBXGroup;
+			children = (
+				7B7A743F174D49F9005E90B9 /* Authentication */,
+				7B4908521758FDF50047ED3B /* Feed */,
+				7B4D2E0D175CFCAA005DE4B6 /* Home */,
+				7B4908531758FE010047ED3B /* Discover */,
+				7B4908541758FE0A0047ED3B /* Notifications */,
+			);
+			name = MainVCs;
+			sourceTree = "<group>";
+		};
 		7B4908521758FDF50047ED3B /* Feed */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,6 +206,7 @@
 		7B4D2E17175CFFBE005DE4B6 /* shittyimages */ = {
 			isa = PBXGroup;
 			children = (
+				7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */,
 				7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */,
 			);
 			name = shittyimages;
@@ -280,13 +295,8 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				7B4908521758FDF50047ED3B /* Feed */,
-				7B4D2E0D175CFCAA005DE4B6 /* Home */,
-				7B4908531758FE010047ED3B /* Discover */,
-				7B4908541758FE0A0047ED3B /* Notifications */,
-				7B4908551758FE100047ED3B /* Profile */,
+				7B1072AB175E664400D9DC5D /* MainVCs */,
 				7BE958F3175548A100A7E0AB /* ProductCreate */,
-				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */,
 				7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */,
 			);
@@ -323,6 +333,7 @@
 		7B7A7453174D51B4005E90B9 /* Old */ = {
 			isa = PBXGroup;
 			children = (
+				7B4908551758FE100047ED3B /* Profile */,
 				7B96C038174FED1D00E4EDAD /* Cells */,
 				7B61EE5E174D2162002A483D /* FirstViewController.h */,
 				7B61EE5F174D2162002A483D /* FirstViewController.m */,
@@ -489,6 +500,7 @@
 				7B4908691758FE6C0047ED3B /* ProfileViewController.xib in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
 				7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */,
+				7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

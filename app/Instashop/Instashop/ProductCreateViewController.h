@@ -10,7 +10,6 @@
 
 @interface ProductCreateViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 {
-    
     UIScrollView *contentScrollView;
     
     UITextField *titleTextField;
@@ -23,7 +22,9 @@
     NSDictionary *productDictionary;
 }
 
--(IBAction)goButtonHit;
+- (IBAction) exitButtonHit;
+
+- (IBAction) goButtonHit;
 
 
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;

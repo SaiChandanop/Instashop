@@ -8,6 +8,7 @@
 
 #import "ProductCreateViewController.h"
 #import "ProductAPIHandler.h"
+#import "AppRootViewController.h"
 
 
 @interface ProductCreateViewController ()
@@ -51,10 +52,10 @@
 
 - (BOOL)textViewShouldBeginEditing:(UITextView *)textView
 {
-    
-    
     return YES;
 }
+
+
 -(IBAction)goButtonHit
 {
     NSLog(@"quantityTextField: %@", quantityTextField.text);
@@ -79,8 +80,14 @@
         [self goButtonHit];
     
     return YES;
+
 }
 
+
+-(IBAction)exitButtonHit
+{
+    [[AppRootViewController sharedRootViewController] exitButtonHitWithViewController:self];
+}
 
 
 @end

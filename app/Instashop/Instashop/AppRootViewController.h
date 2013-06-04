@@ -24,13 +24,19 @@
     ProfileViewController *profileViewController;
     
     BOOL areViewsTransitioning;
-    
 }
 
+
++(AppRootViewController *)sharedRootViewController;
 
 -(void)homeButtonHit;
 -(void)notificationsButtonHit;
 -(void)discoverButtonHit;
+
+-(void)createProductButtonHit;
+
+
+-(void)exitButtonHitWithViewController:(UIViewController *)exitingViewController;
 
 
 @property (strong, nonatomic) FeedViewController *feedViewController;

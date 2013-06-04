@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "AppRootViewController.h"
 
 @interface HomeViewController ()
 
@@ -17,6 +18,7 @@
 @synthesize parentController;
 
 
+@synthesize theTableView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -32,10 +34,74 @@
     // Do any additional setup after loading the view from its nib.
 }
 
-- (void)didReceiveMemoryWarning
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    return 1;
 }
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 2;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    
+    switch (indexPath.row) {
+        case 0:
+            cell.textLabel.text = @"Discover!";
+            break;
+
+        case 1:
+            cell.textLabel.text = @"Post a new item!";
+            break;
+
+        default:
+            break;
+    }
+    
+    
+    return cell;
+}
+
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return  36;
+}
+
+
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"didSelectRowAtIndexPath: %@", self.parentController);
+
+    switch (indexPath.row) {
+        case 0:
+//            cell.textLabel.text = @"Discover!";
+            break;
+            
+        case 1:
+            [self.parentController createProductButtonHit];
+  //          cell.textLabel.text = @"Post a new item!";
+            break;
+            
+        default:
+            break;
+    }
+    
+}
+
 
 @end

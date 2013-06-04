@@ -7,28 +7,39 @@
 //
 
 #import "AppRootViewController.h"
-
+#import "ProductCreateViewController.h"
 @implementation AppRootViewController
 
-@synthesize feedViewController, homeViewController, discoverViewController, notificationsViewController, profileViewController;
+static AppRootViewController *theSharedRootViewController;
 
+@synthesize feedViewController, homeViewController, discoverViewController, notificationsViewController, profileViewController;
 @synthesize areViewsTransitioning;
 float transitionTime = .456;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
+    theSharedRootViewController = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (theSharedRootViewController) {
+        
     }
-    return self;
+    return theSharedRootViewController;
 }
+
++(AppRootViewController *)sharedRootViewController
+{
+//    if (theSharedRootViewController == nil)
+//        theSharedRootViewController
+    return theSharedRootViewController;
+}
+
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.homeViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
+    self.homeViewController.parentController = self;
     self.homeViewController.view.frame = CGRectMake(self.view.frame.size.width * -1, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.homeViewController.view];
     
@@ -116,10 +127,47 @@ float transitionTime = .456;
         [UIView commitAnimations];
         
     }
-
-    
-    
 }
 
+-(void)createProductButtonHit
+{
+    NSLog(@"createProductButtonHit");
+    if (!self.areViewsTransitioning)
+    {
+        self.areViewsTransitioning = YES;
+        
+        ProductCreateViewController *productCreateViewController = [[ProductCreateViewController alloc] initWithNibName:@"ProductCreateViewController" bundle:nil];
+        productCreateViewController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:productCreateViewController.view];
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:transitionTime];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+        productCreateViewController.view.frame = CGRectMake(0, 0, productCreateViewController.view.frame.size.width, productCreateViewController.view.frame.size.height);
+        [UIView commitAnimations];
+        
+    }
+}
+
+
+-(void)exitButtonHitWithViewController:(UIViewController *)exitingViewController
+{
+    
+    if (!self.areViewsTransitioning)
+    {
+        self.areViewsTransitioning = YES;
+        
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:transitionTime];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+        exitingViewController.view.frame = CGRectMake(0, exitingViewController.view.frame.size.height, exitingViewController.view.frame.size.width, exitingViewController.view.frame.size.height);
+        [UIView commitAnimations];
+        
+    }
+    
+}
 
 @end
