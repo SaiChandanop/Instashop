@@ -17,7 +17,7 @@
 
 @implementation ProductCreateViewController
 
-@synthesize contentScrollView;
+@synthesize contentScrollView, productSelectTableViewController;
 @synthesize titleTextField, quantityTextField, modelTextField, priceTextField, weightField, descriptionTextView;
 @synthesize productDictionary;
 

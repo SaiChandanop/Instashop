@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "ProductSelectTableViewController.h"
 @interface ProductCreateViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 {
+    ProductSelectTableViewController *productSelectTableViewController;
+    
+    
     UIScrollView *contentScrollView;
     
     UITextField *titleTextField;
@@ -26,6 +29,7 @@
 
 - (IBAction) goButtonHit;
 
+@property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 
