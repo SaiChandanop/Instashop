@@ -18,6 +18,15 @@
 
 @synthesize parentController, containerScrollView, productImageView;
 
+@synthesize captionTextField;
+@synthesize descriptionTextView;
+@synthesize retailTextField;
+@synthesize shippingTextField;
+@synthesize priceTextField;
+@synthesize categoryTextField;
+@synthesize sizeColorTextField;
+@synthesize quantityTextField;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,46 +41,53 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"%@!!!!! view did load", self);
-    // Do any additional setup after loading the view from its nib.
-    
-    [self.containerScrollView setContentSize:CGSizeMake(5000,5000)];
+    self.view.backgroundColor = [UIColor colorWithRed:56.0f/255.0f green:116.0f/255.0f blue:93.0f/255.0f alpha:1];
 }
 
+
+- (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
+{
+    
+    self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
+    [self.view addSubview:self.containerScrollView];
+    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width  * 2, self.view.frame.size.height * 2);
+
+    
+    NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
+    NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[startResultionDictionary objectForKey:@"url"] withImageView:self.productImageView];
+    
+    
+    NSDictionary *captionDictionary = [theDictionary objectForKey:@"caption"];
+    self.captionTextField.text = [captionDictionary objectForKey:@"text"];
+    
+    
+    NSLog(@"theDictionary: %@", theDictionary);
+    
+}
 
 -(IBAction)backButtonHit
 {
     [parentController productDetailsViewControllerBackButtonHit];
 }
 
-- (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
-{    
-    NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
-    NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[startResultionDictionary objectForKey:@"url"] withImageView:self.productImageView];
-    
-    self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
-    [self.view addSubview:self.containerScrollView];
-    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width  * 2, self.view.frame.size.height * 2);
-    NSLog(@"self.containerScrollView.contentSize: %@", NSStringFromCGSize(self.containerScrollView.contentSize));
-    NSLog(@"scrollingEnabled?: %d", self.containerScrollView.scrollEnabled);
-    NSLog(@"scrollview subviews: %@", [self.containerScrollView subviews]);
-    NSLog(@"self view subviews: %@", [self.view subviews]);
-    
-    self.containerScrollView.backgroundColor = [UIColor redColor];
-    
 
-//    UIScrollView *aScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100)];
-    self.containerScrollView.backgroundColor = [UIColor blueColor];
-    [self.containerScrollView setContentSize:CGSizeMake(5000,5000)];
-//    [self.view addSubview:self.containerScrollView];
-    
-}
 
-- (void)didReceiveMemoryWarning
+-(IBAction)previewButtonHit
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+    NSLog(@"captionTextField.text: %@", captionTextField.text);
+    
+    NSLog(@"descriptionTextView.text: %@", descriptionTextView.text);
+    NSLog(@"retailTextField.text: %@", retailTextField.text);
+    NSLog(@"shippingTextField.text: %@", shippingTextField.text);
+    NSLog(@"priceTextField.text: %@", priceTextField.text);
+    NSLog(@"categoryTextField.text: %@", categoryTextField.text);
+    NSLog(@"sizeColorTextField.text: %@", sizeColorTextField.text);
+    NSLog(@"quantityTextField.text: %@", quantityTextField.text);
+
+
 }
+
+
 
 @end
