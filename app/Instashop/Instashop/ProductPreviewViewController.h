@@ -16,16 +16,16 @@
     
     UIImageView *productImageView;
     UILabel *titleLabel;
-    UITextField *descriptionTextField;
+    UITextView *descriptionTextField;
     
 }
 
 @property (nonatomic, retain) ProductCreateObject *productCreateObject;
 
-@property (nonatomic, retain) UIScrollView *theScrollView;
+@property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *productImageView;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
-@property (nonatomic, retain) IBOutlet UITextField *descriptionTextField;
+@property (nonatomic, retain) IBOutlet UITextView *descriptionTextField;
 
 @end

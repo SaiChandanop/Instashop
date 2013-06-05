@@ -81,8 +81,6 @@
     [parentController productDetailsViewControllerBackButtonHit];
 }
 
-
-
 -(IBAction)previewButtonHit
 {
     NSLog(@"captionTextField.text: %@", captionTextField.text);
@@ -108,6 +106,7 @@
    
     
 
+    [self.parentController previewButtonHitWithProductCreateObject:self.productCreateObject];
 
 }
 

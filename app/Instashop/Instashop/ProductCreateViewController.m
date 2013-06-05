@@ -70,8 +70,23 @@
 }
 
 
+-(void)previewButtonHitWithProductCreateObject:(ProductCreateObject *)productCreateObject
+{
+    self.productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
+    self.productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
+    [self.view addSubview:self.productPreviewViewController.view];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.456];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.productPreviewViewController.view.frame = CGRectMake(0, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
+    [UIView commitAnimations];
 
-
+    [self.productPreviewViewController loadWithProductCreateObject:productCreateObject];
+    
+    
+}
 
 
 -(IBAction)exitButtonHit
