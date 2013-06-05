@@ -20,7 +20,7 @@
     
 }
 
--(void)productDetailsViewControllerBackButtonHit;
+-(void)vcDidHitBackWithController:(UIViewController *)requestingViewController;
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary;
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateObject *)productCreateObject;
 

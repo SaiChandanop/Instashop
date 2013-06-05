@@ -51,10 +51,7 @@
 -(void)userDidLogin
 {
     
-    
-//    self.window.rootViewController = self.tabBarController;
-//    [self.firstViewController makeDummyRequest];
-    
+    self.window.rootViewController = self.appRootViewController;
 }
 
 -(void)makeSafariCallWithURL:(NSURL *)theURL

@@ -78,7 +78,7 @@
 
 -(IBAction)backButtonHit
 {
-    [parentController productDetailsViewControllerBackButtonHit];
+    [parentController vcDidHitBackWithController:self];
 }
 
 -(IBAction)previewButtonHit

@@ -21,6 +21,7 @@
 
 
 @synthesize parentController;
+@synthesize userMediaArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

@@ -8,12 +8,15 @@
 
 #import "ProductPreviewViewController.h"
 #import "ImageAPIHandler.h"
-
+#import "ProductCreateViewController.h"
 @interface ProductPreviewViewController ()
 
 @end
 
 @implementation ProductPreviewViewController
+
+
+@synthesize parentController;
 
 @synthesize productCreateObject;
 
@@ -38,7 +41,7 @@
     [super viewDidLoad];
     
 
-    self.theScrollView.frame = CGRectMake(0,44, self.view.frame.size.width, self.view.frame.size.height - 44);
+    self.theScrollView.frame = CGRectMake(0,54, self.view.frame.size.width, self.view.frame.size.height - 54);
     [self.view addSubview:self.theScrollView];                                
     // Do any additional setup after loading the view from its nib.
 }
@@ -52,5 +55,18 @@
     
     
 }
+
+- (IBAction) backButtonHit
+{
+    NSLog(@"backButtonHit");
+    [self.parentController vcDidHitBackWithController:self];
+}
+
+- (IBAction) postButtonHit
+{
+    NSLog(@"postButtonHit");
+}
+
+
 
 @end

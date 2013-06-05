@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductCreateObject.h"
+
+@class  ProductCreateViewController;
+
 @interface ProductPreviewViewController : UIViewController
 {
+    ProductCreateViewController *parentController;
+    
     ProductCreateObject *productCreateObject;
     
     UIScrollView *theScrollView;
@@ -19,6 +24,13 @@
     UITextView *descriptionTextField;
     
 }
+
+- (void) loadWithProductCreateObject:(ProductCreateObject *)theProductCreateObject;
+
+- (IBAction) backButtonHit;
+- (IBAction) postButtonHit;
+
+@property (nonatomic, retain) ProductCreateViewController *parentController;
 
 @property (nonatomic, retain) ProductCreateObject *productCreateObject;
 

@@ -59,13 +59,13 @@
 
 }
 
--(void)productDetailsViewControllerBackButtonHit
+-(void)vcDidHitBackWithController:(UIViewController *)requestingViewController
 {
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:.456];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.productDetailsViewController.view.frame = CGRectMake(self.productDetailsViewController.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
+    requestingViewController.view.frame = CGRectMake(requestingViewController.view.frame.size.width, 0, requestingViewController.view.frame.size.width, requestingViewController.view.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -73,6 +73,7 @@
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateObject *)productCreateObject
 {
     self.productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
+    self.productPreviewViewController.parentController = self;
     self.productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
     [self.view addSubview:self.productPreviewViewController.view];
     
