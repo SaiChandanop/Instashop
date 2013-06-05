@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ProductCreateObject.h"
+
 
 @class ProductCreateViewController;
 
@@ -25,6 +27,9 @@
     UITextField *categoryTextField;
     UITextField *sizeColorTextField;
     UITextField *quantityTextField;
+    
+    ProductCreateObject *productCreateObject;
+    
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
@@ -47,5 +52,5 @@
 @property (nonatomic, retain) IBOutlet UITextField *categoryTextField;
 @property (nonatomic, retain) IBOutlet UITextField *sizeColorTextField;
 @property (nonatomic, retain) IBOutlet UITextField *quantityTextField;
-
+@property (nonatomic, retain) ProductCreateObject *productCreateObject;
 @end

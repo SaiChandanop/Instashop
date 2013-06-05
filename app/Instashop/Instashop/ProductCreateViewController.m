@@ -18,8 +18,6 @@
 @implementation ProductCreateViewController
 
 @synthesize productSelectTableViewController, productDetailsViewController;
-@synthesize contentScrollView;
-@synthesize titleTextField, quantityTextField, modelTextField, priceTextField, weightField, descriptionTextView;
 @synthesize productDictionary;
 
 
@@ -35,8 +33,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    self.contentScrollView.backgroundColor = [UIColor clearColor];
     
     self.productSelectTableViewController.parentController = self;
 }
@@ -49,11 +45,9 @@
         [self.view addSubview:self.productDetailsViewController.view];
     }
 
+    self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);
     self.productDetailsViewController.parentController = self;
     [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];
-
-    
-    self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(1401, 1402);
 
     
     [UIView beginAnimations:nil context:nil];
@@ -75,50 +69,9 @@
     [UIView commitAnimations];
 }
 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    NSLog(@"textFieldShouldBeginEditing");
-    NSLog(@"self.contentScrollView.contentSize1: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
-    
-    if (self.contentScrollView.contentSize.height < 569)
-        self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
-    
-    return YES;
-}
 
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
-{
-    return YES;
-}
 
-
--(IBAction)goButtonHit
-{
-    NSLog(@"quantityTextField: %@", quantityTextField.text);
-    NSLog(@"modelTextField: %@", modelTextField.text);
-    NSLog(@"priceTextField: %@", priceTextField.text);
-    NSLog(@"weightField: %@", weightField.text);
-    
-    if ([self.titleTextField.text length] > 0)
-    if ([quantityTextField.text length] > 0)
-        if ([modelTextField.text length] > 0)
-            if ([priceTextField.text length] > 0)
-                if ([weightField.text length] > 0)
-                    if ([descriptionTextView.text length] > 0)
-                        [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:self.productDictionary withTitle:self.titleTextField.text withQuantity:quantityTextField.text withModel:modelTextField.text withPrice:priceTextField.text withWeight:weightField.text withDescription:self.descriptionTextView.text];
-    
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)theTextField {
-
-    [theTextField resignFirstResponder];
-    if(theTextField == weightField)
-        [self goButtonHit];
-    
-    return YES;
-
-}
 
 
 -(IBAction)exitButtonHit
