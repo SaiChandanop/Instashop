@@ -31,7 +31,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"%@!!!!! view did load", self);
     // Do any additional setup after loading the view from its nib.
+    
+    [self.containerScrollView setContentSize:CGSizeMake(5000,5000)];
 }
 
 
@@ -46,10 +50,22 @@
     NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[startResultionDictionary objectForKey:@"url"] withImageView:self.productImageView];
     
-    
+    self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
+    [self.view addSubview:self.containerScrollView];
+    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width  * 2, self.view.frame.size.height * 2);
     NSLog(@"self.containerScrollView.contentSize: %@", NSStringFromCGSize(self.containerScrollView.contentSize));
     NSLog(@"scrollingEnabled?: %d", self.containerScrollView.scrollEnabled);
-    NSLog(@"subviews: %@", [self.containerScrollView subviews]);
+    NSLog(@"scrollview subviews: %@", [self.containerScrollView subviews]);
+    NSLog(@"self view subviews: %@", [self.view subviews]);
+    
+    self.containerScrollView.backgroundColor = [UIColor redColor];
+    
+
+//    UIScrollView *aScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 100, self.view.frame.size.width, self.view.frame.size.height - 100)];
+    self.containerScrollView.backgroundColor = [UIColor blueColor];
+    [self.containerScrollView setContentSize:CGSizeMake(5000,5000)];
+//    [self.view addSubview:self.containerScrollView];
+    
 }
 
 - (void)didReceiveMemoryWarning

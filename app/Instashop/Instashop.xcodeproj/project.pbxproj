@@ -464,8 +464,8 @@
 		7BE958F3175548A100A7E0AB /* ProductCreate */ = {
 			isa = PBXGroup;
 			children = (
-				7B1072B5175E7CB300D9DC5D /* ProductDetailsViewController */,
 				7B1072AF175E6C6800D9DC5D /* ProductSelectTableController */,
+				7B1072B5175E7CB300D9DC5D /* ProductDetailsViewController */,
 				7BE958F4175548B800A7E0AB /* ProductCreateViewController.h */,
 				7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */,
 				7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */,

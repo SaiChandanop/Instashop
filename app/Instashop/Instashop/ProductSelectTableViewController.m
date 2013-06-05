@@ -40,9 +40,7 @@
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", nil];
     
     NSLog(@"view did load: %@", self);
-
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     [theAppDelegate.instagram requestWithParams:params delegate:self];
 
 }
@@ -60,8 +58,6 @@
         [self.userMediaArray addObjectsFromArray:dataArray];
         [self.tableView reloadData];
     }
-    
-    
 }
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error

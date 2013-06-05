@@ -49,9 +49,11 @@
         [self.view addSubview:self.productDetailsViewController.view];
     }
 
-    self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);
     self.productDetailsViewController.parentController = self;
     [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];
+
+    
+    self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(1401, 1402);
 
     
     [UIView beginAnimations:nil context:nil];
