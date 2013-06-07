@@ -13,8 +13,19 @@
 @interface DiscoverViewController : UIViewController
 {
     DiscoverTopCategoryTableViewController *discoverTopCategoryTableViewController;
+
+    UIScrollView *theScrollView;
+    
+    NSString *currentTopCategorySelection;
     
 }
 
+-(void)topCategorySelectedWithString:(NSString *)theString;
+
 @property (nonatomic, retain) DiscoverTopCategoryTableViewController *discoverTopCategoryTableViewController;
+
+@property (nonatomic, retain) UIScrollView *theScrollView;
+
+@property (nonatomic, retain) NSString *currentTopCategorySelection;
+
 @end

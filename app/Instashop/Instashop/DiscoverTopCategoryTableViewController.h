@@ -8,9 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@class DiscoverViewController;
+
 @interface DiscoverTopCategoryTableViewController : UITableViewController
 {
+    DiscoverViewController *parentController;
+    
     NSArray *categoriesArray;
 }
+
+@property (nonatomic, retain) DiscoverViewController *parentController;
+
 @property (nonatomic, retain) NSArray *categoriesArray;
 @end

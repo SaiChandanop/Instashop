@@ -14,6 +14,10 @@
 
 @implementation DiscoverViewController
 
+@synthesize theScrollView;
+
+@synthesize currentTopCategorySelection;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,16 +31,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+
+    self.theScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,44, self.view.frame.size.width, self.view.frame.size.height - 44)];
+    [self.view addSubview:self.theScrollView];
     
-//    CategoriesAttributesHandler *handler = [CategoriesAttributesHandler sharedCategoryAttributesHandler];
     
     self.discoverTopCategoryTableViewController = [[DiscoverTopCategoryTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    self.discoverTopCategoryTableViewController.view.frame = CGRectMake(0,44, self.view.frame.size.width, self.view.frame.size.height - 44);
-    [self.view addSubview:self.discoverTopCategoryTableViewController.view];
+    self.discoverTopCategoryTableViewController.parentController = self;
+    self.discoverTopCategoryTableViewController.view.frame = CGRectMake(0,0,self.theScrollView.frame.size.width, self.theScrollView.frame.size.height);
+    [self.theScrollView addSubview:self.discoverTopCategoryTableViewController.view];
+    
+    
+    self.theScrollView.contentSize = CGSizeMake(self.theScrollView.frame.size.width * 2, 0);
 }
 
-
+-(void)topCategorySelectedWithString:(NSString *)theString
+{
+    NSLog(@"topCategorySelectedWithString: %@", theString);
+    self.currentTopCategorySelection = theString;
+  
+    [self.theScrollView setContentOffset:CGPointMake(self.view.frame.size.width * 2, 0) animated:YES];
+//    [self.theScrollView scrollRectToVisible:CGRectMake(self.theScrollView.frame.size.width, 0,self.theScrollView.frame.size.width, self.theScrollView.frame.size.height) animated:YES];
+    
+}
 
 
 

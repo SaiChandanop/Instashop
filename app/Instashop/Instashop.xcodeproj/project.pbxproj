@@ -212,6 +212,13 @@
 			name = DiscoverTopCategory;
 			sourceTree = "<group>";
 		};
+		7B34813617624D6300C055AE /* DiscoverSubCategory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = DiscoverSubCategory;
+			sourceTree = "<group>";
+		};
 		7B3F520E175FAAB900ABF49B /* ProductObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -245,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				7B348135176248A900C055AE /* DiscoverTopCategory */,
+				7B34813617624D6300C055AE /* DiscoverSubCategory */,
 				7B4908601758FE650047ED3B /* DiscoverViewController.h */,
 				7B4908611758FE650047ED3B /* DiscoverViewController.m */,
 				7B4908621758FE650047ED3B /* DiscoverViewController.xib */,
