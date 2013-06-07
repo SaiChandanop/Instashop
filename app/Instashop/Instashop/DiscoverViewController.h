@@ -7,12 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DiscoverTopCategoryTableViewController.h"
+#import "DiscoverTableViewController.h"
 
 
 @interface DiscoverViewController : UIViewController
 {
-    DiscoverTopCategoryTableViewController *discoverTopCategoryTableViewController;
+    DiscoverTableViewController *discoverTopCategoryTableViewController;
 
     UIScrollView *theScrollView;
     
@@ -20,9 +20,9 @@
     
 }
 
--(void)topCategorySelectedWithString:(NSString *)theString;
+-(void)tableOptionSelectedWithTableViewController:(DiscoverTableViewController *)theController withOption:(NSString *)theOption;
 
-@property (nonatomic, retain) DiscoverTopCategoryTableViewController *discoverTopCategoryTableViewController;
+@property (nonatomic, retain) DiscoverTableViewController *discoverTopCategoryTableViewController;
 
 @property (nonatomic, retain) UIScrollView *theScrollView;
 

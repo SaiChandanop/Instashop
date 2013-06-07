@@ -15,7 +15,8 @@
 		7B1072C1175E7E1500D9DC5D /* previewproductimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072C0175E7E1500D9DC5D /* previewproductimage.png */; };
 		7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072C2175E84E400D9DC5D /* additemdetails.png */; };
 		7B34813117623ECF00C055AE /* CategoriesAttributesHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813017623ECF00C055AE /* CategoriesAttributesHandler.m */; };
-		7B348134176248A500C055AE /* DiscoverTopCategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B348133176248A400C055AE /* DiscoverTopCategoryTableViewController.m */; };
+		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
+		7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
 		7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */; };
 		7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */; };
@@ -76,8 +77,9 @@
 		7B1072C2175E84E400D9DC5D /* additemdetails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = additemdetails.png; sourceTree = "<group>"; };
 		7B34812F17623ECF00C055AE /* CategoriesAttributesHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesAttributesHandler.h; sourceTree = "<group>"; };
 		7B34813017623ECF00C055AE /* CategoriesAttributesHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesAttributesHandler.m; sourceTree = "<group>"; };
-		7B348132176248A400C055AE /* DiscoverTopCategoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTopCategoryTableViewController.h; sourceTree = "<group>"; };
-		7B348133176248A400C055AE /* DiscoverTopCategoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTopCategoryTableViewController.m; sourceTree = "<group>"; };
+		7B34813817624E5800C055AE /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
+		7B34813917624E5800C055AE /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
+		7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
 		7B3F520F175FAAF400ABF49B /* ProductCreateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateObject.h; sourceTree = "<group>"; };
 		7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateObject.m; sourceTree = "<group>"; };
 		7B3F5213175FB3A000ABF49B /* ProductPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductPreviewViewController.h; sourceTree = "<group>"; };
@@ -203,20 +205,14 @@
 			name = ProductDetailsViewController;
 			sourceTree = "<group>";
 		};
-		7B348135176248A900C055AE /* DiscoverTopCategory */ = {
+		7B34813717624E3600C055AE /* DiscoverTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7B348132176248A400C055AE /* DiscoverTopCategoryTableViewController.h */,
-				7B348133176248A400C055AE /* DiscoverTopCategoryTableViewController.m */,
+				7B34813817624E5800C055AE /* DiscoverTableViewController.h */,
+				7B34813917624E5800C055AE /* DiscoverTableViewController.m */,
+				7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */,
 			);
-			name = DiscoverTopCategory;
-			sourceTree = "<group>";
-		};
-		7B34813617624D6300C055AE /* DiscoverSubCategory */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = DiscoverSubCategory;
+			name = DiscoverTableViewController;
 			sourceTree = "<group>";
 		};
 		7B3F520E175FAAB900ABF49B /* ProductObject */ = {
@@ -251,8 +247,7 @@
 		7B4908531758FE010047ED3B /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				7B348135176248A900C055AE /* DiscoverTopCategory */,
-				7B34813617624D6300C055AE /* DiscoverSubCategory */,
+				7B34813717624E3600C055AE /* DiscoverTableViewController */,
 				7B4908601758FE650047ED3B /* DiscoverViewController.h */,
 				7B4908611758FE650047ED3B /* DiscoverViewController.m */,
 				7B4908621758FE650047ED3B /* DiscoverViewController.xib */,
@@ -603,6 +598,7 @@
 				7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */,
 				7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */,
 				7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */,
+				7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -643,7 +639,7 @@
 				7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */,
 				7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */,
 				7B34813117623ECF00C055AE /* CategoriesAttributesHandler.m in Sources */,
-				7B348134176248A500C055AE /* DiscoverTopCategoryTableViewController.m in Sources */,
+				7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

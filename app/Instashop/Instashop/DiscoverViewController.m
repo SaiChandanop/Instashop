@@ -36,7 +36,8 @@
     [self.view addSubview:self.theScrollView];
     
     
-    self.discoverTopCategoryTableViewController = [[DiscoverTopCategoryTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.discoverTopCategoryTableViewController = [[DiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    [self.discoverTopCategoryTableViewController setContentWithArray:[[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]];
     self.discoverTopCategoryTableViewController.parentController = self;
     self.discoverTopCategoryTableViewController.view.frame = CGRectMake(0,0,self.theScrollView.frame.size.width, self.theScrollView.frame.size.height);
     [self.theScrollView addSubview:self.discoverTopCategoryTableViewController.view];
@@ -45,12 +46,13 @@
     self.theScrollView.contentSize = CGSizeMake(self.theScrollView.frame.size.width * 2, 0);
 }
 
--(void)topCategorySelectedWithString:(NSString *)theString
+-(void)tableOptionSelectedWithTableViewController:(DiscoverTableViewController *)theController withOption:(NSString *)theOption
 {
-    NSLog(@"topCategorySelectedWithString: %@", theString);
-    self.currentTopCategorySelection = theString;
+    NSLog(@"topCategorySelectedWithString: %@", theOption);
+    self.currentTopCategorySelection = theOption;
   
-    [self.theScrollView setContentOffset:CGPointMake(self.view.frame.size.width * 2, 0) animated:YES];
+    if (theController == self.discoverTopCategoryTableViewController)
+        [self.theScrollView setContentOffset:CGPointMake(self.view.frame.size.width * 2, 0) animated:YES];
 //    [self.theScrollView scrollRectToVisible:CGRectMake(self.theScrollView.frame.size.width, 0,self.theScrollView.frame.size.width, self.theScrollView.frame.size.height) animated:YES];
     
 }
