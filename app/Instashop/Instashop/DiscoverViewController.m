@@ -7,12 +7,13 @@
 //
 
 #import "DiscoverViewController.h"
-
+#import "CategoriesAttributesHandler.h"
 @interface DiscoverViewController ()
 
 @end
 
 @implementation DiscoverViewController
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,12 +28,18 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+//    CategoriesAttributesHandler *handler = [CategoriesAttributesHandler sharedCategoryAttributesHandler];
+    
+    self.discoverTopCategoryTableViewController = [[DiscoverTopCategoryTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.discoverTopCategoryTableViewController.view.frame = CGRectMake(0,44, self.view.frame.size.width, self.view.frame.size.height - 44);
+    [self.view addSubview:self.discoverTopCategoryTableViewController.view];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+
+
+
+
 
 @end

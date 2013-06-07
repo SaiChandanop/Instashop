@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DiscoverTopCategoryTableViewController.h"
+
 
 @interface DiscoverViewController : UIViewController
+{
+    DiscoverTopCategoryTableViewController *discoverTopCategoryTableViewController;
+    
+}
 
+@property (nonatomic, retain) DiscoverTopCategoryTableViewController *discoverTopCategoryTableViewController;
 @end
