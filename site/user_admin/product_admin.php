@@ -59,7 +59,7 @@ function createNewProduct($host, $user, $pass, $db, $product_quantity, $product_
 
 	$query = "insert into products values ('', '', '". $product_quantity ."', '" . $product_model ."', '". $product_image ."', '". $product_price ."', '" . $product_date ."', '', '', '" . $product_weight ."', '', '1','','','','','','','', '', '', '', '', '', '', '', '', '". $product_price ."', '" . $product_owner_id ."', '','','','','','')";
 				
-	echo "query: ". $query;
+	echo "\nquery1: ". $query;
 	
 	$result = mysql_query($query);
 	$productID =  mysql_insert_id();	
@@ -75,6 +75,9 @@ function updateProductsToCategories($host, $user, $pass, $db, $product_id, $prod
 	$r2 = mysql_select_db($db);
 
 	$query = "insert into products_to_categories values ('$product_id', '$product_owner_id')";
+
+	echo "\nquery2: ". $query;
+
 	$result = mysql_query($query);
 
 	mysql_close();
@@ -87,6 +90,7 @@ function updateProductsDescription($host, $user, $pass, $db, $product_id, $produ
 	$r2 = mysql_select_db($db);
 
 	$query = "insert into products_description values ('". $product_id ."', '1', '".$product_title ."', '".$product_description ."', '". $product_url ."', '0')";
+	echo "\nquery3: ". $query;
 	$result = mysql_query($query);
 
 	mysql_close();
@@ -98,7 +102,7 @@ function updateSellersProducts($host, $user, $pass, $db, $instagram_user_id, $ze
 	$r2 = mysql_select_db($db);
 
 	$query = "insert into sellers_products values ('$instagram_user_id', '$zencart_id', '$product_id')";
-	echo "\n update sellers query: ". $query;
+	echo "\nquery4: ". $query;
 	$result = mysql_query($query);
 
 	mysql_close();
