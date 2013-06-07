@@ -24,6 +24,7 @@
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary;
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateObject *)productCreateObject;
 
+- (void)createProductActionHitWithProductObject:(ProductCreateObject *)productCreateObject;
 - (IBAction) exitButtonHit;
 - (IBAction) goButtonHit;
 

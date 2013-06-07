@@ -95,5 +95,23 @@
     [[AppRootViewController sharedRootViewController] exitButtonHitWithViewController:self];
 }
 
+- (void)createProductActionHitWithProductObject:(ProductCreateObject *)productCreateObject
+{
+ 
+    [self exitButtonHit];
+    [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:productCreateObject.instragramMediaInfoDictionary withTitle:productCreateObject.caption withQuantity:productCreateObject.quantity withModel:productCreateObject.categoryAttribute withPrice:productCreateObject.price withWeight:productCreateObject.shippingWeight withDescription:productCreateObject.description withProductImageURL:productCreateObject.instagramPictureURLString];
+
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Smashing"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    
+    
+
+    
+}
+
 
 @end

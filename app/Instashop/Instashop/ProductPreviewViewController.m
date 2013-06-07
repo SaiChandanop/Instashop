@@ -64,10 +64,8 @@
 - (IBAction) postButtonHit
 {
     NSLog(@"postButtonHit");
-
-    
-    [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:self.productCreateObject.instragramMediaInfoDictionary withTitle:self.productCreateObject.caption withQuantity:self.productCreateObject.quantity withModel:self.productCreateObject.categoryAttribute withPrice:self.productCreateObject.price withWeight:self.productCreateObject.shippingWeight withDescription:self.productCreateObject.description withProductImageURL:self.productCreateObject.instagramPictureURLString];
-    
+            
+    [parentController createProductActionHitWithProductObject:self.productCreateObject];
 }
 
 
