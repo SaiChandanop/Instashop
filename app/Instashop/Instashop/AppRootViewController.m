@@ -55,7 +55,7 @@ float transitionTime = .456;
     
     self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
     self.notificationsViewController.view.frame = CGRectMake(0, self.view.frame.size.height * -1, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:self.notificationsViewController.view];
+    [self.feedViewController.view insertSubview:self.notificationsViewController.view belowSubview:self.feedViewController.headerView];
 
     
     
@@ -102,7 +102,10 @@ float transitionTime = .456;
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        self.notificationsViewController.view.frame = CGRectMake(self.feedViewController.view.frame.origin.x, 0, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
+        if (self.notificationsViewController.view.frame.origin.y == 0)
+            self.notificationsViewController.view.frame = CGRectMake(self.feedViewController.view.frame.origin.x, -self.feedViewController.view.frame.size.height, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
+        else
+            self.notificationsViewController.view.frame = CGRectMake(self.feedViewController.view.frame.origin.x, 0, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
         [UIView commitAnimations];
         
     }

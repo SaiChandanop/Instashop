@@ -11,7 +11,10 @@
 @class AppRootViewController;
 @interface FeedViewController : UIViewController
 {
-  AppRootViewController *parentController;  
+  AppRootViewController *parentController;
+    
+    UIView *headerView;
+    
 }
 
 
@@ -22,5 +25,6 @@
 
 @property (nonatomic, retain) AppRootViewController *parentController;
 
+@property (nonatomic, retain) IBOutlet UIView *headerView;
 
 @end
