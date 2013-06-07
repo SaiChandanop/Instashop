@@ -21,6 +21,9 @@
 
     InstagramUserObject *userInstagramObject = [InstagramUserObject getStoredUserObject];
     
+    
+    NSLog(@"!!createNewProductWithDelegate.title: %@", title);
+          
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"instagramUserId=%@&", userInstagramObject.userID]];
     [postString appendString:[NSString stringWithFormat:@"instagramProductId=%@&", [productDict objectForKey:@"id"]]];

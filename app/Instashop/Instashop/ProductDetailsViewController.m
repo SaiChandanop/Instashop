@@ -39,11 +39,27 @@
     return self;
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithRed:56.0f/255.0f green:116.0f/255.0f blue:93.0f/255.0f alpha:1];
+    
+    self.captionTextField.delegate = self;
+    
+    self.descriptionTextView.delegate = self;
+    self.retailTextField.delegate = self;
+    self.shippingTextField.delegate = self;
+    self.priceTextField.delegate = self;
+    self.categoryTextField.delegate = self;
+    self.sizeColorTextField.delegate = self;
+    self.quantityTextField.delegate = self;
+    
     
     
 }
@@ -94,7 +110,7 @@
     NSLog(@"quantityTextField.text: %@", quantityTextField.text);
     
     
-    self.productCreateObject.description = self.captionTextField.text;
+    self.productCreateObject.caption = self.captionTextField.text;
     self.productCreateObject.description = self.descriptionTextView.text;
     self.productCreateObject.retailValue = self.retailTextField.text;
     self.productCreateObject.shippingWeight = self.shippingTextField.text;

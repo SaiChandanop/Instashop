@@ -12,7 +12,7 @@
 
 @class ProductCreateViewController;
 
-@interface ProductDetailsViewController : UIViewController
+@interface ProductDetailsViewController : UIViewController <UITextFieldDelegate>
 {
     ProductCreateViewController *parentController;
     
