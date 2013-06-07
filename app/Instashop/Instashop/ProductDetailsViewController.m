@@ -59,15 +59,11 @@
     self.categoryTextField.delegate = self;
     self.sizeColorTextField.delegate = self;
     self.quantityTextField.delegate = self;
-    
-    
-    
 }
 
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
 {
-    NSLog(@"theDictionary: %@", theDictionary);
     
     self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
     [self.view addSubview:self.containerScrollView];
@@ -80,16 +76,16 @@
     NSString *instagramProductImageURLString = [startResultionDictionary objectForKey:@"url"];
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:instagramProductImageURLString withImageView:self.productImageView];
     
-    
     NSDictionary *captionDictionary = [theDictionary objectForKey:@"caption"];
-    self.captionTextField.text = [captionDictionary objectForKey:@"text"];
-    
+
+    if (captionDictionary != nil)
+        if (![captionDictionary isKindOfClass:[NSNull class]])
+            self.captionTextField.text = [captionDictionary objectForKey:@"text"];
+
+
     self.productCreateObject = [[ProductCreateObject alloc] init];
     self.productCreateObject.instragramMediaInfoDictionary = theDictionary;
-    self.productCreateObject.instagramURLString = instagramProductImageURLString;
-    
-
-    
+    self.productCreateObject.instagramPictureURLString = instagramProductImageURLString;
 }
 
 -(IBAction)backButtonHit
@@ -98,18 +94,7 @@
 }
 
 -(IBAction)previewButtonHit
-{
-    NSLog(@"captionTextField.text: %@", captionTextField.text);
-    
-    NSLog(@"descriptionTextView.text: %@", descriptionTextView.text);
-    NSLog(@"retailTextField.text: %@", retailTextField.text);
-    NSLog(@"shippingTextField.text: %@", shippingTextField.text);
-    NSLog(@"priceTextField.text: %@", priceTextField.text);
-    NSLog(@"categoryTextField.text: %@", categoryTextField.text);
-    NSLog(@"sizeColorTextField.text: %@", sizeColorTextField.text);
-    NSLog(@"quantityTextField.text: %@", quantityTextField.text);
-    
-    
+{        
     self.productCreateObject.caption = self.captionTextField.text;
     self.productCreateObject.description = self.descriptionTextView.text;
     self.productCreateObject.retailValue = self.retailTextField.text;
@@ -118,10 +103,6 @@
     self.productCreateObject.category = self.categoryTextField.text;
     self.productCreateObject.categoryAttribute = self.sizeColorTextField.text;
     self.productCreateObject.quantity = self.quantityTextField.text;
-    
-   
-    
-
     [self.parentController previewButtonHitWithProductCreateObject:self.productCreateObject];
 
 }

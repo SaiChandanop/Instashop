@@ -19,7 +19,7 @@
 @synthesize categoryAttribute;
 @synthesize quantity;
 
-@synthesize instagramURLString;
+@synthesize instagramPictureURLString;
 @synthesize instragramMediaInfoDictionary;
 
 @end

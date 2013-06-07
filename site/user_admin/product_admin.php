@@ -119,7 +119,7 @@ echo "\ncreateNewProduct product_id: ". $product_id;
 updateProductsToCategories($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $user_id);
 echo "\nupdateProductsToCategories";
 
-updateProductsDescription($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $_POST["object_title"], $_POST["object_description"], $_POST["object_url"]);
+updateProductsDescription($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $_POST["object_title"], $_POST["object_description"], $_POST["object_image_urlstring"]);
 echo "\n updateProductsDescription";
 
 updateSellersProducts($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $_POST["instagramUserId"], $user_id, $product_id);

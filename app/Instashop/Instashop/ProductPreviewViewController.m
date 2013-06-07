@@ -51,7 +51,7 @@
 -(void)loadWithProductCreateObject:(ProductCreateObject *)theProductCreateObject
 {
     self.productCreateObject = theProductCreateObject;
-    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.productCreateObject.instagramURLString withImageView:self.productImageView];
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.productCreateObject.instagramPictureURLString withImageView:self.productImageView];
 }
 
 
@@ -64,26 +64,9 @@
 - (IBAction) postButtonHit
 {
     NSLog(@"postButtonHit");
-    NSLog(@" ");
-    NSLog(@" ");
-    NSLog(@"self.productCreateObject.caption: %@", self.productCreateObject.caption);
-    NSLog(@" ");
-    NSLog(@" ");    
-    /*
-    @synthesize caption;
-    @synthesize description;
-    @synthesize retailValue;
-    @synthesize shippingWeight;
-    @synthesize price;
-    @synthesize category;
-    @synthesize categoryAttribute;
-    @synthesize quantity;
+
     
-    @synthesize instagramURLString;
-    @synthesize instragramMediaInfoDictionary;
-    */
-    
-    [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:self.productCreateObject.instragramMediaInfoDictionary withTitle:self.productCreateObject.caption withQuantity:self.productCreateObject.quantity withModel:self.productCreateObject.categoryAttribute withPrice:self.productCreateObject.price withWeight:self.productCreateObject.shippingWeight withDescription:self.productCreateObject.description];
+    [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:self.productCreateObject.instragramMediaInfoDictionary withTitle:self.productCreateObject.caption withQuantity:self.productCreateObject.quantity withModel:self.productCreateObject.categoryAttribute withPrice:self.productCreateObject.price withWeight:self.productCreateObject.shippingWeight withDescription:self.productCreateObject.description withProductImageURL:self.productCreateObject.instagramPictureURLString];
     
 }
 

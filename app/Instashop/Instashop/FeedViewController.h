@@ -9,12 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class AppRootViewController;
-@interface FeedViewController : UIViewController
+@interface FeedViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 {
-  AppRootViewController *parentController;
-    
+    AppRootViewController *parentController;
+
     UIView *headerView;
+    UITableView *theTableView;
     
+    NSMutableArray *feedItemsArray;
 }
 
 
@@ -26,5 +28,9 @@
 @property (nonatomic, retain) AppRootViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet UIView *headerView;
+@property (nonatomic, retain) IBOutlet UITableView *theTableView;
+
+@property (nonatomic, retain) NSMutableArray *feedItemsArray;
+
 
 @end

@@ -19,7 +19,7 @@
     NSString *categoryAttribute;
     NSString *quantity;
     
-    NSString *instagramURLString;
+    NSString *instagramPictureURLString;
     NSDictionary *instragramMediaInfoDictionary;
 }
 
@@ -32,7 +32,7 @@
 @property (nonatomic, retain) NSString *categoryAttribute;
 @property (nonatomic, retain) NSString *quantity;
 
-@property (nonatomic, retain) NSString *instagramURLString;
+@property (nonatomic, retain) NSString *instagramPictureURLString;
 @property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;
 
 @end
