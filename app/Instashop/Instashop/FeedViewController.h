@@ -17,6 +17,8 @@
     UITableView *theTableView;
     
     NSMutableArray *feedItemsArray;
+    
+    id selectedObject;
 }
 
 
@@ -32,5 +34,5 @@
 
 @property (nonatomic, retain) NSMutableArray *feedItemsArray;
 
-
+@property (nonatomic, retain) id selectedObject;
 @end

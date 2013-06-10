@@ -33,6 +33,13 @@
 		7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D2E13175CFCD1005DE4B6 /* HomeViewController.m */; };
 		7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */; };
 		7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */; };
+		7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B602D9F17664F1700663A73 /* PurchasingViewController.m */; };
+		7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA017664F1700663A73 /* PurchasingViewController.xib */; };
+		7B602DA417664F4400663A73 /* purchaseheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA317664F4400663A73 /* purchaseheader.png */; };
+		7B602DA61766537700663A73 /* savetofavoritesbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA51766537700663A73 /* savetofavoritesbutton.png */; };
+		7B602DA9176653BD00663A73 /* quantitybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA7176653BD00663A73 /* quantitybutton.png */; };
+		7B602DAA176653BD00663A73 /* sizebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA8176653BD00663A73 /* sizebutton.png */; };
+		7B602DAC1766543100663A73 /* buybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DAB1766543100663A73 /* buybutton.png */; };
 		7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE46174D2162002A483D /* UIKit.framework */; };
 		7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE48174D2162002A483D /* Foundation.framework */; };
 		7B61EE4B174D2162002A483D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE4A174D2162002A483D /* CoreGraphics.framework */; };
@@ -104,6 +111,14 @@
 		7B4D2E13175CFCD1005DE4B6 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedtopbar.png; sourceTree = "<group>"; };
+		7B602D9E17664F1700663A73 /* PurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewController.h; sourceTree = "<group>"; };
+		7B602D9F17664F1700663A73 /* PurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasingViewController.m; sourceTree = "<group>"; };
+		7B602DA017664F1700663A73 /* PurchasingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchasingViewController.xib; sourceTree = "<group>"; };
+		7B602DA317664F4400663A73 /* purchaseheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchaseheader.png; sourceTree = "<group>"; };
+		7B602DA51766537700663A73 /* savetofavoritesbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = savetofavoritesbutton.png; sourceTree = "<group>"; };
+		7B602DA7176653BD00663A73 /* quantitybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quantitybutton.png; sourceTree = "<group>"; };
+		7B602DA8176653BD00663A73 /* sizebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sizebutton.png; sourceTree = "<group>"; };
+		7B602DAB1766543100663A73 /* buybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buybutton.png; sourceTree = "<group>"; };
 		7B61EE43174D2162002A483D /* Instashop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instashop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B61EE46174D2162002A483D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		7B61EE48174D2162002A483D /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,6 +188,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7B0680CA17664BC2009154BF /* Purchasing */ = {
+			isa = PBXGroup;
+			children = (
+				7B602D9E17664F1700663A73 /* PurchasingViewController.h */,
+				7B602D9F17664F1700663A73 /* PurchasingViewController.m */,
+				7B602DA017664F1700663A73 /* PurchasingViewController.xib */,
+			);
+			name = Purchasing;
+			sourceTree = "<group>";
+		};
 		7B1072AB175E664400D9DC5D /* MainVCs */ = {
 			isa = PBXGroup;
 			children = (
@@ -288,6 +313,11 @@
 		7B4D2E17175CFFBE005DE4B6 /* shittyimages */ = {
 			isa = PBXGroup;
 			children = (
+				7B602DAB1766543100663A73 /* buybutton.png */,
+				7B602DA7176653BD00663A73 /* quantitybutton.png */,
+				7B602DA8176653BD00663A73 /* sizebutton.png */,
+				7B602DA51766537700663A73 /* savetofavoritesbutton.png */,
+				7B602DA317664F4400663A73 /* purchaseheader.png */,
 				7B3F5218175FBDD800ABF49B /* productpreviewtabbar.png */,
 				7B1072C2175E84E400D9DC5D /* additemdetails.png */,
 				7B1072C0175E7E1500D9DC5D /* previewproductimage.png */,
@@ -382,6 +412,7 @@
 			children = (
 				7B1072AB175E664400D9DC5D /* MainVCs */,
 				7BE958F3175548A100A7E0AB /* ProductCreate */,
+				7B0680CA17664BC2009154BF /* Purchasing */,
 				7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */,
 				7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */,
 			);
@@ -599,6 +630,12 @@
 				7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */,
 				7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */,
 				7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */,
+				7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */,
+				7B602DA417664F4400663A73 /* purchaseheader.png in Resources */,
+				7B602DA61766537700663A73 /* savetofavoritesbutton.png in Resources */,
+				7B602DA9176653BD00663A73 /* quantitybutton.png in Resources */,
+				7B602DAA176653BD00663A73 /* sizebutton.png in Resources */,
+				7B602DAC1766543100663A73 /* buybutton.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +677,7 @@
 				7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */,
 				7B34813117623ECF00C055AE /* CategoriesAttributesHandler.m in Sources */,
 				7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */,
+				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
