@@ -123,13 +123,33 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedObject = [self.feedItemsArray objectAtIndex:indexPath.row];
+
     
+    PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+    purchasingViewController.parentController = self;
+    purchasingViewController.purchasingObject = self.selectedObject;
+    purchasingViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:purchasingViewController.view];
+    
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.456];
+    //        [UIView setAnimationDelegate:self];
+    //        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    purchasingViewController.view.frame = CGRectMake(0,0,purchasingViewController.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+    
+
+    
+    
+    /*
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Buy?"
                                                         message:@"Wanna buy?"
                                                        delegate:self
                                               cancelButtonTitle:@"No"
                                               otherButtonTitles:@"Yes", nil];
     [alertView show];
+     */
 
 }
 
@@ -138,22 +158,7 @@
     if (buttonIndex == YES)
     {
         
-        PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
-        purchasingViewController.parentController = self;
-        purchasingViewController.purchasingObject = self.selectedObject;
-        purchasingViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:purchasingViewController.view];
         
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:.456];
-//        [UIView setAnimationDelegate:self];
-//        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        purchasingViewController.view.frame = CGRectMake(0,0,purchasingViewController.view.frame.size.width, self.view.frame.size.height);
-        [UIView commitAnimations];
-
-        
-        NSLog(@"do buy: %@", self.selectedObject);
     }
 
 }

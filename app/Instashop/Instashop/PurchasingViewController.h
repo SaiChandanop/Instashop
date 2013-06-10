@@ -16,6 +16,7 @@
     
     NSDictionary *purchasingObject;
     
+    UIScrollView *contentScrollView;
     UIImageView *imageView;
     UILabel *titleLabel;
     UILabel *sellerLabel;
@@ -32,6 +33,7 @@
 
 @property (nonatomic, retain) NSDictionary *purchasingObject;
 
+@property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;

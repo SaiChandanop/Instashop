@@ -16,6 +16,7 @@
 @implementation PurchasingViewController
 
 @synthesize parentController;
+@synthesize contentScrollView;
 @synthesize purchasingObject;
 @synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel;
 
@@ -41,7 +42,8 @@
 //    , sellerLabel, , priceLabel, numberAvailableLabel;
     
     
-    
+    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
+    self.contentScrollView.backgroundColor = [UIColor clearColor];
 
 }
 
@@ -54,6 +56,7 @@
 
 -(IBAction)buyButtonHit
 {
+    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
     NSLog(@"buyButtonHit");
 }
 @end
