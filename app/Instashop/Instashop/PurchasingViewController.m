@@ -7,12 +7,17 @@
 //
 
 #import "PurchasingViewController.h"
-
+#import "ImageAPIHandler.h"
+#import "FeedViewController.h"
 @interface PurchasingViewController ()
 
 @end
 
 @implementation PurchasingViewController
+
+@synthesize parentController;
+@synthesize purchasingObject;
+@synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,12 +31,29 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.purchasingObject objectForKey:@"products_url"] withImageView:self.imageView];
+    
+    self.titleLabel.text = [self.purchasingObject objectForKey:@"products_name"];
+    self.descriptionTextView.text = [self.purchasingObject objectForKey:@"products_description"];
+    
+//    , sellerLabel, , priceLabel, numberAvailableLabel;
+    
+    
+    
+
 }
 
 
 -(IBAction)backButtonHit
 {
-    
+    [self.parentController purchasingViewControllerBackButtonHitWithVC:self];
+    NSLog(@"backButtonHit");
+}
+
+-(IBAction)buyButtonHit
+{
+    NSLog(@"buyButtonHit");
 }
 @end

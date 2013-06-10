@@ -26,6 +26,8 @@
 -(IBAction)notificationsButtonHit;
 -(IBAction)discoverButtonHit;
 
+-(void)purchasingViewControllerBackButtonHitWithVC:(UIViewController *)vc;
+
 
 @property (nonatomic, retain) AppRootViewController *parentController;
 
