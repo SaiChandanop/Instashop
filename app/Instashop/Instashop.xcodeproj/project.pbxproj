@@ -33,6 +33,7 @@
 		7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D2E13175CFCD1005DE4B6 /* HomeViewController.m */; };
 		7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */; };
 		7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */; };
+		7B5F53F41767829F0066D529 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F53F31767829F0066D529 /* STPCard.m */; };
 		7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B602D9F17664F1700663A73 /* PurchasingViewController.m */; };
 		7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA017664F1700663A73 /* PurchasingViewController.xib */; };
 		7B602DA417664F4400663A73 /* purchaseheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA317664F4400663A73 /* purchaseheader.png */; };
@@ -67,6 +68,7 @@
 		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
+		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
 		7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D371174D74410045C4B4 /* JSONKit.m */; };
 		7BE3D377174D772B0045C4B4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D376174D772B0045C4B4 /* Utils.m */; };
@@ -114,6 +116,8 @@
 		7B4D2E13175CFCD1005DE4B6 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
 		7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedtopbar.png; sourceTree = "<group>"; };
+		7B5F53F21767829F0066D529 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
+		7B5F53F31767829F0066D529 /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
 		7B602D9E17664F1700663A73 /* PurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewController.h; sourceTree = "<group>"; };
 		7B602D9F17664F1700663A73 /* PurchasingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasingViewController.m; sourceTree = "<group>"; };
 		7B602DA017664F1700663A73 /* PurchasingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchasingViewController.xib; sourceTree = "<group>"; };
@@ -168,6 +172,8 @@
 		7B96C037174FE0B100E4EDAD /* ImageRequestorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageRequestorProtocol.h; sourceTree = "<group>"; };
 		7B96C039174FED3700E4EDAD /* ImagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewCell.h; sourceTree = "<group>"; };
 		7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewCell.m; sourceTree = "<group>"; };
+		7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAuthenticationHandler.h; sourceTree = "<group>"; };
+		7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAuthenticationHandler.m; sourceTree = "<group>"; };
 		7BE3D36C174D537D0045C4B4 /* UserAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAPIHandler.h; sourceTree = "<group>"; };
 		7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIHandler.m; sourceTree = "<group>"; };
 		7BE3D370174D74410045C4B4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -195,14 +201,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7B0680CA17664BC2009154BF /* Purchasing */ = {
+		7B0680CA17664BC2009154BF /* Product Purchasing */ = {
 			isa = PBXGroup;
 			children = (
-				7B602DAD1766709300663A73 /* Root */,
 				7B602DAE1766709800663A73 /* Buy */,
 				7B602DAF1766709E00663A73 /* Complete */,
+				7B602D9E17664F1700663A73 /* PurchasingViewController.h */,
+				7B602D9F17664F1700663A73 /* PurchasingViewController.m */,
+				7B602DA017664F1700663A73 /* PurchasingViewController.xib */,
 			);
-			name = Purchasing;
+			name = "Product Purchasing";
 			sourceTree = "<group>";
 		};
 		7B1072AB175E664400D9DC5D /* MainVCs */ = {
@@ -335,16 +343,6 @@
 			name = shittyimages;
 			sourceTree = "<group>";
 		};
-		7B602DAD1766709300663A73 /* Root */ = {
-			isa = PBXGroup;
-			children = (
-				7B602D9E17664F1700663A73 /* PurchasingViewController.h */,
-				7B602D9F17664F1700663A73 /* PurchasingViewController.m */,
-				7B602DA017664F1700663A73 /* PurchasingViewController.xib */,
-			);
-			name = Root;
-			sourceTree = "<group>";
-		};
 		7B602DAE1766709800663A73 /* Buy */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,7 +445,7 @@
 			children = (
 				7B1072AB175E664400D9DC5D /* MainVCs */,
 				7BE958F3175548A100A7E0AB /* ProductCreate */,
-				7B0680CA17664BC2009154BF /* Purchasing */,
+				7B0680CA17664BC2009154BF /* Product Purchasing */,
 				7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */,
 				7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */,
 			);
@@ -501,6 +499,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7BC890B017668B5200D4756D /* Stripe */,
 				7BE958EF1755470000A7E0AB /* Products */,
 				7B7B9DF41753E26F000F4A3E /* ZenCart */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
@@ -539,6 +538,17 @@
 				7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		7BC890B017668B5200D4756D /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				7B5F53F21767829F0066D529 /* STPCard.h */,
+				7B5F53F31767829F0066D529 /* STPCard.m */,
+				7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */,
+				7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */,
+			);
+			name = Stripe;
 			sourceTree = "<group>";
 		};
 		7BE3D36B174D536B0045C4B4 /* User */ = {
@@ -716,6 +726,8 @@
 				7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7B602DB3176670AF00663A73 /* BuyViewController.m in Sources */,
+				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
+				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
