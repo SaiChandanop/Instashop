@@ -22,11 +22,11 @@
         self.theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 0,cellHeight, cellHeight)];
         [self addSubview:self.theImageView];
 
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 20)];
+        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.theImageView.frame.size.height/2 - 12, self.frame.size.width, 24)];
         self.titleLabel.backgroundColor = [UIColor clearColor];
-        self.titleLabel.textColor = [UIColor blackColor];
-        self.titleLabel.textAlignment = NSTextAlignmentLeft;
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:18];
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleLabel.font = [UIFont boldSystemFontOfSize:24];
         [self addSubview:self.titleLabel];
         
 
