@@ -415,7 +415,7 @@
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
 			<object class="IBUIView" id="572865825">
-				<reference key="NSNextResponder"/>
+				<nil key="NSNextResponder"/>
 				<int key="NSvFlags">292</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="IBUIImageView" id="268122597">
@@ -423,7 +423,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrameSize">{320, 51}</string>
 						<reference key="NSSuperview" ref="572865825"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="694785354"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
@@ -438,7 +437,6 @@
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{57, 44}</string>
 						<reference key="NSSuperview" ref="572865825"/>
-						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="496267906"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
@@ -461,7 +459,6 @@
 						<int key="NSvFlags">274</int>
 						<string key="NSFrame">{{0, 51}, {330, 517}}</string>
 						<reference key="NSSuperview" ref="572865825"/>
-						<reference key="NSWindow"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<reference key="IBUIBackgroundColor" ref="704370433"/>
 						<bool key="IBUIClipsSubviews">YES</bool>
@@ -476,8 +473,6 @@
 					</object>
 				</array>
 				<string key="NSFrameSize">{320, 568}</string>
-				<reference key="NSSuperview"/>
-				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="268122597"/>
 				<string key="NSReuseIdentifierKey">_NS:9</string>
 				<object class="NSColor" key="IBUIBackgroundColor">
@@ -2070,138 +2065,7 @@
 			<nil key="sourceID"/>
 			<int key="maxID">609</int>
 		</object>
-		<object class="IBClassDescriber" key="IBDocument.Classes">
-			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
-				<object class="IBPartialClassDescription">
-					<string key="className">NSLayoutConstraint</string>
-					<string key="superclassName">NSObject</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSLayoutConstraint.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ProductCreateViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="exitButtonHit">id</string>
-						<string key="goButtonHit">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="exitButtonHit">
-							<string key="name">exitButtonHit</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="goButtonHit">
-							<string key="name">goButtonHit</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="productDetailsViewController">ProductDetailsViewController</string>
-						<string key="productSelectTableViewController">ProductSelectTableViewController</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="productDetailsViewController">
-							<string key="name">productDetailsViewController</string>
-							<string key="candidateClassName">ProductDetailsViewController</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="productSelectTableViewController">
-							<string key="name">productSelectTableViewController</string>
-							<string key="candidateClassName">ProductSelectTableViewController</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ProductCreateViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ProductDetailsViewController</string>
-					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="backButtonHit">id</string>
-						<string key="previewButtonHit">id</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="backButtonHit">
-							<string key="name">backButtonHit</string>
-							<string key="candidateClassName">id</string>
-						</object>
-						<object class="IBActionInfo" key="previewButtonHit">
-							<string key="name">previewButtonHit</string>
-							<string key="candidateClassName">id</string>
-						</object>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="captionTextField">UITextField</string>
-						<string key="categoryTextField">UITextField</string>
-						<string key="containerScrollView">UIScrollView</string>
-						<string key="descriptionTextView">UITextView</string>
-						<string key="priceTextField">UITextField</string>
-						<string key="productImageView">UIImageView</string>
-						<string key="quantityTextField">UITextField</string>
-						<string key="retailTextField">UITextField</string>
-						<string key="shippingTextField">UITextField</string>
-						<string key="sizeColorTextField">UITextField</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="captionTextField">
-							<string key="name">captionTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="categoryTextField">
-							<string key="name">categoryTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="containerScrollView">
-							<string key="name">containerScrollView</string>
-							<string key="candidateClassName">UIScrollView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="descriptionTextView">
-							<string key="name">descriptionTextView</string>
-							<string key="candidateClassName">UITextView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="priceTextField">
-							<string key="name">priceTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="productImageView">
-							<string key="name">productImageView</string>
-							<string key="candidateClassName">UIImageView</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="quantityTextField">
-							<string key="name">quantityTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="retailTextField">
-							<string key="name">retailTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="shippingTextField">
-							<string key="name">shippingTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="sizeColorTextField">
-							<string key="name">sizeColorTextField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-					</dictionary>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ProductDetailsViewController.h</string>
-					</object>
-				</object>
-				<object class="IBPartialClassDescription">
-					<string key="className">ProductSelectTableViewController</string>
-					<string key="superclassName">UITableViewController</string>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/ProductSelectTableViewController.h</string>
-					</object>
-				</object>
-			</array>
-		</object>
+		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>
 		<string key="IBDocument.TargetRuntimeIdentifier">IBCocoaTouchFramework</string>
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
