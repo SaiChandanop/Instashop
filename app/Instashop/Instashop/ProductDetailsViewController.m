@@ -64,10 +64,12 @@
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
 {
+    // +++ This is unnecessary if the scroll view is part of the main view in the xib +++ //
     
-    self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
-    [self.view addSubview:self.containerScrollView];
-    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width  * 2, self.view.frame.size.height * 2);
+    //self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
+    //[self.view addSubview:self.containerScrollView];
+    
+    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 640);
 
     
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];

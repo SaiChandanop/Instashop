@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2599E176786970054618D /* TPKeyboardAvoidingScrollView.m */; };
+		2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB259A0176786970054618D /* TPKeyboardAvoidingTableView.m */; };
+		2EB259A5176786E80054618D /* blankHeader.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259A4176786E80054618D /* blankHeader.png */; };
 		7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */; };
 		7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */; };
 		7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072B2175E6C8C00D9DC5D /* ProductSelectTableViewController.xib */; };
@@ -78,6 +81,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2EB2599D176786970054618D /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingScrollView.h; path = Instashop/TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		2EB2599E176786970054618D /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = Instashop/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		2EB2599F176786970054618D /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingTableView.h; path = Instashop/TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
+		2EB259A0176786970054618D /* TPKeyboardAvoidingTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingTableView.m; path = Instashop/TPKeyboardAvoidingTableView.m; sourceTree = "<group>"; };
+		2EB259A4176786E80054618D /* blankHeader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blankHeader.png; path = Assets/blankHeader.png; sourceTree = "<group>"; };
 		7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectPhotoHeaderBar.png; sourceTree = "<group>"; };
 		7B1072B0175E6C8C00D9DC5D /* ProductSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSelectTableViewController.h; sourceTree = "<group>"; };
 		7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSelectTableViewController.m; sourceTree = "<group>"; };
@@ -201,6 +209,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */ = {
+			isa = PBXGroup;
+			children = (
+				2EB2599D176786970054618D /* TPKeyboardAvoidingScrollView.h */,
+				2EB2599E176786970054618D /* TPKeyboardAvoidingScrollView.m */,
+				2EB2599F176786970054618D /* TPKeyboardAvoidingTableView.h */,
+				2EB259A0176786970054618D /* TPKeyboardAvoidingTableView.m */,
+			);
+			name = TPKeyboardAvoiding;
+			sourceTree = "<group>";
+		};
+		2EB259A31767869F0054618D /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				2EB259A4176786E80054618D /* blankHeader.png */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
 		7B0680CA17664BC2009154BF /* Product Purchasing */ = {
 			isa = PBXGroup;
 			children = (
@@ -380,6 +407,7 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */,
 				7B61EE46174D2162002A483D /* UIKit.framework */,
 				7B61EE48174D2162002A483D /* Foundation.framework */,
 				7B61EE4A174D2162002A483D /* CoreGraphics.framework */,
@@ -405,6 +433,7 @@
 		7B61EE4D174D2162002A483D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2EB259A31767869F0054618D /* Images */,
 				7B4D2E17175CFFBE005DE4B6 /* shittyimages */,
 				7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */,
 				7B61EE4E174D2162002A483D /* Instashop-Info.plist */,
@@ -683,6 +712,7 @@
 				7B602DAC1766543100663A73 /* buybutton.png in Resources */,
 				7B602DB4176670AF00663A73 /* BuyViewController.xib in Resources */,
 				7B602DB6176670F600663A73 /* buyheader.png in Resources */,
+				2EB259A5176786E80054618D /* blankHeader.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,6 +758,8 @@
 				7B602DB3176670AF00663A73 /* BuyViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
+				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
+				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
