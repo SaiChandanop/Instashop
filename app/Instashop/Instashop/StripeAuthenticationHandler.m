@@ -7,6 +7,7 @@
 //
 
 #import "StripeAuthenticationHandler.h"
+#import "STPCard.h"
 #define STRIPE_PUBLISHABLE_KEY @"pk_test_czwzkTp2tactuLOEOqbMTRzG"
 
 @implementation StripeAuthenticationHandler

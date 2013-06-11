@@ -7,7 +7,7 @@
 //
 
 #import "STPCard.h"
-#import "StripeError.h"
+//#import "StripeError.h"
 
 @interface STPCard ()
 {
@@ -96,6 +96,8 @@
 
 + (BOOL)handleValidationErrorForParameter:(NSString *)parameter error:(NSError **)outError
 {
+    NSLog(@"handleValidationErrorForParameter");
+    /*
     if (outError != nil)
     {
         if ([parameter isEqualToString:@"number"])
@@ -119,20 +121,23 @@
                                        cardErrorCode:STPInvalidExpYear
                                      devErrorMessage:@"expYear must be this year or a year in the future"];
         else
-            /* This should not be possible since this is a private method so we
-                know exactly how it is called.  We use STPAPIError for all errors
-                that are unexpected within the bindings as well.
-             */
+         // This should not be possible since this is a private method so we
+           //     know exactly how it is called.  We use STPAPIError for all errors
+             //   that are unexpected within the bindings as well.
+           
             *outError = [[NSError alloc] initWithDomain:StripeDomain
                                                    code:STPAPIError
                                                userInfo:@{ NSLocalizedDescriptionKey : STPUnexpectedError,
                                                                   STPErrorMessageKey : @"There was an error within the Stripe client library when trying to generate the proper validation error. Contact support@stripe.com if you see this." }];
     }
+*/
     return NO;
 }
 
 + (NSError *)createErrorWithMessage:(NSString *)userMessage parameter:(NSString *)parameter cardErrorCode:(NSString *)cardErrorCode devErrorMessage:(NSString *)devMessage
 {
+    NSLog(@"createErrorWithMessage!");
+    /*
     NSDictionary *userInfoDict = @{ NSLocalizedDescriptionKey : userMessage,
                                          STPErrorParameterKey : parameter,
                                           STPCardErrorCodeKey : cardErrorCode,
@@ -142,6 +147,7 @@
     return [[NSError alloc] initWithDomain:StripeDomain
                                       code:STPCardError
                                   userInfo:userInfoDict];
+     */
 }
 
 #pragma mark Public Interface
