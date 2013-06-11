@@ -19,7 +19,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,cellHeight, cellHeight)];
+        self.theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 0,cellHeight, cellHeight)];
         [self addSubview:self.theImageView];
 
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 20)];
