@@ -8,6 +8,10 @@
 
 #import "AppRootViewController.h"
 #import "ProductCreateViewController.h"
+#import "STPCard.h"
+#import "StripeAuthenticationHandler.h"
+
+
 @implementation AppRootViewController
 
 static AppRootViewController *theSharedRootViewController;
@@ -57,9 +61,33 @@ float transitionTime = .456;
     self.notificationsViewController.view.frame = CGRectMake(0, self.view.frame.size.height * -1, self.view.frame.size.width, self.view.frame.size.height);
     [self.feedViewController.view insertSubview:self.notificationsViewController.view belowSubview:self.feedViewController.headerView];
 
+      
+    UIButton *stripeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    stripeButton.frame = CGRectMake(self.view.frame.size.width / 2 - 50, 100, 100, 50);
+    [stripeButton addTarget:self action:@selector(stripeButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [stripeButton setTitle:@"Stripe" forState:UIControlStateNormal];
+//    [self.view addSubview:stripeButton];
     
+   
     
 	// Do any additional setup after loading the view.
+}
+
+-(void)stripeButtonHit
+{
+    STPCard *stripeCard = [[STPCard alloc] init];
+    stripeCard.number = @"4242424242424242";
+    stripeCard.expMonth = 05;
+    stripeCard.expYear = 15;
+    stripeCard.cvc = @"123";
+    stripeCard.name = @"alchemy50";
+    stripeCard.addressLine1 = @"20 Jay Street #934";
+    stripeCard.addressZip = @"11201";
+    stripeCard.addressCity = @"Brooklyn";
+    stripeCard.addressState = @"NY";
+    stripeCard.addressCountry = @"KINGS";
+    
+    [StripeAuthenticationHandler createTokenWithCard:stripeCard];
 }
 
 

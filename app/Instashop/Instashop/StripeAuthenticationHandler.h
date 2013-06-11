@@ -7,7 +7,9 @@
 //
 
 #import "RootAPIHandler.h"
-
+#import "STPCard.h"
 @interface StripeAuthenticationHandler : RootAPIHandler
+
++ (void)createTokenWithCard:(STPCard *)card;
 
 @end

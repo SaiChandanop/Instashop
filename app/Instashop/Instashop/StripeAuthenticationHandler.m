@@ -20,6 +20,7 @@ static NSString * const tokenEndpoint = @"tokens";
 
 + (void)createTokenWithCard:(STPCard *)card 
 {
+    NSLog(@"1");
     NSString *publishableKey = STRIPE_PUBLISHABLE_KEY;
     
     if (card == nil)
@@ -32,16 +33,26 @@ static NSString * const tokenEndpoint = @"tokens";
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
-    
     request.HTTPBody = [self formEncodedDataFromCard:card];
     
+    NSLog(@"url: %@", url);
+    NSLog(@"request: %@", request);
+    NSLog(@"request.HTTPBody: %@", request.HTTPBody);
+    
+//    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
+    
+    
     [NSURLConnection sendAsynchronousRequest:request
-                                       queue:nil
+                                       queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *body, NSError *requestError)
      {
-//         [self handleTokenResponse:response body:body error:requestError completion:handler];
+         NSLog(@"complete!");
+         NSString* newStr = [NSString stringWithUTF8String:[body bytes]];
+         
+         NSLog(@"newStr: %@", newStr);
+     
      }];
- 
+
 
 }
 
@@ -100,6 +111,8 @@ static NSString * const tokenEndpoint = @"tokens";
         
         [body appendFormat:@"card[%@]=%@", [self URLEncodedString:key], value];
     }
+    
+    return [body dataUsingEncoding:NSUTF8StringEncoding];
 }
 
 + (NSDictionary *)requestPropertiesFromCard:(STPCard *)card
