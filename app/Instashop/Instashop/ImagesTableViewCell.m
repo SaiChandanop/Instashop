@@ -27,6 +27,8 @@
         self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.textAlignment = NSTextAlignmentCenter;
         self.titleLabel.font = [UIFont boldSystemFontOfSize:24];
+        self.titleLabel.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
+        self.titleLabel.shadowOffset = CGSizeMake(1.0, 1.0);
         [self addSubview:self.titleLabel];
         
 

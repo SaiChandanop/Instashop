@@ -12,6 +12,10 @@
 		2EB259A81767A0D80054618D /* blankHeader@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259A61767A0D80054618D /* blankHeader@2x.png */; };
 		2EB259A91767A0D80054618D /* heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259A71767A0D80054618D /* heart@2x.png */; };
 		2EB259AB1767A1D30054618D /* heart_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AA1767A1D30054618D /* heart_red@2x.png */; };
+		2EB259AD1767B3280054618D /* top_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AC1767B3280054618D /* top_shadow@2x.png */; };
+		2EB259B01767B50D0054618D /* menu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AE1767B50D0054618D /* menu@2x.png */; };
+		2EB259B11767B50D0054618D /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AF1767B50D0054618D /* magnify@2x.png */; };
+		2EB259B31767B57B0054618D /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259B21767B57B0054618D /* back@2x.png */; };
 		7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */; };
 		7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */; };
 		7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072B2175E6C8C00D9DC5D /* ProductSelectTableViewController.xib */; };
@@ -90,6 +94,10 @@
 		2EB259A61767A0D80054618D /* blankHeader@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "blankHeader@2x.png"; path = "Assets/blankHeader@2x.png"; sourceTree = "<group>"; };
 		2EB259A71767A0D80054618D /* heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart@2x.png"; path = "Assets/heart@2x.png"; sourceTree = "<group>"; };
 		2EB259AA1767A1D30054618D /* heart_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_red@2x.png"; path = "Assets/heart_red@2x.png"; sourceTree = "<group>"; };
+		2EB259AC1767B3280054618D /* top_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "top_shadow@2x.png"; path = "Assets/top_shadow@2x.png"; sourceTree = "<group>"; };
+		2EB259AE1767B50D0054618D /* menu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "menu@2x.png"; path = "Assets/menu@2x.png"; sourceTree = "<group>"; };
+		2EB259AF1767B50D0054618D /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "magnify@2x.png"; path = "Assets/magnify@2x.png"; sourceTree = "<group>"; };
+		2EB259B21767B57B0054618D /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "Assets/back@2x.png"; sourceTree = "<group>"; };
 		7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectPhotoHeaderBar.png; sourceTree = "<group>"; };
 		7B1072B0175E6C8C00D9DC5D /* ProductSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSelectTableViewController.h; sourceTree = "<group>"; };
 		7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSelectTableViewController.m; sourceTree = "<group>"; };
@@ -227,6 +235,10 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2EB259B21767B57B0054618D /* back@2x.png */,
+				2EB259AE1767B50D0054618D /* menu@2x.png */,
+				2EB259AF1767B50D0054618D /* magnify@2x.png */,
+				2EB259AC1767B3280054618D /* top_shadow@2x.png */,
 				2EB259AA1767A1D30054618D /* heart_red@2x.png */,
 				2EB259A61767A0D80054618D /* blankHeader@2x.png */,
 				2EB259A71767A0D80054618D /* heart@2x.png */,
@@ -721,6 +733,10 @@
 				2EB259A81767A0D80054618D /* blankHeader@2x.png in Resources */,
 				2EB259A91767A0D80054618D /* heart@2x.png in Resources */,
 				2EB259AB1767A1D30054618D /* heart_red@2x.png in Resources */,
+				2EB259AD1767B3280054618D /* top_shadow@2x.png in Resources */,
+				2EB259B01767B50D0054618D /* menu@2x.png in Resources */,
+				2EB259B11767B50D0054618D /* magnify@2x.png in Resources */,
+				2EB259B31767B57B0054618D /* back@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
