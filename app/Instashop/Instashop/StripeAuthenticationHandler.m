@@ -8,52 +8,115 @@
 
 #import "StripeAuthenticationHandler.h"
 #import "STPCard.h"
-#define STRIPE_PUBLISHABLE_KEY @"pk_test_czwzkTp2tactuLOEOqbMTRzG"
-
+#define TEST_SECRET_KEY  @"sk_test_uMQ75pJIdtsnlmdWbbWgWcE2"
+#define TEST_PUBLISHABLE_KEY @"pk_test_In7Ru0V1t1cRtTEm4Pna3YqQ"
 @implementation StripeAuthenticationHandler
 
 
 static NSString * const apiURLBase = @"api.stripe.com";
 static NSString * const apiVersion = @"v1";
 static NSString * const tokenEndpoint = @"tokens";
+static NSString * const chargeEndpoint = @"charges";
 
-
-+ (void)createTokenWithCard:(STPCard *)card 
++ (void)createTokenWithCard:(STPCard *)card withDelegate:(id)delegate
 {
     NSLog(@"1");
-    NSString *publishableKey = STRIPE_PUBLISHABLE_KEY;
-    
-    if (card == nil)
-        [NSException raise:@"RequiredParameter" format:@"'card' is required to create a token"];
-    
+    NSString *publishableKey = TEST_PUBLISHABLE_KEY;
     
     [self validateKey:publishableKey];
     
-    NSURL *url = [self apiURLWithPublishableKey:publishableKey];
+    NSURL *url = [self apiURLWithPublishableKey:publishableKey withEndpoint:tokenEndpoint];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
-    request.HTTPBody = [self formEncodedDataFromCard:card];
+    request.HTTPBody = [self formEncodedDataWithAttributes:[self requestPropertiesFromCard:card]];
     
     NSLog(@"url: %@", url);
     NSLog(@"request: %@", request);
-    NSLog(@"request.HTTPBody: %@", request.HTTPBody);
+//    NSLog(@"request.HTTPBody: %@", request.HTTPBody);
     
-//    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:request delegate:self];
     
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
                            completionHandler:^(NSURLResponse *response, NSData *body, NSError *requestError)
      {
-         NSLog(@"complete!");
-         NSString* newStr = [NSString stringWithUTF8String:[body bytes]];
+         NSError* error;
+         NSDictionary* json = [NSJSONSerialization JSONObjectWithData:body options:kNilOptions error:&error];
+
+
+         NSLog(@"json: %@", json);
+         NSLog(@"json[id]: %@", [json objectForKey:@"id"]);
          
-         NSLog(@"newStr: %@", newStr);
-     
+         [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"id"] forKey:@"StripeToken"];
+         [[NSUserDefaults standardUserDefaults] synchronize];
+         
+         
+         [delegate doBuy];
      }];
 
 
+}
+
+
+
+
++(void)buyItemWithToken:(NSString *)theToken withPurchaseAmount:(NSString *)amount withDescription:(NSString *)description
+{
+    NSMutableDictionary *requestPropertiesDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+    [requestPropertiesDictionary setObject:amount forKey:@"amount"];
+    [requestPropertiesDictionary setObject:@"usd" forKey:@"currency"];
+    [requestPropertiesDictionary setObject:theToken forKey:@"card"];
+    [requestPropertiesDictionary setObject:description forKey:@"description"];
+    
+    
+    
+    NSString *publishableKey = TEST_PUBLISHABLE_KEY;
+    
+    [self validateKey:publishableKey];
+    
+    NSURL *url = [self apiURLWithPublishableKey:publishableKey withEndpoint:chargeEndpoint];
+    
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
+    NSLog(@"url: %@", url);
+    NSLog(@"request: %@", request);
+
+    request.HTTPMethod = @"POST";
+    request.HTTPBody = [self dictionaryToHTTPBodyConverter:requestPropertiesDictionary];
+    [request setValue:[NSString stringWithFormat:@"Bearer %@", TEST_SECRET_KEY] forHTTPHeaderField:@"Authorization"];
+    
+
+    
+    
+    
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *body, NSError *requestError)
+     {
+         NSError* error;
+         NSDictionary* json = [NSJSONSerialization JSONObjectWithData:body options:kNilOptions error:&error];
+         
+         
+         NSLog(@"buy json: %@", json);
+//         NSLog(@"json[id]: %@", [json objectForKey:@"id"]);
+         
+//         [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"id"] forKey:@"StripeToken"];
+//         [[NSUserDefaults standardUserDefaults] synchronize];
+         
+     }];
+    
+
+    
+    /*
+    
+    curl https://api.stripe.com/v1/charges \
+    -u sk_test_uMQ75pJIdtsnlmdWbbWgWcE2: \
+    -d amount=400 \
+    -d currency=usd \
+    -d card=tok_1kveomSIbeEjS3 \
+    -d "description=Charge for test@example.com"
+    */
+    
 }
 
 + (void)validateKey:(NSString *)publishableKey
@@ -65,12 +128,12 @@ static NSString * const tokenEndpoint = @"tokens";
         [NSException raise:@"InvalidPublishableKey" format:@"You are using a secret key to create a token, instead of the publishable one. For more info, see https://stripe.com/docs/stripe.js"];
 }
 
-+ (NSURL *)apiURLWithPublishableKey:(NSString *)publishableKey
++ (NSURL *)apiURLWithPublishableKey:(NSString *)publishableKey withEndpoint:(NSString *)endpoint
 {
     NSURL *url = [[[NSURL URLWithString:
                     [NSString stringWithFormat:@"https://%@:@%@", [self URLEncodedString:publishableKey], apiURLBase]]
                    URLByAppendingPathComponent:apiVersion]
-                  URLByAppendingPathComponent:tokenEndpoint];
+                  URLByAppendingPathComponent:endpoint];
     return url;
 }
 
@@ -94,10 +157,35 @@ static NSString * const tokenEndpoint = @"tokens";
     return output;
 }
 
-+ (NSData *)formEncodedDataFromCard:(STPCard *)card
+
++ (NSData *)dictionaryToHTTPBodyConverter:(NSDictionary *)attributes
 {
     NSMutableString *body = [NSMutableString string];
-    NSDictionary *attributes = [self requestPropertiesFromCard:card];
+    //    NSDictionary *attributes = [self requestPropertiesFromCard:card];
+    
+    for (NSString *key in attributes) {
+        NSString *value = [attributes objectForKey:key];
+        if ((id)value == [NSNull null]) continue;
+        
+        if (body.length != 0)
+            [body appendString:@"&"];
+        
+        if ([value isKindOfClass:[NSString class]])
+            value = [self URLEncodedString:value];
+        
+        [body appendFormat:@"%@=%@", [self URLEncodedString:key], value];
+    }
+    
+    NSLog(@"body: %@", body);
+    return [body dataUsingEncoding:NSUTF8StringEncoding];
+}
+
+
+
++ (NSData *)formEncodedDataWithAttributes:(NSDictionary *)attributes
+{
+    NSMutableString *body = [NSMutableString string];
+//    NSDictionary *attributes = [self requestPropertiesFromCard:card];
     
     for (NSString *key in attributes) {
         NSString *value = [attributes objectForKey:key];
@@ -112,6 +200,7 @@ static NSString * const tokenEndpoint = @"tokens";
         [body appendFormat:@"card[%@]=%@", [self URLEncodedString:key], value];
     }
     
+    NSLog(@"body: %@", body);
     return [body dataUsingEncoding:NSUTF8StringEncoding];
 }
 

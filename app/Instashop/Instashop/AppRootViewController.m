@@ -31,8 +31,8 @@ float transitionTime = .456;
 
 +(AppRootViewController *)sharedRootViewController
 {
-//    if (theSharedRootViewController == nil)
-//        theSharedRootViewController
+    //    if (theSharedRootViewController == nil)
+    //        theSharedRootViewController
     return theSharedRootViewController;
 }
 
@@ -60,36 +60,54 @@ float transitionTime = .456;
     self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
     self.notificationsViewController.view.frame = CGRectMake(0, self.view.frame.size.height * -1, self.view.frame.size.width, self.view.frame.size.height);
     [self.feedViewController.view insertSubview:self.notificationsViewController.view belowSubview:self.feedViewController.headerView];
-
-      
+    
+    
     UIButton *stripeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     stripeButton.frame = CGRectMake(self.view.frame.size.width / 2 - 50, 100, 100, 50);
     [stripeButton addTarget:self action:@selector(stripeButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [stripeButton setTitle:@"Stripe" forState:UIControlStateNormal];
-//    [self.view addSubview:stripeButton];
+    [self.view addSubview:stripeButton];
     
-   
+    
     
 	// Do any additional setup after loading the view.
 }
 
 -(void)stripeButtonHit
 {
-    STPCard *stripeCard = [[STPCard alloc] init];
-    stripeCard.number = @"4242424242424242";
-    stripeCard.expMonth = 05;
-    stripeCard.expYear = 15;
-    stripeCard.cvc = @"123";
-    stripeCard.name = @"alchemy50";
-    stripeCard.addressLine1 = @"20 Jay Street #934";
-    stripeCard.addressZip = @"11201";
-    stripeCard.addressCity = @"Brooklyn";
-    stripeCard.addressState = @"NY";
-    stripeCard.addressCountry = @"KINGS";
+    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
     
-    [StripeAuthenticationHandler createTokenWithCard:stripeCard];
+    NSLog(@"stripeTokenDictionary: %@", stripeToken);
+    if (stripeToken == nil)
+    {
+        STPCard *stripeCard = [[STPCard alloc] init];
+        stripeCard.number = @"4242424242424242";
+        stripeCard.expMonth = 05;
+        stripeCard.expYear = 15;
+        stripeCard.cvc = @"123";
+        stripeCard.name = @"alchemy50";
+        stripeCard.addressLine1 = @"20 Jay Street #934";
+        stripeCard.addressZip = @"11201";
+        stripeCard.addressCity = @"Brooklyn";
+        stripeCard.addressState = @"NY";
+        stripeCard.addressCountry = @"KINGS";
+        
+        [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
+    }
+    
+    else
+        [self doBuy];
 }
 
+-(void)doBuy
+{
+    NSLog(@"do buy");
+
+    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
+    
+    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:@"400" withDescription:@"first purchase"];
+    
+}
 
 -(void)ceaseTransition
 {
@@ -113,7 +131,7 @@ float transitionTime = .456;
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-
+        
         if (self.feedViewController.view.frame.origin.x == 0)
         {
             self.feedViewController.view.frame = CGRectMake(self.feedViewController.view.frame.origin.x + offsetPosition, self.feedViewController.view.frame.origin.y, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
@@ -165,13 +183,13 @@ float transitionTime = .456;
     NSLog(@"discoverButtonHit!");
     
     if (!self.areViewsTransitioning)
-    {    
+    {
         self.areViewsTransitioning = YES;
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];        
+        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
         self.discoverViewController.view.frame =CGRectMake(0,  self.discoverViewController.view.frame.origin.y, self.discoverViewController.view.frame.size.width, self.discoverViewController.view.frame.size.height);
         self.feedViewController.view.frame =CGRectMake(self.feedViewController.view.frame.origin.x  -  self.feedViewController.view.frame.size.width,  self.feedViewController.view.frame.origin.y, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
         

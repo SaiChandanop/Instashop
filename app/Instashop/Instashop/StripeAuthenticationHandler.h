@@ -10,6 +10,7 @@
 #import "STPCard.h"
 @interface StripeAuthenticationHandler : RootAPIHandler
 
-+ (void)createTokenWithCard:(STPCard *)card;
++ (void)createTokenWithCard:(STPCard *)card withDelegate:(id)delegate;
++ (void)buyItemWithToken:(NSString *)theToken withPurchaseAmount:(NSString *)amount withDescription:(NSString *)description;
 
 @end
