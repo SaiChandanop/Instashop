@@ -10,6 +10,8 @@
 #import "ImageAPIHandler.h"
 #import "FeedViewController.h"
 #import "BuyViewController.h"
+#import "AppDelegate.h"
+
 @interface PurchasingViewController ()
 
 @end
@@ -19,7 +21,7 @@
 @synthesize parentController;
 @synthesize contentScrollView;
 @synthesize purchasingObject;
-@synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel;
+@synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel, sellerProfileImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,21 +35,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    
+        
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.purchasingObject objectForKey:@"products_url"] withImageView:self.imageView];
     
     self.titleLabel.text = [self.purchasingObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.purchasingObject objectForKey:@"products_description"];
     
-//    , sellerLabel, , priceLabel, numberAvailableLabel;
-    
-    
     self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
     self.contentScrollView.backgroundColor = [UIColor clearColor];
 
+    
+    NSLog(@"purchasing object: %@", purchasingObject);
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.purchasingObject objectForKey:@"owner_instagram_id"]], @"method", nil];
+    [appDelegate.instagram requestWithParams:params delegate:self];
+    
+    self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.purchasingObject objectForKey:@"products_quantity"] intValue]];
+    
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setAlwaysShowsDecimalSeparator:YES];
+    [numberFormatter setMaximumFractionDigits:2];
+    
+    self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.purchasingObject objectForKey:@"products_price"] floatValue]]];
+   
 }
 
+- (void)request:(IGRequest *)request didLoad:(id)result {
+    
+    NSLog(@"Instagram did load: %@", result);
+    
+    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+    if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
+    {
+        NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        self.sellerLabel.text = [dataDictionary objectForKey:@"username"];
+        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerProfileImageView];
+    }
+}
+
+
+                                   
 
 -(IBAction)backButtonHit
 {

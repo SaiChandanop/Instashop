@@ -44,7 +44,7 @@ float transitionTime = .456;
     
     self.homeViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
     self.homeViewController.parentController = self;
-    self.homeViewController.view.frame = CGRectMake(self.view.frame.size.width * -1, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.homeViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.homeViewController.view];
     
     
@@ -66,7 +66,7 @@ float transitionTime = .456;
     stripeButton.frame = CGRectMake(self.view.frame.size.width / 2 - 50, 100, 100, 50);
     [stripeButton addTarget:self action:@selector(stripeButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [stripeButton setTitle:@"Stripe" forState:UIControlStateNormal];
-    [self.view addSubview:stripeButton];
+//    [self.view addSubview:stripeButton];
     
     
     
@@ -135,7 +135,7 @@ float transitionTime = .456;
         if (self.feedViewController.view.frame.origin.x == 0)
         {
             self.feedViewController.view.frame = CGRectMake(self.feedViewController.view.frame.origin.x + offsetPosition, self.feedViewController.view.frame.origin.y, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
-            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x + offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
+//            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x + offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
             
             UIButton *feedCoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
             feedCoverButton.backgroundColor = [UIColor clearColor];
@@ -147,7 +147,7 @@ float transitionTime = .456;
         else
         {
             self.feedViewController.view.frame = CGRectMake(self.feedViewController.view.frame.origin.x - offsetPosition, self.feedViewController.view.frame.origin.y, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
-            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x - offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
+//            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x - offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
         }
         [UIView commitAnimations];
         
