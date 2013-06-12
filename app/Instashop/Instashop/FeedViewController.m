@@ -124,34 +124,13 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     self.selectedObject = [self.feedItemsArray objectAtIndex:indexPath.row];
-
     
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.parentController = self;
     purchasingViewController.purchasingObject = self.selectedObject;
     purchasingViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:purchasingViewController.view];
-    
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.456];
-    //        [UIView setAnimationDelegate:self];
-    //        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    purchasingViewController.view.frame = CGRectMake(0,0,purchasingViewController.view.frame.size.width, self.view.frame.size.height);
-    [UIView commitAnimations];
-    
-
-    
-    
-    /*
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Buy?"
-                                                        message:@"Wanna buy?"
-                                                       delegate:self
-                                              cancelButtonTitle:@"No"
-                                              otherButtonTitles:@"Yes", nil];
-    [alertView show];
-     */
-
+    [self.navigationController pushViewController:purchasingViewController animated:YES];
+        
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -166,13 +145,6 @@
 
 -(void)purchasingViewControllerBackButtonHitWithVC:(UIViewController *)vc
 {
-
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.456];
-    //        [UIView setAnimationDelegate:self];
-    //        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    vc.view.frame = CGRectMake(vc.view.frame.size.width,0,vc.view.frame.size.width, vc.view.frame.size.height);
-    [UIView commitAnimations];
 }
 
 @end

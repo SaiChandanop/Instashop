@@ -17,6 +17,7 @@
 
 @interface AppRootViewController : UIViewController
 {
+    UINavigationController *feedNavigationController;
     FeedViewController *feedViewController;
     HomeViewController *homeViewController;
     DiscoverViewController *discoverViewController;
@@ -38,7 +39,7 @@
 
 -(void)exitButtonHitWithViewController:(UIViewController *)exitingViewController;
 
-
+@property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) DiscoverViewController *discoverViewController;

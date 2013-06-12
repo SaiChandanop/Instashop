@@ -16,7 +16,7 @@
 
 static AppRootViewController *theSharedRootViewController;
 
-@synthesize feedViewController, homeViewController, discoverViewController, notificationsViewController, profileViewController;
+@synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController, notificationsViewController, profileViewController;
 @synthesize areViewsTransitioning;
 float transitionTime = .456;
 
@@ -55,7 +55,13 @@ float transitionTime = .456;
     
     self.feedViewController = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
     self.feedViewController.parentController = self;
-    [self.view addSubview:self.feedViewController.view];
+    self.feedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.feedViewController];
+    self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:self.feedNavigationController.view];
+    
+    
+    
+    
     
     self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
     self.notificationsViewController.view.frame = CGRectMake(0, self.view.frame.size.height * -1, self.view.frame.size.width, self.view.frame.size.height);
