@@ -92,12 +92,8 @@
     
     BuyViewController *buyViewController = [[BuyViewController alloc] initWithNibName:@"BuyViewController" bundle:nil];
     buyViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:buyViewController.view];
+    [self.navigationController pushViewController:buyViewController animated:YES];
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.456];
-    buyViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [UIView commitAnimations];
     
     buyViewController.contentScrollView.contentSize = CGSizeMake(0, buyViewController.view.frame.size.height * 2);
 }

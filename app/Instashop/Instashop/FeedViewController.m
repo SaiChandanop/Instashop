@@ -40,6 +40,19 @@
     [super viewDidLoad];
     [ProductAPIHandler getAllProductsWithDelegate:self];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    self.title = @"Instashop!";
+    [self.navigationController setTitle:@"instashop"];
+    
+    UIBarButtonItem *homeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(homeButtonHit)];
+    self.navigationItem.leftBarButtonItem = homeButton;
+    
+
+    UIBarButtonItem *discoverButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(discoverButtonHit)];
+    self.navigationItem.rightBarButtonItem = discoverButton;
+
+    
 }
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
