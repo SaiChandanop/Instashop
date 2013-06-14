@@ -61,12 +61,35 @@
     
 }
 
+NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
+    
+
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+
+    NSString *string1 = [s1 objectForKey:@"products_date_added"];
+    NSDate *date1 = [dateFormatter dateFromString:string1];
+
+    NSString *string2 = [s2 objectForKey:@"products_date_added"];
+    NSDate *date2 = [dateFormatter dateFromString:string2];
+
+    int ret = [date2 compare:date1];
+
+    [dateFormatter release];
+    
+    return ret;
+    
+}
+
+
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
     NSLog(@"feedRequestFinishedWithArrray: %@", theArray);
     
     [self.feedItemsArray removeAllObjects];
-    [self.feedItemsArray addObjectsFromArray:theArray];
+    
+    NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
+    [self.feedItemsArray addObjectsFromArray:sorted];
     
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
