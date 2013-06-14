@@ -21,8 +21,6 @@
 @implementation FeedViewController
 
 @synthesize parentController;
-@synthesize headerView, theTableView;
-
 @synthesize feedItemsArray, selectedObject;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -48,10 +46,18 @@
     UIBarButtonItem *homeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(homeButtonHit)];
     self.navigationItem.leftBarButtonItem = homeButton;
     
-
+    
     UIBarButtonItem *discoverButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(discoverButtonHit)];
     self.navigationItem.rightBarButtonItem = discoverButton;
-
+    
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refresh)
+             forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
+    
+    
+    
     
 }
 
@@ -62,15 +68,18 @@
     [self.feedItemsArray removeAllObjects];
     [self.feedItemsArray addObjectsFromArray:theArray];
     
-    [self.theTableView reloadData];
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+    
+    
     
 }
 
 -(IBAction)homeButtonHit
 {
-        NSLog(@"homeButtonHit");
+    NSLog(@"homeButtonHit");
     [self.parentController homeButtonHit];
-
+    
 }
 
 -(IBAction)notificationsButtonHit
@@ -81,8 +90,8 @@
 
 -(IBAction)discoverButtonHit
 {
-      NSLog(@"discoverButtonHit");
-    [self.parentController discoverButtonHit];    
+    NSLog(@"discoverButtonHit");
+    [self.parentController discoverButtonHit];
 }
 
 
@@ -112,15 +121,15 @@
     cell.theImageView.image = nil;
     
     NSDictionary *productObjectDictionary = [self.feedItemsArray objectAtIndex:indexPath.row];
-
+    
     NSString *productURL = [productObjectDictionary objectForKey:@"products_url"];
     
-    if (productURL != nil)    
+    if (productURL != nil)
         [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:cell.theImageView];
-
+    
     cell.titleLabel.text = [productObjectDictionary objectForKey:@"products_name"];
     
-
+    
     return cell;
 }
 
@@ -143,7 +152,7 @@
     purchasingViewController.purchasingObject = self.selectedObject;
     purchasingViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.navigationController pushViewController:purchasingViewController animated:YES];
-        
+    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -153,11 +162,17 @@
         
         
     }
-
+    
 }
 
 -(void)purchasingViewControllerBackButtonHitWithVC:(UIViewController *)vc
 {
+    
+}
+
+-(void)refresh
+{
+    [ProductAPIHandler getAllProductsWithDelegate:self];
 }
 
 @end
