@@ -61,7 +61,7 @@ static NSString * const chargeEndpoint = @"charges";
 
 
 
-+(void)buyItemWithToken:(NSString *)theToken withPurchaseAmount:(NSString *)amount withDescription:(NSString *)description
++(void)buyItemWithToken:(NSString *)theToken withPurchaseAmount:(NSString *)amount withDescription:(NSString *)description withDelegate:(id)delegate
 {
     NSMutableDictionary *requestPropertiesDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
     [requestPropertiesDictionary setObject:amount forKey:@"amount"];
@@ -98,6 +98,7 @@ static NSString * const chargeEndpoint = @"charges";
          
          
          NSLog(@"buy json: %@", json);
+         [delegate buySuccessfulWithDictionary:json];
 //         NSLog(@"json[id]: %@", [json objectForKey:@"id"]);
          
 //         [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"id"] forKey:@"StripeToken"];

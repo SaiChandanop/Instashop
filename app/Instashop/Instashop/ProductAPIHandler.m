@@ -96,9 +96,48 @@
 }
 
 
-+(void)productPurchasedWithStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject
++(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject
 {
+    NSLog(@"productPurchasedWithStripeDictionary");
+    NSLog(@"stripeDictionary: %@", stripeDictionary);
+    NSLog(@"productObject: %@", productObject);
     
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"buy_product.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"POST";
+
+    InstagramUserObject *userInstagramObject = [InstagramUserObject getStoredUserObject];
+    
+    
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:[NSString stringWithFormat:@"products_id=%@&", [productObject objectForKey:@"products_id"]]];
+    
+    [postString appendString:[NSString stringWithFormat:@"products_name=%@&", [productObject objectForKey:@"products_name"]]];
+    [postString appendString:[NSString stringWithFormat:@"products_price=%@&", [productObject objectForKey:@"products_price"]]];
+    [postString appendString:[NSString stringWithFormat:@"products_quantity=%@&", @"1"]];
+    [postString appendString:[NSString stringWithFormat:@"purchaser_id=%@&", userInstagramObject.userID]];
+
+    
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"postString: %@", postString);
+    
+    ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
+    productAPIHandler.delegate = delegate;
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(productPurchasedComplete:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+
+    
+    
+}
+
+-(void)productPurchasedComplete:(id)obj
+{
+    NSString* newStr = [[[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding] autorelease];
+    
+
+    NSLog(@"productPurchasedComplete: %@", newStr);
 }
 
 

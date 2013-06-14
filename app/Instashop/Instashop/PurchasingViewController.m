@@ -13,7 +13,7 @@
 #import "AppDelegate.h"
 #import "STPCard.h"
 #import "StripeAuthenticationHandler.h"
-
+#import "ProductAPIHandler.h"
 @interface PurchasingViewController ()
 
 @end
@@ -103,11 +103,8 @@
      */
     
 
-    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
     
-    NSLog(@"stripeTokenDictionary: %@", stripeToken);
-    if (stripeToken == nil)
-    {
+
         STPCard *stripeCard = [[STPCard alloc] init];
         stripeCard.number = @"4242424242424242";
         stripeCard.expMonth = 05;
@@ -121,10 +118,8 @@
         stripeCard.addressCountry = @"KINGS";
         
         [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
-    }
-    
-    else
-        [self doBuy];
+
+
 
 }
 
@@ -139,13 +134,15 @@
     NSString *priceString = [NSString stringWithFormat:@"%d", intVal];
     
     NSString *zencartProductID = [NSString stringWithFormat:@"product_id: %@", [purchasingObject objectForKey:@"product_id"]];
-    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID];
+    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID withDelegate:self];
     
 }
 
 -(void)buySuccessfulWithDictionary:(id)theDict
 {
     NSLog(@"theDict: %@", theDict);
+    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.purchasingObject];
+    
 }
 
 @end

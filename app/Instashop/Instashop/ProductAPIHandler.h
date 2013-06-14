@@ -15,5 +15,5 @@
 
 +(void)getAllProductsWithDelegate:(id)delegate;
 
-
++(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject;
 @end
