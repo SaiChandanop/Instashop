@@ -102,7 +102,7 @@
      buyViewController.contentScrollView.contentSize = CGSizeMake(0, buyViewController.view.frame.size.height * 2);
      */
     
-    /*
+
     NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
     
     NSLog(@"stripeTokenDictionary: %@", stripeToken);
@@ -125,7 +125,7 @@
     
     else
         [self doBuy];
-    */
+
 }
 
 -(void)doBuy
@@ -134,7 +134,16 @@
     
     NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
     
-    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:@"400" withDescription:@"first purchase"];
+    float val = [[self.purchasingObject objectForKey:@"products_price"] floatValue];
+    
+    NSLog(@"val: %f", val);
+    val = val * 100;
+    NSLog(@"val2: %f", val);
+    int intVal = [[NSNumber numberWithFloat:val] integerValue];
+    NSString *priceString = [NSString stringWithFormat:@"%d", intVal];
+    
+    NSString *zencartProductID = [NSString stringWithFormat:@"product_id: %@", [purchasingObject objectForKey:@"product_id"]];
+    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID];
     
 }
 
