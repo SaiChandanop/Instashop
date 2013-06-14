@@ -11,6 +11,8 @@
 #import "FeedViewController.h"
 #import "BuyViewController.h"
 #import "AppDelegate.h"
+#import "STPCard.h"
+#import "StripeAuthenticationHandler.h"
 
 @interface PurchasingViewController ()
 
@@ -35,7 +37,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-        
+    
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.purchasingObject objectForKey:@"products_url"] withImageView:self.imageView];
     
     self.titleLabel.text = [self.purchasingObject objectForKey:@"products_name"];
@@ -43,7 +45,7 @@
     
     self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
     self.contentScrollView.backgroundColor = [UIColor clearColor];
-
+    
     
     NSLog(@"purchasing object: %@", purchasingObject);
     
@@ -60,7 +62,7 @@
     [numberFormatter setMaximumFractionDigits:2];
     
     self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.purchasingObject objectForKey:@"products_price"] floatValue]]];
-   
+    
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -77,7 +79,7 @@
 }
 
 
-                                   
+
 
 -(IBAction)backButtonHit
 {
@@ -87,14 +89,58 @@
 
 -(IBAction)buyButtonHit
 {
-    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
-    NSLog(@"buyButtonHit");
     
-    BuyViewController *buyViewController = [[BuyViewController alloc] initWithNibName:@"BuyViewController" bundle:nil];
-    buyViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.navigationController pushViewController:buyViewController animated:YES];
+    NSLog(@"purchasingObject: %@", purchasingObject);
+    /*    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
+     NSLog(@"buyButtonHit");
+     
+     BuyViewController *buyViewController = [[BuyViewController alloc] initWithNibName:@"BuyViewController" bundle:nil];
+     buyViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+     [self.navigationController pushViewController:buyViewController animated:YES];
+     
+     
+     buyViewController.contentScrollView.contentSize = CGSizeMake(0, buyViewController.view.frame.size.height * 2);
+     */
     
+    /*
+    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
     
-    buyViewController.contentScrollView.contentSize = CGSizeMake(0, buyViewController.view.frame.size.height * 2);
+    NSLog(@"stripeTokenDictionary: %@", stripeToken);
+    if (stripeToken == nil)
+    {
+        STPCard *stripeCard = [[STPCard alloc] init];
+        stripeCard.number = @"4242424242424242";
+        stripeCard.expMonth = 05;
+        stripeCard.expYear = 15;
+        stripeCard.cvc = @"123";
+        stripeCard.name = @"alchemy50";
+        stripeCard.addressLine1 = @"20 Jay Street #934";
+        stripeCard.addressZip = @"11201";
+        stripeCard.addressCity = @"Brooklyn";
+        stripeCard.addressState = @"NY";
+        stripeCard.addressCountry = @"KINGS";
+        
+        [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
+    }
+    
+    else
+        [self doBuy];
+    */
 }
+
+-(void)doBuy
+{
+    NSLog(@"do buy");
+    
+    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
+    
+    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:@"400" withDescription:@"first purchase"];
+    
+}
+
+-(void)buySuccessfulWithDictionary:(id)theDict
+{
+    NSLog(@"theDict: %@", theDict);
+}
+
 @end

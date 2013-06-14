@@ -30,16 +30,18 @@
 
 -(void)userCreateRequestFinished:(id)obj
 {
-    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"responseDictionary: %@", responseDictionary);
     
-    
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
+    NSString* responseString = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"newStr: %@", newStr);
+    NSLog(@"responseString: %@", responseString);
     
     
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"responseDictionary: %@", responseDictionary);
+
+    [self.delegate userDidCreateSellerWithResponseDictionary:responseDictionary];
+        
     
 }
 

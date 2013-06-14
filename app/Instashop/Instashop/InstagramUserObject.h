@@ -17,12 +17,14 @@
     NSString *profilePicture;
     NSString *username;
     NSString *website;
+    NSString *zencartID;
+        
 }
 
 -(NSString *)userObjectAsPostString;
 -(id)initWithDictionary:(NSDictionary *)theDict;
 +(InstagramUserObject *)getStoredUserObject;
--(void)setAsStoredUser;
+-(void)setAsStoredUser:(InstagramUserObject *)theObject;
 
 @property (nonatomic, retain) NSString *bio;
 @property (nonatomic, retain) NSDictionary *counts;
@@ -31,5 +33,5 @@
 @property (nonatomic, retain) NSString *profilePicture;
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *website;
-
+@property (nonatomic, retain) NSString *zencartID;
 @end

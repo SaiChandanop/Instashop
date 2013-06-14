@@ -45,6 +45,8 @@ function getZencartIDFromInstagramID($host, $user, $pass, $db, $instagramID)
 
 function createNewProduct($host, $user, $pass, $db, $product_quantity, $product_model, $product_image, $product_price, $product_date, $product_weight, $product_owner_id)
 {
+
+	$product_date = date('Y-m-d H:i:s');
 	$con = mysql_connect($host, $user, $pass);
 	if (!$con) {
 	    echo "Could not connect to server\n";
@@ -57,7 +59,7 @@ function createNewProduct($host, $user, $pass, $db, $product_quantity, $product_
 	    trigger_error(mysql_error(), E_USER_ERROR); 
 	} 
 
-	$query = "insert into products values ('', '', '". $product_quantity ."', '" . $product_model ."', '". $product_image ."', '". $product_price ."', '" . $product_date ."', '', '', '" . $product_weight ."', '', '1','','','','','','','', '', '', '', '', '', '', '', '', '". $product_price ."', '" . $product_owner_id ."', '','','','','','')";
+	$query = "insert into products values ('', '1', '". $product_quantity ."', '" . $product_model ."', '". $product_image ."', '". $product_price ."', '', '" . $product_date ."',  '', '" . $product_weight ."', '', '1','','','','1','1','','', '', '', '', '', '', '', '', '', '". $product_price ."', '" . $product_owner_id ."', '','','','','','')";
 				
 	echo "\nquery1: ". $query;
 	

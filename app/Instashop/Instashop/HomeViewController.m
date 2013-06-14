@@ -8,6 +8,7 @@
 
 #import "HomeViewController.h"
 #import "AppRootViewController.h"
+#import "UserAPIHandler.h"
 
 @interface HomeViewController ()
 
@@ -42,7 +43,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 2;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -62,6 +63,15 @@
             break;
 
         case 1:
+            NSLog(@"[InstagramUserObject getStoredUserObject]: %@", [InstagramUserObject getStoredUserObject]);
+            if ([InstagramUserObject getStoredUserObject].zencartID == nil)
+                cell.textLabel.text = @"become a seller";
+            else
+                cell.textLabel.text = @"you are a seller";
+            
+            break;
+            
+        case 2:
             cell.textLabel.text = @"Post a new item!";
             break;
 
@@ -85,15 +95,28 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"didSelectRowAtIndexPath: %@", self.parentController);
 
     switch (indexPath.row) {
         case 0:
-//            cell.textLabel.text = @"Discover!";
+
+            
             break;
             
         case 1:
-            [self.parentController createProductButtonHit];
+            if ([InstagramUserObject getStoredUserObject].zencartID == nil)
+                [UserAPIHandler makeUserCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
+            break;
+        case 2:
+            if ([InstagramUserObject getStoredUserObject].zencartID == nil)
+            {
+                UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                                    message:@"Please become a seller first"
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"Ok"
+                                                          otherButtonTitles:nil];
+            }
+            else
+                [self.parentController createProductButtonHit];
   //          cell.textLabel.text = @"Post a new item!";
             break;
             
@@ -101,6 +124,19 @@
             break;
     }
     
+}
+
+-(void)userDidCreateSellerWithResponseDictionary:(NSDictionary *)dictionary
+{
+    NSLog(@"userDidCreateSellerWithResponseDictionary!!: %@", dictionary);
+    
+
+    InstagramUserObject *theUserObject =[InstagramUserObject getStoredUserObject];
+    theUserObject.zencartID = [dictionary objectForKey:@"zencart_id"];
+
+    
+    [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
+    [self.theTableView reloadData];
 }
 
 

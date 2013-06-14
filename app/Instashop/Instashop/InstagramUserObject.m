@@ -21,6 +21,7 @@
 @synthesize profilePicture;
 @synthesize username;
 @synthesize website;
+@synthesize zencartID;
 
 
 -(id)initWithDictionary:(NSDictionary *)theDict
@@ -34,6 +35,7 @@
     self.profilePicture = [theDict objectForKey:@"profile_picture"];
     self.username = [theDict objectForKey:@"username"];
     self.website = [theDict objectForKey:@"website"];
+    self.zencartID = [theDict objectForKey:@"zencartID"];
     
     return self;
 }
@@ -47,6 +49,7 @@
     [encoder encodeObject:self.profilePicture forKey:@"profilePicture"];
     [encoder encodeObject:self.username forKey:@"username"];
     [encoder encodeObject:self.website forKey:@"website"];
+    [encoder encodeObject:self.zencartID forKey:@"zencartID"];
     
 }
 
@@ -60,7 +63,8 @@
         self.userID = [decoder decodeObjectForKey:@"userID"];
         self.profilePicture = [decoder decodeObjectForKey:@"profilePicture"];
         self.username = [decoder decodeObjectForKey:@"username"];
-        self.website = [decoder decodeObjectForKey:@"website"];        
+        self.website = [decoder decodeObjectForKey:@"website"];
+        self.zencartID = [decoder decodeObjectForKey:@"zencartID"];        
     }
     return self;
 }
@@ -92,9 +96,10 @@
     return [[GroupDiskManager sharedManager] loadDataFromDiskWithKey:CURRENT_USER_OBJECT_STORAGE_KEY];
 }
 
--(void)setAsStoredUser
+-(void)setAsStoredUser:(InstagramUserObject *)theObject
 {
-    [[GroupDiskManager sharedManager] saveDataToDiskWithObject:self withKey:CURRENT_USER_OBJECT_STORAGE_KEY];
+    NSLog(@"saving: %@", self);
+    [[GroupDiskManager sharedManager] saveDataToDiskWithObject:theObject withKey:CURRENT_USER_OBJECT_STORAGE_KEY];
 }
 
 -(NSString *)description
@@ -109,6 +114,7 @@
     [string appendString:[NSString stringWithFormat:@"profilePicture: %@%@", self.profilePicture, endlineTerminator]];
     [string appendString:[NSString stringWithFormat:@"username: %@%@", self.username, endlineTerminator]];
     [string appendString:[NSString stringWithFormat:@"website: %@%@", self.website, endlineTerminator]];
+    [string appendString:[NSString stringWithFormat:@"zencartID: %@%@", self.zencartID, endlineTerminator]];
     return string;
 }
 

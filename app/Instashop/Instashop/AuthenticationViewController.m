@@ -134,7 +134,7 @@
 //        NSLog(@"userDict: %@", userDict);
         
         InstagramUserObject *instagramUserObject = [[InstagramUserObject alloc] initWithDictionary:userDict];
-        [instagramUserObject setAsStoredUser];
+        [instagramUserObject setAsStoredUser:instagramUserObject];
         
         
 //        NSLog(@"instagramUserObject: %@", instagramUserObject);

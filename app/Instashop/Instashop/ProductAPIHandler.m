@@ -83,7 +83,17 @@
 {
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
 
-    [self.delegate feedRequestFinishedWithArrray:responseArray];
+    if (responseArray == nil)
+    {
+        
+        NSString* newStr = [[[NSString alloc] initWithData:responseData
+                                                  encoding:NSUTF8StringEncoding] autorelease];
+     
+        NSLog(@"responseString: %@", newStr);
+        
+    }
+    else
+        [self.delegate feedRequestFinishedWithArrray:responseArray];
     
 }
 
