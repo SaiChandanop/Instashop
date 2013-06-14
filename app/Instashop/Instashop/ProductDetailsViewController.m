@@ -106,6 +106,17 @@
     self.productCreateObject.categoryAttribute = self.sizeColorTextField.text;
     self.productCreateObject.quantity = self.quantityTextField.text;
     [self.parentController previewButtonHitWithProductCreateObject:self.productCreateObject];
+    
+    
+    
+    [self.captionTextField resignFirstResponder];
+    [self.descriptionTextView resignFirstResponder];
+    [self.retailTextField resignFirstResponder];
+    [self.shippingTextField resignFirstResponder];
+    [self.priceTextField resignFirstResponder];
+    [self.categoryTextField resignFirstResponder];
+    [self.sizeColorTextField resignFirstResponder];
+    [self.quantityTextField resignFirstResponder];    
 
 }
 
