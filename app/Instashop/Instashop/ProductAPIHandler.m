@@ -62,8 +62,6 @@
     URLRequest.HTTPMethod = @"POST";
     
     
-    InstagramUserObject *userInstagramObject = [InstagramUserObject getStoredUserObject];
-    
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -97,6 +95,11 @@
     
 }
 
+
++(void)productPurchasedWithStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject
+{
+    
+}
 
 
 @end

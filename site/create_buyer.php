@@ -18,7 +18,7 @@ $sellers_db   = "690403_instashop_sellers";
 
 error_reporting(-1);
 
-function craete_new_buyer($host, $user, $pass, $db, $userID)
+function create_new_buyer($host, $user, $pass, $db, $userID, $username)
 {
 	$con = mysql_connect($host, $user, $pass);
 	if (!$con) {
@@ -42,7 +42,7 @@ function craete_new_buyer($host, $user, $pass, $db, $userID)
 
 	if (!$exists)
 	{
-		$query = "insert into INSTASHOP_BUYERS values ('".$_POST["userID"] ."', '". $_POST["username"] ."');";
+		$query = "insert into INSTASHOP_BUYERS values ('".$userID ."', '". $username ."');";
 		$result = mysql_query($query);
 	}
 	mysql_close();
@@ -124,16 +124,6 @@ function createInstashopSeller($host, $user, $pass, $db)
 }
 
 
-//$zencartID = createZencartSeller($zen_host, $zen_user, $zen_pass, $zen_db);
-
-//echo "zencartID: ".$zencartID;
-
-echo "hi";
-//createInstashopSeller($sellers_host, $sellers_user, $sellers_pass, $sellers_db);
-
-
-
-
-//showDescriptions($zen_host, $zen_user, $zen_pass, $zen_db);
+create_new_buyer($buyers_host, $buyers_user, $buyers_pass, $buyers_db, $_POST["userID"], $_POST["username"]);
 
 ?>

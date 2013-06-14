@@ -130,15 +130,11 @@
 
 -(void)doBuy
 {
-    NSLog(@"do buy");
-    
     NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
     
     float val = [[self.purchasingObject objectForKey:@"products_price"] floatValue];
     
-    NSLog(@"val: %f", val);
     val = val * 100;
-    NSLog(@"val2: %f", val);
     int intVal = [[NSNumber numberWithFloat:val] integerValue];
     NSString *priceString = [NSString stringWithFormat:@"%d", intVal];
     

@@ -131,15 +131,11 @@
     if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
     {
         NSDictionary *userDict = [result objectForKey:@"data"];
-//        NSLog(@"userDict: %@", userDict);
-        
+
         InstagramUserObject *instagramUserObject = [[InstagramUserObject alloc] initWithDictionary:userDict];
         [instagramUserObject setAsStoredUser:instagramUserObject];
         
-        
-//        NSLog(@"instagramUserObject: %@", instagramUserObject);
-        
-//        [UserAPIHandler makeUserCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
+        [UserAPIHandler makeBuyerCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
         
         AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [del userDidLogin];

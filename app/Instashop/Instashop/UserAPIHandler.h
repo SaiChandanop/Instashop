@@ -12,4 +12,7 @@
 @interface UserAPIHandler : RootAPIHandler
 
 +(void)makeUserCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject;
+
++(void)makeBuyerCreateRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject;
+
 @end
