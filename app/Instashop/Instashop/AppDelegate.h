@@ -20,6 +20,8 @@
     
     AuthenticationViewController *authenticationViewController;
     AppRootViewController *appRootViewController;
+    
+    
 }
 
 -(void)userDidLogin;
