@@ -84,7 +84,7 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
-    NSLog(@"feedRequestFinishedWithArrray: %@", theArray);
+
     
     [self.feedItemsArray removeAllObjects];
     

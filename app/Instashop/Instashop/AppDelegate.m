@@ -22,7 +22,7 @@
 @implementation AppDelegate
 
 @synthesize instagram, authenticationViewController, appRootViewController;
-
+@synthesize pushDeviceTokenString;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -41,10 +41,10 @@
     self.appRootViewController = [[AppRootViewController alloc] initWithNibName:nil bundle:nil];
     
     
-/*    if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
+    if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
         self.window.rootViewController = self.appRootViewController;
     else
-  */    self.window.rootViewController = self.authenticationViewController;
+        self.window.rootViewController = self.authenticationViewController;
     
     
     [self.window makeKeyAndVisible];
@@ -54,12 +54,12 @@
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
 {
 	const unsigned* tokenBytes = [deviceToken bytes];
-	NSString* deviceTokenString = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
+    self.pushDeviceTokenString = [NSString stringWithFormat:@"%08x%08x%08x%08x%08x%08x%08x%08x",
                                    ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
                                    ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                                    ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
     
-	NSLog(@"%@", deviceTokenString);
+	NSLog(@"%@", self.pushDeviceTokenString);
     
 }
 

@@ -98,7 +98,7 @@
 
 -(void)setAsStoredUser:(InstagramUserObject *)theObject
 {
-    NSLog(@"saving: %@", self);
+
     [[GroupDiskManager sharedManager] saveDataToDiskWithObject:theObject withKey:CURRENT_USER_OBJECT_STORAGE_KEY];
 }
 
