@@ -111,11 +111,11 @@
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"products_id=%@&", [productObject objectForKey:@"products_id"]]];
-    
     [postString appendString:[NSString stringWithFormat:@"products_name=%@&", [productObject objectForKey:@"products_name"]]];
     [postString appendString:[NSString stringWithFormat:@"products_price=%@&", [productObject objectForKey:@"products_price"]]];
     [postString appendString:[NSString stringWithFormat:@"products_quantity=%@&", @"1"]];
     [postString appendString:[NSString stringWithFormat:@"purchaser_id=%@&", userInstagramObject.userID]];
+    [postString appendString:[NSString stringWithFormat:@"purchaser_username=%@&", userInstagramObject.username]];
 
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
