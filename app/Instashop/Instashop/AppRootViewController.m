@@ -130,7 +130,9 @@ float transitionTime = .456;
     if (!self.areViewsTransitioning)
     {
         
-        float offsetPosition = self.view.frame.size.width * .85;
+        float offset = 55.0;
+        
+        float offsetPosition = self.view.frame.size.width - offset;
         self.areViewsTransitioning = YES;
         
         [UIView beginAnimations:nil context:nil];
