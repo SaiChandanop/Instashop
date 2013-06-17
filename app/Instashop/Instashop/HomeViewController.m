@@ -18,8 +18,7 @@
 
 @synthesize parentController;
 
-
-@synthesize theTableView;
+@synthesize sellerLabel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,110 +32,56 @@
 {
     [super viewDidLoad];
 
+    [self loadStates];
 }
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+-(void)loadStates
 {
-    return 1;
+ 
+    if ([InstagramUserObject getStoredUserObject].zencartID == nil)
+        self.sellerLabel.text = @"Become a seller";
+    else
+        self.sellerLabel.text = @"Sell a product";
+    
 }
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 3;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.textLabel.text = @"Discover!";
-            break;
-
-        case 1:
-            NSLog(@"[InstagramUserObject getStoredUserObject]: %@", [InstagramUserObject getStoredUserObject]);
-            if ([InstagramUserObject getStoredUserObject].zencartID == nil)
-                cell.textLabel.text = @"become a seller";
-            else
-                cell.textLabel.text = @"you are a seller";
-            
-            break;
-            
-        case 2:
-            cell.textLabel.text = @"Post a new item!";
-            break;
-
-        default:
-            break;
-    }
-    
-    
-    return cell;
-}
-
-
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return  36;
 }
 
 
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(IBAction) sellerButtonHit
 {
-
-    switch (indexPath.row) {
-        case 0:
-
-            
-            break;
-            
-        case 1:
-            if ([InstagramUserObject getStoredUserObject].zencartID == nil)
-                [UserAPIHandler makeUserCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
-            break;
-        case 2:
-            if ([InstagramUserObject getStoredUserObject].zencartID == nil)
-            {
-                UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                                    message:@"Please become a seller first"
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"Ok"
-                                                          otherButtonTitles:nil];
-            }
-            else
-                [self.parentController createProductButtonHit];
-  //          cell.textLabel.text = @"Post a new item!";
-            break;
-            
-        default:
-            break;
-    }
-    
+    if ([InstagramUserObject getStoredUserObject].zencartID == nil)
+        [UserAPIHandler makeUserCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
+    else
+        [self.parentController createProductButtonHit];
 }
 
 -(void)userDidCreateSellerWithResponseDictionary:(NSDictionary *)dictionary
 {
     NSLog(@"userDidCreateSellerWithResponseDictionary!!: %@", dictionary);
     
-
     InstagramUserObject *theUserObject =[InstagramUserObject getStoredUserObject];
     theUserObject.zencartID = [dictionary objectForKey:@"zencart_id"];
-
     
     [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
-    [self.theTableView reloadData];
+
+    
+    [self loadStates];
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Great"
+                                                        message:@"And now you're a seller"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
+
+    
+
+    
 }
 
 

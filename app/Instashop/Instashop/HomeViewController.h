@@ -9,13 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @class AppRootViewController;
-@interface HomeViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
+@interface HomeViewController : UIViewController 
 {
     AppRootViewController *parentController;
+
+    UILabel *sellerLabel;
     
-    UITableView *theTableView;
 }
 @property (nonatomic, retain) AppRootViewController *parentController;
 
-@property (nonatomic, retain) IBOutlet UITableView *theTableView;
+@property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
 @end
