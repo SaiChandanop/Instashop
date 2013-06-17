@@ -21,6 +21,7 @@
     AuthenticationViewController *authenticationViewController;
     AppRootViewController *appRootViewController;
     
+    NSString *pushDeviceTokenString;
     
 }
 
@@ -34,6 +35,7 @@
 @property (strong, nonatomic) AuthenticationViewController *authenticationViewController;
 @property (strong, nonatomic) AppRootViewController *appRootViewController;
 
+@property (strong, nonatomic) NSString *pushDeviceTokenString;
 
 
 @end

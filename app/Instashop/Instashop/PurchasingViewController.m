@@ -66,9 +66,7 @@
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
-    
-    NSLog(@"Instagram did load: %@", result);
-    
+        
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
     {

@@ -7,6 +7,7 @@
 //
 
 #import "UserAPIHandler.h"
+#import "AppDelegate.h"
 
 @implementation UserAPIHandler
 
@@ -14,8 +15,17 @@
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"seller_admin.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    
+    
     URLRequest.HTTPMethod = @"POST";
     NSString *postString = [instagramUserObject userObjectAsPostString];
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    if (appDelegate.pushDeviceTokenString != nil)
+        postString = [NSString stringWithFormat:@"%@&push_id=%@", postString, appDelegate.pushDeviceTokenString];
+
+
+    
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@"postString: %@", postString);
     
