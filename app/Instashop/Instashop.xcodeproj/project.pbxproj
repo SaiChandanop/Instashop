@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2E0EAE05176F6E6700B65FC3 /* Menu_BG.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG.png */; };
+		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
 		2E0EAE08176F6E6700B65FC3 /* toolbarISLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */; };
@@ -121,7 +121,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2E0EADE1176F6E6700B65FC3 /* Menu_BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Menu_BG.png; sourceTree = "<group>"; };
+		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
 		2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarISLogo@2x.png"; sourceTree = "<group>"; };
@@ -303,7 +303,7 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				2E0EADE1176F6E6700B65FC3 /* Menu_BG.png */,
+				2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */,
 				2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */,
 				2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */,
 				2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */,
@@ -838,7 +838,7 @@
 				2EB259B01767B50D0054618D /* menu@2x.png in Resources */,
 				2EB259B11767B50D0054618D /* magnify@2x.png in Resources */,
 				7BE688CA176B7801007D383B /* FeedViewController.xib in Resources */,
-				2E0EAE05176F6E6700B65FC3 /* Menu_BG.png in Resources */,
+				2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */,
 				2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */,
 				2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */,
 				2E0EAE08176F6E6700B65FC3 /* toolbarISLogo@2x.png in Resources */,
