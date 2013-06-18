@@ -42,28 +42,39 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
     
     
+
+    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
-    UIView *theCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
+    UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenuButton.png"]];
+    homeImageView.frame = CGRectMake(0,0,44,44);
+    [homeCustomView addSubview:homeImageView];
+    
+    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    homeButton.frame = CGRectMake(0,0,homeCustomView.frame.size.width, homeCustomView.frame.size.height);
+    homeButton.backgroundColor = [UIColor clearColor];
+    [homeButton addTarget:self action:@selector(homeButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [homeCustomView addSubview:homeButton];
+    
+    UIBarButtonItem *homBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeCustomView];
+    self.navigationItem.leftBarButtonItem = homBarButtonItem;
     
     
-    UIBarButtonItem *homeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(homeButtonHit)];
-    self.navigationItem.leftBarButtonItem = homeButton;
+    
+
+    
+    UIView *discoverCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *discoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"magnify.png"]];
     discoverImageView.frame = CGRectMake(11,11,22,22);
-    
-
+    [discoverCustomView addSubview:discoverImageView];
     
     UIButton *discoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    discoverButton.frame = CGRectMake(0,0,theCustomView.frame.size.width, theCustomView.frame.size.height);
+    discoverButton.frame = CGRectMake(0,0,discoverCustomView.frame.size.width, discoverCustomView.frame.size.height);
     discoverButton.backgroundColor = [UIColor clearColor];
-    [discoverButton addTarget:self action:@selector(discoverButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [theCustomView addSubview:discoverImageView];
-    [theCustomView addSubview:discoverButton];
+    [discoverButton addTarget:self action:@selector(discoverButtonHit) forControlEvents:UIControlEventTouchUpInside];    
+    [discoverCustomView addSubview:discoverButton];
     
-    UIBarButtonItem *discoverBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:theCustomView];
-
-    
+    UIBarButtonItem *discoverBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:discoverCustomView];
     self.navigationItem.rightBarButtonItem = discoverBarButtonItem;
     
     
