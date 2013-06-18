@@ -43,10 +43,10 @@
     
     
 
-    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
+    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 60, 44)];
     
     UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenuButton.png"]];
-    homeImageView.frame = CGRectMake(0,0,44,44);
+    homeImageView.frame = CGRectMake(0,0,60,44);
     [homeCustomView addSubview:homeImageView];
     
     UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -61,7 +61,7 @@
     
     
 
-    
+    /*
     UIView *discoverCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *discoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"magnify.png"]];
@@ -70,13 +70,13 @@
     
     UIButton *discoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
     discoverButton.frame = CGRectMake(0,0,discoverCustomView.frame.size.width, discoverCustomView.frame.size.height);
-    discoverButton.backgroundColor = [UIColor clearColor];
+    discoverButton.backgroundColor = [UIColor redColor];
     [discoverButton addTarget:self action:@selector(discoverButtonHit) forControlEvents:UIControlEventTouchUpInside];    
     [discoverCustomView addSubview:discoverButton];
     
     UIBarButtonItem *discoverBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:discoverCustomView];
     self.navigationItem.rightBarButtonItem = discoverBarButtonItem;
-    
+    */
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refresh)

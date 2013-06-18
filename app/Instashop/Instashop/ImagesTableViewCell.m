@@ -40,14 +40,14 @@
     float spacer = 8;
     float imageWidth = self.frame.size.width / 3 - 11;
     
-    float fontHeight = 12;
+    //float fontHeight = 12;
     
     int iter = 0;
     
     for (int i = startValue; i < startValue + 3 && i < [feedItemsArray count]; i++)
     {
         
-        UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, 0, imageWidth, imageWidth)];
+        UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth)];
         [self addSubview:theImageView];
         [theImageView release];
         
@@ -66,6 +66,7 @@
         if (productURL != nil)
             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:theImageView];
         
+        /*
         UILabel *theLabel = [[UILabel alloc] initWithFrame:CGRectMake(theImageView.frame.origin.x, (imageWidth + 2) / 2 - fontHeight / 2, theImageView.frame.size.width, fontHeight + 1)];
         theLabel.backgroundColor = [UIColor clearColor];
         theLabel.textColor = [UIColor whiteColor];
@@ -74,6 +75,7 @@
         theLabel.text = [productObjectDictionary objectForKey:@"products_name"];
         [self addSubview:theLabel];
         [theLabel release];
+         */
     
         iter++;
         
