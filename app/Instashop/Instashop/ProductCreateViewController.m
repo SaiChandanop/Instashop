@@ -37,11 +37,20 @@
     
     self.productSelectTableViewController.parentController = self;
     
+     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
+    
+    
     NSLog(@"ProductCreateViewController view did load");
     
     UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(backButtonHit)];
     self.navigationItem.leftBarButtonItem = backButtonItem;
     
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
+    self.navigationItem.titleView = theImageView;
+
+    
+
+
     
 }
 

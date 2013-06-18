@@ -57,7 +57,7 @@ float transitionTime = .456;
     self.feedViewController = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
     self.feedViewController.parentController = self;
     self.feedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.feedViewController];
-    self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
+    self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);    
     [self.view addSubview:self.feedNavigationController.view];
     
     
@@ -218,6 +218,7 @@ float transitionTime = .456;
         
         UINavigationController *productCreateNavigationController = [[UINavigationController alloc] initWithRootViewController:productCreateViewController];
         productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+                
         [self.view addSubview:productCreateNavigationController .view];
                 
         [UIView beginAnimations:nil context:nil];

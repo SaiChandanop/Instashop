@@ -39,16 +39,32 @@
     [ProductAPIHandler getAllProductsWithDelegate:self];
     // Do any additional setup after loading the view from its nib.
     
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
     
-    self.title = @"Instashop!";
-    [self.navigationController setTitle:@"instashop"];
+    
+    
+    UIView *theCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
+    
     
     UIBarButtonItem *homeButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks target:self action:@selector(homeButtonHit)];
     self.navigationItem.leftBarButtonItem = homeButton;
     
+    UIImageView *discoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"magnify.png"]];
+    discoverImageView.frame = CGRectMake(11,11,22,22);
     
-    UIBarButtonItem *discoverButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSearch target:self action:@selector(discoverButtonHit)];
-    self.navigationItem.rightBarButtonItem = discoverButton;
+
+    
+    UIButton *discoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    discoverButton.frame = CGRectMake(0,0,theCustomView.frame.size.width, theCustomView.frame.size.height);
+    discoverButton.backgroundColor = [UIColor clearColor];
+    [discoverButton addTarget:self action:@selector(discoverButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [theCustomView addSubview:discoverImageView];
+    [theCustomView addSubview:discoverButton];
+    
+    UIBarButtonItem *discoverBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:theCustomView];
+
+    
+    self.navigationItem.rightBarButtonItem = discoverBarButtonItem;
     
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -56,6 +72,10 @@
              forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
     
+    
+
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
+    self.navigationItem.titleView = theImageView;
     
     
     
