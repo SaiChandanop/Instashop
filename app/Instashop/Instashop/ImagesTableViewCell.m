@@ -7,11 +7,9 @@
 //
 
 #import "ImagesTableViewCell.h"
-
+#import "ImageAPIHandler.h"
 @implementation ImagesTableViewCell
 
-
-@synthesize theImageView;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight
@@ -19,22 +17,68 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        self.theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(7, 0,cellHeight, cellHeight)];
-        [self addSubview:self.theImageView];
 
-        self.titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.theImageView.frame.size.height/2 - 12, self.frame.size.width, 24)];
-        self.titleLabel.backgroundColor = [UIColor clearColor];
-        self.titleLabel.textColor = [UIColor whiteColor];
-        self.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleLabel.font = [UIFont boldSystemFontOfSize:24];
-        self.titleLabel.shadowColor = [UIColor colorWithRed:0.0/255.0 green:0.0/255.0 blue:0.0/255.0 alpha:1.0];
-        self.titleLabel.shadowOffset = CGSizeMake(1.0, 1.0);
-        [self addSubview:self.titleLabel];
         
-
     }
     return self;
 }
+
+
+- (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray
+{
+    
+    NSArray *subviewsArray = [self subviews];
+    for (int i = 0; i < [subviewsArray count]; i++)
+        [[subviewsArray objectAtIndex:i] removeFromSuperview];
+    
+    
+    int startValue = theIndexPath.row * 3;
+    
+    float spacer = 8;
+    float imageWidth = self.frame.size.width / 3 - 11;
+    
+    float fontHeight = 12;
+    
+    int iter = 0;
+    
+    for (int i = startValue; i < startValue + 3 && i < [feedItemsArray count]; i++)
+    {
+        
+        UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, 0, imageWidth, imageWidth)];
+        [self addSubview:theImageView];
+        [theImageView release];
+        
+        NSDictionary *productObjectDictionary = [feedItemsArray objectAtIndex:i];
+        NSString *productURL = [productObjectDictionary objectForKey:@"products_url"];
+        if (productURL == nil)
+        {
+            NSDictionary *imagesDictionary = [productObjectDictionary objectForKey:@"images"];
+            if (imagesDictionary != nil)
+            {
+                NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+                productURL = [standardResolutionDictionary objectForKey:@"url"];
+            }
+        }
+        
+        if (productURL != nil)
+            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:theImageView];
+        
+        UILabel *theLabel = [[UILabel alloc] initWithFrame:CGRectMake(theImageView.frame.origin.x, (imageWidth + 2) / 2 - fontHeight / 2, theImageView.frame.size.width, fontHeight + 1)];
+        theLabel.backgroundColor = [UIColor clearColor];
+        theLabel.textColor = [UIColor whiteColor];
+        theLabel.textAlignment = NSTextAlignmentCenter;
+        theLabel.font = [UIFont systemFontOfSize:fontHeight];
+        theLabel.text = [productObjectDictionary objectForKey:@"products_name"];
+        [self addSubview:theLabel];
+        [theLabel release];
+    
+        iter++;
+        
+    }
+        
+}
+
+
 
 
 

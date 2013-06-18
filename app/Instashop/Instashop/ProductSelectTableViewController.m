@@ -88,16 +88,9 @@
         cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
     }
     
-    cell.theImageView.image = nil;
+    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.userMediaArray];
     
-    NSDictionary *imagesDictionary = [[self.userMediaArray objectAtIndex:indexPath.row] objectForKey:@"images"];
-    NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[startResultionDictionary objectForKey:@"url"] withImageView:cell.theImageView];
-
-    
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"row: %d", indexPath.row];
-    // Configure the cell...
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -106,7 +99,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  306;
+    return  98;
 }
 
 

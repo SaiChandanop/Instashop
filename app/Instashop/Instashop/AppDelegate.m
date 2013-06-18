@@ -7,8 +7,6 @@
 //
 
 #import "AppDelegate.h"
-#import "FirstViewController.h"
-#import "SecondViewController.h"
 #import "InstagramUserObject.h"
 #import "ZenCartAuthenticationAPIHandler.h"
 

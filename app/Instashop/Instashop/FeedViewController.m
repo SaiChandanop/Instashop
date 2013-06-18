@@ -152,13 +152,13 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
+    [tableView setSeparatorColor:[UIColor clearColor]];   
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.feedItemsArray count];
+    return [self.feedItemsArray count] / 3;
 }
 
 - (ImagesTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -172,17 +172,10 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    cell.theImageView.image = nil;
+        
+    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.feedItemsArray];
     
-    NSDictionary *productObjectDictionary = [self.feedItemsArray objectAtIndex:indexPath.row];
-    
-    NSString *productURL = [productObjectDictionary objectForKey:@"products_url"];
-    
-    if (productURL != nil)
-        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:cell.theImageView];
-    
-    cell.titleLabel.text = [productObjectDictionary objectForKey:@"products_name"];
-    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
@@ -190,7 +183,7 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  306;
+    return  98;
 }
 
 

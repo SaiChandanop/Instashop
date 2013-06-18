@@ -91,10 +91,6 @@
 		7B61EE59174D2162002A483D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE58174D2162002A483D /* Default.png */; };
 		7B61EE5B174D2162002A483D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE5A174D2162002A483D /* Default@2x.png */; };
 		7B61EE5D174D2162002A483D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE5C174D2162002A483D /* Default-568h@2x.png */; };
-		7B61EE60174D2162002A483D /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B61EE5F174D2162002A483D /* FirstViewController.m */; };
-		7B61EE67174D2162002A483D /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B61EE66174D2162002A483D /* SecondViewController.m */; };
-		7B61EE6E174D2162002A483D /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE6C174D2162002A483D /* FirstViewController.xib */; };
-		7B61EE71174D2162002A483D /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE6F174D2162002A483D /* SecondViewController.xib */; };
 		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
 		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 		7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7444174D4AA1005E90B9 /* AuthenticationViewController.m */; };
@@ -222,12 +218,6 @@
 		7B61EE58174D2162002A483D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		7B61EE5A174D2162002A483D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7B61EE5C174D2162002A483D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		7B61EE5E174D2162002A483D /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		7B61EE5F174D2162002A483D /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		7B61EE65174D2162002A483D /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		7B61EE66174D2162002A483D /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		7B61EE6D174D2162002A483D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstViewController.xib; sourceTree = "<group>"; };
-		7B61EE70174D2162002A483D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondViewController.xib; sourceTree = "<group>"; };
 		7B7A7438174D42F2005E90B9 /* IGConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGConnect.h; sourceTree = "<group>"; };
 		7B7A7439174D42F2005E90B9 /* IGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRequest.h; sourceTree = "<group>"; };
 		7B7A743A174D42F2005E90B9 /* IGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRequest.m; sourceTree = "<group>"; };
@@ -626,12 +616,6 @@
 			children = (
 				7B4908551758FE100047ED3B /* Profile */,
 				7B96C038174FED1D00E4EDAD /* Cells */,
-				7B61EE5E174D2162002A483D /* FirstViewController.h */,
-				7B61EE5F174D2162002A483D /* FirstViewController.m */,
-				7B61EE6C174D2162002A483D /* FirstViewController.xib */,
-				7B61EE65174D2162002A483D /* SecondViewController.h */,
-				7B61EE66174D2162002A483D /* SecondViewController.m */,
-				7B61EE6F174D2162002A483D /* SecondViewController.xib */,
 			);
 			name = Old;
 			sourceTree = "<group>";
@@ -797,8 +781,6 @@
 				7B61EE59174D2162002A483D /* Default.png in Resources */,
 				7B61EE5B174D2162002A483D /* Default@2x.png in Resources */,
 				7B61EE5D174D2162002A483D /* Default-568h@2x.png in Resources */,
-				7B61EE6E174D2162002A483D /* FirstViewController.xib in Resources */,
-				7B61EE71174D2162002A483D /* SecondViewController.xib in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
 				7B49085F1758FE5B0047ED3B /* NotificationsViewController.xib in Resources */,
@@ -873,8 +855,6 @@
 			files = (
 				7B61EE53174D2162002A483D /* main.m in Sources */,
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
-				7B61EE60174D2162002A483D /* FirstViewController.m in Sources */,
-				7B61EE67174D2162002A483D /* SecondViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,
@@ -920,22 +900,6 @@
 				7B61EE50174D2162002A483D /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		7B61EE6C174D2162002A483D /* FirstViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7B61EE6D174D2162002A483D /* en */,
-			);
-			name = FirstViewController.xib;
-			sourceTree = "<group>";
-		};
-		7B61EE6F174D2162002A483D /* SecondViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7B61EE70174D2162002A483D /* en */,
-			);
-			name = SecondViewController.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
