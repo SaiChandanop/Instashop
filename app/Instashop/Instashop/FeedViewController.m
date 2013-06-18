@@ -43,10 +43,10 @@
     
     
 
-    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 60, 44)];
+    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
     UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenuButton.png"]];
-    homeImageView.frame = CGRectMake(0,0,60,44);
+    homeImageView.frame = CGRectMake(0,0,50,44);
     [homeCustomView addSubview:homeImageView];
     
     UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
