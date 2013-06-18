@@ -35,6 +35,8 @@
     [super viewDidLoad];
     
     self.productSelectTableViewController.parentController = self;
+    
+    NSLog(@"ProductCreateViewController view did load");
 }
 
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary

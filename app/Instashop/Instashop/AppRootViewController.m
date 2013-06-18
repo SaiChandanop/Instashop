@@ -18,6 +18,8 @@ static AppRootViewController *theSharedRootViewController;
 
 @synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController, notificationsViewController, profileViewController;
 @synthesize areViewsTransitioning;
+@synthesize productCreateNavigationController;
+
 float transitionTime = .456;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -214,24 +216,41 @@ float transitionTime = .456;
         self.areViewsTransitioning = YES;
         
         ProductCreateViewController *productCreateViewController = [[ProductCreateViewController alloc] initWithNibName:@"ProductCreateViewController" bundle:nil];
-        productCreateViewController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:productCreateViewController.view];
+        
+        self.productCreateNavigationController = [[UINavigationController alloc] initWithRootViewController:productCreateViewController];
+        self.productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:self.productCreateNavigationController .view];
+        
+        UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(productCreateNavigationControllerExitButtonHit)];
+        productCreateViewController.navigationItem.leftBarButtonItem = backButtonItem;
+        
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        productCreateViewController.view.frame = CGRectMake(0, 0, productCreateViewController.view.frame.size.width, productCreateViewController.view.frame.size.height);
+        self.productCreateNavigationController.view.frame = CGRectMake(0, 0, self.productCreateNavigationController .view.frame.size.width, self.productCreateNavigationController .view.frame.size.height);
         [UIView commitAnimations];
         
     }
 }
 
+-(void) productCreateNavigationControllerExitButtonHit
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, self.productCreateNavigationController.view.frame.size.height);
+    [UIView commitAnimations];
+}
 
 -(void)exitButtonHitWithViewController:(UIViewController *)exitingViewController
 {
     
-    if (!self.areViewsTransitioning)
+    NSLog(@"exitButtonHitWithViewController: %@", exitingViewController);
+          
+/*    if (!self.areViewsTransitioning)
     {
         self.areViewsTransitioning = YES;
         
@@ -244,7 +263,7 @@ float transitionTime = .456;
         [UIView commitAnimations];
         
     }
-    
+  */  
 }
 
 @end

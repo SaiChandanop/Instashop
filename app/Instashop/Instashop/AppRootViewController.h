@@ -25,6 +25,9 @@
     ProfileViewController *profileViewController;
     
     BOOL areViewsTransitioning;
+    
+    UINavigationController *productCreateNavigationController;
+    
 }
 
 
@@ -45,6 +48,9 @@
 @property (strong, nonatomic) DiscoverViewController *discoverViewController;
 @property (strong, nonatomic) NotificationsViewController *notificationsViewController;
 @property (strong, nonatomic) ProfileViewController *profileViewController;
+
+
+@property (strong, nonatomic) UINavigationController *productCreateNavigationController;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;
 
