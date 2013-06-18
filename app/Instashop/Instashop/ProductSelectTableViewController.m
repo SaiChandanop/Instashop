@@ -70,6 +70,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    [tableView setSeparatorColor:[UIColor clearColor]];   
     return 1;
 }
 
@@ -91,7 +92,7 @@
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.userMediaArray];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.delegate = self;
     return cell;
 }
 
@@ -103,11 +104,18 @@
 }
 
 
+-(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
+{
+    [self.parentController tableViewProductSelectedWithDataDictionary:theSelectionObject];    
+}
+
+
+
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     NSLog(@"parentController: %@", self.parentController);
-    [self.parentController tableViewProductSelectedWithDataDictionary:[self.userMediaArray objectAtIndex:indexPath.row]];
+    
 }
 
 @end

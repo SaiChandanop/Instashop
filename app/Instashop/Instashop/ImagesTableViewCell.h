@@ -10,9 +10,11 @@
 
 @interface ImagesTableViewCell : UITableViewCell
 {
+    id delegate;
 }
 
 
+@property (nonatomic, retain) id delegate;
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight;
 
 - (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray;

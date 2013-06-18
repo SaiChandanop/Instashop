@@ -176,7 +176,7 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.feedItemsArray];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
+    cell.delegate = self;
     return cell;
 }
 
@@ -187,19 +187,21 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 }
 
 
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
-    self.selectedObject = [self.feedItemsArray objectAtIndex:indexPath.row];
+    self.selectedObject = theSelectionObject;
     
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.parentController = self;
     purchasingViewController.purchasingObject = self.selectedObject;
     purchasingViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.navigationController pushViewController:purchasingViewController animated:YES];
-    
+}
+
+#pragma mark - Table view delegate
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

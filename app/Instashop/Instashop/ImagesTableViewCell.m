@@ -8,8 +8,11 @@
 
 #import "ImagesTableViewCell.h"
 #import "ImageAPIHandler.h"
+#import "ImagesTableCellButton.h"
+
 @implementation ImagesTableViewCell
 
+@synthesize delegate;
 
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight
@@ -74,10 +77,21 @@
     
         iter++;
         
+        ImagesTableCellButton *coverButton = [[ImagesTableCellButton alloc] initWithFrame:theImageView.frame];
+        coverButton.objectDictionary = productObjectDictionary;
+        [coverButton addTarget:self action:@selector(coverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
+        coverButton.backgroundColor = [UIColor clearColor];
+        [self addSubview:coverButton];
+        
     }
         
 }
 
+-(void)coverButtonHit:(ImagesTableCellButton *)theButton
+{
+    NSLog(@"selection: %@", theButton.objectDictionary);
+    [self.delegate cellSelectionOccured:theButton.objectDictionary];
+}
 
 
 

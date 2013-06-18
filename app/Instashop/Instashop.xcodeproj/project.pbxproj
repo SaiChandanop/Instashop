@@ -102,6 +102,7 @@
 		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
+		7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */; };
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
 		7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D371174D74410045C4B4 /* JSONKit.m */; };
@@ -241,6 +242,8 @@
 		7B96C037174FE0B100E4EDAD /* ImageRequestorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageRequestorProtocol.h; sourceTree = "<group>"; };
 		7B96C039174FED3700E4EDAD /* ImagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewCell.h; sourceTree = "<group>"; };
 		7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewCell.m; sourceTree = "<group>"; };
+		7BC6AC521770F4C500C238E9 /* ImagesTableCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableCellButton.h; sourceTree = "<group>"; };
+		7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableCellButton.m; sourceTree = "<group>"; };
 		7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAuthenticationHandler.h; sourceTree = "<group>"; };
 		7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAuthenticationHandler.m; sourceTree = "<group>"; };
 		7BE3D36C174D537D0045C4B4 /* UserAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAPIHandler.h; sourceTree = "<group>"; };
@@ -660,6 +663,8 @@
 			children = (
 				7B96C039174FED3700E4EDAD /* ImagesTableViewCell.h */,
 				7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */,
+				7BC6AC521770F4C500C238E9 /* ImagesTableCellButton.h */,
+				7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -888,6 +893,7 @@
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
 				7BE688C9176B7801007D383B /* FeedViewController.m in Sources */,
+				7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
