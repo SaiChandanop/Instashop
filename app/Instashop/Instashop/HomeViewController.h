@@ -12,11 +12,13 @@
 @interface HomeViewController : UIViewController 
 {
     AppRootViewController *parentController;
-
+    UIScrollView *theScrollView;
     UILabel *sellerLabel;
     
 }
 @property (nonatomic, retain) AppRootViewController *parentController;
+
+@property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
 
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
 @end

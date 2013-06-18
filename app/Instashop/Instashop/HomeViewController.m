@@ -17,6 +17,7 @@
 @implementation HomeViewController
 
 @synthesize parentController;
+@synthesize theScrollView;
 
 @synthesize sellerLabel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -32,6 +33,13 @@
 {
     [super viewDidLoad];
 
+    
+    self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:self.theScrollView];
+        
+    self.theScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 568);
+    
+    
     [self loadStates];
 }
 
