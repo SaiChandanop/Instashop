@@ -41,10 +41,6 @@
 {
     [super viewDidLoad];
     
-
-    self.theScrollView.frame = CGRectMake(0,54, self.view.frame.size.width, self.view.frame.size.height - 54);
-    [self.view addSubview:self.theScrollView];                                
-    // Do any additional setup after loading the view from its nib.
 }
 
 
@@ -55,18 +51,6 @@
 }
 
 
-- (IBAction) backButtonHit
-{
-    NSLog(@"backButtonHit");
-    [self.parentController vcDidHitBackWithController:self];
-}
-
-- (IBAction) postButtonHit
-{
-    NSLog(@"postButtonHit");
-            
-    [parentController createProductActionHitWithProductObject:self.productCreateObject];
-}
 
 
 

@@ -12,8 +12,13 @@
 #import "ProductCreateObject.h"
 #import "ProductPreviewViewController.h"
 
+
+@class AppRootViewController;
+
 @interface ProductCreateViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
 {
+    AppRootViewController *parentController;
+    
     ProductSelectTableViewController *productSelectTableViewController;
     ProductDetailsViewController *productDetailsViewController;
     ProductPreviewViewController *productPreviewViewController;
@@ -27,6 +32,8 @@
 - (void)createProductActionHitWithProductObject:(ProductCreateObject *)productCreateObject;
 - (IBAction) exitButtonHit;
 - (IBAction) goButtonHit;
+
+@property (nonatomic, retain) AppRootViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 @property (nonatomic, retain) IBOutlet ProductDetailsViewController *productDetailsViewController;

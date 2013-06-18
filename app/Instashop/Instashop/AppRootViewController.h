@@ -26,8 +26,6 @@
     
     BOOL areViewsTransitioning;
     
-    UINavigationController *productCreateNavigationController;
-    
 }
 
 
@@ -41,6 +39,8 @@
 
 
 -(void)exitButtonHitWithViewController:(UIViewController *)exitingViewController;
+-(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
+
 
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;
@@ -48,9 +48,6 @@
 @property (strong, nonatomic) DiscoverViewController *discoverViewController;
 @property (strong, nonatomic) NotificationsViewController *notificationsViewController;
 @property (strong, nonatomic) ProfileViewController *profileViewController;
-
-
-@property (strong, nonatomic) UINavigationController *productCreateNavigationController;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;
 

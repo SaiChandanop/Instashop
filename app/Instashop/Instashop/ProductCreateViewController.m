@@ -17,6 +17,7 @@
 
 @implementation ProductCreateViewController
 
+@synthesize parentController;
 @synthesize productSelectTableViewController, productDetailsViewController;
 @synthesize productDictionary;
 
@@ -37,38 +38,25 @@
     self.productSelectTableViewController.parentController = self;
     
     NSLog(@"ProductCreateViewController view did load");
+    
+    UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(backButtonHit)];
+    self.navigationItem.leftBarButtonItem = backButtonItem;
+    
+    
+}
+
+-(void)backButtonHit
+{
+    [self.parentController productCreateNavigationControllerExitButtonHit:self.navigationController];
 }
 
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary
 {
-    if ([self.productDetailsViewController.view superview] == nil)
-    {
-        self.productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
-        [self.view addSubview:self.productDetailsViewController.view];
-    }
-
     self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);
     self.productDetailsViewController.parentController = self;
     [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];
-
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.456];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.productDetailsViewController.view.frame = CGRectMake(0, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
-    [UIView commitAnimations];
-
-}
-
--(void)vcDidHitBackWithController:(UIViewController *)requestingViewController
-{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.456];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    requestingViewController.view.frame = CGRectMake(requestingViewController.view.frame.size.width, 0, requestingViewController.view.frame.size.width, requestingViewController.view.frame.size.height);
-    [UIView commitAnimations];
+    [self.navigationController pushViewController:self.productDetailsViewController animated:YES];
+    self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);    
 }
 
 
@@ -77,42 +65,37 @@
     self.productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
     self.productPreviewViewController.parentController = self;
     self.productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
-    [self.view addSubview:self.productPreviewViewController.view];
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.456];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.productPreviewViewController.view.frame = CGRectMake(0, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
-    [UIView commitAnimations];
-
     [self.productPreviewViewController loadWithProductCreateObject:productCreateObject];
+    [self.navigationController pushViewController:self.productPreviewViewController animated:YES];
     
+    self.productPreviewViewController.theScrollView.contentSize = CGSizeMake(0, 1400);
+    
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonHit)];
+    self.productPreviewViewController.navigationItem.rightBarButtonItem = doneButton;
     
 }
 
 
--(IBAction)exitButtonHit
-{
-    [[AppRootViewController sharedRootViewController] exitButtonHitWithViewController:self];
-}
 
-- (void)createProductActionHitWithProductObject:(ProductCreateObject *)productCreateObject
+- (void)doneButtonHit
 {
- 
-    [self exitButtonHit];
+    ProductCreateObject *productCreateObject = self.productPreviewViewController.productCreateObject;
+    
     [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:productCreateObject.instragramMediaInfoDictionary withTitle:productCreateObject.caption withQuantity:productCreateObject.quantity withModel:productCreateObject.categoryAttribute withPrice:productCreateObject.price withWeight:productCreateObject.shippingWeight withDescription:productCreateObject.description withProductImageURL:productCreateObject.instagramPictureURLString];
 
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
                                                         message:nil
-                                                       delegate:nil
+                                                       delegate:self
                                               cancelButtonTitle:@"Smashing"
                                               otherButtonTitles:nil];
     [alertView show];
-    
-    
 
     
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self backButtonHit];
 }
 
 

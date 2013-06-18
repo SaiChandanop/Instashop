@@ -18,7 +18,6 @@ static AppRootViewController *theSharedRootViewController;
 
 @synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController, notificationsViewController, profileViewController;
 @synthesize areViewsTransitioning;
-@synthesize productCreateNavigationController;
 
 float transitionTime = .456;
 
@@ -210,60 +209,36 @@ float transitionTime = .456;
 
 -(void)createProductButtonHit
 {
-    NSLog(@"createProductButtonHit");
     if (!self.areViewsTransitioning)
     {
         self.areViewsTransitioning = YES;
         
         ProductCreateViewController *productCreateViewController = [[ProductCreateViewController alloc] initWithNibName:@"ProductCreateViewController" bundle:nil];
+        productCreateViewController.parentController = self;
         
-        self.productCreateNavigationController = [[UINavigationController alloc] initWithRootViewController:productCreateViewController];
-        self.productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:self.productCreateNavigationController .view];
-        
-        UIBarButtonItem *backButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(productCreateNavigationControllerExitButtonHit)];
-        productCreateViewController.navigationItem.leftBarButtonItem = backButtonItem;
-        
-        
+        UINavigationController *productCreateNavigationController = [[UINavigationController alloc] initWithRootViewController:productCreateViewController];
+        productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:productCreateNavigationController .view];
+                
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        self.productCreateNavigationController.view.frame = CGRectMake(0, 0, self.productCreateNavigationController .view.frame.size.width, self.productCreateNavigationController .view.frame.size.height);
-        [UIView commitAnimations];
-        
+        productCreateNavigationController.view.frame = CGRectMake(0, 0, productCreateNavigationController .view.frame.size.width, productCreateNavigationController.view.frame.size.height);
+        [UIView commitAnimations];        
     }
 }
 
--(void) productCreateNavigationControllerExitButtonHit
+-(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController
 {
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, self.productCreateNavigationController.view.frame.size.height);
+    theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
     [UIView commitAnimations];
 }
 
--(void)exitButtonHitWithViewController:(UIViewController *)exitingViewController
-{
-    
-    NSLog(@"exitButtonHitWithViewController: %@", exitingViewController);
-          
-/*    if (!self.areViewsTransitioning)
-    {
-        self.areViewsTransitioning = YES;
-        
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:transitionTime];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        exitingViewController.view.frame = CGRectMake(0, exitingViewController.view.frame.size.height, exitingViewController.view.frame.size.width, exitingViewController.view.frame.size.height);
-        [UIView commitAnimations];
-        
-    }
-  */  
-}
+
 
 @end
