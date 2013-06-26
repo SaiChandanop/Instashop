@@ -104,6 +104,8 @@
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
 		7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */; };
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
+		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
+		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
 		7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D371174D74410045C4B4 /* JSONKit.m */; };
 		7BE3D377174D772B0045C4B4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D376174D772B0045C4B4 /* Utils.m */; };
@@ -246,6 +248,9 @@
 		7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableCellButton.m; sourceTree = "<group>"; };
 		7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAuthenticationHandler.h; sourceTree = "<group>"; };
 		7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAuthenticationHandler.m; sourceTree = "<group>"; };
+		7BE29B96177A20870093BB25 /* AttributesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesManager.h; sourceTree = "<group>"; };
+		7BE29B97177A20870093BB25 /* AttributesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesManager.m; sourceTree = "<group>"; };
+		7BE29B99177A21000093BB25 /* attributes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes.csv; sourceTree = "<group>"; };
 		7BE3D36C174D537D0045C4B4 /* UserAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAPIHandler.h; sourceTree = "<group>"; };
 		7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIHandler.m; sourceTree = "<group>"; };
 		7BE3D370174D74410045C4B4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
@@ -537,6 +542,7 @@
 		7B61EE4D174D2162002A483D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7BE29B99177A21000093BB25 /* attributes.csv */,
 				2EB259A31767869F0054618D /* Images */,
 				7B4D2E17175CFFBE005DE4B6 /* shittyimages */,
 				7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */,
@@ -588,6 +594,7 @@
 		7B7A7449174D4EB8005E90B9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				7BE29B95177A20710093BB25 /* Attributes */,
 				7B7A744F174D5052005E90B9 /* DiskManager */,
 				7B7A744A174D4EC3005E90B9 /* User */,
 				7B34812F17623ECF00C055AE /* CategoriesAttributesHandler.h */,
@@ -678,6 +685,15 @@
 				7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */,
 			);
 			name = Stripe;
+			sourceTree = "<group>";
+		};
+		7BE29B95177A20710093BB25 /* Attributes */ = {
+			isa = PBXGroup;
+			children = (
+				7BE29B96177A20870093BB25 /* AttributesManager.h */,
+				7BE29B97177A20870093BB25 /* AttributesManager.m */,
+			);
+			name = Attributes;
 			sourceTree = "<group>";
 		};
 		7BE3D36B174D536B0045C4B4 /* User */ = {
@@ -848,6 +864,7 @@
 				2E0EAE25176F6E6700B65FC3 /* lmDiscoverIcon@2x.png in Resources */,
 				2E0EAE26176F6E6700B65FC3 /* closebutton@2x.png in Resources */,
 				2E0EAE27176F6E6700B65FC3 /* backbutton@2x.png in Resources */,
+				7BE29B9A177A21000093BB25 /* attributes.csv in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -894,6 +911,7 @@
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
 				7BE688C9176B7801007D383B /* FeedViewController.m in Sources */,
 				7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */,
+				7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
