@@ -47,7 +47,7 @@ static AttributesManager *theManager;
             
             if ([lineObjects count] == 3)
             {
-                NSLog(@"lineObjects[%d]: %@", i, lineObjects);
+//                NSLog(@"lineObjects[%d]: %@", i, lineObjects);
                 
                 if ([[lineObjects objectAtIndex:0] length] > 0)
                 {
@@ -78,8 +78,8 @@ static AttributesManager *theManager;
                     NSMutableDictionary *innerDictionary = [outermostContentDictionary objectForKey:innerKey];
                     
                     NSString *key = [lineObjects objectAtIndex:2];
-                    NSLog(@"key: %@", key);
-                    NSLog(@"innerKey: %@", innerKey);
+  //                  NSLog(@"key: %@", key);
+//                    NSLog(@"innerKey: %@", innerKey);
                     
                     [innerDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
                     
@@ -92,7 +92,59 @@ static AttributesManager *theManager;
         }
     }
     
-    NSLog(@"attributesArray: %@", attributesArray);
+//    NSLog(@"attributesArray: %@", attributesArray);
     return self;
+}
+
+-(NSArray *)getTopCategories
+{
+    NSMutableArray *ar = [NSMutableArray arrayWithCapacity:0];
+    
+    for (int i = 0; i < [self.attributesArray count]; i++)
+    {
+        NSDictionary *dict = [self.attributesArray objectAtIndex:i];
+        [ar addObject:[[dict allKeys] objectAtIndex:0]];
+    }
+    return ar;
+}
+
+-(NSArray *)getSubcategoriesFromTopCategory:(NSString *)topCategory
+{
+    NSMutableArray *retAr = [NSMutableArray arrayWithCapacity:0];
+    NSDictionary *desiredDict = nil;
+    for (int i = 0; i < [self.attributesArray count]; i++)
+    {
+        NSDictionary *dict = [self.attributesArray objectAtIndex:i];
+        if ([((NSString *)[[dict allKeys] objectAtIndex:0]) compare:topCategory] == NSOrderedSame)
+            desiredDict = dict;
+    }
+    if (desiredDict != nil)
+        [retAr addObjectsFromArray:[[desiredDict objectForKey:[[desiredDict allKeys] objectAtIndex:0]] allKeys]];
+
+    
+    return retAr;
+}
+
+-(NSArray *)getAttributesFromTopCategory:(NSString *)topCategory fromSubcategory:(NSString *)subcategory
+{
+    NSMutableArray *retAr = [NSMutableArray arrayWithCapacity:0];
+    
+    NSDictionary *desiredDict = nil;
+    for (int i = 0; i < [self.attributesArray count]; i++)
+    {
+        NSDictionary *dict = [self.attributesArray objectAtIndex:i];
+        if ([((NSString *)[[dict allKeys] objectAtIndex:0]) compare:topCategory] == NSOrderedSame)
+            desiredDict = dict;
+    }
+    if (desiredDict != nil)
+    {        
+        NSDictionary *dict = [desiredDict objectForKey:topCategory];
+        dict = [dict objectForKey:subcategory];
+        [retAr addObjectsFromArray:[dict allKeys]];
+
+    }
+    
+
+    return retAr;
 }
 @end

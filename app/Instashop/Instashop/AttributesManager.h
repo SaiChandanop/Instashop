@@ -12,5 +12,9 @@
 
 +(AttributesManager *)getSharedAttributesManager;
 
+-(NSArray *)getTopCategories;
+-(NSArray *)getSubcategoriesFromTopCategory:(NSString *)topCategory;
+-(NSArray *)getAttributesFromTopCategory:(NSString *)topCategory fromSubcategory:(NSString *)subcategory;
+
 @property (nonatomic, retain) NSMutableArray *attributesArray;
 @end

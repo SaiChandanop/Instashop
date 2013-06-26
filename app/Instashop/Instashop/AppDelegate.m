@@ -27,7 +27,16 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     
-    AttributesManager *attributesManager = [AttributesManager getSharedAttributesManager];
+    
+    NSArray *topCategories = [[AttributesManager getSharedAttributesManager] getTopCategories];
+    NSString *sampleCategory = [topCategories objectAtIndex:0];
+    NSArray *subcategories = [[AttributesManager getSharedAttributesManager] getSubcategoriesFromTopCategory:sampleCategory];
+    NSString *sampleSubcategory = [subcategories objectAtIndex:0];
+    NSArray *items = [[AttributesManager getSharedAttributesManager] getAttributesFromTopCategory:sampleCategory fromSubcategory:sampleSubcategory];
+    
+    NSLog(@"sampleCategory: %@", sampleCategory);
+    NSLog(@"sampleSubcategory: %@", sampleSubcategory);
+    NSLog(@"items: %@", items);
     
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 
