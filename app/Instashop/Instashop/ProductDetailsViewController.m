@@ -87,7 +87,7 @@
     //self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
     //[self.view addSubview:self.containerScrollView];
     
-    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 640);
+    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 680);
 
     
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
