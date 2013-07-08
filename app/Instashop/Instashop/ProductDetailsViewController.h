@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductCreateObject.h"
-
+#import "CategoriesPickerViewController.h"
 
 @class ProductCreateViewController;
 
@@ -29,7 +29,8 @@
     UITextField *quantityTextField;
     
     ProductCreateObject *productCreateObject;
-    
+ 
+    NSMutableArray *categoriesArray;
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
@@ -38,6 +39,10 @@
 - (IBAction) previewButtonHit;
 
 - (IBAction) categoryButtonHit;
+
+
+-(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController;
+
 
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;
@@ -54,4 +59,6 @@
 @property (nonatomic, retain) IBOutlet UITextField *sizeColorTextField;
 @property (nonatomic, retain) IBOutlet UITextField *quantityTextField;
 @property (nonatomic, retain) ProductCreateObject *productCreateObject;
+
+@property (nonatomic, retain) NSMutableArray *categoriesArray;
 @end

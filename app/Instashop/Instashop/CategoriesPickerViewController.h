@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+@class ProductDetailsViewController;
 @interface CategoriesPickerViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
 {
+    ProductDetailsViewController *delegate;
+    
     int type;
     NSArray *itemsArray;
     
@@ -18,6 +21,8 @@
 
 - (IBAction)cancelButtonHit;
 - (IBAction)doneButtonHit;
+
+@property (nonatomic, retain) ProductDetailsViewController *delegate;
 
 @property (nonatomic, assign) int type;
 @property (nonatomic, retain) NSArray *itemsArray;

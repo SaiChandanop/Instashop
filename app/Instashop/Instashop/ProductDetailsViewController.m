@@ -32,6 +32,8 @@
 
 @synthesize productCreateObject;
 
+@synthesize categoriesArray;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -85,6 +87,9 @@
     self.containerScrollView.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.containerScrollView];
     self.containerScrollView.contentSize = CGSizeMake(0,height);
+    
+    
+    self.categoriesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", nil];
 }
 
 - (void)categoryButtonHit
@@ -92,10 +97,17 @@
     NSLog(@"categoryButtonHit: %@", [[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]);
     
     CategoriesPickerViewController *categoriesPickerViewController = [[CategoriesPickerViewController alloc] initWithNibName:@"CategoriesPickerViewController" bundle:nil];
+    categoriesPickerViewController.delegate = self;
+    categoriesPickerViewController.type = 0;
     categoriesPickerViewController.itemsArray = [[NSArray alloc] initWithArray:[[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]];
     [self presentViewController:categoriesPickerViewController animated:YES completion:nil];
+}
+
+-(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController
+{
+    [self.categoriesArray setObject:selectedCategory atIndexedSubscript:theController.type];
     
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

@@ -7,6 +7,8 @@
 //
 
 #import "CategoriesPickerViewController.h"
+#import "ProductDetailsViewController.h"
+
 
 @interface CategoriesPickerViewController ()
 
@@ -14,6 +16,7 @@
 
 @implementation CategoriesPickerViewController
 
+@synthesize delegate;
 @synthesize type;
 @synthesize itemsArray;
 @synthesize selectedIndex;
@@ -57,11 +60,14 @@
 
 - (IBAction)cancelButtonHit
 {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 - (IBAction)doneButtonHit
 {
     NSLog(@"done: %@", [self.itemsArray objectAtIndex:self.selectedIndex]);
+//    [self.delegate categorySelected:[self.itemsArray objectAtIndex:self.selectedIndex]];
+    [self.delegate categorySelected:[self.itemsArray objectAtIndex:self.selectedIndex] withCategoriesPickerViewController:self];
+    
 }
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
