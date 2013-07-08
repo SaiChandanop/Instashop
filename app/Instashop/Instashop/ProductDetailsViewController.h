@@ -16,6 +16,8 @@
 {
     ProductCreateViewController *parentController;
     
+    ProductCreateObject *productCreateObject;
+    
     UIScrollView *containerScrollView;
     
     UIImageView *productImageView;
@@ -24,17 +26,13 @@
     UITextField *retailTextField;
     UITextField *shippingTextField;
     UITextField *priceTextField;
-    UITextField *categoryTextField;
-    UITextField *sizeColorTextField;
     UITextField *quantityTextField;
-    
-    ProductCreateObject *productCreateObject;
- 
-    NSMutableArray *attributesArray;
-    
     UIButton *categoryButton;
     UIButton *subcategoryButton;
     UIButton *subSubCategoryButton;
+    
+    
+    NSMutableArray *attributesArray;        
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
@@ -59,7 +57,6 @@
 @property (nonatomic, retain) IBOutlet UITextField *retailTextField;
 @property (nonatomic, retain) IBOutlet UITextField *shippingTextField;
 @property (nonatomic, retain) IBOutlet UITextField *priceTextField;
-@property (nonatomic, retain) IBOutlet UITextField *categoryTextField;
 @property (nonatomic, retain) IBOutlet UITextField *sizeColorTextField;
 @property (nonatomic, retain) IBOutlet UITextField *quantityTextField;
 @property (nonatomic, retain) ProductCreateObject *productCreateObject;

@@ -26,7 +26,6 @@
 @synthesize retailTextField;
 @synthesize shippingTextField;
 @synthesize priceTextField;
-@synthesize categoryTextField;
 @synthesize sizeColorTextField;
 @synthesize quantityTextField;
 
@@ -84,7 +83,6 @@
     self.retailTextField.delegate = self;
     self.shippingTextField.delegate = self;
     self.priceTextField.delegate = self;
-    self.categoryTextField.delegate = self;
     self.sizeColorTextField.delegate = self;
     self.quantityTextField.delegate = self;
     
@@ -219,7 +217,6 @@
     self.productCreateObject.retailValue = self.retailTextField.text;
     self.productCreateObject.shippingWeight = self.shippingTextField.text;
     self.productCreateObject.price = self.priceTextField.text;
-    self.productCreateObject.category = self.categoryTextField.text;
     self.productCreateObject.categoryAttribute = self.sizeColorTextField.text;
     self.productCreateObject.quantity = self.quantityTextField.text;
     self.productCreateObject.productAttributesArray = [NSArray arrayWithArray:self.attributesArray];
@@ -232,7 +229,6 @@
     [self.retailTextField resignFirstResponder];
     [self.shippingTextField resignFirstResponder];
     [self.priceTextField resignFirstResponder];
-    [self.categoryTextField resignFirstResponder];
     [self.sizeColorTextField resignFirstResponder];
     [self.quantityTextField resignFirstResponder];    
 
