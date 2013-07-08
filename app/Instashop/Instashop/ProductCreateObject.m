@@ -18,6 +18,7 @@
 @synthesize category;
 @synthesize categoryAttribute;
 @synthesize quantity;
+@synthesize productAttributesArray;
 
 @synthesize instagramPictureURLString;
 @synthesize instragramMediaInfoDictionary;

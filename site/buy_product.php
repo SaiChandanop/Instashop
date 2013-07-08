@@ -1,5 +1,7 @@
 <?
 
+include_once("./push_notification.php");
+
 $zen_host = "mysql51-040.wc1.ord1.stabletransit.com"; 
 $zen_user = "690403_zencart"; 
 $zen_pass = "50Bridge318"; 
@@ -32,6 +34,34 @@ function decrementProductQuantity($host, $user, $pass, $db, $product_id)
 		$query = "update products set products_quantity = '".$quantity ."' where products_id = '". $product_id ."'";
 		$result = mysql_query($query);
     }
+}
+
+
+function getSellerZenIDFromProductID($host, $user, $pass, $db, $product_id)
+{
+
+	$con = mysql_connect($host, $user, $pass);
+	if (!$con) {
+	    echo "Could not connect to server\n";
+	    trigger_error(mysql_error(), E_USER_ERROR);
+	} 
+	
+	$r2 = mysql_select_db($db);
+	if (!$r2) {
+	    echo "Cannot select database\n";
+	    trigger_error(mysql_error(), E_USER_ERROR); 
+	} 
+	
+	$returnValue = "";
+
+	$query = "select * from products where products_id = '". $product_id ."'";
+	$result = mysql_query($query);
+
+	if ($row = mysql_fetch_assoc($result)) {	
+		$returnValue = $row["master_categories_id"];
+    }
+
+	return $returnValue;
 }
 
 
@@ -107,6 +137,8 @@ decrementProductQuantity($zen_host, $zen_user, $zen_pass, $zen_db, $products_id)
 $ordersID = updateOrdersProducts($zen_host, $zen_user, $zen_pass, $zen_db, $products_id, $products_name, $products_price, $products_quantity, $purchaser_id);
 createOrderStatusHistory($zen_host, $zen_user, $zen_pass, $zen_db, $ordersID);
 
+$seller_zen_id = getSellerZenIDFromProductID($zen_host, $zen_user, $zen_pass, $zen_db, $products_id);
+pushSoldMessageWithProductInfo($products_id, $products_name, $products_price, $purchaser_id, $seller_zen_id, $_POST["purchaser_username"]);
 
 
 

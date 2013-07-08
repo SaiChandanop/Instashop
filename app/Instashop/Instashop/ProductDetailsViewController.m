@@ -32,7 +32,7 @@
 
 @synthesize productCreateObject;
 
-@synthesize categoriesArray;
+@synthesize attributesArray;
 
 
 @synthesize categoryButton;
@@ -95,20 +95,20 @@
     self.containerScrollView.contentSize = CGSizeMake(0,height);
     
     
-    self.categoriesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", nil];
+    self.attributesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", nil];
 }
 
 - (void) loadButtonTitles
 {
  
-    if ([[self.categoriesArray objectAtIndex:0] length] > 0)
-        [self.categoryButton setTitle:[self.categoriesArray objectAtIndex:0] forState:UIControlStateNormal];
+    if ([[self.attributesArray objectAtIndex:0] length] > 0)
+        [self.categoryButton setTitle:[self.attributesArray objectAtIndex:0] forState:UIControlStateNormal];
     
-    if ([[self.categoriesArray objectAtIndex:1] length] > 0)
-        [self.subcategoryButton setTitle:[self.categoriesArray objectAtIndex:1] forState:UIControlStateNormal];
+    if ([[self.attributesArray objectAtIndex:1] length] > 0)
+        [self.subcategoryButton setTitle:[self.attributesArray objectAtIndex:1] forState:UIControlStateNormal];
     
-    if ([[self.categoriesArray objectAtIndex:2] length] > 0)
-        [self.subSubCategoryButton setTitle:[self.categoriesArray objectAtIndex:2] forState:UIControlStateNormal];
+    if ([[self.attributesArray objectAtIndex:2] length] > 0)
+        [self.subSubCategoryButton setTitle:[self.attributesArray objectAtIndex:2] forState:UIControlStateNormal];
 
     
 }
@@ -131,16 +131,16 @@
     else if (theButton == subcategoryButton)
     {
         selectedIndexType = 1;
-        if ([[self.categoriesArray objectAtIndex:0] length] > 0)
-            selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getSubcategoriesFromTopCategory:[self.categoriesArray objectAtIndex:0]]];
+        if ([[self.attributesArray objectAtIndex:0] length] > 0)
+            selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getSubcategoriesFromTopCategory:[self.attributesArray objectAtIndex:0]]];
     }
 
     else if (theButton == subSubCategoryButton)
     {
         selectedIndexType = 2;
-        if ([[self.categoriesArray objectAtIndex:0] length] > 0)
-            if ([[self.categoriesArray objectAtIndex:1] length] > 0)            
-                selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getAttributesFromTopCategory:[self.categoriesArray objectAtIndex:0] fromSubcategory:[self.categoriesArray objectAtIndex:1]]];
+        if ([[self.attributesArray objectAtIndex:0] length] > 0)
+            if ([[self.attributesArray objectAtIndex:1] length] > 0)            
+                selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getAttributesFromTopCategory:[self.attributesArray objectAtIndex:0] fromSubcategory:[self.attributesArray objectAtIndex:1]]];
     }
 
     
@@ -168,7 +168,7 @@
 
 -(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController
 {
-    [self.categoriesArray setObject:selectedCategory atIndexedSubscript:theController.type];
+    [self.attributesArray setObject:selectedCategory atIndexedSubscript:theController.type];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     [self loadButtonTitles];
@@ -209,7 +209,7 @@
 
 -(IBAction)backButtonHit
 {
-    [parentController vcDidHitBackWithController:self];
+    [self.parentController vcDidHitBackWithController:self];
 }
 
 -(IBAction)previewButtonHit
@@ -222,6 +222,7 @@
     self.productCreateObject.category = self.categoryTextField.text;
     self.productCreateObject.categoryAttribute = self.sizeColorTextField.text;
     self.productCreateObject.quantity = self.quantityTextField.text;
+    self.productCreateObject.productAttributesArray = [NSArray arrayWithArray:self.attributesArray];
     [self.parentController previewButtonHitWithProductCreateObject:self.productCreateObject];
     
     

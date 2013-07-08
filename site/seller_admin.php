@@ -106,7 +106,7 @@ function checkInshashopForInstagramID($host, $user, $pass, $db, $instagramID)
 }
 
 
-function createInstashopSeller($host, $user, $pass, $db, $zencartID, $instagramID)
+function createInstashopSeller($host, $user, $pass, $db, $zencartID, $instagramID, $push_id)
 {
 	$con = mysql_connect($host, $user, $pass);
 	if (!$con) {
@@ -121,21 +121,20 @@ function createInstashopSeller($host, $user, $pass, $db, $zencartID, $instagramI
 	} 
 	
 
-	$query = "insert into sellers values ('". $zencartID ."', '".$instagramID ."')"; 
+	$query = "insert into sellers values ('". $zencartID ."', '".$instagramID ."', '$push_id')";
+
 	$result = mysql_query($query);
 
 }
 
 $zencartID = checkInshashopForInstagramID($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $_POST["userID"]);
-
-
 if ($zencartID)
 	{
 	}
 else
 	{	
 		$zencartID = createZencartSeller($zen_host, $zen_user, $zen_pass, $zen_db, $_POST["username"]);
-		createInstashopSeller($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $zencartID, $_POST["userID"]);
+		createInstashopSeller($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $zencartID, $_POST["userID"], $_POST["push_id"]);
 	}
 
 $retAr = array();

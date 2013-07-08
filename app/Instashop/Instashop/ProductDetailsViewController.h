@@ -30,7 +30,7 @@
     
     ProductCreateObject *productCreateObject;
  
-    NSMutableArray *categoriesArray;
+    NSMutableArray *attributesArray;
     
     UIButton *categoryButton;
     UIButton *subcategoryButton;
@@ -64,7 +64,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *quantityTextField;
 @property (nonatomic, retain) ProductCreateObject *productCreateObject;
 
-@property (nonatomic, retain) NSMutableArray *categoriesArray;
+@property (nonatomic, retain) NSMutableArray *attributesArray;
 
 @property (nonatomic, retain) IBOutlet UIButton *categoryButton;
 @property (nonatomic, retain) IBOutlet UIButton *subcategoryButton;

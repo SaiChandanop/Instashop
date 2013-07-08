@@ -12,10 +12,10 @@
 @implementation ProductAPIHandler
 
 
-+(void)createNewProductWithDelegate:(id)delegate withInstagramDataObject:(NSDictionary *)productDict withTitle:(NSString *) title withQuantity:(NSString *)quantity withModel:(NSString *)model withPrice:(NSString *)price withWeight:(NSString *)weight withDescription:(NSString *)description withProductImageURL:(NSString *)productImageURLString
++(void)createNewProductWithDelegate:(id)delegate withInstagramDataObject:(NSDictionary *)productDict withTitle:(NSString *) title withQuantity:(NSString *)quantity withModel:(NSString *)model withPrice:(NSString *)price withWeight:(NSString *)weight withDescription:(NSString *)description withProductImageURL:(NSString *)productImageURLString withAttributesArray:(NSArray *)attributesArray
 {
  
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"product_admin.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"create_product.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
 
@@ -33,7 +33,10 @@
     [postString appendString:[NSString stringWithFormat:@"object_price=%@&", price]];
     [postString appendString:[NSString stringWithFormat:@"object_weight=%@&", weight]];
     [postString appendString:[NSString stringWithFormat:@"object_image_urlstring=%@&", productImageURLString]];
-    [postString appendString:[NSString stringWithFormat:@"object_description=%@", description]];             
+    [postString appendString:[NSString stringWithFormat:@"object_description=%@", description]];
+    [postString appendString:[NSString stringWithFormat:@"&object_attribute_one=%@", [attributesArray objectAtIndex:0]]];
+    [postString appendString:[NSString stringWithFormat:@"&object_attribute_two=%@", [attributesArray objectAtIndex:1]]];
+    [postString appendString:[NSString stringWithFormat:@"&object_attribute_three=%@", [attributesArray objectAtIndex:2]]];
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@"postString: %@", postString);
     

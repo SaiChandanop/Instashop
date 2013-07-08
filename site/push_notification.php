@@ -1,46 +1,94 @@
 <?
-$message = 'testme';
-$badge = 3;
-$sound = 'default';
-$development = true;
- 
-$payload = array();
-$payload['aps'] = array('alert' => $message, 'badge' => intval($badge), 'sound' => $sound);
-$payload = json_encode($payload);
- 
-$apns_url = NULL;
-$apns_cert = NULL;
-$apns_port = 2195;
- 
-if($development)
+
+
+function getSellerPushIDFromZenID($host, $user, $pass, $db, $seller_zen_id)
 {
-	$apns_url = 'gateway.sandbox.push.apple.com';
-	$apns_cert = './cert-dev.pem';
+	$con = mysql_connect($host, $user, $pass);
+	if (!$con) {
+	    echo "Could not connect to server\n";
+	    trigger_error(mysql_error(), E_USER_ERROR);
+	} 
+	
+	$r2 = mysql_select_db($db);
+	if (!$r2) {
+	    echo "Cannot select database\n";
+	    trigger_error(mysql_error(), E_USER_ERROR); 
+	} 
+	
+
+	$retVal = "";
+
+	$query = "select * from sellers where id = '$seller_zen_id'";
+echo "\n get seller push id from zen id: ".$query;
+	$result = mysql_query($query);
+		
+	if ($row = mysql_fetch_assoc($result)) {
+		$retVal = $row["push_id"];
+	}
+
+
+	return $retVal;
+
+
+
 }
-else
+
+
+function pushSoldMessageWithProductInfo($products_id, $products_name, $products_price, $purchaser_id, $seller_zen_id, $purchaser_username)
 {
-	$apns_url = 'gateway.push.apple.com';
-	$apns_cert = '/path/to/cert/cert-prod.pem';
+
+	$sellers_host = "mysql51-033.wc1.ord1.stabletransit.com"; 
+	$sellers_user = "690403_instashop"; 
+	$sellers_pass = "2Fpz7qm4"; 
+	$sellers_db   = "690403_instashop_sellers";
+
+	$seller_device_token = getSellerPushIDFromZenID($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $seller_zen_id);
+
+
+	$message = $purchaser_username .' bought '. $products_name .' for $' . $products_price;
+	$badge = 3;
+	$sound = 'default';
+	$development = true;
+ 
+	$payload = array();
+	$payload['aps'] = array('alert' => $message, 'badge' => intval($badge), 'sound' => $sound);
+	$payload = json_encode($payload);
+ 
+	$apns_url = NULL;
+	$apns_cert = NULL;
+	$apns_port = 2195;
+ 
+	if($development)
+	{
+		$apns_url = 'gateway.sandbox.push.apple.com';
+		$apns_cert = './cert-dev.pem';
+	}
+	else
+	{
+		$apns_url = 'gateway.push.apple.com';
+		$apns_cert = '/path/to/cert/cert-prod.pem';
+	}
+ 
+	$stream_context = stream_context_create();
+	stream_context_set_option($stream_context, 'ssl', 'local_cert', $apns_cert);
+ 
+	$apns = stream_socket_client('ssl://' . $apns_url . ':' . $apns_port, $error, $error_string, 2, STREAM_CLIENT_CONNECT, $stream_context);
+ 
+	//	You will need to put your device tokens into the $device_tokens array yourself
+	$device_tokens = array();
+	array_push($device_tokens, $seller_device_token);
+
+	print_r($device_tokens);
+
+	foreach($device_tokens as $device_token)
+	{
+		$apns_message = chr(0) . chr(0) . chr(32) . pack('H*', str_replace(' ', '', $device_token)) . chr(0) . chr(strlen($payload)) . $payload;
+		fwrite($apns, $apns_message);
+	}
+	
+	echo "\n\ndone!";
+ 
+	@socket_close($apns);
+	@fclose($apns);
 }
- 
-$stream_context = stream_context_create();
-stream_context_set_option($stream_context, 'ssl', 'local_cert', $apns_cert);
- 
-$apns = stream_socket_client('ssl://' . $apns_url . ':' . $apns_port, $error, $error_string, 2, STREAM_CLIENT_CONNECT, $stream_context);
- 
-//	You will need to put your device tokens into the $device_tokens array yourself
-$device_tokens = array();
- 
-array_push($device_tokens, "89e84f0161ee45f3f3d993034a38c0470691b143e08559ea14900f15981ecf5c");
-echo "device tokens!<br>";
-print_r($device_tokens);
-echo "done!<br>";
-foreach($device_tokens as $device_token)
-{
-	$apns_message = chr(0) . chr(0) . chr(32) . pack('H*', str_replace(' ', '', $device_token)) . chr(0) . chr(strlen($payload)) . $payload;
-	fwrite($apns, $apns_message);
-}
- 
-@socket_close($apns);
-@fclose($apns);
 ?>
