@@ -9,6 +9,7 @@
 #import "ProductCreateViewController.h"
 #import "ProductAPIHandler.h"
 #import "AppRootViewController.h"
+#import "CategoriesAttributesHandler.h"
 
 
 @interface ProductCreateViewController ()
@@ -76,6 +77,7 @@
 
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary
 {
+    NSLog(@"self.productDetailsViewController: %@", self.productDetailsViewController);
     self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);
     self.productDetailsViewController.parentController = self;
     [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];

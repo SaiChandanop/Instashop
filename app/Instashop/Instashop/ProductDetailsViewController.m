@@ -10,6 +10,8 @@
 #import "ImageAPIHandler.h"
 #import "ProductCreateViewController.h"
 #import "ProductCreateObject.h"
+#import "CategoriesAttributesHandler.h"
+#import "CategoriesPickerViewController.h"
 
 @interface ProductDetailsViewController ()
 
@@ -77,8 +79,29 @@
     self.categoryTextField.delegate = self;
     self.sizeColorTextField.delegate = self;
     self.quantityTextField.delegate = self;
+    
+ 
+    float height = self.containerScrollView.frame.size.height;
+    self.containerScrollView.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:self.containerScrollView];
+    self.containerScrollView.contentSize = CGSizeMake(0,height);
 }
 
+- (void)categoryButtonHit
+{
+    NSLog(@"categoryButtonHit: %@", [[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]);
+    
+    CategoriesPickerViewController *categoriesPickerViewController = [[CategoriesPickerViewController alloc] initWithNibName:@"CategoriesPickerViewController" bundle:nil];
+    categoriesPickerViewController.itemsArray = [[NSArray alloc] initWithArray:[[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]];
+    [self presentViewController:categoriesPickerViewController animated:YES completion:nil];
+    
+    
+}
+
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+}
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
 {

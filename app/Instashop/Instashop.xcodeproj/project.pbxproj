@@ -91,6 +91,8 @@
 		7B61EE59174D2162002A483D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE58174D2162002A483D /* Default.png */; };
 		7B61EE5B174D2162002A483D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE5A174D2162002A483D /* Default@2x.png */; };
 		7B61EE5D174D2162002A483D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE5C174D2162002A483D /* Default-568h@2x.png */; };
+		7B6C5005178B186400CDF0A7 /* CategoriesPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C5003178B186400CDF0A7 /* CategoriesPickerViewController.m */; };
+		7B6C5006178B186400CDF0A7 /* CategoriesPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C5004178B186400CDF0A7 /* CategoriesPickerViewController.xib */; };
 		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
 		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 		7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7444174D4AA1005E90B9 /* AuthenticationViewController.m */; };
@@ -221,6 +223,9 @@
 		7B61EE58174D2162002A483D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		7B61EE5A174D2162002A483D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		7B61EE5C174D2162002A483D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		7B6C5002178B186400CDF0A7 /* CategoriesPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesPickerViewController.h; sourceTree = "<group>"; };
+		7B6C5003178B186400CDF0A7 /* CategoriesPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesPickerViewController.m; sourceTree = "<group>"; };
+		7B6C5004178B186400CDF0A7 /* CategoriesPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesPickerViewController.xib; sourceTree = "<group>"; };
 		7B7A7438174D42F2005E90B9 /* IGConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGConnect.h; sourceTree = "<group>"; };
 		7B7A7439174D42F2005E90B9 /* IGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRequest.h; sourceTree = "<group>"; };
 		7B7A743A174D42F2005E90B9 /* IGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRequest.m; sourceTree = "<group>"; };
@@ -374,6 +379,7 @@
 		7B1072B5175E7CB300D9DC5D /* ProductDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7B6C5001178B184800CDF0A7 /* CategoriesPicker */,
 				7B1072BB175E7CDE00D9DC5D /* ProductDetailsViewController.h */,
 				7B1072BC175E7CDE00D9DC5D /* ProductDetailsViewController.m */,
 				7B1072BD175E7CDE00D9DC5D /* ProductDetailsViewController.xib */,
@@ -555,6 +561,16 @@
 				7B61EE5C174D2162002A483D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7B6C5001178B184800CDF0A7 /* CategoriesPicker */ = {
+			isa = PBXGroup;
+			children = (
+				7B6C5002178B186400CDF0A7 /* CategoriesPickerViewController.h */,
+				7B6C5003178B186400CDF0A7 /* CategoriesPickerViewController.m */,
+				7B6C5004178B186400CDF0A7 /* CategoriesPickerViewController.xib */,
+			);
+			name = CategoriesPicker;
 			sourceTree = "<group>";
 		};
 		7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */ = {
@@ -865,6 +881,7 @@
 				2E0EAE26176F6E6700B65FC3 /* closebutton@2x.png in Resources */,
 				2E0EAE27176F6E6700B65FC3 /* backbutton@2x.png in Resources */,
 				7BE29B9A177A21000093BB25 /* attributes.csv in Resources */,
+				7B6C5006178B186400CDF0A7 /* CategoriesPickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -912,6 +929,7 @@
 				7BE688C9176B7801007D383B /* FeedViewController.m in Sources */,
 				7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */,
 				7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */,
+				7B6C5005178B186400CDF0A7 /* CategoriesPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

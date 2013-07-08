@@ -37,6 +37,7 @@
 - (IBAction) backButtonHit;
 - (IBAction) previewButtonHit;
 
+- (IBAction) categoryButtonHit;
 
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;

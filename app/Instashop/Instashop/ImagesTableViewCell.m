@@ -91,7 +91,7 @@
 
 -(void)coverButtonHit:(ImagesTableCellButton *)theButton
 {
-    NSLog(@"selection: %@", theButton.objectDictionary);
+//    NSLog(@"selection: %@", theButton.objectDictionary);
     [self.delegate cellSelectionOccured:theButton.objectDictionary];
 }
 
