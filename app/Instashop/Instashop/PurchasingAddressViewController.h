@@ -22,6 +22,8 @@
     UIButton *upsButton;
     UIButton *fedexButton;
     UIButton *doneButton;
+    
+    NSDictionary *sellerDictionary;
 }
 
 -(IBAction)upsButtonHit;
@@ -41,4 +43,8 @@
 
 @property (nonatomic, retain) id doneButtonDelegate;
 
+@property (nonatomic, retain) NSDictionary *sellerDictionary;
+
 @end
+
+

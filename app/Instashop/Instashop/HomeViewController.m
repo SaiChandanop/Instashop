@@ -10,7 +10,7 @@
 #import "AppRootViewController.h"
 #import "UserAPIHandler.h"
 #import "PurchasingAddressViewController.h"
-
+#import "SellersAPIHandler.h"
 @interface HomeViewController ()
 
 @end
@@ -71,7 +71,7 @@
     [addressDictionary setObject:theVC.phoneTextField.text forKey:@"seller_phone"];
     
     NSLog(@"addressDictionay: %@", addressDictionary);
-    [UserAPIHandler makeUserCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
+    [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
     
 }
 

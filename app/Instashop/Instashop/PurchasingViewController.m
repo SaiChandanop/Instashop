@@ -13,7 +13,8 @@
 #import "STPCard.h"
 #import "StripeAuthenticationHandler.h"
 #import "ProductAPIHandler.h"
-
+#import "PurchasingAddressViewController.h"
+#import "SellersAPIHandler.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -121,6 +122,10 @@
     
   */  
     
+    
+    [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[requestedProductObject objectForKey:@"owner_instagram_id"]];
+     
+    
 }
 
 -(void)doBuy
@@ -151,6 +156,15 @@
         self.requestedProductObject = [theArray objectAtIndex:0];
     
     [self loadContentViews];
+}
+
+
+-(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
+{
+    PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
+    purchasingAddressViewController.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
+    purchasingAddressViewController.doneButton.alpha = 0;
+    [self presentViewController:purchasingAddressViewController animated:YES completion:nil];    
 }
 
 @end

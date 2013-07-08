@@ -92,6 +92,7 @@
 		7B6C5006178B186400CDF0A7 /* CategoriesPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C5004178B186400CDF0A7 /* CategoriesPickerViewController.xib */; };
 		7B6C500A178B46FC00CDF0A7 /* PurchasingAddressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C5008178B46FC00CDF0A7 /* PurchasingAddressViewController.m */; };
 		7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C5009178B46FC00CDF0A7 /* PurchasingAddressViewController.xib */; };
+		7B6C5010178B568B00CDF0A7 /* SellersAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C500F178B568B00CDF0A7 /* SellersAPIHandler.m */; };
 		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
 		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 		7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7444174D4AA1005E90B9 /* AuthenticationViewController.m */; };
@@ -223,6 +224,8 @@
 		7B6C5007178B46FC00CDF0A7 /* PurchasingAddressViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingAddressViewController.h; sourceTree = "<group>"; };
 		7B6C5008178B46FC00CDF0A7 /* PurchasingAddressViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasingAddressViewController.m; sourceTree = "<group>"; };
 		7B6C5009178B46FC00CDF0A7 /* PurchasingAddressViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchasingAddressViewController.xib; sourceTree = "<group>"; };
+		7B6C500E178B568B00CDF0A7 /* SellersAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellersAPIHandler.h; sourceTree = "<group>"; };
+		7B6C500F178B568B00CDF0A7 /* SellersAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellersAPIHandler.m; sourceTree = "<group>"; };
 		7B7A7438174D42F2005E90B9 /* IGConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGConnect.h; sourceTree = "<group>"; };
 		7B7A7439174D42F2005E90B9 /* IGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRequest.h; sourceTree = "<group>"; };
 		7B7A743A174D42F2005E90B9 /* IGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRequest.m; sourceTree = "<group>"; };
@@ -570,6 +573,15 @@
 			name = CategoriesPicker;
 			sourceTree = "<group>";
 		};
+		7B6C500C178B566A00CDF0A7 /* Sellers */ = {
+			isa = PBXGroup;
+			children = (
+				7B6C500E178B568B00CDF0A7 /* SellersAPIHandler.h */,
+				7B6C500F178B568B00CDF0A7 /* SellersAPIHandler.m */,
+			);
+			name = Sellers;
+			sourceTree = "<group>";
+		};
 		7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
@@ -644,6 +656,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7B6C500C178B566A00CDF0A7 /* Sellers */,
 				7BC890B017668B5200D4756D /* Stripe */,
 				7BE958EF1755470000A7E0AB /* Products */,
 				7B7B9DF41753E26F000F4A3E /* ZenCart */,
@@ -924,6 +937,7 @@
 				7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */,
 				7B6C5005178B186400CDF0A7 /* CategoriesPickerViewController.m in Sources */,
 				7B6C500A178B46FC00CDF0A7 /* PurchasingAddressViewController.m in Sources */,
+				7B6C5010178B568B00CDF0A7 /* SellersAPIHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

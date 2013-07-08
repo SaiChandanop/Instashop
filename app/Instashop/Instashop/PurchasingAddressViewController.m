@@ -7,7 +7,7 @@
 //
 
 #import "PurchasingAddressViewController.h"
-
+#import "SellersAPIHandler.h"
 @interface PurchasingAddressViewController ()
 
 @end
@@ -28,6 +28,8 @@
 @synthesize fedexButton;
 @synthesize doneButton;
 
+
+@synthesize sellerDictionary;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];

@@ -11,6 +11,7 @@
 #import "InstagramUserObject.h"
 #import "UserAPIHandler.h"
 #import "GroupDiskManager.h"
+#import "SellersAPIHandler.h"
 @interface AuthenticationViewController ()
 
 @end
@@ -96,7 +97,7 @@
 
 -(void)sellerButtonHit
 {
-    [UserAPIHandler makeUserCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];   
+//    [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] ];
 }
 -(void)igDidNotLogin:(BOOL)cancelled
 {
