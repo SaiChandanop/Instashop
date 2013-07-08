@@ -61,7 +61,7 @@
     // I SEEM TO HAVE MADE A MOCKERY OF THIS... NOT WORKING... TRYING TO SET CUSTOM BACK BUTTON... DAMN YOU APPLE!
     UIView *backCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
-    UIImageView *backImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backbutton.png"]];
+    UIImageView *backImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backbutton"]];
     backImageView.frame = CGRectMake(0,0,44,44);
     [backCustomView addSubview:backImageView];
     
@@ -75,7 +75,8 @@
     self.navigationItem.backBarButtonItem = backBarButtonItem;
     
     
-    self.view.backgroundColor = [UIColor colorWithRed:56.0f/255.0f green:116.0f/255.0f blue:93.0f/255.0f alpha:1];
+    //self.view.backgroundColor = [UIColor colorWithRed:56.0f/255.0f green:116.0f/255.0f blue:93.0f/255.0f alpha:1];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     self.captionTextField.delegate = self;
     
@@ -184,7 +185,7 @@
     //self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
     //[self.view addSubview:self.containerScrollView];
     
-    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 680);
+    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 480);
 
     
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
