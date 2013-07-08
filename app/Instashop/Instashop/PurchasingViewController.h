@@ -14,7 +14,7 @@
 {
     FeedViewController *parentController;
     
-    NSDictionary *purchasingObject;
+    NSString *requestingProductID;
     
     UIScrollView *contentScrollView;
     UIImageView *imageView;
@@ -32,7 +32,7 @@
 
 @property (nonatomic, retain) FeedViewController *parentController;
 
-@property (nonatomic, retain) NSDictionary *purchasingObject;
+@property (nonatomic, retain) NSString *requestingProductID;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;

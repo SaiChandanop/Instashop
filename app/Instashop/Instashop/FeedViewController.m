@@ -193,7 +193,7 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
     
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.parentController = self;
-    purchasingViewController.purchasingObject = self.selectedObject;
+    purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
     purchasingViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.navigationController pushViewController:purchasingViewController animated:YES];
 }

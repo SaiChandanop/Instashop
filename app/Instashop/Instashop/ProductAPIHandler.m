@@ -58,17 +58,31 @@
 }
 
 
+//
+
++(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate
+{
+    
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?requesting_product_id=", productID];
+    
+    NSLog(@"urlRequestString urlRequestString: %@", urlRequestString);
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"GET";
+    
+    
+    ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
+    productAPIHandler.delegate = delegate;
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+
+}
 +(void)getAllProductsWithDelegate:(id)delegate
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"get_products.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
-    URLRequest.HTTPMethod = @"POST";
-    
-    
-    
-    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
-    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"postString: %@", postString);
+    URLRequest.HTTPMethod = @"GET";
+        
     
     ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
     productAPIHandler.delegate = delegate;
@@ -82,7 +96,15 @@
 
 -(void)getProductsRequestFinished:(id)obj
 {
+    
+    NSString* newStr = [[[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding] autorelease];
+
+    NSLog(@"getProductsRequestFinished.newStr: %@", newStr);
+    
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+
+        NSLog(@"getProductsRequestFinished.responseArray: %@", responseArray);
 
     if (responseArray == nil)
     {
