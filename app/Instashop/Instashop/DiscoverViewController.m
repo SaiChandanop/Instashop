@@ -7,7 +7,9 @@
 //
 
 #import "DiscoverViewController.h"
-#import "CategoriesAttributesHandler.h"
+
+
+
 @interface DiscoverViewController ()
 
 @end
@@ -37,7 +39,7 @@
     
     
     self.discoverTopCategoryTableViewController = [[DiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    [self.discoverTopCategoryTableViewController setContentWithArray:[[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]];
+//    [self.discoverTopCategoryTableViewController setContentWithArray:[[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]];
     self.discoverTopCategoryTableViewController.parentController = self;
     self.discoverTopCategoryTableViewController.view.frame = CGRectMake(0,0,self.theScrollView.frame.size.width, self.theScrollView.frame.size.height);
     [self.theScrollView addSubview:self.discoverTopCategoryTableViewController.view];

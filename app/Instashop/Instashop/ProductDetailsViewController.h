@@ -31,6 +31,10 @@
     ProductCreateObject *productCreateObject;
  
     NSMutableArray *categoriesArray;
+    
+    UIButton *categoryButton;
+    UIButton *subcategoryButton;
+    UIButton *subSubCategoryButton;
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
@@ -38,7 +42,7 @@
 - (IBAction) backButtonHit;
 - (IBAction) previewButtonHit;
 
-- (IBAction) categoryButtonHit;
+- (IBAction) categoryButtonHit:(UIButton *)theButton;
 
 
 -(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController;
@@ -61,4 +65,9 @@
 @property (nonatomic, retain) ProductCreateObject *productCreateObject;
 
 @property (nonatomic, retain) NSMutableArray *categoriesArray;
+
+@property (nonatomic, retain) IBOutlet UIButton *categoryButton;
+@property (nonatomic, retain) IBOutlet UIButton *subcategoryButton;
+@property (nonatomic, retain) IBOutlet UIButton *subSubCategoryButton;
+
 @end

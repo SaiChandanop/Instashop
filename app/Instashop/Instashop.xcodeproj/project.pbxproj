@@ -54,7 +54,6 @@
 		7B1072BF175E7CDE00D9DC5D /* ProductDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072BD175E7CDE00D9DC5D /* ProductDetailsViewController.xib */; };
 		7B1072C1175E7E1500D9DC5D /* previewproductimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072C0175E7E1500D9DC5D /* previewproductimage.png */; };
 		7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072C2175E84E400D9DC5D /* additemdetails.png */; };
-		7B34813117623ECF00C055AE /* CategoriesAttributesHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813017623ECF00C055AE /* CategoriesAttributesHandler.m */; };
 		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
 		7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
@@ -170,8 +169,6 @@
 		7B1072BD175E7CDE00D9DC5D /* ProductDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailsViewController.xib; sourceTree = "<group>"; };
 		7B1072C0175E7E1500D9DC5D /* previewproductimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = previewproductimage.png; sourceTree = "<group>"; };
 		7B1072C2175E84E400D9DC5D /* additemdetails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = additemdetails.png; sourceTree = "<group>"; };
-		7B34812F17623ECF00C055AE /* CategoriesAttributesHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesAttributesHandler.h; sourceTree = "<group>"; };
-		7B34813017623ECF00C055AE /* CategoriesAttributesHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesAttributesHandler.m; sourceTree = "<group>"; };
 		7B34813817624E5800C055AE /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B34813917624E5800C055AE /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
@@ -613,8 +610,6 @@
 				7BE29B95177A20710093BB25 /* Attributes */,
 				7B7A744F174D5052005E90B9 /* DiskManager */,
 				7B7A744A174D4EC3005E90B9 /* User */,
-				7B34812F17623ECF00C055AE /* CategoriesAttributesHandler.h */,
-				7B34813017623ECF00C055AE /* CategoriesAttributesHandler.m */,
 			);
 			name = Data;
 			sourceTree = "<group>";
@@ -918,7 +913,6 @@
 				7B1072BE175E7CDE00D9DC5D /* ProductDetailsViewController.m in Sources */,
 				7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */,
 				7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */,
-				7B34813117623ECF00C055AE /* CategoriesAttributesHandler.m in Sources */,
 				7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7B602DB3176670AF00663A73 /* BuyViewController.m in Sources */,

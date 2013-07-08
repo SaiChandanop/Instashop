@@ -9,8 +9,6 @@
 #import "ProductCreateViewController.h"
 #import "ProductAPIHandler.h"
 #import "AppRootViewController.h"
-#import "CategoriesAttributesHandler.h"
-
 
 @interface ProductCreateViewController ()
 

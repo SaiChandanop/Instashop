@@ -10,7 +10,7 @@
 #import "ImageAPIHandler.h"
 #import "ProductCreateViewController.h"
 #import "ProductCreateObject.h"
-#import "CategoriesAttributesHandler.h"
+#import "AttributesManager.h"
 #import "CategoriesPickerViewController.h"
 
 @interface ProductDetailsViewController ()
@@ -33,6 +33,12 @@
 @synthesize productCreateObject;
 
 @synthesize categoriesArray;
+
+
+@synthesize categoryButton;
+@synthesize subcategoryButton;
+@synthesize subSubCategoryButton;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -92,15 +98,72 @@
     self.categoriesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", nil];
 }
 
-- (void)categoryButtonHit
+- (void) loadButtonTitles
 {
-    NSLog(@"categoryButtonHit: %@", [[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]);
+ 
+    if ([[self.categoriesArray objectAtIndex:0] length] > 0)
+        [self.categoryButton setTitle:[self.categoriesArray objectAtIndex:0] forState:UIControlStateNormal];
     
-    CategoriesPickerViewController *categoriesPickerViewController = [[CategoriesPickerViewController alloc] initWithNibName:@"CategoriesPickerViewController" bundle:nil];
-    categoriesPickerViewController.delegate = self;
-    categoriesPickerViewController.type = 0;
-    categoriesPickerViewController.itemsArray = [[NSArray alloc] initWithArray:[[CategoriesAttributesHandler sharedCategoryAttributesHandler] getTopCategories]];
-    [self presentViewController:categoriesPickerViewController animated:YES completion:nil];
+    if ([[self.categoriesArray objectAtIndex:1] length] > 0)
+        [self.subcategoryButton setTitle:[self.categoriesArray objectAtIndex:1] forState:UIControlStateNormal];
+    
+    if ([[self.categoriesArray objectAtIndex:2] length] > 0)
+        [self.subSubCategoryButton setTitle:[self.categoriesArray objectAtIndex:2] forState:UIControlStateNormal];
+
+    
+}
+- (IBAction) categoryButtonHit:(UIButton *)theButton
+{
+/*
+    -(NSArray *)getTopCategories;
+    -(NSArray *)getSubcategoriesFromTopCategory:(NSString *)topCategory;
+    -(NSArray *)getAttributesFromTopCategory:(NSString *)topCategory fromSubcategory:(NSString *)subcategory;
+*/
+    
+    int selectedIndexType = -1;
+    NSArray *selectionArray = nil;
+    
+    if (theButton == categoryButton)
+    {
+        selectedIndexType = 0;
+        selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getTopCategories]];
+    }
+    else if (theButton == subcategoryButton)
+    {
+        selectedIndexType = 1;
+        if ([[self.categoriesArray objectAtIndex:0] length] > 0)
+            selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getSubcategoriesFromTopCategory:[self.categoriesArray objectAtIndex:0]]];
+    }
+
+    else if (theButton == subSubCategoryButton)
+    {
+        selectedIndexType = 2;
+        if ([[self.categoriesArray objectAtIndex:0] length] > 0)
+            if ([[self.categoriesArray objectAtIndex:1] length] > 0)            
+                selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getAttributesFromTopCategory:[self.categoriesArray objectAtIndex:0] fromSubcategory:[self.categoriesArray objectAtIndex:1]]];
+    }
+
+    
+    if (selectionArray != nil)
+    {
+        
+        CategoriesPickerViewController *categoriesPickerViewController = [[CategoriesPickerViewController alloc] initWithNibName:@"CategoriesPickerViewController" bundle:nil];
+        categoriesPickerViewController.delegate = self;
+        categoriesPickerViewController.type = selectedIndexType;
+        categoriesPickerViewController.itemsArray = [[NSArray alloc] initWithArray:selectionArray];
+        [self presentViewController:categoriesPickerViewController animated:YES completion:nil];
+        
+    }
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:nil
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Please select preceeding category"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    
 }
 
 -(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController
@@ -108,6 +171,7 @@
     [self.categoriesArray setObject:selectedCategory atIndexedSubscript:theController.type];
     
     [self dismissViewControllerAnimated:YES completion:nil];
+    [self loadButtonTitles];
 }
 
 
