@@ -99,12 +99,7 @@
     
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
-
-    NSLog(@"getProductsRequestFinished.newStr: %@", newStr);
-    
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-
-        NSLog(@"getProductsRequestFinished.responseArray: %@", responseArray);
 
     if (responseArray == nil)
     {

@@ -9,7 +9,6 @@
 #import "PurchasingViewController.h"
 #import "ImageAPIHandler.h"
 #import "FeedViewController.h"
-#import "BuyViewController.h"
 #import "AppDelegate.h"
 #import "STPCard.h"
 #import "StripeAuthenticationHandler.h"
@@ -28,6 +27,7 @@
 @synthesize contentScrollView;
 @synthesize requestedProductObject;
 @synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel, sellerProfileImageView;
+@synthesize bottomView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -41,8 +41,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
+    self.contentScrollView.backgroundColor = [UIColor clearColor];
+    
+    [self.view addSubview:self.bottomView];
+    [self.view bringSubviewToFront:self.bottomView];
+    
     
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
+    
 }
 
 - (void) loadContentViews
@@ -52,8 +60,6 @@
     self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
-    self.contentScrollView.backgroundColor = [UIColor clearColor];
     
     
     NSLog(@"requestedProductObject: %@", self.requestedProductObject);
@@ -71,7 +77,9 @@
     [numberFormatter setMaximumFractionDigits:2];
     
     self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
+ 
     
+
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -97,7 +105,7 @@
 -(IBAction)buyButtonHit
 {
     NSLog(@"requestedProductObject: %@", requestedProductObject);
-    STPCard *stripeCard = [[STPCard alloc] init];
+/*    STPCard *stripeCard = [[STPCard alloc] init];
     stripeCard.number = @"4242424242424242";
     stripeCard.expMonth = 05;
     stripeCard.expYear = 15;
@@ -110,6 +118,9 @@
     stripeCard.addressCountry = @"KINGS";
     
     [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
+    
+  */  
+    
 }
 
 -(void)doBuy

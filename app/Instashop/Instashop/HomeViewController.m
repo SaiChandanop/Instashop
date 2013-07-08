@@ -9,6 +9,7 @@
 #import "HomeViewController.h"
 #import "AppRootViewController.h"
 #import "UserAPIHandler.h"
+#import "PurchasingAddressViewController.h"
 
 @interface HomeViewController ()
 
@@ -58,11 +59,35 @@
     return  36;
 }
 
+-(void)doneButtonHitWithAddressVC:(PurchasingAddressViewController *)theVC
+{
+    NSMutableDictionary *addressDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+    [addressDictionary setObject:theVC.nameTextField.text forKey:@"seller_name"];
+    
+    [addressDictionary setObject:theVC.addressTextField.text forKey:@"seller_address"];
+    [addressDictionary setObject:theVC.cityTextField.text forKey:@"seller_city"];
+    [addressDictionary setObject:theVC.stateTextField.text forKey:@"seller_state"];
+    [addressDictionary setObject:theVC.zipTextField.text forKey:@"seller_zip"];
+    [addressDictionary setObject:theVC.phoneTextField.text forKey:@"seller_phone"];
+    
+    NSLog(@"addressDictionay: %@", addressDictionary);
+    [UserAPIHandler makeUserCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
+    
+}
 
 -(IBAction) sellerButtonHit
 {
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
-        [UserAPIHandler makeUserCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject]];
+    {
+        PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
+        purchasingAddressViewController.upsButton.alpha = 0;
+        purchasingAddressViewController.fedexButton.alpha = 0;
+        purchasingAddressViewController.doneButtonDelegate = self;
+        [self.parentController presentViewController:purchasingAddressViewController animated:YES completion:nil];
+        
+        
+        
+    }
     else
         [self.parentController createProductButtonHit];
 }
@@ -86,6 +111,8 @@
                                               otherButtonTitles:nil];
     
     [alertView show];
+    
+    [self.parentController dismissViewControllerAnimated:YES completion:nil];
 
     
 

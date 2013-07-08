@@ -43,4 +43,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *numberAvailableLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *sellerProfileImageView;
 
+
+@property (nonatomic, retain) IBOutlet UIView *bottomView;
 @end

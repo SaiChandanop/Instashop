@@ -11,23 +11,28 @@
 
 @implementation UserAPIHandler
 
-+(void)makeUserCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject
++(void)makeUserCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject withSellerAddressDictionary:(NSDictionary *)addressDictionary
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"seller_admin.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"create_seller.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
     URLRequest.HTTPMethod = @"POST";
-    NSString *postString = [instagramUserObject userObjectAsPostString];
+    NSMutableString *thePostString  = [NSMutableString stringWithCapacity:0];
+    
+    
+    [thePostString appendString:[instagramUserObject userObjectAsPostString]];
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     if (appDelegate.pushDeviceTokenString != nil)
-        postString = [NSString stringWithFormat:@"%@&push_id=%@", postString, appDelegate.pushDeviceTokenString];
+        [thePostString appendString:[NSString stringWithFormat:@"&push_id=%@", appDelegate.pushDeviceTokenString]];
 
+    for (id key in addressDictionary)
+        [thePostString appendString:[NSString stringWithFormat:@"&%@=%@", key, [addressDictionary objectForKey:key]]];
 
     
-    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"postString: %@", postString);
+    [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
+    NSLog(@"postString: %@", thePostString);
     
     UserAPIHandler *userAPIHandler = [[UserAPIHandler alloc] init];
     userAPIHandler.delegate = theDelegate;
