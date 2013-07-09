@@ -62,9 +62,6 @@
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     
     
-    
-    NSLog(@"requestedProductObject: %@", self.requestedProductObject);
-    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.requestedProductObject objectForKey:@"owner_instagram_id"]], @"method", nil];
@@ -103,29 +100,47 @@
     NSLog(@"backButtonHit");
 }
 
+-(void)feedRequestFinishedWithArrray:(NSArray *)theArray
+{
+    if ([theArray count] > 0)
+        self.requestedProductObject = [theArray objectAtIndex:0];
+    
+    [self loadContentViews];
+}
+
+
 -(IBAction)buyButtonHit
 {
-    NSLog(@"requestedProductObject: %@", requestedProductObject);
-/*    STPCard *stripeCard = [[STPCard alloc] init];
-    stripeCard.number = @"4242424242424242";
-    stripeCard.expMonth = 05;
-    stripeCard.expYear = 15;
-    stripeCard.cvc = @"123";
-    stripeCard.name = @"alchemy50";
-    stripeCard.addressLine1 = @"20 Jay Street #934";
-    stripeCard.addressZip = @"11201";
-    stripeCard.addressCity = @"Brooklyn";
-    stripeCard.addressState = @"NY";
-    stripeCard.addressCountry = @"KINGS";
-    
-    [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
-    
-  */  
-    
-    
     [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[requestedProductObject objectForKey:@"owner_instagram_id"]];
-     
-    
+}
+
+-(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
+{
+    PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
+    purchasingAddressViewController.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
+    [self presentViewController:purchasingAddressViewController animated:YES completion:nil];
+    purchasingAddressViewController.doneButton.alpha = 0;
+}
+
+
+-(void)shipperChosenWithShippingDictionary:(NSDictionary *)shippingDictionary withShippingAddressDictionary:(NSDictionary *)shippingAddressDictionary
+{
+/*    STPCard *stripeCard = [[STPCard alloc] init];
+ stripeCard.number = @"4242424242424242";
+ stripeCard.expMonth = 05;
+ stripeCard.expYear = 15;
+ stripeCard.cvc = @"123";
+ stripeCard.name = @"alchemy50";
+ stripeCard.addressLine1 = @"20 Jay Street #934";
+ stripeCard.addressZip = @"11201";
+ stripeCard.addressCity = @"Brooklyn";
+ stripeCard.addressState = @"NY";
+ stripeCard.addressCountry = @"KINGS";
+ 
+ [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
+ 
+ */
+
 }
 
 -(void)doBuy
@@ -143,6 +158,7 @@
     
 }
 
+
 -(void)buySuccessfulWithDictionary:(id)theDict
 {
     NSLog(@"theDict: %@", theDict);
@@ -150,21 +166,5 @@
     
 }
 
--(void)feedRequestFinishedWithArrray:(NSArray *)theArray
-{
-    if ([theArray count] > 0)
-        self.requestedProductObject = [theArray objectAtIndex:0];
-    
-    [self loadContentViews];
-}
-
-
--(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
-{
-    PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
-    purchasingAddressViewController.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
-    purchasingAddressViewController.doneButton.alpha = 0;
-    [self presentViewController:purchasingAddressViewController animated:YES completion:nil];    
-}
 
 @end

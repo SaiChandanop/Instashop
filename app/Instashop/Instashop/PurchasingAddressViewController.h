@@ -19,15 +19,17 @@
     UITextField *zipTextField;
     UITextField *phoneTextField;
     
-    UIButton *upsButton;
-    UIButton *fedexButton;
+    UIButton *checkRatesButton;
     UIButton *doneButton;
     
     NSDictionary *sellerDictionary;
+    
+    
+    NSDictionary *upsRateDictionary;
+    NSDictionary *fedexRateDictionary;
 }
 
--(IBAction)upsButtonHit;
--(IBAction)FedexButtonHit;
+-(IBAction)checkRatesButtonHit;
 -(IBAction)doneButtonHit;
 
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
@@ -37,13 +39,15 @@
 @property (nonatomic, retain) IBOutlet UITextField *zipTextField;
 @property (nonatomic, retain) IBOutlet UITextField *phoneTextField;
 
-@property (nonatomic, retain) IBOutlet UIButton *upsButton;
-@property (nonatomic, retain) IBOutlet UIButton *fedexButton;
+@property (nonatomic, retain) IBOutlet UIButton *checkRatesButton;
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;
 
 @property (nonatomic, retain) id doneButtonDelegate;
 
 @property (nonatomic, retain) NSDictionary *sellerDictionary;
+
+@property (nonatomic, retain) NSDictionary *upsRateDictionary;
+@property (nonatomic, retain) NSDictionary *fedexRateDictionary;
 
 @end
 

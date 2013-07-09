@@ -80,8 +80,7 @@
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
     {
         PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
-        purchasingAddressViewController.upsButton.alpha = 0;
-        purchasingAddressViewController.fedexButton.alpha = 0;
+        purchasingAddressViewController.checkRatesButton.alpha = 0;
         purchasingAddressViewController.doneButtonDelegate = self;
         [self.parentController presentViewController:purchasingAddressViewController animated:YES completion:nil];
         
