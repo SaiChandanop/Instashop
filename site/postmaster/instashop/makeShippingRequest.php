@@ -64,19 +64,29 @@ $shipmentArray = array(
 );
 
 $result = Postmaster_Shipment::create($shipmentArray);
-//print_r($result);
-
 $shipment_id = $result->id;
 
+$retDict = array();
+$retDict["postmaster_shipment_id"] = $result -> id;
+$trackingArray = $result -> tracking;
+$retDict["tracking_id"] = $trackingArray[0];
+$retDict["actual_shipping_cost"] = $result -> cost;
 
-echo "shipment id: ".$shipment_id;
+$retDict["buyer_name"] = $result -> to -> contact;
+$retDict["buyer_phone_no"] = $result -> to -> phone_no;
+$retDict["buyer_line1"] = $result -> to -> line1;
+$retDict["buyer_city"] = $result -> to -> city;
+$retDict["buyer_state"] = $result -> to -> state;
+$retDict["buyer_zip_code"] = $result -> to -> zip_code;
+$retDict["buyer_country"] = $result -> to -> country;
+$retDict["buyer_company"] = $result -> to -> company;
+$retDict["buyer_residential"] = $result -> to -> residential;
 
+$packagesArray = $result -> packages;
+$packagesArray = $packagesArray[0];
 
-$sm = Postmaster_Shipment::retrieve($shipment_id);
-
-
-print_r($sm);
- //var_dump($sm);
-
+$retDict["postmaster_label_url"] = $packagesArray -> label_url;         
+$json = json_encode($retDict);
+echo $json;
 
 ?>

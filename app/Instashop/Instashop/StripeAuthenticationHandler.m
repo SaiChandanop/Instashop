@@ -20,7 +20,6 @@ static NSString * const chargeEndpoint = @"charges";
 
 + (void)createTokenWithCard:(STPCard *)card withDelegate:(id)delegate
 {
-    NSLog(@"1");
     NSString *publishableKey = TEST_PUBLISHABLE_KEY;
     
     [self validateKey:publishableKey];
@@ -30,12 +29,7 @@ static NSString * const chargeEndpoint = @"charges";
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
     request.HTTPMethod = @"POST";
     request.HTTPBody = [self formEncodedDataWithAttributes:[self requestPropertiesFromCard:card]];
-    
-    NSLog(@"url: %@", url);
-    NSLog(@"request: %@", request);
-//    NSLog(@"request.HTTPBody: %@", request.HTTPBody);
-    
-    
+
     
     [NSURLConnection sendAsynchronousRequest:request
                                        queue:[NSOperationQueue mainQueue]
@@ -43,11 +37,7 @@ static NSString * const chargeEndpoint = @"charges";
      {
          NSError* error;
          NSDictionary* json = [NSJSONSerialization JSONObjectWithData:body options:kNilOptions error:&error];
-
-
-         NSLog(@"json: %@", json);
-         NSLog(@"json[id]: %@", [json objectForKey:@"id"]);
-         
+        
          [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"id"] forKey:@"StripeToken"];
          [[NSUserDefaults standardUserDefaults] synchronize];
          
@@ -78,9 +68,7 @@ static NSString * const chargeEndpoint = @"charges";
     NSURL *url = [self apiURLWithPublishableKey:publishableKey withEndpoint:chargeEndpoint];
     
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] initWithURL:url];
-    NSLog(@"url: %@", url);
-    NSLog(@"request: %@", request);
-
+    
     request.HTTPMethod = @"POST";
     request.HTTPBody = [self dictionaryToHTTPBodyConverter:requestPropertiesDictionary];
     [request setValue:[NSString stringWithFormat:@"Bearer %@", TEST_SECRET_KEY] forHTTPHeaderField:@"Authorization"];
@@ -97,7 +85,6 @@ static NSString * const chargeEndpoint = @"charges";
          NSDictionary* json = [NSJSONSerialization JSONObjectWithData:body options:kNilOptions error:&error];
          
          
-         NSLog(@"buy json: %@", json);
          [delegate buySuccessfulWithDictionary:json];
 //         NSLog(@"json[id]: %@", [json objectForKey:@"id"]);
          
@@ -177,7 +164,6 @@ static NSString * const chargeEndpoint = @"charges";
         [body appendFormat:@"%@=%@", [self URLEncodedString:key], value];
     }
     
-    NSLog(@"body: %@", body);
     return [body dataUsingEncoding:NSUTF8StringEncoding];
 }
 
@@ -201,7 +187,6 @@ static NSString * const chargeEndpoint = @"charges";
         [body appendFormat:@"card[%@]=%@", [self URLEncodedString:key], value];
     }
     
-    NSLog(@"body: %@", body);
     return [body dataUsingEncoding:NSUTF8StringEncoding];
 }
 

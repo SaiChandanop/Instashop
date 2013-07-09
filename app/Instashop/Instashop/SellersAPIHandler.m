@@ -46,19 +46,9 @@
 
 -(void)userCreateRequestFinished:(id)obj
 {
-    
-    NSString* responseString = [[[NSString alloc] initWithData:responseData
-                                                      encoding:NSUTF8StringEncoding] autorelease];
-    
-    NSLog(@"responseString: %@", responseString);
-    
-    
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"responseDictionary: %@", responseDictionary);
     
-    [self.delegate userDidCreateSellerWithResponseDictionary:responseDictionary];
-    
-    
+    [self.delegate userDidCreateSellerWithResponseDictionary:responseDictionary];    
 }
 
 

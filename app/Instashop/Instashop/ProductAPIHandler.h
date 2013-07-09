@@ -15,5 +15,5 @@
 +(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate;
 +(void)getAllProductsWithDelegate:(id)delegate;
 
-+(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject;
++(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withPostmasterDictionary:(NSDictionary *)postmasterDictionary;
 @end

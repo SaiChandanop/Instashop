@@ -10,7 +10,8 @@
 
 @interface PurchasingAddressViewController : UIViewController
 {
-    id doneButtonDelegate;
+    id doneButtonDelegate;    
+    id shippingCompleteDelegate;
     
     UITextField *nameTextField;
     UITextField *addressTextField;
@@ -32,6 +33,12 @@
 -(IBAction)checkRatesButtonHit;
 -(IBAction)doneButtonHit;
 
+
+@property (nonatomic, retain) id doneButtonDelegate;
+@property (nonatomic, retain) id shippingCompleteDelegate;
+
+
+
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *addressTextField;
 @property (nonatomic, retain) IBOutlet UITextField *cityTextField;
@@ -41,8 +48,6 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *checkRatesButton;
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;
-
-@property (nonatomic, retain) id doneButtonDelegate;
 
 @property (nonatomic, retain) NSDictionary *sellerDictionary;
 

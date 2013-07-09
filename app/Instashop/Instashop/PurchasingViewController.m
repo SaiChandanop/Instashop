@@ -24,6 +24,7 @@
 @implementation PurchasingViewController
 
 @synthesize requestingProductID;
+@synthesize requestedPostmasterDictionary;
 @synthesize parentController;
 @synthesize contentScrollView;
 @synthesize requestedProductObject;
@@ -117,32 +118,35 @@
 -(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
 {
     PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
+    purchasingAddressViewController.shippingCompleteDelegate = self;
     purchasingAddressViewController.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
     [self presentViewController:purchasingAddressViewController animated:YES completion:nil];
     purchasingAddressViewController.doneButton.alpha = 0;
 }
 
 
--(void)shipperChosenWithShippingDictionary:(NSDictionary *)shippingDictionary withShippingAddressDictionary:(NSDictionary *)shippingAddressDictionary
+
+
+-(void) postmasterShipCompleteWithPostmasterDictionary:(NSDictionary *)thePostmasterDictionary
 {
-/*    STPCard *stripeCard = [[STPCard alloc] init];
- stripeCard.number = @"4242424242424242";
- stripeCard.expMonth = 05;
- stripeCard.expYear = 15;
- stripeCard.cvc = @"123";
- stripeCard.name = @"alchemy50";
- stripeCard.addressLine1 = @"20 Jay Street #934";
- stripeCard.addressZip = @"11201";
- stripeCard.addressCity = @"Brooklyn";
- stripeCard.addressState = @"NY";
- stripeCard.addressCountry = @"KINGS";
- 
- [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
- 
- */
+    self.requestedPostmasterDictionary = [thePostmasterDictionary retain];
+    STPCard *stripeCard = [[STPCard alloc] init];
+    stripeCard.number = @"4242424242424242";
+    stripeCard.expMonth = 05;
+    stripeCard.expYear = 15;
+    stripeCard.cvc = @"123";
+    stripeCard.name = @"alchemy50";
+    stripeCard.addressLine1 = @"20 Jay Street #934";
+    stripeCard.addressZip = @"11201";
+    stripeCard.addressCity = @"Brooklyn";
+    stripeCard.addressState = @"NY";
+    stripeCard.addressCountry = @"KINGS";
+    
+    [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
 
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
 }
-
 -(void)doBuy
 {
     NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
@@ -161,8 +165,8 @@
 
 -(void)buySuccessfulWithDictionary:(id)theDict
 {
-    NSLog(@"theDict: %@", theDict);
-    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject];
+
+    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject withPostmasterDictionary:self.requestedPostmasterDictionary];
     
 }
 

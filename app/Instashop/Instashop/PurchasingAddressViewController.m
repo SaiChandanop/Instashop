@@ -19,6 +19,7 @@
 @implementation PurchasingAddressViewController
 
 @synthesize doneButtonDelegate;
+@synthesize shippingCompleteDelegate;
 
 @synthesize nameTextField;
 @synthesize addressTextField;
@@ -96,8 +97,6 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSLog(@"index: %d", buttonIndex);
     
-//    self.upsRateDictionary = nil;
-//    self.fedexRateDictionary = nil;
     
     NSMutableDictionary *theSellerDict = [NSMutableDictionary dictionaryWithDictionary:sellerDictionary];
     [theSellerDict setObject:[sellerDictionary objectForKey:@"instagram_id"] forKey:@"seller_instagram_id"];
@@ -125,13 +124,23 @@
                 [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.upsRateDictionary withPackageDictionary:packageDictionary];
             break;
         case 1:
-            [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.fedexRateDictionary withPackageDictionary:packageDictionary];
+                [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.fedexRateDictionary withPackageDictionary:packageDictionary];
             break;
         default:
+            self.upsRateDictionary = nil;
+            self.fedexRateDictionary = nil;
+
             break;
     }
     
 //
+}
+
+
+-(void)postmasterShipRequestRespondedWithDictionary:(NSDictionary *)theDict
+{
+//    NSLog(@"postmasterShipRequestRespondedWithDictionary theDict: %@", theDict);
+    [self.shippingCompleteDelegate postmasterShipCompleteWithPostmasterDictionary:theDict];
     
 }
 @end

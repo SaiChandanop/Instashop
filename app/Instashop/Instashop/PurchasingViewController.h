@@ -15,6 +15,7 @@
     FeedViewController *parentController;
     
     NSString *requestingProductID;
+    NSDictionary *requestedPostmasterDictionary;
     
     UIScrollView *contentScrollView;
     UIImageView *imageView;
@@ -33,6 +34,7 @@
 @property (nonatomic, retain) FeedViewController *parentController;
 
 @property (nonatomic, retain) NSString *requestingProductID;
+@property (nonatomic, retain) NSDictionary *requestedPostmasterDictionary;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;

@@ -97,8 +97,8 @@
 -(void)getProductsRequestFinished:(id)obj
 {
     
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+//    NSString* newStr = [[[NSString alloc] initWithData:responseData
+  //                                            encoding:NSUTF8StringEncoding] autorelease];
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
 
     if (responseArray == nil)
@@ -116,11 +116,9 @@
 }
 
 
-+(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject
++(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withPostmasterDictionary:(NSDictionary *)postmasterDictionary
 {
-    NSLog(@"productPurchasedWithStripeDictionary");
-    NSLog(@"stripeDictionary: %@", stripeDictionary);
-    NSLog(@"productObject: %@", productObject);
+
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"buy_product.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -137,6 +135,8 @@
     [postString appendString:[NSString stringWithFormat:@"purchaser_id=%@&", userInstagramObject.userID]];
     [postString appendString:[NSString stringWithFormat:@"purchaser_username=%@&", userInstagramObject.username]];
 
+    for (id key in postmasterDictionary)
+        [postString appendString:[NSString stringWithFormat:@"&%@=%@", key, [postmasterDictionary objectForKey:key]]];
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@"postString: %@", postString);

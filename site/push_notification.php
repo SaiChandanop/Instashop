@@ -19,7 +19,7 @@ function getSellerPushIDFromZenID($host, $user, $pass, $db, $seller_zen_id)
 	$retVal = "";
 
 	$query = "select * from sellers where id = '$seller_zen_id'";
-echo "\n get seller push id from zen id: ".$query;
+
 	$result = mysql_query($query);
 		
 	if ($row = mysql_fetch_assoc($result)) {
@@ -78,7 +78,6 @@ function pushSoldMessageWithProductInfo($products_id, $products_name, $products_
 	$device_tokens = array();
 	array_push($device_tokens, $seller_device_token);
 
-	print_r($device_tokens);
 
 	foreach($device_tokens as $device_token)
 	{
@@ -86,7 +85,7 @@ function pushSoldMessageWithProductInfo($products_id, $products_name, $products_
 		fwrite($apns, $apns_message);
 	}
 	
-	echo "\n\ndone!";
+
  
 	@socket_close($apns);
 	@fclose($apns);

@@ -31,9 +31,7 @@
     NSString* responseString = [[[NSString alloc] initWithData:responseData
                                                       encoding:NSUTF8StringEncoding] autorelease];
  
-    NSLog(@"responseString: %@", responseString);
     id aobj = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"aobj: %@", aobj);
     [self.delegate ratesCallReturnedWithDictionary:aobj];
 }
 
@@ -81,6 +79,9 @@
                                                       encoding:NSUTF8StringEncoding] autorelease];
     
     NSLog(@"responseString: %@", responseString);
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    
+    [self.delegate postmasterShipRequestRespondedWithDictionary:responseDictionary];
 }
 
 @end

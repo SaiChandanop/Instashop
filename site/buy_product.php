@@ -7,7 +7,9 @@ $zen_user = "690403_zencart";
 $zen_pass = "50Bridge318"; 
 $zen_db   = "690403_instashop_db";
 
-
+echo "\n-------------------------------------------------------------------------------------------------------------------";
+print_r($_POST);
+echo "\n-------------------------------------------------------------------------------------------------------------------";
 function decrementProductQuantity($host, $user, $pass, $db, $product_id)
 {
 
@@ -91,7 +93,6 @@ function updateOrdersProducts($host, $user, $pass, $db, $products_id, $products_
 
 	if ($row = mysql_fetch_assoc($result))
 	{
-		print_r($row);
 		$max = $row["MAX(orders_id)"];
 	}
 
@@ -125,6 +126,32 @@ function createOrderStatusHistory($host, $user, $pass, $db, $ordersID)
 
 }
 
+function createPostmasterOrderRecord($host, $user, $pass, $db, $ordersID, $postmaster_shipment_id, $postmaster_tracking_number, $postmaster_label_url)
+{
+
+	$con = mysql_connect($host, $user, $pass);
+	if (!$con) {
+	    echo "Could not connect to server\n";
+	    trigger_error(mysql_error(), E_USER_ERROR);
+	} 
+	
+	$r2 = mysql_select_db($db);
+	if (!$r2) {
+	    echo "Cannot select database\n";
+	    trigger_error(mysql_error(), E_USER_ERROR); 
+	} 
+		
+
+	$query = "insert into orders_postmaster values ('', '$ordersID', '$postmaster_shipment_id', '$postmaster_tracking_number', '$postmaster_label_url')";
+	$result = mysql_query($query);
+
+	$postmaster_order_id =  mysql_insert_id();	
+
+	return $postmaster_order_id;
+
+
+}
+
 $products_id = $_POST["products_id"];
 $products_name = $_POST["products_name"];
 $products_price = $_POST["products_price"];
@@ -137,11 +164,9 @@ decrementProductQuantity($zen_host, $zen_user, $zen_pass, $zen_db, $products_id)
 $ordersID = updateOrdersProducts($zen_host, $zen_user, $zen_pass, $zen_db, $products_id, $products_name, $products_price, $products_quantity, $purchaser_id);
 createOrderStatusHistory($zen_host, $zen_user, $zen_pass, $zen_db, $ordersID);
 
+$postmaster_order_id = createPostmasterOrderRecord($zen_host, $zen_user, $zen_pass, $zen_db, $ordersID, $_POST["postmaster_shipment_id"], $_POST["tracking_id"], $_POST["postmaster_label_url"]);
+
 $seller_zen_id = getSellerZenIDFromProductID($zen_host, $zen_user, $zen_pass, $zen_db, $products_id);
 pushSoldMessageWithProductInfo($products_id, $products_name, $products_price, $purchaser_id, $seller_zen_id, $_POST["purchaser_username"]);
-
-
-
-
 
 ?>
