@@ -23,7 +23,7 @@ $sellers_pass = "2Fpz7qm4";
 $sellers_db   = "690403_instashop_sellers";
 
 
-function getSellerProducts($host, $user, $pass, $db)
+function getSellerProducts($host, $user, $pass, $db, $requestingProductID)
 {
 
 	$con = mysql_connect($host, $user, $pass);
@@ -41,6 +41,10 @@ function getSellerProducts($host, $user, $pass, $db)
 
 
 	$query = "select * from sellers_products";
+	if (strlen($requestingProductID) > 0)
+		$query = "select * from sellers_products where product_id = '$requestingProductID'";
+
+
 	$result = mysql_query($query);
 
 
@@ -137,10 +141,56 @@ function getProductDetails($host, $user, $pass, $db, $theProductsArray)
 	return $responseArray;
 }
 
-//echo "hi";
-$productsArray = getSellerProducts($sellers_host, $sellers_user, $sellers_pass, $sellers_db);
+function getProductAttributes($host, $user, $pass, $db, $theProductsArray)
+{
+
+	$con = mysql_connect($host, $user, $pass);
+	if (!$con) {
+	    echo "Could not connect to server\n";
+	    trigger_error(mysql_error(), E_USER_ERROR);
+	} 
+	
+	$r2 = mysql_select_db($db);
+	if (!$r2) {
+	    echo "Cannot select database\n";
+	    trigger_error(mysql_error(), E_USER_ERROR); 
+	} 
+	
+	$responseArray = array();
+
+	for ($i = 0; $i < count($theProductsArray); $i++)
+	{
+		$product = $theProductsArray[$i];
+		$product_id = $product["product_id"];
+		$query = "select * from products_instashop_attributes where product_id = '". $product_id ."'";
+		$result = mysql_query($query);
+
+		if ($row = mysql_fetch_assoc($result)) {						
+			$product["products_attribute_one"] = $row['attribute_one'];
+			$product["products_attribute_two"] = $row['attribute_two'];
+			$product["products_attribute_three"] = $row['attribute_three'];
+			array_push($responseArray, $product);
+		}
+		else
+		{
+			array_push($responseArray, $product);
+		}
+
+	}
+
+	return $responseArray;
+	
+}
+
+
+$requestingProductID = $_GET["requesting_product_id"];
+
+//echo "requestingProductID: ". $requestingProductID;
+
+$productsArray = getSellerProducts($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $requestingProductID);
 $productsArray = getProductDescriptions($zen_host, $zen_user, $zen_pass, $zen_db, $productsArray);
 $productsArray = getProductDetails($zen_host, $zen_user, $zen_pass, $zen_db, $productsArray);
+$productsArray = getProductAttributes($zen_host, $zen_user, $zen_pass, $zen_db, $productsArray);
 
 //print_r($productsArray); 
 $json = json_encode($productsArray);
