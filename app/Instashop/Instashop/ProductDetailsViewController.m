@@ -31,7 +31,8 @@
 @synthesize retailPriceTextField;
 @synthesize instashopPriceTextField;
 @synthesize nextButton;
-
+@synthesize retailPriceLabel;
+@synthesize instashopPriceLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,14 +77,25 @@
     
     
     self.titleTextField.delegate = self;
-    self.descriptionTextField.delegate = self;
-    self.retailPriceTextField.delegate = self;
-    self.instashopPriceTextField.delegate = self;
+    self.titleTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
     
+    self.descriptionTextField.delegate = self;
+    self.descriptionTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
+
+    self.retailPriceTextField.delegate = self;
+    self.retailPriceLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
+    self.retailPriceTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
+    
+    self.instashopPriceTextField.delegate = self;
+    self.instashopPriceLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
+    self.instashopPriceTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
+    
+    
+    self.selectedCategoriesLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
 
     self.containerScrollView.frame = CGRectMake(0,0,self.view.frame.size.width, self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
     [self.view addSubview:self.containerScrollView];
-    self.containerScrollView.contentSize = CGSizeMake(0,self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
+    self.containerScrollView.contentSize = CGSizeMake(0,self.nextButton.frame.origin.y + self.nextButton.frame.size.height - 50);
     
     
     self.attributesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", nil];

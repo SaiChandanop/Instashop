@@ -25,9 +25,12 @@
     UITextField *titleTextField;
     UITextField *descriptionTextField;
     UILabel *selectedCategoriesLabel;
+    UILabel *retailPriceLabel;
     UITextField *retailPriceTextField;
+    UILabel *instashopPriceLabel;
     UITextField *instashopPriceTextField;
     UIButton *nextButton;
+    
     
 }
 
@@ -53,7 +56,9 @@
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;
 @property (nonatomic, retain) IBOutlet UITextField *descriptionTextField;
 @property (nonatomic, retain) IBOutlet UILabel *selectedCategoriesLabel;
+@property (nonatomic, retain) IBOutlet UILabel *retailPriceLabel;
 @property (nonatomic, retain) IBOutlet UITextField *retailPriceTextField;
+@property (nonatomic, retain) IBOutlet UILabel *instashopPriceLabel;
 @property (nonatomic, retain) IBOutlet UITextField *instashopPriceTextField;
 @property (nonatomic, retain) IBOutlet UIButton *nextButton;
 

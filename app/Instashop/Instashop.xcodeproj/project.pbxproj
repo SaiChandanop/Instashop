@@ -105,6 +105,7 @@
 		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
+		7BA4270C1794681500A9732E /* cpbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270B1794681500A9732E /* cpbackimage.png */; };
 		7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */; };
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
 		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
@@ -262,6 +263,7 @@
 		7B96C037174FE0B100E4EDAD /* ImageRequestorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageRequestorProtocol.h; sourceTree = "<group>"; };
 		7B96C039174FED3700E4EDAD /* ImagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewCell.h; sourceTree = "<group>"; };
 		7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewCell.m; sourceTree = "<group>"; };
+		7BA4270B1794681500A9732E /* cpbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cpbackimage.png; sourceTree = "<group>"; };
 		7BC6AC521770F4C500C238E9 /* ImagesTableCellButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableCellButton.h; sourceTree = "<group>"; };
 		7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableCellButton.m; sourceTree = "<group>"; };
 		7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAuthenticationHandler.h; sourceTree = "<group>"; };
@@ -334,6 +336,7 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7BA4270B1794681500A9732E /* cpbackimage.png */,
 				2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */,
 				2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */,
 				2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */,
@@ -963,6 +966,7 @@
 				7BE29B9A177A21000093BB25 /* attributes.csv in Resources */,
 				7B6C5006178B186400CDF0A7 /* CategoriesPickerViewController.xib in Resources */,
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
+				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
