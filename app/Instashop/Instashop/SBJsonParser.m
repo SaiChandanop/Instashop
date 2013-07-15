@@ -28,7 +28,7 @@
  */
 
 #if !__has_feature(objc_arc)
-#error "This source file must be compiled with ARC enabled!"
+
 #endif
 
 #import "SBJsonParser.h"

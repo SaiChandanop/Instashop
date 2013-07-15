@@ -15,56 +15,47 @@
 @interface ProductDetailsViewController : UIViewController <UITextFieldDelegate>
 {
     ProductCreateViewController *parentController;
-    
     ProductCreateObject *productCreateObject;
+    
+    NSMutableArray *attributesArray;        
     
     UIScrollView *containerScrollView;
     
-    UIImageView *productImageView;
-    UITextField *captionTextField;
-    UITextView *descriptionTextView;
-    UITextField *retailTextField;
-    UITextField *shippingTextField;
-    UITextField *priceTextField;
-    UITextField *quantityTextField;
-    UIButton *categoryButton;
-    UIButton *subcategoryButton;
-    UIButton *subSubCategoryButton;
+    UIImageView *theImageView;
+    UITextField *titleTextField;
+    UITextField *descriptionTextField;
+    UILabel *selectedCategoriesLabel;
+    UITextField *retailPriceTextField;
+    UITextField *instashopPriceTextField;
+    UIButton *nextButton;
     
-    
-    NSMutableArray *attributesArray;        
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
 
 - (IBAction) backButtonHit;
 - (IBAction) previewButtonHit;
+- (IBAction) categoryButtonHit;
 
-- (IBAction) categoryButtonHit:(UIButton *)theButton;
 
 
 -(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController;
 
 
-
-@property (nonatomic, retain) ProductCreateViewController *parentController;
-
-@property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
-
-@property (nonatomic, retain) IBOutlet UIImageView *productImageView;
-@property (nonatomic, retain) IBOutlet UITextField *captionTextField;
-@property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
-@property (nonatomic, retain) IBOutlet UITextField *retailTextField;
-@property (nonatomic, retain) IBOutlet UITextField *shippingTextField;
-@property (nonatomic, retain) IBOutlet UITextField *priceTextField;
-@property (nonatomic, retain) IBOutlet UITextField *sizeColorTextField;
-@property (nonatomic, retain) IBOutlet UITextField *quantityTextField;
 @property (nonatomic, retain) ProductCreateObject *productCreateObject;
+@property (nonatomic, retain) ProductCreateViewController *parentController;
 
 @property (nonatomic, retain) NSMutableArray *attributesArray;
 
-@property (nonatomic, retain) IBOutlet UIButton *categoryButton;
-@property (nonatomic, retain) IBOutlet UIButton *subcategoryButton;
-@property (nonatomic, retain) IBOutlet UIButton *subSubCategoryButton;
+@property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
+
+@property (nonatomic, retain) IBOutlet UIImageView *theImageView;
+@property (nonatomic, retain) IBOutlet UITextField *titleTextField;
+@property (nonatomic, retain) IBOutlet UITextField *descriptionTextField;
+@property (nonatomic, retain) IBOutlet UILabel *selectedCategoriesLabel;
+@property (nonatomic, retain) IBOutlet UITextField *retailPriceTextField;
+@property (nonatomic, retain) IBOutlet UITextField *instashopPriceTextField;
+@property (nonatomic, retain) IBOutlet UIButton *nextButton;
+
 
 @end

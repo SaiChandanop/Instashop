@@ -22,10 +22,16 @@ static ImageAPIHandler *sharedImageAPIHandler;
         sharedImageAPIHandler.mediaCache = [[NSMutableDictionary alloc] initWithCapacity:0];
     }
     
-    if ([sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString])
-        referenceImageView.image = [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString];
-    else
+   /* if ([sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString])
     {
+        NSLog(@"was cached");
+        NSLog(@"referenceIMageViewe: %@", [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString]);
+        NSLog(@"[sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString]: %@", [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString]);
+        
+        referenceImageView.image = [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString];
+    }
+    else
+    {*/
         NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:instagramMediaURLString]];
         
         ImageAPIHandler *imageAPIHandler = [[ImageAPIHandler alloc] init];
@@ -34,13 +40,15 @@ static ImageAPIHandler *sharedImageAPIHandler;
         imageAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:imageAPIHandler context:NULL];
         [imageAPIHandler.theWebRequest addTarget:imageAPIHandler action:@selector(imageRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
         [imageAPIHandler.theWebRequest start];
-    }
+//    }
     
 }
 
 
 -(void)imageRequestFinished:(id)obj
 {
+    
+    NSLog(@"imageRequestFinished imageRequestFinished");
      UIImage *responseImage = [UIImage imageWithData:self.responseData];
     [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:[self.theWebRequest.request.URL absoluteString]];
     self.theImageView.image = responseImage;

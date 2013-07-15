@@ -78,8 +78,8 @@
     NSLog(@"self.productDetailsViewController: %@", self.productDetailsViewController);
     self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);
     self.productDetailsViewController.parentController = self;
-    [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];
     [self.navigationController pushViewController:self.productDetailsViewController animated:YES];
+    [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];    
     self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);    
 }
 
