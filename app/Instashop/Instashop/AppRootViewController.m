@@ -10,7 +10,7 @@
 #import "ProductCreateViewController.h"
 #import "STPCard.h"
 #import "StripeAuthenticationHandler.h"
-
+#import "AttributesManager.h"
 
 @implementation AppRootViewController
 
@@ -42,6 +42,8 @@ float transitionTime = .456;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [AttributesManager getSharedAttributesManager];
     
     self.homeViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
     self.homeViewController.parentController = self;

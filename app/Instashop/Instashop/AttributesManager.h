@@ -8,13 +8,21 @@
 
 #import <Foundation/Foundation.h>
 
+
+@interface NSArray (indexKeyedDictionaryExtension)
+- (NSDictionary *)indexKeyedDictionary;
+@end
+
+
 @interface AttributesManager : NSObject
 
 +(AttributesManager *)getSharedAttributesManager;
 
--(NSArray *)getTopCategories;
--(NSArray *)getSubcategoriesFromTopCategory:(NSString *)topCategory;
--(NSArray *)getAttributesFromTopCategory:(NSString *)topCategory fromSubcategory:(NSString *)subcategory;
 
-@property (nonatomic, retain) NSMutableArray *attributesArray;
+-(NSArray *)getCategoriesWithArray:(NSArray *)theArray;
+
+
+@property (nonatomic, retain) NSMutableDictionary *attributesDictionary;
+
+
 @end

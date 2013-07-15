@@ -98,17 +98,29 @@
     self.containerScrollView.contentSize = CGSizeMake(0,self.nextButton.frame.origin.y + self.nextButton.frame.size.height - 50);
     
     
-    self.attributesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", nil];
+    self.attributesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", nil];
 }
 
 - (IBAction) categoryButtonHit
 {
-    
-    int selectedIndexType = -1;
-    NSArray *selectionArray = nil;
    
+    NSMutableArray *searchingKeysArray = [NSMutableArray arrayWithCapacity:0];
     
-    if ([[self.attributesArray objectAtIndex:0] length] == 0)
+    int index = 0;
+    while ([[self.attributesArray objectAtIndex:index] length] > 0)
+    {
+        [searchingKeysArray addObject:[self.attributesArray objectAtIndex:index]];
+         index++;
+    }
+
+    int selectedIndexType = [searchingKeysArray count];
+    NSLog(@"searchingKeysArray: %@", searchingKeysArray);
+    NSLog(@"selectedIndexType: %d", selectedIndexType);
+
+    NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
+    
+    
+/*    if ([[self.attributesArray objectAtIndex:0] length] == 0)
     {
         selectedIndexType = 0;
         selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getTopCategories]];
@@ -128,6 +140,9 @@
                 selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getAttributesFromTopCategory:[self.attributesArray objectAtIndex:0] fromSubcategory:[self.attributesArray objectAtIndex:1]]];
     }
     
+    else 
+    
+     */  
     if (selectionArray != nil)
     {
         
@@ -138,8 +153,18 @@
         [self presentViewController:categoriesPickerViewController animated:YES completion:nil];
         
     }
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"End of the line"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
 
-    
+    }
+
+ 
 }
 
 -(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController

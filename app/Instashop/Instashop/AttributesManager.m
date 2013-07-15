@@ -8,13 +8,29 @@
 
 #import "AttributesManager.h"
 
+@implementation NSArray (indexKeyedDictionaryExtension)
+
+- (NSDictionary *)indexKeyedDictionary
+{
+    NSUInteger arrayCount = [self count];
+    id arrayObjects[arrayCount], objectKeys[arrayCount];
+    
+    [self getObjects:arrayObjects range:NSMakeRange(0UL, arrayCount)];
+    for(NSUInteger index = 0UL; index < arrayCount; index++) { objectKeys[index] = [NSNumber numberWithUnsignedInteger:index]; }
+    
+    return([NSDictionary dictionaryWithObjects:arrayObjects forKeys:objectKeys count:arrayCount]);
+}
+
+@end
+
+
 
 @implementation AttributesManager
 
 
 static AttributesManager *theManager;
 
-@synthesize attributesArray;
+@synthesize attributesDictionary;
 
 +(AttributesManager *)getSharedAttributesManager;
 {
@@ -25,126 +41,136 @@ static AttributesManager *theManager;
     return theManager;
 }
 
+
+
 -(id)init
 {
     self = [super init];
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"attributes" ofType:@"csv"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:@"attributes1" ofType:@"csv"];
     if (filePath) {
         
-        self.attributesArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.attributesDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
         
         NSString *myText = [NSString stringWithContentsOfFile:filePath];
-        
-        NSMutableDictionary *outermostDictionary = nil;
-        
-        NSString *innerKey = nil;
-        
         NSArray *linesArray = [myText componentsSeparatedByString:@"\n"];
+        //        NSLog(@"linesArray: %@", linesArray);
         
+        NSMutableArray *theParsingArray = [NSMutableArray arrayWithCapacity:0];
+        
+        NSMutableArray *currentKeysArray = [NSMutableArray arrayWithCapacity:0];
+        
+        
+        int lastIndex = 99;
         for (int i = 0; i < [linesArray count]; i++)
         {
             NSArray *lineObjects = [[linesArray objectAtIndex:i] componentsSeparatedByString:@","];
             
-            if ([lineObjects count] == 3)
-            {
-//                NSLog(@"lineObjects[%d]: %@", i, lineObjects);
-                
-                if ([[lineObjects objectAtIndex:0] length] > 0)
+            for (int j = 0; j < [lineObjects count]; j++)
+                if ([[lineObjects objectAtIndex:j] length] > 0)
                 {
-                    if (outermostDictionary != nil)
-                        [self.attributesArray addObject:outermostDictionary];
-
-                    outermostDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
-                    [outermostDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:[lineObjects objectAtIndex:0]];
-                }
-                else if ([[lineObjects objectAtIndex:1] length] > 0)
-                {
+                    NSString *keyObject = [lineObjects objectAtIndex:j];
                     
-                    NSMutableDictionary *outermostContentDictionary = [outermostDictionary objectForKey:[[outermostDictionary allKeys] objectAtIndex:0]];
-                    
-                    innerKey = [lineObjects objectAtIndex:1];
-                    
-                    NSMutableDictionary *theDictionary = [outermostContentDictionary objectForKey:innerKey];
-                    
-                    if (theDictionary == nil)
+                    if (j < lastIndex)
                     {
-                        [outermostContentDictionary setObject:[[NSMutableDictionary alloc] initWithCapacity:0] forKey:innerKey];
+                        if (j >= [currentKeysArray count])
+                            [currentKeysArray addObject:keyObject];
+                        else
+                            [currentKeysArray replaceObjectAtIndex:j withObject:keyObject];
+                        
+                        lastIndex = j;
+                    }
+                    else
+                    {
+                        if (j >= [currentKeysArray count])
+                            [currentKeysArray addObject:keyObject];
+                        else
+                            [currentKeysArray replaceObjectAtIndex:j withObject:keyObject];
+                        
+                        lastIndex = j;
+                        
+                        if (lastIndex < [currentKeysArray count] - 1)
+                            for (int k = 0; k < [currentKeysArray count]  - lastIndex; k++)
+                                [currentKeysArray removeLastObject];
+                        
+                        NSArray *tempArray = [NSArray arrayWithArray:currentKeysArray];
+                        lastIndex = 99;
+                        [theParsingArray addObject:tempArray];
                     }
                 }
-                else if ([[lineObjects objectAtIndex:2] length] > 0)
-                {                                        
+        }
+        
+        
+        
+        NSMutableDictionary *attributesDict = [NSMutableDictionary dictionaryWithCapacity:0];
+        
+        for (int i = 0; i < [theParsingArray count]; i++)
+        {
+            NSArray *objectsArray = [theParsingArray objectAtIndex:i];
+            
+            NSMutableDictionary *scopeDict = [NSMutableDictionary dictionaryWithCapacity:0];
+            for (int j = 0; j < [objectsArray count]; j++)
+            {
+                NSString *key = [objectsArray objectAtIndex:j];
+                if (j == 0)
+                {
+                    if ([attributesDict objectForKey:key] == nil)
+                        [attributesDict setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
                     
-                    NSMutableDictionary *outermostContentDictionary = [outermostDictionary objectForKey:[[outermostDictionary allKeys] objectAtIndex:0]];
-                    NSMutableDictionary *innerDictionary = [outermostContentDictionary objectForKey:innerKey];
+                    scopeDict = [attributesDict objectForKey:key];
+                }
+                else
+                {
+                    if ([scopeDict objectForKey:key] == nil)
+                        [scopeDict setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
                     
-                    NSString *key = [lineObjects objectAtIndex:2];
-  //                  NSLog(@"key: %@", key);
-//                    NSLog(@"innerKey: %@", innerKey);
-                    
-                    [innerDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
-                    
+                    scopeDict = [scopeDict objectForKey:key];
                 }
             }
+            
         }
-        if (outermostDictionary != nil)
-        {
-            [self.attributesArray addObject:outermostDictionary];
-        }
+        
+        ///        NSLog(@"attributesDict: %@", attributesDict);
+        
+        [self.attributesDictionary setDictionary:attributesDict];
+        
     }
-    
-//    NSLog(@"attributesArray: %@", attributesArray);
     return self;
 }
 
--(NSArray *)getTopCategories
+-(NSArray *)getCategoriesWithArray:(NSArray *)theArray
 {
-    NSMutableArray *ar = [NSMutableArray arrayWithCapacity:0];
+    NSDictionary *dict = nil;
     
-    for (int i = 0; i < [self.attributesArray count]; i++)
+    if ([theArray count] == 0)
+        return [self.attributesDictionary allKeys];
+    
+    else
     {
-        NSDictionary *dict = [self.attributesArray objectAtIndex:i];
-        [ar addObject:[[dict allKeys] objectAtIndex:0]];
+        for (int i = 0; i < [theArray count]; i++)
+        {
+            NSString *theKey = [theArray objectAtIndex:i];
+            if (i == 0)
+                dict = [self.attributesDictionary objectForKey:theKey];
+            else
+                dict = [dict objectForKey:theKey];
+            
+        }
     }
-    return ar;
+    
+    NSLog(@"dict: %@", dict);
+    
+    NSArray *retAR = [dict allKeys];
+                      
+    if ([[dict allKeys] count] == 0)
+        return nil;
+    if ([[dict allKeys] count] == 1)
+        if ([[[dict allKeys] objectAtIndex:0] rangeOfString:@"|||"].length > 0)
+            retAR = nil;
+        
+    return retAR;
 }
 
--(NSArray *)getSubcategoriesFromTopCategory:(NSString *)topCategory
-{
-    NSMutableArray *retAr = [NSMutableArray arrayWithCapacity:0];
-    NSDictionary *desiredDict = nil;
-    for (int i = 0; i < [self.attributesArray count]; i++)
-    {
-        NSDictionary *dict = [self.attributesArray objectAtIndex:i];
-        if ([((NSString *)[[dict allKeys] objectAtIndex:0]) compare:topCategory] == NSOrderedSame)
-            desiredDict = dict;
-    }
-    if (desiredDict != nil)
-        [retAr addObjectsFromArray:[[desiredDict objectForKey:[[desiredDict allKeys] objectAtIndex:0]] allKeys]];
 
-    
-    return retAr;
-}
 
--(NSArray *)getAttributesFromTopCategory:(NSString *)topCategory fromSubcategory:(NSString *)subcategory
-{
-    NSMutableArray *retAr = [NSMutableArray arrayWithCapacity:0];
-    
-    NSDictionary *desiredDict = nil;
-    for (int i = 0; i < [self.attributesArray count]; i++)
-    {
-        NSDictionary *dict = [self.attributesArray objectAtIndex:i];
-        if ([((NSString *)[[dict allKeys] objectAtIndex:0]) compare:topCategory] == NSOrderedSame)
-            desiredDict = dict;
-    }
-    if (desiredDict != nil)
-    {        
-        NSDictionary *dict = [desiredDict objectForKey:topCategory];
-        dict = [dict objectForKey:subcategory];
-        [retAr addObjectsFromArray:[dict allKeys]];
 
-    }
-    
-
-    return retAr;
-}
 @end
