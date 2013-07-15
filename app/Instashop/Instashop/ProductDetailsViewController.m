@@ -101,51 +101,32 @@
     self.attributesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", nil];
 }
 
-- (void) loadButtonTitles
-{
- 
-/*    if ([[self.attributesArray objectAtIndex:0] length] > 0)
-        [self.categoryButton setTitle:[self.attributesArray objectAtIndex:0] forState:UIControlStateNormal];
-    
-    if ([[self.attributesArray objectAtIndex:1] length] > 0)
-        [self.subcategoryButton setTitle:[self.attributesArray objectAtIndex:1] forState:UIControlStateNormal];
-    
-    if ([[self.attributesArray objectAtIndex:2] length] > 0)
-        [self.subSubCategoryButton setTitle:[self.attributesArray objectAtIndex:2] forState:UIControlStateNormal];
-*/
-    
-}
 - (IBAction) categoryButtonHit
 {
-/*
-    -(NSArray *)getTopCategories;
-    -(NSArray *)getSubcategoriesFromTopCategory:(NSString *)topCategory;
-    -(NSArray *)getAttributesFromTopCategory:(NSString *)topCategory fromSubcategory:(NSString *)subcategory;
-*/
-/*
+    
     int selectedIndexType = -1;
     NSArray *selectionArray = nil;
+   
     
-    if (theButton == categoryButton)
+    if ([[self.attributesArray objectAtIndex:0] length] == 0)
     {
         selectedIndexType = 0;
         selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getTopCategories]];
     }
-    else if (theButton == subcategoryButton)
+    else if ([[self.attributesArray objectAtIndex:1] length] == 0)
     {
         selectedIndexType = 1;
         if ([[self.attributesArray objectAtIndex:0] length] > 0)
             selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getSubcategoriesFromTopCategory:[self.attributesArray objectAtIndex:0]]];
+        
     }
-
-    else if (theButton == subSubCategoryButton)
+    else if ([[self.attributesArray objectAtIndex:2] length] == 0)
     {
         selectedIndexType = 2;
         if ([[self.attributesArray objectAtIndex:0] length] > 0)
-            if ([[self.attributesArray objectAtIndex:1] length] > 0)            
+            if ([[self.attributesArray objectAtIndex:1] length] > 0)
                 selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getAttributesFromTopCategory:[self.attributesArray objectAtIndex:0] fromSubcategory:[self.attributesArray objectAtIndex:1]]];
     }
-
     
     if (selectionArray != nil)
     {
@@ -157,15 +138,7 @@
         [self presentViewController:categoriesPickerViewController animated:YES completion:nil];
         
     }
-    else
-    {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:nil
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Please select preceeding category"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }*/
+
     
 }
 
@@ -174,7 +147,22 @@
     [self.attributesArray setObject:selectedCategory atIndexedSubscript:theController.type];
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    [self loadButtonTitles];
+    
+    
+    NSMutableString *string = [NSMutableString stringWithCapacity:0];
+    
+    if ([[self.attributesArray objectAtIndex:0] length] > 0)
+        [string appendString:[NSString stringWithFormat:@"%@", [self.attributesArray objectAtIndex:0]]];
+    
+    if ([[self.attributesArray objectAtIndex:1] length] > 0)
+        [string appendString:[NSString stringWithFormat:@" > %@", [self.attributesArray objectAtIndex:1]]];
+
+    if ([[self.attributesArray objectAtIndex:2] length] > 0)
+        [string appendString:[NSString stringWithFormat:@" > %@", [self.attributesArray objectAtIndex:2]]];
+    
+    if ([string length] > 0)
+        self.selectedCategoriesLabel.text = string;
+
 }
 
 
