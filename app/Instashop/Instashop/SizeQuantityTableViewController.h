@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface SizeQuantityTableViewController : UITableViewController
+{
+    NSMutableArray *sizeQuantityTableViewCells;
+    
+}
 
+@property (nonatomic, retain) NSMutableArray *sizeQuantityTableViewCells;
 @end

@@ -7,17 +7,21 @@
 //
 
 #import "SizeQuantityTableViewController.h"
-
+#import "SizeQuantityTableViewCell.h"
 @interface SizeQuantityTableViewController ()
 
 @end
 
 @implementation SizeQuantityTableViewController
 
+@synthesize sizeQuantityTableViewCells;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
+        
+        self.sizeQuantityTableViewCells = [[NSMutableArray alloc] initWithCapacity:0];
         // Custom initialization
     }
     return self;
@@ -26,25 +30,19 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+        self.sizeQuantityTableViewCells = [[NSMutableArray alloc] initWithCapacity:0];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
 
 #pragma mark - Table view data source
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    [self.sizeQuantityTableViewCells removeAllObjects];
+    
     [tableView setSeparatorColor:[UIColor clearColor]];
     return 1;
 }
@@ -58,12 +56,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
+    SizeQuantityTableViewCell *cell = [[SizeQuantityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
+    [cell loadWithIndexPath:indexPath withSizeTitle:@""];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"indexpath.row: %d", indexPath.row];
+    if (![self.sizeQuantityTableViewCells containsObject:cell])
+        [self.sizeQuantityTableViewCells addObject:cell];
     
     return cell;
 }
