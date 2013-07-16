@@ -7,12 +7,17 @@
 //
 
 #import "SizeQuantityTableViewCell.h"
+#import "AppDelegate.h"
+#import "AppRootViewController.h"
+#import "SizePickerViewViewController.h"
 
 @implementation SizeQuantityTableViewCell
 
 @synthesize rowNumberLabel;
 @synthesize sizeButton;
 @synthesize quantityButton;
+@synthesize pickerSelectedIndex;
+@synthesize pickerItemsArray;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -39,6 +44,9 @@
         [self addSubview:self.quantityButton];
         
         
+        self.pickerItemsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        for (int i = 0; i < 100; i++)
+            [self.pickerItemsArray addObject:[NSString stringWithFormat:@"%d", i]];
 
     }
     return self;
@@ -69,5 +77,65 @@
     [self.quantityButton setTitle:@"0" forState:UIControlStateNormal];
     
 }
+
+
+-(void)quantityButtonHit
+{
+    
+    SizePickerViewViewController *sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
+    sizePickerViewViewController.thePickerView.delegate = self;
+    sizePickerViewViewController.thePickerView.dataSource = self;
+    
+    AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [del.appRootViewController presentViewController:sizePickerViewViewController animated:YES completion:nil];
+
+    sizePickerViewViewController.thePickerView.delegate = self;
+    sizePickerViewViewController.thePickerView.dataSource = self;
+
+    [sizePickerViewViewController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    
+}
+
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 1;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return [self.pickerItemsArray count];
+}
+
+- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{    
+    return [self.pickerItemsArray objectAtIndex:row];
+    
+}
+
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.pickerSelectedIndex = row;
+}
+
+-(void)dismissPicker
+{
+    AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [del.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+}
+-(void)pickerCancelButtonHit
+{
+    [self dismissPicker];
+
+}
+
+-(void)pickerSaveButtonHit
+{
+    [self.quantityButton setTitle:[NSString stringWithFormat:@"%d", self.pickerSelectedIndex] forState:UIControlStateNormal];
+    [self dismissPicker];
+}
+
 
 @end

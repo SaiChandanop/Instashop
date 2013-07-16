@@ -111,6 +111,8 @@
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
 		7BD5C1FE179596E1006F311A /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */; };
 		7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */; };
+		7BD5C20517959FC7006F311A /* SizePickerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20317959FC7006F311A /* SizePickerViewViewController.m */; };
+		7BD5C20617959FC7006F311A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD5C20417959FC7006F311A /* SizePickerViewViewController.xib */; };
 		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
@@ -276,6 +278,9 @@
 		7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewController.m; sourceTree = "<group>"; };
 		7BD5C1FF17959811006F311A /* SizeQuantityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewCell.h; sourceTree = "<group>"; };
 		7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewCell.m; sourceTree = "<group>"; };
+		7BD5C20217959FC7006F311A /* SizePickerViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizePickerViewViewController.h; sourceTree = "<group>"; };
+		7BD5C20317959FC7006F311A /* SizePickerViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizePickerViewViewController.m; sourceTree = "<group>"; };
+		7BD5C20417959FC7006F311A /* SizePickerViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizePickerViewViewController.xib; sourceTree = "<group>"; };
 		7BE29B96177A20870093BB25 /* AttributesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesManager.h; sourceTree = "<group>"; };
 		7BE29B97177A20870093BB25 /* AttributesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesManager.m; sourceTree = "<group>"; };
 		7BE29B99177A21000093BB25 /* attributes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes.csv; sourceTree = "<group>"; };
@@ -776,6 +781,9 @@
 				7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */,
 				7BD5C1FF17959811006F311A /* SizeQuantityTableViewCell.h */,
 				7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */,
+				7BD5C20217959FC7006F311A /* SizePickerViewViewController.h */,
+				7BD5C20317959FC7006F311A /* SizePickerViewViewController.m */,
+				7BD5C20417959FC7006F311A /* SizePickerViewViewController.xib */,
 			);
 			name = SizeQuantity;
 			sourceTree = "<group>";
@@ -989,6 +997,7 @@
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
 				7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */,
+				7BD5C20617959FC7006F311A /* SizePickerViewViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1050,6 +1059,7 @@
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
 				7BD5C1FE179596E1006F311A /* SizeQuantityTableViewController.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
+				7BD5C20517959FC7006F311A /* SizePickerViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
