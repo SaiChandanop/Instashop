@@ -172,6 +172,8 @@
     NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
     if (selectionArray == nil)
     {
+        
+        
         [self dismissViewControllerAnimated:YES completion:nil];
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:.35];
@@ -180,6 +182,12 @@
         
         [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
         
+        
+        NSArray *sizesArray = [[AttributesManager getSharedAttributesManager] getSizesWithArray:searchingKeysArray];
+        if (sizesArray != nil)
+            self.sizeQuantityTableViewController.sizesArray = [[NSArray alloc] initWithArray:sizesArray];
+        
+        [self.categorySizeQuantityTableView reloadData];
     }
     else
     {

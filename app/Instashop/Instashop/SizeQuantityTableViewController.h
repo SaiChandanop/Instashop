@@ -12,7 +12,11 @@
 {
     NSMutableArray *sizeQuantityTableViewCells;
     
+    NSArray *sizesArray;
+    
 }
 
 @property (nonatomic, retain) NSMutableArray *sizeQuantityTableViewCells;
+@property (nonatomic, retain) NSArray *sizesArray;
+
 @end

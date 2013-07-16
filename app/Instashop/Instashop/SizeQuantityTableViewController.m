@@ -15,6 +15,7 @@
 @implementation SizeQuantityTableViewController
 
 @synthesize sizeQuantityTableViewCells;
+@synthesize sizesArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,7 +42,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [self.sizeQuantityTableViewCells removeAllObjects];
     
     [tableView setSeparatorColor:[UIColor clearColor]];
     return 1;
@@ -49,7 +49,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    if (self.sizesArray == nil)
+        return 1;
+    else
+        return [self.sizesArray count];
+
 }
 
 
@@ -58,10 +62,15 @@
     static NSString *CellIdentifier = @"Cell";
     SizeQuantityTableViewCell *cell = [[SizeQuantityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 
-    [cell loadWithIndexPath:indexPath withSizeTitle:@""];
+    if (self.sizesArray == nil)
+        [cell loadWithIndexPath:indexPath withSizeTitle:nil];
+    else
+        [cell loadWithIndexPath:indexPath withSizeTitle:[self.sizesArray objectAtIndex:indexPath.row]];
     
     if (![self.sizeQuantityTableViewCells containsObject:cell])
         [self.sizeQuantityTableViewCells addObject:cell];
+    
+    
     
     return cell;
 }

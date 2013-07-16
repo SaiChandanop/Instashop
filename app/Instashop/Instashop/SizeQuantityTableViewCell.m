@@ -31,12 +31,11 @@
         
         self.sizeButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
         self.sizeButton.frame = CGRectMake(self.frame.size.width / 4 - buttonWidth / 2, self.frame.size.height / 2 - buttonHeight / 2, buttonWidth, buttonHeight);
-        [self.sizeButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.sizeButton];
         
         self.quantityButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
         self.quantityButton.frame = CGRectMake(self.frame.size.width / 2 + self.frame.size.width / 4 - buttonWidth / 2, self.frame.size.height / 2 - buttonHeight / 2, buttonWidth, buttonHeight);
-        [self.quantityButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
+        [self.quantityButton addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.quantityButton];
         
         
@@ -62,6 +61,13 @@
     [self.quantityButton setTitle:@"quant" forState:UIControlStateNormal];
     
  
+    if (sizeTitle == nil)
+        [self.sizeButton setTitle:@"NIL" forState:UIControlStateNormal];
+    else
+        [self.sizeButton setTitle:sizeTitle forState:UIControlStateNormal];
+    
+    [self.quantityButton setTitle:@"0" forState:UIControlStateNormal];
+    
 }
 
 @end

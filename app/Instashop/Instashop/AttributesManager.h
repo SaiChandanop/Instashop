@@ -20,7 +20,7 @@
 
 
 -(NSArray *)getCategoriesWithArray:(NSArray *)theArray;
-
+-(NSArray *)getSizesWithArray:(NSArray *)theArray;
 
 @property (nonatomic, retain) NSMutableDictionary *attributesDictionary;
 

@@ -157,7 +157,7 @@ static AttributesManager *theManager;
         }
     }
     
-    NSLog(@"dict: %@", dict);
+//    NSLog(@"dict: %@", dict);
     
     NSArray *retAR = [dict allKeys];
                       
@@ -170,6 +170,39 @@ static AttributesManager *theManager;
     return retAR;
 }
 
+-(NSArray *)getSizesWithArray:(NSArray *)theArray
+{
+    NSDictionary *dict = nil;
+    
+    if ([theArray count] == 0)
+        return [self.attributesDictionary allKeys];
+    
+    else
+    {
+        for (int i = 0; i < [theArray count]; i++)
+        {
+            NSString *theKey = [theArray objectAtIndex:i];
+            if (i == 0)
+                dict = [self.attributesDictionary objectForKey:theKey];
+            else
+                dict = [dict objectForKey:theKey];
+            
+        }
+    }
+    
+    NSArray *retAR = nil;
+    
+    if ([[dict allKeys] count] == 1)
+        if ([[[dict allKeys] objectAtIndex:0] rangeOfString:@"|||"].length > 0)
+        {
+            retAR = [NSArray arrayWithArray:[[[dict allKeys] objectAtIndex:0] componentsSeparatedByString:@"|||"]];
+
+        }
+    
+
+    
+    return retAR;
+}
 
 
 
