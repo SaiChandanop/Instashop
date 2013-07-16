@@ -78,7 +78,7 @@
 }
 
 
-+(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withPostmasterDictionary:(NSDictionary *)postmasterDictionary
++(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withProductCategoryObjectID:(NSString *)productCategoryObjectID withPostmasterDictionary:(NSDictionary *)postmasterDictionary
 {
 
     
@@ -90,6 +90,8 @@
     
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    
+    [postString appendString:[NSString stringWithFormat:@"product_category_id=%@&", productCategoryObjectID]];
     [postString appendString:[NSString stringWithFormat:@"products_id=%@&", [productObject objectForKey:@"products_id"]]];
     [postString appendString:[NSString stringWithFormat:@"products_name=%@&", [productObject objectForKey:@"products_name"]]];
     [postString appendString:[NSString stringWithFormat:@"products_price=%@&", [productObject objectForKey:@"products_price"]]];

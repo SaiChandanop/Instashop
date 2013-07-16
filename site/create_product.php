@@ -112,17 +112,19 @@ function updateSellersProducts($host, $user, $pass, $db, $instagram_user_id, $ze
 }
 
 
-function updateProductsAttributes($host, $user, $pass, $db, $product_id, $attribute_one, $attribute_two, $attribute_three)
+function updateProductsAttributes($host, $user, $pass, $db, $postObject)
 {
-	echo "updateProductsAttributes1";
 
 	$con = mysql_connect($host, $user, $pass);
 	$r2 = mysql_select_db($db);
-	echo "updateProductsAttributes2";
-	$query = "insert into products_instashop_attributes values ('', '$product_id', '$attribute_one', '$attribute_two', '$attribute_three', '','','')";
 
-	echo "\nupdateProductsAttributes: ". $query;
+	$productID = $postObject["zencart_product_id"];
+	$quantity = $postObject["object_quantity"];
+	$size = $postObject["object_size"];
 
+	$categories = explode("|", $postObject["categories"]);
+
+	$query = "insert into products_categories_and_sizes values ('','$productID','$quantity','$size','$categories[0]','$categories[1]','$categories[2]','$categories[3]','$categories[4]','$categories[5]','$categories[6]')";	
 	$result = mysql_query($query);
 
 	mysql_close();
@@ -131,27 +133,37 @@ function updateProductsAttributes($host, $user, $pass, $db, $product_id, $attrib
 
 
 
-print_r($_POST);
+
+if ($_POST["create_type"] == "product_object")
+{
+
+
 
 $user_id = getZencartIDFromInstagramID($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $_POST["instagramUserId"]);
-echo "\ngetZencartIDFromInstagramID: user_id: ". $user_id;
+//echo "\ngetZencartIDFromInstagramID: user_id: ". $user_id;
 
 $product_id = createNewProduct($zen_host, $zen_user, $zen_pass, $zen_db, $_POST["object_quantity"], $_POST["object_model"], $_POST["product_image"], $_POST["object_price"], $_POST["product_date"], $_POST["product_weight"], $user_id);
-echo "\ncreateNewProduct product_id: ". $product_id;
+//echo "\ncreateNewProduct product_id: ". $product_id;
 
 updateProductsToCategories($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $user_id);
-echo "\nupdateProductsToCategories";
+//echo "\nupdateProductsToCategories";
 
 updateProductsDescription($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $_POST["object_title"], $_POST["object_description"], $_POST["object_image_urlstring"]);
-echo "\n updateProductsDescription";
+//echo "\n updateProductsDescription";
 
 updateSellersProducts($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $_POST["instagramUserId"], $user_id, $product_id);
-echo "\n updateSellersProducts done";
+//echo "\n updateSellersProducts done";
 
 
+echo "product_id=$product_id";
 
-updateProductsAttributes($zen_host, $zen_user, $zen_pass, $zen_db, $product_id, $_POST["object_attribute_one"], $_POST["object_attribute_two"], $_POST["object_attribute_three"]);
+}
+else if ($_POST["create_type"] == "size_quantity_object")
+{
 
+//	print_r($_POST);
+	updateProductsAttributes($zen_host, $zen_user, $zen_pass, $zen_db, $_POST);
 
+}
 
 ?>

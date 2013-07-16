@@ -162,19 +162,38 @@ function getProductAttributes($host, $user, $pass, $db, $theProductsArray)
 	{
 		$product = $theProductsArray[$i];
 		$product_id = $product["product_id"];
-		$query = "select * from products_instashop_attributes where product_id = '". $product_id ."'";
+		$query = "select * from products_categories_and_sizes where product_id = '". $product_id ."'";
+		
+//		echo "query: ".$query;
+//	$query = "insert into  values ('','$productID','$quantity','$size','$categories[0]','$categories[1]','$categories[2]','$categories[3]','$categories[4]','$categories[5]','$categories[6]')";	
 		$result = mysql_query($query);
 
-		if ($row = mysql_fetch_assoc($result)) {						
-			$product["products_attribute_one"] = $row['attribute_one'];
-			$product["products_attribute_two"] = $row['attribute_two'];
-			$product["products_attribute_three"] = $row['attribute_three'];
-			array_push($responseArray, $product);
+		$sizeQuantityArray = array();
+
+		while ($row = mysql_fetch_assoc($result)) {
+
+			$ar = array();
+			$ar["id"] = $row["id"];
+			$ar["quantity"] = $row["quantity"];
+			$ar["size"] = $row["size"];			
+			array_push($sizeQuantityArray, $ar);
+
+			
+			$product["attribute_1"] = $row['attribute_1'];
+			$product["attribute_2"] = $row['attribute_2'];
+			$product["attribute_3"] = $row['attribute_3'];
+			$product["attribute_4"] = $row['attribute_4'];
+			$product["attribute_5"] = $row['attribute_5'];
+			$product["attribute_6"] = $row['attribute_6'];
+			$product["attribute_7"] = $row['attribute_7'];
+			$product["attribute_8"] = $row['attribute_8'];
+			$product["attribute_9"] = $row['attribute_9'];
+
+		
 		}
-		else
-		{
-			array_push($responseArray, $product);
-		}
+		$product["size_quantity"] = $sizeQuantityArray;
+
+		array_push($responseArray, $product);
 
 	}
 

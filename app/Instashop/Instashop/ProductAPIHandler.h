@@ -18,6 +18,6 @@
 +(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate;
 +(void)getAllProductsWithDelegate:(id)delegate;
 
-+(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withPostmasterDictionary:(NSDictionary *)postmasterDictionary;
++(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withProductCategoryObjectID:(NSString *)productCategoryObjectID withPostmasterDictionary:(NSDictionary *)postmasterDictionary;
 
 @end

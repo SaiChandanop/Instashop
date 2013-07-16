@@ -85,9 +85,7 @@
     
     self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     
-    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
-    NSLog(@"sizeQuantityArray: %@", sizeQuantityArray);
-    
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];    
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -123,7 +121,17 @@
 
 -(IBAction)buyButtonHit
 {
-    [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[requestedProductObject objectForKey:@"owner_instagram_id"]];
+    if (self.sizeSelectedIndex == -1 || [[self.quantityButton titleForState:UIControlStateNormal] compare:@"Quantity"] == NSOrderedSame)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Please select a size and or quantity"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+        [alertView show];
+    }
+    else
+        [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[requestedProductObject objectForKey:@"owner_instagram_id"]];
 }
 
 -(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
@@ -176,8 +184,9 @@
 
 -(void)buySuccessfulWithDictionary:(id)theDict
 {
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     
-    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject withPostmasterDictionary:self.requestedPostmasterDictionary];
+    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject withProductCategoryObjectID:[[sizeQuantityArray objectAtIndex:self.sizeSelectedIndex] objectForKey:@"id"] withPostmasterDictionary:self.requestedPostmasterDictionary];
     
 }
 
@@ -191,10 +200,6 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
     
-    NSLog(@"self.sizePickerViewViewController.type: %d", self.sizePickerViewViewController.type);
-    
-    
-    
     NSString *titleItem = [self.sizePickerViewViewController.itemsArray objectAtIndex:[self.sizePickerViewViewController.thePickerView selectedRowInComponent:0]];
     if (self.sizePickerViewViewController.type == 0)
     {
@@ -202,7 +207,13 @@
         self.sizeSelectedIndex = [self.sizePickerViewViewController.thePickerView selectedRowInComponent:0];
     }
     else
+    {
+        if (self.sizeSelectedIndex == -1)
+            self.sizeSelectedIndex = 0;
+        
         [self.quantityButton setTitle:titleItem forState:UIControlStateNormal];
+        
+    }
 }
 
 -(IBAction)sizeButtonHit

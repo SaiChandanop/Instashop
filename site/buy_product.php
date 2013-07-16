@@ -10,7 +10,7 @@ $zen_db   = "690403_instashop_db";
 echo "\n-------------------------------------------------------------------------------------------------------------------";
 print_r($_POST);
 echo "\n-------------------------------------------------------------------------------------------------------------------";
-function decrementProductQuantity($host, $user, $pass, $db, $product_id)
+function decrementProductQuantity($host, $user, $pass, $db, $product_id, $product_category_id)
 {
 
 	$con = mysql_connect($host, $user, $pass);
@@ -36,6 +36,25 @@ function decrementProductQuantity($host, $user, $pass, $db, $product_id)
 		$query = "update products set products_quantity = '".$quantity ."' where products_id = '". $product_id ."'";
 		$result = mysql_query($query);
     }
+
+
+	$query = "select * from products_categories_and_sizes where id = '". $product_category_id ."'";
+	echo "\n\nquery!!!: $query \n\n\n";
+
+	$result = mysql_query($query);
+
+	if ($row = mysql_fetch_assoc($result)) {	
+		$quantity = $row["quantity"];
+		$quantity--;
+		$query = "update products_categories_and_sizes set quantity = '".$quantity ."' where id = '". $product_category_id ."'";
+
+		echo "\n\nquery2!!!: $query \n\n\n";
+		$result = mysql_query($query);
+    }
+
+
+
+
 }
 
 
@@ -153,6 +172,7 @@ function createPostmasterOrderRecord($host, $user, $pass, $db, $ordersID, $postm
 }
 
 $products_id = $_POST["products_id"];
+$product_category_id = $_POST["product_category_id"];
 $products_name = $_POST["products_name"];
 $products_price = $_POST["products_price"];
 $products_quantity = $_POST["products_quantity"];
@@ -160,13 +180,13 @@ $purchaser_id = $_POST["purchaser_id"];
 
 
 
-decrementProductQuantity($zen_host, $zen_user, $zen_pass, $zen_db, $products_id);
+decrementProductQuantity($zen_host, $zen_user, $zen_pass, $zen_db, $products_id, $product_category_id);
 $ordersID = updateOrdersProducts($zen_host, $zen_user, $zen_pass, $zen_db, $products_id, $products_name, $products_price, $products_quantity, $purchaser_id);
 createOrderStatusHistory($zen_host, $zen_user, $zen_pass, $zen_db, $ordersID);
 
 $postmaster_order_id = createPostmasterOrderRecord($zen_host, $zen_user, $zen_pass, $zen_db, $ordersID, $_POST["postmaster_shipment_id"], $_POST["tracking_id"], $_POST["postmaster_label_url"]);
 
 $seller_zen_id = getSellerZenIDFromProductID($zen_host, $zen_user, $zen_pass, $zen_db, $products_id);
-pushSoldMessageWithProductInfo($products_id, $products_name, $products_price, $purchaser_id, $seller_zen_id, $_POST["purchaser_username"]);
+pushSoldMessageWithProductInfo($products_id, $products_name, $products_price, $purchaser_id, $seller_zen_id, $_POST["purchaser_username"], $postmaster_order_id);
 
 ?>
