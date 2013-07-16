@@ -25,6 +25,7 @@
 
 @synthesize containerScrollView;
 @synthesize subCategoryContainerView;
+@synthesize sizeQuantityTableViewController;
 @synthesize categorySizeQuantityTableView;
 @synthesize theImageView;
 @synthesize titleTextField;
@@ -142,9 +143,6 @@
 {
     [self.attributesArray setObject:selectedCategory atIndexedSubscript:theController.type];
     
-    
-    
-    
     NSMutableString *string = [NSMutableString stringWithCapacity:0];
     
     if ([[self.attributesArray objectAtIndex:0] length] > 0)
@@ -258,30 +256,7 @@
 #pragma mark table view data source delegate methods
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    [tableView setSeparatorColor:[UIColor clearColor]];
-    return 1;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return 5;
-}
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"indexpath.row: %d", indexPath.row];
-    
-    return cell;
-}
 
 
 

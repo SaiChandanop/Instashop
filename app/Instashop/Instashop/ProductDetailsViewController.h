@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ProductCreateObject.h"
 #import "CategoriesPickerViewController.h"
-
+#import "SizeQuantityTableViewController.h"
 @class ProductCreateViewController;
 
 @interface ProductDetailsViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource>
@@ -21,6 +21,7 @@
     
     UIScrollView *containerScrollView;    
     UIView *subCategoryContainerView;
+    SizeQuantityTableViewController *sizeQuantityTableViewController;
     UITableView *categorySizeQuantityTableView;
     
     UIImageView *theImageView;
@@ -54,6 +55,7 @@
 
 @property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
 @property (nonatomic, retain) IBOutlet UIView *subCategoryContainerView;
+@property (nonatomic, retain) IBOutlet SizeQuantityTableViewController *sizeQuantityTableViewController;
 @property (nonatomic, retain) IBOutlet UITableView *categorySizeQuantityTableView;
 
 

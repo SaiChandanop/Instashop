@@ -109,6 +109,7 @@
 		7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270D17946F5F00A9732E /* attributes1.csv */; };
 		7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */; };
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
+		7BD5C1FE179596E1006F311A /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */; };
 		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
@@ -270,6 +271,8 @@
 		7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableCellButton.m; sourceTree = "<group>"; };
 		7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAuthenticationHandler.h; sourceTree = "<group>"; };
 		7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAuthenticationHandler.m; sourceTree = "<group>"; };
+		7BD5C1FC179596E1006F311A /* SizeQuantityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewController.h; sourceTree = "<group>"; };
+		7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewController.m; sourceTree = "<group>"; };
 		7BE29B96177A20870093BB25 /* AttributesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesManager.h; sourceTree = "<group>"; };
 		7BE29B97177A20870093BB25 /* AttributesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesManager.m; sourceTree = "<group>"; };
 		7BE29B99177A21000093BB25 /* attributes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes.csv; sourceTree = "<group>"; };
@@ -418,6 +421,7 @@
 		7B1072B5175E7CB300D9DC5D /* ProductDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
+				7BD5C1FB179596B3006F311A /* SizeQuantity */,
 				7B6C5001178B184800CDF0A7 /* CategoriesPicker */,
 				7B1072BB175E7CDE00D9DC5D /* ProductDetailsViewController.h */,
 				7B1072BC175E7CDE00D9DC5D /* ProductDetailsViewController.m */,
@@ -762,6 +766,15 @@
 			name = Stripe;
 			sourceTree = "<group>";
 		};
+		7BD5C1FB179596B3006F311A /* SizeQuantity */ = {
+			isa = PBXGroup;
+			children = (
+				7BD5C1FC179596E1006F311A /* SizeQuantityTableViewController.h */,
+				7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */,
+			);
+			name = SizeQuantity;
+			sourceTree = "<group>";
+		};
 		7BE29B95177A20710093BB25 /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1030,6 +1043,7 @@
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
+				7BD5C1FE179596E1006F311A /* SizeQuantityTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
