@@ -95,7 +95,6 @@
     
     self.selectedCategoriesLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
 
-//    self.containerScrollView.frame = CGRectMake(0,0,self.view.frame.size.width, self.subCategoryContainerView.frame.origin.y + self.subCategoryContainerView.frame.size.height);
     [self.view addSubview:self.containerScrollView];
     self.containerScrollView.contentSize = CGSizeMake(0,self.subCategoryContainerView.frame.origin.y + self.subCategoryContainerView.frame.size.height - 100);
     
@@ -123,12 +122,7 @@
     }
 
     int selectedIndexType = [searchingKeysArray count];
-    NSLog(@"searchingKeysArray: %@", searchingKeysArray);
-    NSLog(@"selectedIndexType: %d", selectedIndexType);
-
     NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
-    
-    
 
     if (selectionArray != nil)
     {
@@ -140,17 +134,7 @@
         [self presentViewController:categoriesPickerViewController animated:YES completion:nil];
         
     }
-    else
-    {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"End of the line"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-
-    }
-
+    
  
 }
 
@@ -186,13 +170,18 @@
     }
     
     int selectedIndexType = [searchingKeysArray count];
-    NSLog(@"searchingKeysArray: %@", searchingKeysArray);
-    NSLog(@"selectedIndexType: %d", selectedIndexType);
     
     NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
     if (selectionArray == nil)
     {
-      [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:.35];
+        self.subCategoryContainerView.frame = CGRectMake(0, self.categorySizeQuantityTableView.frame.origin.y + self.categorySizeQuantityTableView.frame.size.height, self.subCategoryContainerView.frame.size.width, self.subCategoryContainerView.frame.size.height);
+        [UIView commitAnimations];
+        
+        [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
+        
     }
     else
     {
@@ -264,6 +253,37 @@
     [self.retailPriceTextField resignFirstResponder];
     [self.instashopPriceTextField resignFirstResponder];    
 }
+
+
+#pragma mark table view data source delegate methods
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    [tableView setSeparatorColor:[UIColor clearColor]];
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 5;
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"indexpath.row: %d", indexPath.row];
+    
+    return cell;
+}
+
+
 
 
 
