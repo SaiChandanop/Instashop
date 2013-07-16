@@ -19,7 +19,9 @@
     
     NSMutableArray *attributesArray;        
     
-    UIScrollView *containerScrollView;
+    UIScrollView *containerScrollView;    
+    UIView *subCategoryContainerView;
+    UITableView *categorySizeQuantityTableView;
     
     UIImageView *theImageView;
     UITextField *titleTextField;
@@ -51,6 +53,9 @@
 @property (nonatomic, retain) NSMutableArray *attributesArray;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
+@property (nonatomic, retain) IBOutlet UIView *subCategoryContainerView;
+@property (nonatomic, retain) IBOutlet UITableView *categorySizeQuantityTableView;
+
 
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;

@@ -24,6 +24,8 @@
 @synthesize attributesArray;
 
 @synthesize containerScrollView;
+@synthesize subCategoryContainerView;
+@synthesize categorySizeQuantityTableView;
 @synthesize theImageView;
 @synthesize titleTextField;
 @synthesize descriptionTextField;
@@ -93,12 +95,16 @@
     
     self.selectedCategoriesLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
 
-    self.containerScrollView.frame = CGRectMake(0,0,self.view.frame.size.width, self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
+//    self.containerScrollView.frame = CGRectMake(0,0,self.view.frame.size.width, self.subCategoryContainerView.frame.origin.y + self.subCategoryContainerView.frame.size.height);
     [self.view addSubview:self.containerScrollView];
-    self.containerScrollView.contentSize = CGSizeMake(0,self.nextButton.frame.origin.y + self.nextButton.frame.size.height - 50);
+    self.containerScrollView.contentSize = CGSizeMake(0,self.subCategoryContainerView.frame.origin.y + self.subCategoryContainerView.frame.size.height - 100);
     
     
     self.attributesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", nil];
+    
+    self.subCategoryContainerView.backgroundColor = self.view.backgroundColor;
+    self.categorySizeQuantityTableView.backgroundColor = self.view.backgroundColor;
+    [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
 }
 
 - (IBAction) categoryButtonHit
@@ -185,15 +191,16 @@
     
     NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
     if (selectionArray == nil)
+    {
       [self dismissViewControllerAnimated:YES completion:nil];
+    }
     else
     {
         theController.type = selectedIndexType;
         theController.itemsArray = [NSArray arrayWithArray:selectionArray];
         [theController.thePickerView reloadAllComponents];
     }
-    
-//    [self dismissViewControllerAnimated:YES completion:nil];
+
 
 }
 
