@@ -67,19 +67,25 @@
     URLRequest.HTTPMethod = @"POST";
     
     InstagramUserObject *userInstagramObject = [InstagramUserObject getStoredUserObject];
+
     
+    NSMutableString *categoriesString = [NSMutableString stringWithCapacity:0];
+    
+    for (int i = 0; i < [theProductCreateObject.categoriesArray count]; i++)
+    {
+        [categoriesString appendString:[theProductCreateObject.categoriesArray objectAtIndex:i]];
+        if (i != [theProductCreateObject.categoriesArray count] - 1)
+            [categoriesString appendString:@"|"];
+    }
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:@"create_type=size_quantity_object&"];
-    [postString appendString:[NSString stringWithFormat:@"zencart_product_id=%@", productID]];
+    [postString appendString:[NSString stringWithFormat:@"zencart_product_id=%@&", productID]];
     [postString appendString:[NSString stringWithFormat:@"instagramUserId=%@&", userInstagramObject.userID]];
     [postString appendString:[NSString stringWithFormat:@"instagramProductId=%@&", [theProductCreateObject.instragramMediaInfoDictionary objectForKey:@"id"]]];
-    [postString appendString:[NSString stringWithFormat:@"object_title=%@&", theProductCreateObject.title]];
-    [postString appendString:[NSString stringWithFormat:@"object_description=%@&", theProductCreateObject.description]];
     [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", theProductCreateObject.quantity]];
-    [postString appendString:[NSString stringWithFormat:@"object_price=%@&", [theProductCreateObject.retailPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
-    [postString appendString:[NSString stringWithFormat:@"object_weight=%@&", theProductCreateObject.shippingWeight]];
-    [postString appendString:[NSString stringWithFormat:@"object_image_urlstring=%@&", theProductCreateObject.instagramPictureURLString]];
+    [postString appendString:[NSString stringWithFormat:@"object_size=%@&", theProductCreateObject.size]];
+    [postString appendString:[NSString stringWithFormat:@"categories=%@&", categoriesString]];
     
     /*    [postString appendString:[NSString stringWithFormat:@"&object_attribute_one=%@", [attributesArray objectAtIndex:0]]];
      [postString appendString:[NSString stringWithFormat:@"&object_attribute_two=%@", [attributesArray objectAtIndex:1]]];

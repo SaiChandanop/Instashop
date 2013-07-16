@@ -15,9 +15,9 @@
 @implementation SizePickerViewViewController
 
 @synthesize itemsArray, cellDelegate,thePickerView;
-
 @synthesize cancelButton;
 @synthesize saveButton;
+@synthesize type;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

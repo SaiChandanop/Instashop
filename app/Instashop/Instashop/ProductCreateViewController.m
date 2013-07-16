@@ -105,24 +105,36 @@
 {
     [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:self.productPreviewViewController.productCreateContainerObject.mainObject];
     
-/*    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
+/*    */
+}
+
+-(void)productContainerCreateFinishedWithProductID:(NSString *)productID
+{
+    NSMutableArray *ar = [NSMutableArray arrayWithArray:self.productPreviewViewController.productCreateContainerObject.objectSizePermutationsArray];
+    
+    int count = [ar count];
+    
+    for (int i = 0; i < count; i++)
+    {
+        ProductCreateObject *obj = [ar objectAtIndex:0];
+        [CreateProductAPIHandler createProductSizeQuantityObjects:self withProductObject:obj withProductID:productID];
+        [ar removeObject:obj];
+    }
+    
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"Smashing"
                                               otherButtonTitles:nil];
     [alertView show];
-*/
-}
 
--(void)productContainerCreateFinishedWithProductID:(NSString *)productID
-{
-    NSLog(@"productID: %@", productID);
 }
 
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-//    [self backButtonHit];
+    [self backButtonHit];
 }
 
 

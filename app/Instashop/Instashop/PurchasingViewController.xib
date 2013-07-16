@@ -558,6 +558,40 @@
 					<int key="connectionID">262</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">sizeButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="661027344"/>
+					</object>
+					<int key="connectionID">314</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">quantityButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="832381442"/>
+					</object>
+					<int key="connectionID">315</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">sizeButtonHit</string>
+						<reference key="source" ref="661027344"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">312</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">quantityButtonHit</string>
+						<reference key="source" ref="832381442"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">313</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">buyButtonHit</string>
 						<reference key="source" ref="77320145"/>
@@ -740,7 +774,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">311</int>
+			<int key="maxID">315</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -750,6 +784,8 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="backButtonHit">id</string>
 						<string key="buyButtonHit">id</string>
+						<string key="quantityButtonHit">id</string>
+						<string key="sizeButtonHit">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="backButtonHit">
@@ -760,6 +796,14 @@
 							<string key="name">buyButtonHit</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="quantityButtonHit">
+							<string key="name">quantityButtonHit</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="sizeButtonHit">
+							<string key="name">sizeButtonHit</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="bottomView">UIView</string>
@@ -768,8 +812,10 @@
 						<string key="imageView">UIImageView</string>
 						<string key="numberAvailableLabel">UILabel</string>
 						<string key="priceLabel">UILabel</string>
+						<string key="quantityButton">UIButton</string>
 						<string key="sellerLabel">UILabel</string>
 						<string key="sellerProfileImageView">UIImageView</string>
+						<string key="sizeButton">UIButton</string>
 						<string key="titleLabel">UILabel</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
@@ -797,6 +843,10 @@
 							<string key="name">priceLabel</string>
 							<string key="candidateClassName">UILabel</string>
 						</object>
+						<object class="IBToOneOutletInfo" key="quantityButton">
+							<string key="name">quantityButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="sellerLabel">
 							<string key="name">sellerLabel</string>
 							<string key="candidateClassName">UILabel</string>
@@ -804,6 +854,10 @@
 						<object class="IBToOneOutletInfo" key="sellerProfileImageView">
 							<string key="name">sellerProfileImageView</string>
 							<string key="candidateClassName">UIImageView</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="sizeButton">
+							<string key="name">sizeButton</string>
+							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="titleLabel">
 							<string key="name">titleLabel</string>

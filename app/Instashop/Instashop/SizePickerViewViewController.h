@@ -8,14 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "SizeQuantityTableViewCell.h"
+
 @interface SizePickerViewViewController : UIViewController <UIPickerViewDelegate>
 {
+    
     SizeQuantityTableViewCell *cellDelegate;
     NSMutableArray *itemsArray;
     UIPickerView *thePickerView;
     
     UIButton *cancelButton;
     UIButton *saveButton;
+    
+    int type;
 }
 
 @property (nonatomic, retain) SizeQuantityTableViewCell *cellDelegate;
@@ -25,4 +29,5 @@
 @property (nonatomic, retain) IBOutlet UIButton *cancelButton;
 @property (nonatomic, retain) IBOutlet UIButton *saveButton;
 
+@property (nonatomic, assign) int type;
 @end

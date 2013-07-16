@@ -15,6 +15,8 @@
 #import "ProductAPIHandler.h"
 #import "PurchasingAddressViewController.h"
 #import "SellersAPIHandler.h"
+#import "SizePickerViewViewController.h"
+
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -23,6 +25,7 @@
 
 @implementation PurchasingViewController
 
+@synthesize sizePickerViewViewController;
 @synthesize requestingProductID;
 @synthesize requestedPostmasterDictionary;
 @synthesize parentController;
@@ -30,7 +33,7 @@
 @synthesize requestedProductObject;
 @synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel, sellerProfileImageView;
 @synthesize bottomView;
-
+@synthesize sizeSelectedIndex;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,7 +46,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
     self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
     self.contentScrollView.backgroundColor = [UIColor clearColor];
     
@@ -52,6 +58,8 @@
     
     
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
+    
+    self.sizeSelectedIndex = -1;
     
 }
 
@@ -76,9 +84,10 @@
     [numberFormatter setMaximumFractionDigits:2];
     
     self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
- 
     
-
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    NSLog(@"sizeQuantityArray: %@", sizeQuantityArray);
+    
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -105,6 +114,8 @@
 {
     if ([theArray count] > 0)
         self.requestedProductObject = [theArray objectAtIndex:0];
+    
+    
     
     [self loadContentViews];
 }
@@ -143,7 +154,7 @@
     stripeCard.addressCountry = @"KINGS";
     
     [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
-
+    
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
@@ -165,8 +176,114 @@
 
 -(void)buySuccessfulWithDictionary:(id)theDict
 {
-
+    
     [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject withPostmasterDictionary:self.requestedPostmasterDictionary];
+    
+}
+
+-(void)pickerCancelButtonHit
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(void)pickerSaveButtonHit
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    NSLog(@"self.sizePickerViewViewController.type: %d", self.sizePickerViewViewController.type);
+    
+    
+    
+    NSString *titleItem = [self.sizePickerViewViewController.itemsArray objectAtIndex:[self.sizePickerViewViewController.thePickerView selectedRowInComponent:0]];
+    if (self.sizePickerViewViewController.type == 0)
+    {
+        [self.sizeButton setTitle:titleItem forState:UIControlStateNormal];
+        self.sizeSelectedIndex = [self.sizePickerViewViewController.thePickerView selectedRowInComponent:0];
+    }
+    else
+        [self.quantityButton setTitle:titleItem forState:UIControlStateNormal];
+}
+
+-(IBAction)sizeButtonHit
+{
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    
+    BOOL proceed = YES;
+    if ([sizeQuantityArray count] == 1)
+        if ([[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"NIL"] == NSOrderedSame)
+            proceed = NO;
+    
+    if (proceed)
+    {
+        NSMutableArray *sizesArray = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        for (int i = 0; i < [sizeQuantityArray count]; i++)
+        {
+            NSDictionary *obj = [sizeQuantityArray objectAtIndex:i];
+            [sizesArray addObject:[obj objectForKey:@"size"]];
+        }
+        
+        self.sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
+        self.sizePickerViewViewController.type = 0;
+        self.sizePickerViewViewController.itemsArray = [NSArray arrayWithArray:sizesArray];
+        [self presentViewController:self.sizePickerViewViewController animated:YES completion:nil];
+        [self.sizePickerViewViewController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
+        [self.sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"No Size selection necessary"
+                                                            message:nil
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+
+    }
+    
+}
+
+-(IBAction)quantityButtonHit
+{
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    
+    BOOL isSingleSize = NO;
+    if ([sizeQuantityArray count] == 1)
+        if ([[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"NIL"] == NSOrderedSame)
+            isSingleSize = YES;
+    
+    NSArray *quantityArray = nil;
+    
+
+    if (isSingleSize)
+        quantityArray = [NSArray arrayWithObject:[[sizeQuantityArray objectAtIndex:0] objectForKey:@"quantity"]];
+    else if (self.sizeSelectedIndex >= 0)
+    {
+
+        quantityArray = [NSArray arrayWithObject:[[sizeQuantityArray objectAtIndex:self.sizeSelectedIndex] objectForKey:@"quantity"]];
+    }
+    
+    if (quantityArray != nil)
+    {
+        self.sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
+        self.sizePickerViewViewController.type = 1;
+        self.sizePickerViewViewController.itemsArray = [NSArray arrayWithArray:quantityArray];
+        [self presentViewController:self.sizePickerViewViewController animated:YES completion:nil];
+        [self.sizePickerViewViewController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
+        [self.sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    }
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Please select a size"
+                                                            message:nil
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+
+    }
+
     
 }
 

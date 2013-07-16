@@ -55,9 +55,12 @@
 -(void)getProductsRequestFinished:(id)obj
 {
     
-//    NSString* newStr = [[[NSString alloc] initWithData:responseData
-  //                                            encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding] autorelease];
+    
+    //NSLog(@"newStr: %@", newStr);
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+  //  NSLog(@"responseArray: %@", responseArray);
 
     if (responseArray == nil)
     {
@@ -70,7 +73,8 @@
     }
     else
         [self.delegate feedRequestFinishedWithArrray:responseArray];
-    
+ 
+ 
 }
 
 

@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SizePickerViewViewController.h"
 @class FeedViewController;
 
 @interface PurchasingViewController : UIViewController
 {
     FeedViewController *parentController;
+    SizePickerViewViewController *sizePickerViewViewController;
     
     NSString *requestingProductID;
     NSDictionary *requestedPostmasterDictionary;
@@ -25,13 +26,20 @@
     UILabel *priceLabel;
     UILabel *numberAvailableLabel;
     UIImageView *sellerProfileImageView;
-
+    UIButton *sizeButton;
+    UIButton *quantityButton;
+    
+    int sizeSelectedIndex;
 }
 
 -(IBAction)backButtonHit;
 -(IBAction)buyButtonHit;
 
+-(IBAction)sizeButtonHit;
+-(IBAction)quantityButtonHit;
+
 @property (nonatomic, retain) FeedViewController *parentController;
+@property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
 
 @property (nonatomic, retain) NSString *requestingProductID;
 @property (nonatomic, retain) NSDictionary *requestedPostmasterDictionary;
@@ -44,7 +52,10 @@
 @property (nonatomic, retain) IBOutlet UILabel *priceLabel;
 @property (nonatomic, retain) IBOutlet UILabel *numberAvailableLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *sellerProfileImageView;
-
+@property (nonatomic, retain) IBOutlet UIButton *sizeButton;
+@property (nonatomic, retain) IBOutlet UIButton *quantityButton;
 
 @property (nonatomic, retain) IBOutlet UIView *bottomView;
+
+@property (nonatomic, assign) int sizeSelectedIndex;
 @end

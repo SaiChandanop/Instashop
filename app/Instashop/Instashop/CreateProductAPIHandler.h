@@ -13,5 +13,5 @@
 @interface CreateProductAPIHandler : RootAPIHandler
 
 +(void)createProductContainerObject:(id)delegate withProductCreateObject:(ProductCreateObject *)theProductCreateObject;
-
++(void)createProductSizeQuantityObjects:(id)delegate withProductObject:(ProductCreateObject *)theProductCreateObject withProductID:(NSString *)productID;
 @end
