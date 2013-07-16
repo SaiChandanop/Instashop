@@ -19,10 +19,9 @@
 
 @synthesize parentController;
 
-@synthesize productCreateObject;
+@synthesize productCreateContainerObject;
 
 @synthesize theScrollView;
-
 @synthesize productImageView;
 @synthesize titleLabel;
 @synthesize descriptionTextField;
@@ -44,10 +43,10 @@
 }
 
 
--(void)loadWithProductCreateObject:(ProductCreateObject *)theProductCreateObject
+-(void)loadWithProductCreateObject:(ProductCreateContainerObject *)theProductCreateContainerObject
 {
-    self.productCreateObject = theProductCreateObject;
-    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.productCreateObject.instagramPictureURLString withImageView:self.productImageView];
+    self.productCreateContainerObject = theProductCreateContainerObject;
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.productCreateContainerObject.mainObject.instagramPictureURLString withImageView:self.productImageView];
 }
 
 

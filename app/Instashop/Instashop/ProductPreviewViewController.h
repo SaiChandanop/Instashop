@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProductCreateObject.h"
+#import "ProductCreateContainerObject.h"
 
 @class  ProductCreateViewController;
 
@@ -15,8 +15,7 @@
 {
     ProductCreateViewController *parentController;
     
-    ProductCreateObject *productCreateObject;
-    
+    ProductCreateContainerObject *productCreateContainerObject;
     UIScrollView *theScrollView;
     
     UIImageView *productImageView;
@@ -25,14 +24,14 @@
     
 }
 
-- (void) loadWithProductCreateObject:(ProductCreateObject *)theProductCreateObject;
+-(void)loadWithProductCreateObject:(ProductCreateContainerObject *)theProductCreateContainerObject;
 
 - (IBAction) backButtonHit;
 - (IBAction) postButtonHit;
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;
 
-@property (nonatomic, retain) ProductCreateObject *productCreateObject;
+@property (nonatomic, retain) ProductCreateContainerObject *productCreateContainerObject;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
 

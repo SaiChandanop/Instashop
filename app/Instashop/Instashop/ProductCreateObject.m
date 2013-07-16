@@ -10,16 +10,15 @@
 
 @implementation ProductCreateObject
 
-@synthesize caption;
+@synthesize title;
 @synthesize description;
 @synthesize retailValue;
-@synthesize shippingWeight;
+@synthesize categoriesArray;
+@synthesize size;
+@synthesize quantity;
 @synthesize retailPrice;
 @synthesize instashopPrice;
-@synthesize category;
-@synthesize categoryAttribute;
-@synthesize quantity;
-@synthesize productAttributesArray;
+@synthesize shippingWeight;
 
 @synthesize instagramPictureURLString;
 @synthesize instragramMediaInfoDictionary;

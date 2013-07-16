@@ -42,7 +42,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
+    [self.sizeQuantityTableViewCells removeAllObjects];
     [tableView setSeparatorColor:[UIColor clearColor]];
     return 1;
 }

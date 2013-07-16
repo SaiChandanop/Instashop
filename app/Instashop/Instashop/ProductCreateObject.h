@@ -10,31 +10,29 @@
 
 @interface ProductCreateObject : NSObject
 {
-    NSString *caption;
+    NSString *title;
     NSString *description;
     NSString *retailValue;
-    NSString *shippingWeight;
+    NSArray *categoriesArray;
+    NSString *size;
+    NSString *quantity;
     NSString *retailPrice;
     NSString *instashopPrice;
-    NSString *category;
-    NSString *categoryAttribute;
-    NSString *quantity;
-    NSArray *productAttributesArray;
+    NSString *shippingWeight;
     
     NSString *instagramPictureURLString;
     NSDictionary *instragramMediaInfoDictionary;
 }
 
-@property (nonatomic, retain) NSString *caption;
+@property (nonatomic, retain) NSString *title;
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSString *retailValue;
-@property (nonatomic, retain) NSString *shippingWeight;
+@property (nonatomic, retain) NSArray *categoriesArray;
+@property (nonatomic, retain) NSString *size;
+@property (nonatomic, retain) NSString *quantity;
 @property (nonatomic, retain) NSString *retailPrice;
 @property (nonatomic, retain) NSString *instashopPrice;
-@property (nonatomic, retain) NSString *category;
-@property (nonatomic, retain) NSString *categoryAttribute;
-@property (nonatomic, retain) NSString *quantity;
-@property (nonatomic, retain) NSArray *productAttributesArray;
+@property (nonatomic, retain) NSString *shippingWeight;
 
 @property (nonatomic, retain) NSString *instagramPictureURLString;
 @property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;

@@ -12,6 +12,9 @@
 #import "ProductCreateObject.h"
 #import "AttributesManager.h"
 #import "CategoriesPickerViewController.h"
+#import "SizeQuantityTableViewCell.h"
+#import "ProductCreateContainerObject.h"
+
 
 @interface ProductDetailsViewController ()
 
@@ -20,7 +23,6 @@
 @implementation ProductDetailsViewController
 
 @synthesize parentController;
-@synthesize productCreateObject;
 @synthesize attributesArray;
 
 @synthesize containerScrollView;
@@ -229,9 +231,8 @@
             self.titleTextField.text = [captionDictionary objectForKey:@"text"];
 
 
-    self.productCreateObject = [[ProductCreateObject alloc] init];
-    self.productCreateObject.instragramMediaInfoDictionary = theDictionary;
-    self.productCreateObject.instagramPictureURLString = instagramProductImageURLString;
+    self.instragramMediaInfoDictionary = theDictionary;
+    self.instagramPictureURLString = instagramProductImageURLString;
 }
 
 -(IBAction)backButtonHit
@@ -241,23 +242,54 @@
 
 -(IBAction)previewButtonHit
 {        
-    self.productCreateObject.caption = self.titleTextField.text;
-    self.productCreateObject.description = self.descriptionTextField.text;
-    self.productCreateObject.retailValue = self.retailPriceTextField.text;
-    self.productCreateObject.retailPrice = self.retailPriceTextField.text;
-//    self.productCreateObject.categoryAttribute = self.sizeColorTextField.text;
-//    self.productCreateObject.quantity = self.quantityTextField.text;
+
+    ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
+    
+    productCreateContainerObject.mainObject = [[ProductCreateObject alloc] init];
+    productCreateContainerObject.mainObject.instagramPictureURLString = self.instagramPictureURLString;
+    productCreateContainerObject.mainObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
+    productCreateContainerObject.mainObject.title = self.titleTextField.text;
+    productCreateContainerObject.mainObject.description = self.descriptionTextField.text;
+    productCreateContainerObject.mainObject.retailValue = self.retailPriceTextField.text;
+    productCreateContainerObject.mainObject.retailPrice = self.retailPriceTextField.text;
 //    self.productCreateObject.shippingWeight = self.shippingTextField.text;
     
-    self.productCreateObject.productAttributesArray = [NSArray arrayWithArray:self.attributesArray];
-    [self.parentController previewButtonHitWithProductCreateObject:self.productCreateObject];
+
     
+    NSMutableArray *productsArray = [NSMutableArray arrayWithCapacity:0];
+    
+    for (int i = 0; i < [self.sizeQuantityTableViewController.sizeQuantityTableViewCells count]; i++)
+    {
+        SizeQuantityTableViewCell *theCell = [self.sizeQuantityTableViewController.sizeQuantityTableViewCells objectAtIndex:i];
+        
+        NSLog(@"theCell.sizeButton.title: %@", [theCell.sizeButton titleForState:UIControlStateNormal]);
+        NSLog(@"theCell.quantityButton.title: %@", [theCell.quantityButton titleForState:UIControlStateNormal]);
+        
+
+        //    self.productCreateObject.quantity = self.quantityTextField.text;
+        //      self.productCreateObject.size = self.quantityTextField.text;
+
+//    self.productCreateObject.productAttributesArray = [NSArray arrayWithArray:self.attributesArray];
+    }
+    
+//sum quantity!!!!!
+    
+
+    
+    [self.parentController previewButtonHitWithProductCreateObject:productCreateContainerObject];
+    
+    
+    
+     
+
     
     
     [self.titleTextField resignFirstResponder];
     [self.descriptionTextField resignFirstResponder];
     [self.retailPriceTextField resignFirstResponder];
-    [self.instashopPriceTextField resignFirstResponder];    
+    [self.instashopPriceTextField resignFirstResponder];
+
+    
 }
 
 

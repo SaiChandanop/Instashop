@@ -11,7 +11,7 @@
 #import "ProductDetailsViewController.h"
 #import "ProductCreateObject.h"
 #import "ProductPreviewViewController.h"
-
+#import "ProductCreateContainerObject.h"
 
 @class AppRootViewController;
 
@@ -27,7 +27,7 @@
 
 -(void)vcDidHitBackWithController:(UIViewController *)requestingViewController;
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary;
--(void)previewButtonHitWithProductCreateObject:(ProductCreateObject *)productCreateObject;
+-(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateObject;
 
 - (void)createProductActionHitWithProductObject:(ProductCreateObject *)productCreateObject;
 - (IBAction) exitButtonHit;

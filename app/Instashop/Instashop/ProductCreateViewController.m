@@ -7,7 +7,7 @@
 //
 
 #import "ProductCreateViewController.h"
-#import "ProductAPIHandler.h"
+#import "CreateProductAPIHandler.h"
 #import "AppRootViewController.h"
 
 @interface ProductCreateViewController ()
@@ -84,12 +84,12 @@
 }
 
 
--(void)previewButtonHitWithProductCreateObject:(ProductCreateObject *)productCreateObject
+-(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
     self.productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
     self.productPreviewViewController.parentController = self;
     self.productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
-    [self.productPreviewViewController loadWithProductCreateObject:productCreateObject];
+    [self.productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
     [self.navigationController pushViewController:self.productPreviewViewController animated:YES];
     
     self.productPreviewViewController.theScrollView.contentSize = CGSizeMake(0, 1400);
@@ -103,10 +103,11 @@
 
 - (void)doneButtonHit
 {
-    ProductCreateObject *productCreateObject = self.productPreviewViewController.productCreateObject;
-    
-    [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:productCreateObject.instragramMediaInfoDictionary withTitle:productCreateObject.caption withQuantity:productCreateObject.quantity withModel:productCreateObject.categoryAttribute withPrice:productCreateObject.retailPrice withWeight:productCreateObject.shippingWeight withDescription:productCreateObject.description withProductImageURL:productCreateObject.instagramPictureURLString withAttributesArray:productCreateObject.productAttributesArray];
 
+    
+    [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:self.productPreviewViewController.productCreateContainerObject.mainObject];
+    
+    
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
                                                         message:nil
                                                        delegate:self
