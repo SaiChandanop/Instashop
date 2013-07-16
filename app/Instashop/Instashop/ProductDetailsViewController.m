@@ -103,7 +103,10 @@
 
 - (IBAction) categoryButtonHit
 {
-   
+    for (int i = 0; i < [self.attributesArray count]; i++)
+        [self.attributesArray setObject:@"" atIndexedSubscript:i];
+    
+    
     NSMutableArray *searchingKeysArray = [NSMutableArray arrayWithCapacity:0];
     
     int index = 0;
@@ -120,29 +123,7 @@
     NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
     
     
-/*    if ([[self.attributesArray objectAtIndex:0] length] == 0)
-    {
-        selectedIndexType = 0;
-        selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getTopCategories]];
-    }
-    else if ([[self.attributesArray objectAtIndex:1] length] == 0)
-    {
-        selectedIndexType = 1;
-        if ([[self.attributesArray objectAtIndex:0] length] > 0)
-            selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getSubcategoriesFromTopCategory:[self.attributesArray objectAtIndex:0]]];
-        
-    }
-    else if ([[self.attributesArray objectAtIndex:2] length] == 0)
-    {
-        selectedIndexType = 2;
-        if ([[self.attributesArray objectAtIndex:0] length] > 0)
-            if ([[self.attributesArray objectAtIndex:1] length] > 0)
-                selectionArray = [NSArray arrayWithArray:[[AttributesManager getSharedAttributesManager] getAttributesFromTopCategory:[self.attributesArray objectAtIndex:0] fromSubcategory:[self.attributesArray objectAtIndex:1]]];
-    }
-    
-    else 
-    
-     */  
+
     if (selectionArray != nil)
     {
         
@@ -171,7 +152,7 @@
 {
     [self.attributesArray setObject:selectedCategory atIndexedSubscript:theController.type];
     
-    [self dismissViewControllerAnimated:YES completion:nil];
+    
     
     
     NSMutableString *string = [NSMutableString stringWithCapacity:0];
@@ -187,6 +168,32 @@
     
     if ([string length] > 0)
         self.selectedCategoriesLabel.text = string;
+    
+    
+    NSMutableArray *searchingKeysArray = [NSMutableArray arrayWithCapacity:0];
+    
+    int index = 0;
+    while ([[self.attributesArray objectAtIndex:index] length] > 0)
+    {
+        [searchingKeysArray addObject:[self.attributesArray objectAtIndex:index]];
+        index++;
+    }
+    
+    int selectedIndexType = [searchingKeysArray count];
+    NSLog(@"searchingKeysArray: %@", searchingKeysArray);
+    NSLog(@"selectedIndexType: %d", selectedIndexType);
+    
+    NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
+    if (selectionArray == nil)
+      [self dismissViewControllerAnimated:YES completion:nil];
+    else
+    {
+        theController.type = selectedIndexType;
+        theController.itemsArray = [NSArray arrayWithArray:selectionArray];
+        [theController.thePickerView reloadAllComponents];
+    }
+    
+//    [self dismissViewControllerAnimated:YES completion:nil];
 
 }
 
@@ -235,7 +242,7 @@
     self.productCreateObject.caption = self.titleTextField.text;
     self.productCreateObject.description = self.descriptionTextField.text;
     self.productCreateObject.retailValue = self.retailPriceTextField.text;
-
+    self.productCreateObject.retailPrice = self.retailPriceTextField.text;
 //    self.productCreateObject.categoryAttribute = self.sizeColorTextField.text;
 //    self.productCreateObject.quantity = self.quantityTextField.text;
 //    self.productCreateObject.shippingWeight = self.shippingTextField.text;

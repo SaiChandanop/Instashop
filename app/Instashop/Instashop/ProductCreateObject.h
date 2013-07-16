@@ -14,7 +14,8 @@
     NSString *description;
     NSString *retailValue;
     NSString *shippingWeight;
-    NSString *price;
+    NSString *retailPrice;
+    NSString *instashopPrice;
     NSString *category;
     NSString *categoryAttribute;
     NSString *quantity;
@@ -28,7 +29,8 @@
 @property (nonatomic, retain) NSString *description;
 @property (nonatomic, retain) NSString *retailValue;
 @property (nonatomic, retain) NSString *shippingWeight;
-@property (nonatomic, retain) NSString *price;
+@property (nonatomic, retain) NSString *retailPrice;
+@property (nonatomic, retain) NSString *instashopPrice;
 @property (nonatomic, retain) NSString *category;
 @property (nonatomic, retain) NSString *categoryAttribute;
 @property (nonatomic, retain) NSString *quantity;

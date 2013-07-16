@@ -20,7 +20,7 @@
 @synthesize type;
 @synthesize itemsArray;
 @synthesize selectedIndex;
-
+@synthesize thePickerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

@@ -14,7 +14,8 @@
 @synthesize description;
 @synthesize retailValue;
 @synthesize shippingWeight;
-@synthesize price;
+@synthesize retailPrice;
+@synthesize instashopPrice;
 @synthesize category;
 @synthesize categoryAttribute;
 @synthesize quantity;

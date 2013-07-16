@@ -15,8 +15,9 @@
     
     int type;
     NSArray *itemsArray;
-    
     int selectedIndex;
+    
+    UIPickerView *thePickerView;
 }
 
 - (IBAction)cancelButtonHit;
@@ -28,4 +29,6 @@
 @property (nonatomic, retain) NSArray *itemsArray;
 
 @property (nonatomic, assign) int selectedIndex;
+
+@property (nonatomic, retain) IBOutlet UIPickerView *thePickerView;
 @end

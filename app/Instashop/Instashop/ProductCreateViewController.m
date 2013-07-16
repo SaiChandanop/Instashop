@@ -36,7 +36,7 @@
     
     self.productSelectTableViewController.parentController = self;
     
-     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
     
     
     NSLog(@"ProductCreateViewController view did load");
@@ -105,7 +105,7 @@
 {
     ProductCreateObject *productCreateObject = self.productPreviewViewController.productCreateObject;
     
-    [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:productCreateObject.instragramMediaInfoDictionary withTitle:productCreateObject.caption withQuantity:productCreateObject.quantity withModel:productCreateObject.categoryAttribute withPrice:productCreateObject.price withWeight:productCreateObject.shippingWeight withDescription:productCreateObject.description withProductImageURL:productCreateObject.instagramPictureURLString withAttributesArray:productCreateObject.productAttributesArray];
+    [ProductAPIHandler createNewProductWithDelegate:self withInstagramDataObject:productCreateObject.instragramMediaInfoDictionary withTitle:productCreateObject.caption withQuantity:productCreateObject.quantity withModel:productCreateObject.categoryAttribute withPrice:productCreateObject.retailPrice withWeight:productCreateObject.shippingWeight withDescription:productCreateObject.description withProductImageURL:productCreateObject.instagramPictureURLString withAttributesArray:productCreateObject.productAttributesArray];
 
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
                                                         message:nil
