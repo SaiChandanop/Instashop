@@ -131,7 +131,6 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 -(IBAction)homeButtonHit
 {
-    NSLog(@"homeButtonHit");
     [self.parentController homeButtonHit];
     
 }

@@ -49,7 +49,6 @@
     {
         
         UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth)];
-        NSLog(@"theImageView: %@", theImageView);
         [self addSubview:theImageView];
     
         

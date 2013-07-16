@@ -64,7 +64,7 @@
 }
 - (IBAction)doneButtonHit
 {
-    NSLog(@"done: %@", [self.itemsArray objectAtIndex:self.selectedIndex]);
+//    NSLog(@"done: %@", [self.itemsArray objectAtIndex:self.selectedIndex]);
 //    [self.delegate categorySelected:[self.itemsArray objectAtIndex:self.selectedIndex]];
     [self.delegate categorySelected:[self.itemsArray objectAtIndex:self.selectedIndex] withCategoriesPickerViewController:self];
     

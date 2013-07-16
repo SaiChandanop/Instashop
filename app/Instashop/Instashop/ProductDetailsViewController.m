@@ -220,12 +220,12 @@
     NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
 
     NSString *instagramProductImageURLString = [startResultionDictionary objectForKey:@"url"];
-    NSLog(@"instagramProductImageURLString: %@", instagramProductImageURLString);
+//    NSLog(@"instagramProductImageURLString: %@", instagramProductImageURLString);
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:instagramProductImageURLString withImageView:self.theImageView];
-    NSLog(@"self.theImageView: %@", self.theImageView);
+//    NSLog(@"self.theImageView: %@", self.theImageView);
     NSDictionary *captionDictionary = [theDictionary objectForKey:@"caption"];
 
-    NSLog(@"self.titleTextField: %@", self.titleTextField);
+//    NSLog(@"self.titleTextField: %@", self.titleTextField);
     if (captionDictionary != nil)
         if (![captionDictionary isKindOfClass:[NSNull class]])
             self.titleTextField.text = [captionDictionary objectForKey:@"text"];
@@ -258,6 +258,7 @@
     
     NSMutableArray *productsArray = [NSMutableArray arrayWithCapacity:0];
     
+    int totalQuantity = 0;
     for (int i = 0; i < [self.sizeQuantityTableViewController.sizeQuantityTableViewCells count]; i++)
     {
         SizeQuantityTableViewCell *theCell = [self.sizeQuantityTableViewController.sizeQuantityTableViewCells objectAtIndex:i];

@@ -162,16 +162,11 @@ float transitionTime = .456;
         }
         [UIView commitAnimations];
         
-    }
-    
-    
-    NSLog(@"homeButtonHit!");
+    }        
 }
 
 -(void)notificationsButtonHit
-{
-    NSLog(@"notificationsButtonHit!");
-    
+{    
     if (!self.areViewsTransitioning)
     {
         self.areViewsTransitioning = YES;

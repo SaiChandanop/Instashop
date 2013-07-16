@@ -46,10 +46,8 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 
 -(void)imageRequestFinished:(id)obj
-{
-    
-    NSLog(@"imageRequestFinished imageRequestFinished, self.theImageView: %@", self.theImageView);
-     UIImage *responseImage = [UIImage imageWithData:self.responseData];
+{ 
+    UIImage *responseImage = [UIImage imageWithData:self.responseData];
     [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:[self.theWebRequest.request.URL absoluteString]];
     self.theImageView.image = responseImage;
     self.theImageView.alpha = 1;

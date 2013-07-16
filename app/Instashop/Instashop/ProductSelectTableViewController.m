@@ -40,7 +40,7 @@
     self.userMediaArray = [[NSMutableArray alloc] initWithCapacity:0];    
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", nil];
     
-    NSLog(@"view did load: %@", self);
+//    NSLog(@"view did load: %@", self);
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [theAppDelegate.instagram requestWithParams:params delegate:self];
 
@@ -50,7 +50,7 @@
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
-    NSLog(@"responseCode: %d", responseCode);
+//    NSLog(@"responseCode: %d", responseCode);
     
     if (responseCode == 200)
     {
@@ -106,7 +106,7 @@
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
-    NSLog(@"%@ cellSelectionOccured", self);
+ //   NSLog(@"%@ cellSelectionOccured", self);
     [self.parentController tableViewProductSelectedWithDataDictionary:theSelectionObject];    
 }
 
@@ -115,7 +115,7 @@
 #pragma mark - Table view delegate
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"parentController: %@", self.parentController);
+//    NSLog(@"parentController: %@", self.parentController);
     
 }
 

@@ -86,7 +86,7 @@ NSString* const InstagramErrorDomain = @"instagramErrorDomain";
         [pairs addObject:[NSString stringWithFormat:@"%@=%@", key, escaped_value]];
     }
     NSString* query = [pairs componentsJoinedByString:@"&"];
-    NSLog(@"URL: %@", [NSString stringWithFormat:@"%@%@%@", baseUrl, queryPrefix, query]);
+//    NSLog(@"URL: %@", [NSString stringWithFormat:@"%@%@%@", baseUrl, queryPrefix, query]);
     return [NSString stringWithFormat:@"%@%@%@", baseUrl, queryPrefix, query];
 }
 

@@ -39,7 +39,7 @@
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
     
     
-    NSLog(@"ProductCreateViewController view did load");
+//    NSLog(@"ProductCreateViewController view did load");
     
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
@@ -75,7 +75,7 @@
 
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary
 {
-    NSLog(@"self.productDetailsViewController: %@", self.productDetailsViewController);
+//    NSLog(@"self.productDetailsViewController: %@", self.productDetailsViewController);
     self.productDetailsViewController.containerScrollView.contentSize = CGSizeMake(0, 1400);
     self.productDetailsViewController.parentController = self;
     [self.navigationController pushViewController:self.productDetailsViewController animated:YES];
@@ -103,24 +103,26 @@
 
 - (void)doneButtonHit
 {
-
-    
     [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:self.productPreviewViewController.productCreateContainerObject.mainObject];
     
-    
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
+/*    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"Smashing"
                                               otherButtonTitles:nil];
     [alertView show];
-
-    
+*/
 }
+
+-(void)productContainerCreateFinishedWithProductID:(NSString *)productID
+{
+    NSLog(@"productID: %@", productID);
+}
+
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self backButtonHit];
+//    [self backButtonHit];
 }
 
 
