@@ -94,6 +94,7 @@
 		7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C5009178B46FC00CDF0A7 /* PurchasingAddressViewController.xib */; };
 		7B6C5010178B568B00CDF0A7 /* SellersAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C500F178B568B00CDF0A7 /* SellersAPIHandler.m */; };
 		7B6C5014178B5BC600CDF0A7 /* PostmasterAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C5013178B5BC600CDF0A7 /* PostmasterAPIHandler.m */; };
+		7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C3C517970AE50006289C /* MBProgressHUD.m */; };
 		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
 		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 		7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7444174D4AA1005E90B9 /* AuthenticationViewController.m */; };
@@ -251,6 +252,8 @@
 		7B6C500F178B568B00CDF0A7 /* SellersAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellersAPIHandler.m; sourceTree = "<group>"; };
 		7B6C5012178B5BC600CDF0A7 /* PostmasterAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostmasterAPIHandler.h; sourceTree = "<group>"; };
 		7B6C5013178B5BC600CDF0A7 /* PostmasterAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostmasterAPIHandler.m; sourceTree = "<group>"; };
+		7B74C3C417970AE50006289C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		7B74C3C517970AE50006289C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B7A7438174D42F2005E90B9 /* IGConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGConnect.h; sourceTree = "<group>"; };
 		7B7A7439174D42F2005E90B9 /* IGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRequest.h; sourceTree = "<group>"; };
 		7B7A743A174D42F2005E90B9 /* IGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRequest.m; sourceTree = "<group>"; };
@@ -836,6 +839,8 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7B74C3C417970AE50006289C /* MBProgressHUD.h */,
+				7B74C3C517970AE50006289C /* MBProgressHUD.m */,
 				7BE3D373174D77110045C4B4 /* JSONKit */,
 				7BE3D370174D74410045C4B4 /* JSONKit.h */,
 				7BE3D371174D74410045C4B4 /* JSONKit.m */,
@@ -1096,6 +1101,7 @@
 				7BD5C20517959FC7006F311A /* SizePickerViewViewController.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,
 				7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */,
+				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

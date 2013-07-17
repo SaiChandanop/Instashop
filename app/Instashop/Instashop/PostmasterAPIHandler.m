@@ -75,6 +75,7 @@
     apiHandler.delegate = theDelegate;
     apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:request delegate:apiHandler context:NULL];
     [apiHandler.theWebRequest addTarget:apiHandler action:@selector(postmasterShipCallReturned:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(postmasterShipCallFailed:) forRequestEvents:SMWebRequestEventError];
     [apiHandler.theWebRequest start];
 
     
@@ -91,7 +92,10 @@
     [self.delegate postmasterShipRequestRespondedWithDictionary:responseDictionary];
 }
 
-
+-(void)postmasterShipCallFailed
+{
+    [self.delegate postmasterShipCallFailed];
+}
 
 
 
