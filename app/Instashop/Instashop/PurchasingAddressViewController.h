@@ -33,6 +33,8 @@
     UIButton *checkRatesButton;
     UIButton *doneButton;
     
+    UILabel *productBuyButtonLabel;
+    
     NSDictionary *sellerDictionary;
         
     NSDictionary *upsRateDictionary;
@@ -46,6 +48,7 @@
 -(IBAction)checkRatesButtonHit;
 -(IBAction)doneButtonHit;
 
+-(IBAction)buyButtonHit;
 
 @property (nonatomic, retain) id doneButtonDelegate;
 @property (nonatomic, retain) id shippingCompleteDelegate;
@@ -69,6 +72,8 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *checkRatesButton;
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;
+
+@property (nonatomic, retain) IBOutlet UILabel *productBuyButtonLabel;
 
 @property (nonatomic, retain) NSDictionary *sellerDictionary;
 

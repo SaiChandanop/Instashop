@@ -44,6 +44,7 @@
 @synthesize checkRatesButton;
 @synthesize doneButton;
 
+@synthesize productBuyButtonLabel;
 @synthesize sellerDictionary;
 
 @synthesize upsRateDictionary;
@@ -110,6 +111,8 @@
     self.productTitleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     
     NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+    
+    self.productBuyButtonLabel.text = [NSString stringWithFormat:@"Buy - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]]];
 }
 
 
@@ -204,5 +207,9 @@
     
 }
 
+-(IBAction)buyButtonHit
+{
+    NSLog(@"buyButtonHit!");
+}
 
 @end
