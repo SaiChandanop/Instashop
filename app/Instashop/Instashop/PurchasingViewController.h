@@ -22,6 +22,7 @@
     UIImageView *imageView;
     UILabel *titleLabel;
     UILabel *sellerLabel;
+    UILabel *categoryLabel;
     UITextView *descriptionTextView;
     UILabel *priceLabel;
     UILabel *numberAvailableLabel;
@@ -48,6 +49,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
+@property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 @property (nonatomic, retain) IBOutlet UILabel *priceLabel;
 @property (nonatomic, retain) IBOutlet UILabel *numberAvailableLabel;

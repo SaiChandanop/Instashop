@@ -30,6 +30,7 @@
 @synthesize requestedPostmasterDictionary;
 @synthesize parentController;
 @synthesize contentScrollView;
+@synthesize categoryLabel;
 @synthesize requestedProductObject;
 @synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel, sellerProfileImageView;
 @synthesize bottomView;
@@ -61,6 +62,8 @@
     
     self.sizeSelectedIndex = -1;
     
+    self.descriptionTextView.text = @"";
+    
 }
 
 - (void) loadContentViews
@@ -85,7 +88,32 @@
     
     self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     
-    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];    
+//    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    
+    NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:0];
+    for (int i = 1; i < 9; i++)
+    {
+        NSString *attributeKeyString = [NSString stringWithFormat:@"attribute_%d", i];
+        NSString *attributeValue = [self.requestedProductObject objectForKey:attributeKeyString];
+
+        if (![attributeValue isKindOfClass:[NSNull class]])
+            if ([attributeValue length] > 0 != NSOrderedSame)
+                [attributesArray addObject:attributeValue];
+    }
+
+    NSLog(@"attributesArray: %@", attributesArray);
+    
+    NSMutableString *categoryString = [NSMutableString stringWithCapacity:0];
+    for (int i = 0; i < [attributesArray count]; i++)
+    {
+        [categoryString appendString:[attributesArray objectAtIndex:i]];
+        if (i != [attributesArray count] -1)
+            [categoryString appendString:@" > "];
+    }
+    NSLog(@"categoryString: %@", categoryString);
+    
+    self.categoryLabel.text = categoryString;
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
