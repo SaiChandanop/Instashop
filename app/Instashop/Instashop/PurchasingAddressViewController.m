@@ -11,7 +11,7 @@
 #import "PostmasterAPIHandler.h"
 #import "InstagramUserObject.h"
 #import "SellersAPIHandler.h"
-
+#import "PostmasterAPIHandler.h"
 @interface PurchasingAddressViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -75,10 +75,8 @@
     self.priceValueLabel.font = self.sizeValueLabel.font;
     self.quantityValueLabel.font = self.sizeValueLabel.font;
     
-/*    [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[requestedProductObject objectForKey:@"owner_instagram_id"]];
-    -(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
-    {
-    }
+/*    
+ 
   */  
     
     // Do any additional setup after loading the view from its nib.
@@ -113,6 +111,16 @@
     NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
     
     self.productBuyButtonLabel.text = [NSString stringWithFormat:@"Buy - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]]];
+    
+    [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[self.requestedProductObject objectForKey:@"owner_instagram_id"]];
+}
+
+
+
+-(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
+{
+    NSLog(@"sellersRequestFinishedWithResponseObject: %@", responseArray);
+    self.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
 }
 
 
@@ -210,6 +218,12 @@
 -(IBAction)buyButtonHit
 {
     NSLog(@"buyButtonHit!");
+    
+    [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
+    [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
+
+    
+    
 }
 
 @end
