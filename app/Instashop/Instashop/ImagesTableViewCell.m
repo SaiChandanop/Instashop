@@ -30,10 +30,11 @@
 - (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray
 {
 
-/*    NSArray *subviewsArray = [self subviews];
+    NSArray *subviewsArray = [self subviews];
     for (int i = 0; i < [subviewsArray count]; i++)
-        [[subviewsArray objectAtIndex:i] removeFromSuperview];
-  */
+        if ([[subviewsArray objectAtIndex:i] isKindOfClass:[UIImageView class]])
+            ((UIImageView *)[subviewsArray objectAtIndex:i]).image = nil;
+
     
     int startValue = theIndexPath.row * 3;
     

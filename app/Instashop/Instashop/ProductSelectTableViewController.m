@@ -38,7 +38,7 @@
     [super viewDidLoad];
 
     self.userMediaArray = [[NSMutableArray alloc] initWithCapacity:0];    
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", nil];
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
     
 //    NSLog(@"view did load: %@", self);
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -76,7 +76,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.userMediaArray count];
+    NSLog(@"self.userMediaArray: %@", self.userMediaArray);
+    NSLog(@"self.userMediaArray.count: %d", [self.userMediaArray count]);
+    return [self.userMediaArray count] / 3 + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
