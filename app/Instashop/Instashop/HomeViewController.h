@@ -16,6 +16,11 @@
     UILabel *sellerLabel;
     
 }
+
+
+-(void)createSellerCancelButtonHit;
+-(void)createSellerDone;
+
 @property (nonatomic, retain) AppRootViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;

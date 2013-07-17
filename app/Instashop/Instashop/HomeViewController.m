@@ -11,6 +11,7 @@
 #import "UserAPIHandler.h"
 #import "PurchasingAddressViewController.h"
 #import "SellersAPIHandler.h"
+#import "CreateSellerViewController.h"
 @interface HomeViewController ()
 
 @end
@@ -59,48 +60,24 @@
     return  36;
 }
 
--(void)doneButtonHitWithAddressVC:(PurchasingAddressViewController *)theVC
-{
-    NSMutableDictionary *addressDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
-    [addressDictionary setObject:theVC.nameTextField.text forKey:@"seller_name"];
-    
-    [addressDictionary setObject:theVC.addressTextField.text forKey:@"seller_address"];
-    [addressDictionary setObject:theVC.cityTextField.text forKey:@"seller_city"];
-    [addressDictionary setObject:theVC.stateTextField.text forKey:@"seller_state"];
-    [addressDictionary setObject:theVC.zipTextField.text forKey:@"seller_zip"];
-    [addressDictionary setObject:theVC.phoneTextField.text forKey:@"seller_phone"];
-    
-    NSLog(@"addressDictionay: %@", addressDictionary);
-    [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
-    
-}
+
 
 -(IBAction) sellerButtonHit
 {
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
     {
-        PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
-        purchasingAddressViewController.checkRatesButton.alpha = 0;
-        purchasingAddressViewController.doneButtonDelegate = self;
-        [self.parentController presentViewController:purchasingAddressViewController animated:YES completion:nil];
-        
-        
+        CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
+        createSellerViewController.delegate = self;
+        [self.parentController presentViewController:createSellerViewController animated:YES completion:nil];
         
     }
     else
         [self.parentController createProductButtonHit];
 }
 
--(void)userDidCreateSellerWithResponseDictionary:(NSDictionary *)dictionary
-{
-    NSLog(@"userDidCreateSellerWithResponseDictionary!!: %@", dictionary);
-    
-    InstagramUserObject *theUserObject =[InstagramUserObject getStoredUserObject];
-    theUserObject.zencartID = [dictionary objectForKey:@"zencart_id"];
-    
-    [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
 
-    
+-(void)createSellerDone
+{
     [self loadStates];
     
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Great"
@@ -112,11 +89,15 @@
     [alertView show];
     
     [self.parentController dismissViewControllerAnimated:YES completion:nil];
-
-    
-
-    
 }
+
+
+-(void)createSellerCancelButtonHit
+{
+    [self.parentController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 
 @end

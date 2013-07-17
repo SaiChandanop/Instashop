@@ -97,6 +97,8 @@
 		7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C3C517970AE50006289C /* MBProgressHUD.m */; };
 		7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C3C9179712A20006289C /* PurchasingCompleteViewController.m */; };
 		7B74C3CC179712A20006289C /* PurchasingCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B74C3CA179712A20006289C /* PurchasingCompleteViewController.xib */; };
+		7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C3CF179716850006289C /* CreateSellerViewController.m */; };
+		7B74C3D2179716850006289C /* CreateSellerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B74C3D0179716850006289C /* CreateSellerViewController.xib */; };
 		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
 		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 		7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7444174D4AA1005E90B9 /* AuthenticationViewController.m */; };
@@ -259,6 +261,9 @@
 		7B74C3C8179712A20006289C /* PurchasingCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingCompleteViewController.h; sourceTree = "<group>"; };
 		7B74C3C9179712A20006289C /* PurchasingCompleteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchasingCompleteViewController.m; sourceTree = "<group>"; };
 		7B74C3CA179712A20006289C /* PurchasingCompleteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchasingCompleteViewController.xib; sourceTree = "<group>"; };
+		7B74C3CE179716850006289C /* CreateSellerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSellerViewController.h; sourceTree = "<group>"; };
+		7B74C3CF179716850006289C /* CreateSellerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSellerViewController.m; sourceTree = "<group>"; };
+		7B74C3D0179716850006289C /* CreateSellerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSellerViewController.xib; sourceTree = "<group>"; };
 		7B7A7438174D42F2005E90B9 /* IGConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGConnect.h; sourceTree = "<group>"; };
 		7B7A7439174D42F2005E90B9 /* IGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRequest.h; sourceTree = "<group>"; };
 		7B7A743A174D42F2005E90B9 /* IGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRequest.m; sourceTree = "<group>"; };
@@ -673,6 +678,16 @@
 			name = Postmaster;
 			sourceTree = "<group>";
 		};
+		7B74C3CD179716670006289C /* CreateSeller */ = {
+			isa = PBXGroup;
+			children = (
+				7B74C3CE179716850006289C /* CreateSellerViewController.h */,
+				7B74C3CF179716850006289C /* CreateSellerViewController.m */,
+				7B74C3D0179716850006289C /* CreateSellerViewController.xib */,
+			);
+			name = CreateSeller;
+			sourceTree = "<group>";
+		};
 		7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
@@ -698,6 +713,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B74C3CD179716670006289C /* CreateSeller */,
 				7B1072AB175E664400D9DC5D /* MainVCs */,
 				7BE958F3175548A100A7E0AB /* ProductCreate */,
 				7B0680CA17664BC2009154BF /* Product Purchasing */,
@@ -1046,6 +1062,7 @@
 				7B9EAB411796EA1400D2868D /* product_buy_bakcground_image_c.png in Resources */,
 				7B9EAB43179702C900D2868D /* product_buy_button_background.png in Resources */,
 				7B74C3CC179712A20006289C /* PurchasingCompleteViewController.xib in Resources */,
+				7B74C3D2179716850006289C /* CreateSellerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1112,6 +1129,7 @@
 				7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */,
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
 				7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */,
+				7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -80,12 +80,7 @@
     self.sizeValueLabel.font = [UIFont systemFontOfSize:16];
     self.priceValueLabel.font = self.sizeValueLabel.font;
     self.quantityValueLabel.font = self.sizeValueLabel.font;
-    
-    /*
-     
-     */
-    
-    // Do any additional setup after loading the view from its nib.
+
 }
 
 
