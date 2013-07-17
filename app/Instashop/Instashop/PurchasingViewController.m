@@ -101,19 +101,10 @@
 
 
 
-
--(IBAction)backButtonHit
-{
-    [self.parentController purchasingViewControllerBackButtonHitWithVC:self];
-    NSLog(@"backButtonHit");
-}
-
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
     if ([theArray count] > 0)
         self.requestedProductObject = [theArray objectAtIndex:0];
-    
-    
     
     [self loadContentViews];
 }
@@ -131,17 +122,21 @@
         [alertView show];
     }
     else
-        [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[requestedProductObject objectForKey:@"owner_instagram_id"]];
+    {
+        
+        PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
+        purchasingAddressViewController.shippingCompleteDelegate = self;
+//        purchasingAddressViewController.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
+//        [self.navigationController presentViewController:purchasingAddressViewController animated:YES completion:nil];
+        [self.navigationController pushViewController:purchasingAddressViewController animated:YES];
+        
+        [purchasingAddressViewController loadWithSizeSelection:[self.sizeButton titleForState:UIControlStateNormal] withQuantitySelection:[self.quantityButton titleForState:UIControlStateNormal] withProductImage:self.imageView.image];
+        [purchasingAddressViewController loadWithRequestedProductObject:self.requestedProductObject];
+ 
+    }
+
 }
 
--(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
-{
-    PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
-    purchasingAddressViewController.shippingCompleteDelegate = self;
-    purchasingAddressViewController.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
-    [self presentViewController:purchasingAddressViewController animated:YES completion:nil];
-    purchasingAddressViewController.doneButton.alpha = 0;
-}
 
 
 
@@ -190,6 +185,19 @@
     
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
 -(void)pickerCancelButtonHit
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -215,6 +223,9 @@
         
     }
 }
+
+
+
 
 -(IBAction)sizeButtonHit
 {
@@ -264,15 +275,18 @@
         if ([[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"NIL"] == NSOrderedSame)
             isSingleSize = YES;
     
-    NSArray *quantityArray = nil;
+    NSMutableArray *quantityArray = nil;
     
 
     if (isSingleSize)
         quantityArray = [NSArray arrayWithObject:[[sizeQuantityArray objectAtIndex:0] objectForKey:@"quantity"]];
     else if (self.sizeSelectedIndex >= 0)
     {
-
-        quantityArray = [NSArray arrayWithObject:[[sizeQuantityArray objectAtIndex:self.sizeSelectedIndex] objectForKey:@"quantity"]];
+        quantityArray = [NSMutableArray arrayWithCapacity:0];
+        int quantity = [[[sizeQuantityArray objectAtIndex:self.sizeSelectedIndex] objectForKey:@"quantity"] intValue];
+        for (int i = 1; i <= quantity; i++)
+            [quantityArray addObject:[NSString stringWithFormat:@"%d", i]];
+        
     }
     
     if (quantityArray != nil)
@@ -297,6 +311,15 @@
 
     
 }
+
+
+-(IBAction)backButtonHit
+{
+    [self.parentController purchasingViewControllerBackButtonHitWithVC:self];
+    NSLog(@"backButtonHit");
+}
+
+
 
 
 @end

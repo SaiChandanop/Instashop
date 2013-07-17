@@ -10,9 +10,12 @@
 #import "SellersAPIHandler.h"
 #import "PostmasterAPIHandler.h"
 #import "InstagramUserObject.h"
-
+#import "SellersAPIHandler.h"
 
 @interface PurchasingAddressViewController ()
+
+@property (nonatomic, retain) NSDictionary *requestedProductObject;
+
 
 @end
 
@@ -20,6 +23,15 @@
 
 @synthesize doneButtonDelegate;
 @synthesize shippingCompleteDelegate;
+
+@synthesize productImageView;
+@synthesize productTitleLabel;
+@synthesize sizeValueLabel;
+@synthesize sizeTextLabel;
+@synthesize quantityValueLabel;
+@synthesize quantityTextLabel;
+@synthesize priceValueLabel;
+@synthesize priceTextLabel;
 
 @synthesize nameTextField;
 @synthesize addressTextField;
@@ -49,42 +61,55 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.sizeTextLabel.text = @"Size";
+    self.priceTextLabel.text = @"Price";
+    self.quantityTextLabel.text = @"Quantity";
+    
+    self.sizeTextLabel.font = [UIFont systemFontOfSize:10];
+    self.priceTextLabel.font = self.sizeTextLabel.font;
+    self.quantityTextLabel.font = self.sizeTextLabel.font;
+    
+    self.sizeValueLabel.font = [UIFont systemFontOfSize:16];
+    self.priceValueLabel.font = self.sizeValueLabel.font;
+    self.quantityValueLabel.font = self.sizeValueLabel.font;
+    
+/*    [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[requestedProductObject objectForKey:@"owner_instagram_id"]];
+    -(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
+    {
+    }
+  */  
+    
     // Do any additional setup after loading the view from its nib.
 }
 
--(IBAction)checkRatesButtonHit
+
+-(void)loadWithSizeSelection:(NSString *)sizeSelection withQuantitySelection:(NSString *)quantitySelection withProductImage:(UIImage *)productImage
 {
-    [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
-    [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
+    if (sizeSelection == nil)
+        self.sizeValueLabel.text = @"";
+    else if ([sizeSelection compare:@"(null)"] == NSOrderedSame)
+        self.sizeValueLabel.text = @"";
+    else
+        self.sizeValueLabel.text = sizeSelection;
+    
+    self.quantityValueLabel.text = quantitySelection;
+    self.productImageView.image = productImage;
 }
 
-
--(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict
+-(void)loadWithRequestedProductObject:(NSDictionary *)theProductObject
 {
+    self.requestedProductObject = [NSDictionary dictionaryWithDictionary:theProductObject];
     
-    if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"UPS"] == NSOrderedSame)
-        self.upsRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
-    else if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"FEDEX"] == NSOrderedSame)
-        self.fedexRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
+    NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setAlwaysShowsDecimalSeparator:YES];
+    [numberFormatter setMaximumFractionDigits:2];
     
+    self.priceValueLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
+    self.productTitleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     
-    if (self.upsRateDictionary != nil && self.fedexRateDictionary != nil)
-    {
-
-        NSString *upsString = [NSString stringWithFormat:@"%@ %@ %@", [self.upsRateDictionary objectForKey:@"carrier"], [self.upsRateDictionary objectForKey:@"charge"], [self.upsRateDictionary objectForKey:@"service"]];
-        NSString *fedexString = [NSString stringWithFormat:@"%@ %@ %@", [self.fedexRateDictionary objectForKey:@"carrier"], [self.fedexRateDictionary objectForKey:@"charge"], [self.fedexRateDictionary objectForKey:@"service"]];
-        
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                      initWithTitle:@"Rates"
-                                      delegate:self
-                                      cancelButtonTitle:@"cancel"
-                                      destructiveButtonTitle:nil
-                                      otherButtonTitles:upsString, fedexString, nil];
-        [actionSheet showInView:self.view];
-
-        
-    }
-    
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
 }
 
 
@@ -136,11 +161,48 @@
 //
 }
 
-
 -(void)postmasterShipRequestRespondedWithDictionary:(NSDictionary *)theDict
 {
-//    NSLog(@"postmasterShipRequestRespondedWithDictionary theDict: %@", theDict);
+    //    NSLog(@"postmasterShipRequestRespondedWithDictionary theDict: %@", theDict);
     [self.shippingCompleteDelegate postmasterShipCompleteWithPostmasterDictionary:theDict];
     
 }
+
+
+-(IBAction)checkRatesButtonHit
+{
+    [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
+    [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
+}
+
+
+-(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict
+{
+    
+    if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"UPS"] == NSOrderedSame)
+        self.upsRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
+    else if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"FEDEX"] == NSOrderedSame)
+        self.fedexRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
+    
+    
+    if (self.upsRateDictionary != nil && self.fedexRateDictionary != nil)
+    {
+        
+        NSString *upsString = [NSString stringWithFormat:@"%@ %@ %@", [self.upsRateDictionary objectForKey:@"carrier"], [self.upsRateDictionary objectForKey:@"charge"], [self.upsRateDictionary objectForKey:@"service"]];
+        NSString *fedexString = [NSString stringWithFormat:@"%@ %@ %@", [self.fedexRateDictionary objectForKey:@"carrier"], [self.fedexRateDictionary objectForKey:@"charge"], [self.fedexRateDictionary objectForKey:@"service"]];
+        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                      initWithTitle:@"Rates"
+                                      delegate:self
+                                      cancelButtonTitle:@"cancel"
+                                      destructiveButtonTitle:nil
+                                      otherButtonTitles:upsString, fedexString, nil];
+        [actionSheet showInView:self.view];
+        
+        
+    }
+    
+}
+
+
 @end
