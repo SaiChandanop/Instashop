@@ -174,6 +174,7 @@
     NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
     if (selectionArray == nil)
     {
+        NSLog(@"here: %@", searchingKeysArray);
         
         
         [self dismissViewControllerAnimated:YES completion:nil];
@@ -186,8 +187,11 @@
         
         
         NSArray *sizesArray = [[AttributesManager getSharedAttributesManager] getSizesWithArray:searchingKeysArray];
+        NSLog(@"sizesArraysizesArray: %@", sizesArray);
         if (sizesArray != nil)
             self.sizeQuantityTableViewController.sizesArray = [[NSArray alloc] initWithArray:sizesArray];
+        else
+            self.sizeQuantityTableViewController.sizesArray = nil;
         
         [self.categorySizeQuantityTableView reloadData];
     }
@@ -250,15 +254,14 @@
     
     NSMutableArray *productsArray = [NSMutableArray arrayWithCapacity:0];
     
-    for (int i = 0; i < [self.sizeQuantityTableViewController.sizeQuantityTableViewCells count]; i++)
+    for (int i = 0; i < [self.sizeQuantityTableViewController.sizeSetValuesArray count]; i++)
     {
-        SizeQuantityTableViewCell *theCell = [self.sizeQuantityTableViewController.sizeQuantityTableViewCells objectAtIndex:i];
         
-        int cellQuant = [[theCell.quantityButton titleForState:UIControlStateNormal] intValue];
+        int cellQuant = [[self.sizeQuantityTableViewController.sizeSetValuesArray objectAtIndex:i] intValue];
         if (cellQuant > 0)
         {
-            NSLog(@"theCell.sizeButton.title: %@", [theCell.sizeButton titleForState:UIControlStateNormal]);
-            NSLog(@"theCell.quantityButton.title: %@", [theCell.quantityButton titleForState:UIControlStateNormal]);
+            NSLog(@"theCell.sizeButton.title: %@", [self.sizeQuantityTableViewController.sizesArray objectAtIndex:i]);
+            NSLog(@"theCell.quantityButton.title: %@", [self.sizeQuantityTableViewController.sizeSetValuesArray objectAtIndex:i]);
             
             ProductCreateObject *productCreateObject = [[ProductCreateObject alloc] init];
             productCreateObject.instagramPictureURLString = self.instagramPictureURLString;
@@ -268,7 +271,7 @@
             productCreateObject.retailValue = self.retailPriceTextField.text;
             productCreateObject.retailPrice = self.retailPriceTextField.text;
             productCreateObject.quantity = [NSString stringWithFormat:@"%d", cellQuant];
-            productCreateObject.size = [theCell.sizeButton titleForState:UIControlStateNormal];
+            productCreateObject.size = [self.sizeQuantityTableViewController.sizesArray objectAtIndex:i];
             productCreateObject.categoriesArray = [NSArray arrayWithArray:self.attributesArray];
             [productsArray addObject:productCreateObject];
             

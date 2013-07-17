@@ -10,13 +10,13 @@
 
 @interface SizeQuantityTableViewController : UITableViewController
 {
-    NSMutableArray *sizeQuantityTableViewCells;
-    
     NSArray *sizesArray;
-    
+    NSMutableArray *sizeSetValuesArray;
 }
 
-@property (nonatomic, retain) NSMutableArray *sizeQuantityTableViewCells;
+-(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath;
+
 @property (nonatomic, retain) NSArray *sizesArray;
+@property (nonatomic, retain) NSMutableArray *sizeSetValuesArray;
 
 @end

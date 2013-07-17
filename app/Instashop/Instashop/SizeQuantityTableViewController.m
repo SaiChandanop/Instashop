@@ -14,16 +14,13 @@
 
 @implementation SizeQuantityTableViewController
 
-@synthesize sizeQuantityTableViewCells;
+@synthesize sizeSetValuesArray;
 @synthesize sizesArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        
-        self.sizeQuantityTableViewCells = [[NSMutableArray alloc] initWithCapacity:0];
-        // Custom initialization
     }
     return self;
 }
@@ -31,8 +28,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-        self.sizeQuantityTableViewCells = [[NSMutableArray alloc] initWithCapacity:0];
+    self.sizeSetValuesArray = [[NSMutableArray alloc] initWithCapacity:0];
 }
 
 
@@ -42,17 +38,28 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [self.sizeQuantityTableViewCells removeAllObjects];
+    [self.sizeSetValuesArray removeAllObjects];
     [tableView setSeparatorColor:[UIColor clearColor]];
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    
+    NSLog(@"reload!: %@", self.sizesArray);
     if (self.sizesArray == nil)
+    {
+        [self.sizeSetValuesArray addObject:@""];
         return 1;
+    }
     else
+    {
+        for (int i = 0; i < [self.sizesArray count]; i++)
+            [self.sizeSetValuesArray addObject:@""];
+        
         return [self.sizesArray count];
+        
+    }
 
 }
 
@@ -62,18 +69,25 @@
     static NSString *CellIdentifier = @"Cell";
     SizeQuantityTableViewCell *cell = [[SizeQuantityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
 
+    cell.parentController = self;
     if (self.sizesArray == nil)
         [cell loadWithIndexPath:indexPath withSizeTitle:nil];
     else
         [cell loadWithIndexPath:indexPath withSizeTitle:[self.sizesArray objectAtIndex:indexPath.row]];
-    
-    if (![self.sizeQuantityTableViewCells containsObject:cell])
-        [self.sizeQuantityTableViewCells addObject:cell];
-    
-    
+        
+    if ([[self.sizeSetValuesArray objectAtIndex:indexPath.row] length] > 0)
+        [cell.quantityButton setTitle:[self.sizeSetValuesArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+        
     
     return cell;
 }
 
+
+-(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath
+{
+    [self.sizeSetValuesArray replaceObjectAtIndex:indexPath.row withObject:value];
+    
+    NSLog(@"cellSelectedValue self.sizeSetValuesArray: %@", self.sizeSetValuesArray);
+}
 
 @end

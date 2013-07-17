@@ -13,11 +13,13 @@
 
 @implementation SizeQuantityTableViewCell
 
+@synthesize parentController;
 @synthesize rowNumberLabel;
 @synthesize sizeButton;
 @synthesize quantityButton;
 @synthesize pickerSelectedIndex;
 @synthesize pickerItemsArray;
+@synthesize theIndexPath;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -62,7 +64,7 @@
 
 -(void) loadWithIndexPath:(NSIndexPath *)indexPath withSizeTitle:(NSString *)sizeTitle
 {
-
+    self.theIndexPath = indexPath;
     self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
     
     [self.sizeButton setTitle:@"size" forState:UIControlStateNormal];
@@ -118,6 +120,8 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.pickerSelectedIndex = row;
+
+    NSLog(@"picker view did select row: %d", row);
 }
 
 -(void)dismissPicker
@@ -133,6 +137,7 @@
 
 -(void)pickerSaveButtonHit
 {
+    [self.parentController cellSelectedValue:[self.pickerItemsArray objectAtIndex:self.pickerSelectedIndex] withIndexPath:self.theIndexPath];    
     [self.quantityButton setTitle:[NSString stringWithFormat:@"%d", self.pickerSelectedIndex] forState:UIControlStateNormal];
     [self dismissPicker];
 }
