@@ -21,8 +21,15 @@
     apiHandler.delegate = theDelegate;
     apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
     [apiHandler.theWebRequest addTarget:apiHandler action:@selector(ratesCallDidFinish:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(ratesCallDidFail:) forRequestEvents:SMWebRequestEventError];    
+    
     [apiHandler.theWebRequest start];
     
+}
+
+-(void)ratesCallDidFail:(id)obj
+{
+    [self.delegate ratesCallDidFail];
 }
 
 
@@ -83,5 +90,9 @@
     
     [self.delegate postmasterShipRequestRespondedWithDictionary:responseDictionary];
 }
+
+
+
+
 
 @end

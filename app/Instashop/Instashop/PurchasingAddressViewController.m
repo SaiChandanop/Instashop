@@ -75,9 +75,9 @@
     self.priceValueLabel.font = self.sizeValueLabel.font;
     self.quantityValueLabel.font = self.sizeValueLabel.font;
     
-/*    
- 
-  */  
+    /*
+     
+     */
     
     // Do any additional setup after loading the view from its nib.
 }
@@ -110,7 +110,7 @@
     
     NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
     
-    self.productBuyButtonLabel.text = [NSString stringWithFormat:@"Buy - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]]];
+    self.productBuyButtonLabel.text = [NSString stringWithFormat:@"Buy - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[self.quantityValueLabel.text floatValue] * [[self.requestedProductObject objectForKey:@"products_price"] floatValue]]]];
     
     [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[self.requestedProductObject objectForKey:@"owner_instagram_id"]];
 }
@@ -157,19 +157,19 @@
     
     switch (buttonIndex) {
         case 0:
-                [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.upsRateDictionary withPackageDictionary:packageDictionary];
+            [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.upsRateDictionary withPackageDictionary:packageDictionary];
             break;
         case 1:
-                [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.fedexRateDictionary withPackageDictionary:packageDictionary];
+            [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.fedexRateDictionary withPackageDictionary:packageDictionary];
             break;
         default:
             self.upsRateDictionary = nil;
             self.fedexRateDictionary = nil;
-
+            
             break;
     }
     
-//
+    //
 }
 
 -(void)postmasterShipRequestRespondedWithDictionary:(NSDictionary *)theDict
@@ -182,19 +182,35 @@
 
 -(IBAction)checkRatesButtonHit
 {
-    [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
-    [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
+    if (self.upsRateDictionary == nil && self.fedexRateDictionary)
+    {
+        
+        [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
+        [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
+        
+    }
 }
 
 
+-(void)ratesCallDidFail
+{
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Please ensure all fields are filled out correctly"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
+}
 -(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict
 {
-    
-    if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"UPS"] == NSOrderedSame)
-        self.upsRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
-    else if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"FEDEX"] == NSOrderedSame)
-        self.fedexRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
-    
+    if (returnDict != nil)
+    {
+        if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"UPS"] == NSOrderedSame)
+            self.upsRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
+        else if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"FEDEX"] == NSOrderedSame)
+            self.fedexRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
+    }
     
     if (self.upsRateDictionary != nil && self.fedexRateDictionary != nil)
     {
@@ -217,11 +233,16 @@
 
 -(IBAction)buyButtonHit
 {
-    NSLog(@"buyButtonHit!");
+    
+    [self.addressTextField resignFirstResponder];
+    [self.cityTextField resignFirstResponder];
+    [self.zipTextField resignFirstResponder];
+    [self.stateTextField resignFirstResponder];
+    [self.phoneTextField resignFirstResponder];
     
     [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
     [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
-
+    
     
     
 }
