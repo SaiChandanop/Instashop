@@ -13,6 +13,9 @@
 #import "SellersAPIHandler.h"
 #import "PostmasterAPIHandler.h"
 #import "MBProgressHUD.h"
+#import "STPCard.h"
+#import "StripeAuthenticationHandler.h"
+#import "ProductAPIHandler.h"
 @interface PurchasingAddressViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -24,7 +27,6 @@
 
 @synthesize doneButtonDelegate;
 @synthesize shippingCompleteDelegate;
-
 @synthesize productImageView;
 @synthesize productTitleLabel;
 @synthesize sizeValueLabel;
@@ -33,23 +35,25 @@
 @synthesize quantityTextLabel;
 @synthesize priceValueLabel;
 @synthesize priceTextLabel;
-
 @synthesize nameTextField;
 @synthesize addressTextField;
 @synthesize cityTextField;
 @synthesize stateTextField;
 @synthesize zipTextField;
 @synthesize phoneTextField;
-
-
 @synthesize checkRatesButton;
 @synthesize doneButton;
-
 @synthesize productBuyButtonLabel;
+@synthesize productCategoryDictionary;
 @synthesize sellerDictionary;
-
 @synthesize upsRateDictionary;
 @synthesize fedexRateDictionary;
+
+@synthesize creditCardNumberTextField;
+@synthesize expirationTextField;
+@synthesize ccvTextField;
+@synthesize requestedPostmasterDictionary;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -141,12 +145,16 @@
     [self.stateTextField resignFirstResponder];
     [self.phoneTextField resignFirstResponder];
     
-        if (self.upsRateDictionary == nil && self.fedexRateDictionary == nil)
-        {
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Getting Rates";
-            [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
-            [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
-        }
+    [self.creditCardNumberTextField resignFirstResponder];
+    [self.expirationTextField resignFirstResponder];
+    [self.ccvTextField resignFirstResponder];
+    
+    if (self.upsRateDictionary == nil && self.fedexRateDictionary == nil)
+    {
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Getting Rates";
+        [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
+        [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
+    }
 }
 
 -(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict
@@ -238,10 +246,8 @@
 -(void)postmasterShipRequestRespondedWithDictionary:(NSDictionary *)theDict
 {
     
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    
-    NSLog(@"postmasterShipRequestRespondedWithDictionary!!!");
-   // [self.shippingCompleteDelegate postmasterShipCompleteWithPostmasterDictionary:theDict];
+    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];    
+    [self doStripePurchaseWithPostMasterDictionary:theDict];
     
 }
 
@@ -255,8 +261,61 @@
                                               otherButtonTitles:nil];
     
     [alertView show];
-
+    
 }
+
+-(void)doStripePurchaseWithPostMasterDictionary:(NSDictionary *)thePostmasterDictionary
+{
+    [MBProgressHUD showHUDAddedTo:self.view animated:NO].detailsLabelText = @"Stripe Call";
+    self.requestedPostmasterDictionary = [NSDictionary dictionaryWithDictionary:thePostmasterDictionary];
+    STPCard *stripeCard = [[STPCard alloc] init];
+    stripeCard.number = @"4242424242424242";
+    stripeCard.expMonth = 05;
+    stripeCard.expYear = 15;
+    stripeCard.cvc = @"123";
+    stripeCard.name = @"alchemy50";
+    stripeCard.addressLine1 = @"20 Jay Street #934";
+    stripeCard.addressZip = @"11201";
+    stripeCard.addressCity = @"Brooklyn";
+    stripeCard.addressState = @"NY";
+    stripeCard.addressCountry = @"KINGS";
+    
+    [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+}
+-(void)doBuy
+{
+    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
+    
+    float val = [[self.requestedProductObject objectForKey:@"products_price"] floatValue];
+    
+    val = val * 100;
+    int intVal = [[NSNumber numberWithFloat:val] integerValue];
+    NSString *priceString = [NSString stringWithFormat:@"%d", intVal];
+    
+    NSString *zencartProductID = [NSString stringWithFormat:@"product_id: %@", [self.requestedProductObject objectForKey:@"product_id"]];
+    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID withDelegate:self];
+    
+}
+
+
+-(void)buySuccessfulWithDictionary:(id)theDict
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+    [MBProgressHUD showHUDAddedTo:self.view animated:NO].detailsLabelText = @"Instashop Call";
+    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject withProductCategoryObjectID:[productCategoryDictionary objectForKey:@"id"] withPostmasterDictionary:self.requestedPostmasterDictionary];
+    
+}
+
+-(void)productPurchaceSuccessful
+{
+    NSLog(@"productPurchaceSuccessful productPurchaceSuccessful");
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+}
+
+
 
 
 

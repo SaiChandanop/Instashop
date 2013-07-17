@@ -30,15 +30,21 @@
     UITextField *zipTextField;
     UITextField *phoneTextField;
     
+    UITextField *creditCardNumberTextField;
+    UITextField *expirationTextField;
+    UITextField *ccvTextField;
+    
     UIButton *checkRatesButton;
     UIButton *doneButton;
     
     UILabel *productBuyButtonLabel;
     
+    NSDictionary *productCategoryDictionary;
     NSDictionary *sellerDictionary;
-        
     NSDictionary *upsRateDictionary;
     NSDictionary *fedexRateDictionary;
+    
+    NSDictionary *requestedPostmasterDictionary;
 }
 
 
@@ -70,15 +76,20 @@
 @property (nonatomic, retain) IBOutlet UITextField *zipTextField;
 @property (nonatomic, retain) IBOutlet UITextField *phoneTextField;
 
+@property (nonatomic, retain) IBOutlet UITextField *creditCardNumberTextField;
+@property (nonatomic, retain) IBOutlet UITextField *expirationTextField;
+@property (nonatomic, retain) IBOutlet UITextField *ccvTextField;
+
 @property (nonatomic, retain) IBOutlet UIButton *checkRatesButton;
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;
-
 @property (nonatomic, retain) IBOutlet UILabel *productBuyButtonLabel;
 
+@property (nonatomic, retain) NSDictionary *productCategoryDictionary;
 @property (nonatomic, retain) NSDictionary *sellerDictionary;
-
 @property (nonatomic, retain) NSDictionary *upsRateDictionary;
 @property (nonatomic, retain) NSDictionary *fedexRateDictionary;
+
+@property (nonatomic, retain) NSDictionary *requestedPostmasterDictionary;
 
 @end
 

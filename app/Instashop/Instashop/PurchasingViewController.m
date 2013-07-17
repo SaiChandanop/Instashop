@@ -101,7 +101,6 @@
                 [attributesArray addObject:attributeValue];
     }
 
-    NSLog(@"attributesArray: %@", attributesArray);
     
     NSMutableString *categoryString = [NSMutableString stringWithCapacity:0];
     for (int i = 0; i < [attributesArray count]; i++)
@@ -110,10 +109,8 @@
         if (i != [attributesArray count] -1)
             [categoryString appendString:@" > "];
     }
-    NSLog(@"categoryString: %@", categoryString);
     
     self.categoryLabel.text = categoryString;
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -151,79 +148,19 @@
     }
     else
     {
+        NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+        NSDictionary *productCategoryObject = [sizeQuantityArray objectAtIndex:self.sizeSelectedIndex];
         
         PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
+        purchasingAddressViewController.productCategoryDictionary = productCategoryObject;
         purchasingAddressViewController.shippingCompleteDelegate = self;
-//        purchasingAddressViewController.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
-//        [self.navigationController presentViewController:purchasingAddressViewController animated:YES completion:nil];
-        [self.navigationController pushViewController:purchasingAddressViewController animated:YES];
-        
+        [self.navigationController pushViewController:purchasingAddressViewController animated:YES];        
         [purchasingAddressViewController loadWithSizeSelection:[self.sizeButton titleForState:UIControlStateNormal] withQuantitySelection:[self.quantityButton titleForState:UIControlStateNormal] withProductImage:self.imageView.image];
         [purchasingAddressViewController loadWithRequestedProductObject:self.requestedProductObject];
  
     }
 
 }
-
-
-
-
-
--(void) postmasterShipCompleteWithPostmasterDictionary:(NSDictionary *)thePostmasterDictionary
-{
-    self.requestedPostmasterDictionary = [thePostmasterDictionary retain];
-    STPCard *stripeCard = [[STPCard alloc] init];
-    stripeCard.number = @"4242424242424242";
-    stripeCard.expMonth = 05;
-    stripeCard.expYear = 15;
-    stripeCard.cvc = @"123";
-    stripeCard.name = @"alchemy50";
-    stripeCard.addressLine1 = @"20 Jay Street #934";
-    stripeCard.addressZip = @"11201";
-    stripeCard.addressCity = @"Brooklyn";
-    stripeCard.addressState = @"NY";
-    stripeCard.addressCountry = @"KINGS";
-    
-    [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
--(void)doBuy
-{
-    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
-    
-    float val = [[self.requestedProductObject objectForKey:@"products_price"] floatValue];
-    
-    val = val * 100;
-    int intVal = [[NSNumber numberWithFloat:val] integerValue];
-    NSString *priceString = [NSString stringWithFormat:@"%d", intVal];
-    
-    NSString *zencartProductID = [NSString stringWithFormat:@"product_id: %@", [requestedProductObject objectForKey:@"product_id"]];
-    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID withDelegate:self];
-    
-}
-
-
--(void)buySuccessfulWithDictionary:(id)theDict
-{
-    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
-    
-    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject withProductCategoryObjectID:[[sizeQuantityArray objectAtIndex:self.sizeSelectedIndex] objectForKey:@"id"] withPostmasterDictionary:self.requestedPostmasterDictionary];
-    
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 -(void)pickerCancelButtonHit
@@ -344,7 +281,7 @@
 -(IBAction)backButtonHit
 {
     [self.parentController purchasingViewControllerBackButtonHitWithVC:self];
-    NSLog(@"backButtonHit");
+
 }
 
 

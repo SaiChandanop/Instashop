@@ -120,7 +120,7 @@
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-
+    [self.delegate productPurchaceSuccessful];
     NSLog(@"productPurchasedComplete: %@", newStr);
 }
 
