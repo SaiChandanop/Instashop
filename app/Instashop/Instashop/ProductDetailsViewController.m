@@ -174,8 +174,6 @@
     NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
     if (selectionArray == nil)
     {
-        NSLog(@"here: %@", searchingKeysArray);
-        
         
         [self dismissViewControllerAnimated:YES completion:nil];
         [UIView beginAnimations:nil context:nil];
@@ -187,7 +185,6 @@
         
         
         NSArray *sizesArray = [[AttributesManager getSharedAttributesManager] getSizesWithArray:searchingKeysArray];
-        NSLog(@"sizesArraysizesArray: %@", sizesArray);
         if (sizesArray != nil)
             self.sizeQuantityTableViewController.sizesArray = [[NSArray alloc] initWithArray:sizesArray];
         else
@@ -260,8 +257,6 @@
         int cellQuant = [[self.sizeQuantityTableViewController.sizeSetValuesArray objectAtIndex:i] intValue];
         if (cellQuant > 0)
         {
-            NSLog(@"theCell.sizeButton.title: %@", [self.sizeQuantityTableViewController.sizesArray objectAtIndex:i]);
-            NSLog(@"theCell.quantityButton.title: %@", [self.sizeQuantityTableViewController.sizeSetValuesArray objectAtIndex:i]);
             
             ProductCreateObject *productCreateObject = [[ProductCreateObject alloc] init];
             productCreateObject.instagramPictureURLString = self.instagramPictureURLString;

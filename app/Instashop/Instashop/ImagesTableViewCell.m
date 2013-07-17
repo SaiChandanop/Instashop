@@ -73,7 +73,7 @@
         theLabel.textColor = [UIColor whiteColor];
         theLabel.textAlignment = NSTextAlignmentCenter;
         theLabel.font = [UIFont systemFontOfSize:fontHeight];
-        theLabel.text = @"asdf";//[productObjectDictionary objectForKey:@"products_name"];
+//        theLabel.text = @"asdf";//[productObjectDictionary objectForKey:@"products_name"];
         [self addSubview:theLabel];
         [theLabel release];
         

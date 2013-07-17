@@ -123,6 +123,9 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
     [self.feedItemsArray addObjectsFromArray:sorted];
     
     [self.refreshControl endRefreshing];
+    
+//   NSLog(@"self.feedItemsArray: %@", self.feedItemsArray);
+    NSLog(@"self.feedItemsArray.count: %d", [self.feedItemsArray count]);
     [self.tableView reloadData];
     
     
@@ -157,7 +160,8 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.feedItemsArray count] / 3;
+
+    return ([self.feedItemsArray count] / 3) + 1;
 }
 
 - (ImagesTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
