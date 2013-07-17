@@ -13,5 +13,5 @@
 
 
 +(void)presentWithProductObject:(NSDictionary *)productObject;
-
+-(IBAction)xButtonHit;
 @end

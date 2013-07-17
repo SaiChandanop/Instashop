@@ -47,4 +47,8 @@
     [rootVC.view addSubview:vc.view];
 }
 
+-(IBAction)xButtonHit
+{
+    [self.view removeFromSuperview];
+}
 @end
