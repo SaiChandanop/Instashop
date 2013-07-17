@@ -16,6 +16,7 @@
 #import "STPCard.h"
 #import "StripeAuthenticationHandler.h"
 #import "ProductAPIHandler.h"
+#import "PurchasingCompleteViewController.h"
 @interface PurchasingAddressViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -313,6 +314,13 @@
 {
     NSLog(@"productPurchaceSuccessful productPurchaceSuccessful");
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    NSArray *array = [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    NSLog(@"array: %@", array);
+    
+    [PurchasingCompleteViewController presentWithProductObject:nil];
+    
 }
 
 
