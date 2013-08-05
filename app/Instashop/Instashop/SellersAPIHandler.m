@@ -14,7 +14,7 @@
 
 +(void)makeCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject withSellerAddressDictionary:(NSDictionary *)addressDictionary
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"create_seller.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/create_seller.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -31,6 +31,8 @@
     for (id key in addressDictionary)
         [thePostString appendString:[NSString stringWithFormat:@"&%@=%@", key, [addressDictionary objectForKey:key]]];
     
+    [thePostString appendString:[NSString stringWithFormat:@"&%@=%@", @"instagram_username", instagramUserObject.username]];
+    
     
     [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
     NSLog(@"postString: %@", thePostString);
@@ -46,9 +48,14 @@
 
 -(void)userCreateRequestFinished:(id)obj
 {
-    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
-    [self.delegate userDidCreateSellerWithResponseDictionary:responseDictionary];    
+//    NSString* responseString = [[[NSString alloc] initWithData:responseData
+  //                                                    encoding:NSUTF8StringEncoding] autorelease];
+
+//    NSLog(@"userCreateRequestFinished: %@", responseString);
+    
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    [self.delegate userDidCreateSellerWithResponseDictionary:responseDictionary];
 }
 
 

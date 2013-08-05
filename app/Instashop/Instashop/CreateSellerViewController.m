@@ -46,6 +46,19 @@
     // Do any additional setup after loading the view from its nib.
     
     self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height * 2);
+    
+    self.nameTextField.text = @"Josh Klobe";
+
+    self.addressTextField.text = @"50 Bridge St Apt 318";
+    self.cityTextField.text = @"Brooklyn";
+    self.stateTextField.text = @"NY";
+    self.zipTextField.text = @"11201";
+    self.phoneTextField.text = @"9178374622";
+    self.emailTextField.text = @"klobej@gmail.com  ";
+    self.websiteTextField.text = @"alchemy50.com";
+    self.categoryTextField.text = @"testcat";
+    
+
 }
 
 //-(void)
@@ -64,7 +77,7 @@
     [addressDictionary setObject:self.categoryTextField.text forKey:@"seller_category"];
     
     NSLog(@"addressDictionay: %@", addressDictionary);
-//    [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
+    [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
 
     self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height * 2);
     
