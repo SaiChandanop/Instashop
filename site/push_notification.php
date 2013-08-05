@@ -1,21 +1,9 @@
 <?
 
+include_once("db.php");
 
-function getSellerPushIDFromZenID($host, $user, $pass, $db, $seller_zen_id)
+function getSellerPushIDFromZenID($seller_zen_id)
 {
-	$con = mysql_connect($host, $user, $pass);
-	if (!$con) {
-	    echo "Could not connect to server\n";
-	    trigger_error(mysql_error(), E_USER_ERROR);
-	} 
-	
-	$r2 = mysql_select_db($db);
-	if (!$r2) {
-	    echo "Cannot select database\n";
-	    trigger_error(mysql_error(), E_USER_ERROR); 
-	} 
-	
-
 	$retVal = "";
 
 	$query = "select * from sellers where id = '$seller_zen_id'";
@@ -26,32 +14,36 @@ function getSellerPushIDFromZenID($host, $user, $pass, $db, $seller_zen_id)
 		$retVal = $row["push_id"];
 	}
 
-
 	return $retVal;
-
-
-
 }
 
 
-function pushSoldMessageWithProductInfo($products_id, $products_name, $products_price, $purchaser_id, $seller_zen_id, $purchaser_username)
+function pushSoldMessageWithProductInfo($products_id, $products_name, $products_price, $purchaser_id, $seller_zen_id, $purchaser_username, $postmaster_order_id)
 {
+	$con = mysql_connect($db_host, $_db_user, $db_pass);
+	if (!$con) {
+		echo "Could not connect to server\n";
+		trigger_error(mysql_error(), E_USER_ERROR);
+	} 
+	
+	$r2 = mysql_select_db($db_db);
+	if (!$r2) {
+		echo "Cannot select database\n";
+		trigger_error(mysql_error(), E_USER_ERROR); 
+	} 
 
-	$sellers_host = "mysql51-033.wc1.ord1.stabletransit.com"; 
-	$sellers_user = "690403_instashop"; 
-	$sellers_pass = "2Fpz7qm4"; 
-	$sellers_db   = "690403_instashop_sellers";
 
-	$seller_device_token = getSellerPushIDFromZenID($sellers_host, $sellers_user, $sellers_pass, $sellers_db, $seller_zen_id);
+	$seller_device_token = getSellerPushIDFromZenID($seller_zen_id);
 
-
+	//echo "----------------------------- post master url: ".$postmaster_label_url;
+	echo "seller device token: ".$seller_device_token;
 	$message = $purchaser_username .' bought '. $products_name .' for $' . $products_price;
 	$badge = 3;
 	$sound = 'default';
 	$development = true;
  
 	$payload = array();
-	$payload['aps'] = array('alert' => $message, 'badge' => intval($badge), 'sound' => $sound);
+	$payload['aps'] = array('alert' => $message, 'order_id' => $postmaster_order_id, 'badge' => intval($badge), 'sound' => $sound);
 	$payload = json_encode($payload);
  
 	$apns_url = NULL;
@@ -62,6 +54,7 @@ function pushSoldMessageWithProductInfo($products_id, $products_name, $products_
 	{
 		$apns_url = 'gateway.sandbox.push.apple.com';
 		$apns_cert = './cert-dev.pem';
+//		$apns_cert = './ck.pem';
 	}
 	else
 	{

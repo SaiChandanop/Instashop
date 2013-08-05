@@ -12,7 +12,7 @@
 #import "HomeViewController.h"
 #import "NotificationsViewController.h"
 #import "DiscoverViewController.h"
-#import "ProfileViewController.h"
+
 
 
 @interface AppRootViewController : UIViewController
@@ -22,7 +22,6 @@
     HomeViewController *homeViewController;
     DiscoverViewController *discoverViewController;
     NotificationsViewController *notificationsViewController;
-    ProfileViewController *profileViewController;
     
     BOOL areViewsTransitioning;
     
@@ -47,7 +46,6 @@
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) DiscoverViewController *discoverViewController;
 @property (strong, nonatomic) NotificationsViewController *notificationsViewController;
-@property (strong, nonatomic) ProfileViewController *profileViewController;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;
 

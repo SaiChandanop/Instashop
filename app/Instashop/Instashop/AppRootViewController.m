@@ -16,7 +16,7 @@
 
 static AppRootViewController *theSharedRootViewController;
 
-@synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController, notificationsViewController, profileViewController;
+@synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController, notificationsViewController;
 @synthesize areViewsTransitioning;
 
 float transitionTime = .456;

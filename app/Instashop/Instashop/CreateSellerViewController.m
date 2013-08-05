@@ -17,12 +17,19 @@
 
 @synthesize delegate;
 
+
+@synthesize containerScrollView;
+
 @synthesize nameTextField;
 @synthesize addressTextField;
 @synthesize cityTextField;
 @synthesize stateTextField;
 @synthesize zipTextField;
 @synthesize phoneTextField;
+@synthesize emailTextField;
+@synthesize categoryTextField;
+@synthesize websiteTextField;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,8 +44,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height * 2);
 }
 
+//-(void)
 
 -(IBAction)doneButtonHit
 {
@@ -49,10 +59,14 @@
     [addressDictionary setObject:self.stateTextField.text forKey:@"seller_state"];
     [addressDictionary setObject:self.zipTextField.text forKey:@"seller_zip"];
     [addressDictionary setObject:self.phoneTextField.text forKey:@"seller_phone"];
+    [addressDictionary setObject:self.emailTextField.text forKey:@"seller_email"];    
+    [addressDictionary setObject:self.websiteTextField.text forKey:@"seller_website"];
+    [addressDictionary setObject:self.categoryTextField.text forKey:@"seller_category"];
     
     NSLog(@"addressDictionay: %@", addressDictionary);
-    [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
+//    [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
 
+    self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height * 2);
     
 }
 
