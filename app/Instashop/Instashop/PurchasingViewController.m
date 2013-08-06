@@ -74,17 +74,13 @@
     [self.view bringSubviewToFront:self.purchaseButton];
 
     
-    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:nil action:nil];
-    [self.navigationItem setRightBarButtonItem:barButtonItem animated:YES];
-    
-
-    
-    
     UIImage *backButtonImage = [[UIImage imageNamed:@"toolbar_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
     [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, backButtonImage.size.height) forBarMetrics:UIBarMetricsDefault];
     
     
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
+    self.navigationItem.titleView = theImageView;
 }
 
 

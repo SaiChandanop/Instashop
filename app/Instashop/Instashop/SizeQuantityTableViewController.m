@@ -45,8 +45,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    NSLog(@"reload!: %@", self.sizesArray);
     if (self.sizesArray == nil)
     {
         [self.sizeSetValuesArray addObject:@""];

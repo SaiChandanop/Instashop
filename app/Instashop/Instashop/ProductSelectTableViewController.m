@@ -76,8 +76,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"self.userMediaArray: %@", self.userMediaArray);
-    NSLog(@"self.userMediaArray.count: %d", [self.userMediaArray count]);
     return [self.userMediaArray count] / 3 + 1;
 }
 

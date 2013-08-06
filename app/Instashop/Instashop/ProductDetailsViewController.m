@@ -36,6 +36,7 @@
 @synthesize retailPriceTextField;
 @synthesize instashopPriceTextField;
 @synthesize nextButton;
+@synthesize nextButtonContainerView;
 @synthesize retailPriceLabel;
 @synthesize instashopPriceLabel;
 
@@ -99,7 +100,6 @@
     self.selectedCategoriesLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
     
     [self.view addSubview:self.containerScrollView];
-    self.containerScrollView.contentSize = CGSizeMake(0,self.subCategoryContainerView.frame.origin.y + self.subCategoryContainerView.frame.size.height - 100);
     
     
     self.attributesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", nil];
@@ -107,6 +107,13 @@
     self.subCategoryContainerView.backgroundColor = self.view.backgroundColor;
     self.categorySizeQuantityTableView.backgroundColor = self.view.backgroundColor;
     [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
+    
+    
+    NSLog(@"self.containerScrollView.size: %@", NSStringFromCGRect(self.containerScrollView.frame));
+    NSLog(@"self.nextButton.frame: %@", NSStringFromCGRect(self.nextButton.frame));
+    self.containerScrollView.contentSize = CGSizeMake(0, self.nextButtonContainerView.frame.origin.y +  self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
+    
+    NSLog(@"HERE HERE");
 }
 
 - (IBAction) categoryButtonHit

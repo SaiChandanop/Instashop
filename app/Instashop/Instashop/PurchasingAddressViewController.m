@@ -87,6 +87,12 @@
     [self.view addSubview:self.productDetailsContentView];
     self.productDetailsContentView.frame = CGRectMake(self.productDetailsPlacementView.frame.origin.x,self.productDetailsPlacementView.frame.origin.y,self.productDetailsPlacementView.frame.size.width, self.productDetailsPlacementView.frame.size.height);
     
+    
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
+    self.navigationItem.titleView = theImageView;
+
+    
+    
 }
 
 

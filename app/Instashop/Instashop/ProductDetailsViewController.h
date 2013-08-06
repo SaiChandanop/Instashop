@@ -32,6 +32,7 @@
     UILabel *instashopPriceLabel;
     UITextField *instashopPriceTextField;
     UIButton *nextButton;
+    UIView *nextButtonContainerView;
     
     NSDictionary *instragramMediaInfoDictionary;
     NSString *instagramPictureURLString;
@@ -66,6 +67,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *instashopPriceLabel;
 @property (nonatomic, retain) IBOutlet UITextField *instashopPriceTextField;
 @property (nonatomic, retain) IBOutlet UIButton *nextButton;
+@property (nonatomic, retain) IBOutlet UIView *nextButtonContainerView;
 
 @property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;
 @property (nonatomic, retain) NSString *instagramPictureURLString;
