@@ -31,10 +31,13 @@
 @synthesize parentController;
 @synthesize contentScrollView;
 @synthesize categoryLabel;
+@synthesize descriptionContainerView;
 @synthesize requestedProductObject;
 @synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel, sellerProfileImageView;
 @synthesize bottomView;
 @synthesize sizeSelectedIndex;
+@synthesize purchaseButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -49,10 +52,14 @@
     [super viewDidLoad];
     
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    self.view.backgroundColor = [UIColor blackColor];
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height * 2);
+    self.contentScrollView.frame = CGRectMake(0,0,320, 520);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height + 75);
     self.contentScrollView.backgroundColor = [UIColor clearColor];
+    
+    NSLog(@"self.descriptionContainerView.frame: %@", NSStringFromCGRect(self.descriptionContainerView.frame));
     
     [self.view addSubview:self.bottomView];
     [self.view bringSubviewToFront:self.bottomView];
@@ -63,6 +70,10 @@
     self.sizeSelectedIndex = -1;
     
     self.descriptionTextView.text = @"";
+    
+    [self.view bringSubviewToFront:self.purchaseButton];
+    
+    
     
 }
 
@@ -101,7 +112,8 @@
                 [attributesArray addObject:attributeValue];
     }
 
-    
+    NSLog(@"requestedProductObject: %@", requestedProductObject);
+    NSLog(@"attributesArray: %@", attributesArray);
     NSMutableString *categoryString = [NSMutableString stringWithCapacity:0];
     for (int i = 0; i < [attributesArray count]; i++)
     {
@@ -111,6 +123,8 @@
     }
     
     self.categoryLabel.text = categoryString;
+    
+    NSLog(@"self.categoryLabel.text!!: %@", self.categoryLabel.text);
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {

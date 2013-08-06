@@ -64,6 +64,8 @@
 		7B49085F1758FE5B0047ED3B /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B49085D1758FE5B0047ED3B /* NotificationsViewController.xib */; };
 		7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4908611758FE650047ED3B /* DiscoverViewController.m */; };
 		7B4908641758FE650047ED3B /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4908621758FE650047ED3B /* DiscoverViewController.xib */; };
+		7B4A78FA17B13C07002E872A /* purchase_button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4A78F917B13C07002E872A /* purchase_button_background.png */; };
+		7B4A78FC17B14329002E872A /* buy_sizes.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4A78FB17B14329002E872A /* buy_sizes.png */; };
 		7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */; };
 		7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D2E13175CFCD1005DE4B6 /* HomeViewController.m */; };
 		7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */; };
@@ -211,6 +213,8 @@
 		7B4908601758FE650047ED3B /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		7B4908611758FE650047ED3B /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		7B4908621758FE650047ED3B /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
+		7B4A78F917B13C07002E872A /* purchase_button_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase_button_background.png; sourceTree = "<group>"; };
+		7B4A78FB17B14329002E872A /* buy_sizes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_sizes.png; sourceTree = "<group>"; };
 		7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRootViewController.h; sourceTree = "<group>"; };
 		7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppRootViewController.m; sourceTree = "<group>"; };
 		7B4D2E12175CFCD1005DE4B6 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
@@ -537,6 +541,8 @@
 		7B4D2E17175CFFBE005DE4B6 /* shittyimages */ = {
 			isa = PBXGroup;
 			children = (
+				7B4A78FB17B14329002E872A /* buy_sizes.png */,
+				7B4A78F917B13C07002E872A /* purchase_button_background.png */,
 				7B9EAB42179702C900D2868D /* product_buy_button_background.png */,
 				7B602DB5176670F600663A73 /* buyheader.png */,
 				7B602DAB1766543100663A73 /* buybutton.png */,
@@ -1047,6 +1053,8 @@
 				7B9EAB43179702C900D2868D /* product_buy_button_background.png in Resources */,
 				7B74C3CC179712A20006289C /* PurchasingCompleteViewController.xib in Resources */,
 				7B74C3D2179716850006289C /* CreateSellerViewController.xib in Resources */,
+				7B4A78FA17B13C07002E872A /* purchase_button_background.png in Resources */,
+				7B4A78FC17B14329002E872A /* buy_sizes.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
