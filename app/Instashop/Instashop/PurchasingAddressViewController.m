@@ -26,6 +26,8 @@
 
 @implementation PurchasingAddressViewController
 
+@synthesize productDetailsPlacementView;
+@synthesize productDetailsContentView;
 @synthesize doneButtonDelegate;
 @synthesize shippingCompleteDelegate;
 @synthesize productImageView;
@@ -81,6 +83,10 @@
     self.priceValueLabel.font = self.sizeValueLabel.font;
     self.quantityValueLabel.font = self.sizeValueLabel.font;
 
+    
+    [self.view addSubview:self.productDetailsContentView];
+    self.productDetailsContentView.frame = CGRectMake(self.productDetailsPlacementView.frame.origin.x,self.productDetailsPlacementView.frame.origin.y,self.productDetailsPlacementView.frame.size.width, self.productDetailsPlacementView.frame.size.height);
+    
 }
 
 

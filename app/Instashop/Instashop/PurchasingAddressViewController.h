@@ -13,6 +13,8 @@
     id doneButtonDelegate;    
     id shippingCompleteDelegate;
     
+    UIView *productDetailsPlacementView;
+    UIView *productDetailsContentView;
     
     UIImageView *productImageView;
     UILabel *productTitleLabel;
@@ -58,6 +60,10 @@
 
 @property (nonatomic, retain) id doneButtonDelegate;
 @property (nonatomic, retain) id shippingCompleteDelegate;
+
+
+@property (nonatomic, retain) IBOutlet UIView *productDetailsPlacementView;
+@property (nonatomic, retain) IBOutlet UIView *productDetailsContentView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *productImageView;
 @property (nonatomic, retain) IBOutlet UILabel *productTitleLabel;
