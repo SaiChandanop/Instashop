@@ -59,7 +59,7 @@
     self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height + 75);
     self.contentScrollView.backgroundColor = [UIColor clearColor];
     
-    NSLog(@"self.descriptionContainerView.frame: %@", NSStringFromCGRect(self.descriptionContainerView.frame));
+
     
     [self.view addSubview:self.bottomView];
     [self.view bringSubviewToFront:self.bottomView];
@@ -72,10 +72,21 @@
     self.descriptionTextView.text = @"";
     
     [self.view bringSubviewToFront:self.purchaseButton];
+
     
+    UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:nil action:nil];
+    [self.navigationItem setRightBarButtonItem:barButtonItem animated:YES];
+    
+
+    
+    
+    UIImage *backButtonImage = [[UIImage imageNamed:@"toolbar_back.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
+    [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, backButtonImage.size.height) forBarMetrics:UIBarMetricsDefault];
     
     
 }
+
 
 - (void) loadContentViews
 {
@@ -112,8 +123,6 @@
                 [attributesArray addObject:attributeValue];
     }
 
-    NSLog(@"requestedProductObject: %@", requestedProductObject);
-    NSLog(@"attributesArray: %@", attributesArray);
     NSMutableString *categoryString = [NSMutableString stringWithCapacity:0];
     for (int i = 0; i < [attributesArray count]; i++)
     {
@@ -124,7 +133,7 @@
     
     self.categoryLabel.text = categoryString;
     
-    NSLog(@"self.categoryLabel.text!!: %@", self.categoryLabel.text);
+
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {

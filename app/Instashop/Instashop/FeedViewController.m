@@ -199,6 +199,7 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
     purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
     purchasingViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.navigationController pushViewController:purchasingViewController animated:YES];
+    
 }
 
 #pragma mark - Table view delegate

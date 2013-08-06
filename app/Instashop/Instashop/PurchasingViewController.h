@@ -36,6 +36,8 @@
     int sizeSelectedIndex;
 }
 
+-(void)setTheNavigationItems;
+
 -(IBAction)backButtonHit;
 -(IBAction)buyButtonHit;
 
