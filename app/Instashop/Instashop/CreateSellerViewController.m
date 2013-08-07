@@ -45,7 +45,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height * 2);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height);
     
 /*    self.nameTextField.text = @"Josh Klobe";
 
