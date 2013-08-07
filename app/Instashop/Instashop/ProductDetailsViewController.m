@@ -22,7 +22,6 @@
 
 @implementation ProductDetailsViewController
 
-@synthesize categoriesTableViewController;
 @synthesize parentController;
 @synthesize attributesArray;
 @synthesize productCategoriesNavigationController;
@@ -93,7 +92,7 @@
     
     self.containerScrollView.contentSize = CGSizeMake(0, self.nextButtonContainerView.frame.origin.y +  self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 8);
     
-    
+    self.productCategoriesNavigationController = [[CategoriesNavigationViewController alloc] initWithNibName:nil bundle:nil];
     self.productCategoriesNavigationController.view.frame = CGRectMake(0, self.descriptionTextField.frame.origin.y + self.descriptionTextField.frame.size.height, self.view.frame.size.width, self.retailPriceLabel.frame.origin.y - self.descriptionTextField.frame.origin.y - self.descriptionTextField.frame.size.height);
     
     [self.containerScrollView addSubview:self.productCategoriesNavigationController.view];

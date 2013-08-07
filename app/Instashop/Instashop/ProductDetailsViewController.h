@@ -10,6 +10,7 @@
 #import "ProductCreateObject.h"
 #import "CategoriesPickerViewController.h"
 #import "CategoriesTableViewController.h"
+#import "CategoriesNavigationViewController.h"
 
 @class ProductCreateViewController;
 
@@ -17,8 +18,8 @@
 {
     ProductCreateViewController *parentController;
     
-    UINavigationController *productCategoriesNavigationController;
-    CategoriesTableViewController *categoriesTableViewController;
+    CategoriesNavigationViewController *productCategoriesNavigationController;
+    
     NSMutableArray *attributesArray;        
     
     UIScrollView *containerScrollView;    
@@ -54,8 +55,7 @@
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;
 
-@property (nonatomic, retain) IBOutlet CategoriesTableViewController *categoriesTableViewController;
-@property (nonatomic, retain) IBOutlet UINavigationController *productCategoriesNavigationController;
+@property (nonatomic, retain) CategoriesNavigationViewController *productCategoriesNavigationController;
 
 @property (nonatomic, retain) NSMutableArray *attributesArray;
 

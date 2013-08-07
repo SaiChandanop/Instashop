@@ -54,7 +54,9 @@
 		7B1072BF175E7CDE00D9DC5D /* ProductDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072BD175E7CDE00D9DC5D /* ProductDetailsViewController.xib */; };
 		7B1072C1175E7E1500D9DC5D /* previewproductimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072C0175E7E1500D9DC5D /* previewproductimage.png */; };
 		7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072C2175E84E400D9DC5D /* additemdetails.png */; };
-		7B15B2F717B2A67000173752 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15B2F617B2A67000173752 /* CategoriesTableViewController.m */; };
+		7B15B2FB17B2AA1800173752 /* CategoriesNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15B2FA17B2AA1800173752 /* CategoriesNavigationViewController.m */; };
+		7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */; };
+		7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */; };
 		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
 		7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
@@ -202,8 +204,11 @@
 		7B1072BD175E7CDE00D9DC5D /* ProductDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductDetailsViewController.xib; sourceTree = "<group>"; };
 		7B1072C0175E7E1500D9DC5D /* previewproductimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = previewproductimage.png; sourceTree = "<group>"; };
 		7B1072C2175E84E400D9DC5D /* additemdetails.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = additemdetails.png; sourceTree = "<group>"; };
-		7B15B2F517B2A67000173752 /* CategoriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesTableViewController.h; sourceTree = "<group>"; };
-		7B15B2F617B2A67000173752 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesTableViewController.m; sourceTree = "<group>"; };
+		7B15B2F917B2AA1800173752 /* CategoriesNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesNavigationViewController.h; sourceTree = "<group>"; };
+		7B15B2FA17B2AA1800173752 /* CategoriesNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesNavigationViewController.m; sourceTree = "<group>"; };
+		7B15B2FF17B2AB5A00173752 /* CategoriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesTableViewController.h; sourceTree = "<group>"; };
+		7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesTableViewController.m; sourceTree = "<group>"; };
+		7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesTableViewController.xib; sourceTree = "<group>"; };
 		7B34813817624E5800C055AE /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B34813917624E5800C055AE /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
@@ -469,7 +474,8 @@
 		7B1072B5175E7CB300D9DC5D /* ProductDetailsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7B15B2F417B2A65900173752 /* CategoriesTableViewController */,
+				7B15B2F817B2A9E700173752 /* NavViewController */,
+				7B15B2F417B2A65900173752 /* TableViewController */,
 				7BD5C1FB179596B3006F311A /* SizeQuantity */,
 				7B6C5001178B184800CDF0A7 /* CategoriesPicker */,
 				7B1072BB175E7CDE00D9DC5D /* ProductDetailsViewController.h */,
@@ -479,13 +485,23 @@
 			name = ProductDetailsViewController;
 			sourceTree = "<group>";
 		};
-		7B15B2F417B2A65900173752 /* CategoriesTableViewController */ = {
+		7B15B2F417B2A65900173752 /* TableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7B15B2F517B2A67000173752 /* CategoriesTableViewController.h */,
-				7B15B2F617B2A67000173752 /* CategoriesTableViewController.m */,
+				7B15B2FF17B2AB5A00173752 /* CategoriesTableViewController.h */,
+				7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */,
+				7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */,
 			);
-			name = CategoriesTableViewController;
+			name = TableViewController;
+			sourceTree = "<group>";
+		};
+		7B15B2F817B2A9E700173752 /* NavViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7B15B2F917B2AA1800173752 /* CategoriesNavigationViewController.h */,
+				7B15B2FA17B2AA1800173752 /* CategoriesNavigationViewController.m */,
+			);
+			name = NavViewController;
 			sourceTree = "<group>";
 		};
 		7B34813717624E3600C055AE /* DiscoverTableViewController */ = {
@@ -1072,6 +1088,7 @@
 				7B9E844217B159CE00E6FE47 /* toolbar_back.png in Resources */,
 				7B9E844617B15A6000E6FE47 /* toolbar_title_iumage.png in Resources */,
 				7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */,
+				7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1138,7 +1155,8 @@
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
 				7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */,
 				7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */,
-				7B15B2F717B2A67000173752 /* CategoriesTableViewController.m in Sources */,
+				7B15B2FB17B2AA1800173752 /* CategoriesNavigationViewController.m in Sources */,
+				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
