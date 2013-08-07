@@ -31,6 +31,12 @@
     return self;
 }
 
+
+-(IBAction)homeButtonHit
+{
+    [self.parentController homeButtonHit];
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];

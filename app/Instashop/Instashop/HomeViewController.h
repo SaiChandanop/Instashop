@@ -21,6 +21,8 @@
 -(void)createSellerCancelButtonHit;
 -(void)createSellerDone;
 
+-(IBAction)homeButtonHit;
+
 @property (nonatomic, retain) AppRootViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
