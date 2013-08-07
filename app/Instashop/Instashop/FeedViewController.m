@@ -145,8 +145,15 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 -(IBAction)discoverButtonHit
 {
-    NSLog(@"discoverButtonHit");
-    [self.parentController discoverButtonHit];
+//    NSLog(@"discoverButtonHit");
+//    [self.parentController discoverButtonHit];
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Coming Soon!"
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
 }
 
 
