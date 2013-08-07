@@ -8,6 +8,8 @@
 
 #import "CategoriesTableViewController.h"
 #import "CategoriesNavigationViewController.h"
+#import "AttributesManager.h"
+#import "CategorySelectCell.h"
 @interface CategoriesTableViewController ()
 
 @end
@@ -17,7 +19,7 @@
 @synthesize parentController;
 @synthesize categoriesArray;
 @synthesize positionIndex;
-
+@synthesize basePriorCategoriesArray;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -43,6 +45,9 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    tableView.backgroundColor = [UIColor blackColor];
+    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
     return [self.categoriesArray count];
 }
 
@@ -50,13 +55,28 @@
 {
     static NSString *CellIdentifier = @"Cell";
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    CategorySelectCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] autorelease];
+        cell = [[[CategorySelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] autorelease];
+        cell.backgroundColor = [UIColor clearColor];
     }
     
-    cell.textLabel.text = [self.categoriesArray objectAtIndex:indexPath.row];
+    NSMutableArray *searchCategoriesArray = [NSMutableArray arrayWithCapacity:0];    
+    if (self.basePriorCategoriesArray != nil)
+        [searchCategoriesArray addObjectsFromArray:self.basePriorCategoriesArray];
+    
+    [searchCategoriesArray addObject:[self.categoriesArray objectAtIndex:indexPath.row]];
+    
+
+    
+    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchCategoriesArray] != nil)
+        cell.disclosureImageView.alpha = 1;
+    else
+        cell.disclosureImageView.alpha = 0;
+    
+    cell.theLabel.text = [self.categoriesArray objectAtIndex:indexPath.row];
+    
     
     return cell;
 }

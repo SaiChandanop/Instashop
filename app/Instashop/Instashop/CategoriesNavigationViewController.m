@@ -55,6 +55,7 @@
     [self.selectedCategoriesArray addObject:theCategory];
         
     CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
     categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
     categoriesTableViewController.parentController = self;
     categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
