@@ -18,12 +18,16 @@
 @synthesize imageViewTwo;
 @synthesize imageViewThree;
 @synthesize coverLabel;
-@synthesize coverButton;
+
+@synthesize coverButtonOne;
+@synthesize coverButtonTwo;
+@synthesize coverButtonThree;
+
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {        
+    if (self) {
     }
     return self;
 }
@@ -46,31 +50,34 @@
     
     
     for (int i = startValue; i < startValue + 3 && i < [feedItemsArray count]; i++)
-    {
-        self.backgroundColor = [UIColor redColor];
+    {    
         UIImageView *theImageView = nil;
+        
         if (iter == 0)
         {
             if (self.imageViewOne == nil)
+            {
                 self.imageViewOne = [[UIImageView alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth)];
-            
-            [self addSubview:self.imageViewOne];
+                [self addSubview:self.imageViewOne];
+            }
             theImageView = self.imageViewOne;
         }
         if (iter == 1)
         {
             if (self.imageViewTwo == nil)
+            {
                 self.imageViewTwo = [[UIImageView alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth)];
-
-            [self addSubview:self.imageViewTwo];
+                [self addSubview:self.imageViewTwo];
+            }
             theImageView = self.imageViewTwo;
         }
         if (iter == 2)
         {
             if (self.imageViewThree == nil)
+            {
                 self.imageViewThree = [[UIImageView alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth)];
-            
-            [self addSubview:self.imageViewThree];
+                [self addSubview:self.imageViewThree];
+            }            
             theImageView = self.imageViewThree;
         }
         
@@ -91,26 +98,56 @@
             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:theImageView];
         
         
-/*        UILabel *theLabel = [[UILabel alloc] initWithFrame:CGRectMake(theImageView.frame.origin.x, (imageWidth + 2) / 2 - fontHeight / 2, theImageView.frame.size.width, fontHeight + 1)];
-        theLabel.backgroundColor = [UIColor clearColor];
-        theLabel.textColor = [UIColor whiteColor];
-        theLabel.textAlignment = NSTextAlignmentCenter;
-        theLabel.font = [UIFont systemFontOfSize:fontHeight];
-        [self addSubview:theLabel];
-        [theLabel release];
-        
-  */      
+        ImagesTableCellButton *theCoverButton = nil;
         
         
-        if (self.coverButton == nil)
+        if (iter == 0)
         {
-            self.coverButton = [[ImagesTableCellButton alloc] initWithFrame:theImageView.frame];
-            [self.coverButton addTarget:self action:@selector(coverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
-            self.coverButton.backgroundColor = [UIColor clearColor];
-            [self addSubview:self.coverButton];
+            if (self.coverButtonOne == nil)
+            {
+                self.coverButtonOne = [[ImagesTableCellButton alloc] initWithFrame:theImageView.frame];
+                [self.coverButtonOne addTarget:self action:@selector(coverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
+                self.coverButtonOne.backgroundColor = [UIColor clearColor];
+                [self addSubview:self.coverButtonOne];                
+            }
+            theCoverButton = self.coverButtonOne;
+        }        
+        else if (iter == 1)
+        {
+            if (self.coverButtonTwo == nil)
+            {
+                self.coverButtonTwo = [[ImagesTableCellButton alloc] initWithFrame:theImageView.frame];
+                [self.coverButtonTwo addTarget:self action:@selector(coverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
+                self.coverButtonTwo.backgroundColor = [UIColor clearColor];
+                [self addSubview:self.coverButtonTwo];
+            }
+            theCoverButton = self.coverButtonTwo;
+        }
+        else if (iter == 2)
+        {
+            if (self.coverButtonThree == nil)
+            {
+                self.coverButtonThree = [[ImagesTableCellButton alloc] initWithFrame:theImageView.frame];
+                [self.coverButtonThree addTarget:self action:@selector(coverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
+                self.coverButtonThree.backgroundColor = [UIColor clearColor];
+                [self addSubview:self.coverButtonThree];
+            }
+            theCoverButton = self.coverButtonThree;
         }
         
-        self.coverButton.objectDictionary = productObjectDictionary;
+        theCoverButton.objectDictionary = productObjectDictionary;
+        
+        /*        UILabel *theLabel = [[UILabel alloc] initWithFrame:CGRectMake(theImageView.frame.origin.x, (imageWidth + 2) / 2 - fontHeight / 2, theImageView.frame.size.width, fontHeight + 1)];
+         theLabel.backgroundColor = [UIColor clearColor];
+         theLabel.textColor = [UIColor whiteColor];
+         theLabel.textAlignment = NSTextAlignmentCenter;
+         theLabel.font = [UIFont systemFontOfSize:fontHeight];
+         [self addSubview:theLabel];
+         [theLabel release];
+         
+         */
+
+        
         
         iter++;
     }

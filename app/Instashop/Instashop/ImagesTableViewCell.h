@@ -17,7 +17,10 @@
     UIImageView *imageViewTwo;
     UIImageView *imageViewThree;
     UILabel *coverLabel;
-    ImagesTableCellButton *coverButton;
+    
+    ImagesTableCellButton *coverButtonOne;
+    ImagesTableCellButton *coverButtonTwo;
+    ImagesTableCellButton *coverButtonThree;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight;
@@ -31,7 +34,11 @@
 @property (nonatomic, retain) UIImageView *imageViewTwo;
 @property (nonatomic, retain) UIImageView *imageViewThree;
 @property (nonatomic, retain) UILabel *coverLabel;
-@property (nonatomic, retain) ImagesTableCellButton *coverButton;
+
+@property (nonatomic, retain) ImagesTableCellButton *coverButtonOne;
+@property (nonatomic, retain) ImagesTableCellButton *coverButtonTwo;
+@property (nonatomic, retain) ImagesTableCellButton *coverButtonThree;
+
 
 
 
