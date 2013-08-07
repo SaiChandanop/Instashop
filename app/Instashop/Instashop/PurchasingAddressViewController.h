@@ -7,11 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TPKeyboardAvoidingScrollView.h"
 
 @interface PurchasingAddressViewController : UIViewController
 {
     id doneButtonDelegate;    
     id shippingCompleteDelegate;
+    
+    
+    TPKeyboardAvoidingScrollView *contentScrollView;
     
     UIView *productDetailsPlacementView;
     UIView *productDetailsContentView;
@@ -61,6 +65,8 @@
 @property (nonatomic, retain) id doneButtonDelegate;
 @property (nonatomic, retain) id shippingCompleteDelegate;
 
+
+@property (nonatomic, retain) IBOutlet TPKeyboardAvoidingScrollView *contentScrollView;
 
 @property (nonatomic, retain) IBOutlet UIView *productDetailsPlacementView;
 @property (nonatomic, retain) IBOutlet UIView *productDetailsContentView;

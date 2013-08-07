@@ -79,7 +79,6 @@
     NSString* responseString = [[[NSString alloc] initWithData:responseData
                                                   encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"!!responseString: %@", responseString);
     
     [self.delegate sellersRequestFinishedWithResponseObject:[NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil]];
 }

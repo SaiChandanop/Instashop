@@ -26,6 +26,8 @@
 
 @implementation PurchasingAddressViewController
 
+@synthesize contentScrollView;
+
 @synthesize productDetailsPlacementView;
 @synthesize productDetailsContentView;
 @synthesize doneButtonDelegate;
@@ -91,13 +93,15 @@
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
 
-    
+    self.contentScrollView.contentSize = CGSizeMake(0, self.doneButton.frame.origin.y + self.doneButton.frame.size.height + 12);
     
 }
 
 
 -(void)loadWithSizeSelection:(NSString *)sizeSelection withQuantitySelection:(NSString *)quantitySelection withProductImage:(UIImage *)productImage
 {
+    NSLog(@"loadWithSizeSelection, productImage: %@", productImage);
+    
     if (sizeSelection == nil)
         self.sizeValueLabel.text = @"";
     else if ([sizeSelection compare:@"(null)"] == NSOrderedSame)
@@ -107,6 +111,8 @@
     
     self.quantityValueLabel.text = quantitySelection;
     self.productImageView.image = productImage;
+    
+    NSLog(@"self.productImageView: %@", self.productImageView);
 }
 
 -(void)loadWithRequestedProductObject:(NSDictionary *)theProductObject
