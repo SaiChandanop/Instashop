@@ -76,11 +76,15 @@
                 self.backgroundImageViewOne.image = [UIImage imageNamed:@"feedImageShadow.png"];
                 [self addSubview:self.backgroundImageViewOne];
             }
+            
+            
             if (self.imageViewOne == nil)
             {
                 self.imageViewOne = [[UIImageView alloc] initWithFrame:CGRectMake(self.backgroundImageViewOne.frame.origin.x + inset, self.backgroundImageViewOne.frame.origin.y + inset, self.backgroundImageViewOne.frame.size.width - 2 * inset, self.backgroundImageViewOne.frame.size.height - 2 * inset)];
                 [self addSubview:self.imageViewOne];
             }
+            theImageView = self.imageViewOne;
+            
             
             if (self.coverButtonOne == nil)
             {
@@ -89,8 +93,6 @@
                 self.coverButtonOne.backgroundColor = [UIColor clearColor];
                 [self addSubview:self.coverButtonOne];
             }
-            
-            theImageView = self.imageViewOne;
             theCoverButton = self.coverButtonOne;
         }
         
@@ -108,6 +110,8 @@
                 self.imageViewTwo = [[UIImageView alloc] initWithFrame:CGRectMake(self.backgroundImageViewTwo.frame.origin.x + inset, self.backgroundImageViewTwo.frame.origin.y + inset, self.backgroundImageViewTwo.frame.size.width - 2 * inset, self.backgroundImageViewTwo.frame.size.height - 2 * inset)];
                 [self addSubview:self.imageViewTwo];
             }
+            theImageView = self.imageViewTwo;
+            
             
             if (self.coverButtonTwo == nil)
             {
@@ -115,9 +119,7 @@
                 [self.coverButtonTwo addTarget:self action:@selector(coverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
                 self.coverButtonTwo.backgroundColor = [UIColor clearColor];
                 [self addSubview:self.coverButtonTwo];
-            }
-            
-            theImageView = self.imageViewTwo;
+            }                        
             theCoverButton = self.coverButtonTwo;
             
         }
@@ -136,6 +138,7 @@
                 self.imageViewThree = [[UIImageView alloc] initWithFrame:CGRectMake(self.backgroundImageViewThree.frame.origin.x + inset, self.backgroundImageViewThree.frame.origin.y + inset, self.backgroundImageViewThree.frame.size.width - 2 * inset, self.backgroundImageViewThree.frame.size.height - 2 * inset)];
                 [self addSubview:self.imageViewThree];
             }
+            theImageView = self.imageViewThree;
             
             if (self.coverButtonThree == nil)
             {
@@ -144,8 +147,6 @@
                 self.coverButtonThree.backgroundColor = [UIColor clearColor];
                 [self addSubview:self.coverButtonThree];
             }
-            
-            theImageView = self.imageViewThree;
             theCoverButton = self.coverButtonThree;
         }
         
