@@ -30,6 +30,11 @@
 {
     [super viewDidLoad];
     
+    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
+
+
+    
+    
     self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
@@ -37,6 +42,8 @@
     categoriesTableViewController.parentController = self;
     categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
     [self pushViewController:categoriesTableViewController animated:NO];
+    
+    categoriesTableViewController.navigationController.navigationBar.topItem.title = @"Categories";
 }
 
 
@@ -52,6 +59,17 @@
     categoriesTableViewController.parentController = self;
     categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
     [self pushViewController:categoriesTableViewController animated:YES];
+    
+    NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
+    for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
+    {
+        [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
+        if (i != [self.selectedCategoriesArray count] -1)
+            [titleString appendString:@" >"];
+        
+    }
+    
+    categoriesTableViewController.navigationController.navigationBar.topItem.title = titleString;
     
 }
 - (void)didReceiveMemoryWarning
