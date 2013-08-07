@@ -11,7 +11,6 @@
 #import "ProductCreateViewController.h"
 #import "ProductCreateObject.h"
 #import "AttributesManager.h"
-#import "CategoriesPickerViewController.h"
 #import "SizeQuantityTableViewCell.h"
 #import "ProductCreateContainerObject.h"
 
@@ -22,9 +21,9 @@
 
 @implementation ProductDetailsViewController
 
+@synthesize sizeQuantityTableViewController;
 @synthesize parentController;
 @synthesize attributesArray;
-@synthesize productCategoriesNavigationController;
 @synthesize containerScrollView;
 @synthesize subCategoryContainerView;
 @synthesize categorySizeQuantityTableView;
@@ -83,110 +82,40 @@
     [self.view addSubview:self.containerScrollView];
     
     
-    self.attributesArray = [[NSMutableArray alloc] initWithObjects:@"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", @"", nil];
+    self.attributesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     self.subCategoryContainerView.backgroundColor = self.view.backgroundColor;
     self.categorySizeQuantityTableView.backgroundColor = self.view.backgroundColor;
     [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
     
     
-    self.containerScrollView.contentSize = CGSizeMake(0, self.nextButtonContainerView.frame.origin.y +  self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 8);
-    
-    self.productCategoriesNavigationController = [[CategoriesNavigationViewController alloc] initWithNibName:nil bundle:nil];
-    self.productCategoriesNavigationController.view.frame = CGRectMake(0, self.descriptionTextField.frame.origin.y + self.descriptionTextField.frame.size.height, self.view.frame.size.width, self.retailPriceLabel.frame.origin.y - self.descriptionTextField.frame.origin.y - self.descriptionTextField.frame.size.height);
-    
-    [self.containerScrollView addSubview:self.productCategoriesNavigationController.view];
+    self.containerScrollView.contentSize = CGSizeMake(0, self.subCategoryContainerView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 8);
+        
 }
 
 - (IBAction) categoryButtonHit
 {
-    for (int i = 0; i < [self.attributesArray count]; i++)
-        [self.attributesArray setObject:@"" atIndexedSubscript:i];
     
-    
-    NSMutableArray *searchingKeysArray = [NSMutableArray arrayWithCapacity:0];
-    
-    int index = 0;
-    while ([[self.attributesArray objectAtIndex:index] length] > 0)
-    {
-        [searchingKeysArray addObject:[self.attributesArray objectAtIndex:index]];
-        index++;
-    }
-    
-    int selectedIndexType = [searchingKeysArray count];
-    NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
-    
-    if (selectionArray != nil)
-    {
+    CategoriesNavigationViewController *categoriesNavigationViewController = [[CategoriesNavigationViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesNavigationViewController.parentController = self;
+    [self.navigationController pushViewController:categoriesNavigationViewController animated:YES];
         
-        CategoriesPickerViewController *categoriesPickerViewController = [[CategoriesPickerViewController alloc] initWithNibName:@"CategoriesPickerViewController" bundle:nil];
-        categoriesPickerViewController.delegate = self;
-        categoriesPickerViewController.type = selectedIndexType;
-        categoriesPickerViewController.itemsArray = [[NSArray alloc] initWithArray:selectionArray];
-        [self presentViewController:categoriesPickerViewController animated:YES completion:nil];
-        
-    }
-    
-    
 }
 
--(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController
+-(void)categorySelectionCompleteWithArray:(NSArray *)theArray
 {
-    [self.attributesArray setObject:selectedCategory atIndexedSubscript:theController.type];
+    NSLog(@"categorySelectionCompleteWithArray: %@", theArray);
+    [self.attributesArray addObjectsFromArray:theArray];
     
-    NSMutableString *string = [NSMutableString stringWithCapacity:0];
-    
-    if ([[self.attributesArray objectAtIndex:0] length] > 0)
-        [string appendString:[NSString stringWithFormat:@"%@", [self.attributesArray objectAtIndex:0]]];
-    
-    if ([[self.attributesArray objectAtIndex:1] length] > 0)
-        [string appendString:[NSString stringWithFormat:@" > %@", [self.attributesArray objectAtIndex:1]]];
-    
-    if ([[self.attributesArray objectAtIndex:2] length] > 0)
-        [string appendString:[NSString stringWithFormat:@" > %@", [self.attributesArray objectAtIndex:2]]];
-    
-    if ([string length] > 0)
-        self.selectedCategoriesLabel.text = string;
-    
-    
-    NSMutableArray *searchingKeysArray = [NSMutableArray arrayWithCapacity:0];
-    
-    int index = 0;
-    while ([[self.attributesArray objectAtIndex:index] length] > 0)
+    NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
+    for (int i = 0; i < [self.attributesArray count]; i++)
     {
-        [searchingKeysArray addObject:[self.attributesArray objectAtIndex:index]];
-        index++;
+        [titleString appendString:[NSString stringWithFormat:@" %@", [self.attributesArray objectAtIndex:i]]];
+        if (i != [self.attributesArray count] -1)
+            [titleString appendString:@" >"];
+        
     }
-    
-    int selectedIndexType = [searchingKeysArray count];
-    
-    NSArray *selectionArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchingKeysArray];
-    if (selectionArray == nil)
-    {
-        
-        [self dismissViewControllerAnimated:YES completion:nil];
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:.35];
-        self.subCategoryContainerView.frame = CGRectMake(0, self.categorySizeQuantityTableView.frame.origin.y + self.categorySizeQuantityTableView.frame.size.height, self.subCategoryContainerView.frame.size.width, self.subCategoryContainerView.frame.size.height);
-        [UIView commitAnimations];
-        
-        [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
-        
-        
-/*        NSArray *sizesArray = [[AttributesManager getSharedAttributesManager] getSizesWithArray:searchingKeysArray];
-        if (sizesArray != nil)
-            self.sizeQuantityTableViewController.sizesArray = [[NSArray alloc] initWithArray:sizesArray];
-        else
-            self.sizeQuantityTableViewController.sizesArray = nil;
-  */      
-        [self.categorySizeQuantityTableView reloadData];
-    }
-    else
-    {
-        theController.type = selectedIndexType;
-        theController.itemsArray = [NSArray arrayWithArray:selectionArray];
-        [theController.thePickerView reloadAllComponents];
-    }
+    self.selectedCategoriesLabel.text = titleString;
     
     
 }
@@ -194,6 +123,7 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
+    
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
@@ -233,7 +163,6 @@
 -(IBAction)previewButtonHit
 {
     
- /*
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
@@ -294,7 +223,7 @@
         
     }
   
-  */
+
     
     
     

@@ -9,12 +9,15 @@
 #import "CategoriesNavigationViewController.h"
 #import "CategoriesTableViewController.h"
 #import "AttributesManager.h"
+#import "ProductDetailsViewController.h"
+
 @interface CategoriesNavigationViewController ()
 
 @end
 
 @implementation CategoriesNavigationViewController
 
+@synthesize parentController;
 @synthesize selectedCategoriesArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -30,10 +33,6 @@
 {
     [super viewDidLoad];
     
-    [self.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
-
-
-    
     
     self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
@@ -41,7 +40,7 @@
     categoriesTableViewController.positionIndex = 0;
     categoriesTableViewController.parentController = self;
     categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
-    [self pushViewController:categoriesTableViewController animated:NO];
+    [self.view addSubview:categoriesTableViewController.tableView];
     
     categoriesTableViewController.navigationController.navigationBar.topItem.title = @"Categories";
 }
@@ -53,24 +52,33 @@
         [self.selectedCategoriesArray removeObjectsInRange:NSMakeRange(callingController.positionIndex, [self.selectedCategoriesArray count] - callingController.positionIndex)];
     
     [self.selectedCategoriesArray addObject:theCategory];
-        
-    CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
-    categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
-    categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
-    categoriesTableViewController.parentController = self;
-    categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
-    [self pushViewController:categoriesTableViewController animated:YES];
     
-    NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
-    for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
+    
+    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil)
     {
-        [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
-        if (i != [self.selectedCategoriesArray count] -1)
-            [titleString appendString:@" >"];
-        
+        [self.parentController categorySelectionCompleteWithArray:self.selectedCategoriesArray];
+        [self.navigationController popToViewController:parentController animated:YES];
     }
-    
-    categoriesTableViewController.navigationController.navigationBar.topItem.title = titleString;
+    else
+    {
+        CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+        categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
+        categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
+        categoriesTableViewController.parentController = self;
+        categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
+        [self.navigationController pushViewController:categoriesTableViewController animated:YES];
+        
+        NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
+        for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
+        {
+            [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
+            if (i != [self.selectedCategoriesArray count] -1)
+                [titleString appendString:@" >"];
+            
+        }
+        
+        categoriesTableViewController.navigationController.navigationBar.topItem.title = titleString;
+    }
     
 }
 - (void)didReceiveMemoryWarning

@@ -60,6 +60,7 @@
     if (cell == nil) {
         cell = [[[CategorySelectCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] autorelease];
         cell.backgroundColor = [UIColor clearColor];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     NSMutableArray *searchCategoriesArray = [NSMutableArray arrayWithCapacity:0];    

@@ -9,12 +9,16 @@
 #import <UIKit/UIKit.h>
 #import "CategoriesTableViewController.h"
 
-@interface CategoriesNavigationViewController : UINavigationController
+@class ProductDetailsViewController;
+
+@interface CategoriesNavigationViewController : UIViewController
 {
+    ProductDetailsViewController *parentController;
     NSMutableArray *selectedCategoriesArray;
 }
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController;
 
+@property (nonatomic, retain) ProductDetailsViewController *parentController;
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
 @end

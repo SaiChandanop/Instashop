@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "ProductCreateObject.h"
-#import "CategoriesPickerViewController.h"
 #import "CategoriesTableViewController.h"
 #import "CategoriesNavigationViewController.h"
+#import "SizeQuantityTableViewController.h"
 
 @class ProductCreateViewController;
 
@@ -18,7 +18,7 @@
 {
     ProductCreateViewController *parentController;
     
-    CategoriesNavigationViewController *productCategoriesNavigationController;
+    SizeQuantityTableViewController *sizeQuantityTableViewController;
     
     NSMutableArray *attributesArray;        
     
@@ -30,7 +30,7 @@
     UIImageView *theImageView;
     UITextField *titleTextField;
     UITextField *descriptionTextField;
-    UILabel *selectedCategoriesLabel;
+    UITextField *selectedCategoriesLabel;
     UILabel *retailPriceLabel;
     UITextField *retailPriceTextField;
     UILabel *instashopPriceLabel;
@@ -43,19 +43,16 @@
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
+- (void) categorySelectionCompleteWithArray:(NSArray *)theArray;
 
 - (IBAction) backButtonHit;
 - (IBAction) previewButtonHit;
 - (IBAction) categoryButtonHit;
 
 
-
--(void)categorySelected:(NSString *)selectedCategory withCategoriesPickerViewController:(CategoriesPickerViewController *)theController;
-
-
 @property (nonatomic, retain) ProductCreateViewController *parentController;
 
-@property (nonatomic, retain) CategoriesNavigationViewController *productCategoriesNavigationController;
+@property (nonatomic, retain) SizeQuantityTableViewController *sizeQuantityTableViewController;
 
 @property (nonatomic, retain) NSMutableArray *attributesArray;
 
@@ -66,7 +63,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;
 @property (nonatomic, retain) IBOutlet UITextField *descriptionTextField;
-@property (nonatomic, retain) IBOutlet UILabel *selectedCategoriesLabel;
+@property (nonatomic, retain) IBOutlet UITextField *selectedCategoriesLabel;
 @property (nonatomic, retain) IBOutlet UILabel *retailPriceLabel;
 @property (nonatomic, retain) IBOutlet UITextField *retailPriceTextField;
 @property (nonatomic, retain) IBOutlet UILabel *instashopPriceLabel;
