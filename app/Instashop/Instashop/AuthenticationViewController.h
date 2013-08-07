@@ -16,6 +16,8 @@
 
 
 -(IBAction) loginButtonHit;
+-(IBAction) downloadButtonHit;
+
 -(void)makeLoginRequestWithURL:(NSURL *)theURL;
 
 @property (nonatomic, retain) UIWebView *loginWebView;

@@ -52,6 +52,13 @@
     
 }
 
+-(IBAction) downloadButtonHit
+{
+    NSURL *webURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/instagram/id389801252"];
+    [[UIApplication sharedApplication] openURL: webURL];
+    
+}
+
 -(void)makeLoginRequestWithURL:(NSURL *)theURL
 {
     self.loginWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 100)];
