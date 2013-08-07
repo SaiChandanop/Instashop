@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class CategoriesNavigationViewController;
+
 @interface CategoriesTableViewController : UITableViewController
+{
+    CategoriesNavigationViewController *parentController;
+    
+    NSArray *categoriesArray;
+
+}
+
+@property (nonatomic, retain) CategoriesNavigationViewController *parentController;
+
+@property (nonatomic, retain) NSArray *categoriesArray;
 
 @end

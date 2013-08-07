@@ -8,11 +8,14 @@
 
 #import "CategoriesNavigationViewController.h"
 #import "CategoriesTableViewController.h"
+#import "AttributesManager.h"
 @interface CategoriesNavigationViewController ()
 
 @end
 
 @implementation CategoriesNavigationViewController
+
+@synthesize selectedCategoriesArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,13 +30,25 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"%@ viewDidLoad", self);
-    CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
-    [self.view addSubview:categoriesTableViewController.tableView];
-	// Do any additional setup after loading the view.
+    CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesTableViewController.parentController = self;
+    categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
+    [self pushViewController:categoriesTableViewController animated:NO];
 }
 
+
+-(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
+{
+    [self.selectedCategoriesArray addObject:theCategory];
+            
+    CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesTableViewController.parentController = self;
+    categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
+    [self pushViewController:categoriesTableViewController animated:YES];
+    
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
