@@ -61,6 +61,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     
+    [self.view addSubview:self.containerScrollView];
     
     self.titleTextField.delegate = self;
     self.titleTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
@@ -76,16 +77,11 @@
     self.instashopPriceLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
     self.instashopPriceTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
     
-    
     self.selectedCategoriesLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
-    
-    [self.view addSubview:self.containerScrollView];
-    
     
     self.attributesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     self.subCategoryContainerView.backgroundColor = self.view.backgroundColor;
-    self.categorySizeQuantityTableView.backgroundColor = self.view.backgroundColor;
     [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
     
     
@@ -104,6 +100,8 @@
 
 -(void)categorySelectionCompleteWithArray:(NSArray *)theArray
 {
+    [self.attributesArray removeAllObjects];
+    
     NSLog(@"categorySelectionCompleteWithArray: %@", theArray);
     [self.attributesArray addObjectsFromArray:theArray];
     
@@ -116,7 +114,22 @@
         
     }
     self.selectedCategoriesLabel.text = titleString;
+ 
+    if (self.sizeQuantityTableViewController != nil)
+    {
+        [self.sizeQuantityTableViewController.view removeFromSuperview];
+        self.sizeQuantityTableViewController = nil;
+    }
     
+    self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:nil bundle:nil];
+    self.sizeQuantityTableViewController.view.backgroundColor = [UIColor clearColor];
+    self.sizeQuantityTableViewController.sizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
+    self.sizeQuantityTableViewController.view.frame = CGRectMake(0, self.selectedCategoriesLabel.frame.origin.y + self.selectedCategoriesLabel.frame.size.height, self.view.frame.size.width, 150);
+    [self.containerScrollView addSubview:self.sizeQuantityTableViewController.view];
+        
+    
+
+    self.subCategoryContainerView.frame = CGRectMake(0, self.sizeQuantityTableViewController.view.frame.origin.y + self.sizeQuantityTableViewController.view.frame.size.height, self.view.frame.size.width, self.subCategoryContainerView.frame.size.height);
     
 }
 
