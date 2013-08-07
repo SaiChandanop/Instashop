@@ -47,7 +47,7 @@
     
     self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height * 2);
     
-    self.nameTextField.text = @"Josh Klobe";
+/*    self.nameTextField.text = @"Josh Klobe";
 
     self.addressTextField.text = @"50 Bridge St Apt 318";
     self.cityTextField.text = @"Brooklyn";
@@ -57,7 +57,7 @@
     self.emailTextField.text = @"klobej@gmail.com  ";
     self.websiteTextField.text = @"alchemy50.com";
     self.categoryTextField.text = @"testcat";
-    
+  */  
 
 }
 
