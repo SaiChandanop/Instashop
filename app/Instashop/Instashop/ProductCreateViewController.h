@@ -20,7 +20,6 @@
     AppRootViewController *parentController;
     
     ProductSelectTableViewController *productSelectTableViewController;
-    ProductDetailsViewController *productDetailsViewController;
 
     NSDictionary *productDictionary;
 }
@@ -38,7 +37,6 @@
 @property (nonatomic, retain) AppRootViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
-@property (nonatomic, retain) IBOutlet ProductDetailsViewController *productDetailsViewController;
 
 @property (nonatomic, retain) NSDictionary *productDictionary;
 @end

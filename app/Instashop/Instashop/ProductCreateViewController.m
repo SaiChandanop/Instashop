@@ -17,7 +17,7 @@
 @implementation ProductCreateViewController
 
 @synthesize parentController;
-@synthesize productSelectTableViewController, productDetailsViewController;
+@synthesize productSelectTableViewController;
 @synthesize productDictionary;
 
 
@@ -67,11 +67,11 @@
 
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary
 {
-//    NSLog(@"self.productDetailsViewController: %@", self.productDetailsViewController);
-
-    self.productDetailsViewController.parentController = self;
-    [self.navigationController pushViewController:self.productDetailsViewController animated:YES];
-    [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];    
+    ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
+    productDetailsViewController.parentController = self;
+    productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
+    [self.navigationController pushViewController:productDetailsViewController animated:YES];
+    [productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];    
 }
 
 
@@ -79,7 +79,7 @@
 {
     ProductPreviewViewController *productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
     productPreviewViewController.parentController = self;
-    productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
+    productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
     [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
     [self.navigationController pushViewController:productPreviewViewController animated:YES];
     
