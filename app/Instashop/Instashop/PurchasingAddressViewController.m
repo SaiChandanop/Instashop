@@ -132,8 +132,8 @@
 
 -(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
 {
-    NSLog(@"sellersRequestFinishedWithResponseObject: %@", responseArray);
-    self.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
+    NSLog(@"sellersRequestFinishedWithResponseObject FAIL FAIL FAIL fix makeGetSellersRequestWithDelegate: %@", responseArray);
+//    self.sellerDictionary = [[NSDictionary alloc] initWithDictionary:[responseArray objectAtIndex:0]];
 }
 
 
