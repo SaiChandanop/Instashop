@@ -616,7 +616,6 @@
 			isa = PBXGroup;
 			children = (
 				7B7A7448174D4EAE005E90B9 /* VCs */,
-				7B7A7453174D51B4005E90B9 /* Old */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
 				7B7A7454174D52D2005E90B9 /* Net */,
 				7BE3D36F174D74340045C4B4 /* Utils */,
@@ -710,6 +709,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B96C038174FED1D00E4EDAD /* Cells */,
 				7B74C3CD179716670006289C /* CreateSeller */,
 				7B1072AB175E664400D9DC5D /* Tab Vcs */,
 				7BE958F3175548A100A7E0AB /* ProductCreate */,
@@ -746,14 +746,6 @@
 				7B7A7451174D505D005E90B9 /* GroupDiskManager.m */,
 			);
 			name = DiskManager;
-			sourceTree = "<group>";
-		};
-		7B7A7453174D51B4005E90B9 /* Old */ = {
-			isa = PBXGroup;
-			children = (
-				7B96C038174FED1D00E4EDAD /* Cells */,
-			);
-			name = Old;
 			sourceTree = "<group>";
 		};
 		7B7A7454174D52D2005E90B9 /* Net */ = {

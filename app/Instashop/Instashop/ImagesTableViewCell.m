@@ -23,31 +23,26 @@
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    if (self) {
-        
-        
-        
+    if (self) {        
     }
     return self;
 }
 
 
 - (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray
-{    
-    NSArray *subviewsArray = [self subviews];
-    for (int i = 0; i < [subviewsArray count]; i++)
-        if ([[subviewsArray objectAtIndex:i] isKindOfClass:[UIImageView class]])
-            ((UIImageView *)[subviewsArray objectAtIndex:i]).image = nil;
-    
-    
+{
     int startValue = theIndexPath.row * 3;
     
-    float spacer = 8;
+    float spacer = 6.5;
     float imageWidth = self.frame.size.width / 3 - 11;
+    imageWidth = 98;
     
-    float fontHeight = 12;
     
     int iter = 0;
+    
+    self.imageViewOne.image = nil;
+    self.imageViewTwo.image = nil;
+    self.imageViewThree.image = nil;
     
     
     for (int i = startValue; i < startValue + 3 && i < [feedItemsArray count]; i++)
@@ -78,8 +73,6 @@
             [self addSubview:self.imageViewThree];
             theImageView = self.imageViewThree;
         }
-        
-        NSLog(@"theImageView: %@", theImageView);
         
         
         NSDictionary *productObjectDictionary = [feedItemsArray objectAtIndex:i];
