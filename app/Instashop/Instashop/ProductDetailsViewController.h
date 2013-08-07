@@ -9,18 +9,21 @@
 #import <UIKit/UIKit.h>
 #import "ProductCreateObject.h"
 #import "CategoriesPickerViewController.h"
-#import "SizeQuantityTableViewController.h"
+#import "CategoriesTableViewController.h"
+
 @class ProductCreateViewController;
 
 @interface ProductDetailsViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource>
 {
     ProductCreateViewController *parentController;
     
+    UINavigationController *productCategoriesNavigationController;
+    CategoriesTableViewController *categoriesTableViewController;
     NSMutableArray *attributesArray;        
     
     UIScrollView *containerScrollView;    
     UIView *subCategoryContainerView;
-    SizeQuantityTableViewController *sizeQuantityTableViewController;
+    
     UITableView *categorySizeQuantityTableView;
     
     UIImageView *theImageView;
@@ -51,11 +54,13 @@
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;
 
+@property (nonatomic, retain) IBOutlet CategoriesTableViewController *categoriesTableViewController;
+@property (nonatomic, retain) IBOutlet UINavigationController *productCategoriesNavigationController;
+
 @property (nonatomic, retain) NSMutableArray *attributesArray;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
 @property (nonatomic, retain) IBOutlet UIView *subCategoryContainerView;
-@property (nonatomic, retain) IBOutlet SizeQuantityTableViewController *sizeQuantityTableViewController;
 @property (nonatomic, retain) IBOutlet UITableView *categorySizeQuantityTableView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;

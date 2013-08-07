@@ -22,12 +22,12 @@
 
 @implementation ProductDetailsViewController
 
+@synthesize categoriesTableViewController;
 @synthesize parentController;
 @synthesize attributesArray;
-
+@synthesize productCategoriesNavigationController;
 @synthesize containerScrollView;
 @synthesize subCategoryContainerView;
-@synthesize sizeQuantityTableViewController;
 @synthesize categorySizeQuantityTableView;
 @synthesize theImageView;
 @synthesize titleTextField;
@@ -94,7 +94,9 @@
     self.containerScrollView.contentSize = CGSizeMake(0, self.nextButtonContainerView.frame.origin.y +  self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 8);
     
     
+    self.productCategoriesNavigationController.view.frame = CGRectMake(0, self.descriptionTextField.frame.origin.y + self.descriptionTextField.frame.size.height, self.view.frame.size.width, self.retailPriceLabel.frame.origin.y - self.descriptionTextField.frame.origin.y - self.descriptionTextField.frame.size.height);
     
+    [self.containerScrollView addSubview:self.productCategoriesNavigationController.view];
 }
 
 - (IBAction) categoryButtonHit
@@ -172,12 +174,12 @@
         [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
         
         
-        NSArray *sizesArray = [[AttributesManager getSharedAttributesManager] getSizesWithArray:searchingKeysArray];
+/*        NSArray *sizesArray = [[AttributesManager getSharedAttributesManager] getSizesWithArray:searchingKeysArray];
         if (sizesArray != nil)
             self.sizeQuantityTableViewController.sizesArray = [[NSArray alloc] initWithArray:sizesArray];
         else
             self.sizeQuantityTableViewController.sizesArray = nil;
-        
+  */      
         [self.categorySizeQuantityTableView reloadData];
     }
     else
@@ -232,7 +234,7 @@
 -(IBAction)previewButtonHit
 {
     
-    
+ /*
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
@@ -292,6 +294,8 @@
         
         
     }
+  
+  */
     
     
     
