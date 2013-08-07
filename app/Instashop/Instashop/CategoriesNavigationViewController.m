@@ -33,6 +33,7 @@
     self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesTableViewController.positionIndex = 0;
     categoriesTableViewController.parentController = self;
     categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
     [self pushViewController:categoriesTableViewController animated:NO];
@@ -41,9 +42,13 @@
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {
+    if ([self.selectedCategoriesArray count] > callingController.positionIndex)
+        [self.selectedCategoriesArray removeObjectsInRange:NSMakeRange(callingController.positionIndex, [self.selectedCategoriesArray count] - callingController.positionIndex)];
+    
     [self.selectedCategoriesArray addObject:theCategory];
-            
+        
     CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
     categoriesTableViewController.parentController = self;
     categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
     [self pushViewController:categoriesTableViewController animated:YES];

@@ -16,6 +16,7 @@
 
 @synthesize parentController;
 @synthesize categoriesArray;
+@synthesize positionIndex;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,7 +38,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {    
-    NSLog(@"%@ categoriesArray: %@", self, categoriesArray);
     return 1;
 }
 
