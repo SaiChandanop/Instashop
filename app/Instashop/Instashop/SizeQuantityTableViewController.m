@@ -83,9 +83,7 @@
 
 -(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath
 {
-    [self.sizeSetValuesArray replaceObjectAtIndex:indexPath.row withObject:value];
-    
-    NSLog(@"cellSelectedValue self.sizeSetValuesArray: %@", self.sizeSetValuesArray);
+    [self.sizeSetValuesArray replaceObjectAtIndex:indexPath.row withObject:value];    
 }
 
 @end

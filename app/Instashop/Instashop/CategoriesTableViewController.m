@@ -89,7 +89,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.parentController categorySelected:[self.categoriesArray objectAtIndex:indexPath.row] withCallingController:self];
-    NSLog(@"didSelectRowAtIndexPath");
 }
 
 @end

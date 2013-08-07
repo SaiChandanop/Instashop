@@ -39,7 +39,7 @@
      */
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"postString: %@", postString);
+    NSLog(@"createProductContainerObject postString: %@", postString);
     
     CreateProductAPIHandler *productAPIHandler = [[CreateProductAPIHandler alloc] init];
     productAPIHandler.contextObject = productCreateContainerObject;
@@ -55,6 +55,8 @@
 {
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
+
+    NSLog(@"productContainerCreateFinished: %@", newStr);
     
     NSArray *ar = [newStr componentsSeparatedByString:@"="];    
     if ([ar count] > 1)
@@ -95,7 +97,7 @@
      */
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"postString: %@", postString);
+    NSLog(@"createProductSizeQuantityObjects postString: %@", postString);
     
     CreateProductAPIHandler *productAPIHandler = [[CreateProductAPIHandler alloc] init];
     productAPIHandler.delegate = delegate;

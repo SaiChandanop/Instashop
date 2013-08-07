@@ -102,7 +102,6 @@
 {
     [self.attributesArray removeAllObjects];
     
-    NSLog(@"categorySelectionCompleteWithArray: %@", theArray);
     [self.attributesArray addObjectsFromArray:theArray];
     
     NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
@@ -115,21 +114,16 @@
     }
     self.selectedCategoriesLabel.text = titleString;
  
-    if (self.sizeQuantityTableViewController != nil)
+    if (self.sizeQuantityTableViewController == nil)
     {
-        [self.sizeQuantityTableViewController.view removeFromSuperview];
-        self.sizeQuantityTableViewController = nil;
+        self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:nil bundle:nil];
+        self.sizeQuantityTableViewController.sizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
+        self.sizeQuantityTableViewController.view.frame = CGRectMake(0, self.selectedCategoriesLabel.frame.origin.y + self.selectedCategoriesLabel.frame.size.height, self.view.frame.size.width, 150);
+        [self.containerScrollView addSubview:self.sizeQuantityTableViewController.view];
     }
     
-    self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:nil bundle:nil];
-    self.sizeQuantityTableViewController.view.backgroundColor = [UIColor clearColor];
-    self.sizeQuantityTableViewController.sizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
-    self.sizeQuantityTableViewController.view.frame = CGRectMake(0, self.selectedCategoriesLabel.frame.origin.y + self.selectedCategoriesLabel.frame.size.height, self.view.frame.size.width, 150);
-    [self.containerScrollView addSubview:self.sizeQuantityTableViewController.view];
-        
-    
-
     self.subCategoryContainerView.frame = CGRectMake(0, self.sizeQuantityTableViewController.view.frame.origin.y + self.sizeQuantityTableViewController.view.frame.size.height, self.view.frame.size.width, self.subCategoryContainerView.frame.size.height);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.subCategoryContainerView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 8);
     
 }
 

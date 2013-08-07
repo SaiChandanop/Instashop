@@ -123,8 +123,7 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
     
     [self.refreshControl endRefreshing];
     
-//   NSLog(@"self.feedItemsArray: %@", self.feedItemsArray);
-    NSLog(@"self.feedItemsArray.count: %d", [self.feedItemsArray count]);
+
     [self.tableView reloadData];
     
     
