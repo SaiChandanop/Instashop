@@ -56,16 +56,8 @@
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelCustomView];
     self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
     
-    
-    
-    
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
-
-    
-
-
-    
 }
 
 -(void)backButtonHit
@@ -85,31 +77,26 @@
 
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
-    self.productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
-    self.productPreviewViewController.parentController = self;
-    self.productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
-    [self.productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
-    [self.navigationController pushViewController:self.productPreviewViewController animated:YES];
+    ProductPreviewViewController *productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
+    productPreviewViewController.parentController = self;
+    productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.productDetailsViewController.view.frame.size.width, self.productDetailsViewController.view.frame.size.height);
+    [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
+    [self.navigationController pushViewController:productPreviewViewController animated:YES];
     
-    self.productPreviewViewController.theScrollView.contentSize = CGSizeMake(0, 1400);
-    
-    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonHit)];
-    self.productPreviewViewController.navigationItem.rightBarButtonItem = doneButton;
-    
+    productPreviewViewController.theScrollView.contentSize = CGSizeMake(0, 1400);
+}
+
+
+- (void)previewDoneButtonHit:(ProductCreateContainerObject *)theCreateObject
+{
+    [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
 }
 
 
 
-- (void)doneButtonHit
+-(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
-    [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:self.productPreviewViewController.productCreateContainerObject.mainObject];
-    
-/*    */
-}
-
--(void)productContainerCreateFinishedWithProductID:(NSString *)productID
-{
-    NSMutableArray *ar = [NSMutableArray arrayWithArray:self.productPreviewViewController.productCreateContainerObject.objectSizePermutationsArray];
+    NSMutableArray *ar = [NSMutableArray arrayWithArray:productCreateContainerObject.objectSizePermutationsArray];
     
     int count = [ar count];
     

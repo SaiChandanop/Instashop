@@ -40,8 +40,16 @@
 {
     [super viewDidLoad];
     
+    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonHit)];
+    self.navigationItem.rightBarButtonItem = doneButton;
+
+    
 }
 
+-(void)doneButtonHit
+{
+    [self.parentController previewDoneButtonHit:self.productCreateContainerObject];
+}
 
 -(void)loadWithProductCreateObject:(ProductCreateContainerObject *)theProductCreateContainerObject
 {

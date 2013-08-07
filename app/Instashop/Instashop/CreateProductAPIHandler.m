@@ -11,8 +11,9 @@
 
 @implementation CreateProductAPIHandler
 
-+(void)createProductContainerObject:(id)delegate withProductCreateObject:(ProductCreateObject *)theProductCreateObject
++(void)createProductContainerObject:(id)delegate withProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
+    ProductCreateObject *theProductCreateObject = productCreateContainerObject.mainObject;
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"create_product.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -41,6 +42,7 @@
     NSLog(@"postString: %@", postString);
     
     CreateProductAPIHandler *productAPIHandler = [[CreateProductAPIHandler alloc] init];
+    productAPIHandler.contextObject = productCreateContainerObject;
     productAPIHandler.delegate = delegate;
     productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(productContainerCreateFinished:) forRequestEvents:SMWebRequestEventComplete];
@@ -54,10 +56,10 @@
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-    NSArray *ar = [newStr componentsSeparatedByString:@"="];
-    
+    NSArray *ar = [newStr componentsSeparatedByString:@"="];    
     if ([ar count] > 1)
-        [self.delegate productContainerCreateFinishedWithProductID:[ar objectAtIndex:1]];
+        [self.delegate productContainerCreateFinishedWithProductID:[ar objectAtIndex:1] withProductCreateContainerObject:self.contextObject];
+    
 }
 
 +(void)createProductSizeQuantityObjects:(id)delegate withProductObject:(ProductCreateObject *)theProductCreateObject withProductID:(NSString *)productID

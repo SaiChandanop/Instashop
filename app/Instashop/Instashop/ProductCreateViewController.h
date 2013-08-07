@@ -21,14 +21,16 @@
     
     ProductSelectTableViewController *productSelectTableViewController;
     ProductDetailsViewController *productDetailsViewController;
-    ProductPreviewViewController *productPreviewViewController;
-    
+
+    NSDictionary *productDictionary;
 }
+
+-(void) previewDoneButtonHit:(ProductCreateContainerObject *)theCreateObject;
 
 -(void)vcDidHitBackWithController:(UIViewController *)requestingViewController;
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary;
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateObject;
-
+-(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject;
 - (void)createProductActionHitWithProductObject:(ProductCreateObject *)productCreateObject;
 - (IBAction) exitButtonHit;
 - (IBAction) goButtonHit;
@@ -37,6 +39,6 @@
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 @property (nonatomic, retain) IBOutlet ProductDetailsViewController *productDetailsViewController;
-@property (nonatomic, retain) ProductPreviewViewController *productPreviewViewController;
+
 @property (nonatomic, retain) NSDictionary *productDictionary;
 @end
