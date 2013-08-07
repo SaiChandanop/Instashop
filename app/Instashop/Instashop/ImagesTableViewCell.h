@@ -13,6 +13,10 @@
 {
     id delegate;
     
+    UIImageView *backgroundImageViewOne;
+    UIImageView *backgroundImageViewTwo;
+    UIImageView *backgroundImageViewThree;
+    
     UIImageView *imageViewOne;
     UIImageView *imageViewTwo;
     UIImageView *imageViewThree;
@@ -24,12 +28,15 @@
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight;
-
 - (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray;
 
 
-
 @property (nonatomic, retain) id delegate;
+
+@property (nonatomic, retain) UIImageView *backgroundImageViewOne;
+@property (nonatomic, retain) UIImageView *backgroundImageViewTwo;
+@property (nonatomic, retain) UIImageView *backgroundImageViewThree;
+
 @property (nonatomic, retain) UIImageView *imageViewOne;
 @property (nonatomic, retain) UIImageView *imageViewTwo;
 @property (nonatomic, retain) UIImageView *imageViewThree;
