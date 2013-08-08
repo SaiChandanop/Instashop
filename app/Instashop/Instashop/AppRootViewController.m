@@ -244,6 +244,11 @@ float transitionTime = .456;
         productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
                 
         [self.view addSubview:productCreateNavigationController .view];
+        
+        UIView *bufferView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
+        bufferView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+
+        [self.view addSubview:bufferView];
                 
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
