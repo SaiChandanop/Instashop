@@ -113,6 +113,8 @@
 		7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */; };
 		7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D517B2CE80002CEB36 /* cell_background.png */; };
 		7B8BC4D817B2CE80002CEB36 /* cell_disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D617B2CE80002CEB36 /* cell_disclosure.png */; };
+		7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */; };
+		7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */; };
 		7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
@@ -126,7 +128,6 @@
 		7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270D17946F5F00A9732E /* attributes1.csv */; };
 		7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */; };
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
-		7BD5C1FE179596E1006F311A /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */; };
 		7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */; };
 		7BD5C20517959FC7006F311A /* SizePickerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20317959FC7006F311A /* SizePickerViewViewController.m */; };
 		7BD5C20617959FC7006F311A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD5C20417959FC7006F311A /* SizePickerViewViewController.xib */; };
@@ -296,6 +297,9 @@
 		7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySelectCell.m; sourceTree = "<group>"; };
 		7B8BC4D517B2CE80002CEB36 /* cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_background.png; sourceTree = "<group>"; };
 		7B8BC4D617B2CE80002CEB36 /* cell_disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_disclosure.png; sourceTree = "<group>"; };
+		7B8BC4D917B364B4002CEB36 /* SizeQuantityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewController.h; sourceTree = "<group>"; };
+		7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewController.m; sourceTree = "<group>"; };
+		7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewController.xib; sourceTree = "<group>"; };
 		7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedImageShadow@2x.png"; sourceTree = "<group>"; };
 		7B96C034174FDEF800E4EDAD /* ImageAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAPIHandler.h; sourceTree = "<group>"; };
 		7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAPIHandler.m; sourceTree = "<group>"; };
@@ -314,8 +318,6 @@
 		7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableCellButton.m; sourceTree = "<group>"; };
 		7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAuthenticationHandler.h; sourceTree = "<group>"; };
 		7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAuthenticationHandler.m; sourceTree = "<group>"; };
-		7BD5C1FC179596E1006F311A /* SizeQuantityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewController.h; sourceTree = "<group>"; };
-		7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewController.m; sourceTree = "<group>"; };
 		7BD5C1FF17959811006F311A /* SizeQuantityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewCell.h; sourceTree = "<group>"; };
 		7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewCell.m; sourceTree = "<group>"; };
 		7BD5C20217959FC7006F311A /* SizePickerViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizePickerViewViewController.h; sourceTree = "<group>"; };
@@ -840,8 +842,9 @@
 		7BD5C1FB179596B3006F311A /* SizeQuantity */ = {
 			isa = PBXGroup;
 			children = (
-				7BD5C1FC179596E1006F311A /* SizeQuantityTableViewController.h */,
-				7BD5C1FD179596E1006F311A /* SizeQuantityTableViewController.m */,
+				7B8BC4D917B364B4002CEB36 /* SizeQuantityTableViewController.h */,
+				7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */,
+				7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */,
 				7BD5C1FF17959811006F311A /* SizeQuantityTableViewCell.h */,
 				7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */,
 				7BD5C20217959FC7006F311A /* SizePickerViewViewController.h */,
@@ -1089,6 +1092,7 @@
 				7B8BC4D117B2CC90002CEB36 /* product_cell_disclosure.png in Resources */,
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
 				7B8BC4D817B2CE80002CEB36 /* cell_disclosure.png in Resources */,
+				7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1146,7 +1150,6 @@
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
-				7BD5C1FE179596E1006F311A /* SizeQuantityTableViewController.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
 				7BD5C20517959FC7006F311A /* SizePickerViewViewController.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,
@@ -1157,6 +1160,7 @@
 				7B15B2FB17B2AA1800173752 /* CategoriesNavigationViewController.m in Sources */,
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,
+				7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

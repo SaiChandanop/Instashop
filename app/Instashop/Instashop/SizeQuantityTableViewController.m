@@ -58,7 +58,7 @@
         return [self.sizesArray count];
         
     }
-
+    
 }
 
 
@@ -66,16 +66,16 @@
 {
     static NSString *CellIdentifier = @"Cell";
     SizeQuantityTableViewCell *cell = [[SizeQuantityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-
+    
     cell.parentController = self;
     if (self.sizesArray == nil)
         [cell loadWithIndexPath:indexPath withSizeTitle:nil];
     else
         [cell loadWithIndexPath:indexPath withSizeTitle:[self.sizesArray objectAtIndex:indexPath.row]];
-        
+    
     if ([[self.sizeSetValuesArray objectAtIndex:indexPath.row] length] > 0)
         [cell.quantityButton setTitle:[self.sizeSetValuesArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-        
+    
     
     return cell;
 }
@@ -83,7 +83,7 @@
 
 -(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath
 {
-    [self.sizeSetValuesArray replaceObjectAtIndex:indexPath.row withObject:value];    
+    [self.sizeSetValuesArray replaceObjectAtIndex:indexPath.row withObject:value];
 }
 
 @end
