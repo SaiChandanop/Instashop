@@ -54,17 +54,26 @@
     [super viewDidLoad];
     
     
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.view.backgroundColor = [UIColor blackColor];
     
-    self.contentScrollView.frame = CGRectMake(0,0,320, 520);
-    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height+55);
+    self.contentScrollView.frame = CGRectMake(0,0, screenWidth, screenHeight - 50);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
     self.contentScrollView.backgroundColor = [UIColor clearColor];
+    [self.view addSubview:self.contentScrollView];
     
     
     
     [self.view addSubview:self.bottomView];
     [self.view bringSubviewToFront:self.bottomView];
+    
+    self.bottomView.frame = CGRectMake(0, screenHeight - self.bottomView.frame.size.height, 320, self.bottomView.frame.size.height);
     
     
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
