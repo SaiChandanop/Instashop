@@ -26,6 +26,8 @@
     UITextField *emailTextField;
     UITextField *categoryTextField;
     UITextField *websiteTextField;
+    
+    UILabel *instagramUsernameLabel;
 }
 
 -(IBAction)cancelButtonHit;
@@ -46,6 +48,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *categoryTextField;
 @property (nonatomic, retain) IBOutlet UITextField *websiteTextField;
 
+@property (nonatomic, retain) IBOutlet UILabel *instagramUsernameLabel;
 
 
 @end

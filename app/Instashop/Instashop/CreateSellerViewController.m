@@ -29,6 +29,8 @@
 @synthesize emailTextField;
 @synthesize categoryTextField;
 @synthesize websiteTextField;
+@synthesize instagramUsernameLabel;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,6 +48,8 @@
     // Do any additional setup after loading the view from its nib.
     
     self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height);
+    
+    self.instagramUsernameLabel.text = [InstagramUserObject getStoredUserObject].username;
     
 /*    self.nameTextField.text = @"Josh Klobe";
 

@@ -421,7 +421,6 @@
 								<string key="NSFrame">{{0, 495}, {320, 44}}</string>
 								<reference key="NSSuperview" ref="839094597"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:9</string>
 								<bool key="IBUIOpaque">NO</bool>
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -736,6 +735,14 @@
 					<int key="connectionID">352</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">instagramUsernameLabel</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="126752235"/>
+					</object>
+					<int key="connectionID">371</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">doneButtonHit</string>
 						<reference key="source" ref="662164624"/>
@@ -1014,7 +1021,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">370</int>
+			<int key="maxID">371</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1041,6 +1048,7 @@
 						<string key="cityTextField">UITextField</string>
 						<string key="containerScrollView">TPKeyboardAvoidingScrollView</string>
 						<string key="emailTextField">UITextField</string>
+						<string key="instagramUsernameLabel">UILabel</string>
 						<string key="nameTextField">UITextField</string>
 						<string key="phoneTextField">UITextField</string>
 						<string key="stateTextField">UITextField</string>
@@ -1067,6 +1075,10 @@
 						<object class="IBToOneOutletInfo" key="emailTextField">
 							<string key="name">emailTextField</string>
 							<string key="candidateClassName">UITextField</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="instagramUsernameLabel">
+							<string key="name">instagramUsernameLabel</string>
+							<string key="candidateClassName">UILabel</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="nameTextField">
 							<string key="name">nameTextField</string>
