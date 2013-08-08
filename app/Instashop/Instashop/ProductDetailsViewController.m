@@ -67,8 +67,7 @@
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-    CGFloat whiteSpace = 11.0f;
-    CGFloat topSpace = 64.0f;
+    CGFloat whiteSpace = 8.0f;
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
@@ -87,7 +86,7 @@
     
     [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
         
-    self.containerScrollView.frame = CGRectMake(0, 0, screenWidth, screenHeight - topSpace);
+    self.containerScrollView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
     
     self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.theImageView.frame.size.height + self.descriptionView.frame.size.height + self.sizeQuantityView.frame.size.height + self.pricesView.frame.size.height + self.nextButton.frame.size.height + whiteSpace);
     
