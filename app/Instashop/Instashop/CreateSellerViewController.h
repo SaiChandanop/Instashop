@@ -10,7 +10,7 @@
 #import "TPKeyboardAvoidingScrollView.h"
 
 @class HomeViewController;
-@interface CreateSellerViewController : UIViewController
+@interface CreateSellerViewController : UIViewController <UITextFieldDelegate>
 {
     HomeViewController *delegate;
     
@@ -28,8 +28,11 @@
     UITextField *websiteTextField;
     
     UILabel *instagramUsernameLabel;
+    UIButton *submitButton;
+    
 }
 
+-(IBAction)categoryButtonHit;
 -(IBAction)cancelButtonHit;
 -(IBAction)doneButtonHit;
 
@@ -49,6 +52,6 @@
 @property (nonatomic, retain) IBOutlet UITextField *websiteTextField;
 
 @property (nonatomic, retain) IBOutlet UILabel *instagramUsernameLabel;
-
+@property (nonatomic, retain) IBOutlet UIButton *submitButton;
 
 @end

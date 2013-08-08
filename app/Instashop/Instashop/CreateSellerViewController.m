@@ -30,7 +30,7 @@
 @synthesize categoryTextField;
 @synthesize websiteTextField;
 @synthesize instagramUsernameLabel;
-
+@synthesize submitButton;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -61,10 +61,40 @@
     self.emailTextField.text = @"klobej@gmail.com  ";
     self.websiteTextField.text = @"alchemy50.com";
     self.categoryTextField.text = @"testcat";
-  */  
-
+  */
+    
+    [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    
 }
 
+-(IBAction)categoryButtonHit
+{
+    
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{    
+    BOOL proceed = NO;
+    if ([self.nameTextField.text length] > 0)
+        if ([self.addressTextField.text length] > 0)
+            if ([self.cityTextField.text length] > 0)
+                    if ([self.stateTextField.text length] > 0)
+                        if ([self.zipTextField.text length] > 0)
+                            if ([self.emailTextField.text length] > 0)
+                                if ([self.websiteTextField.text length] > 0)
+                                    if ([self.categoryTextField.text length] > 0) 
+                                            proceed = YES;
+                                         
+    
+    if (proceed)
+        [self.submitButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    else
+        [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+    
+    
+    
+        
+}
 //-(void)
 
 -(IBAction)doneButtonHit
