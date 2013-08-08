@@ -9,6 +9,8 @@
 #import "CreateSellerViewController.h"
 #import "SellersAPIHandler.h"
 #import "HomeViewController.h"
+#import "CategoriesNavigationViewController.h"
+#import "AppRootViewController.h"
 @interface CreateSellerViewController ()
 
 @end
@@ -32,6 +34,8 @@
 @synthesize instagramUsernameLabel;
 @synthesize submitButton;
 
+
+@synthesize titleTextLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -65,11 +69,53 @@
     
     [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
+    
+    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
+    
+    UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];
+    homeImageView.frame = CGRectMake(0,0,50,44);
+    [homeCustomView addSubview:homeImageView];
+    
+    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    homeButton.frame = CGRectMake(0,0,homeCustomView.frame.size.width, homeCustomView.frame.size.height);
+    homeButton.backgroundColor = [UIColor clearColor];
+    [homeButton addTarget:self action:@selector(backButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [homeCustomView addSubview:homeButton];
+
+    
+    
+    
+    UIBarButtonItem *homBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeCustomView];
+    self.navigationItem.leftBarButtonItem = homBarButtonItem;
+
+
+    
+    UIImage *bagImage = [UIImage imageNamed:@"lmVerifiedRetailerIcon.png"];    
+    UIImageView *rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, bagImage.size.width, bagImage.size.height)];
+    rightImageView.image = bagImage;
+    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithCustomView:rightImageView];
+    self.navigationItem.rightBarButtonItem = rightBarItem;
+
+    
+    self.navigationItem.titleView = self.titleTextLabel;
+    self.navigationItem.titleView.frame = CGRectMake(0,0,50,50);
+    
+    
+    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:42.0f/255.0f green:42.0f/255.0f blue:42.0f/255.0f alpha:1];
+}
+
+-(void)backButtonHit
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction)categoryButtonHit
 {
-    
+    NSLog(@"categoryButtonHit");
+    CategoriesNavigationViewController *categoriesNavigationViewController = [[CategoriesNavigationViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesNavigationViewController.parentController = self;
+//    [self.delegate.parentController.navigationController pushViewController:categoriesNavigationViewController animated:YES];
+   
 }
 
 

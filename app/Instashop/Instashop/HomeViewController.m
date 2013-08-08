@@ -72,9 +72,12 @@
 {
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
     {
+
         CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
         createSellerViewController.delegate = self;
-        [self.parentController presentViewController:createSellerViewController animated:YES completion:nil];
+        
+        UINavigationController *createNavigationController = [[UINavigationController alloc] initWithRootViewController:createSellerViewController];
+        [self.parentController presentViewController:createNavigationController animated:YES completion:nil];
         
     }
     else

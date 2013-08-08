@@ -30,6 +30,8 @@
     UILabel *instagramUsernameLabel;
     UIButton *submitButton;
     
+    UILabel *titleTextLabel;
+    
 }
 
 -(IBAction)categoryButtonHit;
@@ -54,4 +56,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *instagramUsernameLabel;
 @property (nonatomic, retain) IBOutlet UIButton *submitButton;
 
+
+@property (nonatomic, retain) IBOutlet UILabel *titleTextLabel;
 @end
