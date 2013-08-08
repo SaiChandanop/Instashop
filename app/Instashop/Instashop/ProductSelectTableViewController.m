@@ -106,7 +106,10 @@
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
+    NSLog(@"cellSelectionOccured cellSelectionOccured");
  //   NSLog(@"%@ cellSelectionOccured", self);
+    
+    NSLog(@"self.parentController: %@", self.parentController);
     [self.parentController tableViewProductSelectedWithDataDictionary:theSelectionObject];    
 }
 

@@ -114,20 +114,12 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
-
-    
     [self.feedItemsArray removeAllObjects];
     
     NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
     [self.feedItemsArray addObjectsFromArray:sorted];
-    
     [self.refreshControl endRefreshing];
-    
-
     [self.tableView reloadData];
-    
-    
-    
 }
 
 -(IBAction)homeButtonHit
@@ -144,8 +136,6 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 -(IBAction)discoverButtonHit
 {
-//    NSLog(@"discoverButtonHit");
-//    [self.parentController discoverButtonHit];
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Coming Soon!"
                                                         message:nil
                                                        delegate:nil

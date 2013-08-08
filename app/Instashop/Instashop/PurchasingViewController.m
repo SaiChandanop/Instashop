@@ -33,7 +33,7 @@
 @synthesize categoryLabel;
 @synthesize descriptionContainerView;
 @synthesize requestedProductObject;
-@synthesize imageView, titleLabel, sellerLabel, descriptionTextView, priceLabel, numberAvailableLabel, sellerProfileImageView;
+@synthesize imageView, titleLabel, sellerLabel, likesLabel, descriptionTextView, priceLabel, numberAvailableLabel, sellerProfileImageView;
 @synthesize bottomView;
 @synthesize sizeSelectedIndex;
 @synthesize purchaseButton;
@@ -59,7 +59,7 @@
     self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height + 75);
     self.contentScrollView.backgroundColor = [UIColor clearColor];
     
-
+    
     
     [self.view addSubview:self.bottomView];
     [self.view bringSubviewToFront:self.bottomView];
@@ -72,7 +72,7 @@
     self.descriptionTextView.text = @"";
     
     [self.view bringSubviewToFront:self.purchaseButton];
-
+    
     
     UIImage *backButtonImage = [[UIImage imageNamed:@"backbutton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 0, 0, 0)];
     [[UIBarButtonItem appearance] setBackButtonBackgroundImage:backButtonImage  forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
@@ -86,6 +86,7 @@
 
 - (void) loadContentViews
 {
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
     
     self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
@@ -106,19 +107,19 @@
     
     self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     
-//    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    //    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:0];
     for (int i = 1; i < 9; i++)
     {
         NSString *attributeKeyString = [NSString stringWithFormat:@"attribute_%d", i];
         NSString *attributeValue = [self.requestedProductObject objectForKey:attributeKeyString];
-
+        
         if (![attributeValue isKindOfClass:[NSNull class]])
             if ([attributeValue length] > 0 != NSOrderedSame)
                 [attributesArray addObject:attributeValue];
     }
-
+    
     NSMutableString *categoryString = [NSMutableString stringWithCapacity:0];
     for (int i = 0; i < [attributesArray count]; i++)
     {
@@ -129,17 +130,23 @@
     
     self.categoryLabel.text = categoryString;
     
-
+    
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
-    if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
+    NSLog(@"request.url: %@", request.url);
+    
+    if ([request.url rangeOfString:@"users"].length > 0)
     {
-        NSDictionary *dataDictionary = [result objectForKey:@"data"];
-        self.sellerLabel.text = [dataDictionary objectForKey:@"username"];
-        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerProfileImageView];
+        NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+        if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
+        {
+            NSDictionary *dataDictionary = [result objectForKey:@"data"];
+            NSLog(@"data dictionary: %@", dataDictionary);
+            self.sellerLabel.text = [dataDictionary objectForKey:@"username"];
+            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerProfileImageView];
+        }
     }
 }
 
@@ -159,10 +166,10 @@
     if (self.sizeSelectedIndex == -1 || [[self.quantityButton titleForState:UIControlStateNormal] compare:@"Quantity"] == NSOrderedSame)
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Please select a size and or quantity"
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
+                                                            message:nil
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
         [alertView show];
     }
     else
@@ -173,12 +180,12 @@
         PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
         purchasingAddressViewController.productCategoryDictionary = productCategoryObject;
         purchasingAddressViewController.shippingCompleteDelegate = self;
-        [self.navigationController pushViewController:purchasingAddressViewController animated:YES];        
+        [self.navigationController pushViewController:purchasingAddressViewController animated:YES];
         [purchasingAddressViewController loadWithSizeSelection:[self.sizeButton titleForState:UIControlStateNormal] withQuantitySelection:[self.quantityButton titleForState:UIControlStateNormal] withProductImage:self.imageView.image];
         [purchasingAddressViewController loadWithRequestedProductObject:self.requestedProductObject];
- 
+        
     }
-
+    
 }
 
 
@@ -245,7 +252,7 @@
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
         [alertView show];
-
+        
     }
     
 }
@@ -261,7 +268,7 @@
     
     NSMutableArray *quantityArray = nil;
     
-
+    
     if (isSingleSize)
         quantityArray = [NSArray arrayWithObject:[[sizeQuantityArray objectAtIndex:0] objectForKey:@"quantity"]];
     else if (self.sizeSelectedIndex >= 0)
@@ -290,9 +297,9 @@
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
         [alertView show];
-
+        
     }
-
+    
     
 }
 
@@ -300,7 +307,7 @@
 -(IBAction)backButtonHit
 {
     [self.parentController purchasingViewControllerBackButtonHitWithVC:self];
-
+    
 }
 
 

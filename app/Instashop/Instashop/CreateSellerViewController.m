@@ -81,21 +81,18 @@
     homeButton.backgroundColor = [UIColor clearColor];
     [homeButton addTarget:self action:@selector(backButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [homeCustomView addSubview:homeButton];
-
-    
-    
     
     UIBarButtonItem *homBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeCustomView];
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
-
-
     
-    UIImage *bagImage = [UIImage imageNamed:@"lmVerifiedRetailerIcon.png"];    
+    
+    
+    UIImage *bagImage = [UIImage imageNamed:@"lmVerifiedRetailerIcon.png"];
     UIImageView *rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, bagImage.size.width, bagImage.size.height)];
     rightImageView.image = bagImage;
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithCustomView:rightImageView];
     self.navigationItem.rightBarButtonItem = rightBarItem;
-
+    
     
     self.navigationItem.titleView = self.titleTextLabel;
     self.navigationItem.titleView.frame = CGRectMake(0,0,50,50);
@@ -109,13 +106,28 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(void)categorySelectionCompleteWithArray:(NSArray *)selectionArray
+{
+    NSMutableString *categoriesString = [NSMutableString stringWithCapacity:0];
+    for (int i = 0; i < [selectionArray count]; i++)
+    {
+        [categoriesString appendString:[NSString stringWithFormat:@" %@", [selectionArray objectAtIndex:i]]];
+        if (i != [selectionArray count] -1)
+            [categoriesString appendString:@" >"];
+        
+    }
+    
+    self.categoryTextField.text = categoriesString;
+    
+}
+
+
 -(IBAction)categoryButtonHit
 {
-    NSLog(@"categoryButtonHit");
     CategoriesNavigationViewController *categoriesNavigationViewController = [[CategoriesNavigationViewController alloc] initWithNibName:nil bundle:nil];
     categoriesNavigationViewController.parentController = self;
-//    [self.delegate.parentController.navigationController pushViewController:categoriesNavigationViewController animated:YES];
-   
+    [self.navigationController pushViewController:categoriesNavigationViewController animated:YES];
+    
 }
 
 
@@ -162,12 +174,15 @@
         NSLog(@"addressDictionay: %@", addressDictionary);
         [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
     }
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                        message:@"Please fill out all fields"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-    [alertView show];
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"Please fill out all fields"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
     
     
 }

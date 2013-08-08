@@ -25,7 +25,7 @@
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:@"create_type=product_object&"];
     [postString appendString:[NSString stringWithFormat:@"instagramUserId=%@&", userInstagramObject.userID]];
-    [postString appendString:[NSString stringWithFormat:@"instagramProductId=%@&", [theProductCreateObject.instragramMediaInfoDictionary objectForKey:@"id"]]];
+    [postString appendString:[NSString stringWithFormat:@"object_instagram_id=%@&", [theProductCreateObject.instragramMediaInfoDictionary objectForKey:@"id"]]];
     [postString appendString:[NSString stringWithFormat:@"object_title=%@&", theProductCreateObject.title]];
     [postString appendString:[NSString stringWithFormat:@"object_description=%@&", theProductCreateObject.description]];
     [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", theProductCreateObject.quantity]];
@@ -33,13 +33,12 @@
     [postString appendString:[NSString stringWithFormat:@"object_weight=%@&", theProductCreateObject.shippingWeight]];
     [postString appendString:[NSString stringWithFormat:@"object_image_urlstring=%@&", theProductCreateObject.instagramPictureURLString]];
     
-    /*    [postString appendString:[NSString stringWithFormat:@"&object_attribute_one=%@", [attributesArray objectAtIndex:0]]];
-     [postString appendString:[NSString stringWithFormat:@"&object_attribute_two=%@", [attributesArray objectAtIndex:1]]];
-     [postString appendString:[NSString stringWithFormat:@"&object_attribute_three=%@", [attributesArray objectAtIndex:2]]];
-     */
+    
+    NSLog(@"theProductCreateObject.instragramMediaInfoDictionary: %@", theProductCreateObject.instragramMediaInfoDictionary);
+    NSLog(@"postString: %@", postString);
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-//    NSLog(@"createProductContainerObject postString: %@", postString);
+    
     
     CreateProductAPIHandler *productAPIHandler = [[CreateProductAPIHandler alloc] init];
     productAPIHandler.contextObject = productCreateContainerObject;

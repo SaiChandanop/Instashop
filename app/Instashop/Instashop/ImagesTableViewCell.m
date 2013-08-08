@@ -53,16 +53,11 @@
     self.imageViewThree.image = nil;
     
     
-    float inset = 4;
+    float inset = 3;
     
     for (int i = startValue; i < startValue + 3 && i < [feedItemsArray count]; i++)
     {
         
-/*        UIImageView *;
-        UIImageView *backgroundImageViewTwo;
-        UIImageView *backgroundIMageViewThree;
-        
-  */      
         
         UIImageView *theImageView = nil;
         ImagesTableCellButton *theCoverButton = nil;
@@ -150,7 +145,7 @@
             theCoverButton = self.coverButtonThree;
         }
         
-        
+
         NSDictionary *productObjectDictionary = [feedItemsArray objectAtIndex:i];
         NSString *productURL = [productObjectDictionary objectForKey:@"products_url"];
         if (productURL == nil)
@@ -174,13 +169,19 @@
         [self bringSubviewToFront:self.imageViewOne];
         [self bringSubviewToFront:self.imageViewTwo];
         [self bringSubviewToFront:self.imageViewThree];
+
+        [self bringSubviewToFront:self.coverButtonOne];
+        [self bringSubviewToFront:self.coverButtonTwo];
+        [self bringSubviewToFront:self.coverButtonThree];
+
+
     }
     
 }
 
 -(void)coverButtonHit:(ImagesTableCellButton *)theButton
 {
-    //    NSLog(@"selection: %@", theButton.objectDictionary);
+    NSLog(@"coverButtonHit");
     [self.delegate cellSelectionOccured:theButton.objectDictionary];
 }
 
