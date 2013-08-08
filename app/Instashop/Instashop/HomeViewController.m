@@ -45,8 +45,10 @@
 
     
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    self.theScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.termsView.frame.origin.y + self.termsView.frame.size.height);
+    self.theScrollView.contentSize = CGSizeMake(0, self.termsView.frame.origin.y + self.termsView.frame.size.height);
     [self.view addSubview:self.theScrollView];    
+    NSLog(@"scroll view size: %@", NSStringFromCGRect(self.theScrollView.frame));
+    NSLog(@"scroll view contentSize: %@", NSStringFromCGSize(self.theScrollView.contentSize));
     
     [self loadStates];
 }
