@@ -213,6 +213,43 @@ static void *finishedContext            = @"finishedContext";
                               delegate:delegate];
 }
 
+-(IGRequest*)postRequestWithParams:(NSMutableDictionary*)params
+                      delegate:(id<IGRequestDelegate>)delegate {
+    if ([params objectForKey:@"method"] == nil) {
+        NSLog(@"API Method must be specified");
+        return nil;
+    }
+    
+    NSString * methodName = [params objectForKey:@"method"];
+    [params removeObjectForKey:@"method"];
+    
+    return [self requestWithMethodName:methodName
+                                params:params
+                            httpMethod:@"POST"
+                              delegate:delegate];
+}
+
+
+-(IGRequest*)delRequestWithParams:(NSMutableDictionary*)params
+                          delegate:(id<IGRequestDelegate>)delegate {
+    if ([params objectForKey:@"method"] == nil) {
+        NSLog(@"API Method must be specified");
+        return nil;
+    }
+    
+    NSString * methodName = [params objectForKey:@"method"];
+    [params removeObjectForKey:@"method"];
+    
+    return [self requestWithMethodName:methodName
+                                params:params
+                            httpMethod:@"DELETE"
+                              delegate:delegate];
+}
+
+
+
+
+
 -(IGRequest*)requestWithMethodName:(NSString*)methodName
                             params:(NSMutableDictionary*)params
                         httpMethod:(NSString*)httpMethod

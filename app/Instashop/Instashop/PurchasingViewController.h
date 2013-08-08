@@ -37,7 +37,12 @@
     UIButton *purchaseButton;
     
     int sizeSelectedIndex;
+    
+    NSArray *likesArray;
+    
 }
+
+-(IBAction)likeButtonHit;
 
 -(void)setTheNavigationItems;
 
@@ -71,4 +76,6 @@
 @property (nonatomic, retain) IBOutlet UIView *bottomView;
 
 @property (nonatomic, assign) int sizeSelectedIndex;
+
+@property (nonatomic, retain) NSArray *likesArray;
 @end

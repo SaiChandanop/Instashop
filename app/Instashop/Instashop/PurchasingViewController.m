@@ -37,6 +37,7 @@
 @synthesize bottomView;
 @synthesize sizeSelectedIndex;
 @synthesize purchaseButton;
+@synthesize likesArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -87,8 +88,7 @@
 - (void) loadContentViews
 {
     NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-    
-    
+        
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.requestedProductObject objectForKey:@"owner_instagram_id"]], @"method", nil];
@@ -136,9 +136,7 @@
 
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
-    
-    NSLog(@"request.url: %@", request.url);
-    
+        
     if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *metaDictionary = [result objectForKey:@"meta"];
@@ -151,8 +149,31 @@
     }
     else if ([request.url rangeOfString:@"likes"].length > 0)
     {
-        NSArray *dataArray = [result objectForKey:@"data"];
-        self.likesLabel.text = [NSString stringWithFormat:@"%d likes", [dataArray count]];
+        if ([request.httpMethod compare:@"POST"] == NSOrderedSame)
+        {
+            
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            
+            NSMutableDictionary*params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
+            [appDelegate.instagram requestWithParams:params delegate:self];
+            
+            
+        }
+        else if ([request.httpMethod compare:@"DELETE"] == NSOrderedSame)
+        {            
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            
+            NSMutableDictionary*params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
+            [appDelegate.instagram requestWithParams:params delegate:self];
+            
+            
+        }
+        else
+        {
+            NSArray *dataArray = [result objectForKey:@"data"];
+            self.likesArray = [[NSArray alloc] initWithArray:dataArray];
+            self.likesLabel.text = [NSString stringWithFormat:@"%d likes", [dataArray count]];
+        }
     }
 }
 
@@ -306,6 +327,36 @@
         
     }
     
+    
+}
+
+-(IBAction)likeButtonHit
+{
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    BOOL sameID = NO;
+    for (int i = 0; i < [self.likesArray count]; i++)
+    {
+        NSDictionary *likeDictionary = [self.likesArray objectAtIndex:i];
+        
+        NSString *likeID = [likeDictionary objectForKey:@"id"];
+        
+        if ([likeID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+                sameID = YES;
+        
+    }
+    
+    if (sameID)
+    {
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
+        [appDelegate.instagram delRequestWithParams:params delegate:self];
+    }
+    else
+    {
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
+        [appDelegate.instagram postRequestWithParams:params delegate:self];        
+    }
+
     
 }
 

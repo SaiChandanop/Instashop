@@ -30,6 +30,16 @@
 -(IGRequest*)requestWithParams:(NSMutableDictionary*)params
                       delegate:(id<IGRequestDelegate>)delegate;
 
+-(IGRequest*)postRequestWithParams:(NSMutableDictionary*)params
+                      delegate:(id<IGRequestDelegate>)delegate;
+
+-(IGRequest*)delRequestWithParams:(NSMutableDictionary*)params
+                          delegate:(id<IGRequestDelegate>)delegate;
+
+
+
+
+
 -(IGRequest*)requestWithMethodName:(NSString*)methodName
                             params:(NSMutableDictionary*)params
                         httpMethod:(NSString*)httpMethod
