@@ -20,7 +20,7 @@
 
 -(void)createSellerCancelButtonHit;
 -(void)createSellerDone;
-
+-(void)loadStates;
 -(IBAction)homeButtonHit;
 
 @property (nonatomic, retain) AppRootViewController *parentController;

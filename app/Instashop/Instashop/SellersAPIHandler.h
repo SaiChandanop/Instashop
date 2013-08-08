@@ -13,7 +13,7 @@
 
 +(void)makeCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject withSellerAddressDictionary:(NSDictionary *)addressDictionary;
 
-
++(void)makeCheckIfSellerExistsCallWithDelegate:(id)delegate;
 +(void)makeGetSellersRequestWithDelegate:(id)theDelegate withSellerInstagramID:(NSString *)sellerInstagramID;
 
 @end
