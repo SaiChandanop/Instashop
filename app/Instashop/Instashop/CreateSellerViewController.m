@@ -51,7 +51,20 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.containerScrollView.contentSize = CGSizeMake(0, self.containerScrollView.frame.size.height);
+    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    CGFloat whiteSpace = 11.0f;
+    CGFloat topSpace = 64.0f;
+    
+    self.containerScrollView.frame = CGRectMake(0, topSpace, screenWidth, screenHeight - topSpace);
+    self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.containerScrollView.contentSize.height);
+//    self.containerScrollView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:self.containerScrollView];
     
     self.instagramUsernameLabel.text = [InstagramUserObject getStoredUserObject].username;
     
@@ -73,7 +86,7 @@
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
     UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];
-    homeImageView.frame = CGRectMake(0,0,50,44);
+    homeImageView.frame = CGRectMake(0,0,44,44);
     [homeCustomView addSubview:homeImageView];
     
     UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -98,7 +111,9 @@
     self.navigationItem.titleView.frame = CGRectMake(0,0,50,50);
     
     
-    self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:42.0f/255.0f green:42.0f/255.0f blue:42.0f/255.0f alpha:1];
+    //self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:42.0f/255.0f green:42.0f/255.0f blue:42.0f/255.0f alpha:1];
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
 }
 
 -(void)backButtonHit

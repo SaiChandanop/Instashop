@@ -80,7 +80,7 @@
 		7B602DA61766537700663A73 /* savetofavoritesbutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA51766537700663A73 /* savetofavoritesbutton.png */; };
 		7B602DA9176653BD00663A73 /* quantitybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA7176653BD00663A73 /* quantitybutton.png */; };
 		7B602DAA176653BD00663A73 /* sizebutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA8176653BD00663A73 /* sizebutton.png */; };
-		7B602DAC1766543100663A73 /* buybutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DAB1766543100663A73 /* buybutton.png */; };
+		7B602DAC1766543100663A73 /* buybutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DAB1766543100663A73 /* buybutton@2x.png */; };
 		7B602DB6176670F600663A73 /* buyheader.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DB5176670F600663A73 /* buyheader.png */; };
 		7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE46174D2162002A483D /* UIKit.framework */; };
 		7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE48174D2162002A483D /* Foundation.framework */; };
@@ -244,7 +244,7 @@
 		7B602DA51766537700663A73 /* savetofavoritesbutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = savetofavoritesbutton.png; sourceTree = "<group>"; };
 		7B602DA7176653BD00663A73 /* quantitybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quantitybutton.png; sourceTree = "<group>"; };
 		7B602DA8176653BD00663A73 /* sizebutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = sizebutton.png; sourceTree = "<group>"; };
-		7B602DAB1766543100663A73 /* buybutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buybutton.png; sourceTree = "<group>"; };
+		7B602DAB1766543100663A73 /* buybutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buybutton@2x.png"; sourceTree = "<group>"; };
 		7B602DB5176670F600663A73 /* buyheader.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buyheader.png; sourceTree = "<group>"; };
 		7B61EE43174D2162002A483D /* Instashop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Instashop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B61EE46174D2162002A483D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -396,6 +396,7 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7B602DAB1766543100663A73 /* buybutton@2x.png */,
 				2E0EAE03176F6E6700B65FC3 /* backbutton@2x.png */,
 				2E0EAE02176F6E6700B65FC3 /* closebutton@2x.png */,
 				7BA4270B1794681500A9732E /* cpbackimage.png */,
@@ -593,7 +594,6 @@
 				7B4A78F917B13C07002E872A /* purchase_button_background.png */,
 				7B9EAB42179702C900D2868D /* product_buy_button_background.png */,
 				7B602DB5176670F600663A73 /* buyheader.png */,
-				7B602DAB1766543100663A73 /* buybutton.png */,
 				7B602DA7176653BD00663A73 /* quantitybutton.png */,
 				7B602DA8176653BD00663A73 /* sizebutton.png */,
 				7B602DA51766537700663A73 /* savetofavoritesbutton.png */,
@@ -1031,7 +1031,7 @@
 				7B602DA61766537700663A73 /* savetofavoritesbutton.png in Resources */,
 				7B602DA9176653BD00663A73 /* quantitybutton.png in Resources */,
 				7B602DAA176653BD00663A73 /* sizebutton.png in Resources */,
-				7B602DAC1766543100663A73 /* buybutton.png in Resources */,
+				7B602DAC1766543100663A73 /* buybutton@2x.png in Resources */,
 				7B602DB6176670F600663A73 /* buyheader.png in Resources */,
 				2EB259A91767A0D80054618D /* heart@2x.png in Resources */,
 				2EB259AB1767A1D30054618D /* heart_red@2x.png in Resources */,
@@ -1241,14 +1241,15 @@
 		7B61EE75174D2162002A483D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josh Klobe (V544PARN99)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6980BE07-2843-4360-998E-1DAC3526B161";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6980BE07-2843-4360-998E-1DAC3526B161";
+				PROVISIONING_PROFILE = "CF107DCC-DC95-4927-8B76-263A7B57F94E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CF107DCC-DC95-4927-8B76-263A7B57F94E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1256,14 +1257,15 @@
 		7B61EE76174D2162002A483D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josh Klobe (V544PARN99)";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6980BE07-2843-4360-998E-1DAC3526B161";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6980BE07-2843-4360-998E-1DAC3526B161";
+				PROVISIONING_PROFILE = "CF107DCC-DC95-4927-8B76-263A7B57F94E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CF107DCC-DC95-4927-8B76-263A7B57F94E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

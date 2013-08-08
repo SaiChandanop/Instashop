@@ -37,12 +37,26 @@ float transitionTime = .456;
     return theSharedRootViewController;
 }
 
-
+/*
+- (void)viewDidLoad
+{
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320, 20)];
+    redView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:redView];
+    
+    UIView *blueView = [[UIView alloc] initWithFrame:CGRectMake(0,redView.frame.origin.y + redView.frame.size.height,320, 50)];
+    blueView.backgroundColor = [UIColor blueColor];
+    [self.view addSubview:blueView];
+}
+*/
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+ 
     [AttributesManager getSharedAttributesManager];
     
     self.homeViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
@@ -55,14 +69,23 @@ float transitionTime = .456;
     self.discoverViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.discoverViewController.view];
     
-    
+   
     self.feedViewController = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
     self.feedViewController.parentController = self;
     self.feedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.feedViewController];
-    self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);    
+    self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
+    self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
     
+    UIView *gapView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,20)];
+    gapView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    [self.feedNavigationController.view addSubview:gapView];
     
+   
+    
+    NSLog(@"root view frame: %@", NSStringFromCGRect(self.view.frame));
+    NSLog(@"feed vc.view frame: %@", NSStringFromCGRect(self.feedViewController.view.frame));
+    NSLog(@"feed nav controller.view frame: %@", NSStringFromCGRect(self.feedNavigationController.view.frame));
     
     
     
@@ -80,7 +103,11 @@ float transitionTime = .456;
     
     
 	// Do any additional setup after loading the view.
+    
+    [self setNeedsStatusBarAppearanceUpdate];
 }
+
+-(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
 
 -(void)stripeButtonHit
 {
