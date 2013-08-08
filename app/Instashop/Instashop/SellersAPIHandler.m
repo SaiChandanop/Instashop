@@ -21,7 +21,7 @@
     URLRequest.HTTPMethod = @"POST";
     NSMutableString *thePostString  = [NSMutableString stringWithCapacity:0];    
     [thePostString appendString:[NSString stringWithFormat:@"userID=%@", [InstagramUserObject getStoredUserObject].userID]];
-    [thePostString appendString:[NSString stringWithFormat:@"action=%@", @"checkSeller"]];
+    [thePostString appendString:[NSString stringWithFormat:@"&action=%@", @"checkSeller"]];
     [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
 
     NSLog(@"postString: %@", thePostString);

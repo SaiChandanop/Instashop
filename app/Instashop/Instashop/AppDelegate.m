@@ -48,6 +48,11 @@
     
     
     [self.window makeKeyAndVisible];
+    
+    [[UIBarButtonItem appearance]
+     setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"]
+     forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
     return YES;
 }
 
@@ -71,12 +76,6 @@
 -(void)userDidLogin
 {
     self.window.rootViewController = self.appRootViewController;
-    [SellersAPIHandler makeCheckIfSellerExistsCallWithDelegate:self];
-}
-
--(void)sellerExistsCallReturned
-{
-    [self.appRootViewController.homeViewController loadStates];
 }
 
 -(void)makeSafariCallWithURL:(NSURL *)theURL

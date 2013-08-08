@@ -182,8 +182,21 @@
         
         AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [del userDidLogin];
+        
+        [SellersAPIHandler makeCheckIfSellerExistsCallWithDelegate:self];
     }
 }
+
+
+
+
+
+-(void)sellerExistsCallReturned
+{
+    AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.appRootViewController.homeViewController loadStates];
+}
+
 
 
 
