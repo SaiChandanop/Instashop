@@ -58,8 +58,7 @@
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
-    
-    
+  
     //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.view.backgroundColor = [UIColor blackColor];
     
@@ -74,7 +73,11 @@
     [self.view bringSubviewToFront:self.bottomView];
     
     self.bottomView.frame = CGRectMake(0, screenHeight - self.bottomView.frame.size.height, 320, self.bottomView.frame.size.height);
-    
+
+    NSLog(@"view: %@", NSStringFromCGRect(self.view.frame));
+    NSLog(@"content view: %@", NSStringFromCGRect(self.contentScrollView.frame));
+    NSLog(@"content view scroll area: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
+    NSLog(@"bottom view: %@", NSStringFromCGRect(self.bottomView.frame));
     
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
     
