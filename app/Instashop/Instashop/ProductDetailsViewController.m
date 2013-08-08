@@ -64,27 +64,17 @@
     [self.view addSubview:self.containerScrollView];
     
     self.titleTextField.delegate = self;
-    self.titleTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
     
     self.descriptionTextField.delegate = self;
-    self.descriptionTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
     
     self.retailPriceTextField.delegate = self;
-    self.retailPriceLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
-    self.retailPriceTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
     
     self.instashopPriceTextField.delegate = self;
-    self.instashopPriceLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
-    self.instashopPriceTextField.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
-    
-    self.selectedCategoriesLabel.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cpbackimage.png"]];
     
     self.attributesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
-    self.subCategoryContainerView.backgroundColor = self.view.backgroundColor;
     [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
-    
-    
+        
     self.containerScrollView.contentSize = CGSizeMake(0, self.subCategoryContainerView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 8);
         
 }
