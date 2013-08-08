@@ -57,7 +57,7 @@
     self.view.backgroundColor = [UIColor blackColor];
     
     self.contentScrollView.frame = CGRectMake(0,0,320, 520);
-    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height + 75);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height+55);
     self.contentScrollView.backgroundColor = [UIColor clearColor];
     
     

@@ -443,7 +443,7 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		7B0680CA17664BC2009154BF /* Product Purchasing */ = {
+		7B0680CA17664BC2009154BF /* Buy */ = {
 			isa = PBXGroup;
 			children = (
 				7B602DAE1766709800663A73 /* Address */,
@@ -452,7 +452,7 @@
 				7B602D9F17664F1700663A73 /* PurchasingViewController.m */,
 				7B602DA017664F1700663A73 /* PurchasingViewController.xib */,
 			);
-			name = "Product Purchasing";
+			name = Buy;
 			sourceTree = "<group>";
 		};
 		7B1072AB175E664400D9DC5D /* Tab Vcs */ = {
@@ -744,8 +744,8 @@
 				7B96C038174FED1D00E4EDAD /* Cells */,
 				7B74C3CD179716670006289C /* CreateSeller */,
 				7B1072AB175E664400D9DC5D /* Tab Vcs */,
-				7BE958F3175548A100A7E0AB /* ProductCreate */,
-				7B0680CA17664BC2009154BF /* Product Purchasing */,
+				7BE958F3175548A100A7E0AB /* Sell */,
+				7B0680CA17664BC2009154BF /* Buy */,
 				7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */,
 				7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */,
 			);
@@ -913,7 +913,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7BE958F3175548A100A7E0AB /* ProductCreate */ = {
+		7BE958F3175548A100A7E0AB /* Sell */ = {
 			isa = PBXGroup;
 			children = (
 				7B3F520E175FAAB900ABF49B /* ProductObject */,
@@ -926,7 +926,7 @@
 				7BD5C20B1795BDC9006F311A /* ProductCreateContainerObject.h */,
 				7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */,
 			);
-			name = ProductCreate;
+			name = Sell;
 			sourceTree = "<group>";
 		};
 		7BF9DD74178C5459005148A8 /* SBJSon */ = {
