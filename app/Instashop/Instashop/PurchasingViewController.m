@@ -25,6 +25,7 @@
 
 @implementation PurchasingViewController
 
+@synthesize heartImageView;
 @synthesize sizePickerViewViewController;
 @synthesize requestingProductID;
 @synthesize requestedPostmasterDictionary;
@@ -82,6 +83,8 @@
     
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
+    
+    self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
 }
 
 
@@ -173,6 +176,11 @@
             NSArray *dataArray = [result objectForKey:@"data"];
             self.likesArray = [[NSArray alloc] initWithArray:dataArray];
             self.likesLabel.text = [NSString stringWithFormat:@"%d likes", [dataArray count]];
+            
+            if ([self likesArrayContainsSelf])
+                self.heartImageView.image = [UIImage imageNamed:@"heart_red.png"];
+            else
+                self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
         }
     }
 }
@@ -333,20 +341,8 @@
 -(IBAction)likeButtonHit
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    BOOL sameID = NO;
-    for (int i = 0; i < [self.likesArray count]; i++)
-    {
-        NSDictionary *likeDictionary = [self.likesArray objectAtIndex:i];
-        
-        NSString *likeID = [likeDictionary objectForKey:@"id"];
-        
-        if ([likeID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
-                sameID = YES;
-        
-    }
-    
-    if (sameID)
+          
+    if ([self likesArrayContainsSelf])
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
         [appDelegate.instagram delRequestWithParams:params delegate:self];
@@ -357,7 +353,23 @@
         [appDelegate.instagram postRequestWithParams:params delegate:self];        
     }
 
+}
+
+-(BOOL)likesArrayContainsSelf
+{
+    BOOL sameID = NO;
+    for (int i = 0; i < [self.likesArray count]; i++)
+    {
+        NSDictionary *likeDictionary = [self.likesArray objectAtIndex:i];
+        
+        NSString *likeID = [likeDictionary objectForKey:@"id"];
+        
+        if ([likeID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+            sameID = YES;
+        
+    }
     
+    return sameID;
 }
 
 

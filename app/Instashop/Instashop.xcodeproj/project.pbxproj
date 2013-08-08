@@ -396,10 +396,10 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */,
 				2E0EAE03176F6E6700B65FC3 /* backbutton@2x.png */,
 				2E0EAE02176F6E6700B65FC3 /* closebutton@2x.png */,
 				7BA4270B1794681500A9732E /* cpbackimage.png */,
+				7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */,
 				2EB259A71767A0D80054618D /* heart@2x.png */,
 				2EB259AA1767A1D30054618D /* heart_red@2x.png */,
 				2E0EAE00176F6E6700B65FC3 /* leftMenuButton@2x.png */,

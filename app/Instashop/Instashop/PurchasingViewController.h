@@ -20,6 +20,7 @@
     NSString *requestingProductID;
     NSDictionary *requestedPostmasterDictionary;
     
+    UIImageView *heartImageView;
     UIScrollView *contentScrollView;
     UIImageView *imageView;
     UILabel *titleLabel;
@@ -58,6 +59,7 @@
 @property (nonatomic, retain) NSString *requestingProductID;
 @property (nonatomic, retain) NSDictionary *requestedPostmasterDictionary;
 
+@property (nonatomic, retain) IBOutlet UIImageView *heartImageView;
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
