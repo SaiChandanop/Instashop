@@ -21,6 +21,8 @@
 @synthesize parentController;
 @synthesize theScrollView;
 
+@synthesize termsView;
+
 @synthesize sellerLabel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,10 +45,8 @@
 
     
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:self.theScrollView];
-        
-    self.theScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.theScrollView.contentSize.height);
-    
+    self.theScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.termsView.frame.origin.y + self.termsView.frame.size.height);
+    [self.view addSubview:self.theScrollView];    
     
     [self loadStates];
 }

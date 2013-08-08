@@ -15,6 +15,8 @@
     UIScrollView *theScrollView;
     UILabel *sellerLabel;
     
+    UIView *termsView;
+    
 }
 
 
@@ -28,4 +30,6 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
 
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
+
+@property (nonatomic, retain) IBOutlet UIView *termsView;
 @end
