@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Instagram.h"
 
-@interface AuthenticationViewController : UIViewController <IGSessionDelegate, IGRequestDelegate>
+@interface AuthenticationViewController : UIViewController <IGSessionDelegate, IGRequestDelegate, UIWebViewDelegate>
 {
     UIWebView *loginWebView;
     
