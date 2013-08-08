@@ -45,7 +45,7 @@
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.theScrollView];
         
-    self.theScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 568);
+    self.theScrollView.contentSize = CGSizeMake(self.view.frame.size.width, self.theScrollView.contentSize.height);
     
     
     [self loadStates];
