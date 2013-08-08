@@ -12,6 +12,10 @@
 @interface AuthenticationViewController : UIViewController <IGSessionDelegate, IGRequestDelegate>
 {
     UIWebView *loginWebView;
+    
+    UIViewController *instagramLoginWebViewController;
+    UILabel *backLabel;
+    UIButton *backButton;
 }
 
 
@@ -21,4 +25,8 @@
 -(void)makeLoginRequestWithURL:(NSURL *)theURL;
 
 @property (nonatomic, retain) UIWebView *loginWebView;
+
+@property (nonatomic, retain) UIViewController *instagramLoginWebViewController;
+@property (nonatomic, retain) UILabel *backLabel;
+@property (nonatomic, retain) UIButton *backButton;
 @end

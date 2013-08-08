@@ -39,7 +39,7 @@
      */
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"createProductContainerObject postString: %@", postString);
+//    NSLog(@"createProductContainerObject postString: %@", postString);
     
     CreateProductAPIHandler *productAPIHandler = [[CreateProductAPIHandler alloc] init];
     productAPIHandler.contextObject = productCreateContainerObject;
