@@ -54,7 +54,6 @@
 
 -(void)loadStates
 {
- 
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
         self.sellerLabel.text = @"Become a seller";
     else

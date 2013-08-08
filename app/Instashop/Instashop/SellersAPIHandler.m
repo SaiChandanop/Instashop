@@ -12,6 +12,45 @@
 
 @implementation SellersAPIHandler
 
++(void)makeCheckIfSellerExistsCallWithDelegate:(id)delegate
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/create_seller.php?action=checkSeller"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    
+    
+    URLRequest.HTTPMethod = @"POST";
+    NSMutableString *thePostString  = [NSMutableString stringWithCapacity:0];    
+    [thePostString appendString:[NSString stringWithFormat:@"userID=%@", [InstagramUserObject getStoredUserObject].userID]];
+    [thePostString appendString:[NSString stringWithFormat:@"&action=%@", @"checkSeller"]];
+    [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSLog(@"postString: %@", thePostString);
+    
+    SellersAPIHandler *apiHandler = [[SellersAPIHandler alloc] init];
+    apiHandler.delegate = delegate;
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(checkSellerExistsCallFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+    
+}
+
+-(void)checkSellerExistsCallFinished:(id)obj
+{
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"responseDictionary: %@", responseDictionary);
+    if ([responseDictionary objectForKey:@"zencart_id"] != nil)
+    {
+        NSLog(@"SET SET");
+        InstagramUserObject *theUserObject =[InstagramUserObject getStoredUserObject];
+        theUserObject.zencartID = [responseDictionary objectForKey:@"zencart_id"];
+    
+        [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
+    }
+    [self.delegate sellerExistsCallReturned];
+
+}
+
+
 +(void)makeCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject withSellerAddressDictionary:(NSDictionary *)addressDictionary
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/create_seller.php"];

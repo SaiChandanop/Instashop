@@ -10,6 +10,7 @@
 #import "InstagramUserObject.h"
 #import "ZenCartAuthenticationAPIHandler.h"
 #import "AttributesManager.h"
+#import "SellersAPIHandler.h"
 
 #define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
 #define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
@@ -47,6 +48,11 @@
     
     
     [self.window makeKeyAndVisible];
+    
+    [[UIBarButtonItem appearance]
+     setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"]
+     forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+    
     return YES;
 }
 
@@ -69,7 +75,6 @@
 
 -(void)userDidLogin
 {
-    
     self.window.rootViewController = self.appRootViewController;
 }
 
