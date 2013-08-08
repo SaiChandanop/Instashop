@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "SizePickerViewViewController.h"
+#import "IGRequest.h"
+
 @class FeedViewController;
 
-@interface PurchasingViewController : UIViewController
+@interface PurchasingViewController : UIViewController <IGRequestDelegate>
 {
     FeedViewController *parentController;
     SizePickerViewViewController *sizePickerViewViewController;

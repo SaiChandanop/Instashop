@@ -181,7 +181,6 @@
 
 -(void)coverButtonHit:(ImagesTableCellButton *)theButton
 {
-    NSLog(@"coverButtonHit");
     [self.delegate cellSelectionOccured:theButton.objectDictionary];
 }
 

@@ -126,9 +126,7 @@
     
     self.priceValueLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     self.productTitleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
-    
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-    
+        
     self.productBuyButtonLabel.text = [NSString stringWithFormat:@"Buy - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[self.quantityValueLabel.text floatValue] * [[self.requestedProductObject objectForKey:@"products_price"] floatValue]]]];
     
     [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[self.requestedProductObject objectForKey:@"owner_instagram_id"]];

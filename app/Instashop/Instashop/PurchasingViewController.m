@@ -87,27 +87,25 @@
 - (void) loadContentViews
 {
     NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
-    
-    self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
-    self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.requestedProductObject objectForKey:@"owner_instagram_id"]], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
+
+    params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
+    [appDelegate.instagram requestWithParams:params delegate:self];
+
     
-    self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
+    
+    
+    
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     [numberFormatter setAlwaysShowsDecimalSeparator:YES];
     [numberFormatter setMaximumFractionDigits:2];
-    
-    self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
-    
-    //    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     
     NSMutableArray *attributesArray = [NSMutableArray arrayWithCapacity:0];
     for (int i = 1; i < 9; i++)
@@ -127,11 +125,15 @@
         if (i != [attributesArray count] -1)
             [categoryString appendString:@" > "];
     }
-    
+
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
+    self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
+    self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
+    self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
+    self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     self.categoryLabel.text = categoryString;
-    
-    
 }
+
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
@@ -143,10 +145,14 @@
         if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
-            NSLog(@"data dictionary: %@", dataDictionary);
             self.sellerLabel.text = [dataDictionary objectForKey:@"username"];
             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerProfileImageView];
         }
+    }
+    else if ([request.url rangeOfString:@"likes"].length > 0)
+    {
+        NSArray *dataArray = [result objectForKey:@"data"];
+        self.likesLabel.text = [NSString stringWithFormat:@"%d likes", [dataArray count]];
     }
 }
 
