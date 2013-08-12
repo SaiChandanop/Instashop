@@ -65,7 +65,17 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    SizeQuantityTableViewCell *cell = [[SizeQuantityTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+
+    
+    
+    SizeQuantityTableViewCell *cell = (SizeQuantityTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    if (cell == nil) {
+    	NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SizeOptionsTableViewCell" owner:self options:nil];
+    	cell = (SizeQuantityTableViewCell *)[nib objectAtIndex:0];
+    }
+    
+    
+    
     
     cell.parentController = self;
     if (self.sizesArray == nil)

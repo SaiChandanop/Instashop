@@ -90,14 +90,22 @@
     
     self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.theImageView.frame.size.height + self.descriptionView.frame.size.height + self.sizeQuantityView.frame.size.height + self.pricesView.frame.size.height + self.nextButton.frame.size.height + whiteSpace);
     
+    
+//    self.categorySizeQuantityTableView.alpha = 0;
 }
 
 - (IBAction) categoryButtonHit
 {
     
     CategoriesNavigationViewController *categoriesNavigationViewController = [[CategoriesNavigationViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesNavigationViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     categoriesNavigationViewController.parentController = self;
     [self.navigationController pushViewController:categoriesNavigationViewController animated:YES];
+    
+    NSLog(@"categoriesNavigationViewControllerinitialTableReference: %@", categoriesNavigationViewController.initialTableReference);
+    
+    categoriesNavigationViewController.initialTableReference.frame = CGRectMake(0,20, categoriesNavigationViewController.initialTableReference.frame.size.width, categoriesNavigationViewController.initialTableReference.frame.size.height);
+    
         
 }
 
@@ -116,7 +124,7 @@
         
     }
     self.selectedCategoriesLabel.text = titleString;
- 
+/*
     if (self.sizeQuantityTableViewController == nil)
     {
         self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:nil bundle:nil];
@@ -127,7 +135,7 @@
     
     self.subCategoryContainerView.frame = CGRectMake(0, self.sizeQuantityTableViewController.view.frame.origin.y + self.sizeQuantityTableViewController.view.frame.size.height, self.view.frame.size.width, self.subCategoryContainerView.frame.size.height);
     self.containerScrollView.contentSize = CGSizeMake(0, self.subCategoryContainerView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 8);
-    
+  */
 }
 
 
@@ -248,7 +256,21 @@
 
 #pragma mark table view data source delegate methods
 
-
+- (IBAction) addSizeButtonHit
+{
+    NSLog(@"addSizeButtonHit, self.attributesArray: %@", self.attributesArray);
+    if ([self.attributesArray count] == 0)
+    {
+        
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Help"
+                                                            message:@"Please select a category first"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+ //[[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
+}
 
 
 

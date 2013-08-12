@@ -26,7 +26,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
 
-        self.rowNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, self.frame.size.height)];
+/*        self.rowNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, self.frame.size.height)];
         self.rowNumberLabel.backgroundColor = [UIColor clearColor];
         self.rowNumberLabel.textAlignment = NSTextAlignmentCenter;
         self.rowNumberLabel.textColor = [UIColor whiteColor];
@@ -44,7 +44,7 @@
         self.quantityButton.frame = CGRectMake(self.frame.size.width / 2 + self.frame.size.width / 4 - buttonWidth / 2, self.frame.size.height / 2 - buttonHeight / 2, buttonWidth, buttonHeight);
         [self.quantityButton addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.quantityButton];
-        
+        */
         
         self.pickerItemsArray = [[NSMutableArray alloc] initWithCapacity:0];
         for (int i = 0; i < 100; i++)

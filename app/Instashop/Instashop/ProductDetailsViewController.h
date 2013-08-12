@@ -54,8 +54,9 @@
 - (IBAction) previewButtonHit;
 - (IBAction) categoryButtonHit;
 
+- (IBAction) addSizeButtonHit;
 
-@property (nonatomic, retain) ProductCreateViewController *parentController;
+@property (nonatomic, retain) IBOutlet ProductCreateViewController *parentController;
 
 @property (nonatomic, retain) SizeQuantityTableViewController *sizeQuantityTableViewController;
 

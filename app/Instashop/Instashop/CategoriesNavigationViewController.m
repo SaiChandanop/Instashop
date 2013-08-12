@@ -19,6 +19,8 @@
 
 @synthesize parentController;
 @synthesize selectedCategoriesArray;
+@synthesize initialTableReference;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -34,6 +36,8 @@
     [super viewDidLoad];
     
     
+    self.view.backgroundColor = [UIColor blackColor];
+    
     self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
@@ -43,6 +47,8 @@
     [self.view addSubview:categoriesTableViewController.tableView];
     
     categoriesTableViewController.navigationController.navigationBar.topItem.title = @"Categories";
+    
+    self.initialTableReference = categoriesTableViewController.tableView;
 }
 
 

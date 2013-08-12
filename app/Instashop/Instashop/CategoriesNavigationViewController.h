@@ -15,10 +15,14 @@
 {
     ProductDetailsViewController *parentController;
     NSMutableArray *selectedCategoriesArray;
+    
+    UITableView *initialTableReference;
 }
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController;
 
 @property (nonatomic, retain) ProductDetailsViewController *parentController;
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
+
+@property (nonatomic, retain) UITableView *initialTableReference;
 @end
