@@ -50,7 +50,8 @@
     [self.sizeButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.quantityButton  addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
     
-    
+    [self.sizeButton setTitle:@"Size!" forState:UIControlStateNormal];
+    self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
     
 /*    self.theIndexPath = indexPath;
     self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];

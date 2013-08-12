@@ -40,7 +40,6 @@
 @synthesize descriptionView;
 @synthesize pricesView;
 @synthesize sizeQuantityView;
-@synthesize sizeTableExposedCount;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -92,7 +91,13 @@
     self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.theImageView.frame.size.height + self.descriptionView.frame.size.height + self.sizeQuantityView.frame.size.height + self.pricesView.frame.size.height + self.nextButton.frame.size.height + whiteSpace);
     
     
+    self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:nil bundle:nil];
+
+    self.categorySizeQuantityTableView.dataSource = self.sizeQuantityTableViewController;
+    self.categorySizeQuantityTableView.delegate = self.sizeQuantityTableViewController;
     self.categorySizeQuantityTableView.alpha = 0;
+    
+    
 }
 
 - (IBAction) categoryButtonHit
@@ -170,7 +175,7 @@
 
 -(IBAction)previewButtonHit
 {
-    
+/*
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
@@ -240,7 +245,7 @@
     [self.retailPriceTextField resignFirstResponder];
     [self.instashopPriceTextField resignFirstResponder];
     
-    
+    */
 }
 
 
@@ -261,8 +266,14 @@
     }
     else
     {
-        self.sizeTableExposedCount++;
         self.categorySizeQuantityTableView.alpha = 1;
+        self.categorySizeQuantityTableView.dataSource = self.sizeQuantityTableViewController;
+        self.categorySizeQuantityTableView.delegate = self.sizeQuantityTableViewController;
+        
+        
+        self.sizeQuantityTableViewController.rowShowCount++;
+        NSLog(@"categorySizeQuantityTableView.datasource: %@", self.categorySizeQuantityTableView.dataSource);
+        [self.categorySizeQuantityTableView reloadData];
         
     }
  //[[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];

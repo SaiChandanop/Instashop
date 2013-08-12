@@ -8,15 +8,24 @@
 
 #import <UIKit/UIKit.h>
 
+#define SIZE_DICTIONARY_KEY @"size dictionary key"
+#define QUANTITY_DICTIONARY_KEY @"quantity dictionary Key"
+
 @interface SizeQuantityTableViewController : UITableViewController
 {
-    NSArray *sizesArray;
-    NSMutableArray *sizeSetValuesArray;
+    NSMutableDictionary *cellSizeQuantityValueDictionary;
+    NSArray *availableSizesArray;
+    
+    
+    int rowShowCount;
 }
 
 -(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath;
 
-@property (nonatomic, retain) NSArray *sizesArray;
-@property (nonatomic, retain) NSMutableArray *sizeSetValuesArray;
+@property (nonatomic, retain) NSMutableDictionary *cellSizeQuantityValueDictionary;
+@property (nonatomic, retain) NSArray *availableSizesArray;
+
+
+@property (nonatomic, assign) int rowShowCount;
 
 @end

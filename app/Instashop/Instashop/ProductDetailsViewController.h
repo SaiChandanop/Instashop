@@ -46,7 +46,7 @@
     NSDictionary *instragramMediaInfoDictionary;
     NSString *instagramPictureURLString;
     
-    int sizeTableExposedCount;
+
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;

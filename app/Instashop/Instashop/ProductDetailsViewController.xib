@@ -133,10 +133,6 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <outlet property="dataSource" destination="QEC-xt-hQw" id="RbV-i0-bE2"/>
-                                <outlet property="delegate" destination="QEC-xt-hQw" id="jDi-ur-652"/>
-                            </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="568">
                             <rect key="frame" x="0.0" y="40" width="320" height="41"/>
@@ -293,16 +289,6 @@
                 </segmentedControl>
             </subviews>
         </view>
-        <tableViewController id="QEC-xt-hQw" customClass="SizeQuantityTableViewController">
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <nil key="simulatedTopBarMetrics"/>
-            <nil key="simulatedBottomBarMetrics"/>
-            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <connections>
-                <outlet property="view" destination="562" id="IO6-cZ-YLt"/>
-            </connections>
-        </tableViewController>
     </objects>
     <resources>
         <image name="menuDarkBG.png" width="320" height="44"/>
