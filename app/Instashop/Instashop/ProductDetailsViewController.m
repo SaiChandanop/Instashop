@@ -178,18 +178,19 @@
 
 -(IBAction)previewButtonHit
 {
-/*
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
     
     NSMutableArray *productsArray = [NSMutableArray arrayWithCapacity:0];
     
-    for (int i = 0; i < [self.sizeQuantityTableViewController.sizeSetValuesArray count]; i++)
+    for (id key in self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary)
     {
-        
-        int cellQuant = [[self.sizeQuantityTableViewController.sizeSetValuesArray objectAtIndex:i] intValue];
-        if (cellQuant > 0)
+        NSDictionary *sizeObjectDictionary = [self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary objectForKey:key];
+        int objectQuantity = [[sizeObjectDictionary objectForKey:QUANTITY_DICTIONARY_KEY] intValue];
+        NSString *objectSize = [sizeObjectDictionary objectForKey:SIZE_DICTIONARY_KEY];
+
+        if (objectQuantity > 0)
         {
             
             ProductCreateObject *productCreateObject = [[ProductCreateObject alloc] init];
@@ -199,12 +200,13 @@
             productCreateObject.description = self.descriptionTextField.text;
             productCreateObject.retailValue = self.retailPriceTextField.text;
             productCreateObject.retailPrice = self.retailPriceTextField.text;
-            productCreateObject.quantity = [NSString stringWithFormat:@"%d", cellQuant];
-            productCreateObject.size = [self.sizeQuantityTableViewController.sizesArray objectAtIndex:i];
+            productCreateObject.quantity = [NSString stringWithFormat:@"%d", objectQuantity];
+            if (objectSize != nil)
+                productCreateObject.size = objectSize;
             productCreateObject.categoriesArray = [NSArray arrayWithArray:self.attributesArray];
             [productsArray addObject:productCreateObject];
             
-            totalQuantity += [productCreateObject.quantity intValue];
+            totalQuantity += objectQuantity;
         }
     }
     
@@ -248,7 +250,7 @@
     [self.retailPriceTextField resignFirstResponder];
     [self.instashopPriceTextField resignFirstResponder];
     
-    */
+
 }
 
 

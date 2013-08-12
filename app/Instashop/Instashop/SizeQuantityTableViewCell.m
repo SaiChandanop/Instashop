@@ -57,7 +57,6 @@
     self.rowNumberLabel = (UILabel *)[self viewWithTag:0];
     self.sizeButton = (UIButton *)[self viewWithTag:1];
     self.quantityButton = (UIButton *)[self viewWithTag:2];
-    
     self.sizeLabel = (UILabel *)[self viewWithTag:5];
     self.quantityLabel = (UILabel *)[self viewWithTag:6];
     
@@ -69,7 +68,7 @@
     
     self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
     self.sizeLabel.text = @"Size";
-    self.quantityLabel.text = @"Quantity";
+    self.quantityLabel.text = @"#";
     
     NSDictionary *thisCellsContent = [contentDictionary objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
     if (thisCellsContent != nil)
@@ -98,6 +97,18 @@
 
 -(IBAction)sizeButtonHit
 {
+    if ([self.avaliableSizesArray count] == 0)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"No need for a size here"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+
+    }
+    else
+    {
     self.theController = [[SizeQuantityPickerViewController alloc] initWithNibName:@"SizeQuantityPickerViewController" bundle:nil];
     self.theController.itemsArray = [[NSArray alloc] initWithArray:self.avaliableSizesArray];
     
@@ -108,6 +119,7 @@
     [self.theController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
 
     self.theController.typeKeyString = SIZE_DICTIONARY_KEY;
+    }
 }
 
 

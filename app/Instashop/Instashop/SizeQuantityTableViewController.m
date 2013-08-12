@@ -63,6 +63,7 @@
 {
     NSMutableArray *remainingSizesArray = [NSMutableArray arrayWithArray:self.availableSizesArray];
     
+    NSLog(@"self.availableSizesArray: %@", self.availableSizesArray);
     for (id key in self.cellSizeQuantityValueDictionary)
     {
         NSDictionary *itemDictionary = [self.cellSizeQuantityValueDictionary objectForKey:key];
@@ -72,6 +73,7 @@
         
     }
     
+    NSLog(@"remainingSizesArray: %@", remainingSizesArray);
     return remainingSizesArray;
     
             
@@ -101,6 +103,7 @@
     if (cell == nil) {
     	NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SizeQuantityTableViewCell" owner:self options:nil];
     	cell = (SizeQuantityTableViewCell *)[nib objectAtIndex:0];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
     
