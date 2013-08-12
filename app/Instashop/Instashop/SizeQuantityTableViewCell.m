@@ -13,58 +13,46 @@
 
 @implementation SizeQuantityTableViewCell
 
+
+
 @synthesize parentController;
+
 @synthesize rowNumberLabel;
 @synthesize sizeButton;
 @synthesize quantityButton;
-@synthesize pickerSelectedIndex;
-@synthesize pickerItemsArray;
-@synthesize theIndexPath;
+
+@synthesize avaliableSizesArray;
+@synthesize selectedSizeValue;
+@synthesize selectedQuantityValue;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-
-/*        self.rowNumberLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 30, self.frame.size.height)];
-        self.rowNumberLabel.backgroundColor = [UIColor clearColor];
-        self.rowNumberLabel.textAlignment = NSTextAlignmentCenter;
-        self.rowNumberLabel.textColor = [UIColor whiteColor];
-        self.rowNumberLabel.font = [UIFont systemFontOfSize:20];
-        [self addSubview:self.rowNumberLabel];
         
-        float buttonWidth = 80;
-        float buttonHeight = 30;
-        
-        self.sizeButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
-        self.sizeButton.frame = CGRectMake(self.frame.size.width / 4 - buttonWidth / 2, self.frame.size.height / 2 - buttonHeight / 2, buttonWidth, buttonHeight);
-        [self addSubview:self.sizeButton];
-        
-        self.quantityButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
-        self.quantityButton.frame = CGRectMake(self.frame.size.width / 2 + self.frame.size.width / 4 - buttonWidth / 2, self.frame.size.height / 2 - buttonHeight / 2, buttonWidth, buttonHeight);
-        [self.quantityButton addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.quantityButton];
-        */
-        
+        /*
         self.pickerItemsArray = [[NSMutableArray alloc] initWithCapacity:0];
         for (int i = 0; i < 100; i++)
             [self.pickerItemsArray addObject:[NSString stringWithFormat:@"%d", i]];
+         */
 
     }
     return self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
-
 
 -(void) loadWithIndexPath:(NSIndexPath *)indexPath withSizeTitle:(NSString *)sizeTitle
 {
-    self.theIndexPath = indexPath;
+    self.rowNumberLabel = (UILabel *)[self viewWithTag:0];
+    self.sizeButton = (UIButton *)[self viewWithTag:1];
+    self.quantityButton = (UIButton *)[self viewWithTag:2];
+    
+    [self.sizeButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.quantityButton  addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    
+/*    self.theIndexPath = indexPath;
     self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
     
     [self.sizeButton setTitle:@"size" forState:UIControlStateNormal];
@@ -77,12 +65,21 @@
         [self.sizeButton setTitle:sizeTitle forState:UIControlStateNormal];
     
     [self.quantityButton setTitle:@"0" forState:UIControlStateNormal];
+  */
+}
+
+
+-(IBAction)sizeButtonHit
+{
+    NSLog(@"sizeButtonHit");
     
 }
 
 
+
 -(void)quantityButtonHit
 {
+    NSLog(@"quantityButtonHit");
     
     SizePickerViewViewController *sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
     sizePickerViewViewController.thePickerView.delegate = self;
@@ -100,6 +97,7 @@
 }
 
 
+/*
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
 {
     return 1;
@@ -115,11 +113,11 @@
     return [self.pickerItemsArray objectAtIndex:row];
     
 }
-
+*/
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    self.pickerSelectedIndex = row;
+//    self.pickerSelectedIndex = row;
 
     NSLog(@"picker view did select row: %d", row);
 }
@@ -137,8 +135,8 @@
 
 -(void)pickerSaveButtonHit
 {
-    [self.parentController cellSelectedValue:[self.pickerItemsArray objectAtIndex:self.pickerSelectedIndex] withIndexPath:self.theIndexPath];    
-    [self.quantityButton setTitle:[NSString stringWithFormat:@"%d", self.pickerSelectedIndex] forState:UIControlStateNormal];
+//    [self.parentController cellSelectedValue:[self.pickerItemsArray objectAtIndex:self.pickerSelectedIndex] withIndexPath:self.theIndexPath];
+  //  [self.quantityButton setTitle:[NSString stringWithFormat:@"%d", self.pickerSelectedIndex] forState:UIControlStateNormal];
     [self dismissPicker];
 }
 

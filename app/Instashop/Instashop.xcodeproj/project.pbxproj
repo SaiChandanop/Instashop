@@ -57,7 +57,7 @@
 		7B15B2FB17B2AA1800173752 /* CategoriesNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15B2FA17B2AA1800173752 /* CategoriesNavigationViewController.m */; };
 		7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */; };
 		7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */; };
-		7B2C59D017B9344900CEDD5A /* SizeOptionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59CF17B9344900CEDD5A /* SizeOptionsTableViewCell.xib */; };
+		7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */; };
 		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
 		7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
@@ -213,7 +213,7 @@
 		7B15B2FF17B2AB5A00173752 /* CategoriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesTableViewController.h; sourceTree = "<group>"; };
 		7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesTableViewController.m; sourceTree = "<group>"; };
 		7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesTableViewController.xib; sourceTree = "<group>"; };
-		7B2C59CF17B9344900CEDD5A /* SizeOptionsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeOptionsTableViewCell.xib; sourceTree = "<group>"; };
+		7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewCell.xib; sourceTree = "<group>"; };
 		7B34813817624E5800C055AE /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B34813917624E5800C055AE /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
@@ -849,10 +849,10 @@
 				7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */,
 				7BD5C1FF17959811006F311A /* SizeQuantityTableViewCell.h */,
 				7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */,
+				7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */,
 				7BD5C20217959FC7006F311A /* SizePickerViewViewController.h */,
 				7BD5C20317959FC7006F311A /* SizePickerViewViewController.m */,
 				7BD5C20417959FC7006F311A /* SizePickerViewViewController.xib */,
-				7B2C59CF17B9344900CEDD5A /* SizeOptionsTableViewCell.xib */,
 			);
 			name = SizeQuantity;
 			sourceTree = "<group>";
@@ -1034,6 +1034,7 @@
 				7B602DA61766537700663A73 /* savetofavoritesbutton.png in Resources */,
 				7B602DA9176653BD00663A73 /* quantitybutton.png in Resources */,
 				7B602DAA176653BD00663A73 /* sizebutton.png in Resources */,
+				7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */,
 				7B602DAC1766543100663A73 /* buybutton@2x.png in Resources */,
 				7B602DB6176670F600663A73 /* buyheader.png in Resources */,
 				2EB259A91767A0D80054618D /* heart@2x.png in Resources */,
@@ -1088,7 +1089,6 @@
 				7B74C3D2179716850006289C /* CreateSellerViewController.xib in Resources */,
 				7B4A78FA17B13C07002E872A /* purchase_button_background.png in Resources */,
 				7B4A78FC17B14329002E872A /* buy_sizes.png in Resources */,
-				7B2C59D017B9344900CEDD5A /* SizeOptionsTableViewCell.xib in Resources */,
 				7B9E844217B159CE00E6FE47 /* toolbar_back.png in Resources */,
 				7B9E844617B15A6000E6FE47 /* toolbar_title_iumage.png in Resources */,
 				7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */,

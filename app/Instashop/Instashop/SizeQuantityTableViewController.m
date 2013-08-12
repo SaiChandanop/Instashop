@@ -65,16 +65,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-
-    
     
     SizeQuantityTableViewCell *cell = (SizeQuantityTableViewCell *)[tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     if (cell == nil) {
-    	NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SizeOptionsTableViewCell" owner:self options:nil];
+    	NSArray *nib = [[NSBundle mainBundle] loadNibNamed:@"SizeQuantityTableViewCell" owner:self options:nil];
     	cell = (SizeQuantityTableViewCell *)[nib objectAtIndex:0];
     }
-    
-    
     
     
     cell.parentController = self;
@@ -83,8 +79,8 @@
     else
         [cell loadWithIndexPath:indexPath withSizeTitle:[self.sizesArray objectAtIndex:indexPath.row]];
     
-    if ([[self.sizeSetValuesArray objectAtIndex:indexPath.row] length] > 0)
-        [cell.quantityButton setTitle:[self.sizeSetValuesArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
+  //  if ([[self.sizeSetValuesArray objectAtIndex:indexPath.row] length] > 0)
+//        [cell.quantityButton setTitle:[self.sizeSetValuesArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
     
     
     return cell;

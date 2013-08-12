@@ -11,26 +11,30 @@
 @interface SizeQuantityTableViewCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource>
 {
     SizeQuantityTableViewController *parentController;
+
     UILabel *rowNumberLabel;
     UIButton *sizeButton;
     UIButton *quantityButton;
     
-    int pickerSelectedIndex;
-    NSMutableArray *pickerItemsArray;
-    NSIndexPath *theIndexPath;
+    NSArray *avaliableSizesArray;
+    NSString *selectedSizeValue;
+    NSString *selectedQuantityValue;
 }
 
 -(void) loadWithIndexPath:(NSIndexPath *)indexPath withSizeTitle:(NSString *)sizeTitle;
 
+
 @property (nonatomic, retain) SizeQuantityTableViewController *parentController;
 
-@property (nonatomic, retain) UILabel *rowNumberLabel;
-@property (nonatomic, retain) UIButton *sizeButton;
-@property (nonatomic, retain) UIButton *quantityButton;
+@property (nonatomic, retain) IBOutlet UILabel *rowNumberLabel;
+@property (nonatomic, retain) IBOutlet UIButton *sizeButton;
+@property (nonatomic, retain) IBOutlet UIButton *quantityButton;
 
 
-@property (nonatomic, assign) int pickerSelectedIndex;
-@property (nonatomic, retain) NSMutableArray *pickerItemsArray;
-@property (nonatomic, retain) NSIndexPath *theIndexPath;
+@property (nonatomic, retain) NSArray *avaliableSizesArray;
+@property (nonatomic, retain) NSString *selectedSizeValue;
+@property (nonatomic, retain) NSString *selectedQuantityValue;
+
+
 
 @end
