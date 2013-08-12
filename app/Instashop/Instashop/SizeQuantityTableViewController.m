@@ -40,11 +40,41 @@
 {
     
     self.referenceTableView = theTableView;
-    
+    if (self.rowShowCount > 0 && [[self getRemainingAvailableSizesArray] count] == 0)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"No more sizes available"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+        else
+        {
     self.rowShowCount++;
     [theTableView reloadData];
-    [theTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowShowCount -1  inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            [theTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowShowCount -1  inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+        }
     
+}
+
+
+-(NSArray *)getRemainingAvailableSizesArray
+{
+    NSMutableArray *remainingSizesArray = [NSMutableArray arrayWithArray:self.availableSizesArray];
+    
+    for (id key in self.cellSizeQuantityValueDictionary)
+    {
+        NSDictionary *itemDictionary = [self.cellSizeQuantityValueDictionary objectForKey:key];
+        NSString *usedSize = [itemDictionary objectForKey:SIZE_DICTIONARY_KEY];
+        if (usedSize != nil)
+            [remainingSizesArray removeObject:usedSize];
+        
+    }
+    
+    return remainingSizesArray;
+    
+            
 }
 
 #pragma mark - Table view data source
@@ -76,9 +106,7 @@
     
     cell.parentController = self;
     [cell loadWithIndexPath:indexPath withContentDictionary:self.cellSizeQuantityValueDictionary];
-    
-    
-    cell.avaliableSizesArray = [[NSArray alloc] initWithArray:self.availableSizesArray];
+    cell.avaliableSizesArray = [[NSArray alloc] initWithArray:[self getRemainingAvailableSizesArray]];
     
     return cell;
 }
