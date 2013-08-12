@@ -17,13 +17,14 @@
 @synthesize cellSizeQuantityValueDictionary;
 @synthesize availableSizesArray;
 @synthesize rowShowCount;
+@synthesize referenceTableView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         
-        self.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
+        
     }
     return self;
 }
@@ -31,10 +32,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
 }
 
 -(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView
 {
+    
+    self.referenceTableView = theTableView;
     
     self.rowShowCount++;
     [theTableView reloadData];
@@ -53,8 +58,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"numberOfRowsInSection: %d", self.rowShowCount);
-    NSLog(@"self.availableSizesArray: %@", availableSizesArray);
     return self.rowShowCount;
 }
 
@@ -75,15 +78,33 @@
     [cell loadWithIndexPath:indexPath withContentDictionary:self.cellSizeQuantityValueDictionary];
     
     
-
+    cell.avaliableSizesArray = [[NSArray alloc] initWithArray:self.availableSizesArray];
     
     return cell;
 }
 
+-(void)sizeSelectedWithCellIndexPath:(NSIndexPath *)theIndexPath withSize:(NSString *)theSize
+{
+    if (self.cellSizeQuantityValueDictionary == nil)
+        self.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
+                                                
+                                                
+        NSMutableDictionary *itemForRowDictionary = [self.cellSizeQuantityValueDictionary objectForKey:[NSString stringWithFormat:@"%d", theIndexPath.row]];
+    if (itemForRowDictionary == nil)
+        itemForRowDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    [itemForRowDictionary setObject:theSize forKey:SIZE_DICTIONARY_KEY];
+    [self.cellSizeQuantityValueDictionary setObject:itemForRowDictionary forKey:[NSString stringWithFormat:@"%d", theIndexPath.row]];
+    
+    
+    [self.referenceTableView reloadData];
+    
+    
+}
 
 -(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath
 {
-//    [self.sizeSetValuesArray replaceObjectAtIndex:indexPath.row withObject:value];
+ 
 }
 
 @end

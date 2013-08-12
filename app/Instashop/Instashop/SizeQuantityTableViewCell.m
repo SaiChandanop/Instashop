@@ -9,7 +9,7 @@
 #import "SizeQuantityTableViewCell.h"
 #import "AppDelegate.h"
 #import "AppRootViewController.h"
-#import "SizePickerViewViewController.h"
+#import "SizeQuantityPickerViewController.h"
 
 @implementation SizeQuantityTableViewCell
 
@@ -17,6 +17,9 @@
 
 @synthesize parentController;
 
+@synthesize theIndexPath;
+
+@synthesize theController;
 @synthesize rowNumberLabel;
 @synthesize sizeLabel;
 @synthesize quantityLabel;
@@ -32,6 +35,7 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+
         /*
         self.pickerItemsArray = [[NSMutableArray alloc] initWithCapacity:0];
         for (int i = 0; i < 100; i++)
@@ -45,6 +49,9 @@
 
 -(void) loadWithIndexPath:(NSIndexPath *)indexPath withContentDictionary:(NSDictionary *)contentDictionary
 {
+    NSLog(@"loadWithIndexPath contentDictionary: %@", contentDictionary);
+    self.theIndexPath = indexPath;
+    
     self.backgroundColor = [UIColor blackColor];
     
     self.rowNumberLabel = (UILabel *)[self viewWithTag:0];
@@ -64,6 +71,14 @@
     self.sizeLabel.text = @"Size";
     self.quantityLabel.text = @"Quantity";
     
+    NSDictionary *thisCellsContent = [contentDictionary objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
+    if (thisCellsContent != nil)
+    {
+        if ([thisCellsContent objectForKey:SIZE_DICTIONARY_KEY] != nil)
+            self.sizeLabel.text = [thisCellsContent objectForKey:SIZE_DICTIONARY_KEY];
+    }
+    
+    
     self.rowNumberLabel.font = [UIFont systemFontOfSize:16];
     self.rowNumberLabel.textColor = [UIColor whiteColor];
     self.sizeLabel.font = self.rowNumberLabel.font;
@@ -75,24 +90,23 @@
     [self.sizeButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.quantityButton  addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
     
-
-    
-
-    NSLog(@"sizeLabel: %@", sizeLabel);
-    NSLog(@"self.sizeButton: %@", self.sizeButton);
-    NSLog(@"self.quantityButton: %@", self.quantityButton);
-    
-    
-        NSLog(@"self.subviews: %@", [self subviews]);
-    
-    
-    
 }
 
 
 -(IBAction)sizeButtonHit
 {
+
     NSLog(@"sizeButtonHit");
+    self.theController = [[SizeQuantityPickerViewController alloc] initWithNibName:@"SizeQuantityPickerViewController" bundle:nil];
+    self.theController.itemsArray = [[NSArray alloc] initWithArray:self.avaliableSizesArray];
+    
+    AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [del.appRootViewController presentViewController:theController animated:YES completion:nil];
+    
+    [self.theController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.theController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
+
+    self.theController.currentPickerType = PICKER_TYPE_SIZE;
     
 }
 
@@ -100,7 +114,8 @@
 
 -(void)quantityButtonHit
 {
-    NSLog(@"quantityButtonHit");
+//        self.currentPickerType = PICKER_TYPE_QUANTITY;
+/*    NSLog(@"quantityButtonHit");
     
     SizePickerViewViewController *sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
     sizePickerViewViewController.thePickerView.delegate = self;
@@ -114,34 +129,10 @@
 
     [sizePickerViewViewController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    
+    */
 }
 
 
-/*
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 1;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    return [self.pickerItemsArray count];
-}
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{    
-    return [self.pickerItemsArray objectAtIndex:row];
-    
-}
-*/
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-//    self.pickerSelectedIndex = row;
-
-    NSLog(@"picker view did select row: %d", row);
-}
 
 -(void)dismissPicker
 {
@@ -158,7 +149,12 @@
 {
 //    [self.parentController cellSelectedValue:[self.pickerItemsArray objectAtIndex:self.pickerSelectedIndex] withIndexPath:self.theIndexPath];
   //  [self.quantityButton setTitle:[NSString stringWithFormat:@"%d", self.pickerSelectedIndex] forState:UIControlStateNormal];
-    [self dismissPicker];
+    
+    if (self.theController.currentPickerType == PICKER_TYPE_SIZE)
+    {
+        [self.parentController sizeSelectedWithCellIndexPath:self.theIndexPath withSize:[self.theController.itemsArray objectAtIndex:self.theController.selectedRow]];
+    }
+        [self dismissPicker];
 }
 
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+
 #define SIZE_DICTIONARY_KEY @"size dictionary key"
 #define QUANTITY_DICTIONARY_KEY @"quantity dictionary Key"
 
@@ -16,6 +17,7 @@
     NSMutableDictionary *cellSizeQuantityValueDictionary;
     NSArray *availableSizesArray;
     
+    UITableView *referenceTableView;
     
     int rowShowCount;
 }
@@ -23,11 +25,13 @@
 
 -(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView;
 
--(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath;
+-(void)sizeSelectedWithCellIndexPath:(NSIndexPath *)theIndexPath withSize:(NSString *)theSize;
+
 
 @property (nonatomic, retain) NSMutableDictionary *cellSizeQuantityValueDictionary;
 @property (nonatomic, retain) NSArray *availableSizesArray;
 
+@property (nonatomic, retain) UITableView *referenceTableView;
 
 @property (nonatomic, assign) int rowShowCount;
 

@@ -58,6 +58,10 @@
 		7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */; };
 		7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */; };
 		7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */; };
+		7B2C59DA17B95AD100CEDD5A /* SizeQuantityPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C59D817B95AD100CEDD5A /* SizeQuantityPickerViewController.m */; };
+		7B2C59DB17B95AD100CEDD5A /* SizeQuantityPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59D917B95AD100CEDD5A /* SizeQuantityPickerViewController.xib */; };
+		7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */; };
+		7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */; };
 		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
 		7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
@@ -130,8 +134,6 @@
 		7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6AC531770F4C500C238E9 /* ImagesTableCellButton.m */; };
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
 		7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */; };
-		7BD5C20517959FC7006F311A /* SizePickerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20317959FC7006F311A /* SizePickerViewViewController.m */; };
-		7BD5C20617959FC7006F311A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD5C20417959FC7006F311A /* SizePickerViewViewController.xib */; };
 		7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */; };
 		7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */; };
 		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
@@ -214,6 +216,12 @@
 		7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesTableViewController.m; sourceTree = "<group>"; };
 		7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesTableViewController.xib; sourceTree = "<group>"; };
 		7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewCell.xib; sourceTree = "<group>"; };
+		7B2C59D717B95AD100CEDD5A /* SizeQuantityPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityPickerViewController.h; sourceTree = "<group>"; };
+		7B2C59D817B95AD100CEDD5A /* SizeQuantityPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityPickerViewController.m; sourceTree = "<group>"; };
+		7B2C59D917B95AD100CEDD5A /* SizeQuantityPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityPickerViewController.xib; sourceTree = "<group>"; };
+		7B2C59DC17B95B4D00CEDD5A /* SizePickerViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizePickerViewViewController.h; sourceTree = "<group>"; };
+		7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizePickerViewViewController.m; sourceTree = "<group>"; };
+		7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizePickerViewViewController.xib; sourceTree = "<group>"; };
 		7B34813817624E5800C055AE /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B34813917624E5800C055AE /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
@@ -322,9 +330,6 @@
 		7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAuthenticationHandler.m; sourceTree = "<group>"; };
 		7BD5C1FF17959811006F311A /* SizeQuantityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewCell.h; sourceTree = "<group>"; };
 		7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewCell.m; sourceTree = "<group>"; };
-		7BD5C20217959FC7006F311A /* SizePickerViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizePickerViewViewController.h; sourceTree = "<group>"; };
-		7BD5C20317959FC7006F311A /* SizePickerViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizePickerViewViewController.m; sourceTree = "<group>"; };
-		7BD5C20417959FC7006F311A /* SizePickerViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizePickerViewViewController.xib; sourceTree = "<group>"; };
 		7BD5C2081795B882006F311A /* CreateProductAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateProductAPIHandler.h; sourceTree = "<group>"; };
 		7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProductAPIHandler.m; sourceTree = "<group>"; };
 		7BD5C20B1795BDC9006F311A /* ProductCreateContainerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateContainerObject.h; sourceTree = "<group>"; };
@@ -514,6 +519,16 @@
 			name = NavViewController;
 			sourceTree = "<group>";
 		};
+		7B2C59D317B9597B00CEDD5A /* Picker */ = {
+			isa = PBXGroup;
+			children = (
+				7B2C59D717B95AD100CEDD5A /* SizeQuantityPickerViewController.h */,
+				7B2C59D817B95AD100CEDD5A /* SizeQuantityPickerViewController.m */,
+				7B2C59D917B95AD100CEDD5A /* SizeQuantityPickerViewController.xib */,
+			);
+			name = Picker;
+			sourceTree = "<group>";
+		};
 		7B34813717624E3600C055AE /* DiscoverTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -659,6 +674,9 @@
 		7B61EE4C174D2162002A483D /* Instashop */ = {
 			isa = PBXGroup;
 			children = (
+				7B2C59DC17B95B4D00CEDD5A /* SizePickerViewViewController.h */,
+				7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */,
+				7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */,
 				7B7A7448174D4EAE005E90B9 /* VCs */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
 				7B7A7454174D52D2005E90B9 /* Net */,
@@ -844,15 +862,13 @@
 		7BD5C1FB179596B3006F311A /* SizeQuantity */ = {
 			isa = PBXGroup;
 			children = (
+				7B2C59D317B9597B00CEDD5A /* Picker */,
 				7B8BC4D917B364B4002CEB36 /* SizeQuantityTableViewController.h */,
 				7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */,
 				7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */,
 				7BD5C1FF17959811006F311A /* SizeQuantityTableViewCell.h */,
 				7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */,
 				7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */,
-				7BD5C20217959FC7006F311A /* SizePickerViewViewController.h */,
-				7BD5C20317959FC7006F311A /* SizePickerViewViewController.m */,
-				7BD5C20417959FC7006F311A /* SizePickerViewViewController.xib */,
 			);
 			name = SizeQuantity;
 			sourceTree = "<group>";
@@ -1036,6 +1052,7 @@
 				7B602DAA176653BD00663A73 /* sizebutton.png in Resources */,
 				7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */,
 				7B602DAC1766543100663A73 /* buybutton@2x.png in Resources */,
+				7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */,
 				7B602DB6176670F600663A73 /* buyheader.png in Resources */,
 				2EB259A91767A0D80054618D /* heart@2x.png in Resources */,
 				2EB259AB1767A1D30054618D /* heart_red@2x.png in Resources */,
@@ -1049,6 +1066,7 @@
 				2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */,
 				2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */,
 				2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */,
+				7B2C59DB17B95AD100CEDD5A /* SizeQuantityPickerViewController.xib in Resources */,
 				2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */,
 				2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */,
 				2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */,
@@ -1080,7 +1098,6 @@
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
 				7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */,
-				7BD5C20617959FC7006F311A /* SizePickerViewViewController.xib in Resources */,
 				7B9EAB3E1796E98600D2868D /* product_buy_bakcground_image_a.png in Resources */,
 				7B9EAB3F1796E98600D2868D /* product_buy_bakcground_image_b.png in Resources */,
 				7B9EAB411796EA1400D2868D /* product_buy_bakcground_image_c.png in Resources */,
@@ -1125,6 +1142,7 @@
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
 				7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */,
 				7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */,
+				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
 				7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */,
 				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
 				7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */,
@@ -1135,6 +1153,7 @@
 				7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
+				7B2C59DA17B95AD100CEDD5A /* SizeQuantityPickerViewController.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -1155,7 +1174,6 @@
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
-				7BD5C20517959FC7006F311A /* SizePickerViewViewController.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,
 				7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */,
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,

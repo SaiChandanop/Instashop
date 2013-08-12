@@ -8,10 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "SizeQuantityTableViewController.h"
+
+
+#define PICKER_TYPE_SIZE 1
+#define PICKER_TYPE_QUANTITY 2
+
+@class SizeQuantityPickerViewController;
+
 @interface SizeQuantityTableViewCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource>
 {
     SizeQuantityTableViewController *parentController;
-
+    
+    SizeQuantityPickerViewController *theController;
+    
+    NSIndexPath *theIndexPath;
+    
     UILabel *rowNumberLabel;
     UILabel *sizeLabel;
     UILabel *quantityLabel;
@@ -21,12 +32,18 @@
     NSArray *avaliableSizesArray;
     NSString *selectedSizeValue;
     NSString *selectedQuantityValue;
+    
+    
 }
 
 -(void) loadWithIndexPath:(NSIndexPath *)indexPath withContentDictionary:(NSDictionary *)contentDictionary;
 
 
 @property (nonatomic, retain) SizeQuantityTableViewController *parentController;
+
+@property (nonatomic, retain) SizeQuantityPickerViewController *theController;
+
+@property (nonatomic, retain) NSIndexPath *theIndexPath;
 
 @property (nonatomic, retain) IBOutlet UILabel *rowNumberLabel;
 @property (nonatomic, retain) UILabel *sizeLabel;
@@ -38,7 +55,6 @@
 @property (nonatomic, retain) NSArray *avaliableSizesArray;
 @property (nonatomic, retain) NSString *selectedSizeValue;
 @property (nonatomic, retain) NSString *selectedQuantityValue;
-
 
 
 @end
