@@ -20,6 +20,9 @@
     int rowShowCount;
 }
 
+
+-(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView;
+
 -(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath;
 
 @property (nonatomic, retain) NSMutableDictionary *cellSizeQuantityValueDictionary;

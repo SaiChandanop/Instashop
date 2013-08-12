@@ -18,6 +18,8 @@
 @synthesize parentController;
 
 @synthesize rowNumberLabel;
+@synthesize sizeLabel;
+@synthesize quantityLabel;
 @synthesize sizeButton;
 @synthesize quantityButton;
 
@@ -41,32 +43,50 @@
 }
 
 
--(void) loadWithIndexPath:(NSIndexPath *)indexPath withSizeTitle:(NSString *)sizeTitle
+-(void) loadWithIndexPath:(NSIndexPath *)indexPath withContentDictionary:(NSDictionary *)contentDictionary
 {
+    self.backgroundColor = [UIColor blackColor];
+    
     self.rowNumberLabel = (UILabel *)[self viewWithTag:0];
     self.sizeButton = (UIButton *)[self viewWithTag:1];
     self.quantityButton = (UIButton *)[self viewWithTag:2];
     
+    self.sizeLabel = (UILabel *)[self viewWithTag:5];
+    self.quantityLabel = (UILabel *)[self viewWithTag:6];
+    
+    [self addSubview:self.sizeLabel];
+    [self addSubview:self.sizeButton];
+    [self addSubview:self.quantityLabel];
+    [self addSubview:self.quantityButton];
+    
+    
+    self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+    self.sizeLabel.text = @"Size";
+    self.quantityLabel.text = @"Quantity";
+    
+    self.rowNumberLabel.font = [UIFont systemFontOfSize:16];
+    self.rowNumberLabel.textColor = [UIColor whiteColor];
+    self.sizeLabel.font = self.rowNumberLabel.font;
+    self.sizeLabel.textColor = self.rowNumberLabel.textColor;
+    self.quantityLabel.font = self.sizeLabel.font;
+    self.quantityLabel.textColor = self.sizeLabel.textColor;
+
+    
     [self.sizeButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.quantityButton  addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
     
-    [self.sizeButton setTitle:@"Size!" forState:UIControlStateNormal];
-    self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+
     
-/*    self.theIndexPath = indexPath;
-    self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
+
+    NSLog(@"sizeLabel: %@", sizeLabel);
+    NSLog(@"self.sizeButton: %@", self.sizeButton);
+    NSLog(@"self.quantityButton: %@", self.quantityButton);
     
-    [self.sizeButton setTitle:@"size" forState:UIControlStateNormal];
-    [self.quantityButton setTitle:@"quant" forState:UIControlStateNormal];
     
- 
-    if (sizeTitle == nil)
-        [self.sizeButton setTitle:@"NIL" forState:UIControlStateNormal];
-    else
-        [self.sizeButton setTitle:sizeTitle forState:UIControlStateNormal];
+        NSLog(@"self.subviews: %@", [self subviews]);
     
-    [self.quantityButton setTitle:@"0" forState:UIControlStateNormal];
-  */
+    
+    
 }
 
 

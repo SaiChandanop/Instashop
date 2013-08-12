@@ -108,8 +108,6 @@
     categoriesNavigationViewController.parentController = self;
     [self.navigationController pushViewController:categoriesNavigationViewController animated:YES];
     
-    NSLog(@"categoriesNavigationViewControllerinitialTableReference: %@", categoriesNavigationViewController.initialTableReference);
-    
     categoriesNavigationViewController.initialTableReference.frame = CGRectMake(0,20, categoriesNavigationViewController.initialTableReference.frame.size.width, categoriesNavigationViewController.initialTableReference.frame.size.height);
     
         
@@ -130,7 +128,12 @@
         
     }
     self.selectedCategoriesLabel.text = titleString;
+    
+    
+    
 
+    self.sizeQuantityTableViewController.availableSizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
+    
 }
 
 
@@ -267,16 +270,9 @@
     else
     {
         self.categorySizeQuantityTableView.alpha = 1;
-        self.categorySizeQuantityTableView.dataSource = self.sizeQuantityTableViewController;
-        self.categorySizeQuantityTableView.delegate = self.sizeQuantityTableViewController;
-        
-        
-        self.sizeQuantityTableViewController.rowShowCount++;
-        NSLog(@"categorySizeQuantityTableView.datasource: %@", self.categorySizeQuantityTableView.dataSource);
-        [self.categorySizeQuantityTableView reloadData];
-        
+        [self.sizeQuantityTableViewController ownerAddRowButtonHitWithTableView:categorySizeQuantityTableView];
     }
- //[[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
+
     
     NSLog(@"sizesArray: %@", [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]]);
     

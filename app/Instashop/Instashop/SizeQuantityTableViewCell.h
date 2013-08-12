@@ -13,6 +13,8 @@
     SizeQuantityTableViewController *parentController;
 
     UILabel *rowNumberLabel;
+    UILabel *sizeLabel;
+    UILabel *quantityLabel;
     UIButton *sizeButton;
     UIButton *quantityButton;
     
@@ -21,12 +23,14 @@
     NSString *selectedQuantityValue;
 }
 
--(void) loadWithIndexPath:(NSIndexPath *)indexPath withSizeTitle:(NSString *)sizeTitle;
+-(void) loadWithIndexPath:(NSIndexPath *)indexPath withContentDictionary:(NSDictionary *)contentDictionary;
 
 
 @property (nonatomic, retain) SizeQuantityTableViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet UILabel *rowNumberLabel;
+@property (nonatomic, retain) UILabel *sizeLabel;
+@property (nonatomic, retain) UILabel *quantityLabel;
 @property (nonatomic, retain) IBOutlet UIButton *sizeButton;
 @property (nonatomic, retain) IBOutlet UIButton *quantityButton;
 

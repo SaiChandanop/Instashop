@@ -33,7 +33,14 @@
     [super viewDidLoad];
 }
 
-
+-(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView
+{
+    
+    self.rowShowCount++;
+    [theTableView reloadData];
+    [theTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowShowCount -1  inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    
+}
 
 #pragma mark - Table view data source
 
@@ -47,8 +54,10 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     NSLog(@"numberOfRowsInSection: %d", self.rowShowCount);
+    NSLog(@"self.availableSizesArray: %@", availableSizesArray);
     return self.rowShowCount;
 }
+
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -63,13 +72,10 @@
     
     
     cell.parentController = self;
-    [cell loadWithIndexPath:indexPath withSizeTitle:nil];
+    [cell loadWithIndexPath:indexPath withContentDictionary:self.cellSizeQuantityValueDictionary];
     
     
-    //    [cell loadWithIndexPath:indexPath withSizeTitle:[self.sizesArray objectAtIndex:indexPath.row]];
-  //  if ([[self.sizeSetValuesArray objectAtIndex:indexPath.row] length] > 0)
-//        [cell.quantityButton setTitle:[self.sizeSetValuesArray objectAtIndex:indexPath.row] forState:UIControlStateNormal];
-    
+
     
     return cell;
 }
