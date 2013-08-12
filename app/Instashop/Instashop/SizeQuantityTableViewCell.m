@@ -76,6 +76,9 @@
     {
         if ([thisCellsContent objectForKey:SIZE_DICTIONARY_KEY] != nil)
             self.sizeLabel.text = [thisCellsContent objectForKey:SIZE_DICTIONARY_KEY];
+        
+        if ([thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY] != nil)
+            self.quantityLabel.text = [thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY];
     }
     
     
@@ -95,8 +98,6 @@
 
 -(IBAction)sizeButtonHit
 {
-
-    NSLog(@"sizeButtonHit");
     self.theController = [[SizeQuantityPickerViewController alloc] initWithNibName:@"SizeQuantityPickerViewController" bundle:nil];
     self.theController.itemsArray = [[NSArray alloc] initWithArray:self.avaliableSizesArray];
     
@@ -106,30 +107,27 @@
     [self.theController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.theController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
 
-    self.theController.currentPickerType = PICKER_TYPE_SIZE;
-    
+    self.theController.typeKeyString = SIZE_DICTIONARY_KEY;
 }
 
 
 
 -(void)quantityButtonHit
 {
-//        self.currentPickerType = PICKER_TYPE_QUANTITY;
-/*    NSLog(@"quantityButtonHit");
+    NSMutableArray *ar = [NSMutableArray arrayWithCapacity:0];
+    for (int i = 0; i < 100; i++)
+        [ar addObject:[NSString stringWithFormat:@"%d", i + 1]];
     
-    SizePickerViewViewController *sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
-    sizePickerViewViewController.thePickerView.delegate = self;
-    sizePickerViewViewController.thePickerView.dataSource = self;
+    self.theController = [[SizeQuantityPickerViewController alloc] initWithNibName:@"SizeQuantityPickerViewController" bundle:nil];
+    self.theController.itemsArray = [[NSArray alloc] initWithArray:ar];
     
     AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [del.appRootViewController presentViewController:sizePickerViewViewController animated:YES completion:nil];
-
-    sizePickerViewViewController.thePickerView.delegate = self;
-    sizePickerViewViewController.thePickerView.dataSource = self;
-
-    [sizePickerViewViewController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    */
+    [del.appRootViewController presentViewController:theController animated:YES completion:nil];
+    
+    [self.theController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.theController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.theController.typeKeyString = QUANTITY_DICTIONARY_KEY;
 }
 
 
@@ -147,14 +145,8 @@
 
 -(void)pickerSaveButtonHit
 {
-//    [self.parentController cellSelectedValue:[self.pickerItemsArray objectAtIndex:self.pickerSelectedIndex] withIndexPath:self.theIndexPath];
-  //  [self.quantityButton setTitle:[NSString stringWithFormat:@"%d", self.pickerSelectedIndex] forState:UIControlStateNormal];
-    
-    if (self.theController.currentPickerType == PICKER_TYPE_SIZE)
-    {
-        [self.parentController sizeSelectedWithCellIndexPath:self.theIndexPath withSize:[self.theController.itemsArray objectAtIndex:self.theController.selectedRow]];
-    }
-        [self dismissPicker];
+    [self.parentController rowValueSelectedWithIndexPath:self.theIndexPath withKey:self.theController.typeKeyString withValue:[self.theController.itemsArray objectAtIndex:self.theController.selectedRow]];
+    [self dismissPicker];
 }
 
 

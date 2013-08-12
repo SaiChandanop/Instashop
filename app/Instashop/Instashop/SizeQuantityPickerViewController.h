@@ -19,9 +19,10 @@
     UIButton *cancelButton;
     UIButton *saveButton;
     
-    int type;
     int selectedRow;
-    int currentPickerType;
+    
+    NSString *typeKeyString;
+
 }
 
 @property (nonatomic, retain) SizeQuantityTableViewCell *cellDelegate;
@@ -31,9 +32,10 @@
 @property (nonatomic, retain) IBOutlet UIButton *cancelButton;
 @property (nonatomic, retain) IBOutlet UIButton *saveButton;
 
-@property (nonatomic, assign) int type;
 @property (nonatomic, assign) int selectedRow;
-@property (nonatomic, assign) int currentPickerType;
+
+@property (nonatomic, retain) NSString *typeKeyString;
+
 @end
 
 

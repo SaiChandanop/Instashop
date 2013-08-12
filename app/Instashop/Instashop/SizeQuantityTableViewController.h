@@ -25,7 +25,7 @@
 
 -(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView;
 
--(void)sizeSelectedWithCellIndexPath:(NSIndexPath *)theIndexPath withSize:(NSString *)theSize;
+-(void)rowValueSelectedWithIndexPath:(NSIndexPath *)theIndexPath withKey:(NSString *)key withValue:(NSString *)value;
 
 
 @property (nonatomic, retain) NSMutableDictionary *cellSizeQuantityValueDictionary;

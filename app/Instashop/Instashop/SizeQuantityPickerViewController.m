@@ -18,9 +18,8 @@
 @synthesize itemsArray, cellDelegate,thePickerView;
 @synthesize cancelButton;
 @synthesize saveButton;
-@synthesize type;
+@synthesize typeKeyString;
 @synthesize selectedRow;
-@synthesize currentPickerType;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

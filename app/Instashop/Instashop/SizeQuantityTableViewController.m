@@ -83,7 +83,7 @@
     return cell;
 }
 
--(void)sizeSelectedWithCellIndexPath:(NSIndexPath *)theIndexPath withSize:(NSString *)theSize
+-(void)rowValueSelectedWithIndexPath:(NSIndexPath *)theIndexPath withKey:(NSString *)key withValue:(NSString *)value
 {
     if (self.cellSizeQuantityValueDictionary == nil)
         self.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
@@ -93,7 +93,7 @@
     if (itemForRowDictionary == nil)
         itemForRowDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
     
-    [itemForRowDictionary setObject:theSize forKey:SIZE_DICTIONARY_KEY];
+    [itemForRowDictionary setObject:value forKey:key];
     [self.cellSizeQuantityValueDictionary setObject:itemForRowDictionary forKey:[NSString stringWithFormat:@"%d", theIndexPath.row]];
     
     
