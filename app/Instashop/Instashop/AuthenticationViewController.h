@@ -16,6 +16,8 @@
     UIViewController *instagramLoginWebViewController;
     UILabel *backLabel;
     UIButton *backButton;
+    
+    UIView *iphoneShortView;
 }
 
 
@@ -29,4 +31,7 @@
 @property (nonatomic, retain) UIViewController *instagramLoginWebViewController;
 @property (nonatomic, retain) UILabel *backLabel;
 @property (nonatomic, retain) UIButton *backButton;
+
+@property (nonatomic, retain) IBOutlet UIView *iphoneShortView;
+
 @end

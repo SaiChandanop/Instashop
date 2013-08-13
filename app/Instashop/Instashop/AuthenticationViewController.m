@@ -22,7 +22,7 @@
 @synthesize loginWebView;
 
 @synthesize instagramLoginWebViewController, backLabel, backButton;
-
+@synthesize iphoneShortView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -36,6 +36,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"[UIScreen mainScreen].bounds.size.height: %f", [UIScreen mainScreen].bounds.size.height);
+    if ([UIScreen mainScreen].bounds.size.height < 500)
+        [self.view addSubview:self.iphoneShortView];
+        
+
     // Do any additional setup after loading the view from its nib.
 }
 
