@@ -19,9 +19,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
-        float inset = 3;
+        float inset = 0;
         self.bgView = [[UIView alloc] initWithFrame:CGRectMake(0, inset, self.frame.size.width, self.frame.size.height - inset)];
-        self.bgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cell_background.png"]];
+//        self.bgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cell_background.png"]];
         [self addSubview:self.bgView];
         
         self.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.frame.size.width, self.frame.size.height)];

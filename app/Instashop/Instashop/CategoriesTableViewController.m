@@ -45,7 +45,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    tableView.backgroundColor = [UIColor blackColor];
     tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
     return [self.categoriesArray count];
@@ -78,6 +77,10 @@
     
     cell.theLabel.text = [self.categoriesArray objectAtIndex:indexPath.row];
     
+    if (indexPath.row %2 == 0)
+        cell.bgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menuDarkBG.png"]];
+    else
+        cell.bgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menuLightBG.png"]];
     
     return cell;
 }

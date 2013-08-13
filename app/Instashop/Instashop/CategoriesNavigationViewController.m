@@ -36,11 +36,13 @@
     [super viewDidLoad];
     
     
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+    categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
     categoriesTableViewController.positionIndex = 0;
     categoriesTableViewController.parentController = self;
     categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
@@ -68,6 +70,8 @@
     else
     {
         CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+        categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+        categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
         categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
         categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
         categoriesTableViewController.parentController = self;
