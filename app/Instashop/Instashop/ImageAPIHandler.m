@@ -51,5 +51,10 @@ static ImageAPIHandler *sharedImageAPIHandler;
     [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:[self.theWebRequest.request.URL absoluteString]];
     self.theImageView.image = responseImage;
     self.theImageView.alpha = 1;
+    
+    if ([self.delegate respondsToSelector:@selector(imageRequestFinished:)])
+    {
+        [self.delegate imageRequestFinished:self.theImageView];
+    }
 }
 @end

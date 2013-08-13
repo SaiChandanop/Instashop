@@ -20,6 +20,7 @@
     UIButton *saveButton;
     
     int type;
+
 }
 
 @property (nonatomic, retain) SizeQuantityTableViewCell *cellDelegate;
@@ -30,4 +31,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *saveButton;
 
 @property (nonatomic, assign) int type;
+
+
 @end

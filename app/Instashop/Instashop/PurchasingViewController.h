@@ -12,7 +12,7 @@
 
 @class FeedViewController;
 
-@interface PurchasingViewController : UIViewController <IGRequestDelegate>
+@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate>
 {
     FeedViewController *parentController;
     SizePickerViewViewController *sizePickerViewViewController;
@@ -41,11 +41,14 @@
     
     NSArray *likesArray;
     
+    UIActivityIndicatorView *imageLoadingIndicatorView;
+    
+    UIActionSheet *actionSheet;
+    
 }
 
 -(IBAction)likeButtonHit;
 
--(void)setTheNavigationItems;
 
 -(IBAction)backButtonHit;
 -(IBAction)buyButtonHit;
@@ -80,4 +83,8 @@
 @property (nonatomic, assign) int sizeSelectedIndex;
 
 @property (nonatomic, retain) NSArray *likesArray;
+
+@property (nonatomic, retain) UIActivityIndicatorView *imageLoadingIndicatorView;
+
+@property (nonatomic, retain) UIActionSheet *actionSheet;
 @end

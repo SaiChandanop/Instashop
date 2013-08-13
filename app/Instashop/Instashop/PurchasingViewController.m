@@ -39,6 +39,11 @@
 @synthesize sizeSelectedIndex;
 @synthesize purchaseButton;
 @synthesize likesArray;
+@synthesize imageLoadingIndicatorView;
+
+@synthesize actionSheet;
+@synthesize quantityButton;
+@synthesize sizeButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -88,12 +93,20 @@
     [self.view bringSubviewToFront:self.purchaseButton];
     
     
-    
-    
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
     self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
+    
+    
+
+    
+    self.imageLoadingIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    self.imageLoadingIndicatorView.frame = self.sellerProfileImageView.frame;
+    [self.contentScrollView addSubview:self.imageLoadingIndicatorView];
+    
+    [self.imageLoadingIndicatorView startAnimating];
+    
 }
 
 
@@ -146,6 +159,15 @@
     self.categoryLabel.text = categoryString;
 }
 
+-(void)imageRequestFinished:(UIImageView *)referenceImageView
+{
+    NSLog(@"imageRequestFinished imageRequestFinished");
+    if (referenceImageView == self.sellerProfileImageView)
+    {
+        [self.imageLoadingIndicatorView stopAnimating];
+        [self.imageLoadingIndicatorView removeFromSuperview];
+    }
+}
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
         
@@ -233,31 +255,6 @@
 }
 
 
--(void)pickerCancelButtonHit
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
--(void)pickerSaveButtonHit
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    NSString *titleItem = [self.sizePickerViewViewController.itemsArray objectAtIndex:[self.sizePickerViewViewController.thePickerView selectedRowInComponent:0]];
-    if (self.sizePickerViewViewController.type == 0)
-    {
-        [self.sizeButton setTitle:titleItem forState:UIControlStateNormal];
-        self.sizeSelectedIndex = [self.sizePickerViewViewController.thePickerView selectedRowInComponent:0];
-    }
-    else
-    {
-        if (self.sizeSelectedIndex == -1)
-            self.sizeSelectedIndex = 0;
-        
-        [self.quantityButton setTitle:titleItem forState:UIControlStateNormal];
-        
-    }
-}
 
 
 
@@ -268,7 +265,7 @@
     
     BOOL proceed = YES;
     if ([sizeQuantityArray count] == 1)
-        if ([[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
+        if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
             proceed = NO;
     
     if (proceed)
@@ -283,10 +280,22 @@
         
         self.sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
         self.sizePickerViewViewController.type = 0;
-        self.sizePickerViewViewController.itemsArray = [NSArray arrayWithArray:sizesArray];
-        [self presentViewController:self.sizePickerViewViewController animated:YES completion:nil];
+        self.sizePickerViewViewController.itemsArray = [NSMutableArray arrayWithArray:sizesArray];
+        
+        
+        self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self     cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+        self.actionSheet.autoresizesSubviews = NO;
+        self.actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        [self.actionSheet addSubview:self.sizePickerViewViewController.view];
+        
+        [self.actionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+        [self.actionSheet setBounds:CGRectMake(0,0, 320, 411)];
+        
         [self.sizePickerViewViewController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
         [self.sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+        
     }
     else
     {
@@ -336,12 +345,26 @@
     
     if (quantityArray != nil || isSingleSize)
     {
+        
         self.sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
         self.sizePickerViewViewController.type = 1;
         self.sizePickerViewViewController.itemsArray = [NSMutableArray arrayWithArray:quantityArray];
-        [self presentViewController:self.sizePickerViewViewController animated:YES completion:nil];
+        //[self presentViewController:self.sizePickerViewViewController animated:YES completion:nil];
+        
+        
+        self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self     cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+        self.actionSheet.autoresizesSubviews = NO;
+        self.actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        [self.actionSheet addSubview:self.sizePickerViewViewController.view];
+        
+        [self.actionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+        [self.actionSheet setBounds:CGRectMake(0,0, 320, 411)];
+        
         [self.sizePickerViewViewController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
         [self.sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
+        
+        
+
     }
     else
     {
@@ -354,8 +377,36 @@
         
     }
     
-    
 }
+
+-(void)pickerCancelButtonHit
+{
+    [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+}
+
+
+-(void)pickerSaveButtonHit
+{
+    [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    
+    NSString *titleItem = [self.sizePickerViewViewController.itemsArray objectAtIndex:[self.sizePickerViewViewController.thePickerView selectedRowInComponent:0]];
+    if (self.sizePickerViewViewController.type == 0)
+    {
+        [self.sizeButton setTitle:titleItem forState:UIControlStateNormal];
+        self.sizeSelectedIndex = [self.sizePickerViewViewController.thePickerView selectedRowInComponent:0];
+    }
+    else
+    {
+        if (self.sizeSelectedIndex == -1)
+            self.sizeSelectedIndex = 0;
+        
+        [self.quantityButton setTitle:titleItem forState:UIControlStateNormal];
+        
+    }
+}
+
+
+
 
 -(IBAction)likeButtonHit
 {
