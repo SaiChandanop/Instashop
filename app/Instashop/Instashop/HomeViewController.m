@@ -74,6 +74,8 @@
 
 -(IBAction) sellerButtonHit
 {
+    
+    NSLog(@"InstagramUserObject getStoredUserObject].zencartID: %@", [InstagramUserObject getStoredUserObject].zencartID);
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
     {
 

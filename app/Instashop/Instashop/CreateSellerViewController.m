@@ -140,8 +140,12 @@
 -(IBAction)categoryButtonHit
 {
     CategoriesNavigationViewController *categoriesNavigationViewController = [[CategoriesNavigationViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesNavigationViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     categoriesNavigationViewController.parentController = self;
     [self.navigationController pushViewController:categoriesNavigationViewController animated:YES];
+    
+    categoriesNavigationViewController.initialTableReference.frame = CGRectMake(0,20, categoriesNavigationViewController.initialTableReference.frame.size.width, categoriesNavigationViewController.initialTableReference.frame.size.height);
+    
     
 }
 
