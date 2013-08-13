@@ -268,7 +268,7 @@
     
     BOOL proceed = YES;
     if ([sizeQuantityArray count] == 1)
-        if ([[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"NIL"] == NSOrderedSame)
+        if ([[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
             proceed = NO;
     
     if (proceed)
@@ -307,14 +307,21 @@
     
     BOOL isSingleSize = NO;
     if ([sizeQuantityArray count] == 1)
-        if ([[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"NIL"] == NSOrderedSame)
+        if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
             isSingleSize = YES;
     
     NSMutableArray *quantityArray = nil;
     
     
     if (isSingleSize)
-        quantityArray = [NSArray arrayWithObject:[[sizeQuantityArray objectAtIndex:0] objectForKey:@"quantity"]];
+    {
+        quantityArray = [NSMutableArray arrayWithCapacity:0];
+        
+        for (int i = 1; i <= [[[sizeQuantityArray objectAtIndex:0] objectForKey:@"quantity"] intValue]; i++)
+            [quantityArray addObject:[NSString stringWithFormat:@"%d", i]];
+    }
+
+    
     else if (self.sizeSelectedIndex >= 0)
     {
         quantityArray = [NSMutableArray arrayWithCapacity:0];
@@ -324,11 +331,14 @@
         
     }
     
-    if (quantityArray != nil)
+    
+    
+    
+    if (quantityArray != nil || isSingleSize)
     {
         self.sizePickerViewViewController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
         self.sizePickerViewViewController.type = 1;
-        self.sizePickerViewViewController.itemsArray = [NSArray arrayWithArray:quantityArray];
+        self.sizePickerViewViewController.itemsArray = [NSMutableArray arrayWithArray:quantityArray];
         [self presentViewController:self.sizePickerViewViewController animated:YES completion:nil];
         [self.sizePickerViewViewController.cancelButton addTarget:self action:@selector(pickerCancelButtonHit) forControlEvents:UIControlEventTouchUpInside];
         [self.sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];

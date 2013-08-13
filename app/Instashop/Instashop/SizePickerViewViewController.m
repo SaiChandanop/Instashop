@@ -57,7 +57,10 @@
 {
     NSLog(@"titleForRow[%d]: %@", row, [self.itemsArray objectAtIndex:row]);
     
-    return [self.itemsArray objectAtIndex:row];
+    if ([[self.itemsArray objectAtIndex:row] compare:@"(null)"] == NSOrderedSame)
+        return @"";
+    else
+        return [self.itemsArray objectAtIndex:row];
     
 }
 
