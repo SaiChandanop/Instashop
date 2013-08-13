@@ -12,6 +12,7 @@
 #import "UserAPIHandler.h"
 #import "GroupDiskManager.h"
 #import "SellersAPIHandler.h"
+#import "MBProgressHUD.h"
 @interface AuthenticationViewController ()
 
 @end
@@ -80,10 +81,13 @@
     self.backButton.frame = self.backLabel.frame;
     [self.backButton addTarget:self action:@selector(loginBackButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.loginWebView addSubview:self.backButton];
+    
+    [MBProgressHUD hideAllHUDsForView:self.loginWebView animated:YES];
 
 }
 -(void)makeLoginRequestWithURL:(NSURL *)theURL
 {
+    
     
     self.loginWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
     self.loginWebView.delegate = self;
@@ -93,7 +97,10 @@
     self.instagramLoginWebViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
     self.instagramLoginWebViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.instagramLoginWebViewController.view addSubview:self.loginWebView];
+    
     [self presentViewController:self.instagramLoginWebViewController animated:YES completion:nil];
+    
+    [MBProgressHUD showHUDAddedTo:self.loginWebView animated:YES].detailsLabelText = @"Loading Instagram";
     
 }
 

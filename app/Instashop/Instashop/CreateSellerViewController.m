@@ -151,7 +151,7 @@
     BOOL retval = NO;
     
     if ([self.nameTextField.text length] > 0)
-        if ([self.addressTextField.text length] > 0)
+//        if ([self.addressTextField.text length] > 0)
             if ([self.cityTextField.text length] > 0)
                 if ([self.stateTextField.text length] > 0)
                     if ([self.zipTextField.text length] > 0)

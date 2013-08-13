@@ -466,7 +466,6 @@
 		7B1072AB175E664400D9DC5D /* Tab Vcs */ = {
 			isa = PBXGroup;
 			children = (
-				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
 				7B4908531758FE010047ED3B /* Discover */,
@@ -761,6 +760,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B96C038174FED1D00E4EDAD /* Cells */,
 				7B74C3CD179716670006289C /* CreateSeller */,
 				7B1072AB175E664400D9DC5D /* Tab Vcs */,

@@ -34,14 +34,6 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        
-
-        /*
-        self.pickerItemsArray = [[NSMutableArray alloc] initWithCapacity:0];
-        for (int i = 0; i < 100; i++)
-            [self.pickerItemsArray addObject:[NSString stringWithFormat:@"%d", i]];
-         */
-
     }
     return self;
 }
@@ -121,7 +113,6 @@
     self.theController.typeKeyString = SIZE_DICTIONARY_KEY;
     }
 }
-
 
 
 -(void)quantityButtonHit

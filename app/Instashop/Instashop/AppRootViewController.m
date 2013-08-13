@@ -37,18 +37,7 @@ float transitionTime = .456;
     return theSharedRootViewController;
 }
 
-/*
-- (void)viewDidLoad
-{
-    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320, 20)];
-    redView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:redView];
-    
-    UIView *blueView = [[UIView alloc] initWithFrame:CGRectMake(0,redView.frame.origin.y + redView.frame.size.height,320, 50)];
-    blueView.backgroundColor = [UIColor blueColor];
-    [self.view addSubview:blueView];
-}
-*/
+
 
 - (void)viewDidLoad
 {
