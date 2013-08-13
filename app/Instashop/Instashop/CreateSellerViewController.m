@@ -144,7 +144,7 @@
     categoriesNavigationViewController.parentController = self;
     [self.navigationController pushViewController:categoriesNavigationViewController animated:YES];
     
-    categoriesNavigationViewController.initialTableReference.frame = CGRectMake(0,20, categoriesNavigationViewController.initialTableReference.frame.size.width, categoriesNavigationViewController.initialTableReference.frame.size.height);
+    categoriesNavigationViewController.initialTableReference.frame = CGRectMake(0,64, categoriesNavigationViewController.initialTableReference.frame.size.width, categoriesNavigationViewController.initialTableReference.frame.size.height);
     
     
 }
