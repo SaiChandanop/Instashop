@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ProductCreateObject.h"
 #import "CategoriesTableViewController.h"
-#import "CategoriesNavigationViewController.h"
+#import "CategoriesViewController.h"
 #import "SizeQuantityTableViewController.h"
 
 @class ProductCreateViewController;

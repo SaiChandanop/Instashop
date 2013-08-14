@@ -7,7 +7,7 @@
 //
 
 #import "CategoriesTableViewController.h"
-#import "CategoriesNavigationViewController.h"
+#import "CategoriesViewController.h"
 #import "AttributesManager.h"
 #import "CategorySelectCell.h"
 @interface CategoriesTableViewController ()

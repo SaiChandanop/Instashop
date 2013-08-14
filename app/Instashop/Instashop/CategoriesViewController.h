@@ -11,7 +11,7 @@
 
 @class ProductDetailsViewController;
 
-@interface CategoriesNavigationViewController : UIViewController
+@interface CategoriesViewController : UIViewController
 {
     ProductDetailsViewController *parentController;
     NSMutableArray *selectedCategoriesArray;

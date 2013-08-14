@@ -6,16 +6,16 @@
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
 
-#import "CategoriesNavigationViewController.h"
+#import "CategoriesViewController.h"
 #import "CategoriesTableViewController.h"
 #import "AttributesManager.h"
 #import "ProductDetailsViewController.h"
 
-@interface CategoriesNavigationViewController ()
+@interface CategoriesViewController ()
 
 @end
 
-@implementation CategoriesNavigationViewController
+@implementation CategoriesViewController
 
 @synthesize parentController;
 @synthesize selectedCategoriesArray;

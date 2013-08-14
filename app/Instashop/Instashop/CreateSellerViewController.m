@@ -9,7 +9,7 @@
 #import "CreateSellerViewController.h"
 #import "SellersAPIHandler.h"
 #import "HomeViewController.h"
-#import "CategoriesNavigationViewController.h"
+#import "CategoriesViewController.h"
 #import "AppRootViewController.h"
 @interface CreateSellerViewController ()
 
@@ -139,14 +139,14 @@
 
 -(IBAction)categoryButtonHit
 {
-    CategoriesNavigationViewController *categoriesNavigationViewController = [[CategoriesNavigationViewController alloc] initWithNibName:nil bundle:nil];
-    categoriesNavigationViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    categoriesNavigationViewController.parentController = self;
-    [self.navigationController pushViewController:categoriesNavigationViewController animated:YES];
+    CategoriesViewController *categoriesViewController = [[CategoriesViewController alloc] initWithNibName:nil bundle:nil];
+//    categoriesViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    categoriesViewController.parentController = self;
+    [self.navigationController pushViewController:categoriesViewController animated:YES];
+  
+    [self.navigationController.navigationItem.backBarButtonItem setTitle:@"TEST"];
     
-    categoriesNavigationViewController.initialTableReference.frame = CGRectMake(0,64, categoriesNavigationViewController.initialTableReference.frame.size.width, categoriesNavigationViewController.initialTableReference.frame.size.height);
-    
-    
+    categoriesViewController.initialTableReference.frame = CGRectMake(0,64, categoriesViewController.initialTableReference.frame.size.width, categoriesViewController.initialTableReference.frame.size.height);
 }
 
 
