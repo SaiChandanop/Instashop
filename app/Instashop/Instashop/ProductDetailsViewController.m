@@ -110,6 +110,9 @@
     
     categoriesViewController.initialTableReference.frame = CGRectMake(0,20, categoriesViewController.initialTableReference.frame.size.width, categoriesViewController.initialTableReference.frame.size.height);
     
+    [self resignResponders];
+    
+    
         
 }
 
@@ -133,7 +136,9 @@
     
 
     self.sizeQuantityTableViewController.availableSizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
-    
+ 
+    if (self.categorySizeQuantityTableView.alpha == 0)
+        [self addSizeButtonHit];
 }
 
 
@@ -241,16 +246,7 @@
         
     }
   
-
-    
-    
-    
-    [self.titleTextField resignFirstResponder];
-    [self.descriptionTextField resignFirstResponder];
-    [self.retailPriceTextField resignFirstResponder];
-    [self.instashopPriceTextField resignFirstResponder];
-    
-
+    [self resignResponders];
 }
 
 
@@ -281,6 +277,16 @@
     
 }
 
+-(void)resignResponders
+{
+    
+    [self.titleTextField resignFirstResponder];
+    [self.descriptionTextField resignFirstResponder];
+    [self.retailPriceTextField resignFirstResponder];
+    [self.instashopPriceTextField resignFirstResponder];
+    
+    
+}
 
 
 
