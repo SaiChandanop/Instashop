@@ -111,6 +111,12 @@
     [cell loadWithIndexPath:indexPath withContentDictionary:self.cellSizeQuantityValueDictionary];
     cell.avaliableSizesArray = [[NSArray alloc] initWithArray:[self getRemainingAvailableSizesArray]];
     
+    if ([self.availableSizesArray count] == 0)
+    {
+        cell.sizeLabel.alpha = 0;
+        cell.sizeButton.alpha = 0;
+        
+    }
     return cell;
 }
 
