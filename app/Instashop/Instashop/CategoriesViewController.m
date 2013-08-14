@@ -69,6 +69,8 @@
     }
     else
     {
+        
+        
         CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
         categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
         categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
@@ -76,7 +78,16 @@
         categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
         categoriesTableViewController.parentController = self;
         categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
-        [self.navigationController pushViewController:categoriesTableViewController animated:YES];
+        
+        
+        UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+        containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+        [containerViewController.view addSubview:categoriesTableViewController.tableView];
+        
+        categoriesTableViewController.tableView.frame = CGRectMake(0,64, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
+        
+        
+        [self.navigationController pushViewController:containerViewController animated:YES];
         
         NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
         for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
