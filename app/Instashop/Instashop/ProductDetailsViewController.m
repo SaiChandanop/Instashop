@@ -88,8 +88,8 @@
         
     self.containerScrollView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
     
-    self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.theImageView.frame.size.height + self.descriptionView.frame.size.height + self.sizeQuantityView.frame.size.height + self.pricesView.frame.size.height + self.nextButton.frame.size.height + whiteSpace);
-    
+//    self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.pricesView.frame.origin.y + self.pricesView.frame.size.height + self.nextButton.frame.origin.y + self.nextButton.frame.size.height + whiteSpace);
+    self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
     
     self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:nil bundle:nil];
 
