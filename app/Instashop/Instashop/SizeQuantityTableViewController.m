@@ -17,7 +17,6 @@
 @synthesize cellSizeQuantityValueDictionary;
 @synthesize availableSizesArray;
 @synthesize rowShowCount;
-@synthesize referenceTableView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,12 +33,12 @@
     [super viewDidLoad];
     
     self.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
+    
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
 }
 
 -(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView
 {
-    
-    self.referenceTableView = theTableView;
     if (self.rowShowCount > 0 && [[self getRemainingAvailableSizesArray] count] == 0)
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
@@ -52,8 +51,8 @@
         else
         {
     self.rowShowCount++;
-    [theTableView reloadData];
-            [theTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowShowCount -1  inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+            [theTableView reloadData];
+            //[theTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowShowCount -1  inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
         }
     
 }
@@ -63,7 +62,6 @@
 {
     NSMutableArray *remainingSizesArray = [NSMutableArray arrayWithArray:self.availableSizesArray];
     
-    NSLog(@"self.availableSizesArray: %@", self.availableSizesArray);
     for (id key in self.cellSizeQuantityValueDictionary)
     {
         NSDictionary *itemDictionary = [self.cellSizeQuantityValueDictionary objectForKey:key];
@@ -73,7 +71,6 @@
         
     }
     
-    NSLog(@"remainingSizesArray: %@", remainingSizesArray);
     return remainingSizesArray;
     
             
@@ -117,6 +114,8 @@
         cell.sizeButton.alpha = 0;
         
     }
+    
+    self.tableView.contentSize = CGSizeMake(0,0);
     return cell;
 }
 
@@ -134,9 +133,7 @@
     [self.cellSizeQuantityValueDictionary setObject:itemForRowDictionary forKey:[NSString stringWithFormat:@"%d", theIndexPath.row]];
     
     
-    [self.referenceTableView reloadData];
-    
-    
+    [self.tableView reloadData];
 }
 
 -(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath

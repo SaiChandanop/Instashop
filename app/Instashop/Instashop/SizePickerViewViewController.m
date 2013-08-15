@@ -56,7 +56,7 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSLog(@"titleForRow[%d]: %@", row, [self.itemsArray objectAtIndex:row]);
+
     
     if ([[self.itemsArray objectAtIndex:row] compare:@"(null)"] == NSOrderedSame)
         return @"";

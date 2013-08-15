@@ -17,21 +17,16 @@
     NSMutableDictionary *cellSizeQuantityValueDictionary;
     NSArray *availableSizesArray;
     
-    UITableView *referenceTableView;
-    
     int rowShowCount;
 }
 
 
 -(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView;
-
 -(void)rowValueSelectedWithIndexPath:(NSIndexPath *)theIndexPath withKey:(NSString *)key withValue:(NSString *)value;
 
 
 @property (nonatomic, retain) NSMutableDictionary *cellSizeQuantityValueDictionary;
 @property (nonatomic, retain) NSArray *availableSizesArray;
-
-@property (nonatomic, retain) UITableView *referenceTableView;
 
 @property (nonatomic, assign) int rowShowCount;
 

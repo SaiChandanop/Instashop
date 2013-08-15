@@ -25,8 +25,6 @@
     UIScrollView *containerScrollView;    
     UIView *subCategoryContainerView;
     
-    UITableView *categorySizeQuantityTableView;
-    
     UIImageView *theImageView;
     UITextField *titleTextField;
     UITextField *descriptionTextField;
@@ -36,6 +34,7 @@
     UILabel *instashopPriceLabel;
     UITextField *instashopPriceTextField;
     UIButton *nextButton;
+    UIButton *addSizeButton;
     UIView *nextButtonContainerView;
     
     //jb added
@@ -47,6 +46,7 @@
     NSString *instagramPictureURLString;
     
 
+    CGRect originalPriceViewRect;
 }
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
@@ -66,7 +66,6 @@
 
 @property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
 @property (nonatomic, retain) IBOutlet UIView *subCategoryContainerView;
-@property (nonatomic, retain) IBOutlet UITableView *categorySizeQuantityTableView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;
@@ -77,6 +76,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *instashopPriceLabel;
 @property (nonatomic, retain) IBOutlet UITextField *instashopPriceTextField;
 @property (nonatomic, retain) IBOutlet UIButton *nextButton;
+@property (nonatomic, retain) IBOutlet UIButton *addSizeButton;
 @property (nonatomic, retain) IBOutlet UIView *nextButtonContainerView;
 
 @property (nonatomic, retain) IBOutlet UIView *descriptionView;
@@ -86,6 +86,7 @@
 @property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;
 @property (nonatomic, retain) NSString *instagramPictureURLString;
 
-
 @property (nonatomic, assign) int sizeTableExposedCount;
+
+@property (nonatomic, assign) CGRect originalPriceViewRect;
 @end

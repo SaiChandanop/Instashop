@@ -7,7 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductDetailsViewController">
             <connections>
-                <outlet property="categorySizeQuantityTableView" destination="562" id="IFr-Fk-VRh"/>
+                <outlet property="addSizeButton" destination="568" id="oiL-wJ-lor"/>
                 <outlet property="containerScrollView" destination="283" id="490"/>
                 <outlet property="descriptionTextField" destination="463" id="468"/>
                 <outlet property="descriptionView" destination="537" id="557"/>
@@ -18,7 +18,6 @@
                 <outlet property="retailPriceLabel" destination="470" id="499"/>
                 <outlet property="retailPriceTextField" destination="471" id="486"/>
                 <outlet property="selectedCategoriesLabel" destination="536" id="542"/>
-                <outlet property="sizeQuantityView" destination="567" id="570"/>
                 <outlet property="subCategoryContainerView" destination="537" id="541"/>
                 <outlet property="theImageView" destination="497" id="498"/>
                 <outlet property="titleTextField" destination="312" id="467"/>
@@ -125,20 +124,8 @@
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
-                <view contentMode="scaleToFill" id="567" userLabel="SizeQuantity View">
-                    <rect key="frame" x="0.0" y="462" width="320" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="562" userLabel="SizeQuant Table">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </tableView>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </view>
                 <view contentMode="scaleToFill" id="556" userLabel="Prices View">
-                    <rect key="frame" x="0.0" y="508" width="320" height="192"/>
+                    <rect key="frame" x="0.0" y="460" width="320" height="192"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="549">
@@ -205,7 +192,7 @@
                             <rect key="frame" x="0.0" y="-3" width="320" height="41"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <state key="normal" title="Add Another Size">
+                            <state key="normal" title="Add Size">
                                 <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>

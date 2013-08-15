@@ -41,7 +41,6 @@
 
 -(void) loadWithIndexPath:(NSIndexPath *)indexPath withContentDictionary:(NSDictionary *)contentDictionary
 {
-    NSLog(@"loadWithIndexPath contentDictionary: %@", contentDictionary);
     self.theIndexPath = indexPath;
     
     self.backgroundColor = [UIColor blackColor];
@@ -89,6 +88,7 @@
 
 -(IBAction)sizeButtonHit
 {
+    NSLog(@"sizeButtonHit");
     if ([self.avaliableSizesArray count] == 0)
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"

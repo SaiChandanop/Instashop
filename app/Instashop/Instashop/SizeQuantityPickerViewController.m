@@ -48,8 +48,6 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSLog(@"titleForRow[%d]: %@", row, [self.itemsArray objectAtIndex:row]);
-    
     return [self.itemsArray objectAtIndex:row];
     
 }

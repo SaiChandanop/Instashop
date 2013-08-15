@@ -26,7 +26,6 @@
 @synthesize attributesArray;
 @synthesize containerScrollView;
 @synthesize subCategoryContainerView;
-@synthesize categorySizeQuantityTableView;
 @synthesize theImageView;
 @synthesize titleTextField;
 @synthesize descriptionTextField;
@@ -34,13 +33,14 @@
 @synthesize retailPriceTextField;
 @synthesize instashopPriceTextField;
 @synthesize nextButton;
+@synthesize addSizeButton;
 @synthesize nextButtonContainerView;
 @synthesize retailPriceLabel;
 @synthesize instashopPriceLabel;
 @synthesize descriptionView;
 @synthesize pricesView;
 @synthesize sizeQuantityView;
-
+@synthesize originalPriceViewRect;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -85,20 +85,19 @@
     self.attributesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
-        
-    self.containerScrollView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
-    
-//    self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.pricesView.frame.origin.y + self.pricesView.frame.size.height + self.nextButton.frame.origin.y + self.nextButton.frame.size.height + whiteSpace);
-    self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
-    
-    self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:nil bundle:nil];
-
-    self.categorySizeQuantityTableView.dataSource = self.sizeQuantityTableViewController;
-    self.categorySizeQuantityTableView.delegate = self.sizeQuantityTableViewController;
-    self.categorySizeQuantityTableView.alpha = 0;
     
     
+    self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:@"SizeQuantityTableViewController" bundle:nil];
+    self.sizeQuantityTableViewController.tableView.frame = CGRectMake(0, self.pricesView.frame.origin.y, self.view.frame.size.width, 0);
+    [self.containerScrollView  insertSubview:self.sizeQuantityTableViewController.tableView belowSubview:self.pricesView];
+    
+    
+    self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
+    
+    self.originalPriceViewRect = self.pricesView.frame;
 }
+
+
 
 - (IBAction) categoryButtonHit
 {
@@ -118,6 +117,7 @@
 
 -(void)categorySelectionCompleteWithArray:(NSArray *)theArray
 {
+    
     [self.attributesArray removeAllObjects];
     
     [self.attributesArray addObjectsFromArray:theArray];
@@ -133,40 +133,28 @@
     self.selectedCategoriesLabel.text = titleString;
     
     
-    
-
+    self.sizeQuantityTableViewController.rowShowCount = 0;
     self.sizeQuantityTableViewController.availableSizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
- 
-    if (self.categorySizeQuantityTableView.alpha == 0)
-        [self addSizeButtonHit];
+    [self.sizeQuantityTableViewController.tableView reloadData];
+
+    self.pricesView.frame = self.originalPriceViewRect;
+
+    [self addSizeButtonHit];
 }
 
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    
-}
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
 {
-    // +++ This is unnecessary if the scroll view is part of the main view in the xib +++ //
-    
-    //self.containerScrollView.frame = CGRectMake(0, 50, self.view.frame.size.width, self.view.frame.size.height - 50);
-    //[self.view addSubview:self.containerScrollView];
-    
-    //    self.containerScrollView.contentSize = CGSizeMake(self.view.frame.size.width, 480);
-    
-    
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
     NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
     
     NSString *instagramProductImageURLString = [startResultionDictionary objectForKey:@"url"];
-    //    NSLog(@"instagramProductImageURLString: %@", instagramProductImageURLString);
+ 
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:instagramProductImageURLString withImageView:self.theImageView];
-    //    NSLog(@"self.theImageView: %@", self.theImageView);
+ 
     NSDictionary *captionDictionary = [theDictionary objectForKey:@"caption"];
     
-    //    NSLog(@"self.titleTextField: %@", self.titleTextField);
     if (captionDictionary != nil)
         if (![captionDictionary isKindOfClass:[NSNull class]])
             self.titleTextField.text = [captionDictionary objectForKey:@"text"];
@@ -254,7 +242,6 @@
 
 - (IBAction) addSizeButtonHit
 {
-    NSLog(@"addSizeButtonHit, self.attributesArray: %@", self.attributesArray);
     if ([self.attributesArray count] == 0)
     {
         
@@ -267,14 +254,20 @@
     }
     else
     {
-        self.categorySizeQuantityTableView.alpha = 1;
-        [self.sizeQuantityTableViewController ownerAddRowButtonHitWithTableView:categorySizeQuantityTableView];
-    }
+        float extendHeight = 42;
+        
+        [self.addSizeButton setTitle:@"Add Another Size" forState:UIControlStateNormal];
+        
+        [self.sizeQuantityTableViewController ownerAddRowButtonHitWithTableView:self.sizeQuantityTableViewController.tableView];
+        
+        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(0, self.sizeQuantityTableViewController.tableView.frame.origin.y, self.sizeQuantityTableViewController.tableView.frame.size.width, extendHeight * self.sizeQuantityTableViewController.rowShowCount);
+            
+//        self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.originalPriceViewRect.origin.y + extendHeight * self.sizeQuantityTableViewController.rowShowCount, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
+        self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
+        self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
 
-    
-    NSLog(@"sizesArray: %@", [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]]);
-    
-    
+
+    }
 }
 
 -(void)resignResponders
@@ -284,8 +277,6 @@
     [self.descriptionTextField resignFirstResponder];
     [self.retailPriceTextField resignFirstResponder];
     [self.instashopPriceTextField resignFirstResponder];
-    
-    
 }
 
 
