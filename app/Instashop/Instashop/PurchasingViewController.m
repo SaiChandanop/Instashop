@@ -157,15 +157,11 @@
     
     
     
-    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
-    
-    BOOL proceed = YES;
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];    
     if ([sizeQuantityArray count] == 1)
         if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
             self.sizeButton.alpha = 0;
 
-    
-    
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -253,6 +249,7 @@
         NSDictionary *productCategoryObject = [sizeQuantityArray objectAtIndex:self.sizeSelectedIndex];
         
         PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
+        purchasingAddressViewController.view.frame = CGRectMake(purchasingAddressViewController.view.frame.origin.x, purchasingAddressViewController.view.frame.origin.y, purchasingAddressViewController.view.frame.size.width, purchasingAddressViewController.view.frame.size.height);
         purchasingAddressViewController.productCategoryDictionary = productCategoryObject;
         purchasingAddressViewController.shippingCompleteDelegate = self;
         [self.navigationController pushViewController:purchasingAddressViewController animated:YES];

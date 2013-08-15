@@ -100,14 +100,24 @@
 
 -(void)loadWithSizeSelection:(NSString *)sizeSelection withQuantitySelection:(NSString *)quantitySelection withProductImage:(UIImage *)productImage
 {
-    NSLog(@"loadWithSizeSelection, productImage: %@", productImage);
+    NSLog(@"loadWithSizeSelection, sizeSelection: %@", sizeSelection);
     
+    BOOL showSize = YES;
     if (sizeSelection == nil)
-        self.sizeValueLabel.text = @"";
+        showSize = NO;
     else if ([sizeSelection compare:@"(null)"] == NSOrderedSame)
-        self.sizeValueLabel.text = @"";
-    else
+        showSize = NO;
+    else if ([sizeSelection compare:@"Size"] == NSOrderedSame)
+        showSize = NO;
+
+    if (showSize)
         self.sizeValueLabel.text = sizeSelection;
+    else
+    {
+        self.sizeTextLabel.text = @"";
+        self.sizeValueLabel.text = @"";
+    }
+
     
     self.quantityValueLabel.text = quantitySelection;
     self.productImageView.image = productImage;
@@ -119,6 +129,7 @@
 {
     self.requestedProductObject = [NSDictionary dictionaryWithDictionary:theProductObject];
     
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     [numberFormatter setAlwaysShowsDecimalSeparator:YES];
