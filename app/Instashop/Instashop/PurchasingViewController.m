@@ -58,39 +58,22 @@
 {
     [super viewDidLoad];
     
-    
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
   
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    self.view.backgroundColor = [UIColor blackColor];
     
-    self.contentScrollView.frame = CGRectMake(0,0, screenWidth, screenHeight - 50);
-    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
-    self.contentScrollView.backgroundColor = [UIColor clearColor];
-    [self.view addSubview:self.contentScrollView];
+    NSLog(@"screenSize: %@", NSStringFromCGSize(screenSize));
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     
-    
-    [self.view addSubview:self.bottomView];
-    [self.view bringSubviewToFront:self.bottomView];
-    
-    self.bottomView.frame = CGRectMake(0, screenHeight - self.bottomView.frame.size.height, 320, self.bottomView.frame.size.height);
-
-    NSLog(@"view: %@", NSStringFromCGRect(self.view.frame));
-    NSLog(@"content view: %@", NSStringFromCGRect(self.contentScrollView.frame));
-    NSLog(@"content view scroll area: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
-    NSLog(@"bottom view: %@", NSStringFromCGRect(self.bottomView.frame));
     
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
     
     self.sizeSelectedIndex = -1;
     
     self.descriptionTextView.text = @"";
-    
-    [self.view bringSubviewToFront:self.purchaseButton];
     
     
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
@@ -99,20 +82,17 @@
     self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
     
     
-
-    
     self.imageLoadingIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     self.imageLoadingIndicatorView.frame = self.sellerProfileImageView.frame;
     [self.contentScrollView addSubview:self.imageLoadingIndicatorView];
     
     [self.imageLoadingIndicatorView startAnimating];
-    
 }
 
 
 - (void) loadContentViews
 {
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+//    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
         
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
@@ -121,7 +101,6 @@
 
     params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-
     
     
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
@@ -161,6 +140,13 @@
     if ([sizeQuantityArray count] == 1)
         if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
             self.sizeButton.alpha = 0;
+
+
+    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 500);
+
+    self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
+    [self.view bringSubviewToFront:self.bottomView];
+    
 
 }
 

@@ -132,7 +132,7 @@
 {
     self.requestedProductObject = [NSDictionary dictionaryWithDictionary:theProductObject];
     
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+//    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     [numberFormatter setAlwaysShowsDecimalSeparator:YES];
