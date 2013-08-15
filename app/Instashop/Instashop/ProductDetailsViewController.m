@@ -62,24 +62,13 @@
 {
     [super viewDidLoad];
     
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
-    CGFloat whiteSpace = 8.0f;
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    
     
     [self.view addSubview:self.containerScrollView];
     
     self.titleTextField.delegate = self;
-    
     self.descriptionTextField.delegate = self;
-    
     self.retailPriceTextField.delegate = self;
-    
     self.instashopPriceTextField.delegate = self;
     
     self.attributesArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -92,7 +81,7 @@
     [self.containerScrollView  insertSubview:self.sizeQuantityTableViewController.tableView belowSubview:self.pricesView];
     
     
-    self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 29);
     
     self.originalPriceViewRect = self.pricesView.frame;
 }
@@ -265,7 +254,7 @@
         
         self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
         
-        self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
+        self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height  + 29);
     }
 }
 
