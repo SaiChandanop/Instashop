@@ -215,6 +215,7 @@
         productCreateContainerObject.mainObject.retailValue = self.retailPriceTextField.text;
         productCreateContainerObject.mainObject.retailPrice = self.retailPriceTextField.text;
         productCreateContainerObject.mainObject.quantity = [NSString stringWithFormat:@"%d", totalQuantity];
+        productCreateContainerObject.mainObject.categoriesArray = [[NSArray alloc] initWithArray:self.attributesArray];
         //    self.productCreateObject.shippingWeight = self.shippingTextField.text;
         
         
@@ -261,12 +262,10 @@
         [self.sizeQuantityTableViewController ownerAddRowButtonHitWithTableView:self.sizeQuantityTableViewController.tableView];
         
         self.sizeQuantityTableViewController.tableView.frame = CGRectMake(0, self.sizeQuantityTableViewController.tableView.frame.origin.y, self.sizeQuantityTableViewController.tableView.frame.size.width, extendHeight * self.sizeQuantityTableViewController.rowShowCount);
-            
-//        self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.originalPriceViewRect.origin.y + extendHeight * self.sizeQuantityTableViewController.rowShowCount, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
+        
         self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
+        
         self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
-
-
     }
 }
 
