@@ -124,9 +124,6 @@
 
     
     
-    
-    
-    
     NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
     [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
     [numberFormatter setAlwaysShowsDecimalSeparator:YES];
@@ -157,6 +154,18 @@
     self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
     self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     self.categoryLabel.text = categoryString;
+    
+    
+    
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    
+    BOOL proceed = YES;
+    if ([sizeQuantityArray count] == 1)
+        if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
+            self.sizeButton.alpha = 0;
+
+    
+    
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView

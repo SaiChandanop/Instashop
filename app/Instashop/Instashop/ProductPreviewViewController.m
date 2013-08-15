@@ -70,6 +70,12 @@
 
 -(void)loadWithProductCreateObject:(ProductCreateContainerObject *)theProductCreateContainerObject
 {
+//    self.titleTextField.isEnabled = NO;
+    self.titleTextField.enabled = NO;
+    self.categoryTextField.enabled = NO;
+    self.descriptionTextField.editable = NO;
+    self.
+    
     self.productCreateContainerObject = theProductCreateContainerObject;
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.productCreateContainerObject.mainObject.instagramPictureURLString withImageView:self.productImageView];
     
@@ -88,7 +94,6 @@
 
     self.categoryTextField.text = titleString;
     
-
     
     self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithDictionary:theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary];
     self.sizeQuantityTableViewController.rowShowCount = [[self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary allKeys] count] * 44;
