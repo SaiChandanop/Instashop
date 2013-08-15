@@ -17,6 +17,7 @@
 @synthesize cellSizeQuantityValueDictionary;
 @synthesize availableSizesArray;
 @synthesize rowShowCount;
+@synthesize isButtonsDisabled;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -113,6 +114,12 @@
         cell.sizeLabel.alpha = 0;
         cell.sizeButton.alpha = 0;
         
+    }
+    
+    if (self.isButtonsDisabled)
+    {
+        cell.sizeButton.alpha = 0;
+        cell.quantityButton.alpha = 0;
     }
     
     self.tableView.contentSize = CGSizeMake(0,0);

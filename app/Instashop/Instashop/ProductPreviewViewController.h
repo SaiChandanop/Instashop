@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ProductCreateContainerObject.h"
 #import "TPKeyboardAvoidingScrollView.h"
-
+#import "SizeQuantityTableViewController.h"
 
 @class  ProductCreateViewController;
 
@@ -29,6 +29,8 @@
     UITextField *listPriceValueTextField;
     UITextField *shippingValueTextField;
     UIButton *sellButton;
+    
+    SizeQuantityTableViewController *sizeQuantityTableViewController;
 }
 
 -(void)loadWithProductCreateObject:(ProductCreateContainerObject *)theProductCreateContainerObject;
@@ -50,4 +52,6 @@
 @property (nonatomic, retain) IBOutlet UITextField *listPriceValueTextField;
 @property (nonatomic, retain) IBOutlet UITextField *shippingValueTextField;
 @property (nonatomic, retain) IBOutlet UIButton *sellButton;
+
+@property (nonatomic, retain) IBOutlet SizeQuantityTableViewController *sizeQuantityTableViewController;
 @end

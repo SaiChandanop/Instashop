@@ -30,6 +30,7 @@
 @synthesize listPriceValueTextField;
 @synthesize shippingValueTextField;
 @synthesize sellButton;
+@synthesize sizeQuantityTableViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,6 +52,15 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.contentScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.bottomContentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
+    self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:@"SizeQuantityTableViewController" bundle:nil];
+    self.sizeQuantityTableViewController.isButtonsDisabled = YES;
+    self.sizeQuantityTableViewController.tableView.frame = CGRectMake(0, self.bottomContentView.frame.origin.y, self.view.frame.size.width, 0);
+    self.sizeQuantityTableViewController.tableView.backgroundColor = [UIColor redColor];
+    [self.contentScrollView addSubview:self.sizeQuantityTableViewController.tableView];
+
+    
+    
 }
 
 - (IBAction) postButtonHit
@@ -75,15 +85,20 @@
             [titleString appendString:@" >"];
         
     }
+
     self.categoryTextField.text = titleString;
     
-    
-    NSLog(@"self.contentScrollView: %@", self.contentScrollView);
-    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y +  self.sellButton.frame.origin.y + self.sellButton.frame.size.height);
 
     
-    NSLog(@"theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary): %@", theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary);
-          
+    self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithDictionary:theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary];
+    self.sizeQuantityTableViewController.rowShowCount = [[self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary allKeys] count] * 44;
+    self.sizeQuantityTableViewController.tableView.frame = CGRectMake(0, self.sizeQuantityTableViewController.tableView.frame.origin.y, self.sizeQuantityTableViewController.tableView.frame.size.width, [[self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary allKeys] count] * 44);
+    [self.sizeQuantityTableViewController.tableView reloadData];
+    
+    self.bottomContentView.frame = CGRectMake(0, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.bottomContentView.frame.size.width, self.bottomContentView.frame.size.height);
+    
+    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y +  self.sellButton.frame.origin.y + self.sellButton.frame.size.height);
+    
 }
 
 

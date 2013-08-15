@@ -18,6 +18,7 @@
     NSArray *availableSizesArray;
     
     int rowShowCount;
+    BOOL *isButtonsDisabled;
 }
 
 
@@ -29,5 +30,6 @@
 @property (nonatomic, retain) NSArray *availableSizesArray;
 
 @property (nonatomic, assign) int rowShowCount;
+@property (nonatomic, assign) BOOL *isButtonsDisabled;
 
 @end
