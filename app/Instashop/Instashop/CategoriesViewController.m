@@ -84,7 +84,7 @@
         containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
         [containerViewController.view addSubview:categoriesTableViewController.tableView];
         
-        categoriesTableViewController.tableView.frame = CGRectMake(0,64, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
+        categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
         
         
         [self.navigationController pushViewController:containerViewController animated:YES];

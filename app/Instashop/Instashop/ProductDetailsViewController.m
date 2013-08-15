@@ -96,7 +96,7 @@
     categoriesViewController.parentController = self;
     [self.navigationController pushViewController:categoriesViewController animated:YES];
     
-    categoriesViewController.initialTableReference.frame = CGRectMake(0,20, categoriesViewController.initialTableReference.frame.size.width, categoriesViewController.initialTableReference.frame.size.height);
+    categoriesViewController.initialTableReference.frame = CGRectMake(0,1, categoriesViewController.initialTableReference.frame.size.width, categoriesViewController.initialTableReference.frame.size.height);
     
     [self resignResponders];
     
