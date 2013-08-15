@@ -13,9 +13,11 @@
 {
     ProductCreateObject *mainObject;
     NSArray *objectSizePermutationsArray;
+    NSDictionary *tableViewCellSizeQuantityValueDictionary;
+    
 }
 
 @property (nonatomic, retain) ProductCreateObject *mainObject;
 @property (nonatomic, retain) NSArray *objectSizePermutationsArray;
-
+@property (nonatomic, retain) NSDictionary *tableViewCellSizeQuantityValueDictionary;
 @end

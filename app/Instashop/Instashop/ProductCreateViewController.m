@@ -85,11 +85,11 @@
 {
     ProductPreviewViewController *productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
     productPreviewViewController.parentController = self;
-    productPreviewViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
-    [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
+    productPreviewViewController.view.frame = productPreviewViewController.view.frame;
     [self.navigationController pushViewController:productPreviewViewController animated:YES];
+    [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
     
-    productPreviewViewController.theScrollView.contentSize = CGSizeMake(0, 1400);
+
 }
 
 

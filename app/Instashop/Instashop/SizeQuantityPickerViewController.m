@@ -55,7 +55,6 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     self.selectedRow = row;
-    NSLog(@"picker view did select row[%d]: %@", row, [itemsArray objectAtIndex:row]);
 }
 
 

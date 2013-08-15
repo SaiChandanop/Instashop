@@ -12,5 +12,6 @@
 
 @synthesize mainObject;
 @synthesize objectSizePermutationsArray;
+@synthesize tableViewCellSizeQuantityValueDictionary;
 
 @end

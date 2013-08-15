@@ -204,7 +204,7 @@
     }
     
     productCreateContainerObject.objectSizePermutationsArray = [[NSArray alloc] initWithArray:productsArray];
-    
+    productCreateContainerObject.tableViewCellSizeQuantityValueDictionary = self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary;
     if (totalQuantity > 0)
     {
         productCreateContainerObject.mainObject = [[ProductCreateObject alloc] init];

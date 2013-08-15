@@ -18,7 +18,7 @@
     ProductCreateViewController *parentController;
     ProductCreateContainerObject *productCreateContainerObject;
     
-    TPKeyboardAvoidingScrollView *theScrollView;
+    TPKeyboardAvoidingScrollView *contentScrollView;
     
     UIImageView *productImageView;
     UITextField *titleTextField;
@@ -39,7 +39,7 @@
 
 @property (nonatomic, retain) ProductCreateContainerObject *productCreateContainerObject;
 
-@property (nonatomic, retain) IBOutlet TPKeyboardAvoidingScrollView *theScrollView;
+@property (nonatomic, retain) IBOutlet TPKeyboardAvoidingScrollView *contentScrollView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *productImageView;
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;

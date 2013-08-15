@@ -21,7 +21,7 @@
 
 @synthesize productCreateContainerObject;
 
-@synthesize theScrollView;
+@synthesize contentScrollView;
 @synthesize productImageView;
 @synthesize titleTextField;
 @synthesize descriptionTextField;
@@ -49,8 +49,8 @@
   //  self.navigationItem.rightBarButtonItem = doneButton;
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    
-    self.theScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    self.contentScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    self.bottomContentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
 }
 
 - (IBAction) postButtonHit
@@ -67,13 +67,6 @@
     self.descriptionTextField.text = self.productCreateContainerObject.mainObject.description;
     self.listPriceValueTextField.text = self.productCreateContainerObject.mainObject.retailPrice;
     
-    NSLog(@"self.titleLabel: %@", self.titleTextField);
-    NSLog(@"self.descriptionTextField: %@", descriptionTextField);
-    NSLog(@"self.listPriceValueTextField: %@", self.listPriceValueTextField);
-    
-    NSLog(@"self.productCreateContainerObject.mainObject.title: %@", self.productCreateContainerObject.mainObject.title);
-    NSLog(@"self.productCreateContainerObject.mainObject.retailPrice: %@", self.productCreateContainerObject.mainObject.retailPrice);
-    NSLog(@"self.productCreateContainerObject.mainObject.categoriesArray: %@", self.productCreateContainerObject.mainObject.categoriesArray);
     NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
     for (int i = 0; i < [self.productCreateContainerObject.mainObject.categoriesArray count]; i++)
     {
@@ -84,11 +77,13 @@
     }
     self.categoryTextField.text = titleString;
     
-    NSLog(@"titleString: %@", titleString);
-
-    self.theScrollView.contentSize = CGSizeMake(0, 0);// self.sellButton.frame.origin.y + self.sellButton.frame.size.height);
     
-    NSLog(@"self.theScrollView: %@", theScrollView);
+    NSLog(@"self.contentScrollView: %@", self.contentScrollView);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y +  self.sellButton.frame.origin.y + self.sellButton.frame.size.height);
+
+    
+    NSLog(@"theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary): %@", theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary);
+          
 }
 
 

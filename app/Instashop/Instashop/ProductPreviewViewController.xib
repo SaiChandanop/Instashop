@@ -9,12 +9,12 @@
             <connections>
                 <outlet property="bottomContentView" destination="ddr-Y2-TkD" id="b9o-1X-mlJ"/>
                 <outlet property="categoryTextField" destination="w6V-Rp-JMB" id="jth-v4-9cC"/>
+                <outlet property="contentScrollView" destination="4" id="unU-gG-kWN"/>
                 <outlet property="descriptionTextField" destination="nMg-uj-X2e" id="avp-wf-ovG"/>
                 <outlet property="listPriceValueTextField" destination="inC-Yz-1l6" id="mmp-wh-zhr"/>
                 <outlet property="productImageView" destination="5" id="62"/>
                 <outlet property="sellButton" destination="WDw-Rq-EJs" id="pAG-2w-Wat"/>
                 <outlet property="shippingValueTextField" destination="q4H-Hx-6ct" id="X9k-xs-g7P"/>
-                <outlet property="theScrollView" destination="4" id="2q8-DV-i6U"/>
                 <outlet property="titleTextField" destination="JMh-QV-Z3J" id="GxA-yf-rgM"/>
                 <outlet property="view" destination="1" id="99"/>
             </connections>
@@ -25,8 +25,8 @@
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="4" customClass="TPKeyboardAvoidingScrollView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="654"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="5">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="256"/>
@@ -51,6 +51,7 @@
                             <rect key="frame" x="0.0" y="302" width="320" height="112"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                            <color key="textColor" red="1" green="0.96622469257123711" blue="0.94246316661319851" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                         </textView>
@@ -59,9 +60,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CATEGORY" minimumFontSize="17" clearButtonMode="whileEditing" id="w6V-Rp-JMB">
-                                    <rect key="frame" x="29" y="7" width="280" height="30"/>
+                                    <rect key="frame" x="9" y="7" width="300" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="textColor" red="1" green="0.17808921955843748" blue="0.16286910859753978" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
@@ -69,14 +70,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="List Price" minimumFontSize="17" clearButtonMode="whileEditing" id="RHj-hn-p7y">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="List Price" minimumFontSize="17" clearButtonMode="whileEditing" id="RHj-hn-p7y">
                                     <rect key="frame" x="8" y="52" width="117" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$$$$" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="inC-Yz-1l6">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="$$$$" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="inC-Yz-1l6">
                                     <rect key="frame" x="192" y="52" width="117" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -87,14 +88,14 @@
                                     <rect key="frame" x="-1" y="45" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Shipping" minimumFontSize="17" clearButtonMode="whileEditing" id="PO1-gM-az7">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Shipping" minimumFontSize="17" clearButtonMode="whileEditing" id="PO1-gM-az7">
                                     <rect key="frame" x="9" y="97" width="117" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Instashop Shipping" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="q4H-Hx-6ct">
+                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Instashop Shipping" textAlignment="right" minimumFontSize="17" clearButtonMode="whileEditing" id="q4H-Hx-6ct">
                                     <rect key="frame" x="192" y="97" width="117" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -133,15 +134,6 @@
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
-        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="W8v-sV-nEs">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-        </textView>
     </objects>
     <resources>
         <image name="menuDarkBG.png" width="320" height="44"/>
