@@ -231,7 +231,6 @@ float transitionTime = .456;
         
         UINavigationController *productCreateNavigationController = [[UINavigationController alloc] initWithRootViewController:productCreateViewController];
         productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-                
         [self.view addSubview:productCreateNavigationController .view];
         
         UIView *bufferView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
