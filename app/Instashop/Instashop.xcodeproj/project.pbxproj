@@ -115,10 +115,8 @@
 		7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7456174D52E3005E90B9 /* RootAPIHandler.m */; };
 		7B7A745A174D52E3005E90B9 /* SMWebRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7458174D52E3005E90B9 /* SMWebRequest.m */; };
 		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
-		7B8BC4D117B2CC90002CEB36 /* product_cell_disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D017B2CC90002CEB36 /* product_cell_disclosure.png */; };
 		7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */; };
 		7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D517B2CE80002CEB36 /* cell_background.png */; };
-		7B8BC4D817B2CE80002CEB36 /* cell_disclosure.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D617B2CE80002CEB36 /* cell_disclosure.png */; };
 		7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */; };
 		7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */; };
 		7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */; };
@@ -304,11 +302,9 @@
 		7B7A7458174D52E3005E90B9 /* SMWebRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMWebRequest.m; sourceTree = "<group>"; };
 		7B7B9DF51753E280000F4A3E /* ZenCartAuthenticationAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCartAuthenticationAPIHandler.h; sourceTree = "<group>"; };
 		7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCartAuthenticationAPIHandler.m; sourceTree = "<group>"; };
-		7B8BC4D017B2CC90002CEB36 /* product_cell_disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = product_cell_disclosure.png; sourceTree = "<group>"; };
 		7B8BC4D217B2CCBF002CEB36 /* CategorySelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySelectCell.h; sourceTree = "<group>"; };
 		7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySelectCell.m; sourceTree = "<group>"; };
 		7B8BC4D517B2CE80002CEB36 /* cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_background.png; sourceTree = "<group>"; };
-		7B8BC4D617B2CE80002CEB36 /* cell_disclosure.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_disclosure.png; sourceTree = "<group>"; };
 		7B8BC4D917B364B4002CEB36 /* SizeQuantityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewController.h; sourceTree = "<group>"; };
 		7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewController.m; sourceTree = "<group>"; };
 		7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewController.xib; sourceTree = "<group>"; };
@@ -605,8 +601,6 @@
 			children = (
 				7B676F6E17BC79C7004FC53B /* previewsocialshittyimage.png */,
 				7B8BC4D517B2CE80002CEB36 /* cell_background.png */,
-				7B8BC4D617B2CE80002CEB36 /* cell_disclosure.png */,
-				7B8BC4D017B2CC90002CEB36 /* product_cell_disclosure.png */,
 				7B9E844517B15A6000E6FE47 /* toolbar_title_iumage.png */,
 				7B9E844117B159CE00E6FE47 /* toolbar_back.png */,
 				7B4A78FB17B14329002E872A /* buy_sizes.png */,
@@ -1114,9 +1108,7 @@
 				7B9E844617B15A6000E6FE47 /* toolbar_title_iumage.png in Resources */,
 				7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */,
 				7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */,
-				7B8BC4D117B2CC90002CEB36 /* product_cell_disclosure.png in Resources */,
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
-				7B8BC4D817B2CE80002CEB36 /* cell_disclosure.png in Resources */,
 				7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
