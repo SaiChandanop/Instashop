@@ -112,7 +112,6 @@
     if ([self.availableSizesArray count] == 0)
     {
         //joel set button style here
-        cell.sizeLabel.alpha = 1;
         cell.sizeButton.alpha = 1;
         
     }

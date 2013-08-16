@@ -25,8 +25,6 @@
     NSIndexPath *theIndexPath;
     
     UILabel *rowNumberLabel;
-    UILabel *sizeLabel;
-    UILabel *quantityLabel;
     UIButton *sizeButton;
     UIButton *quantityButton;
     
@@ -48,8 +46,6 @@
 @property (nonatomic, retain) NSIndexPath *theIndexPath;
 
 @property (nonatomic, retain) IBOutlet UILabel *rowNumberLabel;
-@property (nonatomic, retain) UILabel *sizeLabel;
-@property (nonatomic, retain) UILabel *quantityLabel;
 @property (nonatomic, retain) IBOutlet UIButton *sizeButton;
 @property (nonatomic, retain) IBOutlet UIButton *quantityButton;
 

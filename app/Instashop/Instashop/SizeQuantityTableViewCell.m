@@ -21,8 +21,6 @@
 
 @synthesize theController;
 @synthesize rowNumberLabel;
-@synthesize sizeLabel;
-@synthesize quantityLabel;
 @synthesize sizeButton;
 @synthesize quantityButton;
 @synthesize actionSheet;
@@ -48,38 +46,29 @@
     self.rowNumberLabel = (UILabel *)[self viewWithTag:0];
     self.sizeButton = (UIButton *)[self viewWithTag:1];
     self.quantityButton = (UIButton *)[self viewWithTag:2];
-    self.sizeLabel = (UILabel *)[self viewWithTag:5];
-    self.quantityLabel = (UILabel *)[self viewWithTag:6];
+
     
-    [self addSubview:self.sizeLabel];
     [self addSubview:self.sizeButton];
-    [self addSubview:self.quantityLabel];
     [self addSubview:self.quantityButton];
     
     
     self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
-    self.sizeLabel.text = @"Size";
-    self.quantityLabel.text = @"#";
+
     
     NSDictionary *thisCellsContent = [contentDictionary objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
     if (thisCellsContent != nil)
     {
         if ([thisCellsContent objectForKey:SIZE_DICTIONARY_KEY] != nil)
-            self.sizeLabel.text = [thisCellsContent objectForKey:SIZE_DICTIONARY_KEY];
+            [self.sizeButton setTitle:[thisCellsContent objectForKey:SIZE_DICTIONARY_KEY] forState:UIControlStateNormal];
         
         if ([thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY] != nil)
-            self.quantityLabel.text = [thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY];
+            [self.quantityButton setTitle:[thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY] forState:UIControlStateNormal];
     }
     
     
     self.rowNumberLabel.font = [UIFont systemFontOfSize:16];
     self.rowNumberLabel.textColor = [UIColor whiteColor];
-    self.sizeLabel.font = self.rowNumberLabel.font;
-    self.sizeLabel.textColor = self.rowNumberLabel.textColor;
-    self.quantityLabel.font = self.sizeLabel.font;
-    self.quantityLabel.textColor = self.sizeLabel.textColor;
-    
-    
+        
     [self.sizeButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.quantityButton  addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
     
