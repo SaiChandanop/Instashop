@@ -36,6 +36,7 @@
     
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
     self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
+//    [self.instagram authorize:[NSArray arrayWithObjects:@"relationships", @"comments", @"likes", nil]];
     
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
     self.appRootViewController = [[AppRootViewController alloc] initWithNibName:nil bundle:nil];
@@ -82,6 +83,9 @@
 -(void)makeSafariCallWithURL:(NSURL *)theURL
 {
     NSLog(@"makeSafariCallWithURL: %@", theURL);
+    NSString *urlString = theURL.absoluteString;
+    urlString = [urlString stringByReplacingOccurrencesOfString:@"scope=" withString:@"scope=relationships+"];
+    NSLog(@"new urlString: %@", urlString);
     [self.authenticationViewController makeLoginRequestWithURL:theURL];
 }
 

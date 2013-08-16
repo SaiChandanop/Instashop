@@ -221,11 +221,17 @@
 
 -(IBAction)followInstashopButtonHit
 {
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
+    NSLog(@"followInstashopButtonHit!");
+
+  //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/280421250/followed-by", @"method", nil];
     
-    //    NSLog(@"view did load: %@", self);
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/280421250/relationship", @"method", @"follow", @"action", nil];
+    
+    NSLog(@"params: %@", params);
+    //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
+    
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [theAppDelegate.instagram requestWithParams:params delegate:self];
+    [theAppDelegate.instagram postRequestWithParams:params delegate:self];
     
     //http://instagram.com/developer/endpoints/relationships/
     
@@ -249,7 +255,10 @@
  */
 }
 
-
+- (void)request:(IGRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"request failed with error: %@", error);
+}
 
 -(IBAction)cancelButtonHit
 {

@@ -96,7 +96,6 @@
         [postString appendString:[NSString stringWithFormat:@"&%@=%@", key, [postmasterDictionary objectForKey:key]]];
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"postString: %@", postString);
     
     ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
     productAPIHandler.delegate = delegate;

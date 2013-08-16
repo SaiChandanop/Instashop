@@ -70,13 +70,6 @@ float transitionTime = .456;
     gapView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     [self.feedNavigationController.view addSubview:gapView];
     
-   
-    
-    NSLog(@"root view frame: %@", NSStringFromCGRect(self.view.frame));
-    NSLog(@"feed vc.view frame: %@", NSStringFromCGRect(self.feedViewController.view.frame));
-    NSLog(@"feed nav controller.view frame: %@", NSStringFromCGRect(self.feedNavigationController.view.frame));
-    
-    
     
     self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
     self.notificationsViewController.view.frame = CGRectMake(0, self.view.frame.size.height * -1, self.view.frame.size.width, self.view.frame.size.height);

@@ -23,8 +23,6 @@
     [thePostString appendString:[NSString stringWithFormat:@"userID=%@", [InstagramUserObject getStoredUserObject].userID]];
     [thePostString appendString:[NSString stringWithFormat:@"&action=%@", @"checkSeller"]];
     [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
-
-    NSLog(@"postString: %@", thePostString);
     
     SellersAPIHandler *apiHandler = [[SellersAPIHandler alloc] init];
     apiHandler.delegate = delegate;
@@ -37,10 +35,9 @@
 -(void)checkSellerExistsCallFinished:(id)obj
 {
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"responseDictionary: %@", responseDictionary);
+
     if ([responseDictionary objectForKey:@"zencart_id"] != nil)
     {
-        NSLog(@"SET SET");
         InstagramUserObject *theUserObject =[InstagramUserObject getStoredUserObject];
         theUserObject.zencartID = [responseDictionary objectForKey:@"zencart_id"];
     
@@ -74,7 +71,6 @@
     
     
     [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"postString: %@", thePostString);
     
     SellersAPIHandler *apiHandler = [[SellersAPIHandler alloc] init];
     apiHandler.delegate = theDelegate;

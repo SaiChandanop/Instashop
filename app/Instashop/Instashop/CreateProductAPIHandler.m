@@ -34,8 +34,6 @@
     [postString appendString:[NSString stringWithFormat:@"object_image_urlstring=%@&", theProductCreateObject.instagramPictureURLString]];
     
     
-    NSLog(@"theProductCreateObject.instragramMediaInfoDictionary: %@", theProductCreateObject.instragramMediaInfoDictionary);
-    NSLog(@"postString: %@", postString);
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     

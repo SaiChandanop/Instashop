@@ -26,7 +26,6 @@
     
     URLRequest.HTTPMethod = @"POST";
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
-    NSLog(@"postString: %@", postString);
     
     UserAPIHandler *userAPIHandler = [[UserAPIHandler alloc] init];
     userAPIHandler.delegate = theDelegate;
@@ -37,6 +36,6 @@
 
 -(void)buyerCreateRequestFinished:(id)obj
 {
-    NSLog(@"buyerCreateRequestFinished!");
+    
 }
 @end
