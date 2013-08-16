@@ -106,12 +106,10 @@
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithCustomView:rightImageView];
     self.navigationItem.rightBarButtonItem = rightBarItem;
     
-    
     self.navigationItem.titleView = self.titleTextLabel;
     self.navigationItem.titleView.frame = CGRectMake(0,0,50,50);
     
     
-    //self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:42.0f/255.0f green:42.0f/255.0f blue:42.0f/255.0f alpha:1];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
@@ -262,7 +260,7 @@
 - (void)keyboardControls:(BSKeyboardControls *)theKeyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction
 {
     UIView *view = theKeyboardControls.activeField.superview.superview;
-    [self.containerScrollView scrollRectToVisible:view.frame animated:YES];
+//    [self.containerScrollView scrollRectToVisible:view.frame animated:YES];
 }
 
 - (void)keyboardControlsDonePressed:(BSKeyboardControls *)theKeyboardControls

@@ -82,10 +82,7 @@
 #pragma mark Public Methods
 
 - (void)setActiveField:(id)activeField
-{
-    NSLog(@"activeField: %@", activeField);
-    NSLog(@"self.fields: %@", self.fields);
-    
+{    
     if (activeField != _activeField)
     {
         if ([self.fields containsObject:activeField])
