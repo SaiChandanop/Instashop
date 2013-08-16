@@ -43,7 +43,7 @@
 {
     self.theIndexPath = indexPath;
     
-    self.backgroundColor = [UIColor blackColor];
+    self.backgroundColor = [UIColor clearColor];
     
     self.rowNumberLabel = (UILabel *)[self viewWithTag:0];
     self.sizeButton = (UIButton *)[self viewWithTag:1];
