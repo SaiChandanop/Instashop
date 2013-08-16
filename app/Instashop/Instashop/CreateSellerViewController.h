@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "TPKeyboardAvoidingScrollView.h"
+#import "BSKeyboardControls.h"
 
 @class HomeViewController;
-@interface CreateSellerViewController : UIViewController <UITextFieldDelegate>
+@interface CreateSellerViewController : UIViewController <UITextFieldDelegate, BSKeyboardControlsDelegate>
 {
     HomeViewController *delegate;
     
@@ -32,6 +33,7 @@
     
     UILabel *titleTextLabel;
     
+    BSKeyboardControls *keyboardControls;
 }
 
 -(IBAction)categoryButtonHit;
@@ -58,4 +60,6 @@
 
 
 @property (nonatomic, retain) IBOutlet UILabel *titleTextLabel;
+
+@property (nonatomic, retain) IBOutlet BSKeyboardControls *keyboardControls;
 @end

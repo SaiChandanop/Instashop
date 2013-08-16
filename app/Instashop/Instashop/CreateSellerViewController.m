@@ -34,9 +34,8 @@
 @synthesize instagramUsernameLabel;
 @synthesize submitButton;
 
-
 @synthesize titleTextLabel;
-
+@synthesize keyboardControls;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -115,6 +114,18 @@
     //self.navigationController.navigationBar.tintColor = [UIColor colorWithRed:42.0f/255.0f green:42.0f/255.0f blue:42.0f/255.0f alpha:1];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
+    
+    
+    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField,self.phoneTextField, self.websiteTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, nil];
+    
+    [self setKeyboardControls:[[BSKeyboardControls alloc] initWithFields:fields]];
+    [self.keyboardControls setDelegate:self];
+     
+    
+
+    
+    
 }
 
 -(void)backButtonHit
@@ -156,15 +167,15 @@
     BOOL retval = NO;
     
     if ([self.nameTextField.text length] > 0)
+        if ([self.emailTextField.text length] > 0)
+            if ([self.websiteTextField.text length] > 0)
+                if ([self.categoryTextField.text length] > 0)
+                    retval = YES;
 //        if ([self.addressTextField.text length] > 0)
-            if ([self.cityTextField.text length] > 0)
-                if ([self.stateTextField.text length] > 0)
-                    if ([self.zipTextField.text length] > 0)
-                        if ([self.emailTextField.text length] > 0)
-                            if ([self.websiteTextField.text length] > 0)
-                                if ([self.categoryTextField.text length] > 0)
-                                    retval = YES;
-    
+//            if ([self.cityTextField.text length] > 0)
+  //              if ([self.stateTextField.text length] > 0)
+    //                if ([self.zipTextField.text length] > 0)
+        
     return retval;
 }
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -225,6 +236,38 @@
     [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
     
     [self.delegate createSellerDone];
+}
+
+
+
+#pragma mark -
+#pragma mark Text Field Delegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.keyboardControls setActiveField:textField];
+}
+
+#pragma mark -
+#pragma mark Text View Delegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self.keyboardControls setActiveField:textView];
+}
+
+#pragma mark -
+#pragma mark Keyboard Controls Delegate
+
+- (void)keyboardControls:(BSKeyboardControls *)theKeyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction
+{
+    UIView *view = theKeyboardControls.activeField.superview.superview;
+    [self.containerScrollView scrollRectToVisible:view.frame animated:YES];
+}
+
+- (void)keyboardControlsDonePressed:(BSKeyboardControls *)theKeyboardControls
+{
+    [theKeyboardControls.activeField resignFirstResponder];
 }
 
 @end
