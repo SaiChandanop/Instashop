@@ -86,6 +86,8 @@
     NSString *urlString = theURL.absoluteString;
     urlString = [urlString stringByReplacingOccurrencesOfString:@"scope=" withString:@"scope=relationships+"];
     NSLog(@"new urlString: %@", urlString);
+    
+    theURL = [NSURL URLWithString:urlString];
     [self.authenticationViewController makeLoginRequestWithURL:theURL];
 }
 

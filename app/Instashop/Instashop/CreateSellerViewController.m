@@ -221,19 +221,10 @@
 
 -(IBAction)followInstashopButtonHit
 {
-    NSLog(@"followInstashopButtonHit!");
-
-  //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/280421250/followed-by", @"method", nil];
+    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/280421250/relationship", @"method", @"follow", @"action", nil];
-    
-    NSLog(@"params: %@", params);
-    //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
-    
-    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [theAppDelegate.instagram postRequestWithParams:params delegate:self];
-    
-    //http://instagram.com/developer/endpoints/relationships/
     
 }
 
