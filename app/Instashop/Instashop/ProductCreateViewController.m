@@ -38,7 +38,7 @@
 
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
-    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
 //    NSLog(@"ProductCreateViewController view did load");
     

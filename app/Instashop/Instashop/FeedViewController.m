@@ -40,7 +40,7 @@
     // Do any additional setup after loading the view from its nib.
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
-    
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     
 
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
