@@ -30,7 +30,7 @@
     
     UILabel *instagramUsernameLabel;
     UIButton *submitButton;
-    
+
     UILabel *titleTextLabel;
     
     BSKeyboardControls *keyboardControls;
@@ -39,6 +39,7 @@
 -(IBAction)categoryButtonHit;
 -(IBAction)cancelButtonHit;
 -(IBAction)doneButtonHit;
+-(IBAction)followInstashopButtonHit;
 
 @property (nonatomic, retain) HomeViewController *delegate;
 

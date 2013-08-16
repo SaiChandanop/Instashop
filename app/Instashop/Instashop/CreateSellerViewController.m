@@ -11,6 +11,9 @@
 #import "HomeViewController.h"
 #import "CategoriesViewController.h"
 #import "AppRootViewController.h"
+#import "AppDelegate.h"
+
+
 @interface CreateSellerViewController ()
 
 @end
@@ -215,6 +218,37 @@
     
     
 }
+
+-(IBAction)followInstashopButtonHit
+{
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
+    
+    //    NSLog(@"view did load: %@", self);
+    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [theAppDelegate.instagram requestWithParams:params delegate:self];
+    
+    //http://instagram.com/developer/endpoints/relationships/
+    
+}
+
+- (void)request:(IGRequest *)request didLoad:(id)result {
+    
+    NSLog(@"follow result: %@", result);
+/*    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+    int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
+    //    NSLog(@"responseCode: %d", responseCode);
+    
+    if (responseCode == 200)
+    {
+        NSArray *dataArray = [result objectForKey:@"data"];
+        [self.userMediaArray removeAllObjects];
+        [self.userMediaArray addObjectsFromArray:dataArray];
+        [self.tableView reloadData];
+    }
+ 
+ */
+}
+
 
 
 -(IBAction)cancelButtonHit

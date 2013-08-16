@@ -82,7 +82,7 @@
 #pragma mark Public Methods
 
 - (void)setActiveField:(id)activeField
-{    
+{
     if (activeField != _activeField)
     {
         if ([self.fields containsObject:activeField])

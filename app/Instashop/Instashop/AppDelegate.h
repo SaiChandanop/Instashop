@@ -11,7 +11,7 @@
 #import "AuthenticationViewController.h"
 #import "AppRootViewController.h"
 
-
+#define INSTASHOP_INSTAGRAM_ID @"280421250"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
