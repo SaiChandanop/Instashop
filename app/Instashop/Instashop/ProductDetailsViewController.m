@@ -84,6 +84,8 @@
     self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 29);
     
     self.originalPriceViewRect = self.pricesView.frame;
+    
+    self.addSizeButton.alpha = 0;
 }
 
 
@@ -129,6 +131,8 @@
     self.pricesView.frame = self.originalPriceViewRect;
 
     [self addSizeButtonHit];
+    
+    self.addSizeButton.alpha = 1;
 }
 
 

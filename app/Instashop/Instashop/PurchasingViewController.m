@@ -139,7 +139,11 @@
     NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];    
     if ([sizeQuantityArray count] == 1)
         if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
-            self.sizeButton.alpha = 0;
+        {
+            //Joel set your button style here
+            self.sizeButton.alpha = 1;
+            
+        }
 
 
     self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 500);
