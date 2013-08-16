@@ -75,9 +75,9 @@
 -(IBAction) sellerButtonHit
 {
 
-/*    if ([InstagramUserObject getStoredUserObject].zencartID == nil)
+    if ([InstagramUserObject getStoredUserObject].zencartID == nil)
     {
-*/
+
         CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
         createSellerViewController.delegate = self;
         
@@ -87,11 +87,9 @@
         UIView *bufferView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
         bufferView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
         [createNavigationController.view addSubview:bufferView];
-   /* }
+    }
     else
        [self.parentController createProductButtonHit];
-  */
-
 }
 
 
