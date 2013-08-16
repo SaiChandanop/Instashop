@@ -104,7 +104,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    
+    NSLog(@"self.cellSizeQuantityValueDictionary[%d]: %@", indexPath.row, self.cellSizeQuantityValueDictionary);
     cell.parentController = self;
     [cell loadWithIndexPath:indexPath withContentDictionary:self.cellSizeQuantityValueDictionary];
     cell.avaliableSizesArray = [[NSArray alloc] initWithArray:[self getRemainingAvailableSizesArray]];
@@ -118,8 +118,13 @@
     
     if (self.isButtonsDisabled)
     {
-        cell.sizeButton.alpha = 0;
-        cell.quantityButton.alpha = 0;
+        [cell.sizeButton removeTarget:nil
+                           action:NULL
+                 forControlEvents:UIControlEventAllEvents];
+        [cell.quantityButton removeTarget:nil
+                               action:NULL
+                     forControlEvents:UIControlEventAllEvents];
+        
     }
     
     self.tableView.contentSize = CGSizeMake(0,0);
