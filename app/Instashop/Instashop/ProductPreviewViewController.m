@@ -56,7 +56,7 @@
     self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:@"SizeQuantityTableViewController" bundle:nil];
     self.sizeQuantityTableViewController.isButtonsDisabled = YES;
     self.sizeQuantityTableViewController.tableView.frame = CGRectMake(0, self.bottomContentView.frame.origin.y, self.view.frame.size.width, 0);
-    self.sizeQuantityTableViewController.tableView.backgroundColor = [UIColor redColor];
+    self.sizeQuantityTableViewController.tableView.backgroundColor = [UIColor clearColor];
     [self.contentScrollView addSubview:self.sizeQuantityTableViewController.tableView];
 
     
@@ -81,7 +81,7 @@
     
     self.titleTextField.text = self.productCreateContainerObject.mainObject.title;
     self.descriptionTextField.text = self.productCreateContainerObject.mainObject.description;
-    self.listPriceValueTextField.text = self.productCreateContainerObject.mainObject.retailPrice;
+    self.listPriceValueTextField.text = self.productCreateContainerObject.mainObject.listPrice;
     
     NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
     for (int i = 0; i < [self.productCreateContainerObject.mainObject.categoriesArray count]; i++)

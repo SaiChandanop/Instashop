@@ -17,6 +17,7 @@
 @synthesize size;
 @synthesize quantity;
 @synthesize retailPrice;
+@synthesize listPrice;
 @synthesize instashopPrice;
 @synthesize shippingWeight;
 

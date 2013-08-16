@@ -670,9 +670,6 @@
 		7B61EE4C174D2162002A483D /* Instashop */ = {
 			isa = PBXGroup;
 			children = (
-				7B2C59DC17B95B4D00CEDD5A /* SizePickerViewViewController.h */,
-				7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */,
-				7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */,
 				7B7A7448174D4EAE005E90B9 /* VCs */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
 				7B7A7454174D52D2005E90B9 /* Net */,
@@ -824,6 +821,16 @@
 			name = ZenCart;
 			sourceTree = "<group>";
 		};
+		7B94515817BE70D600D4AAB1 /* SizePicker */ = {
+			isa = PBXGroup;
+			children = (
+				7B2C59DC17B95B4D00CEDD5A /* SizePickerViewViewController.h */,
+				7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */,
+				7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */,
+			);
+			name = SizePicker;
+			sourceTree = "<group>";
+		};
 		7B96C033174FDEEA00E4EDAD /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -900,6 +907,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7B94515817BE70D600D4AAB1 /* SizePicker */,
 				2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */,
 				7BE3D373174D77110045C4B4 /* JSONKit */,
 				7B74C3C417970AE50006289C /* MBProgressHUD.h */,

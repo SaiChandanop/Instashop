@@ -107,12 +107,8 @@
                                     <rect key="frame" x="0.0" y="45" width="320" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="previewsocialshittyimage.png" id="dQu-CT-tgU">
-                                    <rect key="frame" x="-1" y="90" width="320" height="55"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WDw-Rq-EJs">
-                                    <rect key="frame" x="0.0" y="144" width="320" height="52"/>
+                                    <rect key="frame" x="0.0" y="89" width="320" height="52"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="0.9314516129" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="16"/>
@@ -152,6 +148,5 @@
     </objects>
     <resources>
         <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="previewsocialshittyimage.png" width="637" height="88"/>
     </resources>
 </document>

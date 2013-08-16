@@ -207,6 +207,7 @@
         productCreateContainerObject.mainObject.description = self.descriptionTextField.text;
         productCreateContainerObject.mainObject.retailValue = self.retailPriceTextField.text;
         productCreateContainerObject.mainObject.retailPrice = self.retailPriceTextField.text;
+        productCreateContainerObject.mainObject.listPrice = self.instashopPriceTextField.text;
         productCreateContainerObject.mainObject.quantity = [NSString stringWithFormat:@"%d", totalQuantity];
         productCreateContainerObject.mainObject.categoriesArray = [[NSArray alloc] initWithArray:self.attributesArray];
         //    self.productCreateObject.shippingWeight = self.shippingTextField.text;
@@ -260,6 +261,20 @@
         
         self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height  + 29);
     }
+}
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    if (textField == self.retailPriceTextField || textField == self.instashopPriceTextField)
+    {
+        textField.text = [textField.text stringByReplacingOccurrencesOfString:@"$" withString:@""];
+        textField.text = [NSString stringWithFormat:@"$%@%@", textField.text, string];
+        return NO;
+    }
+    else
+        return YES;
+    
+    
 }
 
 -(void)resignResponders
