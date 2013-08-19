@@ -7,6 +7,7 @@
 //
 
 #import "ImageAPIHandler.h"
+#import "ISAsynchImageView.h"
 
 @implementation ImageAPIHandler
 
@@ -55,6 +56,12 @@ static ImageAPIHandler *sharedImageAPIHandler;
     if ([self.delegate respondsToSelector:@selector(imageRequestFinished:)])
     {
         [self.delegate imageRequestFinished:self.theImageView];
+    }
+    NSLog(@"self.delegate: %@", [self.delegate class]);
+    
+    if ([self.delegate isKindOfClass:[ISAsynchImageView class]])
+    {
+        [(ISAsynchImageView *)self.delegate ceaseAnimations];
     }
 }
 @end

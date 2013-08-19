@@ -39,7 +39,6 @@
 @synthesize sizeSelectedIndex;
 @synthesize purchaseButton;
 @synthesize likesArray;
-@synthesize imageLoadingIndicatorView;
 
 @synthesize actionSheet;
 @synthesize quantityButton;
@@ -57,7 +56,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
+
+    /*
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
@@ -65,6 +65,7 @@
   
     
     NSLog(@"screenSize: %@", NSStringFromCGSize(screenSize));
+     */
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     
@@ -82,11 +83,6 @@
     self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
     
     
-    self.imageLoadingIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    self.imageLoadingIndicatorView.frame = self.sellerProfileImageView.frame;
-    [self.contentScrollView addSubview:self.imageLoadingIndicatorView];
-    
-    [self.imageLoadingIndicatorView startAnimating];
 }
 
 
@@ -128,6 +124,8 @@
     }
 
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
+    [self.sellerProfileImageView beginAnimations];
+    
     self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
@@ -157,11 +155,16 @@
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
 {
     NSLog(@"imageRequestFinished imageRequestFinished");
-    if (referenceImageView == self.sellerProfileImageView)
-    {
-        [self.imageLoadingIndicatorView stopAnimating];
-        [self.imageLoadingIndicatorView removeFromSuperview];
-    }
+    NSLog(@"referenceImageView: %@", referenceImageView);
+    NSLog(@"self.sellerProfileImageView: %@", self.sellerProfileImageView);
+    NSLog(@"%d", referenceImageView == self.sellerProfileImageView);
+    
+    
+    if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
+        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
+    
+    
+    
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -212,7 +215,6 @@
     
     self.likesLabel.textColor = [UIColor whiteColor];
     self.likesLabel.alpha = 1;
-    NSLog(@"likesLabel.superview: %@", [self.likesLabel superview]);
 }
 
 

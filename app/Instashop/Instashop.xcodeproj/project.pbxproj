@@ -124,6 +124,7 @@
 		7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
+		7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B989BCA17C267D7003559E0 /* ISAsynchImageView.m */; };
 		7B9E844217B159CE00E6FE47 /* toolbar_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E844117B159CE00E6FE47 /* toolbar_back.png */; };
 		7B9E844617B15A6000E6FE47 /* toolbar_title_iumage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9E844517B15A6000E6FE47 /* toolbar_title_iumage.png */; };
 		7B9EAB3E1796E98600D2868D /* product_buy_bakcground_image_a.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EAB3C1796E98600D2868D /* product_buy_bakcground_image_a.png */; };
@@ -319,6 +320,8 @@
 		7B96C037174FE0B100E4EDAD /* ImageRequestorProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ImageRequestorProtocol.h; sourceTree = "<group>"; };
 		7B96C039174FED3700E4EDAD /* ImagesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewCell.h; sourceTree = "<group>"; };
 		7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewCell.m; sourceTree = "<group>"; };
+		7B989BC917C267D7003559E0 /* ISAsynchImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISAsynchImageView.h; sourceTree = "<group>"; };
+		7B989BCA17C267D7003559E0 /* ISAsynchImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISAsynchImageView.m; sourceTree = "<group>"; };
 		7B9E844117B159CE00E6FE47 /* toolbar_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_back.png; sourceTree = "<group>"; };
 		7B9E844517B15A6000E6FE47 /* toolbar_title_iumage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_title_iumage.png; sourceTree = "<group>"; };
 		7B9EAB3C1796E98600D2868D /* product_buy_bakcground_image_a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = product_buy_bakcground_image_a.png; sourceTree = "<group>"; };
@@ -932,6 +935,8 @@
 				7BE3D371174D74410045C4B4 /* JSONKit.m */,
 				7BE3D375174D772B0045C4B4 /* Utils.h */,
 				7BE3D376174D772B0045C4B4 /* Utils.m */,
+				7B989BC917C267D7003559E0 /* ISAsynchImageView.h */,
+				7B989BCA17C267D7003559E0 /* ISAsynchImageView.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1161,6 +1166,7 @@
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
+				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,
 				7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */,
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
 				7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */,

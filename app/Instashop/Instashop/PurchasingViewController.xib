@@ -130,7 +130,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="top_shadow.png" id="298">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="top_shadow.png" id="298" customClass="ISAsynchImageView">
                             <rect key="frame" x="7" y="271" width="42" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>

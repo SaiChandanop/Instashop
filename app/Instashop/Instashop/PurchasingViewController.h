@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SizePickerViewViewController.h"
 #import "IGRequest.h"
-
+#import "ISAsynchImageView.h"
 @class FeedViewController;
 
 @interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate>
@@ -31,7 +31,7 @@
     UITextView *descriptionTextView;
     UILabel *priceLabel;
     UILabel *numberAvailableLabel;
-    UIImageView *sellerProfileImageView;
+    ISAsynchImageView *sellerProfileImageView;
     UIButton *sizeButton;
     UIButton *quantityButton;
     
@@ -40,9 +40,7 @@
     int sizeSelectedIndex;
     
     NSArray *likesArray;
-    
-    UIActivityIndicatorView *imageLoadingIndicatorView;
-    
+        
     UIActionSheet *actionSheet;
     
 }
@@ -73,7 +71,7 @@
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 @property (nonatomic, retain) IBOutlet UILabel *priceLabel;
 @property (nonatomic, retain) IBOutlet UILabel *numberAvailableLabel;
-@property (nonatomic, retain) IBOutlet UIImageView *sellerProfileImageView;
+@property (nonatomic, retain) IBOutlet ISAsynchImageView *sellerProfileImageView;
 @property (nonatomic, retain) IBOutlet UIButton *sizeButton;
 @property (nonatomic, retain) IBOutlet UIButton *quantityButton;
 
@@ -83,8 +81,6 @@
 @property (nonatomic, assign) int sizeSelectedIndex;
 
 @property (nonatomic, retain) NSArray *likesArray;
-
-@property (nonatomic, retain) UIActivityIndicatorView *imageLoadingIndicatorView;
 
 @property (nonatomic, retain) UIActionSheet *actionSheet;
 @end

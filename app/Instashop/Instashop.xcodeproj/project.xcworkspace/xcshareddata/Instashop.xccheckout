@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C99F895C-157C-45CB-A09C-7306EF56EE16</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Instashop</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BDFB2110-9DEC-486C-959E-2C970FD63DDA</key>
+		<string>ssh://github.com/Alchemy-50/Instashop.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>app/Instashop/Instashop.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BDFB2110-9DEC-486C-959E-2C970FD63DDA</key>
+		<string>../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/Alchemy-50/Instashop.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BDFB2110-9DEC-486C-959E-2C970FD63DDA</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BDFB2110-9DEC-486C-959E-2C970FD63DDA</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Instashop</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -187,7 +187,6 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
-    NSLog(@"cellSelectionOccured!!");
     self.selectedObject = theSelectionObject;
     
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
