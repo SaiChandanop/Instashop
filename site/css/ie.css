@@ -1,0 +1,7 @@
+.slideshow .slide input {
+	position:absolute;
+	left:-9999px;
+}
+.slideshow .active input {
+	position:static;
+}

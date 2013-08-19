@@ -1,0 +1,1 @@
+[14-Jun-2013 16:05:18 America/Chicago] PHP Fatal error:  Allowed memory size of 134217728 bytes exhausted (tried to allocate 4026895049 bytes) in /mnt/stor08-wc1-ord1/690403/www.instashopdev.com/web/content/zen/includes/functions/html_output.php on line 62

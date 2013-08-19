@@ -1,9 +1,7 @@
 <?
 
+include_once("./db.php");
 
-include_once("db.php");
-
-//require_once 'Instagram.php';
 $config = array(
         'client_id' => 'd63f114e63814512b820b717a73e3ada',
         'client_secret' => '75cd3c5f8d894ed7a826c4af7f1f085f',
@@ -13,13 +11,11 @@ $config = array(
 
 
 
-
 function getSellerProducts($requestingProductID)
 {
 	$query = "select * from sellers_products";
 	if (strlen($requestingProductID) > 0)
 		$query = "select * from sellers_products where product_id = '$requestingProductID'";
-
 
 	$result = mysql_query($query);
 
@@ -36,7 +32,6 @@ function getSellerProducts($requestingProductID)
 		array_push($responseArray, $responseObject);
 	}
 
-	mysql_close();
 	return $responseArray;
 }
 
@@ -57,6 +52,8 @@ function getProductDescriptions($theProductsArray)
 			$product["products_description"] = $row['products_description'];
 			$product["products_url"] = $row['products_url'];
 			$product["products_viewed"] = $row['products_viewed'];
+			$product["products_instagram_id"] = $row['products_instagram_id'];
+			$product["products_list_price"] = $row["products_list_price"];
 
 			array_push($responseArray, $product);
 		}
@@ -100,7 +97,9 @@ function getProductAttributes($theProductsArray)
 		$product_id = $product["product_id"];
 		$query = "select * from products_categories_and_sizes where product_id = '". $product_id ."'";
 		
-/		$result = mysql_query($query);
+//		echo "query: ".$query;
+//	$query = "insert into  values ('','$productID','$quantity','$size','$categories[0]','$categories[1]','$categories[2]','$categories[3]','$categories[4]','$categories[5]','$categories[6]')";	
+		$result = mysql_query($query);
 
 		$sizeQuantityArray = array();
 		
@@ -142,19 +141,6 @@ function getProductAttributes($theProductsArray)
 }
 
 
-$con = mysql_connect($db_host, $_db_user, $db_pass);
-if (!$con) {
-	echo "Could not connect to server\n";
-	trigger_error(mysql_error(), E_USER_ERROR);
-} 
-	
-$r2 = mysql_select_db($db_db);
-if (!$r2) {
-	echo "Cannot select database\n";
-	trigger_error(mysql_error(), E_USER_ERROR); 
-} 
-
-
 $requestingProductID = $_GET["requesting_product_id"];
 
 //echo "requestingProductID: ". $requestingProductID;
@@ -164,9 +150,18 @@ $productsArray = getProductDescriptions($productsArray);
 $productsArray = getProductDetails($productsArray);
 $productsArray = getProductAttributes($productsArray);
 
-
+//print_r($productsArray); 
 $json = json_encode($productsArray);
 echo $json;
+
+
+session_start();
+
+
+// Instantiate the API handler object
+//$instagram = new Instagram($config);
+//$instagram->openAuthorizationUrl();
+
 
 
 ?>

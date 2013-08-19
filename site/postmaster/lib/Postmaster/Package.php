@@ -30,10 +30,12 @@ class Postmaster_Package extends Postmaster_ApiResource
 
   public static function fit($params=null)
   {
-    $requestor = new Postmaster_ApiRequestor();
+/*    $requestor = new Postmaster_ApiRequestor();
     $params = json_encode($params);
     $headers = ['Content-Type: application/json'];
     $response = $requestor->request('post', self::$urlBase.'/fit', $params, $headers);
     return $response;
+*/
   }
+
 }
