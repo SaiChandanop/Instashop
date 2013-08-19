@@ -61,7 +61,7 @@
     
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
     
-    self.sizeSelectedIndex = -1;
+    self.sizeSelectedIndex = 0;
     self.descriptionTextView.text = @"";
     
     
@@ -136,6 +136,9 @@
     self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
     [self.view bringSubviewToFront:self.bottomView];
     
+    
+    //[self.parentController rowValueSelectedWithIndexPath:self.theIndexPath withKey:self.theController.typeKeyString withValue:[self.theController.itemsArray objectAtIndex:self.theController.selectedRow]];
+    [self.quantityButton setTitle:@"1" forState:UIControlStateNormal];
 
 }
 
@@ -217,7 +220,20 @@
 
 -(IBAction)buyButtonHit
 {
-    if (self.sizeSelectedIndex == -1 || [[self.quantityButton titleForState:UIControlStateNormal] compare:@"Quantity"] == NSOrderedSame)
+     NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    
+    
+    NSLog(@"self.sizeSelectedIndex: %d", self.sizeSelectedIndex);
+    NSLog(@"[[self.quantityButton titleForState:UIControlStateNormal]: %@", [self.quantityButton titleForState:UIControlStateNormal]);
+    
+    
+    BOOL isSingleSize = NO;
+    if ([sizeQuantityArray count] == 1)
+        if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
+            isSingleSize = YES;
+    
+    
+    if (!isSingleSize &&  [[self.sizeButton titleForState:UIControlStateNormal] compare:@"Size"] == NSOrderedSame)
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Please select a size and or quantity"
                                                             message:nil
@@ -376,7 +392,8 @@
 
 -(void)pickerSaveButtonHit
 {
-    [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
+    if (self.actionSheet)
+        [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
     
     NSString *titleItem = [self.sizePickerViewViewController.itemsArray objectAtIndex:[self.sizePickerViewViewController.thePickerView selectedRowInComponent:0]];
     if (self.sizePickerViewViewController.type == 0)
