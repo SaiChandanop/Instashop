@@ -9,7 +9,7 @@
 #import "SizeQuantityTableViewCell.h"
 #import "AppDelegate.h"
 #import "AppRootViewController.h"
-#import "SizeQuantityPickerViewController.h"
+#import "SizePickerViewViewController.h"
 
 @implementation SizeQuantityTableViewCell
 
@@ -94,8 +94,8 @@
     {
         AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
         
-        self.theController = [[SizeQuantityPickerViewController alloc] initWithNibName:@"SizeQuantityPickerViewController" bundle:nil];
-        self.theController.itemsArray = [[NSArray alloc] initWithArray:self.avaliableSizesArray];
+        self.theController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
+        self.theController.itemsArray = [[NSMutableArray alloc] initWithArray:self.avaliableSizesArray];
         
         self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self     cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
         self.actionSheet.autoresizesSubviews = NO;
@@ -122,8 +122,8 @@
     
     AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    self.theController = [[SizeQuantityPickerViewController alloc] initWithNibName:@"SizeQuantityPickerViewController" bundle:nil];
-    self.theController.itemsArray = [[NSArray alloc] initWithArray:ar];
+    self.theController = [[SizePickerViewViewController alloc] initWithNibName:@"SizePickerViewViewController" bundle:nil];
+    self.theController.itemsArray = [[NSMutableArray alloc] initWithArray:ar];
     
     self.actionSheet = [[UIActionSheet alloc] initWithTitle:@"" delegate:self     cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     self.actionSheet.autoresizesSubviews = NO;

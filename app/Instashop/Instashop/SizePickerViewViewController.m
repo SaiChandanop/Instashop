@@ -18,7 +18,8 @@
 @synthesize cancelButton;
 @synthesize saveButton;
 @synthesize type;
-
+@synthesize typeKeyString;
+@synthesize selectedRow;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,12 +59,18 @@
 {
 
     
-    if ([[self.itemsArray objectAtIndex:row] compare:@"(null)"] == NSOrderedSame)
+    if ([(NSString *)[self.itemsArray objectAtIndex:row] compare:@"(null)"] == NSOrderedSame)
         return @"";
     else
         return [self.itemsArray objectAtIndex:row];
     
 }
+
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    self.selectedRow = row;
+}
+
 
 
 

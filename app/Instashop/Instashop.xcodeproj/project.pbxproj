@@ -60,8 +60,6 @@
 		7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */; };
 		7B1B302E17BE8ED100BB6420 /* BSKeyboardControls.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */; };
 		7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */; };
-		7B2C59DA17B95AD100CEDD5A /* SizeQuantityPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C59D817B95AD100CEDD5A /* SizeQuantityPickerViewController.m */; };
-		7B2C59DB17B95AD100CEDD5A /* SizeQuantityPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59D917B95AD100CEDD5A /* SizeQuantityPickerViewController.xib */; };
 		7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */; };
 		7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */; };
 		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
@@ -221,9 +219,6 @@
 		7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSKeyboardControls.m; sourceTree = "<group>"; };
 		7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = BSKeyboardControls.strings; sourceTree = "<group>"; };
 		7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewCell.xib; sourceTree = "<group>"; };
-		7B2C59D717B95AD100CEDD5A /* SizeQuantityPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityPickerViewController.h; sourceTree = "<group>"; };
-		7B2C59D817B95AD100CEDD5A /* SizeQuantityPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityPickerViewController.m; sourceTree = "<group>"; };
-		7B2C59D917B95AD100CEDD5A /* SizeQuantityPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityPickerViewController.xib; sourceTree = "<group>"; };
 		7B2C59DC17B95B4D00CEDD5A /* SizePickerViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizePickerViewViewController.h; sourceTree = "<group>"; };
 		7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizePickerViewViewController.m; sourceTree = "<group>"; };
 		7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizePickerViewViewController.xib; sourceTree = "<group>"; };
@@ -532,16 +527,6 @@
 				7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */,
 			);
 			name = BSKeyboardControls;
-			sourceTree = "<group>";
-		};
-		7B2C59D317B9597B00CEDD5A /* Picker */ = {
-			isa = PBXGroup;
-			children = (
-				7B2C59D717B95AD100CEDD5A /* SizeQuantityPickerViewController.h */,
-				7B2C59D817B95AD100CEDD5A /* SizeQuantityPickerViewController.m */,
-				7B2C59D917B95AD100CEDD5A /* SizeQuantityPickerViewController.xib */,
-			);
-			name = Picker;
 			sourceTree = "<group>";
 		};
 		7B34813717624E3600C055AE /* DiscoverTableViewController */ = {
@@ -884,7 +869,6 @@
 		7BD5C1FB179596B3006F311A /* SizeQuantity */ = {
 			isa = PBXGroup;
 			children = (
-				7B2C59D317B9597B00CEDD5A /* Picker */,
 				7B8BC4D917B364B4002CEB36 /* SizeQuantityTableViewController.h */,
 				7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */,
 				7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */,
@@ -1093,7 +1077,6 @@
 				2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */,
 				2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */,
 				2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */,
-				7B2C59DB17B95AD100CEDD5A /* SizeQuantityPickerViewController.xib in Resources */,
 				2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */,
 				2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */,
 				2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */,
@@ -1181,7 +1164,6 @@
 				7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
-				7B2C59DA17B95AD100CEDD5A /* SizeQuantityPickerViewController.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,

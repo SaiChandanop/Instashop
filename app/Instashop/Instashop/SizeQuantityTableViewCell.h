@@ -13,13 +13,13 @@
 #define PICKER_TYPE_SIZE 1
 #define PICKER_TYPE_QUANTITY 2
 
-@class SizeQuantityPickerViewController;
+@class SizePickerViewViewController;
 
 @interface SizeQuantityTableViewCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
 {
     SizeQuantityTableViewController *parentController;
     
-    SizeQuantityPickerViewController *theController;
+    SizePickerViewViewController *theController;
     UIActionSheet *actionSheet;
     
     NSIndexPath *theIndexPath;
@@ -40,7 +40,7 @@
 
 @property (nonatomic, retain) SizeQuantityTableViewController *parentController;
 
-@property (nonatomic, retain) SizeQuantityPickerViewController *theController;
+@property (nonatomic, retain) SizePickerViewViewController *theController;
 @property (nonatomic, retain) UIActionSheet *actionSheet;
 
 @property (nonatomic, retain) NSIndexPath *theIndexPath;

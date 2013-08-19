@@ -20,7 +20,8 @@
     UIButton *saveButton;
     
     int type;
-
+    NSString *typeKeyString;
+    int selectedRow;
 }
 
 @property (nonatomic, retain) SizeQuantityTableViewCell *cellDelegate;
@@ -31,6 +32,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *saveButton;
 
 @property (nonatomic, assign) int type;
-
+@property (nonatomic, retain) NSString *typeKeyString;
+@property (nonatomic, assign) int selectedRow;
 
 @end
