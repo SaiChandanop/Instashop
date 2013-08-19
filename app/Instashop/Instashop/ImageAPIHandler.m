@@ -63,7 +63,6 @@ static ImageAPIHandler *sharedImageAPIHandler;
     {
         [self.delegate imageRequestFinished:self.theImageView];
     }
-    NSLog(@"self.delegate: %@", [self.delegate class]);
     
     if ([self.theImageView isKindOfClass:[ISAsynchImageView class]])
     {

@@ -15,10 +15,11 @@
                 <outlet property="heartImageView" destination="343" id="344"/>
                 <outlet property="imageView" destination="37" id="276"/>
                 <outlet property="likesLabel" destination="upX-2d-e7j" id="7Js-KC-wHx"/>
+                <outlet property="listPriceLabel" destination="APY-85-yga" id="S4N-L6-d89"/>
                 <outlet property="numberAvailableLabel" destination="104" id="304"/>
-                <outlet property="priceLabel" destination="115" id="303"/>
                 <outlet property="purchaseButton" destination="269" id="336"/>
                 <outlet property="quantityButton" destination="331" id="338"/>
+                <outlet property="retailPriceLabel" destination="115" id="p9W-Ve-8I3"/>
                 <outlet property="sellerLabel" destination="49" id="262"/>
                 <outlet property="sellerProfileImageView" destination="298" id="302"/>
                 <outlet property="sizeButton" destination="330" id="337"/>

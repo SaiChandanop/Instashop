@@ -30,6 +30,7 @@
     [postString appendString:[NSString stringWithFormat:@"object_description=%@&", theProductCreateObject.description]];
     [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", theProductCreateObject.quantity]];
     [postString appendString:[NSString stringWithFormat:@"object_price=%@&", [theProductCreateObject.retailPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
+    [postString appendString:[NSString stringWithFormat:@"object_list_price=%@&", [theProductCreateObject.listPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
     [postString appendString:[NSString stringWithFormat:@"object_weight=%@&", theProductCreateObject.shippingWeight]];
     [postString appendString:[NSString stringWithFormat:@"object_image_urlstring=%@&", theProductCreateObject.instagramPictureURLString]];
     

@@ -26,15 +26,15 @@
     UILabel *titleLabel;
     UILabel *sellerLabel;
     UILabel *likesLabel;
+    UILabel *listPriceLabel;
+    UILabel *retailPriceLabel;
     UILabel *categoryLabel;
     UIView *descriptionContainerView;
     UITextView *descriptionTextView;
-    UILabel *priceLabel;
     UILabel *numberAvailableLabel;
     ISAsynchImageView *sellerProfileImageView;
     UIButton *sizeButton;
     UIButton *quantityButton;
-    
     UIButton *purchaseButton;
     
     int sizeSelectedIndex;
@@ -69,7 +69,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
 @property (nonatomic, retain) IBOutlet UIView *descriptionContainerView;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
-@property (nonatomic, retain) IBOutlet UILabel *priceLabel;
+@property (nonatomic, retain) IBOutlet UILabel *listPriceLabel;
+@property (nonatomic, retain) IBOutlet UILabel *retailPriceLabel;
 @property (nonatomic, retain) IBOutlet UILabel *numberAvailableLabel;
 @property (nonatomic, retain) IBOutlet ISAsynchImageView *sellerProfileImageView;
 @property (nonatomic, retain) IBOutlet UIButton *sizeButton;

@@ -34,7 +34,7 @@
 @synthesize categoryLabel;
 @synthesize descriptionContainerView;
 @synthesize requestedProductObject;
-@synthesize imageView, titleLabel, sellerLabel, likesLabel, descriptionTextView, priceLabel, numberAvailableLabel, sellerProfileImageView;
+@synthesize imageView, titleLabel, sellerLabel, likesLabel, descriptionTextView, listPriceLabel, retailPriceLabel, numberAvailableLabel, sellerProfileImageView;
 @synthesize bottomView;
 @synthesize sizeSelectedIndex;
 @synthesize purchaseButton;
@@ -113,10 +113,13 @@
 
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
     
+    NSLog(@"self.requestedProductObjec: %@", self.requestedProductObject);
     self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
-    self.priceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
+
+    self.retailPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
+    self.listPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_list_price"] floatValue]]];
     self.categoryLabel.text = categoryString;
     
     
