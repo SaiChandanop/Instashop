@@ -113,6 +113,7 @@
     {
         //joel set button style here
         cell.sizeButton.alpha = 1;
+        [cell.sizeButton setUserInteractionEnabled:NO];
         
     }
     
