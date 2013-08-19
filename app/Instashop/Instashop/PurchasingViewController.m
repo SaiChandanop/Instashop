@@ -57,23 +57,11 @@
 {
     [super viewDidLoad];
 
-    /*
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-  
-    
-    NSLog(@"screenSize: %@", NSStringFromCGSize(screenSize));
-     */
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    
-    
     
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
     
     self.sizeSelectedIndex = -1;
-    
     self.descriptionTextView.text = @"";
     
     
@@ -81,13 +69,13 @@
     self.navigationItem.titleView = theImageView;
     
     self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
-    
-    
 }
 
 
 - (void) loadContentViews
 {
+    [self.sellerProfileImageView beginAnimations];
+    
 //    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
         
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -124,7 +112,6 @@
     }
 
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
-    [self.sellerProfileImageView beginAnimations];
     
     self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
@@ -160,8 +147,8 @@
     NSLog(@"%d", referenceImageView == self.sellerProfileImageView);
     
     
-    if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
-        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
+//    if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
+//        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
     
     
     

@@ -30,6 +30,12 @@ static ImageAPIHandler *sharedImageAPIHandler;
         NSLog(@"[sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString]: %@", [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString]);
        */ 
         referenceImageView.image = [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString];
+        
+        if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
+        {
+            [(ISAsynchImageView *)referenceImageView ceaseAnimations];
+        }
+        
     }
     else
     {
@@ -59,9 +65,9 @@ static ImageAPIHandler *sharedImageAPIHandler;
     }
     NSLog(@"self.delegate: %@", [self.delegate class]);
     
-    if ([self.delegate isKindOfClass:[ISAsynchImageView class]])
+    if ([self.theImageView isKindOfClass:[ISAsynchImageView class]])
     {
-        [(ISAsynchImageView *)self.delegate ceaseAnimations];
+        [(ISAsynchImageView *)self.theImageView ceaseAnimations];
     }
 }
 @end
