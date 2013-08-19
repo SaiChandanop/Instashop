@@ -39,9 +39,9 @@
     [ProductAPIHandler getAllProductsWithDelegate:self];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:98.0/255.0 green:181.0/255.0 blue:148.0/255.0 alpha:1.0]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    
+    self.navigationController.navigationBar.translucent = NO;
 
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
@@ -79,10 +79,7 @@
     [refreshControl addTarget:self action:@selector(refresh)
              forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
-    
-    
-    
-    
+
 
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
