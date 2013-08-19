@@ -14,7 +14,7 @@
                 <outlet property="descriptionTextView" destination="190" id="265"/>
                 <outlet property="heartImageView" destination="343" id="344"/>
                 <outlet property="imageView" destination="37" id="276"/>
-                <outlet property="likesLabel" destination="300" id="340"/>
+                <outlet property="likesLabel" destination="upX-2d-e7j" id="7Js-KC-wHx"/>
                 <outlet property="numberAvailableLabel" destination="104" id="304"/>
                 <outlet property="priceLabel" destination="115" id="303"/>
                 <outlet property="purchaseButton" destination="269" id="336"/>
@@ -108,36 +108,23 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="343">
+                            <rect key="frame" x="283" y="280" width="30" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <view alpha="0.30000001192092896" contentMode="scaleToFill" id="301">
                             <rect key="frame" x="7" y="271" width="306" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="#Likes" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="300">
-                                    <rect key="frame" x="216" y="0.0" width="55" height="42"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="oiJ-X9-MLo">
+                                    <rect key="frame" x="217" y="-1" width="89" height="43"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    <size key="shadowOffset" width="1" height="1"/>
-                                </label>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="343">
-                                    <rect key="frame" x="274" y="8" width="30" height="26"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="341">
-                                    <rect key="frame" x="218" y="-2" width="88" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <state key="normal">
-                                        <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
-                                    <state key="highlighted">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
                                     <connections>
-                                        <action selector="likeButtonHit" destination="-1" eventType="touchUpInside" id="342"/>
+                                        <action selector="likeButtonHit" destination="-1" eventType="touchUpInside" id="1Xb-zV-I9f"/>
                                     </connections>
                                 </button>
                             </subviews>
@@ -224,6 +211,13 @@
                                 <action selector="quantityButtonHit" destination="-1" eventType="touchUpInside" id="332"/>
                             </connections>
                         </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="upX-2d-e7j">
+                            <rect key="frame" x="202" y="282" width="73" height="21"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                 </scrollView>
             </subviews>

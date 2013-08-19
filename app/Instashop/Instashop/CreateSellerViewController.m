@@ -231,19 +231,6 @@
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
     NSLog(@"follow result: %@", result);
-/*    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
-    int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
-    //    NSLog(@"responseCode: %d", responseCode);
-    
-    if (responseCode == 200)
-    {
-        NSArray *dataArray = [result objectForKey:@"data"];
-        [self.userMediaArray removeAllObjects];
-        [self.userMediaArray addObjectsFromArray:dataArray];
-        [self.tableView reloadData];
-    }
- 
- */
 }
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error

@@ -209,6 +209,10 @@
                 self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
         }
     }
+    
+    self.likesLabel.textColor = [UIColor whiteColor];
+    self.likesLabel.alpha = 1;
+    NSLog(@"likesLabel.superview: %@", [self.likesLabel superview]);
 }
 
 
@@ -406,6 +410,8 @@
 
 -(IBAction)likeButtonHit
 {
+    
+    NSLog(@"likeButtonHit");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
           
     if ([self likesArrayContainsSelf])
