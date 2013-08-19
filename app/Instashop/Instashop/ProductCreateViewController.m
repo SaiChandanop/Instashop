@@ -36,15 +36,15 @@
     
     NSLog(@"productDictionary: %@", productDictionary);
 
-    
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:98.0/255.0 green:181.0/255.0 blue:148.0/255.0 alpha:1.0]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
     
 //    NSLog(@"ProductCreateViewController view did load");
     
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
-    UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"backbutton.png"]];
+    UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];
     cancelImageView.frame = CGRectMake(0,0,44,44);
     [cancelCustomView addSubview:cancelImageView];
     
