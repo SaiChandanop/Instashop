@@ -98,6 +98,7 @@
 
     self.contentScrollView.contentSize = CGSizeMake(0, self.doneButton.frame.origin.y + self.doneButton.frame.size.height + 56);
     
+
 }
 
 
@@ -126,6 +127,9 @@
     self.productImageView.image = productImage;
     
     NSLog(@"self.productImageView: %@", self.productImageView);
+    
+    
+    
 }
 
 -(void)loadWithRequestedProductObject:(NSDictionary *)theProductObject
@@ -144,6 +148,15 @@
     self.productBuyButtonLabel.text = [NSString stringWithFormat:@"Buy - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[self.quantityValueLabel.text floatValue] * [[self.requestedProductObject objectForKey:@"products_price"] floatValue]]]];
     
     [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[self.requestedProductObject objectForKey:@"owner_instagram_id"]];
+    
+    float totalValue = [self.quantityValueLabel.text floatValue] * [[self.priceValueLabel.text stringByReplacingOccurrencesOfString:@"$" withString:@""] floatValue];
+    
+    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
+    [numberFormatter setMaximumFractionDigits:2];
+
+    NSString *buyButtonTitle = [NSString stringWithFormat:@"BUY - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:totalValue]]];
+    
+    [self.doneButton setTitle:buyButtonTitle forState:UIControlStateNormal];
 }
 
 
