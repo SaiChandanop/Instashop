@@ -61,10 +61,16 @@
     {
         NSLog(@"[thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY]: %@", [thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY]);
         if ([thisCellsContent objectForKey:SIZE_DICTIONARY_KEY] != nil)
+        {
             [self.sizeButton setTitle:[thisCellsContent objectForKey:SIZE_DICTIONARY_KEY] forState:UIControlStateNormal];
+            self.sizeButton.selected = YES;
+        }
         
         if ([thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY] != nil)
+        {
             [self.quantityButton setTitle:[thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY] forState:UIControlStateNormal];
+            self.quantityButton.selected = YES;
+        }
     }
     
     [self.sizeButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
