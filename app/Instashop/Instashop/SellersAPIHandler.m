@@ -10,6 +10,10 @@
 #import "AppDelegate.h"
 #import "InstagramUserObject.h"
 #import "SellerExistsResponderProtocol.h"
+#import "CreateSellerOccuredProtocol.h"
+#import "SellersRequestFinishedProtocol.h"
+
+
 @implementation SellersAPIHandler
 
 +(void)makeCheckIfSellerExistsCallWithDelegate:(id)delegate
@@ -94,7 +98,10 @@
 //    NSLog(@"userCreateRequestFinished: %@", responseString);
     
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    [self.delegate userDidCreateSellerWithResponseDictionary:responseDictionary];
+    
+    if ([self.delegate conformsToProtocol:@protocol(CreateSellerOccuredProtocol)])
+        [(id<CreateSellerOccuredProtocol>)self.delegate userDidCreateSellerWithResponseDictionary:responseDictionary];
+
 }
 
 
@@ -117,7 +124,8 @@
 {
 //    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
+    if ([self.delegate conformsToProtocol:@protocol(SellersRequestFinishedProtocol)])
+        [(id<SellersRequestFinishedProtocol>)self.delegate sellersRequestFinishedWithResponseObject:[NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil]];
     
-    [self.delegate sellersRequestFinishedWithResponseObject:[NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil]];
 }
 @end

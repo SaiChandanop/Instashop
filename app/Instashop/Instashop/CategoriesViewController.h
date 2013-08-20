@@ -9,11 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CategoriesTableViewController.h"
 
-@class ProductDetailsViewController;
 
 @interface CategoriesViewController : UIViewController
 {
-    ProductDetailsViewController *parentController;
+    id parentController;
     NSMutableArray *selectedCategoriesArray;
     
     UITableView *initialTableReference;
@@ -21,7 +20,7 @@
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController;
 
-@property (nonatomic, retain) ProductDetailsViewController *parentController;
+@property (nonatomic, retain) id parentController;
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
 
 @property (nonatomic, retain) UITableView *initialTableReference;

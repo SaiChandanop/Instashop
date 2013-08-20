@@ -53,7 +53,6 @@
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
 - (void) categorySelectionCompleteWithArray:(NSArray *)theArray;
 
-- (IBAction) backButtonHit;
 - (IBAction) previewButtonHit;
 - (IBAction) categoryButtonHit;
 

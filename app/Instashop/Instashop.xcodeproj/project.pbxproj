@@ -299,6 +299,8 @@
 		7B74C3CE179716850006289C /* CreateSellerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSellerViewController.h; sourceTree = "<group>"; };
 		7B74C3CF179716850006289C /* CreateSellerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSellerViewController.m; sourceTree = "<group>"; };
 		7B74C3D0179716850006289C /* CreateSellerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSellerViewController.xib; sourceTree = "<group>"; };
+		7B7A518317C4222F009AD081 /* CreateSellerOccuredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSellerOccuredProtocol.h; sourceTree = "<group>"; };
+		7B7A518417C422A5009AD081 /* SellersRequestFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellersRequestFinishedProtocol.h; sourceTree = "<group>"; };
 		7B7A7438174D42F2005E90B9 /* IGConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGConnect.h; sourceTree = "<group>"; };
 		7B7A7439174D42F2005E90B9 /* IGRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IGRequest.h; sourceTree = "<group>"; };
 		7B7A743A174D42F2005E90B9 /* IGRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IGRequest.m; sourceTree = "<group>"; };
@@ -543,6 +545,8 @@
 				7B2C4B8E17C41C160080F3F5 /* FeedRequestFinishedProtocol.h */,
 				7B2C4B8F17C41DFF0080F3F5 /* SellerExistsResponderProtocol.h */,
 				7B2C4B9017C41F220080F3F5 /* RatesCallHandlerProtocol.h */,
+				7B7A518317C4222F009AD081 /* CreateSellerOccuredProtocol.h */,
+				7B7A518417C422A5009AD081 /* SellersRequestFinishedProtocol.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";

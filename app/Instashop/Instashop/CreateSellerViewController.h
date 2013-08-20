@@ -10,9 +10,10 @@
 #import "TPKeyboardAvoidingScrollView.h"
 #import "BSKeyboardControls.h"
 #import "IGRequest.h"
+#import "CreateSellerOccuredProtocol.h"
 
 @class HomeViewController;
-@interface CreateSellerViewController : UIViewController <UITextFieldDelegate, BSKeyboardControlsDelegate, IGRequestDelegate>
+@interface CreateSellerViewController : UIViewController <UITextFieldDelegate, BSKeyboardControlsDelegate, IGRequestDelegate, CreateSellerOccuredProtocol>
 {
     HomeViewController *delegate;
     

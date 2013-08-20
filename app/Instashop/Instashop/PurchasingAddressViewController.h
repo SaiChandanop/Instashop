@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "TPKeyboardAvoidingScrollView.h"
 #import "RatesCallHandlerProtocol.h"
-
-@interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol>
+#import "SellersRequestFinishedProtocol.h"
+@interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol, SellersRequestFinishedProtocol>
 {
     id doneButtonDelegate;    
     id shippingCompleteDelegate;
@@ -58,7 +58,6 @@
 -(void)loadWithSizeSelection:(NSString *)sizeSelection withQuantitySelection:(NSString *)quantitySelection withProductImage:(UIImage *)productImage;
 -(void)loadWithRequestedProductObject:(NSDictionary *)theProductObject;
 
--(IBAction)checkRatesButtonHit;
 -(IBAction)doneButtonHit;
 
 -(IBAction)buyButtonHit;

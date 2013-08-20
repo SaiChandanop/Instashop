@@ -178,10 +178,6 @@
     self.instagramPictureURLString = instagramProductImageURLString;
 }
 
--(IBAction)backButtonHit
-{
-    [self.parentController vcDidHitBackWithController:self];
-}
 
 -(IBAction)previewButtonHit
 {
