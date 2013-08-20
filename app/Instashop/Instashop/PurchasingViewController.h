@@ -10,9 +10,10 @@
 #import "SizePickerViewViewController.h"
 #import "IGRequest.h"
 #import "ISAsynchImageView.h"
+#import "FeedRequestFinishedProtocol.h"
 @class FeedViewController;
 
-@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate>
+@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol>
 {
     FeedViewController *parentController;
     SizePickerViewViewController *sizePickerViewViewController;
@@ -53,6 +54,8 @@
 
 -(IBAction)sizeButtonHit;
 -(IBAction)quantityButtonHit;
+
+- (void) loadContentViews;
 
 @property (nonatomic, retain) FeedViewController *parentController;
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;

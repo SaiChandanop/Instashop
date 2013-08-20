@@ -280,7 +280,7 @@
 
 - (void)keyboardControls:(BSKeyboardControls *)theKeyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction
 {
-    UIView *view = theKeyboardControls.activeField.superview.superview;
+//    UIView *view = theKeyboardControls.activeField.superview.superview;
 //    [self.containerScrollView scrollRectToVisible:view.frame animated:YES];
 }
 

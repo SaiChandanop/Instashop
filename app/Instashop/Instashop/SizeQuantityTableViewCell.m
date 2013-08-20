@@ -27,6 +27,7 @@
 @synthesize avaliableSizesArray;
 @synthesize selectedSizeValue;
 @synthesize selectedQuantityValue;
+@synthesize xButton;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {

@@ -115,8 +115,7 @@
 
 -(void)getSellersRequestFinished:(id)obj
 {
-    NSString* responseString = [[[NSString alloc] initWithData:responseData
-                                                  encoding:NSUTF8StringEncoding] autorelease];
+//    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
     
     [self.delegate sellersRequestFinishedWithResponseObject:[NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil]];

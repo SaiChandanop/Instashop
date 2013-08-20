@@ -186,6 +186,8 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 {
     self.selectedObject = theSelectionObject;
     
+    NSLog(@"theSelectionObject: %@", theSelectionObject);
+    
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.parentController = self;
     purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];

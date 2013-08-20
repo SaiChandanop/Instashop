@@ -15,7 +15,7 @@
 
 @class SizePickerViewViewController;
 
-@interface SizeQuantityTableViewCell : UITableViewCell <UIPickerViewDelegate, UIPickerViewDataSource, UIActionSheetDelegate>
+@interface SizeQuantityTableViewCell : UITableViewCell <UIPickerViewDelegate, UIActionSheetDelegate>
 {
     SizeQuantityTableViewController *parentController;
     
