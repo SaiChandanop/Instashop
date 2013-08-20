@@ -27,6 +27,7 @@
     UIImageView *theImageView;
     UITextField *titleTextField;
     UITextView *descriptionTextView;
+    UIImageView *descriptionBackgroundImageView;
     UIImageView *selectedCategoriesBackgroundImageView;
     UITextField *selectedCategoriesLabel;
     UIButton *selectedCategoriesButton;
@@ -70,6 +71,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
+@property (nonatomic, retain) IBOutlet UIImageView *descriptionBackgroundImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *selectedCategoriesBackgroundImageView;
 @property (nonatomic, retain) IBOutlet UITextField *selectedCategoriesLabel;
 @property (nonatomic, retain) IBOutlet UIButton *selectedCategoriesButton;

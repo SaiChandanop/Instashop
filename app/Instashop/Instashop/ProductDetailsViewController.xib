@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="addSizeButton" destination="568" id="oiL-wJ-lor"/>
                 <outlet property="containerScrollView" destination="283" id="490"/>
+                <outlet property="descriptionBackgroundImageView" destination="544" id="YCE-MW-aEK"/>
                 <outlet property="descriptionTextView" destination="Jno-Ib-Cbd" id="ufc-jW-YIC"/>
                 <outlet property="instashopPriceLabel" destination="477" id="501"/>
                 <outlet property="instashopPriceTextField" destination="478" id="487"/>
@@ -64,7 +65,7 @@
                     <rect key="frame" x="0.0" y="313" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" id="Jno-Ib-Cbd">
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Description" id="Jno-Ib-Cbd">
                     <rect key="frame" x="9" y="358" width="301" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

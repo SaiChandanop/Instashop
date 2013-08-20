@@ -28,6 +28,7 @@
 @synthesize theImageView;
 @synthesize titleTextField;
 @synthesize descriptionTextView;
+@synthesize descriptionBackgroundImageView;
 @synthesize selectedCategoriesLabel;
 @synthesize selectedCategoriesButton;
 @synthesize retailPriceTextField;
@@ -320,16 +321,20 @@
         textView.frame = textFrame;
         NSLog(@"expected size: %@", NSStringFromCGRect(textView.frame));
  
-        self.selectedCategoriesBackgroundImageView.frame = CGRectMake(self.selectedCategoriesBackgroundImageView.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesBackgroundImageView.frame.size.width, self.selectedCategoriesBackgroundImageView.frame.size.height);
-        self.selectedCategoriesLabel.frame = CGRectMake(self.selectedCategoriesLabel.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesLabel.frame.size.width, self.selectedCategoriesLabel.frame.size.height);
-        self.selectedCategoriesButton.frame = CGRectMake(self.selectedCategoriesButton.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesButton.frame.size.width, self.selectedCategoriesButton.frame.size.height);
+        textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height + 10);
+        self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, textFrame.size.height);
+        
+        float offset = 3;
+        self.selectedCategoriesBackgroundImageView.frame = CGRectMake(self.selectedCategoriesBackgroundImageView.frame.origin.x, textFrame.origin.y + textFrame.size.height + offset, self.selectedCategoriesBackgroundImageView.frame.size.width, self.selectedCategoriesBackgroundImageView.frame.size.height);
+        self.selectedCategoriesLabel.frame = CGRectMake(self.selectedCategoriesLabel.frame.origin.x, textFrame.origin.y + textFrame.size.height + offset + 6, self.selectedCategoriesLabel.frame.size.width, self.selectedCategoriesLabel.frame.size.height);
+        self.selectedCategoriesButton.frame = CGRectMake(self.selectedCategoriesButton.frame.origin.x, textFrame.origin.y + textFrame.size.height + offset, self.selectedCategoriesButton.frame.size.width, self.selectedCategoriesButton.frame.size.height);
         
         self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x, self.selectedCategoriesButton.frame.origin.y + self.selectedCategoriesButton.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, self.sizeQuantityTableViewController.tableView.frame.size.height);
                                                                           
                                                                           
         
         
-        [self updateLayout];
+//        [self updateLayout];
 
     }
 
