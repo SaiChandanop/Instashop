@@ -23,13 +23,13 @@
     NSMutableArray *attributesArray;        
     
     UIScrollView *containerScrollView;    
-    UIView *subCategoryContainerView;
     
     UIImageView *theImageView;
     UITextField *titleTextField;
     UITextView *descriptionTextView;
     UIImageView *selectedCategoriesBackgroundImageView;
     UITextField *selectedCategoriesLabel;
+    UIButton *selectedCategoriesButton;
     UILabel *retailPriceLabel;
     UITextField *retailPriceTextField;
     UILabel *instashopPriceLabel;
@@ -39,7 +39,6 @@
     UIView *nextButtonContainerView;
     
     //jb added
-    UIView *descriptionView;
     UIView *pricesView;
     UIView *sizeQuantityView;
     
@@ -67,13 +66,13 @@
 @property (nonatomic, retain) NSMutableArray *attributesArray;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
-@property (nonatomic, retain) IBOutlet UIView *subCategoryContainerView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 @property (nonatomic, retain) IBOutlet UIImageView *selectedCategoriesBackgroundImageView;
 @property (nonatomic, retain) IBOutlet UITextField *selectedCategoriesLabel;
+@property (nonatomic, retain) IBOutlet UIButton *selectedCategoriesButton;
 @property (nonatomic, retain) IBOutlet UILabel *retailPriceLabel;
 @property (nonatomic, retain) IBOutlet UITextField *retailPriceTextField;
 @property (nonatomic, retain) IBOutlet UILabel *instashopPriceLabel;
@@ -82,7 +81,6 @@
 @property (nonatomic, retain) IBOutlet UIButton *addSizeButton;
 @property (nonatomic, retain) IBOutlet UIView *nextButtonContainerView;
 
-@property (nonatomic, retain) IBOutlet UIView *descriptionView;
 @property (nonatomic, retain) IBOutlet UIView *pricesView;
 @property (nonatomic, retain) IBOutlet UIView *sizeQuantityView;
 

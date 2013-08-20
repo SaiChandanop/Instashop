@@ -25,11 +25,11 @@
 @synthesize parentController;
 @synthesize attributesArray;
 @synthesize containerScrollView;
-@synthesize subCategoryContainerView;
 @synthesize theImageView;
 @synthesize titleTextField;
 @synthesize descriptionTextView;
 @synthesize selectedCategoriesLabel;
+@synthesize selectedCategoriesButton;
 @synthesize retailPriceTextField;
 @synthesize instashopPriceTextField;
 @synthesize nextButton;
@@ -37,7 +37,6 @@
 @synthesize nextButtonContainerView;
 @synthesize retailPriceLabel;
 @synthesize instashopPriceLabel;
-@synthesize descriptionView;
 @synthesize pricesView;
 @synthesize sizeQuantityView;
 @synthesize originalPriceViewRect;
@@ -72,9 +71,6 @@
     self.instashopPriceTextField.delegate = self;
     
     self.attributesArray = [[NSMutableArray alloc] initWithCapacity:0];
-    
-    [self.containerScrollView bringSubviewToFront:self.subCategoryContainerView];
-    
     
     self.sizeQuantityTableViewController = [[SizeQuantityTableViewController alloc] initWithNibName:@"SizeQuantityTableViewController" bundle:nil];
     self.sizeQuantityTableViewController.productDetailsViewController = self;
@@ -270,20 +266,16 @@
 -(void)updateLayout
 {
     float extendHeight = 36;
+    
     self.sizeQuantityTableViewController.tableView.frame = CGRectMake(0, self.sizeQuantityTableViewController.tableView.frame.origin.y, self.sizeQuantityTableViewController.tableView.frame.size.width, extendHeight * self.sizeQuantityTableViewController.rowShowCount);
     
     
     if (self.sizeQuantityTableViewController.rowShowCount > 0 && [[self.sizeQuantityTableViewController getRemainingAvailableSizesArray] count] == 0)
-    {
         self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, 0);
-        self.addSizeButton.alpha = 0;
-    }
-    else
-    {
     
-        self.addSizeButton.alpha = 1;
+    else
         self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, 36);
-    }
+
     
     self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.addSizeButton.frame.origin.y + self.addSizeButton.frame.size.height, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
     
@@ -305,12 +297,17 @@
     }
     else
     {
-        
-        
         [self.addSizeButton setTitle:@"Add Another Size" forState:UIControlStateNormal];
         
         [self.sizeQuantityTableViewController ownerAddRowButtonHitWithTableView:self.sizeQuantityTableViewController.tableView];
         [self updateLayout];
+        
+        if (self.sizeQuantityTableViewController.rowShowCount > 0 && [[self.sizeQuantityTableViewController getRemainingAvailableSizesArray] count] == 0)
+            self.addSizeButton.alpha = 0;
+        else
+            self.addSizeButton.alpha = 1;
+            
+                
     }
 }
 
@@ -325,8 +322,11 @@
  
         self.selectedCategoriesBackgroundImageView.frame = CGRectMake(self.selectedCategoriesBackgroundImageView.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesBackgroundImageView.frame.size.width, self.selectedCategoriesBackgroundImageView.frame.size.height);
         self.selectedCategoriesLabel.frame = CGRectMake(self.selectedCategoriesLabel.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesLabel.frame.size.width, self.selectedCategoriesLabel.frame.size.height);
-
-//        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x,
+        self.selectedCategoriesButton.frame = CGRectMake(self.selectedCategoriesButton.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesButton.frame.size.width, self.selectedCategoriesButton.frame.size.height);
+        
+        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x, self.selectedCategoriesButton.frame.origin.y + self.selectedCategoriesButton.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, self.sizeQuantityTableViewController.tableView.frame.size.height);
+                                                                          
+                                                                          
         
         
         [self updateLayout];
