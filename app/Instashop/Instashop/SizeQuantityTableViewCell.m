@@ -54,6 +54,12 @@
     self.quantityButton = (UIButton *)[self viewWithTag:2];
     self.xButton = (UIButton *)[self viewWithTag:7];
     
+    self.sizeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.sizeButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+
+    self.quantityButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.quantityButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
     
     [self addSubview:self.sizeButton];
     [self addSubview:self.quantityButton];
