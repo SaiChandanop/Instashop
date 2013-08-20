@@ -87,6 +87,24 @@
     self.originalPriceViewRect = self.pricesView.frame;
     
     self.addSizeButton.alpha = 0;
+    
+    
+    [self.titleTextField setValue:[UIColor lightGrayColor]
+                    forKeyPath:@"_placeholderLabel.textColor"];
+
+    [self.descriptionTextField setValue:[UIColor lightGrayColor]
+                       forKeyPath:@"_placeholderLabel.textColor"];
+    
+    [self.selectedCategoriesLabel setValue:[UIColor lightGrayColor]
+                             forKeyPath:@"_placeholderLabel.textColor"];
+    
+    [self.instashopPriceTextField setValue:[UIColor lightGrayColor]
+                             forKeyPath:@"_placeholderLabel.textColor"];
+
+    [self.retailPriceTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+
+    
 }
 
 
