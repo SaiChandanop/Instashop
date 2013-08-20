@@ -72,16 +72,6 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"view did appear");
-    
-    CGSize textSize = [self.descriptionTextField.text sizeWithFont:self.descriptionTextField.font forWidth:320 lineBreakMode:NSLineBreakByWordWrapping];
-    
-    NSLog(@"textSize!!!!: %@", NSStringFromCGSize(textSize));
-    
-    
-    NSLog(@"!!descriptionTextField.contentSize.height: %f", descriptionTextField.contentSize.height);
-    
-    
     self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, descriptionTextField.contentSize.height);
     self.descriptionTextField.frame = CGRectMake(self.descriptionTextField.frame.origin.x, self.descriptionTextField.frame.origin.y, self.descriptionTextField.frame.size.width, descriptionTextField.contentSize.height);
     
@@ -125,7 +115,6 @@
     
     self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithDictionary:theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary];
     self.sizeQuantityTableViewController.rowShowCount = [[self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary allKeys] count] * 44;
-    
     
 }
 

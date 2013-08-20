@@ -53,6 +53,17 @@
     return self;
 }
 
+
+- (void)viewDidAppear:(BOOL)animated
+{
+//    self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, descriptionTextField.contentSize.height);
+    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
+    
+    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height);
+
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -151,6 +162,13 @@
     
     //[self.parentController rowValueSelectedWithIndexPath:self.theIndexPath withKey:self.theController.typeKeyString withValue:[self.theController.itemsArray objectAtIndex:self.theController.selectedRow]];
     [self.quantityButton setTitle:@"1" forState:UIControlStateNormal];
+    
+    
+    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
+    
+    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height);
+    
+    
 
 }
 
