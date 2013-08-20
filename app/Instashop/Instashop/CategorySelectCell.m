@@ -34,7 +34,7 @@
         
         float theWidth = 44;
         float theHeight = 44;
-        UIImage *disclosureImage = [UIImage imageNamed:@"cell_disclosure"];
+        UIImage *disclosureImage = [UIImage imageNamed:@"cell_disclosure_new"];
         self.disclosureImageView = [[UIImageView alloc] initWithImage:disclosureImage];
         self.disclosureImageView.frame = CGRectMake(self.frame.size.width - 0 - theWidth, self.frame.size.height / 2 - theHeight /2, theWidth, theHeight);
         [self addSubview:self.disclosureImageView];
