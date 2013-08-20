@@ -79,6 +79,8 @@
 		7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */; };
 		7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */; };
 		7B51EB1917C30F03009FBE91 /* cell_disclosure_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1817C30F03009FBE91 /* cell_disclosure_new@2x.png */; };
+		7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */; };
+		7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */; };
 		7B5F53F41767829F0066D529 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F53F31767829F0066D529 /* STPCard.m */; };
 		7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B602D9F17664F1700663A73 /* PurchasingViewController.m */; };
 		7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA017664F1700663A73 /* PurchasingViewController.xib */; };
@@ -248,6 +250,8 @@
 		7B4D2E14175CFCD1005DE4B6 /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = feedtopbar.png; sourceTree = "<group>"; };
 		7B51EB1817C30F03009FBE91 /* cell_disclosure_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_disclosure_new@2x.png"; sourceTree = "<group>"; };
+		7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop_button_dark@2x.png"; sourceTree = "<group>"; };
+		7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop_button_light@2x.png"; sourceTree = "<group>"; };
 		7B5F53F21767829F0066D529 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
 		7B5F53F31767829F0066D529 /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
 		7B602D9E17664F1700663A73 /* PurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewController.h; sourceTree = "<group>"; };
@@ -407,6 +411,8 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */,
+				7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */,
 				7B51EB1817C30F03009FBE91 /* cell_disclosure_new@2x.png */,
 				2E7CFF9317C2D61E00657CFC /* cell_disclosure@2x.png */,
 				7B602DAB1766543100663A73 /* buybutton@2x.png */,
@@ -1039,6 +1045,7 @@
 				7B61EE5B174D2162002A483D /* Default@2x.png in Resources */,
 				7B61EE5D174D2162002A483D /* Default-568h@2x.png in Resources */,
 				7B676F6F17BC79C7004FC53B /* previewsocialshittyimage.png in Resources */,
+				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
 				7B49085F1758FE5B0047ED3B /* NotificationsViewController.xib in Resources */,
@@ -1095,6 +1102,7 @@
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
 				2E0EAE1F176F6E6700B65FC3 /* lmPrivacyPolicyIcon@2x.png in Resources */,
 				2E0EAE20176F6E6700B65FC3 /* lmHomeIcon@2x.png in Resources */,
+				7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */,
 				2E0EAE21176F6E6700B65FC3 /* lmNotificationsIcon@2x.png in Resources */,
 				2E0EAE22176F6E6700B65FC3 /* lmFAQIcon@2x.png in Resources */,
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
