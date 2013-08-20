@@ -36,6 +36,12 @@
     return self;
 }
 
+-(void)xButtonHit
+{
+    [self.parentController xButtonHitWithIndexPath:self.theIndexPath];
+    
+    
+}
 
 -(void) loadWithIndexPath:(NSIndexPath *)indexPath withContentDictionary:(NSDictionary *)contentDictionary
 {
@@ -46,15 +52,21 @@
     self.rowNumberLabel = (UILabel *)[self viewWithTag:6];
     self.sizeButton = (UIButton *)[self viewWithTag:1];
     self.quantityButton = (UIButton *)[self viewWithTag:2];
-
+    self.xButton = (UIButton *)[self viewWithTag:7];
     
     
     [self addSubview:self.sizeButton];
     [self addSubview:self.quantityButton];
+    [self addSubview:self.xButton];
     
+    
+    if (indexPath.row == 0)
+        [self.xButton removeFromSuperview];
+    else
+        [self.xButton addTarget:self action:@selector(xButtonHit) forControlEvents:UIControlEventTouchUpInside];
     
     self.rowNumberLabel.text = [NSString stringWithFormat:@"%d", indexPath.row + 1];
-
+    
     
     NSDictionary *thisCellsContent = [contentDictionary objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
     NSLog(@"thisCellsContent: %@",thisCellsContent);

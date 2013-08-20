@@ -149,6 +149,39 @@
     [self.tableView reloadData];
 }
 
+-(void)xButtonHitWithIndexPath:(NSIndexPath *)theIndexPath
+{
+    
+    NSLog(@"theIndexPath.row: %d", theIndexPath.row);
+    NSLog(@"self.cellSizeQuantityValueDictionary: %@", self.cellSizeQuantityValueDictionary);
+    
+    NSArray *keysArray = [self.cellSizeQuantityValueDictionary allKeys];
+    
+    for (int i = 0; i < [keysArray count]; i++)
+    {
+        NSString *key = [keysArray objectAtIndex:i];
+        
+        if ([key integerValue] == theIndexPath.row)
+        {
+            [self.cellSizeQuantityValueDictionary removeObjectForKey:[NSString stringWithFormat:@"%d", theIndexPath.row]];
+             self.rowShowCount--;
+        }
+        else if ([key integerValue] > theIndexPath.row)
+        {
+            NSDictionary *dict = [NSDictionary dictionaryWithDictionary:[self.cellSizeQuantityValueDictionary objectForKey:key]];
+            NSString *newKey = [NSString stringWithFormat:@"%d", [key integerValue] - 1];
+            [self.cellSizeQuantityValueDictionary removeObjectForKey:key];
+            [self.cellSizeQuantityValueDictionary setObject:dict forKey:newKey];
+            
+        }
+        
+    }
+    
+    NSLog(@"self.cellSizeQuantityValueDictionary: %@", self.cellSizeQuantityValueDictionary);
+    [self.tableView reloadData];
+    
+}
+
 -(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath
 {
  

@@ -27,10 +27,12 @@
     UILabel *rowNumberLabel;
     UIButton *sizeButton;
     UIButton *quantityButton;
+    UIButton *xButton;
     
     NSArray *avaliableSizesArray;
     NSString *selectedSizeValue;
     NSString *selectedQuantityValue;
+    
     
     
 }
@@ -48,7 +50,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *rowNumberLabel;
 @property (nonatomic, retain) IBOutlet UIButton *sizeButton;
 @property (nonatomic, retain) IBOutlet UIButton *quantityButton;
-
+@property (nonatomic, retain) IBOutlet UIButton *xButton;
 
 @property (nonatomic, retain) NSArray *avaliableSizesArray;
 @property (nonatomic, retain) NSString *selectedSizeValue;
