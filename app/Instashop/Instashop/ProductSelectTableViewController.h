@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "CellSelectionOccuredProtocol.h"
+
 
 @class ProductCreateViewController;
 
-@interface ProductSelectTableViewController : UITableViewController <IGRequestDelegate>
+@interface ProductSelectTableViewController : UITableViewController <IGRequestDelegate, CellSelectionOccuredProtocol>
 {
     NSMutableArray *userMediaArray;
     

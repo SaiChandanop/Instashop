@@ -9,7 +9,7 @@
 #import "ImagesTableViewCell.h"
 #import "ImageAPIHandler.h"
 #import "ImagesTableCellButton.h"
-
+#import "CellSelectionOccuredProtocol.h"
 @implementation ImagesTableViewCell
 
 @synthesize delegate;
@@ -181,8 +181,8 @@
 
 -(void)coverButtonHit:(ImagesTableCellButton *)theButton
 {
-    if ([self.delegate respondsToSelector:@selector(cellSelectionOccured:)])
-        [self.delegate cellSelectionOccured:theButton.objectDictionary];
+    if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
+        [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:theButton.objectDictionary];
 }
 
 

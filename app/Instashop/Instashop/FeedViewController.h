@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CellSelectionOccuredProtocol.h"
 
 @class AppRootViewController;
-@interface FeedViewController : UITableViewController
+@interface FeedViewController : UITableViewController <CellSelectionOccuredProtocol>
 {
     AppRootViewController *parentController;
     

@@ -61,7 +61,7 @@
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-    CGFloat whiteSpace = 11.0f;
+//    CGFloat whiteSpace = 11.0f;
     CGFloat topSpace = 64.0f;
     
     self.containerScrollView.frame = CGRectMake(0, topSpace, screenWidth, screenHeight - topSpace);

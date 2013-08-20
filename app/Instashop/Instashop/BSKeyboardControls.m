@@ -76,6 +76,8 @@
     [self setSegmentedControl:nil];
     [self setSegmentedControlItem:nil];
     [self setDoneButton:nil];
+    
+    [super dealloc];
 }
 
 #pragma mark -

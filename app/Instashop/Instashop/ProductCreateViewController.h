@@ -25,14 +25,10 @@
 }
 
 -(void) previewDoneButtonHit:(ProductCreateContainerObject *)theCreateObject;
-
--(void)vcDidHitBackWithController:(UIViewController *)requestingViewController;
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary;
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateObject;
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject;
-- (void)createProductActionHitWithProductObject:(ProductCreateObject *)productCreateObject;
-- (IBAction) exitButtonHit;
-- (IBAction) goButtonHit;
+
 
 @property (nonatomic, retain) AppRootViewController *parentController;
 

@@ -10,4 +10,8 @@
 
 @protocol CellSelectionOccuredProtocol <NSObject>
 
+
+-(void) cellSelectionOccured:(NSDictionary *)theSelectionObject;
+
+
 @end
