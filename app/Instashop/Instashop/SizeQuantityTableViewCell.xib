@@ -15,30 +15,48 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Zd9-4N-o1s">
-                        <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                        <rect key="frame" x="0.0" y="5" width="40" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </label>
-                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nXf-AR-s5h">
-                        <rect key="frame" x="56" y="0.0" width="120" height="40"/>
+                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="nXf-AR-s5h">
+                        <rect key="frame" x="52" y="5" width="130" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <state key="normal" title="Size">
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="Size" backgroundImage="drop_button_dark.png">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="disabled" title="N/A" backgroundImage="drop_button_light.png">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected" backgroundImage="drop_button_light.png">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="v5C-hP-YOe">
-                        <rect key="frame" x="190" y="0.0" width="120" height="40"/>
+                        <rect key="frame" x="190" y="5" width="130" height="30"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <state key="normal" title="#">
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title="Quantity" backgroundImage="drop_button_dark.png">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="disabled" backgroundImage="drop_button_light.png">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <state key="selected" backgroundImage="drop_button_light.png">
+                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                 </subviews>
             </tableViewCellContentView>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="drop_button_dark.png" width="130" height="30"/>
+        <image name="drop_button_light.png" width="130" height="30"/>
+    </resources>
 </document>
