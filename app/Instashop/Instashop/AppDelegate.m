@@ -82,6 +82,8 @@
 
 -(void)userDidLogout
 {
+    self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
+    
     self.window.rootViewController = self.authenticationViewController;
 }
 
