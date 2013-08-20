@@ -9,6 +9,7 @@
 #import "PostmasterAPIHandler.h"
 #import "SBJson.h"
 #import "RatesCallHandlerProtocol.h"
+#import "PostmasterShipResponseProtocol.h"
 @implementation PostmasterAPIHandler
 
 +(void)makePostmasterRatesCallWithDelegate:(id)theDelegate withFromZip:(NSString *)fromZip withToZip:(NSString *)toZip withWeight:(NSString *)weight withCarrier:(NSString *)carrier
@@ -89,7 +90,12 @@
     NSLog(@"responseString: %@", responseString);
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
-    [self.delegate postmasterShipRequestRespondedWithDictionary:responseDictionary];
+    
+    
+    if ([self.delegate conformsToProtocol:@protocol(PostmasterShipResponseProtocol)])
+        [(id<PostmasterShipResponseProtocol>)self.delegate postmasterShipRequestRespondedWithDictionary:responseDictionary];
+    
+
 }
 
 -(void)postmasterShipCallFailed

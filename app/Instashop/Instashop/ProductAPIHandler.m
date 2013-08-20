@@ -9,6 +9,9 @@
 #import "ProductAPIHandler.h"
 #import "InstagramUserObject.h"
 #import "FeedRequestFinishedProtocol.h"
+#import "ProductPurchaseCompleteProtocol.h"
+
+
 @implementation ProductAPIHandler
 
 
@@ -116,7 +119,13 @@
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-    [self.delegate productPurchaceSuccessful];
+    
+    
+    
+    if ([self.delegate conformsToProtocol:@protocol(ProductPurchaseCompleteProtocol)])
+        [(id<ProductPurchaseCompleteProtocol>)self.delegate productPurchaceSuccessful];
+    
+
     NSLog(@"productPurchasedComplete: %@", newStr);
 }
 

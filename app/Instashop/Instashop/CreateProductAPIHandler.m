@@ -8,6 +8,7 @@
 
 #import "CreateProductAPIHandler.h"
 #import "InstagramUserObject.h"
+#import "ProductCreateContainerProtocol.h"
 
 @implementation CreateProductAPIHandler
 
@@ -58,7 +59,11 @@
     
     NSArray *ar = [newStr componentsSeparatedByString:@"="];    
     if ([ar count] > 1)
-        [self.delegate productContainerCreateFinishedWithProductID:[ar objectAtIndex:1] withProductCreateContainerObject:self.contextObject];
+    {
+        if ([self.delegate conformsToProtocol:@protocol(ProductCreateContainerProtocol)])
+            [(id<ProductCreateContainerProtocol>)self.delegate productContainerCreateFinishedWithProductID:[ar objectAtIndex:1] withProductCreateContainerObject:self.contextObject];
+        
+    }
     
 }
 

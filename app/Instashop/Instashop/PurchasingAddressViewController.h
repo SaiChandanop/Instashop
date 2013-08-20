@@ -10,7 +10,9 @@
 #import "TPKeyboardAvoidingScrollView.h"
 #import "RatesCallHandlerProtocol.h"
 #import "SellersRequestFinishedProtocol.h"
-@interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol, SellersRequestFinishedProtocol>
+#import "ProductPurchaseCompleteProtocol.h"
+#import "PostmasterShipResponseProtocol.h"
+@interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol, SellersRequestFinishedProtocol, ProductPurchaseCompleteProtocol, PostmasterShipResponseProtocol>
 {
     id doneButtonDelegate;    
     id shippingCompleteDelegate;

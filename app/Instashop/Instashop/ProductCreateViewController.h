@@ -12,10 +12,12 @@
 #import "ProductCreateObject.h"
 #import "ProductPreviewViewController.h"
 #import "ProductCreateContainerObject.h"
+#import "ProductCreateContainerProtocol.h"
+
 
 @class AppRootViewController;
 
-@interface ProductCreateViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface ProductCreateViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, ProductCreateContainerProtocol>
 {
     AppRootViewController *parentController;
     
