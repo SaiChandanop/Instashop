@@ -327,6 +327,7 @@
     {
         CGRect textFrame = textView.frame;
         textFrame.size.height = textView.contentSize.height;
+        NSLog(@"textView.contentSize.height: %f", textView.contentSize.height);
         textView.frame = textFrame;
         NSLog(@"expected size: %@", NSStringFromCGRect(textView.frame));
  

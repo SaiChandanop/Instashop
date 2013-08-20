@@ -75,10 +75,8 @@
     
     
     NSDictionary *thisCellsContent = [contentDictionary objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
-    NSLog(@"thisCellsContent: %@",thisCellsContent);
     if (thisCellsContent != nil)
     {
-        NSLog(@"[thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY]: %@", [thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY]);
         if ([thisCellsContent objectForKey:SIZE_DICTIONARY_KEY] != nil)
         {
             [self.sizeButton setTitle:[thisCellsContent objectForKey:SIZE_DICTIONARY_KEY] forState:UIControlStateNormal];

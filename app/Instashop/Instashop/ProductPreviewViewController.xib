@@ -8,8 +8,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductPreviewViewController">
             <connections>
                 <outlet property="bottomContentView" destination="ddr-Y2-TkD" id="b9o-1X-mlJ"/>
+                <outlet property="categoryBackgroundImageView" destination="nfL-9c-TQG" id="lqh-GD-hc7"/>
                 <outlet property="categoryTextField" destination="w6V-Rp-JMB" id="jth-v4-9cC"/>
                 <outlet property="contentScrollView" destination="4" id="unU-gG-kWN"/>
+                <outlet property="descriptionBackgroundImageView" destination="7eE-01-yCN" id="rfn-00-TF4"/>
                 <outlet property="descriptionTextField" destination="nMg-uj-X2e" id="avp-wf-ovG"/>
                 <outlet property="listPriceValueTextField" destination="inC-Yz-1l6" id="mmp-wh-zhr"/>
                 <outlet property="productImageView" destination="5" id="62"/>
