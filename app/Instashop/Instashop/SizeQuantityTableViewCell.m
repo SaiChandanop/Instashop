@@ -67,10 +67,6 @@
             [self.quantityButton setTitle:[thisCellsContent objectForKey:QUANTITY_DICTIONARY_KEY] forState:UIControlStateNormal];
     }
     
-    
-    self.rowNumberLabel.font = [UIFont systemFontOfSize:16];
-    self.rowNumberLabel.textColor = [UIColor whiteColor];
-        
     [self.sizeButton addTarget:self action:@selector(sizeButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.quantityButton  addTarget:self action:@selector(quantityButtonHit) forControlEvents:UIControlEventTouchUpInside];
     

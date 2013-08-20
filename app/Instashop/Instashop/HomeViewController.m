@@ -44,6 +44,8 @@
      
     [InstagramUserObject deleteStoredUserObject];
     [del userDidLogout];
+    
+    [self.parentController homeButtonHit];
 }
 
 -(IBAction)homeButtonHit
