@@ -317,11 +317,17 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
+    NSLog(@"textField: %@", textField);
+    NSLog(@"string: %@", string);
+    NSLog(@"string.length: %d", [string length]);
+    
     if (textField == self.retailPriceTextField || textField == self.instashopPriceTextField)
     {
         textField.text = [textField.text stringByReplacingOccurrencesOfString:@"$" withString:@""];
         textField.text = [NSString stringWithFormat:@"$%@%@", textField.text, string];
-        return NO;
+        if ([string length] > 0)
+            return NO;
+        else return YES;
     }
     else
         return YES;
