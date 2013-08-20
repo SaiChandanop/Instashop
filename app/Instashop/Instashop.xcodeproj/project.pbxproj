@@ -41,6 +41,7 @@
 		2E0EAE25176F6E6700B65FC3 /* lmDiscoverIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EAE01176F6E6700B65FC3 /* lmDiscoverIcon@2x.png */; };
 		2E0EAE26176F6E6700B65FC3 /* closebutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EAE02176F6E6700B65FC3 /* closebutton@2x.png */; };
 		2E0EAE27176F6E6700B65FC3 /* backbutton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EAE03176F6E6700B65FC3 /* backbutton@2x.png */; };
+		2E531F0517C3BF6A006B6FF5 /* cell_separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E531F0417C3BF6A006B6FF5 /* cell_separator@2x.png */; };
 		2E7CFF9717C3A98500657CFC /* gray_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7CFF9617C3A98500657CFC /* gray_x@2x.png */; };
 		2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2599E176786970054618D /* TPKeyboardAvoidingScrollView.m */; };
 		2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB259A0176786970054618D /* TPKeyboardAvoidingTableView.m */; };
@@ -197,6 +198,7 @@
 		2E0EAE01176F6E6700B65FC3 /* lmDiscoverIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lmDiscoverIcon@2x.png"; sourceTree = "<group>"; };
 		2E0EAE02176F6E6700B65FC3 /* closebutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closebutton@2x.png"; sourceTree = "<group>"; };
 		2E0EAE03176F6E6700B65FC3 /* backbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbutton@2x.png"; sourceTree = "<group>"; };
+		2E531F0417C3BF6A006B6FF5 /* cell_separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_separator@2x.png"; sourceTree = "<group>"; };
 		2E7CFF9317C2D61E00657CFC /* cell_disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_disclosure@2x.png"; sourceTree = "<group>"; };
 		2E7CFF9617C3A98500657CFC /* gray_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray_x@2x.png"; sourceTree = "<group>"; };
 		2EB2599D176786970054618D /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingScrollView.h; path = Instashop/TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2E531F0417C3BF6A006B6FF5 /* cell_separator@2x.png */,
 				2E7CFF9617C3A98500657CFC /* gray_x@2x.png */,
 				7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */,
 				7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */,
@@ -1066,6 +1069,7 @@
 				7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */,
 				7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */,
 				7B51EB1917C30F03009FBE91 /* cell_disclosure_new@2x.png in Resources */,
+				2E531F0517C3BF6A006B6FF5 /* cell_separator@2x.png in Resources */,
 				7B1072BF175E7CDE00D9DC5D /* ProductDetailsViewController.xib in Resources */,
 				7B1072C1175E7E1500D9DC5D /* previewproductimage.png in Resources */,
 				7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */,
