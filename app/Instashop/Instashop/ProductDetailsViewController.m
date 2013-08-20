@@ -239,13 +239,24 @@
     }
     else
     {
-        
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"Please select a size and/or quantity"
+        if ([self.selectedCategoriesLabel.text length] == 0)
+        {
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"Please Select a category"
                                                            delegate:self
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
-        [alertView show];
+            [alertView show];
+        }
+        else
+        {
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                                message:@"Please select a size and/or quantity"
+                                                               delegate:self
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+        }
         
         
     }
