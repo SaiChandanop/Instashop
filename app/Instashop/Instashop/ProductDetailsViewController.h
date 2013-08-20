@@ -57,6 +57,7 @@
 - (IBAction) categoryButtonHit;
 
 - (IBAction) addSizeButtonHit;
+- (void)updateLayout;
 
 @property (nonatomic, retain) IBOutlet ProductCreateViewController *parentController;
 

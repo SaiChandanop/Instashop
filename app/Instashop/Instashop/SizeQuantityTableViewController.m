@@ -8,12 +8,14 @@
 
 #import "SizeQuantityTableViewController.h"
 #import "SizeQuantityTableViewCell.h"
+#import "ProductDetailsViewController.h"
 @interface SizeQuantityTableViewController ()
 
 @end
 
 @implementation SizeQuantityTableViewController
 
+@synthesize productDetailsViewController;
 @synthesize cellSizeQuantityValueDictionary;
 @synthesize availableSizesArray;
 @synthesize rowShowCount;
@@ -49,12 +51,12 @@
                                                   otherButtonTitles:nil];
         [alertView show];
     }
-        else
-        {
-    self.rowShowCount++;
-            [theTableView reloadData];
-            //[theTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowShowCount -1  inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-        }
+    else
+    {
+        self.rowShowCount++;
+        [theTableView reloadData];
+        //[theTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowShowCount -1  inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
+    }
     
 }
 
@@ -74,7 +76,7 @@
     
     return remainingSizesArray;
     
-            
+    
 }
 
 #pragma mark - Table view data source
@@ -120,11 +122,11 @@
     if (self.isButtonsDisabled)
     {
         [cell.sizeButton removeTarget:nil
-                           action:NULL
-                 forControlEvents:UIControlEventAllEvents];
-        [cell.quantityButton removeTarget:nil
                                action:NULL
                      forControlEvents:UIControlEventAllEvents];
+        [cell.quantityButton removeTarget:nil
+                                   action:NULL
+                         forControlEvents:UIControlEventAllEvents];
         
     }
     
@@ -136,9 +138,9 @@
 {
     if (self.cellSizeQuantityValueDictionary == nil)
         self.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
-                                                
-                                                
-        NSMutableDictionary *itemForRowDictionary = [self.cellSizeQuantityValueDictionary objectForKey:[NSString stringWithFormat:@"%d", theIndexPath.row]];
+    
+    
+    NSMutableDictionary *itemForRowDictionary = [self.cellSizeQuantityValueDictionary objectForKey:[NSString stringWithFormat:@"%d", theIndexPath.row]];
     if (itemForRowDictionary == nil)
         itemForRowDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
     
@@ -164,7 +166,7 @@
         if ([key integerValue] == theIndexPath.row)
         {
             [self.cellSizeQuantityValueDictionary removeObjectForKey:[NSString stringWithFormat:@"%d", theIndexPath.row]];
-             self.rowShowCount--;
+            
         }
         else if ([key integerValue] > theIndexPath.row)
         {
@@ -176,15 +178,17 @@
         }
         
     }
+    self.rowShowCount--;
     
     NSLog(@"self.cellSizeQuantityValueDictionary: %@", self.cellSizeQuantityValueDictionary);
     [self.tableView reloadData];
+    [self.productDetailsViewController updateLayout];
     
 }
 
 -(void)cellSelectedValue:(NSString *)value withIndexPath:(NSIndexPath *)indexPath
 {
- 
+    
 }
 
 @end

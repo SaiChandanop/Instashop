@@ -12,8 +12,12 @@
 #define SIZE_DICTIONARY_KEY @"size dictionary key"
 #define QUANTITY_DICTIONARY_KEY @"quantity dictionary Key"
 
+@class ProductDetailsViewController;
+
 @interface SizeQuantityTableViewController : UITableViewController
 {
+    ProductDetailsViewController *productDetailsViewController;
+    
     NSMutableDictionary *cellSizeQuantityValueDictionary;
     NSArray *availableSizesArray;
     
@@ -21,11 +25,11 @@
     BOOL isButtonsDisabled;
 }
 
-
+-(void)xButtonHitWithIndexPath:(NSIndexPath *)theIndexPath;
 -(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView;
 -(void)rowValueSelectedWithIndexPath:(NSIndexPath *)theIndexPath withKey:(NSString *)key withValue:(NSString *)value;
 
-
+@property (nonatomic, retain) ProductDetailsViewController *productDetailsViewController;
 @property (nonatomic, retain) NSMutableDictionary *cellSizeQuantityValueDictionary;
 @property (nonatomic, retain) NSArray *availableSizesArray;
 
