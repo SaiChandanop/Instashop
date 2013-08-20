@@ -181,7 +181,8 @@
 
 -(void)coverButtonHit:(ImagesTableCellButton *)theButton
 {
-    [self.delegate cellSelectionOccured:theButton.objectDictionary];
+    if ([self.delegate respondsToSelector:@selector(cellSelectionOccured:)])
+        [self.delegate cellSelectionOccured:theButton.objectDictionary];
 }
 
 

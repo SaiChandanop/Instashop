@@ -53,6 +53,8 @@ static void *finishedContext            = @"finishedContext";
             NSLog(@"%@", exception);
         }
     }
+    
+    [super dealloc];
 }
 
 #pragma mark - internal
@@ -134,7 +136,7 @@ static void *finishedContext            = @"finishedContext";
         [params setValue:scope forKey:@"scope"];
     }
     
-    BOOL didOpenOtherApp        = NO;
+//    BOOL didOpenOtherApp        = NO;
     NSString *igAppUrl          = [IGRequest serializeURL:loginDialogURL params:params];
 //    didOpenOtherApp             = [[UIApplication sharedApplication] openURL:[NSURL URLWithString:igAppUrl]];
     

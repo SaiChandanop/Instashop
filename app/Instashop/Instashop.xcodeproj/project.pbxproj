@@ -535,6 +535,13 @@
 			name = BSKeyboardControls;
 			sourceTree = "<group>";
 		};
+		7B2C4B8C17C418490080F3F5 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
 		7B34813717624E3600C055AE /* DiscoverTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -679,6 +686,7 @@
 		7B61EE4C174D2162002A483D /* Instashop */ = {
 			isa = PBXGroup;
 			children = (
+				7B2C4B8C17C418490080F3F5 /* Delegates */,
 				7B7A7448174D4EAE005E90B9 /* VCs */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
 				7B7A7454174D52D2005E90B9 /* Net */,

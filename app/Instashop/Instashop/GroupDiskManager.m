@@ -95,7 +95,7 @@ static GroupDiskManager *theManager;
 
 	[rootObject removeObjectForKey:fileNameToDelete];
 
-	[NSKeyedArchiver archiveRootObject: rootObject toFile: path];
+	return [NSKeyedArchiver archiveRootObject: rootObject toFile: path];
 
 }
                          
