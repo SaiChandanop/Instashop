@@ -37,6 +37,8 @@
 {
     [super viewDidLoad];
     
+    [[UIApplication sharedApplication] setStatusBarHidden:YES withAnimation:NO];
+    
     NSLog(@"[UIScreen mainScreen].bounds.size.height: %f", [UIScreen mainScreen].bounds.size.height);
     if ([UIScreen mainScreen].bounds.size.height < 500)
         [self.view addSubview:self.iphoneShortView];

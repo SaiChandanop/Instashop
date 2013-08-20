@@ -453,7 +453,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="logOutButtonHit" destination="-1" eventType="touchUpInside" id="woD-Uq-q1p"/>
+                                <action selector="tempSellerButtonHit" destination="-1" eventType="touchUpInside" id="oDK-k4-V2B"/>
                             </connections>
                         </button>
                     </subviews>

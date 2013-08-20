@@ -9,7 +9,7 @@
             <connections>
                 <outlet property="addSizeButton" destination="568" id="oiL-wJ-lor"/>
                 <outlet property="containerScrollView" destination="283" id="490"/>
-                <outlet property="descriptionTextField" destination="463" id="468"/>
+                <outlet property="descriptionTextView" destination="Jno-Ib-Cbd" id="ufc-jW-YIC"/>
                 <outlet property="descriptionView" destination="537" id="557"/>
                 <outlet property="instashopPriceLabel" destination="477" id="501"/>
                 <outlet property="instashopPriceTextField" destination="478" id="487"/>
@@ -17,6 +17,7 @@
                 <outlet property="pricesView" destination="556" id="558"/>
                 <outlet property="retailPriceLabel" destination="470" id="499"/>
                 <outlet property="retailPriceTextField" destination="471" id="486"/>
+                <outlet property="selectedCategoriesBackgroundImageView" destination="545" id="PwA-cU-3Vv"/>
                 <outlet property="selectedCategoriesLabel" destination="536" id="542"/>
                 <outlet property="subCategoryContainerView" destination="537" id="541"/>
                 <outlet property="theImageView" destination="497" id="498"/>
@@ -88,13 +89,6 @@
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" minimumFontSize="17" clearButtonMode="whileEditing" id="463">
-                            <rect key="frame" x="9" y="57" width="300" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <textInputTraits key="textInputTraits"/>
-                        </textField>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category" minimumFontSize="17" clearButtonMode="whileEditing" id="536">
                             <rect key="frame" x="10" y="106" width="300" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -121,6 +115,13 @@
                                 <action selector="categoryButtonHit" destination="-1" eventType="touchUpInside" id="539"/>
                             </connections>
                         </button>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Description" id="Jno-Ib-Cbd">
+                            <rect key="frame" x="9" y="49" width="301" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>

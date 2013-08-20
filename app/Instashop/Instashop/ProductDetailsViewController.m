@@ -28,7 +28,7 @@
 @synthesize subCategoryContainerView;
 @synthesize theImageView;
 @synthesize titleTextField;
-@synthesize descriptionTextField;
+@synthesize descriptionTextView;
 @synthesize selectedCategoriesLabel;
 @synthesize retailPriceTextField;
 @synthesize instashopPriceTextField;
@@ -67,7 +67,7 @@
     [self.view addSubview:self.containerScrollView];
     
     self.titleTextField.delegate = self;
-    self.descriptionTextField.delegate = self;
+    self.descriptionTextView.delegate = self;
     self.retailPriceTextField.delegate = self;
     self.instashopPriceTextField.delegate = self;
     
@@ -92,8 +92,8 @@
     [self.titleTextField setValue:[UIColor lightGrayColor]
                     forKeyPath:@"_placeholderLabel.textColor"];
 
-    [self.descriptionTextField setValue:[UIColor lightGrayColor]
-                       forKeyPath:@"_placeholderLabel.textColor"];
+//    [self.descriptionTextView setValue:[UIColor lightGrayColor]
+  //                     forKeyPath:@"_placeholderLabel.textColor"];
     
     [self.selectedCategoriesLabel setValue:[UIColor lightGrayColor]
                              forKeyPath:@"_placeholderLabel.textColor"];
@@ -204,7 +204,7 @@
             productCreateObject.instagramPictureURLString = self.instagramPictureURLString;
             productCreateObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
             productCreateObject.title = self.titleTextField.text;
-            productCreateObject.description = self.descriptionTextField.text;
+            productCreateObject.description = self.descriptionTextView.text;
             productCreateObject.retailValue = self.retailPriceTextField.text;
             productCreateObject.retailPrice = self.retailPriceTextField.text;
             productCreateObject.quantity = [NSString stringWithFormat:@"%d", objectQuantity];
@@ -225,7 +225,7 @@
         productCreateContainerObject.mainObject.instagramPictureURLString = self.instagramPictureURLString;
         productCreateContainerObject.mainObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
         productCreateContainerObject.mainObject.title = self.titleTextField.text;
-        productCreateContainerObject.mainObject.description = self.descriptionTextField.text;
+        productCreateContainerObject.mainObject.description = self.descriptionTextView.text;
         productCreateContainerObject.mainObject.retailValue = self.retailPriceTextField.text;
         productCreateContainerObject.mainObject.retailPrice = self.retailPriceTextField.text;
         productCreateContainerObject.mainObject.listPrice = self.instashopPriceTextField.text;
@@ -315,23 +315,47 @@
     }
 }
 
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if (textView == self.descriptionTextView)
+    {
+/*        CGRect textFrame = textView.frame;
+        textFrame.size.height = textView.contentSize.height;
+        textView.frame = textFrame;
+        NSLog(@"expected size: %@", NSStringFromCGRect(textView.frame));
+ 
+        self.selectedCategoriesBackgroundImageView.frame = CGRectMake(self.selectedCategoriesBackgroundImageView.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesBackgroundImageView.frame.size.width, self.selectedCategoriesBackgroundImageView.frame.size.height);
+        self.selectedCategoriesLabel.frame = CGRectMake(self.selectedCategoriesLabel.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesLabel.frame.size.width, self.selectedCategoriesLabel.frame.size.height);
+        
+        [self updateLayout];
+   */
+    }
+
+    
+
+    return YES;
+    
+}
+
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     NSLog(@"textField: %@", textField);
     NSLog(@"string: %@", string);
     NSLog(@"string.length: %d", [string length]);
     
+    
+    BOOL returnValue = YES;
     if (textField == self.retailPriceTextField || textField == self.instashopPriceTextField)
     {
         textField.text = [textField.text stringByReplacingOccurrencesOfString:@"$" withString:@""];
         textField.text = [NSString stringWithFormat:@"$%@%@", textField.text, string];
         if ([string length] > 0)
-            return NO;
-        else return YES;
+            returnValue = NO;
+
     }
-    else
-        return YES;
+
     
+    return returnValue;
     
 }
 
@@ -339,7 +363,7 @@
 {
     
     [self.titleTextField resignFirstResponder];
-    [self.descriptionTextField resignFirstResponder];
+    [self.descriptionTextView resignFirstResponder];
     [self.retailPriceTextField resignFirstResponder];
     [self.instashopPriceTextField resignFirstResponder];
 }

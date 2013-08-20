@@ -14,7 +14,7 @@
 
 @class ProductCreateViewController;
 
-@interface ProductDetailsViewController : UIViewController <UITextFieldDelegate, UITableViewDataSource>
+@interface ProductDetailsViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, UITableViewDataSource>
 {
     ProductCreateViewController *parentController;
     
@@ -27,7 +27,8 @@
     
     UIImageView *theImageView;
     UITextField *titleTextField;
-    UITextField *descriptionTextField;
+    UITextView *descriptionTextView;
+    UIImageView *selectedCategoriesBackgroundImageView;
     UITextField *selectedCategoriesLabel;
     UILabel *retailPriceLabel;
     UITextField *retailPriceTextField;
@@ -70,7 +71,8 @@
 
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
 @property (nonatomic, retain) IBOutlet UITextField *titleTextField;
-@property (nonatomic, retain) IBOutlet UITextField *descriptionTextField;
+@property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
+@property (nonatomic, retain) IBOutlet UIImageView *selectedCategoriesBackgroundImageView;
 @property (nonatomic, retain) IBOutlet UITextField *selectedCategoriesLabel;
 @property (nonatomic, retain) IBOutlet UILabel *retailPriceLabel;
 @property (nonatomic, retain) IBOutlet UITextField *retailPriceTextField;

@@ -23,6 +23,7 @@
 }
 
 
+-(IBAction) tempSellerButtonHit;
 -(void)createSellerCancelButtonHit;
 -(void)createSellerDone;
 -(void)loadStates;
