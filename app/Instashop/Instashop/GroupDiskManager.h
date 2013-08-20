@@ -18,7 +18,7 @@
 
 - (void) saveDataToDiskWithObject:(id)object withKey:(NSString *)key;
 - (id) loadDataFromDiskWithKey:(NSString *)key;
-
+- (BOOL) deleteFile:(NSString *) fileNameToDelete error:(NSError **)err;
 -(NSString *)getFolderPath;
 
 @end

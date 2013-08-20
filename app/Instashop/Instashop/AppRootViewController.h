@@ -28,6 +28,7 @@
 }
 
 
+
 +(AppRootViewController *)sharedRootViewController;
 
 -(void)homeButtonHit;

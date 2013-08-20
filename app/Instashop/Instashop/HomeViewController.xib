@@ -451,6 +451,9 @@
                             <state key="highlighted">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="logOutButtonHit" destination="-1" eventType="touchUpInside" id="D5f-R6-O2c"/>
+                            </connections>
                         </button>
                     </subviews>
                 </view>

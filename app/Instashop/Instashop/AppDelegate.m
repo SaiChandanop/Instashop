@@ -80,6 +80,11 @@
     self.window.rootViewController = self.appRootViewController;
 }
 
+-(void)userDidLogout
+{
+    self.window.rootViewController = self.authenticationViewController;
+}
+
 -(void)makeSafariCallWithURL:(NSURL *)theURL
 {
     NSLog(@"makeSafariCallWithURL: %@", theURL);

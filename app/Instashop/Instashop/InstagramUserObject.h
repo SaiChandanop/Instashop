@@ -21,6 +21,7 @@
         
 }
 
++(void)deleteStoredUserObject;
 -(NSString *)userObjectAsPostString;
 -(id)initWithDictionary:(NSDictionary *)theDict;
 +(InstagramUserObject *)getStoredUserObject;

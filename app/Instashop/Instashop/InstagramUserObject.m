@@ -91,6 +91,11 @@
     return string;
 }
 
++(void)deleteStoredUserObject
+{
+    [[GroupDiskManager sharedManager] deleteFile:CURRENT_USER_OBJECT_STORAGE_KEY error:nil];
+}
+
 +(InstagramUserObject *)getStoredUserObject
 {
     return [[GroupDiskManager sharedManager] loadDataFromDiskWithKey:CURRENT_USER_OBJECT_STORAGE_KEY];

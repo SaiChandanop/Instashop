@@ -26,6 +26,7 @@
 }
 
 -(void)userDidLogin;
+-(void)userDidLogout;
 -(void)makeSafariCallWithURL:(NSURL *)theURL;
 
 @property (strong, nonatomic) UIWindow *window;

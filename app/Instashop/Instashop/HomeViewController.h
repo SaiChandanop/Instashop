@@ -25,6 +25,8 @@
 -(void)loadStates;
 -(IBAction)homeButtonHit;
 
+-(IBAction)logOutButtonHit;
+
 
 @property (nonatomic, retain) AppRootViewController *parentController;
 

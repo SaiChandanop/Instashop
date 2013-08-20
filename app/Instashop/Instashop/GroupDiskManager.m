@@ -84,6 +84,21 @@ static GroupDiskManager *theManager;
     else return  nil;
 }
 
+- (BOOL) deleteFile:(NSString *) fileNameToDelete error:(NSError **)err
+{
+    NSString * path = [self pathForDataFile];
+	
+	NSMutableDictionary *rootObject = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+	if (rootObject == nil)
+		rootObject = [NSMutableDictionary dictionary];
+	
+
+	[rootObject removeObjectForKey:fileNameToDelete];
+
+	[NSKeyedArchiver archiveRootObject: rootObject toFile: path];
+
+}
+                         
 
 
 @end

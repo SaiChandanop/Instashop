@@ -12,6 +12,9 @@
 #import "PurchasingAddressViewController.h"
 #import "SellersAPIHandler.h"
 #import "CreateSellerViewController.h"
+#import "GroupDiskManager.h"
+#import "InstagramUserObject.h"
+#import "AppDelegate.h"
 @interface HomeViewController ()
 
 @end
@@ -34,6 +37,14 @@
     return self;
 }
 
+-(IBAction)logOutButtonHit
+{
+    AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [del.instagram logout];
+     
+    [InstagramUserObject deleteStoredUserObject];
+    [del userDidLogout];
+}
 
 -(IBAction)homeButtonHit
 {
