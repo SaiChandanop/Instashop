@@ -22,6 +22,7 @@
 @synthesize theScrollView;
 
 @synthesize termsView;
+@synthesize logoutView;
 
 @synthesize sellerLabel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,7 +46,7 @@
 
     
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    self.theScrollView.contentSize = CGSizeMake(0, self.termsView.frame.origin.y + self.termsView.frame.size.height);
+    self.theScrollView.contentSize = CGSizeMake(0, self.logoutView.frame.origin.y + self.logoutView.frame.size.height);
     [self.view addSubview:self.theScrollView];    
     
     /* joel use these for reference
