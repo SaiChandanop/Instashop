@@ -43,10 +43,11 @@
     
     self.backgroundColor = [UIColor clearColor];
     
-    self.rowNumberLabel = (UILabel *)[self viewWithTag:0];
+    self.rowNumberLabel = (UILabel *)[self viewWithTag:6];
     self.sizeButton = (UIButton *)[self viewWithTag:1];
     self.quantityButton = (UIButton *)[self viewWithTag:2];
 
+    
     
     [self addSubview:self.sizeButton];
     [self addSubview:self.quantityButton];
