@@ -25,8 +25,7 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-        
-        
+
     }
     return self;
 }
@@ -55,7 +54,6 @@
     {
         self.rowShowCount++;
         [theTableView reloadData];
-        //[theTableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:self.rowShowCount -1  inSection:0]  atScrollPosition:UITableViewScrollPositionBottom animated:YES];
     }
     
 }
@@ -106,7 +104,6 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    NSLog(@"self.cellSizeQuantityValueDictionary[%d]: %@", indexPath.row, self.cellSizeQuantityValueDictionary);
     cell.parentController = self;
     [cell loadWithIndexPath:indexPath withContentDictionary:self.cellSizeQuantityValueDictionary];
     cell.avaliableSizesArray = [[NSArray alloc] initWithArray:[self getRemainingAvailableSizesArray]];
@@ -126,6 +123,7 @@
         [cell.quantityButton removeTarget:nil
                                    action:NULL
                          forControlEvents:UIControlEventAllEvents];
+        cell.xButton.alpha = 0;
         
     }
     
@@ -152,10 +150,6 @@
 
 -(void)xButtonHitWithIndexPath:(NSIndexPath *)theIndexPath
 {
-    
-    NSLog(@"theIndexPath.row: %d", theIndexPath.row);
-    NSLog(@"self.cellSizeQuantityValueDictionary: %@", self.cellSizeQuantityValueDictionary);
-    
     NSArray *keysArray = [self.cellSizeQuantityValueDictionary allKeys];
     
     for (int i = 0; i < [keysArray count]; i++)
@@ -179,7 +173,6 @@
     }
     self.rowShowCount--;
     
-    NSLog(@"self.cellSizeQuantityValueDictionary: %@", self.cellSizeQuantityValueDictionary);
     [self.tableView reloadData];
     [self.productDetailsViewController updateLayout];
     

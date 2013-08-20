@@ -275,13 +275,12 @@
     
     if (self.sizeQuantityTableViewController.rowShowCount > 0 && [[self.sizeQuantityTableViewController getRemainingAvailableSizesArray] count] == 0)
     {
-        NSLog(@"HERE");
-         self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, 0);
+        self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, 0);
         self.addSizeButton.alpha = 0;
     }
     else
     {
-        NSLog(@"HERE2");
+    
         self.addSizeButton.alpha = 1;
         self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, 36);
     }
@@ -319,16 +318,19 @@
 {
     if (textView == self.descriptionTextView)
     {
-/*        CGRect textFrame = textView.frame;
+        CGRect textFrame = textView.frame;
         textFrame.size.height = textView.contentSize.height;
         textView.frame = textFrame;
         NSLog(@"expected size: %@", NSStringFromCGRect(textView.frame));
  
         self.selectedCategoriesBackgroundImageView.frame = CGRectMake(self.selectedCategoriesBackgroundImageView.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesBackgroundImageView.frame.size.width, self.selectedCategoriesBackgroundImageView.frame.size.height);
         self.selectedCategoriesLabel.frame = CGRectMake(self.selectedCategoriesLabel.frame.origin.x, textFrame.origin.y + textFrame.size.height, self.selectedCategoriesLabel.frame.size.width, self.selectedCategoriesLabel.frame.size.height);
+
+//        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x,
+        
         
         [self updateLayout];
-   */
+
     }
 
     
