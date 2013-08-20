@@ -138,7 +138,15 @@
 
     self.retailPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     if (![[self.requestedProductObject objectForKey:@"products_list_price"] isKindOfClass:[NSNull class]])
-          self.listPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_list_price"] floatValue]]];
+    {
+        NSString *listPriceString =[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_list_price"] floatValue]]];
+        NSAttributedString *strikethroughString = [[NSAttributedString alloc] initWithString:listPriceString
+                                                                        attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+        
+        
+        self.listPriceLabel.attributedText = strikethroughString;
+        
+    }
     
     self.categoryLabel.text = categoryString;
     
