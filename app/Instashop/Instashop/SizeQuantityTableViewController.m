@@ -114,7 +114,6 @@
     if ([self.availableSizesArray count] == 0)
     {
         //joel set button style here
-        cell.sizeButton.alpha = 1;
         cell.sizeButton.enabled = NO;
         
     }
