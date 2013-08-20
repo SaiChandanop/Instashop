@@ -119,7 +119,9 @@
     self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
 
     self.retailPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
-    self.listPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_list_price"] floatValue]]];
+    if (![[self.requestedProductObject objectForKey:@"products_list_price"] isKindOfClass:[NSNull class]])
+          self.listPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_list_price"] floatValue]]];
+    
     self.categoryLabel.text = categoryString;
     
     
