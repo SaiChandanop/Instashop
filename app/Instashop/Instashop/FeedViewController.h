@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "CellSelectionOccuredProtocol.h"
+#import "FeedRequestFinishedProtocol.h"
 
 @class AppRootViewController;
-@interface FeedViewController : UITableViewController <CellSelectionOccuredProtocol>
+
+@interface FeedViewController : UITableViewController <CellSelectionOccuredProtocol, FeedRequestFinishedProtocol>
 {
     AppRootViewController *parentController;
     

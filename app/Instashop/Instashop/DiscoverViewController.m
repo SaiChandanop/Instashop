@@ -17,7 +17,7 @@
 @implementation DiscoverViewController
 
 @synthesize theScrollView;
-
+@synthesize discoverTopCategoryTableViewController;
 @synthesize currentTopCategorySelection;
 
 

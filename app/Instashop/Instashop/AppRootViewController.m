@@ -124,8 +124,6 @@ float transitionTime = .456;
 
     NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
     
-    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:@"400" withDescription:@"first purchase"];
-    
 }
 
 -(void)ceaseTransition

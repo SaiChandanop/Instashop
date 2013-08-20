@@ -144,7 +144,6 @@
 		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
-		7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D371174D74410045C4B4 /* JSONKit.m */; };
 		7BE3D377174D772B0045C4B4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D376174D772B0045C4B4 /* Utils.m */; };
 		7BE688C9176B7801007D383B /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE688C7176B7801007D383B /* FeedViewController.m */; };
 		7BE688CA176B7801007D383B /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE688C8176B7801007D383B /* FeedViewController.xib */; };
@@ -227,6 +226,7 @@
 		7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSKeyboardControls.m; sourceTree = "<group>"; };
 		7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = BSKeyboardControls.strings; sourceTree = "<group>"; };
 		7B2C4B8D17C418700080F3F5 /* CellSelectionOccuredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellSelectionOccuredProtocol.h; sourceTree = "<group>"; };
+		7B2C4B8E17C41C160080F3F5 /* FeedRequestFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedRequestFinishedProtocol.h; sourceTree = "<group>"; };
 		7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewCell.xib; sourceTree = "<group>"; };
 		7B2C59DC17B95B4D00CEDD5A /* SizePickerViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizePickerViewViewController.h; sourceTree = "<group>"; };
 		7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizePickerViewViewController.m; sourceTree = "<group>"; };
@@ -352,8 +352,6 @@
 		7BE29B99177A21000093BB25 /* attributes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes.csv; sourceTree = "<group>"; };
 		7BE3D36C174D537D0045C4B4 /* UserAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserAPIHandler.h; sourceTree = "<group>"; };
 		7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIHandler.m; sourceTree = "<group>"; };
-		7BE3D370174D74410045C4B4 /* JSONKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JSONKit.h; sourceTree = "<group>"; };
-		7BE3D371174D74410045C4B4 /* JSONKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JSONKit.m; sourceTree = "<group>"; };
 		7BE3D375174D772B0045C4B4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		7BE3D376174D772B0045C4B4 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		7BE688C6176B7801007D383B /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
@@ -540,6 +538,7 @@
 			isa = PBXGroup;
 			children = (
 				7B2C4B8D17C418700080F3F5 /* CellSelectionOccuredProtocol.h */,
+				7B2C4B8E17C41C160080F3F5 /* FeedRequestFinishedProtocol.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";
@@ -932,24 +931,14 @@
 				7B1B302917BE8E9400BB6420 /* BSKeyboardControls */,
 				7B94515817BE70D600D4AAB1 /* SizePicker */,
 				2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */,
-				7BE3D373174D77110045C4B4 /* JSONKit */,
 				7B74C3C417970AE50006289C /* MBProgressHUD.h */,
 				7B74C3C517970AE50006289C /* MBProgressHUD.m */,
-				7BE3D370174D74410045C4B4 /* JSONKit.h */,
-				7BE3D371174D74410045C4B4 /* JSONKit.m */,
 				7BE3D375174D772B0045C4B4 /* Utils.h */,
 				7BE3D376174D772B0045C4B4 /* Utils.m */,
 				7B989BC917C267D7003559E0 /* ISAsynchImageView.h */,
 				7B989BCA17C267D7003559E0 /* ISAsynchImageView.m */,
 			);
 			name = Utils;
-			sourceTree = "<group>";
-		};
-		7BE3D373174D77110045C4B4 /* JSONKit */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = JSONKit;
 			sourceTree = "<group>";
 		};
 		7BE958EF1755470000A7E0AB /* Products */ = {
@@ -1175,7 +1164,6 @@
 				7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */,
 				7B7A745A174D52E3005E90B9 /* SMWebRequest.m in Sources */,
 				7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */,
-				7BE3D372174D74410045C4B4 /* JSONKit.m in Sources */,
 				7BE3D377174D772B0045C4B4 /* Utils.m in Sources */,
 				7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */,
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,

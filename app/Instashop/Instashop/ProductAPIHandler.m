@@ -8,7 +8,7 @@
 
 #import "ProductAPIHandler.h"
 #import "InstagramUserObject.h"
-
+#import "FeedRequestFinishedProtocol.h"
 @implementation ProductAPIHandler
 
 
@@ -64,9 +64,13 @@
         NSLog(@"responseString: %@", newStr);
 */        
     }
-    else
-        [self.delegate feedRequestFinishedWithArrray:responseArray];
+    else if ([self.delegate conformsToProtocol:@protocol(FeedRequestFinishedProtocol)])
+        [(id<FeedRequestFinishedProtocol>)self.delegate feedRequestFinishedWithArrray:responseArray];
+
+        
+
  
+    
  
 }
 
