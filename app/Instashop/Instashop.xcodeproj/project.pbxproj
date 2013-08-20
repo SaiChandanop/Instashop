@@ -193,6 +193,7 @@
 		2E0EAE01176F6E6700B65FC3 /* lmDiscoverIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lmDiscoverIcon@2x.png"; sourceTree = "<group>"; };
 		2E0EAE02176F6E6700B65FC3 /* closebutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "closebutton@2x.png"; sourceTree = "<group>"; };
 		2E0EAE03176F6E6700B65FC3 /* backbutton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "backbutton@2x.png"; sourceTree = "<group>"; };
+		2E7CFF9317C2D61E00657CFC /* cell_disclosure@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_disclosure@2x.png"; sourceTree = "<group>"; };
 		2EB2599D176786970054618D /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingScrollView.h; path = Instashop/TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		2EB2599E176786970054618D /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = Instashop/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		2EB2599F176786970054618D /* TPKeyboardAvoidingTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingTableView.h; path = Instashop/TPKeyboardAvoidingTableView.h; sourceTree = "<group>"; };
@@ -404,6 +405,7 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2E7CFF9317C2D61E00657CFC /* cell_disclosure@2x.png */,
 				7B602DAB1766543100663A73 /* buybutton@2x.png */,
 				2E0EAE03176F6E6700B65FC3 /* backbutton@2x.png */,
 				2E0EAE02176F6E6700B65FC3 /* closebutton@2x.png */,

@@ -25,6 +25,7 @@
 -(void)loadStates;
 -(IBAction)homeButtonHit;
 
+
 @property (nonatomic, retain) AppRootViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
@@ -32,4 +33,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
 
 @property (nonatomic, retain) IBOutlet UIView *termsView;
+
+@property (nonatomic, retain) IBOutlet UIView *logoutView;
 @end
