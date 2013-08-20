@@ -26,7 +26,7 @@
 
 @synthesize termsView;
 @synthesize logoutView;
-
+@synthesize topBarView;
 @synthesize sellerLabel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,7 +60,7 @@
     
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.theScrollView.contentSize = CGSizeMake(0, self.logoutView.frame.origin.y + self.logoutView.frame.size.height);
-    [self.view addSubview:self.theScrollView];    
+    [self.view insertSubview:self.theScrollView belowSubview:self.topBarView];
     
     /* joel use these for reference
     NSLog(@"scroll view size: %@", NSStringFromCGRect(self.theScrollView.frame));
