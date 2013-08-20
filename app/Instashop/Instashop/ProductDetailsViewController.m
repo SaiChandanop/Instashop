@@ -127,6 +127,7 @@
     
     self.sizeQuantityTableViewController.rowShowCount = 0;
     self.sizeQuantityTableViewController.availableSizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
+    self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
     [self.sizeQuantityTableViewController.tableView reloadData];
 
     self.pricesView.frame = self.originalPriceViewRect;

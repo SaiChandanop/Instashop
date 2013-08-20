@@ -158,8 +158,10 @@
 -(void)pickerSaveButtonHit
 {
     NSLog(@"pickerSaveButtonHit");
-    [self.parentController rowValueSelectedWithIndexPath:self.theIndexPath withKey:self.theController.typeKeyString withValue:[self.theController.itemsArray objectAtIndex:self.theController.selectedRow]];
     [self dismissPicker];
+    [self.parentController rowValueSelectedWithIndexPath:self.theIndexPath withKey:self.theController.typeKeyString withValue:[self.theController.itemsArray objectAtIndex:self.theController.selectedRow]];
+    
+
 }
 
 
