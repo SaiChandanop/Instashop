@@ -11,6 +11,7 @@
                 <outlet property="sellerLabel" destination="54" id="113"/>
                 <outlet property="termsView" destination="93" id="ogh-Gi-72B"/>
                 <outlet property="theScrollView" destination="31" id="115"/>
+                <outlet property="topBarView" destination="b89-GX-3oj" id="TqT-Qf-LFZ"/>
                 <outlet property="view" destination="110" id="Azc-5W-0Z4"/>
             </connections>
         </placeholder>

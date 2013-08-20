@@ -17,6 +17,9 @@
     
     UIView *termsView;
     
+    UIView *topBarView;
+    
+    
 }
 
 
@@ -37,4 +40,6 @@
 @property (nonatomic, retain) IBOutlet UIView *termsView;
 
 @property (nonatomic, retain) IBOutlet UIView *logoutView;
+
+@property (nonatomic, retain) IBOutlet UIView *topBarView;
 @end
