@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "Instagram.h"
-
-@interface AuthenticationViewController : UIViewController <IGSessionDelegate, IGRequestDelegate, UIWebViewDelegate>
+#import "SellerExistsResponderProtocol.h"
+@interface AuthenticationViewController : UIViewController <IGSessionDelegate, IGRequestDelegate, UIWebViewDelegate, SellerExistsResponderProtocol>
 {
     UIWebView *loginWebView;
     

@@ -120,10 +120,7 @@ float transitionTime = .456;
 
 -(void)doBuy
 {
-    NSLog(@"do buy");
-
-    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
-    
+    NSLog(@"do buy");    
 }
 
 -(void)ceaseTransition

@@ -9,7 +9,7 @@
 #import "SellersAPIHandler.h"
 #import "AppDelegate.h"
 #import "InstagramUserObject.h"
-
+#import "SellerExistsResponderProtocol.h"
 @implementation SellersAPIHandler
 
 +(void)makeCheckIfSellerExistsCallWithDelegate:(id)delegate
@@ -43,8 +43,12 @@
     
         [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
     }
-    [self.delegate sellerExistsCallReturned];
+    
+    
+    if ([self.delegate conformsToProtocol:@protocol(SellerExistsResponderProtocol)])
+        [(id<SellerExistsResponderProtocol>)self.delegate sellerExistsCallReturned];
 
+    
 }
 
 

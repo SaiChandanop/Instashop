@@ -94,7 +94,7 @@
 {
     [self.sellerProfileImageView beginAnimations];
     
-//    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+
         
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
@@ -131,7 +131,6 @@
 
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
     
-    NSLog(@"self.requestedProductObjec: %@", self.requestedProductObject);
     self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
@@ -182,11 +181,6 @@
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
 {
-    NSLog(@"imageRequestFinished imageRequestFinished");
-    NSLog(@"referenceImageView: %@", referenceImageView);
-    NSLog(@"self.sellerProfileImageView: %@", self.sellerProfileImageView);
-    NSLog(@"%d", referenceImageView == self.sellerProfileImageView);
-    
     
 //    if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
 //        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
@@ -259,11 +253,6 @@
 -(IBAction)buyButtonHit
 {
      NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
-    
-    
-    NSLog(@"self.sizeSelectedIndex: %d", self.sizeSelectedIndex);
-    NSLog(@"[[self.quantityButton titleForState:UIControlStateNormal]: %@", [self.quantityButton titleForState:UIControlStateNormal]);
-    
     
     BOOL isSingleSize = NO;
     if ([sizeQuantityArray count] == 1)

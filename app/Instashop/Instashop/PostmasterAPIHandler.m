@@ -8,7 +8,7 @@
 
 #import "PostmasterAPIHandler.h"
 #import "SBJson.h"
-
+#import "RatesCallHandlerProtocol.h"
 @implementation PostmasterAPIHandler
 
 +(void)makePostmasterRatesCallWithDelegate:(id)theDelegate withFromZip:(NSString *)fromZip withToZip:(NSString *)toZip withWeight:(NSString *)weight withCarrier:(NSString *)carrier
@@ -29,14 +29,14 @@
 
 -(void)ratesCallDidFail:(id)obj
 {
-    [self.delegate ratesCallDidFail];
+    if ([self.delegate conformsToProtocol:@protocol(RatesCallHandlerProtocol)])
+        [(id<RatesCallHandlerProtocol>)self.delegate ratesCallDidFail];
 }
 
 
 -(void)ratesCallDidFinish:(id)obj
 {
-    NSString* responseString = [[[NSString alloc] initWithData:responseData
-                                                      encoding:NSUTF8StringEncoding] autorelease];
+//    NSString* responseString = [[[NSString alloc] initWithData:responseData  encoding:NSUTF8StringEncoding] autorelease];
  
     id aobj = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     [self.delegate ratesCallReturnedWithDictionary:aobj];

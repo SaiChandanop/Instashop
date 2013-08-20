@@ -227,6 +227,8 @@
 		7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = BSKeyboardControls.strings; sourceTree = "<group>"; };
 		7B2C4B8D17C418700080F3F5 /* CellSelectionOccuredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellSelectionOccuredProtocol.h; sourceTree = "<group>"; };
 		7B2C4B8E17C41C160080F3F5 /* FeedRequestFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedRequestFinishedProtocol.h; sourceTree = "<group>"; };
+		7B2C4B8F17C41DFF0080F3F5 /* SellerExistsResponderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerExistsResponderProtocol.h; sourceTree = "<group>"; };
+		7B2C4B9017C41F220080F3F5 /* RatesCallHandlerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RatesCallHandlerProtocol.h; sourceTree = "<group>"; };
 		7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewCell.xib; sourceTree = "<group>"; };
 		7B2C59DC17B95B4D00CEDD5A /* SizePickerViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizePickerViewViewController.h; sourceTree = "<group>"; };
 		7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizePickerViewViewController.m; sourceTree = "<group>"; };
@@ -539,6 +541,8 @@
 			children = (
 				7B2C4B8D17C418700080F3F5 /* CellSelectionOccuredProtocol.h */,
 				7B2C4B8E17C41C160080F3F5 /* FeedRequestFinishedProtocol.h */,
+				7B2C4B8F17C41DFF0080F3F5 /* SellerExistsResponderProtocol.h */,
+				7B2C4B9017C41F220080F3F5 /* RatesCallHandlerProtocol.h */,
 			);
 			name = Delegates;
 			sourceTree = "<group>";

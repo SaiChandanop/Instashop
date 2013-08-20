@@ -38,7 +38,6 @@
 -(void)createProductButtonHit;
 
 
--(void)exitButtonHitWithViewController:(UIViewController *)exitingViewController;
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 
 

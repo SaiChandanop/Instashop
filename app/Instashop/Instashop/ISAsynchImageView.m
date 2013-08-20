@@ -33,7 +33,6 @@
 
 -(void)ceaseAnimations
 {
-    NSLog(@"ceaseAnimations!");
     [self.imageLoadingIndicatorView stopAnimating];
     [self.imageLoadingIndicatorView removeFromSuperview];
 }

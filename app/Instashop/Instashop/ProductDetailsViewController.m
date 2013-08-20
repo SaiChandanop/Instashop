@@ -21,6 +21,9 @@
 
 @implementation ProductDetailsViewController
 
+@synthesize instagramPictureURLString;
+@synthesize instragramMediaInfoDictionary;
+@synthesize selectedCategoriesBackgroundImageView;
 @synthesize sizeQuantityTableViewController;
 @synthesize parentController;
 @synthesize attributesArray;

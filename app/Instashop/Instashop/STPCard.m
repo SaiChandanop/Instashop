@@ -148,6 +148,9 @@
                                       code:STPCardError
                                   userInfo:userInfoDict];
      */
+    
+    NSLog(@"STPCARD CREATE ERROR WITH MESSAGE FIX FIX");
+    return nil;
 }
 
 #pragma mark Public Interface

@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "TPKeyboardAvoidingScrollView.h"
+#import "RatesCallHandlerProtocol.h"
 
-@interface PurchasingAddressViewController : UIViewController
+@interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol>
 {
     id doneButtonDelegate;    
     id shippingCompleteDelegate;
@@ -61,6 +62,9 @@
 -(IBAction)doneButtonHit;
 
 -(IBAction)buyButtonHit;
+
+-(void)ratesCallDidFail;
+-(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict;
 
 @property (nonatomic, retain) id doneButtonDelegate;
 @property (nonatomic, retain) id shippingCompleteDelegate;
