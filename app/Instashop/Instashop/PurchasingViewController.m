@@ -69,6 +69,13 @@
     self.navigationItem.titleView = theImageView;
     
     self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
+    
+    
+    self.sizeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.sizeButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    self.quantityButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+    self.quantityButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
 }
 
 
@@ -131,7 +138,7 @@
         if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
         {
             //Joel set your button style here
-            self.sizeButton.alpha = 1;
+            self.sizeButton.enabled = NO;
             
         }
 
