@@ -25,6 +25,7 @@
     BOOL isButtonsDisabled;
 }
 
+-(NSArray *)getRemainingAvailableSizesArray;
 -(void)xButtonHitWithIndexPath:(NSIndexPath *)theIndexPath;
 -(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView;
 -(void)rowValueSelectedWithIndexPath:(NSIndexPath *)theIndexPath withKey:(NSString *)key withValue:(NSString *)value;
