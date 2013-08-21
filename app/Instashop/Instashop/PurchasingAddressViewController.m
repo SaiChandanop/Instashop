@@ -159,7 +159,7 @@
 
     NSString *buyButtonTitle = [NSString stringWithFormat:@"BUY - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:totalValue]]];
     
-    [self.doneButton setTitle:buyButtonTitle forState:UIControlStateNormal];
+    [self.doneButton setTitle:self.productBuyButtonLabel.text forState:UIControlStateNormal];
 }
 
 
