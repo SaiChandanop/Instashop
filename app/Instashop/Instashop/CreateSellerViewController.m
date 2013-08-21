@@ -111,7 +111,7 @@
     */
      
     self.navigationItem.titleView = self.titleTextLabel;
-    self.navigationItem.titleView.frame = CGRectMake(0,0,50,50);
+    //self.navigationItem.titleView.frame = CGRectMake(0,0,50,50);
     
     
     
