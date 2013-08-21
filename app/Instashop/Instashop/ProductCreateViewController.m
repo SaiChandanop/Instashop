@@ -9,6 +9,7 @@
 #import "ProductCreateViewController.h"
 #import "CreateProductAPIHandler.h"
 #import "AppRootViewController.h"
+#import "ISConstants.h"
 
 @interface ProductCreateViewController ()
 
@@ -34,7 +35,7 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:98.0/255.0 green:181.0/255.0 blue:148.0/255.0 alpha:1.0]];
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
  

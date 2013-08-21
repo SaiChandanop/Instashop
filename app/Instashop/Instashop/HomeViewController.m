@@ -15,6 +15,8 @@
 #import "GroupDiskManager.h"
 #import "InstagramUserObject.h"
 #import "AppDelegate.h"
+#import "ISConstants.h"
+
 @interface HomeViewController ()
 
 @end
@@ -57,6 +59,7 @@
 {
     [super viewDidLoad];
 
+    self.topBarView.backgroundColor = [ISConstants getISGreenColor];
     
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.theScrollView.contentSize = CGSizeMake(0, self.logoutView.frame.origin.y + self.logoutView.frame.size.height);
