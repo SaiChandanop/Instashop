@@ -25,7 +25,7 @@ float transitionTime = .456;
 {
     theSharedRootViewController = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (theSharedRootViewController) {
-        
+
     }
     return theSharedRootViewController;
 }
