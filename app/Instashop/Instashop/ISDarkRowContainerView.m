@@ -33,6 +33,8 @@
     self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, self.frame.size.width, self.frame.size.height)];
     self.backgroundImageView.image = [UIImage imageNamed:@"cell_background.png"];
     [self insertSubview:self.backgroundImageView atIndex:0];
+    
+
 }
 
 

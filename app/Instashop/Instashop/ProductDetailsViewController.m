@@ -306,10 +306,14 @@
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
 {
+    if ([textView.text compare:@"Description"] == NSOrderedSame)
+        textView.text = @"";
     self.descriptionTextView.scrollEnabled = YES;
 }
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    if ([textView.text compare:@""] == NSOrderedSame)
+        textView.text = @"Description";
     self.descriptionTextView.scrollEnabled = NO;
 }
 
@@ -317,28 +321,35 @@
 {
     if (textView == self.descriptionTextView)
     {
-/*        CGRect textFrame = textView.frame;
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:.2];
+
+        
+        
+        
+        CGRect textFrame = textView.frame;
         textFrame.size.height = textView.contentSize.height;
         textView.frame = textFrame;
   
         textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height + 10);
-        self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, textFrame.size.height);
-        
-        float offset = 3;
-        self.selectedCategoriesBackgroundImageView.frame = CGRectMake(self.selectedCategoriesBackgroundImageView.frame.origin.x, textFrame.origin.y + textFrame.size.height + offset, self.selectedCategoriesBackgroundImageView.frame.size.width, self.selectedCategoriesBackgroundImageView.frame.size.height);
-        self.selectedCategoriesLabel.frame = CGRectMake(self.selectedCategoriesLabel.frame.origin.x, textFrame.origin.y + textFrame.size.height + offset + 3, self.selectedCategoriesLabel.frame.size.width, self.selectedCategoriesLabel.frame.size.height);
+        self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textFrame.size.height);
+        self.descriptionContainerView.backgroundImageView.frame = CGRectMake(self.descriptionContainerView.backgroundImageView.frame.origin.x, self.descriptionContainerView.backgroundImageView.frame.origin.y, self.descriptionContainerView.backgroundImageView.frame.size.width, self.descriptionContainerView.frame.size.height);
+
+        self.categoriesContainerView.frame = CGRectMake(self.categoriesContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height + 20, self.categoriesContainerView.frame.size.width, self.categoriesContainerView.frame.size.height);
 
         
         
-        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x, self.selectedCategoriesButton.frame.origin.y + self.selectedCategoriesButton.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, self.sizeQuantityTableViewController.tableView.frame.size.height);
+        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x, self.categoriesContainerView.frame.origin.y + self.categoriesContainerView.frame.size.height + 4, self.sizeQuantityTableViewController.tableView.frame.size.width, self.sizeQuantityTableViewController.tableView.frame.size.height);
         
         
         self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, self.addSizeButton.frame.size.height);
                                                                           
         self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.addSizeButton.frame.origin.y + self.addSizeButton.frame.size.height, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
         
-        self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height  + 29);
-        */
+        self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.pricesView.frame.size.height + 29);
+        [UIView commitAnimations];
+
     }
 
     
