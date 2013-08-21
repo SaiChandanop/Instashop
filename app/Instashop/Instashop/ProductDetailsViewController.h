@@ -25,7 +25,9 @@
     UIScrollView *containerScrollView;    
     
     UIImageView *theImageView;
-    UITextField *titleTextField;
+
+    UILabel *titleLabel;
+    
     UITextView *descriptionTextView;
     UIImageView *descriptionBackgroundImageView;
     UIImageView *selectedCategoriesBackgroundImageView;
@@ -68,7 +70,7 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
-@property (nonatomic, retain) IBOutlet UITextField *titleTextField;
+@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 @property (nonatomic, retain) IBOutlet UIImageView *descriptionBackgroundImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *selectedCategoriesBackgroundImageView;

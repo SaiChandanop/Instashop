@@ -29,7 +29,7 @@
 @synthesize attributesArray;
 @synthesize containerScrollView;
 @synthesize theImageView;
-@synthesize titleTextField;
+@synthesize titleLabel;
 @synthesize descriptionTextView;
 @synthesize descriptionBackgroundImageView;
 @synthesize selectedCategoriesLabel;
@@ -70,7 +70,8 @@
     self.containerScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.containerScrollView];
     
-    self.titleTextField.delegate = self;
+    
+    
     self.descriptionTextView.delegate = self;
     self.retailPriceTextField.delegate = self;
     self.instashopPriceTextField.delegate = self;
@@ -90,8 +91,8 @@
     self.addSizeButton.alpha = 0;
     
     
-    [self.titleTextField setValue:[UIColor lightGrayColor]
-                    forKeyPath:@"_placeholderLabel.textColor"];
+//    [self.titleTextField setValue:[UIColor lightGrayColor]
+  //                  forKeyPath:@"_placeholderLabel.textColor"];
 
 //    [self.descriptionTextView setValue:[UIColor lightGrayColor]
   //                     forKeyPath:@"_placeholderLabel.textColor"];
@@ -172,9 +173,9 @@
     
     if (captionDictionary != nil)
         if (![captionDictionary isKindOfClass:[NSNull class]])
-            self.titleTextField.text = [captionDictionary objectForKey:@"text"];
-    
-    
+            self.titleLabel.text = [captionDictionary objectForKey:@"text"];
+        
+    self.titleLabel.numberOfLines = 0;
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
 }
@@ -200,7 +201,7 @@
             ProductCreateObject *productCreateObject = [[ProductCreateObject alloc] init];
             productCreateObject.instagramPictureURLString = self.instagramPictureURLString;
             productCreateObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
-            productCreateObject.title = self.titleTextField.text;
+            productCreateObject.title = self.titleLabel.text;
             productCreateObject.description = self.descriptionTextView.text;
             productCreateObject.retailValue = self.retailPriceTextField.text;
             productCreateObject.retailPrice = self.retailPriceTextField.text;
@@ -221,7 +222,7 @@
         productCreateContainerObject.mainObject = [[ProductCreateObject alloc] init];
         productCreateContainerObject.mainObject.instagramPictureURLString = self.instagramPictureURLString;
         productCreateContainerObject.mainObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
-        productCreateContainerObject.mainObject.title = self.titleTextField.text;
+        productCreateContainerObject.mainObject.title = self.titleLabel.text;
         productCreateContainerObject.mainObject.description = self.descriptionTextView.text;
         productCreateContainerObject.mainObject.retailValue = self.retailPriceTextField.text;
         productCreateContainerObject.mainObject.retailPrice = self.retailPriceTextField.text;
@@ -380,8 +381,6 @@
 
 -(void)resignResponders
 {
-    
-    [self.titleTextField resignFirstResponder];
     [self.descriptionTextView resignFirstResponder];
     [self.retailPriceTextField resignFirstResponder];
     [self.instashopPriceTextField resignFirstResponder];
