@@ -51,6 +51,10 @@
 //    UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonHit)];
   //  self.navigationItem.rightBarButtonItem = doneButton;
 
+    self.contentScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [self.view addSubview:self.contentScrollView];
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.contentScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.bottomContentView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
@@ -61,7 +65,7 @@
     self.sizeQuantityTableViewController.tableView.backgroundColor = [UIColor clearColor];
     [self.contentScrollView addSubview:self.sizeQuantityTableViewController.tableView];
 
-    
+    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y + self.bottomContentView.frame.size.height);
     
 }
 
@@ -83,7 +87,7 @@
     
     self.bottomContentView.frame = CGRectMake(0, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.bottomContentView.frame.size.width, self.bottomContentView.frame.size.height);
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y +  self.sellButton.frame.origin.y + self.sellButton.frame.size.height + 30);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y +  self.sellButton.frame.origin.y + self.sellButton.frame.size.height);
     
     [self.sizeQuantityTableViewController.tableView reloadData];
     
