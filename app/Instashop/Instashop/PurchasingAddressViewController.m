@@ -55,7 +55,9 @@
 @synthesize fedexRateDictionary;
 
 @synthesize creditCardNumberTextField;
-@synthesize expirationTextField;
+@synthesize expirationMonthTextField;
+@synthesize expirationYearTextField;
+
 @synthesize ccvTextField;
 @synthesize requestedPostmasterDictionary;
 
@@ -97,7 +99,9 @@
     self.navigationItem.titleView = theImageView;
 
     self.contentScrollView.contentSize = CGSizeMake(0, self.doneButton.frame.origin.y + self.doneButton.frame.size.height + 56);
+
     
+    [self populateDummy];
 
 }
 
@@ -183,7 +187,8 @@
     [self.phoneTextField resignFirstResponder];
     
     [self.creditCardNumberTextField resignFirstResponder];
-    [self.expirationTextField resignFirstResponder];
+    [self.expirationMonthTextField resignFirstResponder];
+    [self.expirationYearTextField resignFirstResponder];
     [self.ccvTextField resignFirstResponder];
     
     if (self.upsRateDictionary == nil && self.fedexRateDictionary == nil)
@@ -237,6 +242,127 @@
 }
 
 
+
+-(void)postmasterShipRequestRespondedWithDictionary:(NSDictionary *)theDict
+{
+    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];    
+    [self doStripePurchaseWithPostMasterDictionary:theDict];
+    
+}
+
+-(void)postmasterShipCallFailed
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+/*    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Please ensure all fields are filled out correctly"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
+  */
+}
+
+-(void)doStripePurchaseWithPostMasterDictionary:(NSDictionary *)thePostmasterDictionary
+{
+    NSLog(@"doStripePurchaseWithPostMasterDictionary: %@", thePostmasterDictionary);
+    
+    
+
+    /*
+    
+    "actual_shipping_cost" = 1211;
+    "buyer_city" = Weston;
+    "buyer_company" = "test buyer company";
+    "buyer_country" = US;
+    "buyer_line1" = "5 Tall Pines Dr";
+    "buyer_name" = "Josh Klobe";
+    "buyer_phone_no" = "212-221-1212";
+    "buyer_residential" = 1;
+    "buyer_state" = CT;
+    "buyer_zip_code" = 06883;
+    "postmaster_label_url" = "/v1/label/AMIfv94NDddkRFGfmOJdP-BilJFkTk_TQ7yX9OJgoAp5iuoK1vkri6CE6N9f1_GDbO_gkaAIrHDNWp7VGk75G6c7MQnhnS89g6kuxxS1Ibu-G8YaKlN8ivjCJVQgsrxOg0te1oOHZcWnJZnti-7d5ko9kLdaB08roexedNHrzA6ybcy8QDuw4RQ";
+    "postmaster_shipment_id" = 6264089542131712;
+    "tracking_id" = 1Z8V81310399240955;
+    
+    */
+    
+    [MBProgressHUD showHUDAddedTo:self.view animated:NO].detailsLabelText = @"Stripe Call";
+    self.requestedPostmasterDictionary = [NSDictionary dictionaryWithDictionary:thePostmasterDictionary];
+    STPCard *stripeCard = [[STPCard alloc] init];
+    stripeCard.number = self.creditCardNumberTextField.text;
+    stripeCard.expMonth = [self.expirationMonthTextField.text integerValue];
+    stripeCard.expYear = [self.expirationYearTextField.text integerValue];
+    stripeCard.cvc = self.ccvTextField.text;
+    stripeCard.name = self.nameTextField.text;
+    stripeCard.addressLine1 = self.addressTextField.text;
+    stripeCard.addressZip = self.zipTextField.text;
+    stripeCard.addressCity = self.cityTextField.text;
+    stripeCard.addressState = self.stateTextField.text;
+//    stripeCard.addressCountry = @"KINGS";
+    
+    [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+
+    
+}
+-(void)doBuy
+{
+    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
+    
+    float val = [[self.requestedProductObject objectForKey:@"products_price"] floatValue];
+    
+    val = val * 100;
+    int intVal = [[NSNumber numberWithFloat:val] integerValue];
+    NSString *priceString = [NSString stringWithFormat:@"%d", intVal];
+    
+    NSString *zencartProductID = [NSString stringWithFormat:@"product_id: %@", [self.requestedProductObject objectForKey:@"product_id"]];
+    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID withDelegate:self];
+    
+}
+
+
+-(void)buySuccessfulWithDictionary:(id)theDict
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+    [MBProgressHUD showHUDAddedTo:self.view animated:NO].detailsLabelText = @"Instashop Call";
+    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject withProductCategoryObjectID:[productCategoryDictionary objectForKey:@"id"] withPostmasterDictionary:self.requestedPostmasterDictionary];
+    
+}
+
+-(void)productPurchaceSuccessful
+{
+    NSLog(@"productPurchaceSuccessful productPurchaceSuccessful");
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    NSArray *array = [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    NSLog(@"array: %@", array);
+    
+    [PurchasingCompleteViewController presentWithProductObject:nil];
+    
+}
+
+
+-(void)populateDummy
+{
+    self.nameTextField.text = @"Josh Klobe";
+    self.addressTextField.text = @"5 Tall Pines Dr";
+    self.cityTextField.text = @"Weston";
+    self.stateTextField.text = @"CT";
+    self.zipTextField.text = @"06883";
+
+    self.creditCardNumberTextField.text = @"4242424242424242";
+    self.expirationMonthTextField.text = @"05";
+    self.expirationYearTextField.text = @"15";
+    self.ccvTextField.text = @"123";
+
+
+}
+
+
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     NSLog(@"index: %d", buttonIndex);
     
@@ -277,85 +403,6 @@
             
             break;
     }
-    
-}
-
--(void)postmasterShipRequestRespondedWithDictionary:(NSDictionary *)theDict
-{
-    
-    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];    
-    [self doStripePurchaseWithPostMasterDictionary:theDict];
-    
-}
-
--(void)postmasterShipCallFailed
-{
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Please ensure all fields are filled out correctly"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-    
-    [alertView show];
-    
-}
-
--(void)doStripePurchaseWithPostMasterDictionary:(NSDictionary *)thePostmasterDictionary
-{
-    [MBProgressHUD showHUDAddedTo:self.view animated:NO].detailsLabelText = @"Stripe Call";
-    self.requestedPostmasterDictionary = [NSDictionary dictionaryWithDictionary:thePostmasterDictionary];
-    STPCard *stripeCard = [[STPCard alloc] init];
-    stripeCard.number = @"4242424242424242";
-    stripeCard.expMonth = 05;
-    stripeCard.expYear = 15;
-    stripeCard.cvc = @"123";
-    stripeCard.name = @"alchemy50";
-    stripeCard.addressLine1 = @"20 Jay Street #934";
-    stripeCard.addressZip = @"11201";
-    stripeCard.addressCity = @"Brooklyn";
-    stripeCard.addressState = @"NY";
-    stripeCard.addressCountry = @"KINGS";
-    
-    [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
-    
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
--(void)doBuy
-{
-    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
-    
-    float val = [[self.requestedProductObject objectForKey:@"products_price"] floatValue];
-    
-    val = val * 100;
-    int intVal = [[NSNumber numberWithFloat:val] integerValue];
-    NSString *priceString = [NSString stringWithFormat:@"%d", intVal];
-    
-    NSString *zencartProductID = [NSString stringWithFormat:@"product_id: %@", [self.requestedProductObject objectForKey:@"product_id"]];
-    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID withDelegate:self];
-    
-}
-
-
--(void)buySuccessfulWithDictionary:(id)theDict
-{
-    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
-    [MBProgressHUD showHUDAddedTo:self.view animated:NO].detailsLabelText = @"Instashop Call";
-    [ProductAPIHandler productPurchasedWithDelegate:self withStripeDictionary:theDict withProductObject:self.requestedProductObject withProductCategoryObjectID:[productCategoryDictionary objectForKey:@"id"] withPostmasterDictionary:self.requestedPostmasterDictionary];
-    
-}
-
--(void)productPurchaceSuccessful
-{
-    NSLog(@"productPurchaceSuccessful productPurchaceSuccessful");
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    
-    NSArray *array = [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    NSLog(@"array: %@", array);
-    
-    [PurchasingCompleteViewController presentWithProductObject:nil];
     
 }
 

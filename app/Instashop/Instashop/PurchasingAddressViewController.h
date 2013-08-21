@@ -40,7 +40,8 @@
     UITextField *phoneTextField;
     
     UITextField *creditCardNumberTextField;
-    UITextField *expirationTextField;
+    UITextField *expirationMonthTextField;
+    UITextField *expirationYearTextField;
     UITextField *ccvTextField;
     
     UIButton *checkRatesButton;
@@ -94,7 +95,9 @@
 @property (nonatomic, retain) IBOutlet UITextField *phoneTextField;
 
 @property (nonatomic, retain) IBOutlet UITextField *creditCardNumberTextField;
-@property (nonatomic, retain) IBOutlet UITextField *expirationTextField;
+@property (nonatomic, retain) IBOutlet UITextField *expirationMonthTextField;
+@property (nonatomic, retain) IBOutlet UITextField *expirationYearTextField;
+
 @property (nonatomic, retain) IBOutlet UITextField *ccvTextField;
 
 @property (nonatomic, retain) IBOutlet UIButton *checkRatesButton;

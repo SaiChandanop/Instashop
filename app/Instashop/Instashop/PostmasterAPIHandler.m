@@ -55,6 +55,7 @@
     [postDictionary addEntriesFromDictionary:shippingDictionary];
     [postDictionary addEntriesFromDictionary:packageDictionary];
     
+    NSLog(@"postDictionary: %@", postDictionary);
     
     
     NSError *error;
@@ -87,7 +88,7 @@
     NSString* responseString = [[[NSString alloc] initWithData:responseData
                                                       encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"responseString: %@", responseString);
+    NSLog(@"postmasterShipCallReturned responseString: %@", responseString);
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
     
@@ -98,9 +99,10 @@
 
 }
 
--(void)postmasterShipCallFailed
+-(void)postmasterShipCallFailed:(NSError *)theError
 {
-    [self.delegate postmasterShipCallFailed];
+    NSLog(@"postmasterShipCallFailed: %@", theError);
+ //   [self.delegate postmasterShipCallFailed];
 }
 
 

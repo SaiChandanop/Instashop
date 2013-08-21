@@ -79,13 +79,6 @@ float transitionTime = .456;
 //    [self.feedViewController.view insertSubview:self.notificationsViewController.view belowSubview:self.feedViewController.headerView];
     
     
-    UIButton *stripeButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    stripeButton.frame = CGRectMake(self.view.frame.size.width / 2 - 50, 100, 100, 50);
-    [stripeButton addTarget:self action:@selector(stripeButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [stripeButton setTitle:@"Stripe" forState:UIControlStateNormal];
-//    [self.view addSubview:stripeButton];
-    
-    
     
 	// Do any additional setup after loading the view.
     
@@ -94,31 +87,6 @@ float transitionTime = .456;
 
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
 
--(void)stripeButtonHit
-{
-    NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
-    
-    NSLog(@"stripeTokenDictionary: %@", stripeToken);
-    if (stripeToken == nil)
-    {
-        STPCard *stripeCard = [[STPCard alloc] init];
-        stripeCard.number = @"4242424242424242";
-        stripeCard.expMonth = 05;
-        stripeCard.expYear = 15;
-        stripeCard.cvc = @"123";
-        stripeCard.name = @"alchemy50";
-        stripeCard.addressLine1 = @"20 Jay Street #934";
-        stripeCard.addressZip = @"11201";
-        stripeCard.addressCity = @"Brooklyn";
-        stripeCard.addressState = @"NY";
-        stripeCard.addressCountry = @"KINGS";
-        
-        [StripeAuthenticationHandler createTokenWithCard:stripeCard withDelegate:self];
-    }
-    
-    else
-        [self doBuy];
-}
 
 -(void)doBuy
 {
