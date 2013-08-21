@@ -64,7 +64,7 @@
 //    CGFloat whiteSpace = 11.0f;
     //CGFloat topSpace = 64.0f;
     
-    self.containerScrollView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
+    self.containerScrollView.frame = CGRectMake(0, 50, screenWidth, screenHeight);
     self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.containerScrollView.contentSize.height);
 //    self.containerScrollView.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.containerScrollView];
@@ -86,7 +86,7 @@
     [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
     
-    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
+    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 90, 44)];
     
     UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];
     homeImageView.frame = CGRectMake(0,0,44,44);

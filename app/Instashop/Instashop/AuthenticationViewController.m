@@ -102,6 +102,9 @@
     self.loginWebView.delegate = self;
     [self.loginWebView loadRequest:[NSURLRequest requestWithURL:theURL]];
 
+    UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0,-20, self.view.frame.size.width, 20)];
+    whiteView.backgroundColor = [UIColor whiteColor];
+    [self.loginWebView addSubview:whiteView];
     
     self.instagramLoginWebViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
     self.instagramLoginWebViewController.view.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
@@ -109,7 +112,8 @@
 
     
     UIView *gapView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,20)];
-    gapView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+//    gapView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    gapView.backgroundColor = [UIColor whiteColor];
     [self.instagramLoginWebViewController.view addSubview:gapView];
     
     
