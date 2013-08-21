@@ -117,9 +117,15 @@
     self.descriptionTextField.text = self.productCreateContainerObject.mainObject.description;
     self.listPriceValueTextField.text = self.productCreateContainerObject.mainObject.listPrice;
     
-    self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithDictionary:theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary];
-    self.sizeQuantityTableViewController.rowShowCount = [[self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary allKeys] count] * 44;
     
+    NSLog(@"theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary: %@", theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary);
+    
+    self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithDictionary:theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary];
+    self.sizeQuantityTableViewController.rowShowCount = [[self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary allKeys] count];
+    
+    self.sizeQuantityTableViewController.tableView.scrollEnabled = NO;
+    
+    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y + self.bottomContentView.frame.size.height);
 }
 
 
