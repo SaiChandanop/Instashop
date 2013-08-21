@@ -12,6 +12,7 @@
 #import "ProductAPIHandler.h"
 #import "ImageAPIHandler.h"
 #import "PurchasingViewController.h"
+#import "ISConstants.h"
 
 
 @interface FeedViewController ()
@@ -39,7 +40,7 @@
     [ProductAPIHandler getAllProductsWithDelegate:self];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationController.navigationBar setBarTintColor:[UIColor colorWithRed:98.0/255.0 green:181.0/255.0 blue:148.0/255.0 alpha:1.0]];
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
 

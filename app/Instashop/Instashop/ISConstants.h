@@ -11,5 +11,5 @@
 
 @interface ISConstants : NSObject
 
-+(UIColor *)getSomeColor;
++(UIColor *)getISGreenColor;
 @end

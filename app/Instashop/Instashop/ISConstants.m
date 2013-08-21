@@ -10,8 +10,9 @@
 
 @implementation ISConstants
 
-+(UIColor *)getSomeColor
++(UIColor *)getISGreenColor
 {
-    return [UIColor colorWithRed:12.0f/255.0f green:12.0f/255.0f blue:12.0f/255.0f alpha:1];
+    return [UIColor colorWithRed:83.0f/255.0f green:162.0f/255.0f blue:135.0f/255.0f alpha:1];
+
 }
 @end
