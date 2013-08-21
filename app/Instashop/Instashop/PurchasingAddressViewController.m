@@ -190,13 +190,47 @@
     [self.expirationMonthTextField resignFirstResponder];
     [self.expirationYearTextField resignFirstResponder];
     [self.ccvTextField resignFirstResponder];
+
     
+    NSMutableDictionary *theSellerDict = [NSMutableDictionary dictionaryWithDictionary:sellerDictionary];
+    [theSellerDict setObject:[sellerDictionary objectForKey:@"instagram_id"] forKey:@"seller_instagram_id"];
+    [theSellerDict removeObjectForKey:@"instagram_id"];
+    
+    NSMutableDictionary *theBuyerDict = [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    [theBuyerDict setObject:self.stateTextField.text forKey:@"buyer_state"];
+    [theBuyerDict setObject:self.zipTextField.text forKey:@"buyer_zip"];
+    [theBuyerDict setObject:self.addressTextField.text forKey:@"buyer_address"];
+    [theBuyerDict setObject:self.nameTextField.text forKey:@"buyer_name"];
+    [theBuyerDict setObject:self.phoneTextField.text forKey:@"buyer_phone"];
+    [theBuyerDict setObject:self.cityTextField.text forKey:@"buyer_city"];
+    [theBuyerDict setObject:[InstagramUserObject getStoredUserObject].userID forKey:@"buyer_instagram_id"];
+    
+    NSMutableDictionary *packageDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+    [packageDictionary setObject:@"1.5" forKey:@"package_weight"];
+    [packageDictionary setObject:@"10" forKey:@"package_length"];
+    [packageDictionary setObject:@"6" forKey:@"package_width"];
+    [packageDictionary setObject:@"8" forKey:@"package_height"];
+    
+    NSMutableDictionary *shippingDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+    [shippingDictionary setObject:@"UPS" forKey:@"carrier"];
+    [shippingDictionary setObject:@"GROUND" forKey:@"service"];
+
+
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Postmaster Call";
+    [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:shippingDictionary withPackageDictionary:packageDictionary];
+
+
+    
+    
+    /*
     if (self.upsRateDictionary == nil && self.fedexRateDictionary == nil)
     {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Getting Rates";
         [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"UPS"];
         [PostmasterAPIHandler makePostmasterRatesCallWithDelegate:self withFromZip:[self.sellerDictionary objectForKey:@"seller_zip"] withToZip:self.zipTextField.text withWeight:@"1.5" withCarrier:@"FEDEX"];
     }
+     */
 }
 
 -(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict
@@ -267,7 +301,6 @@
 -(void)doStripePurchaseWithPostMasterDictionary:(NSDictionary *)thePostmasterDictionary
 {
     NSLog(@"doStripePurchaseWithPostMasterDictionary: %@", thePostmasterDictionary);
-    
     
 
     /*
@@ -363,48 +396,6 @@
 }
 
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    NSLog(@"index: %d", buttonIndex);
-    
-    
-    NSMutableDictionary *theSellerDict = [NSMutableDictionary dictionaryWithDictionary:sellerDictionary];
-    [theSellerDict setObject:[sellerDictionary objectForKey:@"instagram_id"] forKey:@"seller_instagram_id"];
-    [theSellerDict removeObjectForKey:@"instagram_id"];
-    
-    NSMutableDictionary *theBuyerDict = [NSMutableDictionary dictionaryWithCapacity:0];
-    
-    [theBuyerDict setObject:self.stateTextField.text forKey:@"buyer_state"];
-    [theBuyerDict setObject:self.zipTextField.text forKey:@"buyer_zip"];
-    [theBuyerDict setObject:self.addressTextField.text forKey:@"buyer_address"];
-    [theBuyerDict setObject:self.nameTextField.text forKey:@"buyer_name"];
-    [theBuyerDict setObject:self.phoneTextField.text forKey:@"buyer_phone"];
-    [theBuyerDict setObject:self.cityTextField.text forKey:@"buyer_city"];
-    [theBuyerDict setObject:[InstagramUserObject getStoredUserObject].userID forKey:@"buyer_instagram_id"];
-    
-    NSMutableDictionary *packageDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
-    [packageDictionary setObject:@"1.5" forKey:@"package_weight"];
-    [packageDictionary setObject:@"10" forKey:@"package_length"];
-    [packageDictionary setObject:@"6" forKey:@"package_width"];
-    [packageDictionary setObject:@"8" forKey:@"package_height"];
-    
-    
-    switch (buttonIndex) {
-        case 0:
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Postmaster Call";
-            [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.upsRateDictionary withPackageDictionary:packageDictionary];
-            break;
-        case 1:
-            [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Postmaster Call";
-            [PostmasterAPIHandler makePostmasterShipRequestCallWithDelegate:self withFromDictionary:theSellerDict withToDictionary:theBuyerDict shippingDictionary:self.fedexRateDictionary withPackageDictionary:packageDictionary];
-            break;
-        default:
-            self.upsRateDictionary = nil;
-            self.fedexRateDictionary = nil;
-            
-            break;
-    }
-    
-}
 
 
 
