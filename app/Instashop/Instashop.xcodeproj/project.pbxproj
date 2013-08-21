@@ -84,6 +84,8 @@
 		7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */; };
 		7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */; };
 		7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624717C5122F00D6C8B1 /* ISConstants.m */; };
+		7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */; };
+		7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */; };
 		7B5F53F41767829F0066D529 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F53F31767829F0066D529 /* STPCard.m */; };
 		7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B602D9F17664F1700663A73 /* PurchasingViewController.m */; };
 		7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA017664F1700663A73 /* PurchasingViewController.xib */; };
@@ -262,6 +264,10 @@
 		7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop_button_light@2x.png"; sourceTree = "<group>"; };
 		7B5D624617C5122F00D6C8B1 /* ISConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISConstants.h; sourceTree = "<group>"; };
 		7B5D624717C5122F00D6C8B1 /* ISConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISConstants.m; sourceTree = "<group>"; };
+		7B5D624C17C5174300D6C8B1 /* ISLightRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLightRowContainerView.h; sourceTree = "<group>"; };
+		7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLightRowContainerView.m; sourceTree = "<group>"; };
+		7B5D624F17C5174F00D6C8B1 /* ISDarkRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISDarkRowContainerView.h; sourceTree = "<group>"; };
+		7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISDarkRowContainerView.m; sourceTree = "<group>"; };
 		7B5F53F21767829F0066D529 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
 		7B5F53F31767829F0066D529 /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
 		7B602D9E17664F1700663A73 /* PurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewController.h; sourceTree = "<group>"; };
@@ -1018,6 +1024,10 @@
 		7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */ = {
 			isa = PBXGroup;
 			children = (
+				7B5D624C17C5174300D6C8B1 /* ISLightRowContainerView.h */,
+				7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */,
+				7B5D624F17C5174F00D6C8B1 /* ISDarkRowContainerView.h */,
+				7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */,
 			);
 			name = RowContainerView;
 			sourceTree = "<group>";
@@ -1224,12 +1234,14 @@
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
+				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,
 				7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */,
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
 				7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */,
 				7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */,
+				7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */,
 				7B15B2FB17B2AA1800173752 /* CategoriesViewController.m in Sources */,
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,

@@ -58,6 +58,12 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
     
+    
+    UIView *someView = [[UIView alloc] initWithFrame:CGRectMake(0,-20,self.view.frame.size.width, 20)];
+    someView.backgroundColor = [UIColor whiteColor];
+    [self.navigationController.navigationBar addSubview:someView];
+    
+    
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
@@ -88,6 +94,8 @@
     [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
     
+
+    
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
     UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];
@@ -104,7 +112,12 @@
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
     
     self.navigationItem.titleView = self.titleTextLabel;
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
+    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
+    bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
+    [self.view insertSubview:bgImageView atIndex:0];
+    
+
     
     
     NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField,self.phoneTextField, self.websiteTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, nil];

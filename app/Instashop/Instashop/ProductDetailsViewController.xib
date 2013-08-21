@@ -9,16 +9,11 @@
             <connections>
                 <outlet property="addSizeButton" destination="568" id="oiL-wJ-lor"/>
                 <outlet property="containerScrollView" destination="283" id="490"/>
-                <outlet property="descriptionBackgroundImageView" destination="544" id="YCE-MW-aEK"/>
                 <outlet property="descriptionTextView" destination="Jno-Ib-Cbd" id="ufc-jW-YIC"/>
-                <outlet property="instashopPriceLabel" destination="477" id="501"/>
                 <outlet property="instashopPriceTextField" destination="478" id="487"/>
                 <outlet property="nextButton" destination="395" id="492"/>
                 <outlet property="pricesView" destination="556" id="558"/>
-                <outlet property="retailPriceLabel" destination="470" id="499"/>
                 <outlet property="retailPriceTextField" destination="471" id="486"/>
-                <outlet property="selectedCategoriesBackgroundImageView" destination="545" id="PwA-cU-3Vv"/>
-                <outlet property="selectedCategoriesButton" destination="538" id="0FR-Wy-yS5"/>
                 <outlet property="selectedCategoriesLabel" destination="536" id="542"/>
                 <outlet property="theImageView" destination="497" id="498"/>
                 <outlet property="titleLabel" destination="Ncx-Bx-8OJ" id="mpy-OM-pxj"/>
@@ -29,14 +24,31 @@
         <view contentMode="scaleToFill" id="1">
             <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Description" id="Jno-Ib-Cbd">
+                    <rect key="frame" x="20" y="284" width="300" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="544">
+                    <rect key="frame" x="1" y="217" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="555">
+                    <rect key="frame" x="10" y="176" width="320" height="5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <view contentMode="scaleToFill" id="DUQ-p3-eII">
+                    <rect key="frame" x="52" y="20" width="222" height="39"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-        </view>
-        <view alpha="0.10000000149011612" contentMode="scaleToFill" id="431">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="164"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
         </view>
         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="283" customClass="TPKeyboardAvoidingScrollView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="623"/>
@@ -50,21 +62,6 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="48"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="555">
-                    <rect key="frame" x="0.0" y="308" width="320" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="544">
-                    <rect key="frame" x="0.0" y="313" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Description" id="Jno-Ib-Cbd">
-                    <rect key="frame" x="6" y="316" width="300" height="40"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category" minimumFontSize="17" clearButtonMode="whileEditing" id="536">
                     <rect key="frame" x="10" y="364" width="300" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
