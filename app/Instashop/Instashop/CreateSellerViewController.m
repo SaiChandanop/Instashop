@@ -101,31 +101,37 @@
     UIBarButtonItem *homBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeCustomView];
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
     
-    
-    /*
-    UIImage *bagImage = [UIImage imageNamed:@"lmVerifiedRetailerIcon.png"];
-    UIImageView *rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, bagImage.size.width, bagImage.size.height)];
-    rightImageView.image = bagImage;
-    UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithCustomView:rightImageView];
-    self.navigationItem.rightBarButtonItem = rightBarItem;
-    */
-     
     self.navigationItem.titleView = self.titleTextLabel;
-    //self.navigationItem.titleView.frame = CGRectMake(0,0,50,50);
-    
-    
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    
     
     
     NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField,self.phoneTextField, self.websiteTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, nil];
     
     [self setKeyboardControls:[[BSKeyboardControls alloc] initWithFields:fields]];
     [self.keyboardControls setDelegate:self];
-     
     
+    
+    
+    [self.nameTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+    [self.addressTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+    [self.cityTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+    [self.stateTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+    [self.zipTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+    [self.phoneTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+    [self.emailTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+    [self.categoryTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
+    [self.websiteTextField setValue:[UIColor lightGrayColor]
+                                forKeyPath:@"_placeholderLabel.textColor"];
 
+   
     
     
 }
@@ -160,7 +166,7 @@
   
     [self.navigationController.navigationItem.backBarButtonItem setTitle:@"TEST"];
     
-    categoriesViewController.initialTableReference.frame = CGRectMake(0,64, categoriesViewController.initialTableReference.frame.size.width, categoriesViewController.initialTableReference.frame.size.height);
+    categoriesViewController.initialTableReference.frame = CGRectMake(0,0, categoriesViewController.initialTableReference.frame.size.width, categoriesViewController.initialTableReference.frame.size.height);
 }
 
 

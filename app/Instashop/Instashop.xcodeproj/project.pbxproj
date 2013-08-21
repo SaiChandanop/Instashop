@@ -497,20 +497,17 @@
 			name = CreateSelectTableController;
 			sourceTree = "<group>";
 		};
-		7B1072B5175E7CB300D9DC5D /* CreateDetailsViewController */ = {
+		7B1072B5175E7CB300D9DC5D /* Details */ = {
 			isa = PBXGroup;
 			children = (
-				7B15B2F817B2A9E700173752 /* NavViewController */,
-				7B15B2F417B2A65900173752 /* TableViewController */,
-				7BD5C1FB179596B3006F311A /* SizeQuantity */,
 				7B1072BB175E7CDE00D9DC5D /* ProductDetailsViewController.h */,
 				7B1072BC175E7CDE00D9DC5D /* ProductDetailsViewController.m */,
 				7B1072BD175E7CDE00D9DC5D /* ProductDetailsViewController.xib */,
 			);
-			name = CreateDetailsViewController;
+			name = Details;
 			sourceTree = "<group>";
 		};
-		7B15B2F417B2A65900173752 /* TableViewController */ = {
+		7B15B2F817B2A9E700173752 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
 				7B15B2FF17B2AB5A00173752 /* CategoriesTableViewController.h */,
@@ -518,17 +515,10 @@
 				7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */,
 				7B8BC4D217B2CCBF002CEB36 /* CategorySelectCell.h */,
 				7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */,
-			);
-			name = TableViewController;
-			sourceTree = "<group>";
-		};
-		7B15B2F817B2A9E700173752 /* NavViewController */ = {
-			isa = PBXGroup;
-			children = (
 				7B15B2F917B2AA1800173752 /* CategoriesViewController.h */,
 				7B15B2FA17B2AA1800173752 /* CategoriesViewController.m */,
 			);
-			name = NavViewController;
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		7B1B302917BE8E9400BB6420 /* BSKeyboardControls */ = {
@@ -541,7 +531,7 @@
 			name = BSKeyboardControls;
 			sourceTree = "<group>";
 		};
-		7B2C4B8C17C418490080F3F5 /* Delegates */ = {
+		7B2C4B8C17C418490080F3F5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
 				7B2C4B8D17C418700080F3F5 /* CellSelectionOccuredProtocol.h */,
@@ -554,7 +544,7 @@
 				7B7A518617C423E0009AD081 /* ProductPurchaseCompleteProtocol.h */,
 				7B7A518717C42436009AD081 /* PostmasterShipResponseProtocol.h */,
 			);
-			name = Delegates;
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		7B34813717624E3600C055AE /* DiscoverTableViewController */ = {
@@ -570,20 +560,22 @@
 		7B3F520E175FAAB900ABF49B /* ProductObject */ = {
 			isa = PBXGroup;
 			children = (
+				7BD5C20B1795BDC9006F311A /* ProductCreateContainerObject.h */,
+				7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */,
 				7B3F520F175FAAF400ABF49B /* ProductCreateObject.h */,
 				7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */,
 			);
 			name = ProductObject;
 			sourceTree = "<group>";
 		};
-		7B3F5212175FB38300ABF49B /* ProductPreview */ = {
+		7B3F5212175FB38300ABF49B /* Preview */ = {
 			isa = PBXGroup;
 			children = (
 				7B3F5213175FB3A000ABF49B /* ProductPreviewViewController.h */,
 				7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */,
 				7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */,
 			);
-			name = ProductPreview;
+			name = Preview;
 			sourceTree = "<group>";
 		};
 		7B4908521758FDF50047ED3B /* Feed */ = {
@@ -651,6 +643,18 @@
 			name = shittyimages;
 			sourceTree = "<group>";
 		};
+		7B5D624517C4F4B000D6C8B1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */,
+				7B1B302917BE8E9400BB6420 /* BSKeyboardControls */,
+				7B94515817BE70D600D4AAB1 /* SizePicker */,
+				2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */,
+				7B96C038174FED1D00E4EDAD /* Cells */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		7B602DAE1766709800663A73 /* Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -677,6 +681,7 @@
 				7B61EE4C174D2162002A483D /* Instashop */,
 				7B61EE45174D2162002A483D /* Frameworks */,
 				7B61EE44174D2162002A483D /* Products */,
+				7B61EE4D174D2162002A483D /* Supporting Files */,
 			);
 			sourceTree = "<group>";
 		};
@@ -701,14 +706,13 @@
 		7B61EE4C174D2162002A483D /* Instashop */ = {
 			isa = PBXGroup;
 			children = (
-				7B2C4B8C17C418490080F3F5 /* Delegates */,
+				7B5D624517C4F4B000D6C8B1 /* Views */,
 				7B7A7448174D4EAE005E90B9 /* VCs */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
 				7B7A7454174D52D2005E90B9 /* Net */,
 				7BE3D36F174D74340045C4B4 /* Utils */,
 				7B61EE55174D2162002A483D /* AppDelegate.h */,
 				7B61EE56174D2162002A483D /* AppDelegate.m */,
-				7B61EE4D174D2162002A483D /* Supporting Files */,
 			);
 			path = Instashop;
 			sourceTree = "<group>";
@@ -731,6 +735,7 @@
 				7B61EE5C174D2162002A483D /* Default-568h@2x.png */,
 			);
 			name = "Supporting Files";
+			path = Instashop;
 			sourceTree = "<group>";
 		};
 		7B6C500C178B566A00CDF0A7 /* Sellers */ = {
@@ -787,14 +792,15 @@
 			isa = PBXGroup;
 			children = (
 				7B7A743F174D49F9005E90B9 /* Authentication */,
-				7B96C038174FED1D00E4EDAD /* Cells */,
+				7B0680CA17664BC2009154BF /* Buy */,
 				7B74C3CD179716670006289C /* CreateSeller */,
+				7B15B2F817B2A9E700173752 /* Categories */,
+				7B4908531758FE010047ED3B /* Discover */,
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
-				7B4908531758FE010047ED3B /* Discover */,
 				7B4908541758FE0A0047ED3B /* Notifications */,
 				7BE958F3175548A100A7E0AB /* Sell */,
-				7B0680CA17664BC2009154BF /* Buy */,
+				7BD5C1FB179596B3006F311A /* SizeQuantity */,
 				7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */,
 				7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */,
 			);
@@ -832,8 +838,8 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
+				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
 				7BE958EF1755470000A7E0AB /* Products */,
 				7B6C500C178B566A00CDF0A7 /* Sellers */,
 				7BC890B017668B5200D4756D /* Stripe */,
@@ -941,10 +947,8 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */,
-				7B1B302917BE8E9400BB6420 /* BSKeyboardControls */,
-				7B94515817BE70D600D4AAB1 /* SizePicker */,
-				2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */,
+				7B3F520E175FAAB900ABF49B /* ProductObject */,
+				7B2C4B8C17C418490080F3F5 /* Protocols */,
 				7B74C3C417970AE50006289C /* MBProgressHUD.h */,
 				7B74C3C517970AE50006289C /* MBProgressHUD.m */,
 				7BE3D375174D772B0045C4B4 /* Utils.h */,
@@ -968,15 +972,12 @@
 		7BE958F3175548A100A7E0AB /* Sell */ = {
 			isa = PBXGroup;
 			children = (
-				7B3F520E175FAAB900ABF49B /* ProductObject */,
 				7B1072AF175E6C6800D9DC5D /* CreateSelectTableController */,
-				7B1072B5175E7CB300D9DC5D /* CreateDetailsViewController */,
-				7B3F5212175FB38300ABF49B /* ProductPreview */,
+				7B1072B5175E7CB300D9DC5D /* Details */,
+				7B3F5212175FB38300ABF49B /* Preview */,
 				7BE958F4175548B800A7E0AB /* ProductCreateViewController.h */,
 				7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */,
 				7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */,
-				7BD5C20B1795BDC9006F311A /* ProductCreateContainerObject.h */,
-				7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */,
 			);
 			name = Sell;
 			sourceTree = "<group>";
