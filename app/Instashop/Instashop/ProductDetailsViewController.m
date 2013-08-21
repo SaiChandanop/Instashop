@@ -328,10 +328,8 @@
     {
         CGRect textFrame = textView.frame;
         textFrame.size.height = textView.contentSize.height;
-        NSLog(@"textView.contentSize.height: %f", textView.contentSize.height);
         textView.frame = textFrame;
-        NSLog(@"expected size: %@", NSStringFromCGRect(textView.frame));
- 
+  
         textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height + 10);
         self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, textFrame.size.height);
         
