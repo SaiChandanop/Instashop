@@ -62,9 +62,9 @@
     CGFloat screenHeight = screenSize.height;
     
 //    CGFloat whiteSpace = 11.0f;
-    CGFloat topSpace = 64.0f;
+    //CGFloat topSpace = 64.0f;
     
-    self.containerScrollView.frame = CGRectMake(0, topSpace, screenWidth, screenHeight - topSpace);
+    self.containerScrollView.frame = CGRectMake(0, 0, screenWidth, screenHeight);
     self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.containerScrollView.contentSize.height);
 //    self.containerScrollView.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.containerScrollView];
@@ -102,13 +102,14 @@
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
     
     
-    
+    /*
     UIImage *bagImage = [UIImage imageNamed:@"lmVerifiedRetailerIcon.png"];
     UIImageView *rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, bagImage.size.width, bagImage.size.height)];
     rightImageView.image = bagImage;
     UIBarButtonItem *rightBarItem = [[UIBarButtonItem alloc] initWithCustomView:rightImageView];
     self.navigationItem.rightBarButtonItem = rightBarItem;
-    
+    */
+     
     self.navigationItem.titleView = self.titleTextLabel;
     self.navigationItem.titleView.frame = CGRectMake(0,0,50,50);
     

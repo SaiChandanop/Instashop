@@ -17,6 +17,7 @@
                 <outlet property="phoneTextField" destination="40" id="50"/>
                 <outlet property="stateTextField" destination="23" id="48"/>
                 <outlet property="submitButton" destination="51" id="382"/>
+                <outlet property="titleTextLabel" destination="0a3-Rl-AfO" id="HtH-qN-U60"/>
                 <outlet property="view" destination="383" id="waK-46-yjW"/>
                 <outlet property="websiteTextField" destination="319" id="348"/>
                 <outlet property="zipTextField" destination="34" id="49"/>
@@ -30,7 +31,7 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="65" customClass="TPKeyboardAvoidingScrollView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="843"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="582"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="top_shadow.png" id="367">
@@ -66,11 +67,11 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="365">
-                    <rect key="frame" x="0.0" y="314" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="313" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Follow Instashop" minimumFontSize="17" id="qIe-pA-DPH">
-                    <rect key="frame" x="10" y="324" width="292" height="30"/>
+                    <rect key="frame" x="18" y="321" width="292" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -96,7 +97,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name of Store/Brand" minimumFontSize="17" id="4">
-                    <rect key="frame" x="20" y="56" width="292" height="30"/>
+                    <rect key="frame" x="20" y="56" width="265" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
@@ -256,7 +257,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nfT-GK-0A0">
-                    <rect key="frame" x="10" y="321" width="290" height="30"/>
+                    <rect key="frame" x="163" y="321" width="137" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <state key="normal">
@@ -266,10 +267,28 @@
                         <action selector="followInstashopButtonHit" destination="-1" eventType="touchUpInside" id="nYT-qL-yXa"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lmVerifiedRetailerIcon.png" id="Vad-dv-amf">
+                    <rect key="frame" x="70" y="77" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
             </subviews>
         </scrollView>
+        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BECOME A SELLER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0a3-Rl-AfO">
+            <rect key="frame" x="0.0" y="0.0" width="155" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
+            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="highlightedColor"/>
+        </label>
+        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OZQ-A1-gGt">
+            <rect key="frame" x="0.0" y="0.0" width="42" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+            <nil key="highlightedColor"/>
+        </label>
     </objects>
     <resources>
+        <image name="lmVerifiedRetailerIcon.png" width="44" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
         <image name="top_shadow.png" width="320" height="50"/>
