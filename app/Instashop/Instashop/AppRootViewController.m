@@ -11,6 +11,7 @@
 #import "STPCard.h"
 #import "StripeAuthenticationHandler.h"
 #import "AttributesManager.h"
+#import "ISConstants.h"
 
 @implementation AppRootViewController
 
@@ -26,6 +27,7 @@ float transitionTime = .456;
     theSharedRootViewController = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (theSharedRootViewController) {
 
+        self.view.backgroundColor = [ISConstants getSomeColor];
     }
     return theSharedRootViewController;
 }
