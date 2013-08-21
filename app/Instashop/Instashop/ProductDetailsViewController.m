@@ -21,9 +21,12 @@
 
 @implementation ProductDetailsViewController
 
+@synthesize instashopPriceContainerView;
+@synthesize retailPriceContainerView;
+@synthesize categoriesContainerView;
+@synthesize descriptionContainerView;
 @synthesize instagramPictureURLString;
 @synthesize instragramMediaInfoDictionary;
-@synthesize selectedCategoriesBackgroundImageView;
 @synthesize sizeQuantityTableViewController;
 @synthesize parentController;
 @synthesize attributesArray;
@@ -31,16 +34,10 @@
 @synthesize theImageView;
 @synthesize titleLabel;
 @synthesize descriptionTextView;
-@synthesize descriptionBackgroundImageView;
 @synthesize selectedCategoriesLabel;
-@synthesize selectedCategoriesButton;
 @synthesize retailPriceTextField;
 @synthesize instashopPriceTextField;
-@synthesize nextButton;
 @synthesize addSizeButton;
-@synthesize nextButtonContainerView;
-@synthesize retailPriceLabel;
-@synthesize instashopPriceLabel;
 @synthesize pricesView;
 @synthesize sizeQuantityView;
 @synthesize originalPriceViewRect;
@@ -84,18 +81,12 @@
     [self.containerScrollView  insertSubview:self.sizeQuantityTableViewController.tableView belowSubview:self.pricesView];
     
     
-    self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.pricesView.frame.size.height);
     
     self.originalPriceViewRect = self.pricesView.frame;
     
     self.addSizeButton.alpha = 0;
     
-    
-//    [self.titleTextField setValue:[UIColor lightGrayColor]
-  //                  forKeyPath:@"_placeholderLabel.textColor"];
-
-//    [self.descriptionTextView setValue:[UIColor lightGrayColor]
-  //                     forKeyPath:@"_placeholderLabel.textColor"];
     
     [self.selectedCategoriesLabel setValue:[UIColor lightGrayColor]
                              forKeyPath:@"_placeholderLabel.textColor"];
@@ -281,7 +272,7 @@
     
     self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.addSizeButton.frame.origin.y + self.addSizeButton.frame.size.height, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
     
-    self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height  + 29);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.pricesView.frame.size.height + 29);
 
     
 }
@@ -326,7 +317,7 @@
 {
     if (textView == self.descriptionTextView)
     {
-        CGRect textFrame = textView.frame;
+/*        CGRect textFrame = textView.frame;
         textFrame.size.height = textView.contentSize.height;
         textView.frame = textFrame;
   
@@ -336,7 +327,8 @@
         float offset = 3;
         self.selectedCategoriesBackgroundImageView.frame = CGRectMake(self.selectedCategoriesBackgroundImageView.frame.origin.x, textFrame.origin.y + textFrame.size.height + offset, self.selectedCategoriesBackgroundImageView.frame.size.width, self.selectedCategoriesBackgroundImageView.frame.size.height);
         self.selectedCategoriesLabel.frame = CGRectMake(self.selectedCategoriesLabel.frame.origin.x, textFrame.origin.y + textFrame.size.height + offset + 3, self.selectedCategoriesLabel.frame.size.width, self.selectedCategoriesLabel.frame.size.height);
-        self.selectedCategoriesButton.frame = CGRectMake(self.selectedCategoriesButton.frame.origin.x, textFrame.origin.y + textFrame.size.height + offset, self.selectedCategoriesButton.frame.size.width, self.selectedCategoriesButton.frame.size.height);
+
+        
         
         self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x, self.selectedCategoriesButton.frame.origin.y + self.selectedCategoriesButton.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, self.sizeQuantityTableViewController.tableView.frame.size.height);
         
@@ -346,7 +338,7 @@
         self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.addSizeButton.frame.origin.y + self.addSizeButton.frame.size.height, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
         
         self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.nextButton.frame.origin.y + self.nextButton.frame.size.height  + 29);
-        
+        */
     }
 
     

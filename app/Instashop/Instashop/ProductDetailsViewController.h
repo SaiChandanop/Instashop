@@ -12,6 +12,9 @@
 #import "CategoriesViewController.h"
 #import "SizeQuantityTableViewController.h"
 
+#import "ISDarkRowContainerView.h"
+#import "ISLightRowContainerView.h"
+
 @class ProductCreateViewController;
 
 @interface ProductDetailsViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
@@ -31,23 +34,24 @@
 
     UILabel *titleLabel;
     
-    
+    ISDarkRowContainerView *descriptionContainerView;
     UITextView *descriptionTextView;
 
-    
-    
+    ISLightRowContainerView *categoriesContainerView;
     UITextField *selectedCategoriesLabel;
     
+    ISDarkRowContainerView *retailPriceContainerView;
     UITextField *retailPriceTextField;
 
+    ISLightRowContainerView *instashopPriceContainerView;
     UITextField *instashopPriceTextField;
     
-    
+    UIView *sizeQuantityView;
     UIButton *addSizeButton;
     
     UIView *pricesView;
     
-    UIView *sizeQuantityView;
+    
     
 }
 
@@ -60,7 +64,7 @@
 - (IBAction) addSizeButtonHit;
 - (void) updateLayout;
 
-@property (nonatomic, retain) IBOutlet ProductCreateViewController *parentController;
+@property (nonatomic, retain) ProductCreateViewController *parentController;
 @property (nonatomic, retain) SizeQuantityTableViewController *sizeQuantityTableViewController;
 
 @property (nonatomic, retain) NSMutableArray *attributesArray;
@@ -70,33 +74,29 @@
 @property (nonatomic, assign) CGRect originalPriceViewRect;
 
 
-
-
 @property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
 
 
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 
-
+@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *descriptionContainerView;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 
 
-
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *categoriesContainerView;
 @property (nonatomic, retain) IBOutlet UITextField *selectedCategoriesLabel;
 
-
-
+@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *retailPriceContainerView;
 @property (nonatomic, retain) IBOutlet UITextField *retailPriceTextField;
 
-
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *instashopPriceContainerView;
 @property (nonatomic, retain) IBOutlet UITextField *instashopPriceTextField;
 
-
+@property (nonatomic, retain) UIView *sizeQuantityView;
 @property (nonatomic, retain) IBOutlet UIButton *addSizeButton;
 
-
 @property (nonatomic, retain) IBOutlet UIView *pricesView;
-@property (nonatomic, retain) IBOutlet UIView *sizeQuantityView;
+
 
 @end

@@ -86,6 +86,7 @@
 		7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624717C5122F00D6C8B1 /* ISConstants.m */; };
 		7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */; };
 		7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */; };
+		7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625317C517A000D6C8B1 /* ISRowContainerView.m */; };
 		7B5F53F41767829F0066D529 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F53F31767829F0066D529 /* STPCard.m */; };
 		7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B602D9F17664F1700663A73 /* PurchasingViewController.m */; };
 		7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA017664F1700663A73 /* PurchasingViewController.xib */; };
@@ -268,6 +269,8 @@
 		7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLightRowContainerView.m; sourceTree = "<group>"; };
 		7B5D624F17C5174F00D6C8B1 /* ISDarkRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISDarkRowContainerView.h; sourceTree = "<group>"; };
 		7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISDarkRowContainerView.m; sourceTree = "<group>"; };
+		7B5D625217C517A000D6C8B1 /* ISRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRowContainerView.h; sourceTree = "<group>"; };
+		7B5D625317C517A000D6C8B1 /* ISRowContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRowContainerView.m; sourceTree = "<group>"; };
 		7B5F53F21767829F0066D529 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
 		7B5F53F31767829F0066D529 /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
 		7B602D9E17664F1700663A73 /* PurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewController.h; sourceTree = "<group>"; };
@@ -1024,6 +1027,8 @@
 		7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */ = {
 			isa = PBXGroup;
 			children = (
+				7B5D625217C517A000D6C8B1 /* ISRowContainerView.h */,
+				7B5D625317C517A000D6C8B1 /* ISRowContainerView.m */,
 				7B5D624C17C5174300D6C8B1 /* ISLightRowContainerView.h */,
 				7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */,
 				7B5D624F17C5174F00D6C8B1 /* ISDarkRowContainerView.h */,
@@ -1186,6 +1191,7 @@
 			files = (
 				7B61EE53174D2162002A483D /* main.m in Sources */,
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
+				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,

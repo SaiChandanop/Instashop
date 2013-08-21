@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ISRowContainerView.h"
 
-@interface ISDarkRowContainerView : UIView
+@interface ISDarkRowContainerView : ISRowContainerView
 
 @end

@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ISRowContainerView : UIView
-
+{
+    UIImageView *backgroundImageView;
+    
+}
+@property (nonatomic, retain) UIImageView *backgroundImageView;
 @end
