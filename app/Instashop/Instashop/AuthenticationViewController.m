@@ -42,9 +42,14 @@
     NSLog(@"[UIScreen mainScreen].bounds.size.height: %f", [UIScreen mainScreen].bounds.size.height);
     if ([UIScreen mainScreen].bounds.size.height < 500)
         [self.view addSubview:self.iphoneShortView];
-        
+    
+    [self setNeedsStatusBarAppearanceUpdate];
 
     // Do any additional setup after loading the view from its nib.
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 -(IBAction) loginButtonHit
@@ -73,16 +78,12 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,44,44)];
+    UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10,0,44,44)];
     backImageView.image = [UIImage imageNamed:@"closebutton.png"];
     [self.loginWebView addSubview:backImageView];
     
-    self.backLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
+    self.backLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 44, 44)];
     self.backLabel.backgroundColor = [UIColor clearColor];
-    self.backLabel.text = @"x";
-    self.backLabel.textColor = [UIColor whiteColor];
-    self.backLabel.textAlignment = NSTextAlignmentCenter;
-    self.backLabel.font = [UIFont systemFontOfSize:14];
     //    [self.loginWebView addSubview:self.backLabel];
     
     self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -97,14 +98,20 @@
 {
     
     
-    self.loginWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    self.loginWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height)];
     self.loginWebView.delegate = self;
     [self.loginWebView loadRequest:[NSURLRequest requestWithURL:theURL]];
 
     
     self.instagramLoginWebViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-    self.instagramLoginWebViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.instagramLoginWebViewController.view.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20);
     [self.instagramLoginWebViewController.view addSubview:self.loginWebView];
+
+    
+    UIView *gapView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,20)];
+    gapView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    [self.instagramLoginWebViewController.view addSubview:gapView];
+    
     
     [self presentViewController:self.instagramLoginWebViewController animated:YES completion:nil];
     
