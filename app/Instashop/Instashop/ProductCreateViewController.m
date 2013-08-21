@@ -38,8 +38,7 @@
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
- 
-     
+      
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];

@@ -27,7 +27,7 @@ float transitionTime = .456;
     theSharedRootViewController = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (theSharedRootViewController) {
 
-        self.view.backgroundColor = [ISConstants getSomeColor];
+        self.view.backgroundColor = [ISConstants getISGreenColor];
     }
     return theSharedRootViewController;
 }

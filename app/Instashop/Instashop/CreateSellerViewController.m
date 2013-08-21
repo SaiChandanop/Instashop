@@ -12,6 +12,7 @@
 #import "CategoriesViewController.h"
 #import "AppRootViewController.h"
 #import "AppDelegate.h"
+#import "ISConstants.h"
 
 
 @interface CreateSellerViewController ()
@@ -53,8 +54,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"toolbarBG.png"]  forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
+    
+    [self setNeedsStatusBarAppearanceUpdate];
     
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;

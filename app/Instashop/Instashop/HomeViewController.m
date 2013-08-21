@@ -96,10 +96,7 @@
     UINavigationController *createNavigationController = [[UINavigationController alloc] initWithRootViewController:createSellerViewController];
     [self.parentController presentViewController:createNavigationController animated:YES completion:nil];
     
-    UIView *bufferView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-    bufferView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    [createNavigationController.view addSubview:bufferView];
-   
+
 }
 
 -(IBAction) sellerButtonHit
@@ -114,9 +111,7 @@
         UINavigationController *createNavigationController = [[UINavigationController alloc] initWithRootViewController:createSellerViewController];
         [self.parentController presentViewController:createNavigationController animated:YES completion:nil];
         
-        UIView *bufferView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-        bufferView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-        [createNavigationController.view addSubview:bufferView];
+
     }
     else
        [self.parentController createProductButtonHit];
