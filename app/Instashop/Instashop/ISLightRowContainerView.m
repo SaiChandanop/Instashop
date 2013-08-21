@@ -21,13 +21,10 @@
 }
 
 
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
 
-    [super drawRect:rect];
-    
+- (void)awakeFromNib
+{
+    self.backgroundColor = [UIColor clearColor];
     UIImage *separatorImage = [UIImage imageNamed:@"cell_separator.png"];
     UIImageView *separatorImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.frame.size.width, separatorImage.size.height)];
     separatorImageView.image = separatorImage;
