@@ -9,9 +9,11 @@
 #import <UIKit/UIKit.h>
 
 @interface PurchasingCompleteViewController : UIViewController
+{
+    UIView *shaderView;
+}
 
-
-
+@property (nonatomic, retain) UIView *shaderView;
 +(void)presentWithProductObject:(NSDictionary *)productObject;
 -(IBAction)xButtonHit;
 @end

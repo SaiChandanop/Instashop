@@ -14,6 +14,8 @@
 
 @implementation PurchasingCompleteViewController
 
+@synthesize shaderView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -39,15 +41,15 @@
     PurchasingCompleteViewController *vc = [[PurchasingCompleteViewController alloc] initWithNibName:@"PurchasingCompleteViewController" bundle:nil];
 
     
-    UIView *shaderView = [[UIView alloc] initWithFrame:CGRectMake(0,0, vc.view.frame.size.width, vc.view.frame.size.height)];
-    shaderView.backgroundColor = [UIColor blackColor];
-    shaderView.alpha = .45;
+    vc.shaderView = [[UIView alloc] initWithFrame:CGRectMake(0,0, vc.view.frame.size.width, vc.view.frame.size.height)];
+    vc.shaderView.backgroundColor = [UIColor blackColor];
+    vc.shaderView.alpha = .45;
     
-    [vc.view insertSubview:shaderView atIndex:0];
+    [vc.view insertSubview:vc.shaderView atIndex:0];
     [rootVC.view addSubview:vc.view];
     
     UIButton *someButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [someButton addTarget:vc action:@selector(xButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [someButton addTarget:vc action:@selector(xButtonHit:) forControlEvents:UIControlEventTouchUpInside];
     someButton.frame = CGRectMake(0, 0, rootVC.view.frame.size.width, rootVC.view.frame.size.height);
     [rootVC.view addSubview:someButton];
 }
@@ -56,4 +58,11 @@
 {
     [self.view removeFromSuperview];
 }
+
+-(IBAction)xButtonHit:(UIButton *)sender
+{
+    [sender removeFromSuperview];
+    [self.view removeFromSuperview];
+}
+
 @end

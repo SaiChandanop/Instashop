@@ -190,7 +190,7 @@
     
     if ([self.nameTextField.text length] > 0)
         if ([self.emailTextField.text length] > 0)
-            if ([self.websiteTextField.text length] > 0)
+//            if ([self.websiteTextField.text length] > 0)
                 if ([self.categoryTextField.text length] > 0)
                     retval = YES;
 //        if ([self.addressTextField.text length] > 0)
