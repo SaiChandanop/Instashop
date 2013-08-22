@@ -121,7 +121,7 @@
     self.addressView.separatorImageView.alpha = 0;
     self.cityStateView.separatorImageView.alpha = 0;
     self.zipView.separatorImageView.alpha = 0;
-        
+    
 }
 
 

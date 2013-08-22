@@ -327,20 +327,22 @@
 
         
         
-        
         CGRect textFrame = textView.frame;
         textFrame.size.height = textView.contentSize.height;
         textView.frame = textFrame;
   
-        textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height + 10);
-        self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textFrame.size.height);
-        self.descriptionContainerView.backgroundImageView.frame = CGRectMake(self.descriptionContainerView.backgroundImageView.frame.origin.x, self.descriptionContainerView.backgroundImageView.frame.origin.y, self.descriptionContainerView.backgroundImageView.frame.size.width, self.descriptionContainerView.frame.size.height);
+        textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height);
 
-        self.categoriesContainerView.frame = CGRectMake(self.categoriesContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height + 20, self.categoriesContainerView.frame.size.width, self.categoriesContainerView.frame.size.height);
+        self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textFrame.size.height + 13);
+        self.descriptionContainerView.backgroundImageView.frame = CGRectMake(0, 0, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height);
+
+
+
+        self.categoriesContainerView.frame = CGRectMake(self.categoriesContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height, self.categoriesContainerView.frame.size.width, self.categoriesContainerView.frame.size.height);
 
         
         
-        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x, self.categoriesContainerView.frame.origin.y + self.categoriesContainerView.frame.size.height + 4, self.sizeQuantityTableViewController.tableView.frame.size.width, self.sizeQuantityTableViewController.tableView.frame.size.height);
+        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x, self.categoriesContainerView.frame.origin.y + self.categoriesContainerView.frame.size.height + 8, self.sizeQuantityTableViewController.tableView.frame.size.width, self.sizeQuantityTableViewController.tableView.frame.size.height);
         
         
         self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, self.addSizeButton.frame.size.height);
