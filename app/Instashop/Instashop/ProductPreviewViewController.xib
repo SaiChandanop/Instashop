@@ -17,7 +17,7 @@
                 <outlet property="productImageView" destination="5" id="62"/>
                 <outlet property="sellButton" destination="WDw-Rq-EJs" id="pAG-2w-Wat"/>
                 <outlet property="shippingValueTextField" destination="q4H-Hx-6ct" id="X9k-xs-g7P"/>
-                <outlet property="titleTextField" destination="JMh-QV-Z3J" id="GxA-yf-rgM"/>
+                <outlet property="titleLabel" destination="YYC-bT-4ih" id="cIG-Ju-57U"/>
                 <outlet property="view" destination="1" id="99"/>
             </connections>
         </placeholder>
@@ -48,13 +48,6 @@
                     <rect key="frame" x="0.0" y="431" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title" minimumFontSize="17" id="JMh-QV-Z3J">
-                    <rect key="frame" x="20" y="58" width="280" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="nMg-uj-X2e">
                     <rect key="frame" x="0.0" y="319" width="320" height="112"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -88,6 +81,7 @@
                             <rect key="frame" x="192" y="7" width="117" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
                                 <bool key="isElement" value="NO"/>
                             </accessibility>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -141,6 +135,13 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YYC-bT-4ih">
+                    <rect key="frame" x="20" y="58" width="289" height="79"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </scrollView>

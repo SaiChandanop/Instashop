@@ -385,7 +385,7 @@
             
             
         }
-        textField.text = [NSString stringWithFormat:@"$ %@%@", textField.text, string];
+        textField.text = [NSString stringWithFormat:@"$%@%@", textField.text, string];
         
         if ([string length] > 0)
             returnValue = NO;

@@ -21,7 +21,7 @@
     TPKeyboardAvoidingScrollView *contentScrollView;
     
     UIImageView *productImageView;
-    UITextField *titleTextField;
+    UILabel *titleLabel;
     UITextView *descriptionTextField;
     UIImageView *descriptionBackgroundImageView;
     
@@ -46,7 +46,7 @@
 @property (nonatomic, retain) IBOutlet TPKeyboardAvoidingScrollView *contentScrollView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *productImageView;
-@property (nonatomic, retain) IBOutlet UITextField *titleTextField;
+@property (nonatomic, retain) IBOutlet UILabel *titleLabel;    
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextField;
 @property (nonatomic, retain) IBOutlet UIImageView *descriptionBackgroundImageView;
 

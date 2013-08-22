@@ -23,7 +23,7 @@
 
 @synthesize contentScrollView;
 @synthesize productImageView;
-@synthesize titleTextField;
+@synthesize titleLabel;
 @synthesize descriptionTextField;
 @synthesize descriptionBackgroundImageView;
 @synthesize bottomContentView;
@@ -95,10 +95,11 @@
 
 -(void)loadWithProductCreateObject:(ProductCreateContainerObject *)theProductCreateContainerObject
 {
-//    self.titleTextField.isEnabled = NO;
-    self.titleTextField.enabled = NO;
+
+    self.titleLabel.numberOfLines = 0;
     self.categoryTextField.enabled = NO;
     self.descriptionTextField.editable = NO;
+    self.listPriceValueTextField.enabled = NO;
     
     self.productCreateContainerObject = theProductCreateContainerObject;
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.productCreateContainerObject.mainObject.instagramPictureURLString withImageView:self.productImageView];
@@ -113,7 +114,7 @@
     }
     
     self.categoryTextField.text = titleString;
-    self.titleTextField.text = self.productCreateContainerObject.mainObject.title;
+    self.titleLabel.text = self.productCreateContainerObject.mainObject.title;
     self.descriptionTextField.text = self.productCreateContainerObject.mainObject.description;
     self.listPriceValueTextField.text = self.productCreateContainerObject.mainObject.listPrice;
     
