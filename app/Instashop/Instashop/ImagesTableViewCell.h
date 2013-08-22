@@ -8,23 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "ImagesTableCellButton.h"
+#import "ImagesTableViewItem.h"
 
 @interface ImagesTableViewCell : UITableViewCell
 {
     id delegate;
     
-    UIImageView *backgroundImageViewOne;
-    UIImageView *backgroundImageViewTwo;
-    UIImageView *backgroundImageViewThree;
+    ImagesTableViewItem *itemOne;
+    ImagesTableViewItem *itemTwo;
+    ImagesTableViewItem *itemThree;
     
-    UIImageView *imageViewOne;
-    UIImageView *imageViewTwo;
-    UIImageView *imageViewThree;
-    UILabel *coverLabel;
     
-    ImagesTableCellButton *coverButtonOne;
-    ImagesTableCellButton *coverButtonTwo;
-    ImagesTableCellButton *coverButtonThree;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight;
@@ -33,18 +27,11 @@
 
 @property (nonatomic, retain) id delegate;
 
-@property (nonatomic, retain) UIImageView *backgroundImageViewOne;
-@property (nonatomic, retain) UIImageView *backgroundImageViewTwo;
-@property (nonatomic, retain) UIImageView *backgroundImageViewThree;
+@property (nonatomic, retain) ImagesTableViewItem *itemOne;
+@property (nonatomic, retain) ImagesTableViewItem *itemTwo;
+@property (nonatomic, retain) ImagesTableViewItem *itemThree;
 
-@property (nonatomic, retain) UIImageView *imageViewOne;
-@property (nonatomic, retain) UIImageView *imageViewTwo;
-@property (nonatomic, retain) UIImageView *imageViewThree;
-@property (nonatomic, retain) UILabel *coverLabel;
 
-@property (nonatomic, retain) ImagesTableCellButton *coverButtonOne;
-@property (nonatomic, retain) ImagesTableCellButton *coverButtonTwo;
-@property (nonatomic, retain) ImagesTableCellButton *coverButtonThree;
 
 
 
