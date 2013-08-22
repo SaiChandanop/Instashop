@@ -14,6 +14,7 @@
                 <outlet property="contentScrollView" destination="155" id="1121"/>
                 <outlet property="creditCardContainerView" destination="WVk-g4-1hd" id="8EL-aB-ilj"/>
                 <outlet property="doneButton" destination="905" id="1120"/>
+                <outlet property="emailTextField" destination="452" id="06d-N4-uT4"/>
                 <outlet property="emailView" destination="zlf-xz-3IL" id="JUf-s9-OzI"/>
                 <outlet property="nameTextField" destination="7" id="86"/>
                 <outlet property="nameView" destination="GXE-Xd-ysl" id="kYA-le-1bm"/>

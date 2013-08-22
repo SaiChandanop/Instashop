@@ -46,6 +46,7 @@
     ISDarkRowContainerView  *zipView;
     
     UITextField *nameTextField;
+    UITextField *emailTextField;
     UITextField *addressTextField;
     UITextField *cityTextField;
     UITextField *stateTextField;
@@ -112,6 +113,7 @@
 @property (nonatomic, retain) IBOutlet ISDarkRowContainerView *zipView;
 
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
+@property (nonatomic, retain) IBOutlet UITextField *emailTextField;
 @property (nonatomic, retain) IBOutlet UITextField *addressTextField;
 @property (nonatomic, retain) IBOutlet UITextField *cityTextField;
 @property (nonatomic, retain) IBOutlet UITextField *stateTextField;
