@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ImagesTableCellButton.h"
 #import "ImagesTableViewItem.h"
 
 @interface ImagesTableViewCell : UITableViewCell

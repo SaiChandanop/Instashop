@@ -8,7 +8,6 @@
 
 #import "ImagesTableViewCell.h"
 #import "ImageAPIHandler.h"
-#import "ImagesTableCellButton.h"
 #import "CellSelectionOccuredProtocol.h"
 @implementation ImagesTableViewCell
 

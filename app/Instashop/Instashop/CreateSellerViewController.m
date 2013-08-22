@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 #import "ISConstants.h"
 #import "MBProgressHUD.h"
-
+#import "NavBarTitleView.h"
 
 @interface CreateSellerViewController ()
 
@@ -111,7 +111,9 @@
     UIBarButtonItem *homBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeCustomView];
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
     
-    self.navigationItem.titleView = self.titleTextLabel;
+    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"qwerty"]];
+    
+    
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];

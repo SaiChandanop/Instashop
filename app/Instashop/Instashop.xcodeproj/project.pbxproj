@@ -75,6 +75,7 @@
 		7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */; };
 		7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */; };
 		7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */; };
+		7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */; };
 		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
 		7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
@@ -294,6 +295,8 @@
 		7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizePickerViewViewController.xib; sourceTree = "<group>"; };
 		7B31BD6517C6C74E00D24F55 /* ImagesTableViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewItem.h; sourceTree = "<group>"; };
 		7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewItem.m; sourceTree = "<group>"; };
+		7B31BD6917C6D0FF00D24F55 /* NavBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavBarTitleView.h; sourceTree = "<group>"; };
+		7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavBarTitleView.m; sourceTree = "<group>"; };
 		7B34813817624E5800C055AE /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B34813917624E5800C055AE /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
@@ -682,6 +685,15 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		7B31BD6817C6D0EC00D24F55 /* NavBarTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				7B31BD6917C6D0FF00D24F55 /* NavBarTitleView.h */,
+				7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */,
+			);
+			name = NavBarTitleView;
+			sourceTree = "<group>";
+		};
 		7B34813717624E3600C055AE /* DiscoverTableViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -782,6 +794,7 @@
 		7B5D624517C4F4B000D6C8B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7B31BD6817C6D0EC00D24F55 /* NavBarTitleView */,
 				7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */,
 				7B1B302917BE8E9400BB6420 /* BSKeyboardControls */,
 				7B94515817BE70D600D4AAB1 /* SizePicker */,
@@ -1464,6 +1477,7 @@
 				7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */,
 				7B1072BE175E7CDE00D9DC5D /* ProductDetailsViewController.m in Sources */,
 				7B5D628517C5AF7100D6C8B1 /* PKUSAddressZip.m in Sources */,
+				7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */,
 				7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */,
 				7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */,
 				7B5D626817C5AF3700D6C8B1 /* STPToken.m in Sources */,
