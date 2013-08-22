@@ -25,6 +25,7 @@
     
     BOOL areViewsTransitioning;
     
+    UIButton *feedCoverButton;
 }
 
 
@@ -48,6 +49,8 @@
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) DiscoverViewController *discoverViewController;
 @property (strong, nonatomic) NotificationsViewController *notificationsViewController;
+
+@property (strong, nonatomic) UIButton *feedCoverButton;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;
 
