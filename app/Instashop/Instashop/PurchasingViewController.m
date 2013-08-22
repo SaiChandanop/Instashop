@@ -56,10 +56,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-//    self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, descriptionTextField.contentSize.height);
+    NSLog(@"viewDidAppear: %@", self);
+    self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionTextView.contentSize.height + 20);
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
+
+    NSLog(@"2self.descriptionTextView.text: %@", self.descriptionTextView.text);
+    NSLog(@"2self.descriptionTextView.contentSize.height: %f", self.descriptionTextView.contentSize.height);
+
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
 
     
 }
@@ -133,6 +138,14 @@
     
     self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
+    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width,  self.descriptionTextView.contentSize.height);
+    
+    NSLog(@"self.descriptionTextView.text: %@", self.descriptionTextView.text);
+    NSLog(@"self.descriptionTextView.contentSize.height: %f", self.descriptionTextView.contentSize.height);
+
+    
+    
+    
     self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
 
     self.retailPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
@@ -161,7 +174,6 @@
         }
 
 
-    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 500);
 
     self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
     [self.view bringSubviewToFront:self.bottomView];
@@ -173,7 +185,7 @@
     
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 8);
     
     
 
