@@ -32,7 +32,7 @@
 @synthesize attributesArray;
 @synthesize containerScrollView;
 @synthesize theImageView;
-@synthesize titleLabel;
+@synthesize titleTextView;
 @synthesize descriptionTextView;
 @synthesize selectedCategoriesLabel;
 @synthesize retailPriceTextField;
@@ -164,9 +164,9 @@
     
     if (captionDictionary != nil)
         if (![captionDictionary isKindOfClass:[NSNull class]])
-            self.titleLabel.text = [captionDictionary objectForKey:@"text"];
+            self.titleTextView.text = [captionDictionary objectForKey:@"text"];
         
-    self.titleLabel.numberOfLines = 0;
+
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
 }
@@ -192,7 +192,7 @@
             ProductCreateObject *productCreateObject = [[ProductCreateObject alloc] init];
             productCreateObject.instagramPictureURLString = self.instagramPictureURLString;
             productCreateObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
-            productCreateObject.title = self.titleLabel.text;
+            productCreateObject.title = self.titleTextView.text;
             productCreateObject.description = self.descriptionTextView.text;
             productCreateObject.retailValue = self.retailPriceTextField.text;
             productCreateObject.retailPrice = self.retailPriceTextField.text;
@@ -213,7 +213,7 @@
         productCreateContainerObject.mainObject = [[ProductCreateObject alloc] init];
         productCreateContainerObject.mainObject.instagramPictureURLString = self.instagramPictureURLString;
         productCreateContainerObject.mainObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
-        productCreateContainerObject.mainObject.title = self.titleLabel.text;
+        productCreateContainerObject.mainObject.title = self.titleTextView.text;
         productCreateContainerObject.mainObject.description = self.descriptionTextView.text;
         productCreateContainerObject.mainObject.retailValue = self.retailPriceTextField.text;
         productCreateContainerObject.mainObject.retailPrice = self.retailPriceTextField.text;

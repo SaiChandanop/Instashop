@@ -32,7 +32,7 @@
     
     UIImageView *theImageView;
 
-    UILabel *titleLabel;
+    UITextView *titleTextView;
     
     ISDarkRowContainerView *descriptionContainerView;
     UITextView *descriptionTextView;
@@ -78,7 +78,7 @@
 
 
 @property (nonatomic, retain) IBOutlet UIImageView *theImageView;
-@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
+@property (nonatomic, retain) IBOutlet UITextView *titleTextView;
 
 @property (nonatomic, retain) IBOutlet ISDarkRowContainerView *descriptionContainerView;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
