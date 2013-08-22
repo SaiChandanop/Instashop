@@ -13,6 +13,9 @@
 #import "ProductPurchaseCompleteProtocol.h"
 #import "PostmasterShipResponseProtocol.h"
 #import "STPView.h"
+#import "ISDarkRowContainerView.h"
+#import "ISLightRowContainerView.h"
+
 @interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol, SellersRequestFinishedProtocol, ProductPurchaseCompleteProtocol, PostmasterShipResponseProtocol>
 {
     id doneButtonDelegate;    
@@ -33,6 +36,14 @@
     UILabel *quantityTextLabel;
     UILabel *priceValueLabel;
     UILabel *priceTextLabel;
+    
+    ISDarkRowContainerView *nameView;
+    ISLightRowContainerView *emailView;
+    ISDarkRowContainerView  *phoneView;
+
+    ISDarkRowContainerView *addressView;
+    ISLightRowContainerView *cityStateView;
+    ISDarkRowContainerView  *zipView;
     
     UITextField *nameTextField;
     UITextField *addressTextField;
@@ -90,9 +101,15 @@
 @property (nonatomic, retain) IBOutlet UILabel *priceValueLabel;
 @property (nonatomic, retain) IBOutlet UILabel *priceTextLabel;
 
+@property (nonatomic, retain) IBOutlet UIView *nameView;
+@property (nonatomic, retain) IBOutlet UIView *emailView;
+@property (nonatomic, retain) IBOutlet UIView *phoneView;
+
+@property (nonatomic, retain) IBOutlet UIView *addressView;
+@property (nonatomic, retain) IBOutlet UIView *cityStateView;
+@property (nonatomic, retain) IBOutlet UIView *zipView;
 
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
-
 @property (nonatomic, retain) IBOutlet UITextField *addressTextField;
 @property (nonatomic, retain) IBOutlet UITextField *cityTextField;
 @property (nonatomic, retain) IBOutlet UITextField *stateTextField;
