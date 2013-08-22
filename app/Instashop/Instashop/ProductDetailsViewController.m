@@ -370,8 +370,23 @@
     BOOL returnValue = YES;
     if (textField == self.retailPriceTextField || textField == self.instashopPriceTextField)
     {
+        if ([string compare:@"."] == NSOrderedSame)
+            return NO;
+        
+        
         textField.text = [textField.text stringByReplacingOccurrencesOfString:@"$" withString:@""];
-        textField.text = [NSString stringWithFormat:@"$%@%@", textField.text, string];
+        textField.text = [textField.text stringByReplacingOccurrencesOfString:@"." withString:@""];
+        if ([textField.text length] > 1)
+        {
+            NSString *decimalValue = [textField.text substringWithRange:NSMakeRange([textField.text length] - 1, 1)];
+            NSString *wholeValue = [textField.text substringWithRange:NSMakeRange(0, [textField.text length] - 1)];
+            
+            textField.text = [NSString stringWithFormat:@"%@.%@", wholeValue, decimalValue];
+            
+            
+        }
+        textField.text = [NSString stringWithFormat:@"$ %@%@", textField.text, string];
+        
         if ([string length] > 0)
             returnValue = NO;
 
