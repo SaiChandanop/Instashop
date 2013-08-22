@@ -222,7 +222,7 @@
                          }];
     }
     
-    [self.cardNumberField becomeFirstResponder];
+//    [self.cardNumberField becomeFirstResponder];
 }
 
 - (void)stateMeta

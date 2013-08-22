@@ -8,8 +8,8 @@
 
 #import "StripeAuthenticationHandler.h"
 #import "STPCard.h"
-#define TEST_SECRET_KEY  @"sk_test_uMQ75pJIdtsnlmdWbbWgWcE2"
-#define TEST_PUBLISHABLE_KEY @"pk_test_In7Ru0V1t1cRtTEm4Pna3YqQ"
+
+
 @implementation StripeAuthenticationHandler
 
 
@@ -40,7 +40,7 @@ static NSString * const chargeEndpoint = @"charges";
         
          
          
-         [delegate doBuy];
+         [delegate tokenCreatedWithDictionary:json];
      }];
 
 

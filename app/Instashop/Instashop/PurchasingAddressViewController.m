@@ -60,7 +60,7 @@
 
 @synthesize ccvTextField;
 @synthesize requestedPostmasterDictionary;
-
+@synthesize stpCreditCardNumberTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -101,8 +101,13 @@
     self.contentScrollView.contentSize = CGSizeMake(0, self.doneButton.frame.origin.y + self.doneButton.frame.size.height + 56);
 
     
+    self.stpCreditCardNumberTextField = [[PKView alloc] initWithFrame:CGRectMake(self.creditCardNumberTextField.frame.origin.x, self.creditCardNumberTextField.frame.origin.y - 9, self.creditCardNumberTextField.frame.size.width, self.creditCardNumberTextField.frame.size.height)];
+    [self.contentScrollView addSubview:self.stpCreditCardNumberTextField];
+    
+    [self.creditCardNumberTextField removeFromSuperview];
+    
     [self populateDummy];
-
+    
 }
 
 
@@ -280,13 +285,16 @@
     
     */
     
+
+    
+    
     [MBProgressHUD showHUDAddedTo:self.view animated:NO].detailsLabelText = @"Stripe Call";
     self.requestedPostmasterDictionary = [NSDictionary dictionaryWithDictionary:thePostmasterDictionary];
     STPCard *stripeCard = [[STPCard alloc] init];
-    stripeCard.number = self.creditCardNumberTextField.text;
-    stripeCard.expMonth = [self.expirationMonthTextField.text integerValue];
-    stripeCard.expYear = [self.expirationYearTextField.text integerValue];
-    stripeCard.cvc = self.ccvTextField.text;
+    stripeCard.number = [self.stpCreditCardNumberTextField.cardNumber string];
+    stripeCard.expMonth = [self.stpCreditCardNumberTextField.cardExpiry month];
+    stripeCard.expYear = [self.stpCreditCardNumberTextField.cardExpiry year];
+    stripeCard.cvc = [self.stpCreditCardNumberTextField.cardCVC string];
     stripeCard.name = self.nameTextField.text;
     stripeCard.addressLine1 = self.addressTextField.text;
     stripeCard.addressZip = self.zipTextField.text;
@@ -353,11 +361,13 @@
     self.stateTextField.text = @"CT";
     self.zipTextField.text = @"06883";
 
-    self.creditCardNumberTextField.text = @"4242424242424242";
-    self.expirationMonthTextField.text = @"05";
+    
+    
+/*    self.creditCardNumberTextField.text = [stpCreditCardNumberTextField.cardNumber string];
+    self.expirationMonthTextField.text = [stpCreditCardNumberTextField.cardExpiry month];
     self.expirationYearTextField.text = @"15";
-    self.ccvTextField.text = @"123";
-
+    self.ccvTextField.text = [stpCreditCardNumberTextField.cardCVC string];
+*/
 
 }
 
