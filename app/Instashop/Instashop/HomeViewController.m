@@ -77,9 +77,9 @@
 -(void)loadStates
 {
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
-        self.sellerLabel.text = @"Become a seller";
+        self.sellerLabel.text = @"Become a Seller";
     else
-        self.sellerLabel.text = @"Sell a product";
+        self.sellerLabel.text = @"Create New Product";
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
