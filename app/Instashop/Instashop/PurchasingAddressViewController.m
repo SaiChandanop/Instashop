@@ -127,7 +127,7 @@
         self.sizeValueLabel.text = sizeSelection;
     else
     {
-        self.sizeTextLabel.text = @"N/A";
+//        self.sizeTextLabel.text = @"Size";
         self.sizeValueLabel.text = @"N/A";
     }
 
