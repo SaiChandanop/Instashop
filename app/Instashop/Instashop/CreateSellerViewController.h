@@ -33,6 +33,7 @@
     UILabel *instagramUsernameLabel;
     UIButton *submitButton;
 
+    UIButton *followInstashopButton;
     UILabel *titleTextLabel;
     
     BSKeyboardControls *keyboardControls;
@@ -63,7 +64,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *instagramUsernameLabel;
 @property (nonatomic, retain) IBOutlet UIButton *submitButton;
 
-
+@property (nonatomic, retain) IBOutlet UIButton *followInstashopButton;
 @property (nonatomic, retain) IBOutlet UILabel *titleTextLabel;
 
 @property (nonatomic, retain) IBOutlet BSKeyboardControls *keyboardControls;

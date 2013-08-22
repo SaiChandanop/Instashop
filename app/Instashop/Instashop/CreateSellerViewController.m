@@ -40,7 +40,7 @@
 @synthesize submitButton;
 @synthesize titleTextLabel;
 @synthesize keyboardControls;
-
+@synthesize followInstashopButton;
 @synthesize thanksSellerImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -255,6 +255,8 @@
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
     NSLog(@"follow result: %@", result);
+    
+    self.followInstashopButton.selected = YES;
 }
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error
