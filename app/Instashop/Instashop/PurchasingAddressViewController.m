@@ -229,11 +229,10 @@
     
     if ([[self.stpCreditCardNumberTextField.cardNumber string] length] == 0)
         [missingFieldsArray addObject:@"Card Number"];
-    /*    if ([[self.stpCreditCardNumberTextField.cardExpiry month] length] == 0)
-     [missingFieldsArray addObject:@"Card Number"];
-     if ([[self.stpCreditCardNumberTextField.cardNumber year] length] == 0)
-     [missingFieldsArray addObject:@"Card Number"];
-     */
+
+    if ([[self.stpCreditCardNumberTextField.cardExpiry formattedString] length] == 0)
+        [missingFieldsArray addObject:@"Expiration"];
+    
     if ([[self.stpCreditCardNumberTextField.cardCVC string] length] == 0)
         [missingFieldsArray addObject:@"CVC"];
     
@@ -274,6 +273,31 @@
     
     else
     {
+
+    
+        [[NSUserDefaults standardUserDefaults] setObject:emailTextField.text forKey:@"emailTextField"];
+        [[NSUserDefaults standardUserDefaults] setObject:nameTextField.text forKey:@"nameTextField"];
+        [[NSUserDefaults standardUserDefaults] setObject:addressTextField.text forKey:@"addressTextField"];
+        [[NSUserDefaults standardUserDefaults] setObject:cityTextField.text forKey:@"cityTextField"];
+        [[NSUserDefaults standardUserDefaults] setObject:zipTextField.text forKey:@"zipTextField"];
+        [[NSUserDefaults standardUserDefaults] setObject:phoneTextField.text forKey:@"phoneTextField"];
+        [[NSUserDefaults standardUserDefaults] setObject:stateTextField.text forKey:@"stateTextField"];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:[self.stpCreditCardNumberTextField.cardNumber string] forKey:@"cardNumber"];
+        [[NSUserDefaults standardUserDefaults] setObject:[self.stpCreditCardNumberTextField.cardExpiry formattedString] forKey:@"cardExpiry"];
+        [[NSUserDefaults standardUserDefaults] setObject:[self.stpCreditCardNumberTextField.cardCVC string] forKey:@"cardCVC"];
+    
+        
+        
+        
+        
+        
+        
+        
+        //[[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
+        
+        
+        
         NSMutableDictionary *theSellerDict = [NSMutableDictionary dictionaryWithDictionary:sellerDictionary];
         [theSellerDict setObject:[sellerDictionary objectForKey:@"instagram_id"] forKey:@"seller_instagram_id"];
         [theSellerDict removeObjectForKey:@"instagram_id"];
@@ -442,11 +466,38 @@
 
 -(void)populateDummy
 {
-    self.nameTextField.text = @"Josh Klobe";
-    self.addressTextField.text = @"5 Tall Pines Dr";
-    self.cityTextField.text = @"Weston";
-    self.stateTextField.text = @"CT";
-    self.zipTextField.text = @"06883";
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"emailTextField"] != nil)
+        self.emailTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"emailTextField"];
+    
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"nameTextField"] != nil)
+        self.nameTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"nameTextField"];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"addressTextField"] != nil)
+        self.addressTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"addressTextField"];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"cityTextField"] != nil)
+        self.cityTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"cityTextField"];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"zipTextField"] != nil)
+        self.zipTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"zipTextField"];
+    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"phoneTextField"] != nil)
+        self.phoneTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"phoneTextField"];
+
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"stateTextField"] != nil)
+        self.stateTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"stateTextField"];
+    
+    /*
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"stateTextField"] != nil)
+        self.stpCreditCardNumberTextField.cardNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"stateTextField"];
+    
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[ string] forKey:@"cardNumber"];
+    [[NSUserDefaults standardUserDefaults] setObject:[self.stpCreditCardNumberTextField.cardExpiry formattedString] forKey:@"cardExpiry"];
+    [[NSUserDefaults standardUserDefaults] setObject:[self.stpCreditCardNumberTextField.cardCVC string] forKey:@"cardCVC"];
+    */
     
     
     

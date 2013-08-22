@@ -47,7 +47,7 @@
     [rootVC.view addSubview:vc.view];
     
     UIButton *someButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    [someButton addTarget:self action:@selector(xButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [someButton addTarget:vc action:@selector(xButtonHit) forControlEvents:UIControlEventTouchUpInside];
     someButton.frame = CGRectMake(0, 0, rootVC.view.frame.size.width, rootVC.view.frame.size.height);
     [rootVC.view addSubview:someButton];
 }
