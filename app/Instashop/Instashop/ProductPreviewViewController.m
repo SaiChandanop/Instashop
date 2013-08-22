@@ -76,11 +76,19 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, descriptionTextField.contentSize.height);
-    self.descriptionTextField.frame = CGRectMake(self.descriptionTextField.frame.origin.x, self.descriptionTextField.frame.origin.y, self.descriptionTextField.frame.size.width, descriptionTextField.contentSize.height);
+    if (descriptionTextField.contentSize.height > 44)
+    {
+        self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, descriptionTextField.contentSize.height);
+        self.descriptionTextField.frame = CGRectMake(self.descriptionTextField.frame.origin.x, self.descriptionTextField.frame.origin.y, self.descriptionTextField.frame.size.width, descriptionTextField.contentSize.height);
+    }
+    else
+    {
+        self.descriptionBackgroundImageView.frame = CGRectMake(self.descriptionBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y, self.descriptionBackgroundImageView.frame.size.width, 44);
+        self.descriptionTextField.frame = CGRectMake(self.descriptionTextField.frame.origin.x, self.descriptionTextField.frame.origin.y, self.descriptionTextField.frame.size.width, descriptionTextField.contentSize.height);
+    }
     
-    
-    self.categoryTextField.frame = CGRectMake(self.categoryTextField.frame.origin.x,self.descriptionTextField.frame.origin.y + self.descriptionTextField.frame.size.height, self.categoryTextField.frame.size.width, self.categoryTextField.frame.size.height);
+    self.categoryBackgroundImageView.frame = CGRectMake(self.categoryBackgroundImageView.frame.origin.x, self.descriptionBackgroundImageView.frame.origin.y + self.descriptionBackgroundImageView.frame.size.height + 1, self.categoryBackgroundImageView.frame.size.width, self.categoryBackgroundImageView.frame.size.height);
+    self.categoryTextField.frame = CGRectMake(self.categoryTextField.frame.origin.x,self.descriptionBackgroundImageView.frame.origin.y + self.descriptionBackgroundImageView.frame.size.height, self.categoryTextField.frame.size.width, self.categoryTextField.frame.size.height);
     
     
     self.sizeQuantityTableViewController.tableView.frame = CGRectMake(0, self.categoryTextField.frame.origin.y + self.categoryTextField.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, [[self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary allKeys] count] * 44);
