@@ -30,6 +30,7 @@
 
 @synthesize productDetailsPlacementView;
 @synthesize productDetailsContentView;
+@synthesize purchaseDetailsContentView;
 @synthesize doneButtonDelegate;
 @synthesize shippingCompleteDelegate;
 @synthesize productImageView;
@@ -53,12 +54,7 @@
 @synthesize sellerDictionary;
 @synthesize upsRateDictionary;
 @synthesize fedexRateDictionary;
-
-@synthesize creditCardNumberTextField;
-@synthesize expirationMonthTextField;
-@synthesize expirationYearTextField;
-
-@synthesize ccvTextField;
+@synthesize creditCardContainerView;
 @synthesize requestedPostmasterDictionary;
 @synthesize stpCreditCardNumberTextField;
 
@@ -101,10 +97,8 @@
     self.contentScrollView.contentSize = CGSizeMake(0, self.doneButton.frame.origin.y + self.doneButton.frame.size.height + 66);
 
     
-    self.stpCreditCardNumberTextField = [[PKView alloc] initWithFrame:CGRectMake(self.creditCardNumberTextField.frame.origin.x, self.creditCardNumberTextField.frame.origin.y - 9, self.creditCardNumberTextField.frame.size.width, self.creditCardNumberTextField.frame.size.height)];
-    [self.contentScrollView addSubview:self.stpCreditCardNumberTextField];
-    
-    [self.creditCardNumberTextField removeFromSuperview];
+    self.stpCreditCardNumberTextField = [[PKView alloc] initWithFrame:CGRectMake(self.creditCardContainerView.frame.origin.x+17, self.creditCardContainerView.frame.origin.y + 11.5, self.creditCardContainerView.frame.size.width, self.creditCardContainerView.frame.size.height)];
+    [self.purchaseDetailsContentView addSubview:self.stpCreditCardNumberTextField];
     
     [self populateDummy];
     
@@ -191,11 +185,6 @@
     [self.stateTextField resignFirstResponder];
     [self.phoneTextField resignFirstResponder];
     
-    [self.creditCardNumberTextField resignFirstResponder];
-    [self.expirationMonthTextField resignFirstResponder];
-    [self.expirationYearTextField resignFirstResponder];
-    [self.ccvTextField resignFirstResponder];
-
     
     NSMutableDictionary *theSellerDict = [NSMutableDictionary dictionaryWithDictionary:sellerDictionary];
     [theSellerDict setObject:[sellerDictionary objectForKey:@"instagram_id"] forKey:@"seller_instagram_id"];

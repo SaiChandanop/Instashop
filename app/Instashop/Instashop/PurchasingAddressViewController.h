@@ -23,6 +23,7 @@
     
     UIView *productDetailsPlacementView;
     UIView *productDetailsContentView;
+    UIView *purchaseDetailsContentView;
     
     UIImageView *productImageView;
     UILabel *productTitleLabel;
@@ -40,11 +41,10 @@
     UITextField *zipTextField;
     UITextField *phoneTextField;
     
-    UITextField *creditCardNumberTextField;
+    
+    UIView *creditCardContainerView;
     PKView *stpCreditCardNumberTextField;
-    UITextField *expirationMonthTextField;
-    UITextField *expirationYearTextField;
-    UITextField *ccvTextField;
+    
     
     UIButton *checkRatesButton;
     UIButton *doneButton;
@@ -79,6 +79,7 @@
 
 @property (nonatomic, retain) IBOutlet UIView *productDetailsPlacementView;
 @property (nonatomic, retain) IBOutlet UIView *productDetailsContentView;
+@property (nonatomic, retain) IBOutlet UIView *purchaseDetailsContentView;
 
 @property (nonatomic, retain) IBOutlet UIImageView *productImageView;
 @property (nonatomic, retain) IBOutlet UILabel *productTitleLabel;
@@ -91,18 +92,16 @@
 
 
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
-@property (nonatomic, retain) IBOutlet PKView *stpCreditCardNumberTextField;
+
 @property (nonatomic, retain) IBOutlet UITextField *addressTextField;
 @property (nonatomic, retain) IBOutlet UITextField *cityTextField;
 @property (nonatomic, retain) IBOutlet UITextField *stateTextField;
 @property (nonatomic, retain) IBOutlet UITextField *zipTextField;
 @property (nonatomic, retain) IBOutlet UITextField *phoneTextField;
 
-@property (nonatomic, retain) IBOutlet UITextField *creditCardNumberTextField;
-@property (nonatomic, retain) IBOutlet UITextField *expirationMonthTextField;
-@property (nonatomic, retain) IBOutlet UITextField *expirationYearTextField;
 
-@property (nonatomic, retain) IBOutlet UITextField *ccvTextField;
+@property (nonatomic, retain) IBOutlet UIView *creditCardContainerView;
+@property (nonatomic, retain) IBOutlet PKView *stpCreditCardNumberTextField;
 
 @property (nonatomic, retain) IBOutlet UIButton *checkRatesButton;
 @property (nonatomic, retain) IBOutlet UIButton *doneButton;

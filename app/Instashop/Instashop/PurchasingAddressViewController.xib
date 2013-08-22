@@ -10,7 +10,7 @@
                 <outlet property="addressTextField" destination="574" id="983"/>
                 <outlet property="cityTextField" destination="573" id="982"/>
                 <outlet property="contentScrollView" destination="155" id="1121"/>
-                <outlet property="creditCardNumberTextField" destination="783" id="984"/>
+                <outlet property="creditCardContainerView" destination="WVk-g4-1hd" id="8EL-aB-ilj"/>
                 <outlet property="doneButton" destination="905" id="1120"/>
                 <outlet property="nameTextField" destination="7" id="86"/>
                 <outlet property="phoneTextField" destination="64" id="91"/>
@@ -20,6 +20,7 @@
                 <outlet property="productDetailsPlacementView" destination="187" id="1101"/>
                 <outlet property="productImageView" destination="167" id="186"/>
                 <outlet property="productTitleLabel" destination="538" id="544"/>
+                <outlet property="purchaseDetailsContentView" destination="k6O-gQ-GY3" id="NIP-5S-hdK"/>
                 <outlet property="quantityTextLabel" destination="1077" id="1097"/>
                 <outlet property="quantityValueLabel" destination="1070" id="1096"/>
                 <outlet property="sizeTextLabel" destination="1065" id="1095"/>
@@ -31,11 +32,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view autoresizesSubviews="NO" contentMode="scaleToFill" id="1">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="567"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="155" customClass="TPKeyboardAvoidingScrollView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="567"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="538">
@@ -99,18 +100,18 @@
                             <color key="backgroundColor" red="0.1294117719" green="0.1294117719" blue="0.1294117719" alpha="1" colorSpace="deviceRGB"/>
                         </view>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="883">
-                            <rect key="frame" x="61" y="801" width="199" height="48"/>
+                            <rect key="frame" x="61" y="817" width="199" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="product_buy_button_background.png" id="869">
-                            <rect key="frame" x="0.0" y="804" width="320" height="48"/>
+                            <rect key="frame" x="0.0" y="817" width="320" height="48"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="905">
-                            <rect key="frame" x="0.0" y="798" width="320" height="54"/>
+                            <rect key="frame" x="0.0" y="816" width="320" height="49"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal" title="BUY">
@@ -125,7 +126,7 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" id="k6O-gQ-GY3">
-                            <rect key="frame" x="0.0" y="369" width="320" height="435"/>
+                            <rect key="frame" x="0.0" y="369" width="320" height="453"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="NYk-Sa-gc0" customClass="ISLightRowContainerView">
@@ -226,13 +227,13 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Zip" minimumFontSize="17" id="846">
-                                            <rect key="frame" x="175" y="0.0" width="125" height="30"/>
+                                            <rect key="frame" x="175" y="5" width="125" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="State" minimumFontSize="17" id="936">
-                                            <rect key="frame" x="20" y="0.0" width="125" height="30"/>
+                                            <rect key="frame" x="20" y="5" width="125" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -255,16 +256,8 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
                                 <view contentMode="scaleToFill" id="WVk-g4-1hd" customClass="ISDarkRowContainerView">
-                                    <rect key="frame" x="0.0" y="391" width="320" height="44"/>
+                                    <rect key="frame" x="0.0" y="391" width="320" height="64"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Credit Card Number" minimumFontSize="17" id="783">
-                                            <rect key="frame" x="20" y="7" width="280" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                        </textField>
-                                    </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
                             </subviews>
