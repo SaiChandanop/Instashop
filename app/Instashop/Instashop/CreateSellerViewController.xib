@@ -216,7 +216,7 @@
                     <rect key="frame" x="275" y="92" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram_gray.png" id="Kqx-vd-sur">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instashop_gray_icon.png" id="Kqx-vd-sur">
                     <rect key="frame" x="275" y="136" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
@@ -233,7 +233,7 @@
     <resources>
         <image name="cell_disclosure_new.png" width="44" height="44"/>
         <image name="cell_separator.png" width="320" height="5"/>
-        <image name="instagram_gray.png" width="44" height="44"/>
+        <image name="instashop_gray_icon.png" width="44" height="44"/>
         <image name="lmVerifiedRetailerIcon.png" width="44" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
