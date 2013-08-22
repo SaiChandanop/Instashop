@@ -271,6 +271,7 @@
 		7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISDarkRowContainerView.m; sourceTree = "<group>"; };
 		7B5D625217C517A000D6C8B1 /* ISRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRowContainerView.h; sourceTree = "<group>"; };
 		7B5D625317C517A000D6C8B1 /* ISRowContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRowContainerView.m; sourceTree = "<group>"; };
+		7B5D625517C55AA700D6C8B1 /* StripeTokenReceiverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeTokenReceiverProtocol.h; sourceTree = "<group>"; };
 		7B5F53F21767829F0066D529 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
 		7B5F53F31767829F0066D529 /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
 		7B602D9E17664F1700663A73 /* PurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewController.h; sourceTree = "<group>"; };
@@ -555,6 +556,7 @@
 				7B7A518517C42367009AD081 /* ProductCreateContainerProtocol.h */,
 				7B7A518617C423E0009AD081 /* ProductPurchaseCompleteProtocol.h */,
 				7B7A518717C42436009AD081 /* PostmasterShipResponseProtocol.h */,
+				7B5D625517C55AA700D6C8B1 /* StripeTokenReceiverProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

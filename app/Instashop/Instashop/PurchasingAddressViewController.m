@@ -233,47 +233,6 @@
      */
 }
 
--(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict
-{
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    if (returnDict != nil)
-    {
-        if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"UPS"] == NSOrderedSame)
-            self.upsRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
-        else if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"FEDEX"] == NSOrderedSame)
-            self.fedexRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
-    }
-    
-    if (self.upsRateDictionary != nil && self.fedexRateDictionary != nil)
-    {
-        
-        NSString *upsString = [NSString stringWithFormat:@"%@ %@ %@", [self.upsRateDictionary objectForKey:@"carrier"], [self.upsRateDictionary objectForKey:@"charge"], [self.upsRateDictionary objectForKey:@"service"]];
-        NSString *fedexString = [NSString stringWithFormat:@"%@ %@ %@", [self.fedexRateDictionary objectForKey:@"carrier"], [self.fedexRateDictionary objectForKey:@"charge"], [self.fedexRateDictionary objectForKey:@"service"]];
-        
-        UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                      initWithTitle:@"Rates"
-                                      delegate:self
-                                      cancelButtonTitle:@"cancel"
-                                      destructiveButtonTitle:nil
-                                      otherButtonTitles:upsString, fedexString, nil];
-        [actionSheet showInView:self.view];
-        
-        
-    }
-    
-}
-
--(void)ratesCallDidFail
-{
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"Please ensure all fields are filled out correctly"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-    
-    [alertView show];
-}
 
 
 
@@ -341,8 +300,15 @@
 
     
 }
--(void)doBuy
+
+-(void)tokenCreatedWithDictionary:(NSDictionary *)dict
 {
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[dict objectForKey:@"id"] forKey:@"StripeToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    
+    
     NSString *stripeToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"StripeToken"];
     
     float val = [[self.requestedProductObject objectForKey:@"products_price"] floatValue];
@@ -394,6 +360,57 @@
 
 
 }
+
+
+
+
+
+
+-(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    if (returnDict != nil)
+    {
+        if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"UPS"] == NSOrderedSame)
+            self.upsRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
+        else if ([(NSString *)[returnDict objectForKey:@"carrier"] compare:@"FEDEX"] == NSOrderedSame)
+            self.fedexRateDictionary = [[NSDictionary alloc] initWithDictionary:returnDict];
+    }
+    
+    if (self.upsRateDictionary != nil && self.fedexRateDictionary != nil)
+    {
+        
+        NSString *upsString = [NSString stringWithFormat:@"%@ %@ %@", [self.upsRateDictionary objectForKey:@"carrier"], [self.upsRateDictionary objectForKey:@"charge"], [self.upsRateDictionary objectForKey:@"service"]];
+        NSString *fedexString = [NSString stringWithFormat:@"%@ %@ %@", [self.fedexRateDictionary objectForKey:@"carrier"], [self.fedexRateDictionary objectForKey:@"charge"], [self.fedexRateDictionary objectForKey:@"service"]];
+        
+        UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                      initWithTitle:@"Rates"
+                                      delegate:self
+                                      cancelButtonTitle:@"cancel"
+                                      destructiveButtonTitle:nil
+                                      otherButtonTitles:upsString, fedexString, nil];
+        [actionSheet showInView:self.view];
+        
+        
+    }
+    
+}
+
+-(void)ratesCallDidFail
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                        message:@"Please ensure all fields are filled out correctly"
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
+}
+
+
+
+
 
 
 

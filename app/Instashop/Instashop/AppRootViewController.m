@@ -12,6 +12,7 @@
 #import "StripeAuthenticationHandler.h"
 #import "AttributesManager.h"
 #import "ISConstants.h"
+#import "CreateSellerViewController.h"
 
 @implementation AppRootViewController
 
@@ -88,10 +89,6 @@ float transitionTime = .456;
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
 
 
--(void)doBuy
-{
-    NSLog(@"do buy");    
-}
 
 -(void)ceaseTransition
 {
@@ -206,6 +203,37 @@ float transitionTime = .456;
         productCreateNavigationController.view.frame = CGRectMake(0, 0, productCreateNavigationController .view.frame.size.width, productCreateNavigationController.view.frame.size.height);
         [UIView commitAnimations];        
     }
+}
+
+-(void)createSellerButtonHit
+{
+    CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
+    createSellerViewController.delegate = self.homeViewController;
+    
+    UINavigationController *createNavigationController = [[UINavigationController alloc] initWithRootViewController:createSellerViewController];
+    createNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:createNavigationController .view];
+    
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    createNavigationController.view.frame = CGRectMake(0, 0, createNavigationController .view.frame.size.width, createNavigationController.view.frame.size.height);
+    [UIView commitAnimations];
+    
+}
+
+-(void)createSellerShouldExit:(UINavigationController *)theNavigationController
+{
+    NSLog(@"createSellerShouldExit: %@", theNavigationController);
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
+    [UIView commitAnimations];
+   
 }
 
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController

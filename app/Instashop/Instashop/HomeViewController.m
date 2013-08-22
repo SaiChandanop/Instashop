@@ -90,13 +90,7 @@
 
 -(IBAction) tempSellerButtonHit
 {
-    CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
-    createSellerViewController.delegate = self;
-    
-    UINavigationController *createNavigationController = [[UINavigationController alloc] initWithRootViewController:createSellerViewController];
-    [self.parentController presentViewController:createNavigationController animated:YES completion:nil];
-    
-
+    [self.parentController createSellerButtonHit];
 }
 
 -(IBAction) sellerButtonHit
@@ -104,14 +98,7 @@
 
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
     {
-
-        CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
-        createSellerViewController.delegate = self;
-        
-        UINavigationController *createNavigationController = [[UINavigationController alloc] initWithRootViewController:createSellerViewController];
-        [self.parentController presentViewController:createNavigationController animated:YES completion:nil];
-        
-
+        [self.parentController createSellerButtonHit];
     }
     else
        [self.parentController createProductButtonHit];
@@ -130,13 +117,16 @@
     
     [alertView show];
     
-    [self.parentController dismissViewControllerAnimated:YES completion:nil];
+    [self.parentController createSellerShouldExit:self.navigationController];
+    
+    
 }
 
 
--(void)createSellerCancelButtonHit
+-(void)createSellerCancelButtonHit:(UINavigationController *)theNavigationController
 {
-    [self.parentController dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"createSellerCancelButtonHit: %@", theNavigationController);
+    [self.parentController createSellerShouldExit:theNavigationController];
 }
 
 

@@ -92,10 +92,6 @@
 -(void)userCreateRequestFinished:(id)obj
 {
     
-//    NSString* responseString = [[[NSString alloc] initWithData:responseData
-  //                                                    encoding:NSUTF8StringEncoding] autorelease];
-
-//    NSLog(@"userCreateRequestFinished: %@", responseString);
     
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     

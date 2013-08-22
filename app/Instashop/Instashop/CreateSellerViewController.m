@@ -57,11 +57,7 @@
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
-    
-    
-    UIView *someView = [[UIView alloc] initWithFrame:CGRectMake(0,-20,self.view.frame.size.width, 20)];
-    someView.backgroundColor = [UIColor whiteColor];
-    [self.navigationController.navigationBar addSubview:someView];
+
     
     
     CGRect screenBound = [[UIScreen mainScreen] bounds];
@@ -152,7 +148,7 @@
 
 -(void)backButtonHit
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.delegate createSellerCancelButtonHit:self.navigationController];
 }
 
 -(void)categorySelectionCompleteWithArray:(NSArray *)selectionArray
@@ -261,7 +257,7 @@
 
 -(IBAction)cancelButtonHit
 {
-    [self.delegate createSellerCancelButtonHit];
+    [self.delegate createSellerCancelButtonHit:self.navigationController];
 }
 
 

@@ -38,8 +38,6 @@ static NSString * const chargeEndpoint = @"charges";
          NSError* error;
          NSDictionary* json = [NSJSONSerialization JSONObjectWithData:body options:kNilOptions error:&error];
         
-         [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"id"] forKey:@"StripeToken"];
-         [[NSUserDefaults standardUserDefaults] synchronize];
          
          
          [delegate doBuy];

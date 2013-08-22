@@ -60,13 +60,12 @@
 
 -(void)loadWithSizeSelection:(NSString *)sizeSelection withQuantitySelection:(NSString *)quantitySelection withProductImage:(UIImage *)productImage;
 -(void)loadWithRequestedProductObject:(NSDictionary *)theProductObject;
-
 -(IBAction)doneButtonHit;
-
 -(IBAction)buyButtonHit;
-
 -(void)ratesCallDidFail;
 -(void)ratesCallReturnedWithDictionary:(NSDictionary *)returnDict;
+
+-(void)tokenCreatedWithDictionary:(NSDictionary *)dict;
 
 @property (nonatomic, retain) id doneButtonDelegate;
 @property (nonatomic, retain) id shippingCompleteDelegate;
