@@ -20,6 +20,7 @@ static AppRootViewController *theSharedRootViewController;
 
 @synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController, notificationsViewController;
 @synthesize areViewsTransitioning;
+@synthesize feedCoverButton;
 
 float transitionTime = .456;
 
@@ -97,7 +98,6 @@ float transitionTime = .456;
 
 -(void)feedCoverButtonHit:(UIButton *)sender
 {
-    [sender removeFromSuperview];
     [self homeButtonHit];
 }
 -(void)homeButtonHit
@@ -120,16 +120,17 @@ float transitionTime = .456;
             self.feedNavigationController.view.frame = CGRectMake(self.feedNavigationController.view.frame.origin.x + offsetPosition, self.feedNavigationController.view.frame.origin.y, self.feedNavigationController.view.frame.size.width, self.feedNavigationController.view.frame.size.height);
 //            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x + offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
             
-            UIButton *feedCoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            feedCoverButton.backgroundColor = [UIColor clearColor];
-            feedCoverButton.frame = CGRectMake(0,0, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
-            [feedCoverButton addTarget:self action:@selector(feedCoverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
-            [self.feedNavigationController.view addSubview:feedCoverButton];
+            self.feedCoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            self.feedCoverButton.backgroundColor = [UIColor clearColor];
+            self.feedCoverButton.frame = CGRectMake(0,0, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
+            [self.feedCoverButton addTarget:self action:@selector(feedCoverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
+            [self.feedNavigationController.view addSubview:self.feedCoverButton];
             
         }
         else
         {
             self.feedNavigationController.view.frame = CGRectMake(self.feedNavigationController.view.frame.origin.x - offsetPosition, self.feedNavigationController.view.frame.origin.y, self.feedNavigationController.view.frame.size.width, self.feedNavigationController.view.frame.size.height);
+            [self.feedCoverButton removeFromSuperview];
 //            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x - offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
         }
         [UIView commitAnimations];
