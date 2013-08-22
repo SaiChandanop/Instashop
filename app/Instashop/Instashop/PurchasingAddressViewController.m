@@ -107,7 +107,7 @@
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.doneButton.frame.origin.y + self.doneButton.frame.size.height + 6600);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.doneButton.frame.origin.y + self.doneButton.frame.size.height + 66);
     
     
     self.stpCreditCardNumberTextField = [[PKView alloc] initWithFrame:CGRectMake(self.creditCardContainerView.frame.origin.x+17, self.creditCardContainerView.frame.origin.y + 11.5, self.creditCardContainerView.frame.size.width, self.creditCardContainerView.frame.size.height)];
