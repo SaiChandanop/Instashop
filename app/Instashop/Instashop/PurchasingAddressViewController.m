@@ -166,19 +166,15 @@
     
     self.priceValueLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     self.productTitleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
-        
-    self.productBuyButtonLabel.text = [NSString stringWithFormat:@"Buy - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[self.quantityValueLabel.text floatValue] * [[self.requestedProductObject objectForKey:@"products_price"] floatValue]]]];
+    
+    NSString *buyString = [NSString stringWithFormat:@"Buy - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[self.quantityValueLabel.text floatValue] * [[self.requestedProductObject objectForKey:@"products_price"] floatValue]]]];        
+    [self.doneButton setTitle:buyString forState:UIControlStateNormal];
     
     [SellersAPIHandler makeGetSellersRequestWithDelegate:self withSellerInstagramID:[self.requestedProductObject objectForKey:@"owner_instagram_id"]];
     
-    float totalValue = [self.quantityValueLabel.text floatValue] * [[self.priceValueLabel.text stringByReplacingOccurrencesOfString:@"$" withString:@""] floatValue];
-    
-    [numberFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
-    [numberFormatter setMaximumFractionDigits:2];
 
-    NSString *buyButtonTitle = [NSString stringWithFormat:@"BUY - %@", [numberFormatter stringFromNumber:[NSNumber numberWithFloat:totalValue]]];
     
-    [self.doneButton setTitle:self.productBuyButtonLabel.text forState:UIControlStateNormal];
+
 }
 
 
@@ -335,7 +331,18 @@
     NSString *priceString = [NSString stringWithFormat:@"%d", intVal];
     
     NSString *zencartProductID = [NSString stringWithFormat:@"product_id: %@", [self.requestedProductObject objectForKey:@"product_id"]];
-    [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID withDelegate:self];
+    
+    if (stripeToken == nil)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"buy token is nil"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    else
+        [StripeAuthenticationHandler buyItemWithToken:stripeToken withPurchaseAmount:priceString withDescription:zencartProductID withDelegate:self];
     
 }
 
