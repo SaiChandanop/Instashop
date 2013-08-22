@@ -78,8 +78,8 @@
     
     self.instagramUsernameLabel.text = [InstagramUserObject getStoredUserObject].username;
     
-    self.nameTextField.text = @"Josh Klobe";
-     
+    /*
+     self.nameTextField.text = @"Josh Klobe";
      self.addressTextField.text = @"50 Bridge St Apt 318";
      self.cityTextField.text = @"Brooklyn";
      self.stateTextField.text = @"NY";
@@ -88,7 +88,7 @@
      self.emailTextField.text = @"klobej@gmail.com  ";
      self.websiteTextField.text = @"alchemy50.com";
      self.categoryTextField.text = @"testcat";
-    
+    */
     
     
     [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
