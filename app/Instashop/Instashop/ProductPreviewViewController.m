@@ -87,7 +87,7 @@
     
     self.bottomContentView.frame = CGRectMake(0, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.bottomContentView.frame.size.width, self.bottomContentView.frame.size.height);
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y +  self.sellButton.frame.origin.y + self.sellButton.frame.size.height);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y +  self.sellButton.frame.origin.y + self.sellButton.frame.size.height + 63);
     
     [self.sizeQuantityTableViewController.tableView reloadData];
     
@@ -125,7 +125,7 @@
     
     self.sizeQuantityTableViewController.tableView.scrollEnabled = NO;
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y + self.bottomContentView.frame.size.height);
+    self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y + self.bottomContentView.frame.size.height  + 63);
 }
 
 
