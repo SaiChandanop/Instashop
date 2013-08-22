@@ -34,7 +34,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="31">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="617"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="605"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" id="33" userLabel="Home">
@@ -184,12 +184,12 @@
                         </button>
                     </subviews>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="top_shadow.png" id="50">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="50">
                     <rect key="frame" x="0.0" y="195" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" id="51" userLabel="Profile">
-                    <rect key="frame" x="0.0" y="205" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="200" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="57">
@@ -222,7 +222,7 @@
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="52" userLabel="Become a Seller">
-                    <rect key="frame" x="0.0" y="249" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="244" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="56">
@@ -257,12 +257,12 @@
                         </button>
                     </subviews>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="top_shadow.png" id="53">
-                    <rect key="frame" x="0.0" y="292" width="320" height="5"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="53">
+                    <rect key="frame" x="0.0" y="287" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <view contentMode="scaleToFill" id="77" userLabel="FAQ">
-                    <rect key="frame" x="0.0" y="301" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="292" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="92">
@@ -295,7 +295,7 @@
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="78" userLabel="Send Feedback">
-                    <rect key="frame" x="0.0" y="345" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="336" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="87">
@@ -328,7 +328,7 @@
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="79" userLabel="Report a Bug">
-                    <rect key="frame" x="0.0" y="389" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="380" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="84">
@@ -361,7 +361,7 @@
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="80" userLabel="Privacy">
-                    <rect key="frame" x="0.0" y="433" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="424" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="83">
@@ -394,7 +394,7 @@
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="93" userLabel="Terms">
-                    <rect key="frame" x="0.0" y="477" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="468" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="94">
@@ -427,7 +427,7 @@
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="G9a-XB-dCm" userLabel="Become Seller">
-                    <rect key="frame" x="0.0" y="529" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="517" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="0tY-jR-q7o">
@@ -459,7 +459,7 @@
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="emj-pE-J8S" userLabel="Log Out">
-                    <rect key="frame" x="0.0" y="573" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="561" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="NAU-bk-9cE">
@@ -490,8 +490,8 @@
                         </button>
                     </subviews>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="top_shadow.png" id="Qu6-cJ-wiq">
-                    <rect key="frame" x="0.0" y="521" width="320" height="5"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="Qu6-cJ-wiq">
+                    <rect key="frame" x="0.0" y="512" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
@@ -501,6 +501,7 @@
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
+        <image name="cell_separator.png" width="320" height="5"/>
         <image name="lmDiscoverIcon.png" width="44" height="44"/>
         <image name="lmFAQIcon.png" width="44" height="44"/>
         <image name="lmFeedbackIcon.png" width="44" height="44"/>
@@ -514,6 +515,5 @@
         <image name="lmVerifiedRetailerIcon.png" width="44" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
-        <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>
