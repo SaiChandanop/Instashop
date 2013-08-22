@@ -101,13 +101,15 @@
 @property (nonatomic, retain) IBOutlet UILabel *priceValueLabel;
 @property (nonatomic, retain) IBOutlet UILabel *priceTextLabel;
 
-@property (nonatomic, retain) IBOutlet UIView *nameView;
-@property (nonatomic, retain) IBOutlet UIView *emailView;
-@property (nonatomic, retain) IBOutlet UIView *phoneView;
 
-@property (nonatomic, retain) IBOutlet UIView *addressView;
-@property (nonatomic, retain) IBOutlet UIView *cityStateView;
-@property (nonatomic, retain) IBOutlet UIView *zipView;
+
+@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *nameView;
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *emailView;
+@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *phoneView;
+
+@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *addressView;
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *cityStateView;
+@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *zipView;
 
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *addressTextField;

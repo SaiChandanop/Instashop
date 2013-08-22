@@ -11,7 +11,9 @@
 @interface ISRowContainerView : UIView
 {
     UIImageView *backgroundImageView;
+    UIImageView *separatorImageView;
     
 }
 @property (nonatomic, retain) UIImageView *backgroundImageView;
+@property (nonatomic, retain) UIImageView *separatorImageView;
 @end

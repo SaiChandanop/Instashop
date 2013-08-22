@@ -114,6 +114,14 @@
     
     [self populateDummy];
     
+    
+    self.nameView.separatorImageView.alpha = 0;
+    self.emailView.separatorImageView.alpha = 0;
+    self.phoneView.separatorImageView.alpha = 0;
+    self.addressView.separatorImageView.alpha = 0;
+    self.cityStateView.separatorImageView.alpha = 0;
+    self.zipView.separatorImageView.alpha = 0;
+        
 }
 
 

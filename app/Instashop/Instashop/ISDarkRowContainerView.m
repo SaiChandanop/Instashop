@@ -25,9 +25,9 @@
     self.backgroundColor = [UIColor clearColor];
     
     UIImage *separatorImage = [UIImage imageNamed:@"cell_separator.png"];
-    UIImageView *separatorImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.frame.size.width, separatorImage.size.height)];
-    separatorImageView.image = separatorImage;
-    [self addSubview:separatorImageView];
+    self.separatorImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.frame.size.width, separatorImage.size.height)];
+    self.separatorImageView.image = separatorImage;
+    [self addSubview:self.separatorImageView];
     
     self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0, self.frame.size.width, self.frame.size.height)];
     self.backgroundImageView.image = [UIImage imageNamed:@"menuDarkBG.png"];

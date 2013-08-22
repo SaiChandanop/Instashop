@@ -11,7 +11,7 @@
 @implementation ISRowContainerView
 
 @synthesize backgroundImageView;
-
+@synthesize separatorImageView;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
