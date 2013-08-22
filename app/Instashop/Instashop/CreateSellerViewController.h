@@ -36,6 +36,8 @@
     UILabel *titleTextLabel;
     
     BSKeyboardControls *keyboardControls;
+    
+    UIImageView *thanksSellerImageView;
 }
 
 -(IBAction)categoryButtonHit;
@@ -65,4 +67,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *titleTextLabel;
 
 @property (nonatomic, retain) IBOutlet BSKeyboardControls *keyboardControls;
+
+@property (nonatomic, retain) UIImageView *thanksSellerImageView;
 @end

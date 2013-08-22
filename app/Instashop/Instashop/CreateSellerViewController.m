@@ -13,6 +13,7 @@
 #import "AppRootViewController.h"
 #import "AppDelegate.h"
 #import "ISConstants.h"
+#import "MBProgressHUD.h"
 
 
 @interface CreateSellerViewController ()
@@ -37,9 +38,11 @@
 @synthesize websiteTextField;
 @synthesize instagramUsernameLabel;
 @synthesize submitButton;
-
 @synthesize titleTextLabel;
 @synthesize keyboardControls;
+
+@synthesize thanksSellerImageView;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -75,7 +78,7 @@
     
     self.instagramUsernameLabel.text = [InstagramUserObject getStoredUserObject].username;
     
-    /*    self.nameTextField.text = @"Josh Klobe";
+    self.nameTextField.text = @"Josh Klobe";
      
      self.addressTextField.text = @"50 Bridge St Apt 318";
      self.cityTextField.text = @"Brooklyn";
@@ -85,7 +88,8 @@
      self.emailTextField.text = @"klobej@gmail.com  ";
      self.websiteTextField.text = @"alchemy50.com";
      self.categoryTextField.text = @"testcat";
-     */
+    
+    
     
     [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
     
@@ -211,16 +215,19 @@
     {
         NSMutableDictionary *addressDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
         [addressDictionary setObject:self.nameTextField.text forKey:@"seller_name"];
-        [addressDictionary setObject:self.addressTextField.text forKey:@"seller_address"];
-        [addressDictionary setObject:self.cityTextField.text forKey:@"seller_city"];
-        [addressDictionary setObject:self.stateTextField.text forKey:@"seller_state"];
-        [addressDictionary setObject:self.zipTextField.text forKey:@"seller_zip"];
+//        [addressDictionary setObject:self.addressTextField.text forKey:@"seller_address"];
+//        [addressDictionary setObject:self.cityTextField.text forKey:@"seller_city"];
+//        [addressDictionary setObject:self.stateTextField.text forKey:@"seller_state"];
+//        [addressDictionary setObject:self.zipTextField.text forKey:@"seller_zip"];
         [addressDictionary setObject:self.phoneTextField.text forKey:@"seller_phone"];
         [addressDictionary setObject:self.emailTextField.text forKey:@"seller_email"];
         [addressDictionary setObject:self.websiteTextField.text forKey:@"seller_website"];
         [addressDictionary setObject:self.categoryTextField.text forKey:@"seller_category"];
         
         NSLog(@"addressDictionay: %@", addressDictionary);
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Submitting Application";
+        
         [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:addressDictionary];
     }
     else
@@ -261,9 +268,26 @@
 }
 
 
+-(void)sellerDone
+{
+    [self.delegate createSellerDone:self.navigationController];
+}
 
 -(void)userDidCreateSellerWithResponseDictionary:(NSDictionary *)dictionary
 {
+    
+    self.thanksSellerImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0,self.view.frame.size.width, self.view.frame.size.height)];
+    self.thanksSellerImageView.image = [UIImage imageNamed:@"thanksseller.png"];
+    [self.view addSubview:self.thanksSellerImageView];
+    
+    UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    exitButton.backgroundColor = [UIColor clearColor];
+    exitButton.frame = CGRectMake(0, 0, self.thanksSellerImageView.frame.size.width, self.thanksSellerImageView.frame.size.height);
+    [exitButton addTarget:self action:@selector(sellerDone) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:exitButton];
+    
+    [MBProgressHUD hideAllHUDsForView:self.view animated:NO];
+    
     NSLog(@"userDidCreateSellerWithResponseDictionary!!: %@", dictionary);
     
     InstagramUserObject *theUserObject =[InstagramUserObject getStoredUserObject];
@@ -271,7 +295,6 @@
     
     [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
     
-    [self.delegate createSellerDone];
 }
 
 

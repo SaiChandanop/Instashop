@@ -25,7 +25,7 @@
 
 -(IBAction) tempSellerButtonHit;
 -(void)createSellerCancelButtonHit:(UINavigationController *)theNavigationController;
--(void)createSellerDone;
+-(void)createSellerDone:(UINavigationController *)theNavigationController;
 -(void)loadStates;
 -(IBAction)homeButtonHit;
 

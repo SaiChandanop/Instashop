@@ -105,21 +105,12 @@
 }
 
 
--(void)createSellerDone
+-(void)createSellerDone:(UINavigationController *)theNavigationController
 {
     [self loadStates];
-    
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Great"
-                                                        message:@"And now you're a seller"
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-    
-    [alertView show];
-    
-    [self.parentController createSellerShouldExit:self.navigationController];
-    
-    
+        
+    [self.parentController createSellerShouldExit:theNavigationController];
+        
 }
 
 
