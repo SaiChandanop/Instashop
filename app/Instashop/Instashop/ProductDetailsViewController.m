@@ -97,7 +97,8 @@
     [self.retailPriceTextField setValue:[UIColor lightGrayColor]
                                 forKeyPath:@"_placeholderLabel.textColor"];
 
-    
+
+    self.descriptionTextView.textColor = [UIColor lightGrayColor];
 }
 
 
@@ -308,12 +309,17 @@
 {
     if ([textView.text compare:@"Description"] == NSOrderedSame)
         textView.text = @"";
+    
+    self.descriptionTextView.textColor = [UIColor whiteColor];
     self.descriptionTextView.scrollEnabled = YES;
 }
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
     if ([textView.text compare:@""] == NSOrderedSame)
+    {
         textView.text = @"Description";
+        textView.textColor = [UIColor lightGrayColor];
+    }
     self.descriptionTextView.scrollEnabled = NO;
 }
 
