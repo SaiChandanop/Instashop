@@ -87,6 +87,40 @@
 		7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */; };
 		7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */; };
 		7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625317C517A000D6C8B1 /* ISRowContainerView.m */; };
+		7B5D626817C5AF3700D6C8B1 /* STPToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D626117C5AF3700D6C8B1 /* STPToken.m */; };
+		7B5D626917C5AF3700D6C8B1 /* STPView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D626317C5AF3700D6C8B1 /* STPView.m */; };
+		7B5D626A17C5AF3700D6C8B1 /* Stripe.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D626517C5AF3700D6C8B1 /* Stripe.m */; };
+		7B5D626B17C5AF3700D6C8B1 /* StripeError.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D626717C5AF3700D6C8B1 /* StripeError.m */; };
+		7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D626F17C5AF7100D6C8B1 /* PKAddressZip.m */; };
+		7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D627117C5AF7100D6C8B1 /* PKCard.m */; };
+		7B5D628117C5AF7100D6C8B1 /* PKCardCVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D627317C5AF7100D6C8B1 /* PKCardCVC.m */; };
+		7B5D628217C5AF7100D6C8B1 /* PKCardExpiry.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D627517C5AF7100D6C8B1 /* PKCardExpiry.m */; };
+		7B5D628317C5AF7100D6C8B1 /* PKCardNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D627717C5AF7100D6C8B1 /* PKCardNumber.m */; };
+		7B5D628417C5AF7100D6C8B1 /* PKTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D627A17C5AF7100D6C8B1 /* PKTextField.m */; };
+		7B5D628517C5AF7100D6C8B1 /* PKUSAddressZip.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D627C17C5AF7100D6C8B1 /* PKUSAddressZip.m */; };
+		7B5D628617C5AF7100D6C8B1 /* PKView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D627E17C5AF7100D6C8B1 /* PKView.m */; };
+		7B5D628C17C5AF9500D6C8B1 /* gradient@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D628917C5AF9500D6C8B1 /* gradient@2x.png */; };
+		7B5D628D17C5AF9500D6C8B1 /* textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D628A17C5AF9500D6C8B1 /* textfield.png */; };
+		7B5D628E17C5AF9500D6C8B1 /* textfield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D628B17C5AF9500D6C8B1 /* textfield@2x.png */; };
+		7B5D62A117C5AF9F00D6C8B1 /* amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D628F17C5AF9F00D6C8B1 /* amex.png */; };
+		7B5D62A217C5AF9F00D6C8B1 /* amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629017C5AF9F00D6C8B1 /* amex@2x.png */; };
+		7B5D62A317C5AF9F00D6C8B1 /* cvc-amex.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629117C5AF9F00D6C8B1 /* cvc-amex.png */; };
+		7B5D62A417C5AF9F00D6C8B1 /* cvc-amex@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629217C5AF9F00D6C8B1 /* cvc-amex@2x.png */; };
+		7B5D62A517C5AF9F00D6C8B1 /* cvc.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629317C5AF9F00D6C8B1 /* cvc.png */; };
+		7B5D62A617C5AF9F00D6C8B1 /* cvc@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629417C5AF9F00D6C8B1 /* cvc@2x.png */; };
+		7B5D62A717C5AF9F00D6C8B1 /* diners.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629517C5AF9F00D6C8B1 /* diners.png */; };
+		7B5D62A817C5AF9F00D6C8B1 /* diners@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629617C5AF9F00D6C8B1 /* diners@2x.png */; };
+		7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629717C5AF9F00D6C8B1 /* discover.png */; };
+		7B5D62AA17C5AF9F00D6C8B1 /* discover@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629817C5AF9F00D6C8B1 /* discover@2x.png */; };
+		7B5D62AB17C5AF9F00D6C8B1 /* jcb.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629917C5AF9F00D6C8B1 /* jcb.png */; };
+		7B5D62AC17C5AF9F00D6C8B1 /* jcb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629A17C5AF9F00D6C8B1 /* jcb@2x.png */; };
+		7B5D62AD17C5AF9F00D6C8B1 /* mastercard.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629B17C5AF9F00D6C8B1 /* mastercard.png */; };
+		7B5D62AE17C5AF9F00D6C8B1 /* mastercard@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629C17C5AF9F00D6C8B1 /* mastercard@2x.png */; };
+		7B5D62AF17C5AF9F00D6C8B1 /* placeholder.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629D17C5AF9F00D6C8B1 /* placeholder.png */; };
+		7B5D62B017C5AF9F00D6C8B1 /* placeholder@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629E17C5AF9F00D6C8B1 /* placeholder@2x.png */; };
+		7B5D62B117C5AF9F00D6C8B1 /* visa.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D629F17C5AF9F00D6C8B1 /* visa.png */; };
+		7B5D62B217C5AF9F00D6C8B1 /* visa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B5D62A017C5AF9F00D6C8B1 /* visa@2x.png */; };
+		7B5D62B517C5AFEB00D6C8B1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B5D62B417C5AFEB00D6C8B1 /* QuartzCore.framework */; };
 		7B5F53F41767829F0066D529 /* STPCard.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5F53F31767829F0066D529 /* STPCard.m */; };
 		7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B602D9F17664F1700663A73 /* PurchasingViewController.m */; };
 		7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B602DA017664F1700663A73 /* PurchasingViewController.xib */; };
@@ -273,6 +307,53 @@
 		7B5D625217C517A000D6C8B1 /* ISRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISRowContainerView.h; sourceTree = "<group>"; };
 		7B5D625317C517A000D6C8B1 /* ISRowContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISRowContainerView.m; sourceTree = "<group>"; };
 		7B5D625517C55AA700D6C8B1 /* StripeTokenReceiverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeTokenReceiverProtocol.h; sourceTree = "<group>"; };
+		7B5D626017C5AF3700D6C8B1 /* STPToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPToken.h; sourceTree = "<group>"; };
+		7B5D626117C5AF3700D6C8B1 /* STPToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPToken.m; sourceTree = "<group>"; };
+		7B5D626217C5AF3700D6C8B1 /* STPView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPView.h; sourceTree = "<group>"; };
+		7B5D626317C5AF3700D6C8B1 /* STPView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPView.m; sourceTree = "<group>"; };
+		7B5D626417C5AF3700D6C8B1 /* Stripe.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Stripe.h; sourceTree = "<group>"; };
+		7B5D626517C5AF3700D6C8B1 /* Stripe.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Stripe.m; sourceTree = "<group>"; };
+		7B5D626617C5AF3700D6C8B1 /* StripeError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeError.h; sourceTree = "<group>"; };
+		7B5D626717C5AF3700D6C8B1 /* StripeError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeError.m; sourceTree = "<group>"; };
+		7B5D626E17C5AF7100D6C8B1 /* PKAddressZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKAddressZip.h; sourceTree = "<group>"; };
+		7B5D626F17C5AF7100D6C8B1 /* PKAddressZip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKAddressZip.m; sourceTree = "<group>"; };
+		7B5D627017C5AF7100D6C8B1 /* PKCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCard.h; sourceTree = "<group>"; };
+		7B5D627117C5AF7100D6C8B1 /* PKCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCard.m; sourceTree = "<group>"; };
+		7B5D627217C5AF7100D6C8B1 /* PKCardCVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCardCVC.h; sourceTree = "<group>"; };
+		7B5D627317C5AF7100D6C8B1 /* PKCardCVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCardCVC.m; sourceTree = "<group>"; };
+		7B5D627417C5AF7100D6C8B1 /* PKCardExpiry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCardExpiry.h; sourceTree = "<group>"; };
+		7B5D627517C5AF7100D6C8B1 /* PKCardExpiry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCardExpiry.m; sourceTree = "<group>"; };
+		7B5D627617C5AF7100D6C8B1 /* PKCardNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCardNumber.h; sourceTree = "<group>"; };
+		7B5D627717C5AF7100D6C8B1 /* PKCardNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKCardNumber.m; sourceTree = "<group>"; };
+		7B5D627817C5AF7100D6C8B1 /* PKCardType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKCardType.h; sourceTree = "<group>"; };
+		7B5D627917C5AF7100D6C8B1 /* PKTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKTextField.h; sourceTree = "<group>"; };
+		7B5D627A17C5AF7100D6C8B1 /* PKTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKTextField.m; sourceTree = "<group>"; };
+		7B5D627B17C5AF7100D6C8B1 /* PKUSAddressZip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKUSAddressZip.h; sourceTree = "<group>"; };
+		7B5D627C17C5AF7100D6C8B1 /* PKUSAddressZip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKUSAddressZip.m; sourceTree = "<group>"; };
+		7B5D627D17C5AF7100D6C8B1 /* PKView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PKView.h; sourceTree = "<group>"; };
+		7B5D627E17C5AF7100D6C8B1 /* PKView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PKView.m; sourceTree = "<group>"; };
+		7B5D628917C5AF9500D6C8B1 /* gradient@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gradient@2x.png"; sourceTree = "<group>"; };
+		7B5D628A17C5AF9500D6C8B1 /* textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = textfield.png; sourceTree = "<group>"; };
+		7B5D628B17C5AF9500D6C8B1 /* textfield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "textfield@2x.png"; sourceTree = "<group>"; };
+		7B5D628F17C5AF9F00D6C8B1 /* amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = amex.png; sourceTree = "<group>"; };
+		7B5D629017C5AF9F00D6C8B1 /* amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "amex@2x.png"; sourceTree = "<group>"; };
+		7B5D629117C5AF9F00D6C8B1 /* cvc-amex.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc-amex.png"; sourceTree = "<group>"; };
+		7B5D629217C5AF9F00D6C8B1 /* cvc-amex@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc-amex@2x.png"; sourceTree = "<group>"; };
+		7B5D629317C5AF9F00D6C8B1 /* cvc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cvc.png; sourceTree = "<group>"; };
+		7B5D629417C5AF9F00D6C8B1 /* cvc@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cvc@2x.png"; sourceTree = "<group>"; };
+		7B5D629517C5AF9F00D6C8B1 /* diners.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = diners.png; sourceTree = "<group>"; };
+		7B5D629617C5AF9F00D6C8B1 /* diners@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "diners@2x.png"; sourceTree = "<group>"; };
+		7B5D629717C5AF9F00D6C8B1 /* discover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = discover.png; sourceTree = "<group>"; };
+		7B5D629817C5AF9F00D6C8B1 /* discover@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discover@2x.png"; sourceTree = "<group>"; };
+		7B5D629917C5AF9F00D6C8B1 /* jcb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jcb.png; sourceTree = "<group>"; };
+		7B5D629A17C5AF9F00D6C8B1 /* jcb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jcb@2x.png"; sourceTree = "<group>"; };
+		7B5D629B17C5AF9F00D6C8B1 /* mastercard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mastercard.png; sourceTree = "<group>"; };
+		7B5D629C17C5AF9F00D6C8B1 /* mastercard@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mastercard@2x.png"; sourceTree = "<group>"; };
+		7B5D629D17C5AF9F00D6C8B1 /* placeholder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = placeholder.png; sourceTree = "<group>"; };
+		7B5D629E17C5AF9F00D6C8B1 /* placeholder@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "placeholder@2x.png"; sourceTree = "<group>"; };
+		7B5D629F17C5AF9F00D6C8B1 /* visa.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = visa.png; sourceTree = "<group>"; };
+		7B5D62A017C5AF9F00D6C8B1 /* visa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "visa@2x.png"; sourceTree = "<group>"; };
+		7B5D62B417C5AFEB00D6C8B1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		7B5F53F21767829F0066D529 /* STPCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STPCard.h; sourceTree = "<group>"; };
 		7B5F53F31767829F0066D529 /* STPCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STPCard.m; sourceTree = "<group>"; };
 		7B602D9E17664F1700663A73 /* PurchasingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingViewController.h; sourceTree = "<group>"; };
@@ -411,6 +492,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B5D62B517C5AFEB00D6C8B1 /* QuartzCore.framework in Frameworks */,
 				7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */,
 				7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */,
 				7B61EE4B174D2162002A483D /* CoreGraphics.framework in Frameworks */,
@@ -671,6 +753,83 @@
 			name = Views;
 			sourceTree = "<group>";
 		};
+		7B5D626C17C5AF4F00D6C8B1 /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				7B5D62B317C5AFAE00D6C8B1 /* Resources */,
+				7B5D626D17C5AF5B00D6C8B1 /* PaymentKit */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		7B5D626D17C5AF5B00D6C8B1 /* PaymentKit */ = {
+			isa = PBXGroup;
+			children = (
+				7B5D628817C5AF8800D6C8B1 /* Resources */,
+				7B5D626E17C5AF7100D6C8B1 /* PKAddressZip.h */,
+				7B5D626F17C5AF7100D6C8B1 /* PKAddressZip.m */,
+				7B5D627017C5AF7100D6C8B1 /* PKCard.h */,
+				7B5D627117C5AF7100D6C8B1 /* PKCard.m */,
+				7B5D627217C5AF7100D6C8B1 /* PKCardCVC.h */,
+				7B5D627317C5AF7100D6C8B1 /* PKCardCVC.m */,
+				7B5D627417C5AF7100D6C8B1 /* PKCardExpiry.h */,
+				7B5D627517C5AF7100D6C8B1 /* PKCardExpiry.m */,
+				7B5D627617C5AF7100D6C8B1 /* PKCardNumber.h */,
+				7B5D627717C5AF7100D6C8B1 /* PKCardNumber.m */,
+				7B5D627817C5AF7100D6C8B1 /* PKCardType.h */,
+				7B5D627917C5AF7100D6C8B1 /* PKTextField.h */,
+				7B5D627A17C5AF7100D6C8B1 /* PKTextField.m */,
+				7B5D627B17C5AF7100D6C8B1 /* PKUSAddressZip.h */,
+				7B5D627C17C5AF7100D6C8B1 /* PKUSAddressZip.m */,
+				7B5D627D17C5AF7100D6C8B1 /* PKView.h */,
+				7B5D627E17C5AF7100D6C8B1 /* PKView.m */,
+			);
+			name = PaymentKit;
+			sourceTree = "<group>";
+		};
+		7B5D628717C5AF8000D6C8B1 /* Cards */ = {
+			isa = PBXGroup;
+			children = (
+				7B5D628F17C5AF9F00D6C8B1 /* amex.png */,
+				7B5D629017C5AF9F00D6C8B1 /* amex@2x.png */,
+				7B5D629117C5AF9F00D6C8B1 /* cvc-amex.png */,
+				7B5D629217C5AF9F00D6C8B1 /* cvc-amex@2x.png */,
+				7B5D629317C5AF9F00D6C8B1 /* cvc.png */,
+				7B5D629417C5AF9F00D6C8B1 /* cvc@2x.png */,
+				7B5D629517C5AF9F00D6C8B1 /* diners.png */,
+				7B5D629617C5AF9F00D6C8B1 /* diners@2x.png */,
+				7B5D629717C5AF9F00D6C8B1 /* discover.png */,
+				7B5D629817C5AF9F00D6C8B1 /* discover@2x.png */,
+				7B5D629917C5AF9F00D6C8B1 /* jcb.png */,
+				7B5D629A17C5AF9F00D6C8B1 /* jcb@2x.png */,
+				7B5D629B17C5AF9F00D6C8B1 /* mastercard.png */,
+				7B5D629C17C5AF9F00D6C8B1 /* mastercard@2x.png */,
+				7B5D629D17C5AF9F00D6C8B1 /* placeholder.png */,
+				7B5D629E17C5AF9F00D6C8B1 /* placeholder@2x.png */,
+				7B5D629F17C5AF9F00D6C8B1 /* visa.png */,
+				7B5D62A017C5AF9F00D6C8B1 /* visa@2x.png */,
+			);
+			name = Cards;
+			sourceTree = "<group>";
+		};
+		7B5D628817C5AF8800D6C8B1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7B5D628917C5AF9500D6C8B1 /* gradient@2x.png */,
+				7B5D628A17C5AF9500D6C8B1 /* textfield.png */,
+				7B5D628B17C5AF9500D6C8B1 /* textfield@2x.png */,
+				7B5D628717C5AF8000D6C8B1 /* Cards */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7B5D62B317C5AFAE00D6C8B1 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		7B602DAE1766709800663A73 /* Address */ = {
 			isa = PBXGroup;
 			children = (
@@ -712,6 +871,7 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B5D62B417C5AFEB00D6C8B1 /* QuartzCore.framework */,
 				7B61EE46174D2162002A483D /* UIKit.framework */,
 				7B61EE48174D2162002A483D /* Foundation.framework */,
 				7B61EE4A174D2162002A483D /* CoreGraphics.framework */,
@@ -912,6 +1072,15 @@
 		7BC890B017668B5200D4756D /* Stripe */ = {
 			isa = PBXGroup;
 			children = (
+				7B5D626C17C5AF4F00D6C8B1 /* Vendor */,
+				7B5D626017C5AF3700D6C8B1 /* STPToken.h */,
+				7B5D626117C5AF3700D6C8B1 /* STPToken.m */,
+				7B5D626217C5AF3700D6C8B1 /* STPView.h */,
+				7B5D626317C5AF3700D6C8B1 /* STPView.m */,
+				7B5D626417C5AF3700D6C8B1 /* Stripe.h */,
+				7B5D626517C5AF3700D6C8B1 /* Stripe.m */,
+				7B5D626617C5AF3700D6C8B1 /* StripeError.h */,
+				7B5D626717C5AF3700D6C8B1 /* StripeError.m */,
 				7B5F53F21767829F0066D529 /* STPCard.h */,
 				7B5F53F31767829F0066D529 /* STPCard.m */,
 				7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */,
@@ -1093,9 +1262,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B61EE51174D2162002A483D /* InfoPlist.strings in Resources */,
+				7B5D62A317C5AF9F00D6C8B1 /* cvc-amex.png in Resources */,
 				7B61EE59174D2162002A483D /* Default.png in Resources */,
+				7B5D62A517C5AF9F00D6C8B1 /* cvc.png in Resources */,
 				7B61EE5B174D2162002A483D /* Default@2x.png in Resources */,
 				7B61EE5D174D2162002A483D /* Default-568h@2x.png in Resources */,
+				7B5D62AB17C5AF9F00D6C8B1 /* jcb.png in Resources */,
 				7B676F6F17BC79C7004FC53B /* previewsocialshittyimage.png in Resources */,
 				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
@@ -1109,8 +1281,10 @@
 				7B51EB1917C30F03009FBE91 /* cell_disclosure_new@2x.png in Resources */,
 				2E531F0517C3BF6A006B6FF5 /* cell_separator@2x.png in Resources */,
 				7B1072BF175E7CDE00D9DC5D /* ProductDetailsViewController.xib in Resources */,
+				7B5D62AF17C5AF9F00D6C8B1 /* placeholder.png in Resources */,
 				7B1072C1175E7E1500D9DC5D /* previewproductimage.png in Resources */,
 				7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */,
+				7B5D62A217C5AF9F00D6C8B1 /* amex@2x.png in Resources */,
 				7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */,
 				7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */,
 				7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */,
@@ -1122,11 +1296,14 @@
 				7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */,
 				7B602DAC1766543100663A73 /* buybutton@2x.png in Resources */,
 				7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */,
+				7B5D62B117C5AF9F00D6C8B1 /* visa.png in Resources */,
 				7B602DB6176670F600663A73 /* buyheader.png in Resources */,
+				7B5D62A117C5AF9F00D6C8B1 /* amex.png in Resources */,
 				2EB259A91767A0D80054618D /* heart@2x.png in Resources */,
 				2EB259AB1767A1D30054618D /* heart_red@2x.png in Resources */,
 				2EB259AD1767B3280054618D /* top_shadow@2x.png in Resources */,
 				2EB259B11767B50D0054618D /* magnify@2x.png in Resources */,
+				7B5D62AC17C5AF9F00D6C8B1 /* jcb@2x.png in Resources */,
 				7BE688CA176B7801007D383B /* FeedViewController.xib in Resources */,
 				2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */,
 				2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */,
@@ -1139,21 +1316,27 @@
 				2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */,
 				2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */,
 				2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */,
+				7B5D62A617C5AF9F00D6C8B1 /* cvc@2x.png in Resources */,
 				2E0EAE0F176F6E6700B65FC3 /* setPersonalIcon@2x.png.png in Resources */,
 				2E0EAE10176F6E6700B65FC3 /* setLogOutIcon@2x.png.png in Resources */,
 				2E0EAE11176F6E6700B65FC3 /* setFacebook_OnIcon@2x.png.png in Resources */,
 				2E0EAE12176F6E6700B65FC3 /* setInviteFriendIcon@2x.png.png in Resources */,
 				2E0EAE13176F6E6700B65FC3 /* setFacebook_OffIcon@2x.png.png in Resources */,
 				2E0EAE14176F6E6700B65FC3 /* setDeleteAccountIcon@2x.png.png in Resources */,
+				7B5D62AE17C5AF9F00D6C8B1 /* mastercard@2x.png in Resources */,
 				2E0EAE16176F6E6700B65FC3 /* setBillingIcon@2x.png.png in Resources */,
 				2E0EAE17176F6E6700B65FC3 /* menuLightBG@2x.png in Resources */,
 				2E0EAE18176F6E6700B65FC3 /* menuBottomShadow@2x.png in Resources */,
+				7B5D628E17C5AF9500D6C8B1 /* textfield@2x.png in Resources */,
 				2E0EAE19176F6E6700B65FC3 /* menuDarkBG@2x.png in Resources */,
 				2E0EAE1A176F6E6700B65FC3 /* lmVerifiedRetailerIcon@2x.png in Resources */,
 				2E0EAE1B176F6E6700B65FC3 /* lmSuggestedStoresIcon@2x.png in Resources */,
 				2E0EAE1C176F6E6700B65FC3 /* lmTermsofServiceIcon@2x.png in Resources */,
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
+				7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
+				7B5D62A717C5AF9F00D6C8B1 /* diners.png in Resources */,
+				7B5D62B217C5AF9F00D6C8B1 /* visa@2x.png in Resources */,
 				2E0EAE1F176F6E6700B65FC3 /* lmPrivacyPolicyIcon@2x.png in Resources */,
 				2E0EAE20176F6E6700B65FC3 /* lmHomeIcon@2x.png in Resources */,
 				7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */,
@@ -1162,18 +1345,25 @@
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
 				2E0EAE24176F6E6700B65FC3 /* leftMenuButton@2x.png in Resources */,
 				2E0EAE25176F6E6700B65FC3 /* lmDiscoverIcon@2x.png in Resources */,
+				7B5D628C17C5AF9500D6C8B1 /* gradient@2x.png in Resources */,
+				7B5D62AD17C5AF9F00D6C8B1 /* mastercard.png in Resources */,
 				2E0EAE26176F6E6700B65FC3 /* closebutton@2x.png in Resources */,
 				2E0EAE27176F6E6700B65FC3 /* backbutton@2x.png in Resources */,
 				7BE29B9A177A21000093BB25 /* attributes.csv in Resources */,
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
+				7B5D62AA17C5AF9F00D6C8B1 /* discover@2x.png in Resources */,
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
 				7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */,
 				7B9EAB3E1796E98600D2868D /* product_buy_bakcground_image_a.png in Resources */,
 				7B9EAB3F1796E98600D2868D /* product_buy_bakcground_image_b.png in Resources */,
 				7B9EAB411796EA1400D2868D /* product_buy_bakcground_image_c.png in Resources */,
+				7B5D62A817C5AF9F00D6C8B1 /* diners@2x.png in Resources */,
 				7B9EAB43179702C900D2868D /* product_buy_button_background.png in Resources */,
 				7B74C3CC179712A20006289C /* PurchasingCompleteViewController.xib in Resources */,
+				7B5D628D17C5AF9500D6C8B1 /* textfield.png in Resources */,
 				7B74C3D2179716850006289C /* CreateSellerViewController.xib in Resources */,
+				7B5D62A417C5AF9F00D6C8B1 /* cvc-amex@2x.png in Resources */,
+				7B5D62B017C5AF9F00D6C8B1 /* placeholder@2x.png in Resources */,
 				7B4A78FA17B13C07002E872A /* purchase_button_background.png in Resources */,
 				7B4A78FC17B14329002E872A /* buy_sizes.png in Resources */,
 				7B1B302E17BE8ED100BB6420 /* BSKeyboardControls.strings in Resources */,
@@ -1194,6 +1384,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7B61EE53174D2162002A483D /* main.m in Sources */,
+				7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */,
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
@@ -1203,8 +1394,10 @@
 				7B7A7452174D505D005E90B9 /* GroupDiskManager.m in Sources */,
 				7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */,
 				7B7A745A174D52E3005E90B9 /* SMWebRequest.m in Sources */,
+				7B5D626917C5AF3700D6C8B1 /* STPView.m in Sources */,
 				7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */,
 				7BE3D377174D772B0045C4B4 /* Utils.m in Sources */,
+				7B5D628617C5AF7100D6C8B1 /* PKView.m in Sources */,
 				7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */,
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
@@ -1220,8 +1413,10 @@
 				7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */,
 				7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */,
 				7B1072BE175E7CDE00D9DC5D /* ProductDetailsViewController.m in Sources */,
+				7B5D628517C5AF7100D6C8B1 /* PKUSAddressZip.m in Sources */,
 				7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */,
 				7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */,
+				7B5D626817C5AF3700D6C8B1 /* STPToken.m in Sources */,
 				7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
@@ -1231,6 +1426,7 @@
 				7BE688C9176B7801007D383B /* FeedViewController.m in Sources */,
 				7BC6AC541770F4C600C238E9 /* ImagesTableCellButton.m in Sources */,
 				7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */,
+				7B5D626A17C5AF3700D6C8B1 /* Stripe.m in Sources */,
 				7B6C500A178B46FC00CDF0A7 /* PurchasingAddressViewController.m in Sources */,
 				7B6C5010178B568B00CDF0A7 /* SellersAPIHandler.m in Sources */,
 				7B6C5014178B5BC600CDF0A7 /* PostmasterAPIHandler.m in Sources */,
@@ -1239,23 +1435,29 @@
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
+				7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */,
 				7BF9DD8F178C546F005148A8 /* SBJsonStreamTokeniser.m in Sources */,
 				7BF9DD90178C546F005148A8 /* SBJsonStreamWriter.m in Sources */,
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
 				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
+				7B5D628417C5AF7100D6C8B1 /* PKTextField.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,
 				7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */,
+				7B5D628217C5AF7100D6C8B1 /* PKCardExpiry.m in Sources */,
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
 				7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */,
 				7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */,
 				7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */,
+				7B5D626B17C5AF3700D6C8B1 /* StripeError.m in Sources */,
+				7B5D628117C5AF7100D6C8B1 /* PKCardCVC.m in Sources */,
 				7B15B2FB17B2AA1800173752 /* CategoriesViewController.m in Sources */,
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,
 				7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */,
+				7B5D628317C5AF7100D6C8B1 /* PKCardNumber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

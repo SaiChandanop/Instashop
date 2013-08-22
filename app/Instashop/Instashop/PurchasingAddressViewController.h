@@ -12,6 +12,7 @@
 #import "SellersRequestFinishedProtocol.h"
 #import "ProductPurchaseCompleteProtocol.h"
 #import "PostmasterShipResponseProtocol.h"
+#import "STPView.h"
 @interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol, SellersRequestFinishedProtocol, ProductPurchaseCompleteProtocol, PostmasterShipResponseProtocol>
 {
     id doneButtonDelegate;    
@@ -40,6 +41,7 @@
     UITextField *phoneTextField;
     
     UITextField *creditCardNumberTextField;
+    PKView *stpCreditCardNumberTextField;
     UITextField *expirationMonthTextField;
     UITextField *expirationYearTextField;
     UITextField *ccvTextField;
@@ -55,6 +57,8 @@
     NSDictionary *fedexRateDictionary;
     
     NSDictionary *requestedPostmasterDictionary;
+    
+    
 }
 
 
@@ -87,6 +91,7 @@
 
 
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
+@property (nonatomic, retain) IBOutlet PKView *stpCreditCardNumberTextField;
 @property (nonatomic, retain) IBOutlet UITextField *addressTextField;
 @property (nonatomic, retain) IBOutlet UITextField *cityTextField;
 @property (nonatomic, retain) IBOutlet UITextField *stateTextField;
