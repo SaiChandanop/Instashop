@@ -60,6 +60,7 @@
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
     self.productSelectTableViewController.parentController = self;
     self.productSelectTableViewController.contentRequestParameters = [[NSMutableDictionary alloc] initWithDictionary:params];
+    [self.productSelectTableViewController refreshContent];
     
     
     
