@@ -171,11 +171,11 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-        
+    cell.delegate = self;
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.feedItemsArray];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.delegate = self;
+    
     return cell;
 }
 

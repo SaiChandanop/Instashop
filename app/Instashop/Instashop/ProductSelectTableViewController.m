@@ -89,10 +89,11 @@
         cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
     }
     
+    cell.delegate = self;
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.userMediaArray];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.delegate = self;
+
     return cell;
 }
 

@@ -19,7 +19,8 @@
     id delegate;
 }
 
-- (id)initWithFrame:(CGRect)frame withProductObjectDictionary:(NSDictionary *)productObjectDictionary withButtonDelegate:(id)delegate;
+- (id) initWithFrame:(CGRect)frame withProductObjectDictionary:(NSDictionary *)productObjectDictionary withButtonDelegate:(id)delegate;
+- (void) loadImages;
 
 @property (nonatomic, retain) UIImageView *backgroundImageView;
 @property (nonatomic, retain) UIImageView *contentImageView;

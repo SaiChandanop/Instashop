@@ -63,10 +63,15 @@
         else if (iter == 2 && self.itemThree == nil)
         {
             self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withProductObjectDictionary:productObjectDictionary withButtonDelegate:self.delegate];
-            [self addSubview:self.itemTwo];
+            [self addSubview:self.itemThree];
         }
         
         iter++;
+        
+        [self.itemOne loadImages];
+        [self.itemTwo loadImages];
+        [self.itemThree loadImages];
+        
         
         [self bringSubviewToFront:self.itemOne];
         [self bringSubviewToFront:self.itemTwo];

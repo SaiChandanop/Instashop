@@ -42,28 +42,30 @@
         [self addSubview:self.coverButton];
         
         
-        NSString *productURL = [productObjectDictionary objectForKey:@"products_url"];
-        if (productURL == nil)
-        {
-            NSDictionary *imagesDictionary = [productObjectDictionary objectForKey:@"images"];
-            if (imagesDictionary != nil)
-            {
-                NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-                productURL = [standardResolutionDictionary objectForKey:@"url"];
-            }
-        }
-        
-        if (productURL != nil)
-            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:self.contentImageView];
-        
-        
-        
     }
     return self;
 }
 
+-(void)loadImages
+{
+    NSString *productURL = [self.objectDictionary objectForKey:@"products_url"];
+    if (productURL == nil)
+    {
+        NSDictionary *imagesDictionary = [self.objectDictionary objectForKey:@"images"];
+        if (imagesDictionary != nil)
+        {
+            NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+            productURL = [standardResolutionDictionary objectForKey:@"url"];
+        }
+    }
+    
+    if (productURL != nil)
+        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:self.contentImageView];
+}
+
 - (void) coverButtonHit
 {
+    NSLog(@"coverButtonHit");
     if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
         [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
 
