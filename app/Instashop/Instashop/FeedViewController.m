@@ -118,6 +118,8 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
     [self.feedItemsArray addObjectsFromArray:sorted];
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
+    
+    NSLog(@"feedItemsArray: %@", feedItemsArray);
 }
 
 -(IBAction)homeButtonHit
@@ -200,24 +202,8 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 #pragma mark - Table view delegate
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-}
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == YES)
-    {
-        
-        
-    }
-    
-}
 
--(void)purchasingViewControllerBackButtonHitWithVC:(UIViewController *)vc
-{
-    
-}
 
 -(void)refresh
 {

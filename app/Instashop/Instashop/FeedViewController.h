@@ -21,11 +21,9 @@
     id selectedObject;
 }
 
--(void)purchasingViewControllerBackButtonHitWithVC:(UIViewController *)vc;
 
 
 @property (nonatomic, retain) AppRootViewController *parentController;
-
 
 @property (nonatomic, retain) NSMutableArray *feedItemsArray;
 

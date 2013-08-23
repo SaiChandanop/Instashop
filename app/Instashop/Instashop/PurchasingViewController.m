@@ -484,11 +484,6 @@
 }
 
 
--(IBAction)backButtonHit
-{
-    [self.parentController purchasingViewControllerBackButtonHitWithVC:self];
-    
-}
 
 - (IBAction) profileButtonHit
 {

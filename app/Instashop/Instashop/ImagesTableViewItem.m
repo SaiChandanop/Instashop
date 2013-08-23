@@ -18,13 +18,12 @@
 
 @synthesize objectDictionary;
 
-- (id)initWithFrame:(CGRect)frame withProductObjectDictionary:(NSDictionary *)productObjectDictionary withButtonDelegate:(id)theDelegate
+- (id)initWithFrame:(CGRect)frame withButtonDelegate:(id)theDelegate
 {
     self = [super initWithFrame:frame];
     if (self) {
         
         self.delegate = theDelegate;
-        self.objectDictionary = productObjectDictionary;
         
         float contentInset = 6;
         
@@ -40,14 +39,18 @@
         self.coverButton.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         [self.coverButton addTarget:self action:@selector(coverButtonHit) forControlEvents:UIControlEventTouchUpInside];
         [self addSubview:self.coverButton];
-        
-        
     }
     return self;
 }
 
--(void)loadImages
+- (void) loadContentWithDictionary:(NSDictionary *)theDictionary
 {
+    if (self.objectDictionary != nil)
+        [self.objectDictionary release];
+    
+    self.objectDictionary = [[NSDictionary alloc] initWithDictionary:theDictionary];
+    
+        
     NSString *productURL = [self.objectDictionary objectForKey:@"products_url"];
     if (productURL == nil)
     {

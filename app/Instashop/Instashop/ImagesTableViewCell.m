@@ -48,34 +48,41 @@
     {
         NSDictionary *productObjectDictionary = [feedItemsArray objectAtIndex:i];
         
-        if (iter == 0 && self.itemOne == nil)
+        NSLog(@"indexPath.row: %d, i: %d, id: %@", theIndexPath.row, i, [productObjectDictionary objectForKey:@"products_id"]);
+        if (self.itemOne == nil)
         {
-                self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withProductObjectDictionary:productObjectDictionary withButtonDelegate:self.delegate];
+                self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withButtonDelegate:self.delegate];
                 [self addSubview:self.itemOne];
         }
         
-        else if (iter == 1 && self.itemTwo == nil)
+        else if (self.itemTwo == nil)
         {
-                self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withProductObjectDictionary:productObjectDictionary withButtonDelegate:self.delegate];
+                self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withButtonDelegate:self.delegate];
                 [self addSubview:self.itemTwo];
         }
         
-        else if (iter == 2 && self.itemThree == nil)
+        else if (self.itemThree == nil)
         {
-            self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withProductObjectDictionary:productObjectDictionary withButtonDelegate:self.delegate];
+            self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withButtonDelegate:self.delegate];
             [self addSubview:self.itemThree];
         }
         
-        iter++;
         
-        [self.itemOne loadImages];
-        [self.itemTwo loadImages];
-        [self.itemThree loadImages];
+        
+        if (iter == 0)
+            [self.itemOne loadContentWithDictionary:productObjectDictionary];
+        else if (iter == 1)
+            [self.itemTwo loadContentWithDictionary:productObjectDictionary];
+        else if (iter == 2)
+            [self.itemThree loadContentWithDictionary:productObjectDictionary];
         
         
         [self bringSubviewToFront:self.itemOne];
         [self bringSubviewToFront:self.itemTwo];
         [self bringSubviewToFront:self.itemThree];
+        
+        iter++;
+        
 
     }
     
