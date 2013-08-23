@@ -11,6 +11,7 @@
                 <outlet property="followersLabel" destination="nAC-FL-UV7" id="ggS-Yi-7sf"/>
                 <outlet property="followingLabel" destination="RU8-eQ-9Ah" id="eSS-wI-rh3"/>
                 <outlet property="profileImageView" destination="RHM-oM-kVi" id="P34-lA-dJo"/>
+                <outlet property="theTableView" destination="Mlb-xD-ESb" id="srm-0a-3lb"/>
                 <outlet property="usernameLabel" destination="Be8-Z5-0ND" id="u7j-pO-ecN"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
@@ -71,6 +72,15 @@
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mlb-xD-ESb">
+                    <rect key="frame" x="0.0" y="260" width="320" height="308"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="PUz-WW-Q45"/>
+                        <outlet property="delegate" destination="-1" id="gLE-lt-2bA"/>
+                    </connections>
+                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>

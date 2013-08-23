@@ -14,7 +14,7 @@
 
 
 
-
++(void)getProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate;
 +(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate;
 +(void)getAllProductsWithDelegate:(id)delegate;
 

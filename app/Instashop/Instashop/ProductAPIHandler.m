@@ -15,6 +15,26 @@
 @implementation ProductAPIHandler
 
 
++(void)getProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?requesting_seller_id=", instagramID];
+    
+    NSLog(@"urlRequestString: %@", urlRequestString);
+    
+    
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"GET";
+    
+    
+    ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
+    productAPIHandler.delegate = delegate;
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+
+    
+}
+
 +(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate
 {
     

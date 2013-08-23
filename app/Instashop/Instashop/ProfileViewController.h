@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "IGRequest.h"
+#import "FeedRequestFinishedProtocol.h"
 
 
-@interface ProfileViewController : UIViewController <IGRequestDelegate>
+@interface ProfileViewController : UIViewController <IGRequestDelegate, FeedRequestFinishedProtocol, UITableViewDataSource, UITableViewDelegate>
 {
     NSString *profileInstagramID;
     
@@ -19,6 +20,9 @@
     UILabel *usernameLabel;
     UILabel *followersLabel;
     UILabel *followingLabel;
+
+    NSMutableArray *feedItemsArray;
+    UITableView *theTableView;
     
 }
 
@@ -30,4 +34,6 @@
 @property (nonatomic, retain) IBOutlet UILabel *followersLabel;
 @property (nonatomic, retain) IBOutlet UILabel *followingLabel;
 
+@property (nonatomic, retain) NSMutableArray *feedItemsArray;
+@property (nonatomic, retain) IBOutlet UITableView *theTableView;
 @end
