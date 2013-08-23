@@ -119,7 +119,6 @@
     self.selectedObject = theSelectionObject;
 
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
-    purchasingViewController.parentController = self;
     purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
     purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
     [self.navigationController pushViewController:purchasingViewController animated:YES];

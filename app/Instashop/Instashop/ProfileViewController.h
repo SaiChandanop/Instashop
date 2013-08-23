@@ -10,8 +10,9 @@
 #import "IGRequest.h"
 #import "FeedRequestFinishedProtocol.h"
 #import "ProductSelectTableViewController.h"
+#import "CellSelectionOccuredProtocol.h"
 
-@interface ProfileViewController : UIViewController <IGRequestDelegate>
+@interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol>
 {
     NSString *profileInstagramID;
     

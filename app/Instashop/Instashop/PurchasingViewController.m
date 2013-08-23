@@ -29,7 +29,6 @@
 @synthesize sizePickerViewViewController;
 @synthesize requestingProductID;
 @synthesize requestedPostmasterDictionary;
-@synthesize parentController;
 @synthesize contentScrollView;
 @synthesize categoryLabel;
 @synthesize descriptionContainerView;
@@ -172,8 +171,7 @@
     self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
     [self.view bringSubviewToFront:self.bottomView];
     
-    
-    //[self.parentController rowValueSelectedWithIndexPath:self.theIndexPath withKey:self.theController.typeKeyString withValue:[self.theController.itemsArray objectAtIndex:self.theController.selectedRow]];
+
     [self.quantityButton setTitle:@"1" forState:UIControlStateNormal];
     
     

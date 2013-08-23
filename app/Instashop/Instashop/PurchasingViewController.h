@@ -15,7 +15,6 @@
 
 @interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol>
 {
-    FeedViewController *parentController;
     SizePickerViewViewController *sizePickerViewViewController;
     
     NSString *requestingProductID;
@@ -57,7 +56,6 @@
 - (void) loadContentViews;
 
 
-@property (nonatomic, retain) FeedViewController *parentController;
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
 
 @property (nonatomic, retain) NSString *requestingProductID;

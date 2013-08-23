@@ -76,9 +76,6 @@
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
-    NSLog(@"theInstagramInfoDictionary: %@", theSelectionObject);
-    
-    NSLog(@"self.navigationController: %@", self.navigationController);
     ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
     productDetailsViewController.parentController = self;
     productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);

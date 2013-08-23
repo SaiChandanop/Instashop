@@ -11,6 +11,7 @@
 #import "ImageAPIHandler.h"
 #import "ImagesTableViewCell.h"
 #import "ProductAPIHandler.h"
+#import "PurchasingViewController.h"
 @interface ProfileViewController ()
 
 @end
@@ -50,7 +51,7 @@
     params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
     
-  
+    self.productSelectTableViewController.cellDelegate = self;
     self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER;
     self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
     [self.productSelectTableViewController refreshContent];
@@ -84,10 +85,21 @@
             self.followingLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"follows"] integerValue]];
         }
         
+        
+        
     }
 }
 
 
+-(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
+{
+    NSLog(@"cellSelectionOccured: %@", theSelectionObject);
+    PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+    purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
+    purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
+    [self.navigationController pushViewController:purchasingViewController animated:YES];
+    
+}
 
 
 
