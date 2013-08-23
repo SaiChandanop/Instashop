@@ -57,7 +57,13 @@
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
     self.productSelectTableViewController.parentController = self;
+    self.productSelectTableViewController.contentRequestParameters = [[NSMutableDictionary alloc] initWithDictionary:params];
+    
+    
+    
+    
 }
 
 -(void)backButtonHit

@@ -7,19 +7,26 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AppDelegate.h"
 #import "CellSelectionOccuredProtocol.h"
-
-
+#import "Instagram.h"
+#import "FeedRequestFinishedProtocol.h"
 @class ProductCreateViewController;
 
-@interface ProductSelectTableViewController : UITableViewController <IGRequestDelegate, CellSelectionOccuredProtocol>
+@interface ProductSelectTableViewController : UITableViewController <IGRequestDelegate, CellSelectionOccuredProtocol, FeedRequestFinishedProtocol>
 {
-    NSMutableArray *userMediaArray;
+    id parentController;
     
-    ProductCreateViewController *parentController;
-    
+    NSMutableArray *contentArray;
+    NSMutableDictionary *contentRequestParameters;
+
+    UITableView *referenceTableView;
 }
-@property (nonatomic, retain) NSMutableArray *userMediaArray;
-@property (nonatomic, retain) ProductCreateViewController *parentController;
+
+-(void)refreshContent;
+
+@property (nonatomic, retain) id parentController;
+@property (nonatomic, retain) NSMutableArray *contentArray;
+@property (nonatomic, retain) NSMutableDictionary *contentRequestParameters;
+
+@property (nonatomic, retain) UITableView *referenceTableView;
 @end

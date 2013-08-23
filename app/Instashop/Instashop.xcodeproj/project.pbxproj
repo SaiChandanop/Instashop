@@ -635,14 +635,14 @@
 			name = Buy;
 			sourceTree = "<group>";
 		};
-		7B1072AF175E6C6800D9DC5D /* CreateSelectTableController */ = {
+		7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */ = {
 			isa = PBXGroup;
 			children = (
 				7B1072B0175E6C8C00D9DC5D /* ProductSelectTableViewController.h */,
 				7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */,
 				7B1072B2175E6C8C00D9DC5D /* ProductSelectTableViewController.xib */,
 			);
-			name = CreateSelectTableController;
+			name = ProductSelectTableVC;
 			sourceTree = "<group>";
 		};
 		7B1072B5175E7CB300D9DC5D /* Details */ = {
@@ -818,6 +818,7 @@
 		7B5D624517C4F4B000D6C8B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */,
 				7B31BD6817C6D0EC00D24F55 /* NavBarTitleView */,
 				7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */,
 				7B1B302917BE8E9400BB6420 /* BSKeyboardControls */,
@@ -1236,7 +1237,6 @@
 		7BE958F3175548A100A7E0AB /* Sell */ = {
 			isa = PBXGroup;
 			children = (
-				7B1072AF175E6C6800D9DC5D /* CreateSelectTableController */,
 				7B1072B5175E7CB300D9DC5D /* Details */,
 				7B3F5212175FB38300ABF49B /* Preview */,
 				7BE958F4175548B800A7E0AB /* ProductCreateViewController.h */,

@@ -9,7 +9,6 @@
 #import "FeedViewController.h"
 #import "AppRootViewController.h"
 #import "ImagesTableViewCell.h"
-#import "ProductAPIHandler.h"
 #import "ImageAPIHandler.h"
 #import "PurchasingViewController.h"
 #import "ISConstants.h"
@@ -23,6 +22,8 @@
 
 @synthesize parentController;
 @synthesize feedItemsArray, selectedObject;
+@synthesize productSelectTableViewController;
+@synthesize theTableView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,8 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [ProductAPIHandler getAllProductsWithDelegate:self];
-    // Do any additional setup after loading the view from its nib.
+
     
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
@@ -74,58 +74,21 @@
     UIBarButtonItem *discoverBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:discoverCustomView];
     self.navigationItem.rightBarButtonItem = discoverBarButtonItem;
 
-    
-    
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(refresh)
-             forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refreshControl;
-
 
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
+    [self.productSelectTableViewController refreshContent];
     
-    
-}
-
-NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
-    
-
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-
-    NSString *string1 = [s1 objectForKey:@"products_date_added"];
-    NSDate *date1 = [dateFormatter dateFromString:string1];
-
-    NSString *string2 = [s2 objectForKey:@"products_date_added"];
-    NSDate *date2 = [dateFormatter dateFromString:string2];
-
-    int ret = [date2 compare:date1];
-
-    [dateFormatter release];
-    
-    return ret;
+    NSLog(@"self.view.subviews: %@", [self.view subviews]);
     
 }
 
 
--(void)feedRequestFinishedWithArrray:(NSArray *)theArray
-{
-    [self.feedItemsArray removeAllObjects];
-    
-    NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
-    [self.feedItemsArray addObjectsFromArray:sorted];
-    [self.refreshControl endRefreshing];
-    [self.tableView reloadData];
-    
-    NSLog(@"feedItemsArray: %@", feedItemsArray);
-}
 
 -(IBAction)homeButtonHit
 {
     [self.parentController homeButtonHit];
-    
 }
 
 -(IBAction)notificationsButtonHit
@@ -147,45 +110,6 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
 
 
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    [tableView setSeparatorColor:[UIColor clearColor]];   
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-
-    if ([self.feedItemsArray count] / 3 % 3 == 0)
-        return ([self.feedItemsArray count] / 3);
-    else
-        return ([self.feedItemsArray count] / 3) + 1;
-}
-
-- (ImagesTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    ImagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    cell.delegate = self;
-    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.feedItemsArray];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    return cell;
-}
-
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return  104;
-}
 
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
@@ -200,14 +124,9 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
     
 }
 
-#pragma mark - Table view delegate
 
 
 
 
--(void)refresh
-{
-    [ProductAPIHandler getAllProductsWithDelegate:self];
-}
 
 @end

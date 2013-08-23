@@ -11,7 +11,7 @@
 #import "ImagesTableViewCell.h"
 #import "ImageAPIHandler.h"
 #import "ProductCreateViewController.h"
-
+#import "ProductAPIHandler.h"
 
 @interface ProductSelectTableViewController ()
 
@@ -21,13 +21,17 @@
 
 
 @synthesize parentController;
-@synthesize userMediaArray;
+@synthesize contentArray;
+@synthesize contentRequestParameters;
+@synthesize referenceTableView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
 
+        
+        
        
     }
     return self;
@@ -37,12 +41,13 @@
 {
     [super viewDidLoad];
 
-    self.userMediaArray = [[NSMutableArray alloc] initWithCapacity:0];    
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
+    NSLog(@"%@ view did load", self);
+    self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
     
-//    NSLog(@"view did load: %@", self);
-    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [theAppDelegate.instagram requestWithParams:params delegate:self];
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(refreshContent)
+             forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
 
 }
 
@@ -50,14 +55,17 @@
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
-//    NSLog(@"responseCode: %d", responseCode);
+
     
     if (responseCode == 200)
     {
         NSArray *dataArray = [result objectForKey:@"data"];
-        [self.userMediaArray removeAllObjects];
-        [self.userMediaArray addObjectsFromArray:dataArray];
-        [self.tableView reloadData];
+        [self.contentArray removeAllObjects];
+        [self.contentArray addObjectsFromArray:dataArray];
+        if (self.referenceTableView != nil)
+            [self.referenceTableView reloadData];
+        else
+            [self.tableView reloadData];
     }
 }
 
@@ -76,11 +84,14 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.userMediaArray count] / 3 + 1;
+    NSLog(@"numberOfRowsInSection: self.contentArray: %d", [self.contentArray count]);
+    return [self.contentArray count] / 3 + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+
+    NSLog(@"cellForRowAtIndexPath!!");
     static NSString *CellIdentifier = @"Cell";
     
     ImagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -90,7 +101,7 @@
     }
     
     cell.delegate = self;
-    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.userMediaArray];
+    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -111,12 +122,51 @@
 }
 
 
-
-#pragma mark - Table view delegate
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)refreshContent;
 {
-//    NSLog(@"parentController: %@", self.parentController);
+    if (self.contentRequestParameters != nil)
+    {
+        AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [theAppDelegate.instagram requestWithParams:contentRequestParameters delegate:self];
+    }
+    else
+        [ProductAPIHandler getAllProductsWithDelegate:self];
+}
+
+
+-(void)feedRequestFinishedWithArrray:(NSArray *)theArray
+{
+    [self.contentArray removeAllObjects];
+    
+    NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
+    [self.contentArray addObjectsFromArray:sorted];
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+}
+
+NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
+    
+    
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    
+    NSString *string1 = [s1 objectForKey:@"products_date_added"];
+    NSDate *date1 = [dateFormatter dateFromString:string1];
+    
+    NSString *string2 = [s2 objectForKey:@"products_date_added"];
+    NSDate *date2 = [dateFormatter dateFromString:string2];
+    
+    int ret = [date2 compare:date1];
+    
+    [dateFormatter release];
+    
+    return ret;
     
 }
+
+
+
+
+
 
 @end
