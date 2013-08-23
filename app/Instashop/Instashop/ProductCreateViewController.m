@@ -59,6 +59,7 @@
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
     self.productSelectTableViewController.parentController = self;
+    self.productSelectTableViewController.cellDelegate = self;
     self.productSelectTableViewController.contentRequestParameters = [[NSMutableDictionary alloc] initWithDictionary:params];
     [self.productSelectTableViewController refreshContent];
     
@@ -72,16 +73,17 @@
     [self.parentController productCreateNavigationControllerExitButtonHit:self.navigationController];
 }
 
--(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary
+
+-(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
-//    NSLog(@"theInstagramInfoDictionary: %@", theInstagramInfoDictionary);
+    NSLog(@"theInstagramInfoDictionary: %@", theSelectionObject);
     
     NSLog(@"self.navigationController: %@", self.navigationController);
     ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
     productDetailsViewController.parentController = self;
     productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
     [self.navigationController pushViewController:productDetailsViewController animated:YES];
-    [productDetailsViewController loadViewsWithInstagramInfoDictionary:theInstagramInfoDictionary];    
+    [productDetailsViewController loadViewsWithInstagramInfoDictionary:theSelectionObject];
 }
 
 

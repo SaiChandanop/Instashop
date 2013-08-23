@@ -13,11 +13,11 @@
 #import "ProductPreviewViewController.h"
 #import "ProductCreateContainerObject.h"
 #import "ProductCreateContainerProtocol.h"
-
+#import "CellSelectionOccuredProtocol.h"
 
 @class AppRootViewController;
 
-@interface ProductCreateViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, ProductCreateContainerProtocol>
+@interface ProductCreateViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate, CellSelectionOccuredProtocol, ProductCreateContainerProtocol>
 {
     AppRootViewController *parentController;
     
