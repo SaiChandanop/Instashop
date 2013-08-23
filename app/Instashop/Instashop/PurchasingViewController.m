@@ -16,7 +16,7 @@
 #import "PurchasingAddressViewController.h"
 #import "SellersAPIHandler.h"
 #import "SizePickerViewViewController.h"
-
+#import "ProfileViewController.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -56,14 +56,9 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSLog(@"viewDidAppear: %@", self);
     self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionTextView.contentSize.height + 30);
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
-
-    NSLog(@"2self.descriptionTextView.text: %@", self.descriptionTextView.text);
-    NSLog(@"2self.descriptionTextView.contentSize.height: %f", self.descriptionTextView.contentSize.height);
-
-    
+   
     self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
 
     
@@ -100,6 +95,7 @@
     [self.sellerProfileImageView beginAnimations];
     
 
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
         
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
@@ -139,10 +135,8 @@
     self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width,  self.descriptionTextView.contentSize.height);
-    
-    NSLog(@"self.descriptionTextView.text: %@", self.descriptionTextView.text);
-    NSLog(@"self.descriptionTextView.contentSize.height: %f", self.descriptionTextView.contentSize.height);
 
+    
     
     
     
@@ -496,6 +490,16 @@
     
 }
 
+- (IBAction) profileButtonHit
+{
+    if (self.requestedProductObject != nil)
+        if ([self.requestedProductObject objectForKey:@"owner_instagram_id"] != nil)
+        {
+            ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+            profileViewController.profileInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+            [self.navigationController pushViewController:profileViewController animated:YES];
+        }    
+}
 
 
 

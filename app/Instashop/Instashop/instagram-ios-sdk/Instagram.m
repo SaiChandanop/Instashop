@@ -257,6 +257,8 @@ static void *finishedContext            = @"finishedContext";
                         httpMethod:(NSString*)httpMethod
                           delegate:(id<IGRequestDelegate>)delegate {
     NSString * fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
+    NSLog(@"self: %@ fullURL: %@ delegate: %@", self, fullURL, delegate);
+    
     return [self openUrl:fullURL
                   params:params
               httpMethod:httpMethod

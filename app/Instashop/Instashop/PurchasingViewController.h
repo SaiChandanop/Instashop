@@ -46,16 +46,16 @@
     
 }
 
--(IBAction)likeButtonHit;
+- (IBAction) likeButtonHit;
 
-
--(IBAction)backButtonHit;
--(IBAction)buyButtonHit;
-
--(IBAction)sizeButtonHit;
--(IBAction)quantityButtonHit;
+- (IBAction) profileButtonHit;
+- (IBAction) backButtonHit;
+- (IBAction) buyButtonHit;
+- (IBAction) sizeButtonHit;
+- (IBAction) quantityButtonHit;
 
 - (void) loadContentViews;
+
 
 @property (nonatomic, retain) FeedViewController *parentController;
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;

@@ -183,6 +183,17 @@
                             <rect key="frame" x="-1" y="318" width="320" height="5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="lja-HK-LeK">
+                            <rect key="frame" x="7" y="278" width="51" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="profileButtonHit" destination="-1" eventType="touchUpInside" id="QG5-Pd-s6T"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </scrollView>
                 <view contentMode="scaleToFill" id="B12-y8-tzH">

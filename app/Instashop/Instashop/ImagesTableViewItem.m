@@ -65,7 +65,6 @@
 
 - (void) coverButtonHit
 {
-    NSLog(@"coverButtonHit");
     if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
         [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
 

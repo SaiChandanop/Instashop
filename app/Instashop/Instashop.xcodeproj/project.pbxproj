@@ -78,6 +78,11 @@
 		7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */; };
 		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
 		7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */; };
+		7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */; };
+		7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */; };
+		7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECE17C7AB4400F4D5D8 /* badcamera.png */; };
+		7B376ED217C7ADF800F4D5D8 /* followingImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ED017C7ADF800F4D5D8 /* followingImage.png */; };
+		7B376ED317C7ADF800F4D5D8 /* followersImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ED117C7ADF800F4D5D8 /* followersImage.png */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
 		7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */; };
 		7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */; };
@@ -300,6 +305,12 @@
 		7B34813817624E5800C055AE /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B34813917624E5800C055AE /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
+		7B376EC917C7A35000F4D5D8 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		7B376ECE17C7AB4400F4D5D8 /* badcamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badcamera.png; sourceTree = "<group>"; };
+		7B376ED017C7ADF800F4D5D8 /* followingImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followingImage.png; sourceTree = "<group>"; };
+		7B376ED117C7ADF800F4D5D8 /* followersImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followersImage.png; sourceTree = "<group>"; };
 		7B3F520F175FAAF400ABF49B /* ProductCreateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateObject.h; sourceTree = "<group>"; };
 		7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateObject.m; sourceTree = "<group>"; };
 		7B3F5213175FB3A000ABF49B /* ProductPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductPreviewViewController.h; sourceTree = "<group>"; };
@@ -704,6 +715,16 @@
 			name = DiscoverTableViewController;
 			sourceTree = "<group>";
 		};
+		7B376EC817C7A33300F4D5D8 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				7B376EC917C7A35000F4D5D8 /* ProfileViewController.h */,
+				7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */,
+				7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		7B3F520E175FAAB900ABF49B /* ProductObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -769,6 +790,9 @@
 		7B4D2E17175CFFBE005DE4B6 /* shittyimages */ = {
 			isa = PBXGroup;
 			children = (
+				7B376ED017C7ADF800F4D5D8 /* followingImage.png */,
+				7B376ED117C7ADF800F4D5D8 /* followersImage.png */,
+				7B376ECE17C7AB4400F4D5D8 /* badcamera.png */,
 				7B9B4EFC17C5C3420089C580 /* thanksseller.png */,
 				7B676F6E17BC79C7004FC53B /* previewsocialshittyimage.png */,
 				7B8BC4D517B2CE80002CEB36 /* cell_background.png */,
@@ -1027,6 +1051,7 @@
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
 				7B4908541758FE0A0047ED3B /* Notifications */,
+				7B376EC817C7A33300F4D5D8 /* Profile */,
 				7BE958F3175548A100A7E0AB /* Sell */,
 				7BD5C1FB179596B3006F311A /* SizeQuantity */,
 				7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */,
@@ -1369,12 +1394,14 @@
 				2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */,
 				2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */,
 				2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */,
+				7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */,
 				2E7CFF9717C3A98500657CFC /* gray_x@2x.png in Resources */,
 				2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */,
 				2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */,
 				2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */,
 				2E628CAE17C6A19900CB7BE4 /* AppIcon60x60.png in Resources */,
 				7B5D62A617C5AF9F00D6C8B1 /* cvc@2x.png in Resources */,
+				7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */,
 				2E0EAE0F176F6E6700B65FC3 /* setPersonalIcon@2x.png.png in Resources */,
 				2E0EAE10176F6E6700B65FC3 /* setLogOutIcon@2x.png.png in Resources */,
 				2E0EAE11176F6E6700B65FC3 /* setFacebook_OnIcon@2x.png.png in Resources */,
@@ -1392,6 +1419,7 @@
 				2E0EAE1B176F6E6700B65FC3 /* lmSuggestedStoresIcon@2x.png in Resources */,
 				2E0EAE1C176F6E6700B65FC3 /* lmTermsofServiceIcon@2x.png in Resources */,
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
+				7B376ED317C7ADF800F4D5D8 /* followersImage.png in Resources */,
 				7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
 				7B5D62A717C5AF9F00D6C8B1 /* diners.png in Resources */,
@@ -1432,6 +1460,7 @@
 				7B9E844617B15A6000E6FE47 /* toolbar_title_iumage.png in Resources */,
 				7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */,
 				2E628CB317C6A19900CB7BE4 /* iTunesArtwork@2x.png in Resources */,
+				7B376ED217C7ADF800F4D5D8 /* followingImage.png in Resources */,
 				7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */,
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
 				7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */,
@@ -1520,6 +1549,7 @@
 				7B15B2FB17B2AA1800173752 /* CategoriesViewController.m in Sources */,
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,
+				7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */,
 				7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */,
 				7B5D628317C5AF7100D6C8B1 /* PKCardNumber.m in Sources */,
 			);
