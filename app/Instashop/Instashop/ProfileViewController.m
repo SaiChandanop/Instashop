@@ -24,16 +24,16 @@
 @synthesize usernameLabel;
 @synthesize followersLabel;
 @synthesize followingLabel;
+
+@synthesize productSelectTableViewController;
 @synthesize theTableView;
-@synthesize feedItemsArray;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        self.feedItemsArray = [[NSMutableArray alloc] initWithCapacity:0];
         
     }
     return self;
@@ -50,8 +50,10 @@
     params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
     
-    
-    [ProductAPIHandler getProductsWithInstagramID:self.profileInstagramID withDelegate:self];
+  
+    self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER;
+    self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
+    [self.productSelectTableViewController refreshContent];
     
     
 }
@@ -87,83 +89,11 @@
 
 
 
--(void)feedRequestFinishedWithArrray:(NSArray *)theArray
-{
-//    NSLog(@"feedRequestFinishedWithArrray: %@", feedRequestFinishedWithArrray);
-    [self.feedItemsArray removeAllObjects];
-    
-    NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort2 context:nil];
-    [self.feedItemsArray addObjectsFromArray:sorted];
-    [self.theTableView reloadData];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return  104;
-}
-
-
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    [tableView setSeparatorColor:[UIColor clearColor]];
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    
-    if ([self.feedItemsArray count] / 3 % 3 == 0)
-        return ([self.feedItemsArray count] / 3);
-    else
-        return ([self.feedItemsArray count] / 3) + 1;
-}
-
-- (ImagesTableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    ImagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-    
-    cell.delegate = self;
-    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.feedItemsArray];
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-    return cell;
-}
-
-NSComparisonResult dateSort2(NSDictionary *s1, NSDictionary *s2, void *context) {
-    
-    
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSString *string1 = [s1 objectForKey:@"products_date_added"];
-    NSDate *date1 = [dateFormatter dateFromString:string1];
-    
-    NSString *string2 = [s2 objectForKey:@"products_date_added"];
-    NSDate *date2 = [dateFormatter dateFromString:string2];
-    
-    int ret = [date2 compare:date1];
-    
-    [dateFormatter release];
-    
-    return ret;
-    
-}
-
 
 
 
 - (void)viewDidLoad
-{
-    
+{    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     [super viewDidLoad];

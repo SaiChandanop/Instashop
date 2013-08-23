@@ -10,6 +10,7 @@
                 <outlet property="backgroundImageView" destination="uUu-tP-DTR" id="sNn-qt-g3h"/>
                 <outlet property="followersLabel" destination="nAC-FL-UV7" id="ggS-Yi-7sf"/>
                 <outlet property="followingLabel" destination="RU8-eQ-9Ah" id="eSS-wI-rh3"/>
+                <outlet property="productSelectTableViewController" destination="7F9-di-1kk" id="dWx-NX-xgu"/>
                 <outlet property="profileImageView" destination="RHM-oM-kVi" id="P34-lA-dJo"/>
                 <outlet property="theTableView" destination="Mlb-xD-ESb" id="srm-0a-3lb"/>
                 <outlet property="usernameLabel" destination="Be8-Z5-0ND" id="u7j-pO-ecN"/>
@@ -77,8 +78,8 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
-                        <outlet property="dataSource" destination="-1" id="PUz-WW-Q45"/>
-                        <outlet property="delegate" destination="-1" id="gLE-lt-2bA"/>
+                        <outlet property="dataSource" destination="7F9-di-1kk" id="aLJ-fo-wdU"/>
+                        <outlet property="delegate" destination="7F9-di-1kk" id="oWS-bz-uvB"/>
                     </connections>
                 </tableView>
             </subviews>
@@ -90,6 +91,16 @@
             <rect key="frame" x="0.0" y="0.0" width="125" height="113"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
         </imageView>
+        <tableViewController id="7F9-di-1kk" customClass="ProductSelectTableViewController">
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="view" destination="Mlb-xD-ESb" id="hWd-Hc-3Ja"/>
+            </connections>
+        </tableViewController>
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>

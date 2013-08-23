@@ -78,6 +78,8 @@
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
+    self.productSelectTableViewController.cellDelegate = self;
+    self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS;
     [self.productSelectTableViewController refreshContent];
     
     NSLog(@"self.view.subviews: %@", [self.view subviews]);

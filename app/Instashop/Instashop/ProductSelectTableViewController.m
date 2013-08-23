@@ -21,9 +21,12 @@
 
 
 @synthesize parentController;
+@synthesize cellDelegate;
 @synthesize contentArray;
 @synthesize contentRequestParameters;
 @synthesize referenceTableView;
+@synthesize productRequestorType;
+@synthesize productRequestorReferenceObject;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,7 +44,6 @@
 {
     [super viewDidLoad];
 
-    NSLog(@"%@ view did load", self);
     self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
@@ -84,14 +86,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"numberOfRowsInSection: self.contentArray: %d", [self.contentArray count]);
     return [self.contentArray count] / 3 + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-
-    NSLog(@"cellForRowAtIndexPath!!");
     static NSString *CellIdentifier = @"Cell";
     
     ImagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -100,7 +99,7 @@
         cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
     }
     
-    cell.delegate = self;
+    cell.delegate = cellDelegate;
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -129,8 +128,21 @@
         AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [theAppDelegate.instagram requestWithParams:contentRequestParameters delegate:self];
     }
-    else
-        [ProductAPIHandler getAllProductsWithDelegate:self];
+    else if (self.productRequestorType > 0)
+    {
+        switch (self.productRequestorType) {
+            case PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS:
+                [ProductAPIHandler getAllProductsWithDelegate:self];
+                break;
+            case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER:
+                [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
+                
+            default:
+                break;
+        }
+    }
+        
+    
 }
 
 
