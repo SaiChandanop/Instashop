@@ -28,7 +28,7 @@
 -(void)createSellerDone:(UINavigationController *)theNavigationController;
 -(void)loadStates;
 -(IBAction)homeButtonHit;
-
+-(IBAction)profileButtonHit;
 -(IBAction)logOutButtonHit;
 
 

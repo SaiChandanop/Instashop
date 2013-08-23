@@ -48,7 +48,7 @@
     {
         NSDictionary *productObjectDictionary = [feedItemsArray objectAtIndex:i];
         
-        NSLog(@"indexPath.row: %d, i: %d, id: %@", theIndexPath.row, i, [productObjectDictionary objectForKey:@"products_id"]);
+
         if (self.itemOne == nil)
         {
                 self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withButtonDelegate:self.delegate];

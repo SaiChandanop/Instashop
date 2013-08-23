@@ -120,7 +120,10 @@
     [self.parentController createSellerShouldExit:theNavigationController];
 }
 
-
+-(IBAction)profileButtonHit
+{
+    [self.parentController profileButtonHit];
+}
 
 
 @end

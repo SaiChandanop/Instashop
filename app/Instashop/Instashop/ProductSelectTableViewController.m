@@ -99,7 +99,6 @@
         cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
     }
     
-    NSLog(@"self.cellDelegate: %@", self.cellDelegate);
     cell.delegate = self.cellDelegate;
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray];
     

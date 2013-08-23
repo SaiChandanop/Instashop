@@ -13,7 +13,8 @@
 #import "AttributesManager.h"
 #import "ISConstants.h"
 #import "CreateSellerViewController.h"
-
+#import "ProfileViewController.h"
+#import "InstagramUserObject.h"
 @implementation AppRootViewController
 
 static AppRootViewController *theSharedRootViewController;
@@ -245,6 +246,29 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
     [UIView commitAnimations];
+}
+
+
+-(IBAction)profileButtonHit
+{
+    ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+    profileViewController.profileInstagramID = [InstagramUserObject getStoredUserObject].userID;
+    [self.view addSubview:profileViewController.view];
+    
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:profileViewController];
+    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:navigationController .view];
+
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+
+    
 }
 
 
