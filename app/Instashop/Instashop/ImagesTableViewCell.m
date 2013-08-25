@@ -30,10 +30,8 @@
 - (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray
 {
     int startValue = theIndexPath.row * 3;
-    
-    float spacer = 6.5;
-    float imageWidth = self.frame.size.width / 3 - 11;
-    imageWidth = 98;
+
+    float imageWidth = 106;
     
     
     int iter = 0;
@@ -51,19 +49,19 @@
 
         if (self.itemOne == nil)
         {
-                self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withButtonDelegate:self.delegate];
+                self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(1, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
                 [self addSubview:self.itemOne];
         }
         
         else if (self.itemTwo == nil)
         {
-                self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withButtonDelegate:self.delegate];
+                self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(107, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
                 [self addSubview:self.itemTwo];
         }
         
         else if (self.itemThree == nil)
         {
-            self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(iter * spacer + spacer +  iter * imageWidth, spacer, imageWidth, imageWidth) withButtonDelegate:self.delegate];
+            self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(213, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
             [self addSubview:self.itemThree];
         }
         
