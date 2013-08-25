@@ -108,12 +108,12 @@
 }
 
 
-/*
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  104;
+    return  108;
 }
-*/
+
 
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
