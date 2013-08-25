@@ -562,7 +562,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField,self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, self.phoneTextField, self.zipTextField, self.stpCreditCardNumberTextField.cardNumberField, nil];
+    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField, self.phoneTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, self.stpCreditCardNumberTextField.cardNumberField, nil];
     
     for (int i = 0; i < [fields count]; i++)
         ((UITextField *)[fields objectAtIndex:i]).delegate = self;

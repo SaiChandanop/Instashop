@@ -121,8 +121,8 @@
     
 
     
-    
-    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField,self.phoneTextField, self.websiteTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, nil];
+    //self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField,
+    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField,self.phoneTextField, self.websiteTextField, nil];
     
     for (int i = 0; i < [fields count]; i++)
         ((UITextField *)[fields objectAtIndex:i]).delegate = self;
