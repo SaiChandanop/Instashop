@@ -15,14 +15,16 @@
 #import "STPView.h"
 #import "ISDarkRowContainerView.h"
 #import "ISLightRowContainerView.h"
+#import "BSKeyboardControls.h"
 
-@interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol, SellersRequestFinishedProtocol, ProductPurchaseCompleteProtocol, PostmasterShipResponseProtocol>
+@interface PurchasingAddressViewController : UIViewController <UIActionSheetDelegate, RatesCallHandlerProtocol, SellersRequestFinishedProtocol, UITextFieldDelegate, ProductPurchaseCompleteProtocol, PostmasterShipResponseProtocol, BSKeyboardControlsDelegate>
 {
     id doneButtonDelegate;    
     id shippingCompleteDelegate;
     
     
     TPKeyboardAvoidingScrollView *contentScrollView;
+    BSKeyboardControls *keyboardControls;
     
     UIView *productDetailsPlacementView;
     UIView *productDetailsContentView;
@@ -88,6 +90,7 @@
 
 
 @property (nonatomic, retain) IBOutlet TPKeyboardAvoidingScrollView *contentScrollView;
+@property (nonatomic, retain) BSKeyboardControls *keyboardControls;
 
 @property (nonatomic, retain) IBOutlet UIView *productDetailsPlacementView;
 @property (nonatomic, retain) IBOutlet UIView *productDetailsContentView;

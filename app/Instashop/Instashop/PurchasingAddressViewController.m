@@ -28,6 +28,7 @@
 
 @synthesize contentScrollView;
 
+@synthesize keyboardControls;
 @synthesize productDetailsPlacementView;
 @synthesize productDetailsContentView;
 @synthesize purchaseDetailsContentView;
@@ -77,6 +78,9 @@
     }
     return self;
 }
+
+
+
 
 - (void)viewDidLoad
 {
@@ -539,9 +543,44 @@
 }
 
 
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    [self.keyboardControls setActiveField:textField];
+}
+
+#pragma mark -
+#pragma mark Text View Delegate
+
+- (void)textViewDidBeginEditing:(UITextView *)textView
+{
+    [self.keyboardControls setActiveField:textView];
+}
 
 
 
+
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField,self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, self.phoneTextField, self.zipTextField, self.stpCreditCardNumberTextField.cardNumberField, nil];
+    
+    for (int i = 0; i < [fields count]; i++)
+        ((UITextField *)[fields objectAtIndex:i]).delegate = self;
+    
+    [self setKeyboardControls:[[BSKeyboardControls alloc] initWithFields:fields]];
+    [self.keyboardControls setDelegate:self];
+}
+
+- (void)keyboardControls:(BSKeyboardControls *)theKeyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction
+{
+    //    UIView *view = theKeyboardControls.activeField.superview.superview;
+    //    [self.containerScrollView scrollRectToVisible:view.frame animated:YES];
+}
+
+- (void)keyboardControlsDonePressed:(BSKeyboardControls *)theKeyboardControls
+{
+    [theKeyboardControls.activeField resignFirstResponder];
+}
 
 
 
