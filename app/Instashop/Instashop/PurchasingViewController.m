@@ -26,6 +26,7 @@
 @implementation PurchasingViewController
 
 @synthesize heartImageView;
+@synthesize doubleTapView;
 @synthesize sizePickerViewViewController;
 @synthesize requestingProductID;
 @synthesize requestedPostmasterDictionary;
@@ -61,6 +62,16 @@
     self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
 
     
+    
+    UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeButtonHit)];
+    tapGestureRecognizer.numberOfTapsRequired = 2;
+    [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
+    
+}
+
+-(void)doubleTapHappened
+{
+    NSLog(@"doubleTapHappened");
 }
 
 - (void)viewDidLoad

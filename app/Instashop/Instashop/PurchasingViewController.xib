@@ -12,6 +12,7 @@
                 <outlet property="contentScrollView" destination="eOa-Xa-eSQ" id="hgj-be-G18"/>
                 <outlet property="descriptionContainerView" destination="323" id="334"/>
                 <outlet property="descriptionTextView" destination="190" id="265"/>
+                <outlet property="doubleTapView" destination="lDx-78-jMg" id="0PA-LG-qPV"/>
                 <outlet property="heartImageView" destination="343" id="344"/>
                 <outlet property="imageView" destination="37" id="276"/>
                 <outlet property="likesLabel" destination="upX-2d-e7j" id="7Js-KC-wHx"/>
@@ -194,6 +195,10 @@
                                 <action selector="profileButtonHit" destination="-1" eventType="touchUpInside" id="QG5-Pd-s6T"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" id="lDx-78-jMg">
+                            <rect key="frame" x="-1" y="0.0" width="321" height="270"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </view>
                     </subviews>
                 </scrollView>
                 <view contentMode="scaleToFill" id="B12-y8-tzH">
