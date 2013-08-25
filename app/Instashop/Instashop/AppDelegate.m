@@ -85,6 +85,13 @@
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
     
     self.window.rootViewController = self.authenticationViewController;
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    NSArray *keys = [[defaults dictionaryRepresentation] allKeys];
+    for (int i = 0; i < [keys count]; i++)
+        [defaults removeObjectForKey:[keys objectAtIndex:i]];
+                                              
 }
 
 -(void)makeSafariCallWithURL:(NSURL *)theURL

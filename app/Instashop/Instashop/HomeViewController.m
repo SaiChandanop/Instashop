@@ -48,6 +48,8 @@
     [del userDidLogout];
     
     [self.parentController homeButtonHit];
+    
+    
 }
 
 -(IBAction)homeButtonHit
