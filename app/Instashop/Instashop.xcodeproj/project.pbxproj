@@ -81,8 +81,6 @@
 		7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */; };
 		7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */; };
 		7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECE17C7AB4400F4D5D8 /* badcamera.png */; };
-		7B376ED217C7ADF800F4D5D8 /* followingImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ED017C7ADF800F4D5D8 /* followingImage.png */; };
-		7B376ED317C7ADF800F4D5D8 /* followersImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ED117C7ADF800F4D5D8 /* followersImage.png */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
 		7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */; };
 		7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */; };
@@ -309,8 +307,6 @@
 		7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		7B376ECE17C7AB4400F4D5D8 /* badcamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badcamera.png; sourceTree = "<group>"; };
-		7B376ED017C7ADF800F4D5D8 /* followingImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followingImage.png; sourceTree = "<group>"; };
-		7B376ED117C7ADF800F4D5D8 /* followersImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followersImage.png; sourceTree = "<group>"; };
 		7B3F520F175FAAF400ABF49B /* ProductCreateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateObject.h; sourceTree = "<group>"; };
 		7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateObject.m; sourceTree = "<group>"; };
 		7B3F5213175FB3A000ABF49B /* ProductPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductPreviewViewController.h; sourceTree = "<group>"; };
@@ -790,8 +786,6 @@
 		7B4D2E17175CFFBE005DE4B6 /* shittyimages */ = {
 			isa = PBXGroup;
 			children = (
-				7B376ED017C7ADF800F4D5D8 /* followingImage.png */,
-				7B376ED117C7ADF800F4D5D8 /* followersImage.png */,
 				7B376ECE17C7AB4400F4D5D8 /* badcamera.png */,
 				7B9B4EFC17C5C3420089C580 /* thanksseller.png */,
 				7B676F6E17BC79C7004FC53B /* previewsocialshittyimage.png */,
@@ -1419,7 +1413,6 @@
 				2E0EAE1B176F6E6700B65FC3 /* lmSuggestedStoresIcon@2x.png in Resources */,
 				2E0EAE1C176F6E6700B65FC3 /* lmTermsofServiceIcon@2x.png in Resources */,
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
-				7B376ED317C7ADF800F4D5D8 /* followersImage.png in Resources */,
 				7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
 				7B5D62A717C5AF9F00D6C8B1 /* diners.png in Resources */,
@@ -1460,7 +1453,6 @@
 				7B9E844617B15A6000E6FE47 /* toolbar_title_iumage.png in Resources */,
 				7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */,
 				2E628CB317C6A19900CB7BE4 /* iTunesArtwork@2x.png in Resources */,
-				7B376ED217C7ADF800F4D5D8 /* followingImage.png in Resources */,
 				7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */,
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
 				7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */,
