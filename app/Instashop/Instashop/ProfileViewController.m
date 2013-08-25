@@ -12,6 +12,7 @@
 #import "ImagesTableViewCell.h"
 #import "ProductAPIHandler.h"
 #import "PurchasingViewController.h"
+#import "ISConstants.h"
 @interface ProfileViewController ()
 
 @end
@@ -101,7 +102,32 @@
     
 }
 
+-(void)loadNavigationControlls
+{
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
+    
+    UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
+    
+    UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];
+    cancelImageView.frame = CGRectMake(0,0,44,44);
+    [cancelCustomView addSubview:cancelImageView];
+    
+    UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    cancelButton.frame = CGRectMake(0,0,cancelCustomView.frame.size.width, cancelCustomView.frame.size.height);
+    cancelButton.backgroundColor = [UIColor clearColor];
+    [cancelButton addTarget:self action:@selector(backButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [cancelCustomView addSubview:cancelButton];
+    
+    UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelCustomView];
+    self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
+    
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
+    self.navigationItem.titleView = theImageView;
 
+    
+}
 
 
 - (void)viewDidLoad

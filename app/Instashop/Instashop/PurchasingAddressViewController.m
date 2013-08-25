@@ -488,25 +488,7 @@
 
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"stateTextField"] != nil)
         self.stateTextField.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"stateTextField"];
-    
-    /*
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"stateTextField"] != nil)
-        self.stpCreditCardNumberTextField.cardNumber = [[NSUserDefaults standardUserDefaults] objectForKey:@"stateTextField"];
-    
-    
-    [[NSUserDefaults standardUserDefaults] setObject:[ string] forKey:@"cardNumber"];
-    [[NSUserDefaults standardUserDefaults] setObject:[self.stpCreditCardNumberTextField.cardExpiry formattedString] forKey:@"cardExpiry"];
-    [[NSUserDefaults standardUserDefaults] setObject:[self.stpCreditCardNumberTextField.cardCVC string] forKey:@"cardCVC"];
-    */
-    
-    
-    
-    /*    self.creditCardNumberTextField.text = [stpCreditCardNumberTextField.cardNumber string];
-     self.expirationMonthTextField.text = [stpCreditCardNumberTextField.cardExpiry month];
-     self.expirationYearTextField.text = @"15";
-     self.ccvTextField.text = [stpCreditCardNumberTextField.cardCVC string];
-     */
-    
+        
 }
 
 

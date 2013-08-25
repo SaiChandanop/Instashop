@@ -10,7 +10,8 @@
 #import "CreateProductAPIHandler.h"
 #import "AppRootViewController.h"
 #import "ISConstants.h"
-
+#import "MBProgressHUD.h"
+#import "AppDelegate.h"
 @interface ProductCreateViewController ()
 
 @end
@@ -99,6 +100,10 @@
 
 - (void)previewDoneButtonHit:(ProductCreateContainerObject *)theCreateObject
 {
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController  *rootVC = delegate.appRootViewController;
+    [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Creating Product";
+    
     [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
 }
 
@@ -106,6 +111,11 @@
 
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController  *rootVC = delegate.appRootViewController;
+    [MBProgressHUD hideAllHUDsForView:rootVC.view animated:NO];
+    
     NSMutableArray *ar = [NSMutableArray arrayWithArray:productCreateContainerObject.objectSizePermutationsArray];
     
     int count = [ar count];

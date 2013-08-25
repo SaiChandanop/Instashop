@@ -84,10 +84,7 @@ static NSString * const chargeEndpoint = @"charges";
          
          
          [delegate buySuccessfulWithDictionary:json];
-//         NSLog(@"json[id]: %@", [json objectForKey:@"id"]);
-         
-//         [[NSUserDefaults standardUserDefaults] setObject:[json objectForKey:@"id"] forKey:@"StripeToken"];
-//         [[NSUserDefaults standardUserDefaults] synchronize];
+
          
      }];
     

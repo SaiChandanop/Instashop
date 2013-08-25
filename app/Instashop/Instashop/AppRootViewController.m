@@ -253,7 +253,6 @@ float transitionTime = .456;
 {
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
     profileViewController.profileInstagramID = [InstagramUserObject getStoredUserObject].userID;
-    [self.view addSubview:profileViewController.view];
     
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:profileViewController];
@@ -268,6 +267,12 @@ float transitionTime = .456;
     navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 
+    [profileViewController.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [profileViewController.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    profileViewController.navigationController.navigationBar.translucent = NO;
+    
+
+    
     
 }
 

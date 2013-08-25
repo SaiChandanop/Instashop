@@ -27,6 +27,8 @@
     
 }
 
+-(void)loadNavigationControlls;
+
 @property (nonatomic, retain) NSString *profileInstagramID;
 
 @property (nonatomic, retain) IBOutlet UIImageView *backgroundImageView;
