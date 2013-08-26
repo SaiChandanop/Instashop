@@ -38,9 +38,9 @@
     
     int iter = 0;
     
-    self.itemOne.contentImageView.image = nil;
-    self.itemTwo.contentImageView.image = nil;
-    self.itemThree.contentImageView.image = nil;
+    [self.itemOne cleanContent];
+    [self.itemTwo cleanContent];
+    [self.itemThree cleanContent];
     
     
     

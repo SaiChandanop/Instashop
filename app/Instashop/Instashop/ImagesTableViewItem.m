@@ -43,8 +43,16 @@
     return self;
 }
 
+- (void) cleanContent;
+{
+    self.backgroundImageView.alpha = 0;
+    self.contentImageView.image = nil;
+    self.objectDictionary = nil;
+}
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary
 {
+    self.backgroundImageView.alpha = 1;
+    
     if (self.objectDictionary != nil)
         [self.objectDictionary release];
     
@@ -68,8 +76,9 @@
 
 - (void) coverButtonHit
 {
-    if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
-        [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
+    if (self.objectDictionary != nil)
+        if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
+            [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
 
 }
 
