@@ -22,10 +22,16 @@
 @synthesize profileInstagramID;
 
 @synthesize backgroundImageView;
+@synthesize addBackgroundImageButton;
+
 @synthesize profileImageView;
 @synthesize usernameLabel;
 @synthesize followersLabel;
 @synthesize followingLabel;
+
+@synthesize sellerButtonsView;
+@synthesize sellerProductsButton, sellerInfoButton, sellerReviewsButton;
+@synthesize sellerButtonHighlightView;
 
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
@@ -82,8 +88,8 @@
             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
             
             NSDictionary *countsDictionary = [dataDictionary objectForKey:@"counts"];
-            self.followersLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"followed_by"] integerValue]];
-            self.followingLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"follows"] integerValue]];
+            [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
+            [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
         }
         
         
@@ -136,6 +142,12 @@
     
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.sellerButtonHighlightView.backgroundColor = [ISConstants getISGreenColor];
+    
+    self.sellerProductsButton.selected = YES;
+    self.sellerInfoButton.selected = NO;
+    self.sellerReviewsButton.selected = NO;
 }
 
 - (void)didReceiveMemoryWarning
