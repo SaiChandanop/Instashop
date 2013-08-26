@@ -169,8 +169,7 @@
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
             
-            NSLog(@"dataDictionary: %@", dataDictionary);
-        
+            self.bioTextView.text = [dataDictionary objectForKey:@"bio"];
             self.usernameLabel.text = [dataDictionary objectForKey:@"full_name"];
             [self setTitleViewText:[dataDictionary objectForKey:@"username"]];
 
@@ -253,14 +252,18 @@
 
 -(IBAction) imagePickButtonHit
 {
-    GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
-    imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
-    imagePicker.delegate = self;
-	imagePicker.resizeableCropArea = YES;
+    
+    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+    {
+        GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
+        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
+        imagePicker.delegate = self;
+        imagePicker.resizeableCropArea = YES;
     
     
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.appRootViewController presentViewController:imagePicker.imagePickerController animated:YES completion:nil];
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [delegate.appRootViewController presentViewController:imagePicker.imagePickerController animated:YES completion:nil];
+    }
     
 }
 
