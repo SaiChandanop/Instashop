@@ -88,7 +88,7 @@
     [self loadTheProfileView];
     
     self.infoView.frame = self.theTableView.frame;
-    self.bioTextView.text = [InstagramUserObject getStoredUserObject].bio;
+    
     NSLog(@"[InstagramUserObject getStoredUserObject].bio;: %@", [InstagramUserObject getStoredUserObject].bio);
 }
 
@@ -125,6 +125,7 @@
     
     [self setTitleViewText:[InstagramUserObject getStoredUserObject].username];
     self.usernameLabel.text = [InstagramUserObject getStoredUserObject].fullName;
+    self.bioTextView.text = [InstagramUserObject getStoredUserObject].bio;
 }
 
 -(void) backButtonHit
@@ -167,6 +168,8 @@
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
+            
+            NSLog(@"dataDictionary: %@", dataDictionary);
         
             self.usernameLabel.text = [dataDictionary objectForKey:@"full_name"];
             [self setTitleViewText:[dataDictionary objectForKey:@"username"]];
@@ -183,7 +186,7 @@
 
 
 
--(void) animateSellerButton:(float)xPoint
+-(void) animateSellerButton:(UIButton *)receivingButton
 {
     float transitionTime = .15;
 
@@ -192,7 +195,7 @@
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
 //        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.sellerButtonHighlightView.frame = CGRectMake(xPoint, self.sellerButtonHighlightView.frame.origin.y, self.sellerButtonHighlightView.frame.size.width, self.sellerButtonHighlightView.frame.size.height);
+    self.sellerButtonHighlightView.frame = CGRectMake(receivingButton.frame.origin.x, self.sellerButtonHighlightView.frame.origin.y, receivingButton.frame.size.width, self.sellerButtonHighlightView.frame.size.height);
     [UIView commitAnimations];
 
 
@@ -210,7 +213,7 @@
     self.sellerInfoButton.selected = NO;
     self.sellerReviewsButton.selected = NO;
     
-    [self animateSellerButton:self.sellerProductsButton.frame.origin.x];
+    [self animateSellerButton:self.sellerProductsButton];
 }
 
 -(IBAction) infoButtonHit
@@ -225,7 +228,7 @@
     self.sellerInfoButton.selected = YES;
     self.sellerReviewsButton.selected = NO;
 
-    [self animateSellerButton:self.sellerInfoButton.frame.origin.x];
+    [self animateSellerButton:self.sellerInfoButton];
 }
 
 -(IBAction) reviewsButtonHit
@@ -241,7 +244,7 @@
     self.sellerInfoButton.selected = NO;
     self.sellerReviewsButton.selected = YES;
     
-    [self animateSellerButton:self.sellerReviewsButton.frame.origin.x];
+    [self animateSellerButton:self.sellerReviewsButton];
 }
 
 
