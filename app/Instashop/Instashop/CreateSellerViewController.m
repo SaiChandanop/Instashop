@@ -111,7 +111,7 @@
     UIBarButtonItem *homBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeCustomView];
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
     
-    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"qwerty"]];
+    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"BECOME A SELLER"]];
     
     
     
