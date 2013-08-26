@@ -26,12 +26,13 @@
 
 @synthesize profileImageView;
 @synthesize usernameLabel;
-@synthesize followersLabel;
-@synthesize followingLabel;
 
 @synthesize sellerButtonsView;
 @synthesize sellerProductsButton, sellerInfoButton, sellerReviewsButton;
 @synthesize sellerButtonHighlightView;
+
+@synthesize infoView;
+@synthesize infoLabel;
 
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
