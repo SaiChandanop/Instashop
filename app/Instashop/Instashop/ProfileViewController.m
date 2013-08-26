@@ -15,7 +15,11 @@
 #import "ISConstants.h"
 #import "GroupDiskManager.h"
 #import "GKImagePicker.h"
+#import "InstagramUserObject.h"
+
 #define PROFILE_IMAGE_VIEW_KEY @"PROFILE_IMAGE_VIEW_KEY"
+
+
 @interface ProfileViewController ()
 
 @end
@@ -40,7 +44,7 @@
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
 
-
+@synthesize titleViewLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,8 +73,25 @@
  
     [self loadTheProfileView];
     
+    
+    
 }
 
+-(void) setTitleViewText:(NSString *)theText
+{
+    if (self.titleViewLabel == nil)
+    {
+        self.titleViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 150, 44)];
+        self.titleViewLabel.backgroundColor = [UIColor clearColor];
+        self.titleViewLabel.font = [UIFont boldSystemFontOfSize:14];
+        self.titleViewLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleViewLabel.textColor = [UIColor whiteColor];
+    }
+    
+    self.titleViewLabel.text = theText;
+    
+    [self.navigationItem setTitleView:self.titleViewLabel];
+}
 
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
@@ -90,8 +111,12 @@
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
-            self.usernameLabel.text = [dataDictionary objectForKey:@"username"];
-            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
+
+            
+            
+            [self setTitleViewText:[dataDictionary objectForKey:@"username"]];
+
+             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
             
             NSDictionary *countsDictionary = [dataDictionary objectForKey:@"counts"];
             [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
@@ -135,10 +160,7 @@
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelCustomView];
     self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
     
-    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
-    self.navigationItem.titleView = theImageView;
-    
-    
+    [self setTitleViewText:[InstagramUserObject getStoredUserObject].username];
 }
 
 -(void) backButtonHit

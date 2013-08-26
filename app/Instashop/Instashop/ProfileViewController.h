@@ -37,6 +37,9 @@
     ProductSelectTableViewController *productSelectTableViewController;
     UITableView *theTableView;
     
+    UILabel *titleViewLabel;
+    
+    
 }
 
 -(void)loadNavigationControlls;
@@ -64,4 +67,6 @@
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 @property (nonatomic, retain) IBOutlet UITableView *theTableView;
+
+@property (nonatomic, retain) UILabel *titleViewLabel;
 @end
