@@ -111,9 +111,8 @@
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
-
-            
-            
+        
+            self.usernameLabel.text = [dataDictionary objectForKey:@"full_name"];
             [self setTitleViewText:[dataDictionary objectForKey:@"username"]];
 
              [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
@@ -161,6 +160,7 @@
     self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
     
     [self setTitleViewText:[InstagramUserObject getStoredUserObject].username];
+    self.usernameLabel.text = [InstagramUserObject getStoredUserObject].fullName;
 }
 
 -(void) backButtonHit
