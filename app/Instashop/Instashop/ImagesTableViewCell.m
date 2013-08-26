@@ -33,56 +33,66 @@
 
     float imageWidth = 106;
     
+    if (self.itemOne == nil)
+    {
+        self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(1, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
+        [self addSubview:self.itemOne];
+    }
     
-    int iter = 0;
+    if (self.itemTwo == nil)
+    {
+        self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(107, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
+        [self addSubview:self.itemTwo];
+    }
+    
+    if (self.itemThree == nil)
+    {
+        self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(213, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
+        [self addSubview:self.itemThree];
+    }
+
+    /*
+    NSLog(@"self.itemOne: %@", self.itemOne);
+    NSLog(@"self.itemTwo: %@", self.itemTwo);
+    NSLog(@"self.itemThree: %@", self.itemThree);
+    */
+    
     
     [self.itemOne cleanContent];
     [self.itemTwo cleanContent];
     [self.itemThree cleanContent];
-    
-    
-    
-    for (int i = startValue; i < startValue + 3 && i < [feedItemsArray count]; i++)
-    {
-        NSDictionary *productObjectDictionary = [feedItemsArray objectAtIndex:i];
-        
 
-        if (self.itemOne == nil)
+    
+    for (int i = 0; i < 3; i++)
+    {
+        int indexPosition = startValue + i;
+        
+        if (indexPosition < [feedItemsArray count])
         {
-                self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(1, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
-                [self addSubview:self.itemOne];
+            NSDictionary *productObjectDictionary = [feedItemsArray objectAtIndex:indexPosition];
+            switch (i) {
+                case 0:
+                    [self.itemOne loadContentWithDictionary:productObjectDictionary];
+                    break;
+                case 1:
+                    [self.itemTwo loadContentWithDictionary:productObjectDictionary];
+                    break;
+                case 2:
+                    [self.itemThree loadContentWithDictionary:productObjectDictionary];
+                    break;
+                    
+                default:
+                    break;
+            }
         }
-        
-        else if (self.itemTwo == nil)
-        {
-                self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(107, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
-                [self addSubview:self.itemTwo];
-        }
-        
-        else if (self.itemThree == nil)
-        {
-            self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(213, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
-            [self addSubview:self.itemThree];
-        }
-        
-        
-        
-        if (iter == 0)
-            [self.itemOne loadContentWithDictionary:productObjectDictionary];
-        else if (iter == 1)
-            [self.itemTwo loadContentWithDictionary:productObjectDictionary];
-        else if (iter == 2)
-            [self.itemThree loadContentWithDictionary:productObjectDictionary];
-        
-        
-        [self bringSubviewToFront:self.itemOne];
-        [self bringSubviewToFront:self.itemTwo];
-        [self bringSubviewToFront:self.itemThree];
-        
-        iter++;
-        
 
     }
+
+    
+    [self bringSubviewToFront:self.itemOne];
+    [self bringSubviewToFront:self.itemTwo];
+    [self bringSubviewToFront:self.itemThree];
+
     
 }
 
