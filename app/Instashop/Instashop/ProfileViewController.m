@@ -13,6 +13,8 @@
 #import "ProductAPIHandler.h"
 #import "PurchasingViewController.h"
 #import "ISConstants.h"
+#import "GroupDiskManager.h"
+#define PROFILE_IMAGE_VIEW_KEY @"PROFILE_IMAGE_VIEW_KEY"
 @interface ProfileViewController ()
 
 @end
@@ -63,7 +65,8 @@
     self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER;
     self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
     [self.productSelectTableViewController refreshContent];
-    
+ 
+    [self loadTheProfileView];
     
 }
 
@@ -77,11 +80,12 @@
     {
         if ([request.url rangeOfString:@"media"].length > 0)
         {
-            NSDictionary *dataDictionary = [[result objectForKey:@"data"] objectAtIndex:0];
+/*            NSDictionary *dataDictionary = [[result objectForKey:@"data"] objectAtIndex:0];
             NSDictionary *imagesDictionary = [dataDictionary objectForKey:@"images"];
             NSDictionary *standardDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[standardDictionary objectForKey:@"url"] withImageView:self.backgroundImageView];
-        }        
+ */
+        }
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
@@ -132,7 +136,7 @@
     
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
     self.navigationItem.titleView = theImageView;
-
+    
     
 }
 
@@ -145,7 +149,7 @@
 
 
 - (void)viewDidLoad
-{    
+{
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     [super viewDidLoad];
@@ -165,7 +169,37 @@
 }
 
 
+-(IBAction) imagePickButtonHit
+{
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
+    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    imagePickerController.delegate = self;
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController presentViewController:imagePickerController animated:YES completion:nil];
+    
+}
 
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    [[GroupDiskManager sharedManager] saveDataToDiskWithObject:image withKey:PROFILE_IMAGE_VIEW_KEY];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    [self loadTheProfileView];
+}
+
+- (void) loadTheProfileView
+{
+    UIImage *theImage = [[GroupDiskManager sharedManager] loadDataFromDiskWithKey:PROFILE_IMAGE_VIEW_KEY];
+    if (theImage != nil)
+        self.backgroundImageView.image = theImage;
+}
 
 
 @end

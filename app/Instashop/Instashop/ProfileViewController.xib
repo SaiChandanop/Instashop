@@ -106,7 +106,9 @@
                     <rect key="frame" x="146" y="43" width="117" height="34"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                    <state key="normal" title="Add Photo"/>
+                    <connections>
+                        <action selector="imagePickButtonHit" destination="-1" eventType="touchUpInside" id="Xeg-ae-iYH"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" id="qRD-ab-63B" userLabel="View - Followers Following">
                     <rect key="frame" x="0.0" y="135" width="320" height="40"/>

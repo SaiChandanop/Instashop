@@ -12,7 +12,7 @@
 #import "ProductSelectTableViewController.h"
 #import "CellSelectionOccuredProtocol.h"
 
-@interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol>
+@interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 {
     NSString *profileInstagramID;
     
@@ -39,6 +39,7 @@
 }
 
 -(void)loadNavigationControlls;
+-(IBAction) imagePickButtonHit;
 
 @property (nonatomic, retain) NSString *profileInstagramID;
 
