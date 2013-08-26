@@ -72,7 +72,7 @@
     //CGFloat topSpace = 64.0f;
     
     self.containerScrollView.frame = CGRectMake(0, 66, screenWidth, screenHeight - 66);
-    self.containerScrollView.contentSize = CGSizeMake(screenWidth, self.containerScrollView.contentSize.height);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
 //    self.containerScrollView.backgroundColor = [UIColor redColor];
     [self.view addSubview:self.containerScrollView];
     
@@ -122,7 +122,7 @@
 
     
     //self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField,
-    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField,self.phoneTextField, self.websiteTextField, nil];
+    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, self.phoneTextField, self.websiteTextField, nil];
     
     for (int i = 0; i < [fields count]; i++)
         ((UITextField *)[fields objectAtIndex:i]).delegate = self;
@@ -153,8 +153,12 @@
     [self.websiteTextField setValue:[UIColor lightGrayColor]
                                 forKeyPath:@"_placeholderLabel.textColor"];
 
-   
-    
+
+    if ([InstagramUserObject getStoredUserObject].fullName != nil)
+        self.nameTextField.text = [InstagramUserObject getStoredUserObject].fullName;
+
+    if ([InstagramUserObject getStoredUserObject].website != nil)
+        self.websiteTextField.text = [InstagramUserObject getStoredUserObject].website;
     
 }
 
