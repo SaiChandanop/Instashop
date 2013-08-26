@@ -249,11 +249,10 @@ float transitionTime = .456;
 }
 
 
--(IBAction)profileButtonHit
+- (IBAction) profileButtonHit
 {
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
     profileViewController.profileInstagramID = [InstagramUserObject getStoredUserObject].userID;
-    
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:profileViewController];
     navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
@@ -266,14 +265,19 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
+    
+    [profileViewController loadNavigationControlls];
+}
 
-    [profileViewController.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
-    [profileViewController.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    profileViewController.navigationController.navigationBar.translucent = NO;
-    
-
-    
-    
+- (void) profileExitButtonHit:(UINavigationController *)navigationController
+{
+    NSLog(@"profileExitButtonHit: %@", navigationController);
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
 }
 
 

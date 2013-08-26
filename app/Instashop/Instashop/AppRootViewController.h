@@ -37,10 +37,10 @@
 -(void)discoverButtonHit;
 
 -(void)createProductButtonHit;
--(void)createSellerShouldExit:(UINavigationController *)theNavigationController;
 -(void)createSellerButtonHit;
 
-
+-(void) createSellerShouldExit:(UINavigationController *)theNavigationController;
+-(void) profileExitButtonHit:(UINavigationController *)navigationController;
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 
 

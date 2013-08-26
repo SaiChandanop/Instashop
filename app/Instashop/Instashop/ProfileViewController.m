@@ -136,6 +136,13 @@
     
 }
 
+-(void) backButtonHit
+{
+    NSLog(@"backButtonHit!");
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController profileExitButtonHit:self.navigationController];
+}
+
 
 - (void)viewDidLoad
 {    
