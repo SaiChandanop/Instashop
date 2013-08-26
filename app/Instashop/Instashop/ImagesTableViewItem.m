@@ -10,6 +10,8 @@
 #import "ImageAPIHandler.h"
 #import "CellSelectionOccuredProtocol.h"
 #import "TableCellAddClass.h"
+#import "AppDelegate.h"
+#import "AppRootViewController.h"
 @implementation ImagesTableViewItem
 
 @synthesize backgroundImageView;
@@ -54,7 +56,7 @@
     if ([theDictionary isKindOfClass:[TableCellAddClass class]])
     {
         self.objectDictionary = theDictionary;
-        [self.coverButton setImage:[UIImage imageNamed:@"closebutton"] forState:UIControlStateNormal];
+        [self.coverButton setImage:[UIImage imageNamed:@"closebutton"] forState:UIControlStateNormal];3
     }
     else
     {
@@ -89,7 +91,9 @@
     if (self.objectDictionary != nil)    {
         if ([self.objectDictionary isKindOfClass:[TableCellAddClass class]])
         {
-            NSLog(@"ADD CLASS");
+            AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [del.appRootViewController createProductButtonHit];
+
         }
         else if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
             [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
