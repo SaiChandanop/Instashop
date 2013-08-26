@@ -79,7 +79,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     UIImageView *backImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10,0,44,44)];
-    backImageView.image = [UIImage imageNamed:@"closebutton.png"];
+    backImageView.image = [UIImage imageNamed:@"closebutton_white.png"];
     [self.loginWebView addSubview:backImageView];
     
     self.backLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 44, 44)];

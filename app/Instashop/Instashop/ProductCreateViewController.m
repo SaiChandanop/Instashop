@@ -44,7 +44,7 @@
       
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
-    UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];
+    UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton_white.png"]];
     cancelImageView.frame = CGRectMake(0,0,44,44);
     [cancelCustomView addSubview:cancelImageView];
     

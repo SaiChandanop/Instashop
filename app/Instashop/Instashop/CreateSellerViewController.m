@@ -98,7 +98,7 @@
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
-    UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton.png"]];
+    UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton_white.png"]];
     homeImageView.frame = CGRectMake(0,0,44,44);
     [homeCustomView addSubview:homeImageView];
     
