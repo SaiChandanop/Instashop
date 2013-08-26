@@ -21,7 +21,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>instashop</string>
+	<string>com.instashop</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
