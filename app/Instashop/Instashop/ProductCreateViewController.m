@@ -12,6 +12,8 @@
 #import "ISConstants.h"
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
+#import "NavBarTitleView.h"
+
 @interface ProductCreateViewController ()
 
 @end
@@ -55,8 +57,7 @@
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelCustomView];
     self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
     
-    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
-    self.navigationItem.titleView = theImageView;
+    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SELECT A PHOTO"]];
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
     self.productSelectTableViewController.parentController = self;

@@ -13,6 +13,7 @@
 #import "AttributesManager.h"
 #import "SizeQuantityTableViewCell.h"
 #import "ProductCreateContainerObject.h"
+#import "NavBarTitleView.h"
 
 
 @interface ProductDetailsViewController ()
@@ -63,6 +64,8 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
+    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"PRODUCT INFO"]];
     
     self.containerScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.containerScrollView];
