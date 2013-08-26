@@ -12,6 +12,7 @@
 #import "ImageAPIHandler.h"
 #import "ProductCreateViewController.h"
 #import "ProductAPIHandler.h"
+#import "TableCellAddClass.h"
 
 @interface ProductSelectTableViewController ()
 
@@ -62,6 +63,7 @@
     if (responseCode == 200)
     {
         NSArray *dataArray = [result objectForKey:@"data"];
+
         [self.contentArray removeAllObjects];
         [self.contentArray addObjectsFromArray:dataArray];
         if (self.referenceTableView != nil)
@@ -152,6 +154,15 @@
     [self.contentArray removeAllObjects];
     
     NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
+    
+    if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER)
+    {
+        TableCellAddClass *addClass = [[TableCellAddClass alloc] init];
+        [self.contentArray addObject:addClass];
+        NSLog(@"sorted: %@", sorted);
+    }
+
+    
     [self.contentArray addObjectsFromArray:sorted];
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];

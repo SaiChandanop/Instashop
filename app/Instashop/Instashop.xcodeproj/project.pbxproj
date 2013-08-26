@@ -75,6 +75,7 @@
 		7B0D254E17CBA36F00E43FA6 /* GKImageCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254617CBA36F00E43FA6 /* GKImageCropOverlayView.m */; };
 		7B0D254F17CBA36F00E43FA6 /* GKCropBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254817CBA36F00E43FA6 /* GKCropBorderView.m */; };
 		7B0D255017CBA36F00E43FA6 /* GKResizeableCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254A17CBA36F00E43FA6 /* GKResizeableCropOverlayView.m */; };
+		7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D255217CBADCB00E43FA6 /* TableCellAddClass.m */; };
 		7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */; };
 		7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */; };
 		7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072B2175E6C8C00D9DC5D /* ProductSelectTableViewController.xib */; };
@@ -309,6 +310,8 @@
 		7B0D254817CBA36F00E43FA6 /* GKCropBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCropBorderView.m; sourceTree = "<group>"; };
 		7B0D254917CBA36F00E43FA6 /* GKResizeableCropOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKResizeableCropOverlayView.h; sourceTree = "<group>"; };
 		7B0D254A17CBA36F00E43FA6 /* GKResizeableCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKResizeableCropOverlayView.m; sourceTree = "<group>"; };
+		7B0D255117CBADCB00E43FA6 /* TableCellAddClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableCellAddClass.h; sourceTree = "<group>"; };
+		7B0D255217CBADCB00E43FA6 /* TableCellAddClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableCellAddClass.m; sourceTree = "<group>"; };
 		7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectPhotoHeaderBar.png; sourceTree = "<group>"; };
 		7B1072B0175E6C8C00D9DC5D /* ProductSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSelectTableViewController.h; sourceTree = "<group>"; };
 		7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSelectTableViewController.m; sourceTree = "<group>"; };
@@ -763,6 +766,8 @@
 				7B7A518617C423E0009AD081 /* ProductPurchaseCompleteProtocol.h */,
 				7B7A518717C42436009AD081 /* PostmasterShipResponseProtocol.h */,
 				7B5D625517C55AA700D6C8B1 /* StripeTokenReceiverProtocol.h */,
+				7B0D255117CBADCB00E43FA6 /* TableCellAddClass.h */,
+				7B0D255217CBADCB00E43FA6 /* TableCellAddClass.m */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -887,7 +892,6 @@
 		7B5D624517C4F4B000D6C8B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */,
 				7B31BD6817C6D0EC00D24F55 /* NavBarTitleView */,
 				7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */,
 				7B1B302917BE8E9400BB6420 /* BSKeyboardControls */,
@@ -1113,6 +1117,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B0680CA17664BC2009154BF /* Buy */,
 				7B74C3CD179716670006289C /* CreateSeller */,
@@ -1611,6 +1616,7 @@
 				7BF9DD8A178C546F005148A8 /* SBJsonParser.m in Sources */,
 				7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */,
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
+				7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
 				7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */,

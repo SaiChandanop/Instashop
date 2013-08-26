@@ -9,7 +9,7 @@
 #import "ImagesTableViewItem.h"
 #import "ImageAPIHandler.h"
 #import "CellSelectionOccuredProtocol.h"
-
+#import "TableCellAddClass.h"
 @implementation ImagesTableViewItem
 
 @synthesize backgroundImageView;
@@ -51,6 +51,15 @@
 }
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary
 {
+    if ([theDictionary isKindOfClass:[TableCellAddClass class]])
+    {
+        self.objectDictionary = theDictionary;
+        [self.coverButton setImage:[UIImage imageNamed:@"closebutton"] forState:UIControlStateNormal];
+    }
+    else
+    {
+        [self.coverButton setTitle:@"" forState:UIControlStateNormal];
+        
     self.backgroundImageView.alpha = 1;
     
     if (self.objectDictionary != nil)
@@ -72,13 +81,19 @@
     
     if (productURL != nil)
         [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:self.contentImageView];
+    }
 }
 
 - (void) coverButtonHit
 {
-    if (self.objectDictionary != nil)
-        if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
+    if (self.objectDictionary != nil)    {
+        if ([self.objectDictionary isKindOfClass:[TableCellAddClass class]])
+        {
+            NSLog(@"ADD CLASS");
+        }
+        else if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
             [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
+    }
 
 }
 

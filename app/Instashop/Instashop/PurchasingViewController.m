@@ -69,11 +69,6 @@
     
 }
 
--(void)doubleTapHappened
-{
-    NSLog(@"doubleTapHappened");
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -104,9 +99,6 @@
 {
     [self.sellerProfileImageView beginAnimations];
     
-
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-        
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.requestedProductObject objectForKey:@"owner_instagram_id"]], @"method", nil];
