@@ -14,6 +14,7 @@
 #import "PurchasingViewController.h"
 #import "ISConstants.h"
 #import "GroupDiskManager.h"
+#import "GKImagePicker.h"
 #define PROFILE_IMAGE_VIEW_KEY @"PROFILE_IMAGE_VIEW_KEY"
 @interface ProfileViewController ()
 
@@ -169,17 +170,69 @@
 }
 
 
+/*
+-(void)showResizablePicker:(UIButton*)btn{
+    self.imagePicker = [[GKImagePicker alloc] init];
+    self.imagePicker.cropSize = CGSizeMake(296, 300);
+    self.imagePicker.delegate = self;
+	self.imagePicker.resizeableCropArea = YES;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+        
+        self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self.imagePicker.imagePickerController];
+        [self.popoverController presentPopoverFromRect:btn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+        
+    } else {
+        
+        [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
+        
+    }
+}
+
+
+*/
+
+
 -(IBAction) imagePickButtonHit
 {
-    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+ /*   UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
     imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
     imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     imagePickerController.delegate = self;
+    imagePickerController.allowsEditing = YES;
+   */
+    
+    GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
+    imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
+    imagePicker.delegate = self;
+	imagePicker.resizeableCropArea = YES;
+    
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.appRootViewController presentViewController:imagePickerController animated:YES completion:nil];
+    [delegate.appRootViewController presentViewController:imagePicker.imagePickerController animated:YES completion:nil];
     
 }
+
+- (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image
+{
+//    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
+    
+    [[GroupDiskManager sharedManager] saveDataToDiskWithObject:image withKey:PROFILE_IMAGE_VIEW_KEY];
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    [self loadTheProfileView];
+   
+}
+- (void)imagePickerDidCancel:(GKImagePicker *)imagePicker
+{
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+
 
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info

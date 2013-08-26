@@ -61,6 +61,20 @@
 		2EB259B11767B50D0054618D /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AF1767B50D0054618D /* magnify@2x.png */; };
 		2ED088C317CAD54500439A7D /* bottom_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */; };
 		2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */; };
+		7B0D253717CBA36300E43FA6 /* PLCameraSheetButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */; };
+		7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */; };
+		7B0D253917CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */; };
+		7B0D253A17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253217CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png */; };
+		7B0D253B17CBA36300E43FA6 /* PLCameraSheetButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253317CBA36300E43FA6 /* PLCameraSheetButton.png */; };
+		7B0D253C17CBA36300E43FA6 /* PLCameraSheetButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253417CBA36300E43FA6 /* PLCameraSheetButtonPressed.png */; };
+		7B0D253D17CBA36300E43FA6 /* PLCameraSheetDoneButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253517CBA36300E43FA6 /* PLCameraSheetDoneButton.png */; };
+		7B0D253E17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253617CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed.png */; };
+		7B0D254B17CBA36F00E43FA6 /* GKImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254017CBA36F00E43FA6 /* GKImagePicker.m */; };
+		7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254217CBA36F00E43FA6 /* GKImageCropViewController.m */; };
+		7B0D254D17CBA36F00E43FA6 /* GKImageCropView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254417CBA36F00E43FA6 /* GKImageCropView.m */; };
+		7B0D254E17CBA36F00E43FA6 /* GKImageCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254617CBA36F00E43FA6 /* GKImageCropOverlayView.m */; };
+		7B0D254F17CBA36F00E43FA6 /* GKCropBorderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254817CBA36F00E43FA6 /* GKCropBorderView.m */; };
+		7B0D255017CBA36F00E43FA6 /* GKResizeableCropOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0D254A17CBA36F00E43FA6 /* GKResizeableCropOverlayView.m */; };
 		7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */; };
 		7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */; };
 		7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072B2175E6C8C00D9DC5D /* ProductSelectTableViewController.xib */; };
@@ -275,6 +289,26 @@
 		2EB259AF1767B50D0054618D /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "magnify@2x.png"; path = "Assets/magnify@2x.png"; sourceTree = "<group>"; };
 		2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_shadow@2x.png"; sourceTree = "<group>"; };
 		2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram_gray_icon@2x.png"; sourceTree = "<group>"; };
+		7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButton@2x.png"; sourceTree = "<group>"; };
+		7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButtonPressed@2x.png"; sourceTree = "<group>"; };
+		7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetDoneButton@2x.png"; sourceTree = "<group>"; };
+		7B0D253217CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetDoneButtonPressed@2x.png"; sourceTree = "<group>"; };
+		7B0D253317CBA36300E43FA6 /* PLCameraSheetButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PLCameraSheetButton.png; sourceTree = "<group>"; };
+		7B0D253417CBA36300E43FA6 /* PLCameraSheetButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PLCameraSheetButtonPressed.png; sourceTree = "<group>"; };
+		7B0D253517CBA36300E43FA6 /* PLCameraSheetDoneButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PLCameraSheetDoneButton.png; sourceTree = "<group>"; };
+		7B0D253617CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PLCameraSheetDoneButtonPressed.png; sourceTree = "<group>"; };
+		7B0D253F17CBA36F00E43FA6 /* GKImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImagePicker.h; sourceTree = "<group>"; };
+		7B0D254017CBA36F00E43FA6 /* GKImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImagePicker.m; sourceTree = "<group>"; };
+		7B0D254117CBA36F00E43FA6 /* GKImageCropViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageCropViewController.h; sourceTree = "<group>"; };
+		7B0D254217CBA36F00E43FA6 /* GKImageCropViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageCropViewController.m; sourceTree = "<group>"; };
+		7B0D254317CBA36F00E43FA6 /* GKImageCropView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageCropView.h; sourceTree = "<group>"; };
+		7B0D254417CBA36F00E43FA6 /* GKImageCropView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageCropView.m; sourceTree = "<group>"; };
+		7B0D254517CBA36F00E43FA6 /* GKImageCropOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKImageCropOverlayView.h; sourceTree = "<group>"; };
+		7B0D254617CBA36F00E43FA6 /* GKImageCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKImageCropOverlayView.m; sourceTree = "<group>"; };
+		7B0D254717CBA36F00E43FA6 /* GKCropBorderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKCropBorderView.h; sourceTree = "<group>"; };
+		7B0D254817CBA36F00E43FA6 /* GKCropBorderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKCropBorderView.m; sourceTree = "<group>"; };
+		7B0D254917CBA36F00E43FA6 /* GKResizeableCropOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GKResizeableCropOverlayView.h; sourceTree = "<group>"; };
+		7B0D254A17CBA36F00E43FA6 /* GKResizeableCropOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GKResizeableCropOverlayView.m; sourceTree = "<group>"; };
 		7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectPhotoHeaderBar.png; sourceTree = "<group>"; };
 		7B1072B0175E6C8C00D9DC5D /* ProductSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSelectTableViewController.h; sourceTree = "<group>"; };
 		7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSelectTableViewController.m; sourceTree = "<group>"; };
@@ -635,6 +669,41 @@
 				7B602DA017664F1700663A73 /* PurchasingViewController.xib */,
 			);
 			name = Buy;
+			sourceTree = "<group>";
+		};
+		7B0D252D17CBA33E00E43FA6 /* GKImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				7B0D253F17CBA36F00E43FA6 /* GKImagePicker.h */,
+				7B0D254017CBA36F00E43FA6 /* GKImagePicker.m */,
+				7B0D254117CBA36F00E43FA6 /* GKImageCropViewController.h */,
+				7B0D254217CBA36F00E43FA6 /* GKImageCropViewController.m */,
+				7B0D254317CBA36F00E43FA6 /* GKImageCropView.h */,
+				7B0D254417CBA36F00E43FA6 /* GKImageCropView.m */,
+				7B0D254517CBA36F00E43FA6 /* GKImageCropOverlayView.h */,
+				7B0D254617CBA36F00E43FA6 /* GKImageCropOverlayView.m */,
+				7B0D254717CBA36F00E43FA6 /* GKCropBorderView.h */,
+				7B0D254817CBA36F00E43FA6 /* GKCropBorderView.m */,
+				7B0D254917CBA36F00E43FA6 /* GKResizeableCropOverlayView.h */,
+				7B0D254A17CBA36F00E43FA6 /* GKResizeableCropOverlayView.m */,
+				7B0D252E17CBA35100E43FA6 /* Images */,
+			);
+			name = GKImagePicker;
+			sourceTree = "<group>";
+		};
+		7B0D252E17CBA35100E43FA6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */,
+				7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */,
+				7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */,
+				7B0D253217CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png */,
+				7B0D253317CBA36300E43FA6 /* PLCameraSheetButton.png */,
+				7B0D253417CBA36300E43FA6 /* PLCameraSheetButtonPressed.png */,
+				7B0D253517CBA36300E43FA6 /* PLCameraSheetDoneButton.png */,
+				7B0D253617CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */ = {
@@ -1210,6 +1279,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
 				7B3F520E175FAAB900ABF49B /* ProductObject */,
 				7B2C4B8C17C418490080F3F5 /* Protocols */,
 				7B74C3C417970AE50006289C /* MBProgressHUD.h */,
@@ -1317,7 +1387,7 @@
 				ORGANIZATIONNAME = "Josh Klobe";
 				TargetAttributes = {
 					7B61EE42174D2161002A483D = {
-						DevelopmentTeam = 4F9UB96YRZ;
+						DevelopmentTeam = 3PE378BX7Q;
 					};
 				};
 			};
@@ -1369,8 +1439,11 @@
 				7B1072C1175E7E1500D9DC5D /* previewproductimage.png in Resources */,
 				7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */,
 				7B5D62A217C5AF9F00D6C8B1 /* amex@2x.png in Resources */,
+				7B0D253E17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed.png in Resources */,
+				7B0D253A17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png in Resources */,
 				7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */,
 				7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */,
+				7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */,
 				7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */,
 				7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */,
 				2E628CB117C6A19900CB7BE4 /* AppIcon76x76@2x.png in Resources */,
@@ -1420,10 +1493,13 @@
 				2E0EAE17176F6E6700B65FC3 /* menuLightBG@2x.png in Resources */,
 				2E0EAE18176F6E6700B65FC3 /* menuBottomShadow@2x.png in Resources */,
 				7B5D628E17C5AF9500D6C8B1 /* textfield@2x.png in Resources */,
+				7B0D253C17CBA36300E43FA6 /* PLCameraSheetButtonPressed.png in Resources */,
 				2E0EAE19176F6E6700B65FC3 /* menuDarkBG@2x.png in Resources */,
 				2E0EAE1A176F6E6700B65FC3 /* lmVerifiedRetailerIcon@2x.png in Resources */,
 				2E0EAE1B176F6E6700B65FC3 /* lmSuggestedStoresIcon@2x.png in Resources */,
 				2E0EAE1C176F6E6700B65FC3 /* lmTermsofServiceIcon@2x.png in Resources */,
+				7B0D253717CBA36300E43FA6 /* PLCameraSheetButton@2x.png in Resources */,
+				7B0D253B17CBA36300E43FA6 /* PLCameraSheetButton.png in Resources */,
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
 				7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
@@ -1436,6 +1512,7 @@
 				2E0EAE21176F6E6700B65FC3 /* lmNotificationsIcon@2x.png in Resources */,
 				2E0EAE22176F6E6700B65FC3 /* lmFAQIcon@2x.png in Resources */,
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
+				7B0D253D17CBA36300E43FA6 /* PLCameraSheetDoneButton.png in Resources */,
 				2E0EAE24176F6E6700B65FC3 /* leftMenuButton@2x.png in Resources */,
 				2E628CAF17C6A19900CB7BE4 /* AppIcon60x60@2x.png in Resources */,
 				2E0EAE25176F6E6700B65FC3 /* lmDiscoverIcon@2x.png in Resources */,
@@ -1470,6 +1547,7 @@
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
 				7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */,
 				2E628CAA17C6A19900CB7BE4 /* AppIcon29x29.png in Resources */,
+				7B0D253917CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1500,12 +1578,15 @@
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
 				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,
+				7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */,
 				7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */,
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
 				7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */,
 				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
 				7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */,
+				7B0D254B17CBA36F00E43FA6 /* GKImagePicker.m in Sources */,
 				7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */,
+				7B0D255017CBA36F00E43FA6 /* GKResizeableCropOverlayView.m in Sources */,
 				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
 				7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */,
 				7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */,
@@ -1542,12 +1623,15 @@
 				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
 				7B5D628417C5AF7100D6C8B1 /* PKTextField.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
+				7B0D254D17CBA36F00E43FA6 /* GKImageCropView.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,
 				7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */,
 				7B5D628217C5AF7100D6C8B1 /* PKCardExpiry.m in Sources */,
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
 				7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */,
 				7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */,
+				7B0D254E17CBA36F00E43FA6 /* GKImageCropOverlayView.m in Sources */,
+				7B0D254F17CBA36F00E43FA6 /* GKCropBorderView.m in Sources */,
 				7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */,
 				7B5D626B17C5AF3700D6C8B1 /* StripeError.m in Sources */,
 				7B5D628117C5AF7100D6C8B1 /* PKCardCVC.m in Sources */,
@@ -1644,8 +1728,8 @@
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "589F3A68-0216-41FE-86BD-6BDE383C3343";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "589F3A68-0216-41FE-86BD-6BDE383C3343";
+				PROVISIONING_PROFILE = "E7F02C8F-D1AD-4393-BCDF-CE4BB8CB75E1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E7F02C8F-D1AD-4393-BCDF-CE4BB8CB75E1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1653,15 +1737,15 @@
 		7B61EE76174D2162002A483D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "547CBEB8-017C-4061-8EEC-1B55491DC593";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "547CBEB8-017C-4061-8EEC-1B55491DC593";
+				PROVISIONING_PROFILE = "E7F02C8F-D1AD-4393-BCDF-CE4BB8CB75E1";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E7F02C8F-D1AD-4393-BCDF-CE4BB8CB75E1";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

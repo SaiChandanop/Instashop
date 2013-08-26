@@ -11,8 +11,9 @@
 #import "FeedRequestFinishedProtocol.h"
 #import "ProductSelectTableViewController.h"
 #import "CellSelectionOccuredProtocol.h"
+#import "GKImagePicker.h"
 
-@interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate>
 {
     NSString *profileInstagramID;
     
