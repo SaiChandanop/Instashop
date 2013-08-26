@@ -32,7 +32,7 @@
     UIView *sellerButtonHighlightView;
     
     UIView *infoView;
-    UILabel *infoLabel;
+    UITextView *bioTextView;
     
     ProductSelectTableViewController *productSelectTableViewController;
     UITableView *theTableView;
@@ -44,6 +44,10 @@
 
 -(void)loadNavigationControlls;
 -(IBAction) imagePickButtonHit;
+
+-(IBAction) productsButtonHit;
+-(IBAction) infoButtonHit;
+-(IBAction) reviewsButtonHit;
 
 @property (nonatomic, retain) NSString *profileInstagramID;
 
@@ -63,7 +67,7 @@
 @property (nonatomic, retain) IBOutlet UIView *sellerButtonHighlightView;
 
 @property (nonatomic, retain) IBOutlet UIView *infoView;
-@property (nonatomic, retain) IBOutlet UILabel *infoLabel;
+@property (nonatomic, retain) IBOutlet UITextView *bioTextView;
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 @property (nonatomic, retain) IBOutlet UITableView *theTableView;

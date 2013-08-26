@@ -30,20 +30,17 @@
 
 @synthesize backgroundImageView;
 @synthesize addBackgroundImageButton;
-
 @synthesize profileImageView;
 @synthesize usernameLabel;
-
 @synthesize sellerButtonsView;
 @synthesize sellerProductsButton, sellerInfoButton, sellerReviewsButton;
 @synthesize sellerButtonHighlightView;
-
 @synthesize infoView;
-@synthesize infoLabel;
-
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
-
+@synthesize followersButton;
+@synthesize followingButton;
+@synthesize bioTextView;
 @synthesize titleViewLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -54,6 +51,23 @@
     }
     return self;
 }
+
+- (void)viewDidLoad
+{
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    
+    self.sellerButtonHighlightView.backgroundColor = [ISConstants getISGreenColor];
+    
+    self.sellerProductsButton.selected = YES;
+    self.sellerInfoButton.selected = NO;
+    self.sellerReviewsButton.selected = NO;
+}
+
+
+
 
 - (void)viewDidAppear:(BOOL)animated
 {
@@ -73,64 +87,14 @@
  
     [self loadTheProfileView];
     
-    
-    
-}
-
--(void) setTitleViewText:(NSString *)theText
-{
-    if (self.titleViewLabel == nil)
-    {
-        self.titleViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 150, 44)];
-        self.titleViewLabel.backgroundColor = [UIColor clearColor];
-        self.titleViewLabel.font = [UIFont boldSystemFontOfSize:14];
-        self.titleViewLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleViewLabel.textColor = [UIColor whiteColor];
-    }
-    
-    self.titleViewLabel.text = theText;
-    
-    [self.navigationItem setTitleView:self.titleViewLabel];
-}
-
-- (void)request:(IGRequest *)request didLoad:(id)result
-{
-    
-    
-    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
-    if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
-    {
-        if ([request.url rangeOfString:@"media"].length > 0)
-        {
-/*            NSDictionary *dataDictionary = [[result objectForKey:@"data"] objectAtIndex:0];
-            NSDictionary *imagesDictionary = [dataDictionary objectForKey:@"images"];
-            NSDictionary *standardDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[standardDictionary objectForKey:@"url"] withImageView:self.backgroundImageView];
- */
-        }
-        else if ([request.url rangeOfString:@"users"].length > 0)
-        {
-            NSDictionary *dataDictionary = [result objectForKey:@"data"];
-        
-            self.usernameLabel.text = [dataDictionary objectForKey:@"full_name"];
-            [self setTitleViewText:[dataDictionary objectForKey:@"username"]];
-
-             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
-            
-            NSDictionary *countsDictionary = [dataDictionary objectForKey:@"counts"];
-            [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
-            [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
-        }
-        
-        
-        
-    }
+    self.infoView.frame = self.theTableView.frame;
+    self.bioTextView.text = [InstagramUserObject getStoredUserObject].bio;
+    NSLog(@"[InstagramUserObject getStoredUserObject].bio;: %@", [InstagramUserObject getStoredUserObject].bio);
 }
 
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
-    NSLog(@"cellSelectionOccured: %@", theSelectionObject);
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
     purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
@@ -165,65 +129,110 @@
 
 -(void) backButtonHit
 {
-    NSLog(@"backButtonHit!");
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController profileExitButtonHit:self.navigationController];
 }
 
 
-- (void)viewDidLoad
+
+-(void) setTitleViewText:(NSString *)theText
 {
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    if (self.titleViewLabel == nil)
+    {
+        self.titleViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 150, 44)];
+        self.titleViewLabel.backgroundColor = [UIColor clearColor];
+        self.titleViewLabel.font = [UIFont boldSystemFontOfSize:14];
+        self.titleViewLabel.textAlignment = NSTextAlignmentCenter;
+        self.titleViewLabel.textColor = [UIColor whiteColor];
+    }
     
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    self.titleViewLabel.text = theText;
     
-    self.sellerButtonHighlightView.backgroundColor = [ISConstants getISGreenColor];
+    [self.navigationItem setTitleView:self.titleViewLabel];
+}
+
+- (void)request:(IGRequest *)request didLoad:(id)result
+{
+    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+    if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
+    {
+        if ([request.url rangeOfString:@"media"].length > 0)
+        {
+/*            NSDictionary *dataDictionary = [[result objectForKey:@"data"] objectAtIndex:0];
+            NSDictionary *imagesDictionary = [dataDictionary objectForKey:@"images"];
+            NSDictionary *standardDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[standardDictionary objectForKey:@"url"] withImageView:self.backgroundImageView];
+ */
+        }
+        else if ([request.url rangeOfString:@"users"].length > 0)
+        {
+            NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        
+            self.usernameLabel.text = [dataDictionary objectForKey:@"full_name"];
+            [self setTitleViewText:[dataDictionary objectForKey:@"username"]];
+
+             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
+            
+            NSDictionary *countsDictionary = [dataDictionary objectForKey:@"counts"];
+            [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
+            [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
+        }
+    }
+}
+
+
+
+
+
+-(IBAction) productsButtonHit
+{
+    if ([self.theTableView superview] == nil)
+        [self.view addSubview:self.theTableView];
+    
+    if ([self.infoView superview] != nil)
+        [self.infoView removeFromSuperview];
     
     self.sellerProductsButton.selected = YES;
     self.sellerInfoButton.selected = NO;
     self.sellerReviewsButton.selected = NO;
 }
 
-- (void)didReceiveMemoryWarning
+-(IBAction) infoButtonHit
 {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-/*
--(void)showResizablePicker:(UIButton*)btn{
-    self.imagePicker = [[GKImagePicker alloc] init];
-    self.imagePicker.cropSize = CGSizeMake(296, 300);
-    self.imagePicker.delegate = self;
-	self.imagePicker.resizeableCropArea = YES;
+    if ([self.theTableView superview] != nil)
+        [self.theTableView removeFromSuperview];
     
-    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        
-        self.popoverController = [[UIPopoverController alloc] initWithContentViewController:self.imagePicker.imagePickerController];
-        [self.popoverController presentPopoverFromRect:btn.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-        
-    } else {
-        
-        [self presentModalViewController:self.imagePicker.imagePickerController animated:YES];
-        
-    }
+    if ([self.infoView superview] == nil)
+        [self.view addSubview:self.infoView];
+    
+
+    
+    self.sellerProductsButton.selected = NO;
+    self.sellerInfoButton.selected = YES;
+    self.sellerReviewsButton.selected = NO;
+    
+}
+
+-(IBAction) reviewsButtonHit
+{
+    if ([self.theTableView superview] != nil)
+        [self.theTableView removeFromSuperview];
+
+    if ([self.infoView superview] != nil)
+        [self.infoView removeFromSuperview];
+
+    
+    self.sellerProductsButton.selected = NO;
+    self.sellerInfoButton.selected = NO;
+    self.sellerReviewsButton.selected = YES;
 }
 
 
-*/
+
 
 
 -(IBAction) imagePickButtonHit
 {
- /*   UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
-    imagePickerController.modalPresentationStyle = UIModalPresentationCurrentContext;
-    imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-    imagePickerController.delegate = self;
-    imagePickerController.allowsEditing = YES;
-   */
-    
     GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
     imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
     imagePicker.delegate = self;
@@ -237,8 +246,6 @@
 
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image
 {
-//    UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
-    
     [[GroupDiskManager sharedManager] saveDataToDiskWithObject:image withKey:PROFILE_IMAGE_VIEW_KEY];
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -247,6 +254,7 @@
     [self loadTheProfileView];
    
 }
+
 - (void)imagePickerDidCancel:(GKImagePicker *)imagePicker
 {
     
