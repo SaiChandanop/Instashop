@@ -14,7 +14,6 @@
                 <outlet property="nameTextField" destination="4" id="45"/>
                 <outlet property="phoneTextField" destination="40" id="50"/>
                 <outlet property="submitButton" destination="51" id="382"/>
-                <outlet property="titleTextLabel" destination="0a3-Rl-AfO" id="HtH-qN-U60"/>
                 <outlet property="view" destination="383" id="waK-46-yjW"/>
                 <outlet property="websiteTextField" destination="319" id="348"/>
             </connections>
@@ -216,24 +215,17 @@
                     <rect key="frame" x="275" y="92" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instashop_gray_icon.png" id="Kqx-vd-sur">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram_gray_icon.png" id="Kqx-vd-sur">
                     <rect key="frame" x="275" y="136" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
         </scrollView>
-        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BECOME A SELLER" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0a3-Rl-AfO">
-            <rect key="frame" x="0.0" y="0.0" width="155" height="21"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
-            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-            <nil key="highlightedColor"/>
-        </label>
     </objects>
     <resources>
         <image name="cell_disclosure_new.png" width="44" height="44"/>
         <image name="cell_separator.png" width="320" height="5"/>
-        <image name="instashop_gray_icon.png" width="44" height="44"/>
+        <image name="instagram_gray_icon.png" width="44" height="44"/>
         <image name="lmVerifiedRetailerIcon.png" width="44" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>

@@ -16,11 +16,22 @@
 {
     NSString *profileInstagramID;
     
+    UIButton *addBackgroundImageButton;
     UIImageView *backgroundImageView;
     UIImageView *profileImageView;
     UILabel *usernameLabel;
-    UILabel *followersLabel;
-    UILabel *followingLabel;
+    
+    UIButton *followersButton;
+    UIButton *followingButton;
+    
+    UIView *sellerButtonsView;
+    UIButton *sellerProductsButton;
+    UIButton *sellerInfoButton;
+    UIButton *sellerReviewsButton;
+    UIView *sellerButtonHighlightView;
+    
+    UIView *infoView;
+    UILabel *infoLabel;
     
     ProductSelectTableViewController *productSelectTableViewController;
     UITableView *theTableView;
@@ -32,10 +43,22 @@
 @property (nonatomic, retain) NSString *profileInstagramID;
 
 @property (nonatomic, retain) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, retain) IBOutlet UIButton *addBackgroundImageButton;
+
 @property (nonatomic, retain) IBOutlet UIImageView *profileImageView;
 @property (nonatomic, retain) IBOutlet UILabel *usernameLabel;
-@property (nonatomic, retain) IBOutlet UILabel *followersLabel;
-@property (nonatomic, retain) IBOutlet UILabel *followingLabel;
+
+@property (nonatomic, retain) IBOutlet UIButton *followersButton;
+@property (nonatomic, retain) IBOutlet UIButton *followingButton;
+
+@property (nonatomic, retain) IBOutlet UIView *sellerButtonsView;
+@property (nonatomic, retain) IBOutlet UIButton *sellerProductsButton;
+@property (nonatomic, retain) IBOutlet UIButton *sellerInfoButton;
+@property (nonatomic, retain) IBOutlet UIButton *sellerReviewsButton;
+@property (nonatomic, retain) IBOutlet UIView *sellerButtonHighlightView;
+
+@property (nonatomic, retain) IBOutlet UIView *infoView;
+@property (nonatomic, retain) IBOutlet UILabel *infoLabel;
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 @property (nonatomic, retain) IBOutlet UITableView *theTableView;

@@ -10,6 +10,7 @@
 #import "ImageAPIHandler.h"
 #import "ProductCreateViewController.h"
 #import "ProductAPIHandler.h"
+#import "NavBarTitleView.h"
 @interface ProductPreviewViewController ()
 
 @end
@@ -49,6 +50,8 @@
     [super viewDidLoad];
     
     self.contentScrollView.frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
+    
+    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"PRODUCT INFO"]];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.contentScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];

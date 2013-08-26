@@ -59,6 +59,8 @@
 		2EB259AB1767A1D30054618D /* heart_red@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AA1767A1D30054618D /* heart_red@2x.png */; };
 		2EB259AD1767B3280054618D /* top_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AC1767B3280054618D /* top_shadow@2x.png */; };
 		2EB259B11767B50D0054618D /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AF1767B50D0054618D /* magnify@2x.png */; };
+		2ED088C317CAD54500439A7D /* bottom_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */; };
+		2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */; };
 		7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */; };
 		7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */; };
 		7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B1072B2175E6C8C00D9DC5D /* ProductSelectTableViewController.xib */; };
@@ -81,8 +83,6 @@
 		7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */; };
 		7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */; };
 		7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECE17C7AB4400F4D5D8 /* badcamera.png */; };
-		7B376ED217C7ADF800F4D5D8 /* followingImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ED017C7ADF800F4D5D8 /* followingImage.png */; };
-		7B376ED317C7ADF800F4D5D8 /* followersImage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ED117C7ADF800F4D5D8 /* followersImage.png */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
 		7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */; };
 		7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */; };
@@ -273,6 +273,8 @@
 		2EB259AA1767A1D30054618D /* heart_red@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "heart_red@2x.png"; path = "Assets/heart_red@2x.png"; sourceTree = "<group>"; };
 		2EB259AC1767B3280054618D /* top_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "top_shadow@2x.png"; path = "Assets/top_shadow@2x.png"; sourceTree = "<group>"; };
 		2EB259AF1767B50D0054618D /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "magnify@2x.png"; path = "Assets/magnify@2x.png"; sourceTree = "<group>"; };
+		2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_shadow@2x.png"; sourceTree = "<group>"; };
+		2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram_gray_icon@2x.png"; sourceTree = "<group>"; };
 		7B1072AD175E682700D9DC5D /* selectPhotoHeaderBar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = selectPhotoHeaderBar.png; sourceTree = "<group>"; };
 		7B1072B0175E6C8C00D9DC5D /* ProductSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductSelectTableViewController.h; sourceTree = "<group>"; };
 		7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductSelectTableViewController.m; sourceTree = "<group>"; };
@@ -309,8 +311,6 @@
 		7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		7B376ECE17C7AB4400F4D5D8 /* badcamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badcamera.png; sourceTree = "<group>"; };
-		7B376ED017C7ADF800F4D5D8 /* followingImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followingImage.png; sourceTree = "<group>"; };
-		7B376ED117C7ADF800F4D5D8 /* followersImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = followersImage.png; sourceTree = "<group>"; };
 		7B3F520F175FAAF400ABF49B /* ProductCreateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateObject.h; sourceTree = "<group>"; };
 		7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateObject.m; sourceTree = "<group>"; };
 		7B3F5213175FB3A000ABF49B /* ProductPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductPreviewViewController.h; sourceTree = "<group>"; };
@@ -569,6 +569,8 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */,
+				2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */,
 				2E628C9417C6807100CB7BE4 /* closebutton_white@2x.png */,
 				2E531F0417C3BF6A006B6FF5 /* cell_separator@2x.png */,
 				2E7CFF9617C3A98500657CFC /* gray_x@2x.png */,
@@ -790,8 +792,6 @@
 		7B4D2E17175CFFBE005DE4B6 /* shittyimages */ = {
 			isa = PBXGroup;
 			children = (
-				7B376ED017C7ADF800F4D5D8 /* followingImage.png */,
-				7B376ED117C7ADF800F4D5D8 /* followersImage.png */,
 				7B376ECE17C7AB4400F4D5D8 /* badcamera.png */,
 				7B9B4EFC17C5C3420089C580 /* thanksseller.png */,
 				7B676F6E17BC79C7004FC53B /* previewsocialshittyimage.png */,
@@ -1315,6 +1315,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Josh Klobe";
+				TargetAttributes = {
+					7B61EE42174D2161002A483D = {
+						DevelopmentTeam = 4F9UB96YRZ;
+					};
+				};
 			};
 			buildConfigurationList = 7B61EE3E174D2161002A483D /* Build configuration list for PBXProject "Instashop" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1399,6 +1404,7 @@
 				2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */,
 				2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */,
 				2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */,
+				2ED088C317CAD54500439A7D /* bottom_shadow@2x.png in Resources */,
 				2E628CAE17C6A19900CB7BE4 /* AppIcon60x60.png in Resources */,
 				7B5D62A617C5AF9F00D6C8B1 /* cvc@2x.png in Resources */,
 				7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */,
@@ -1419,10 +1425,10 @@
 				2E0EAE1B176F6E6700B65FC3 /* lmSuggestedStoresIcon@2x.png in Resources */,
 				2E0EAE1C176F6E6700B65FC3 /* lmTermsofServiceIcon@2x.png in Resources */,
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
-				7B376ED317C7ADF800F4D5D8 /* followersImage.png in Resources */,
 				7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
 				7B5D62A717C5AF9F00D6C8B1 /* diners.png in Resources */,
+				2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */,
 				7B5D62B217C5AF9F00D6C8B1 /* visa@2x.png in Resources */,
 				2E0EAE1F176F6E6700B65FC3 /* lmPrivacyPolicyIcon@2x.png in Resources */,
 				2E0EAE20176F6E6700B65FC3 /* lmHomeIcon@2x.png in Resources */,
@@ -1460,7 +1466,6 @@
 				7B9E844617B15A6000E6FE47 /* toolbar_title_iumage.png in Resources */,
 				7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */,
 				2E628CB317C6A19900CB7BE4 /* iTunesArtwork@2x.png in Resources */,
-				7B376ED217C7ADF800F4D5D8 /* followingImage.png in Resources */,
 				7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */,
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
 				7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */,
@@ -1632,15 +1637,15 @@
 		7B61EE75174D2162002A483D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CF107DCC-DC95-4927-8B76-263A7B57F94E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CF107DCC-DC95-4927-8B76-263A7B57F94E";
+				PROVISIONING_PROFILE = "589F3A68-0216-41FE-86BD-6BDE383C3343";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "589F3A68-0216-41FE-86BD-6BDE383C3343";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1648,15 +1653,15 @@
 		7B61EE76174D2162002A483D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "CF107DCC-DC95-4927-8B76-263A7B57F94E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "CF107DCC-DC95-4927-8B76-263A7B57F94E";
+				PROVISIONING_PROFILE = "547CBEB8-017C-4061-8EEC-1B55491DC593";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "547CBEB8-017C-4061-8EEC-1B55491DC593";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

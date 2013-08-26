@@ -25,7 +25,7 @@
         
         self.delegate = theDelegate;
         
-        float contentInset = 6;
+        float contentInset = 4;
         
         self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         self.backgroundImageView.image = [UIImage imageNamed:@"feedImageShadow.png"];
