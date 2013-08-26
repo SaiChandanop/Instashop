@@ -56,7 +56,7 @@
     if ([theDictionary isKindOfClass:[TableCellAddClass class]])
     {
         self.objectDictionary = theDictionary;
-        [self.coverButton setImage:[UIImage imageNamed:@"closebutton"] forState:UIControlStateNormal];3
+        [self.coverButton setImage:[UIImage imageNamed:@"closebutton"] forState:UIControlStateNormal];
     }
     else
     {

@@ -13,6 +13,8 @@
 #import "ProductCreateViewController.h"
 #import "ProductAPIHandler.h"
 #import "TableCellAddClass.h"
+#import "InstagramUserObject.h"
+
 
 @interface ProductSelectTableViewController ()
 
@@ -157,9 +159,11 @@
     
     if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER)
     {
-        TableCellAddClass *addClass = [[TableCellAddClass alloc] init];
-        [self.contentArray addObject:addClass];
-        NSLog(@"sorted: %@", sorted);
+        if ([self.productRequestorReferenceObject compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+        {
+            TableCellAddClass *addClass = [[TableCellAddClass alloc] init];
+            [self.contentArray addObject:addClass];
+        }
     }
 
     
