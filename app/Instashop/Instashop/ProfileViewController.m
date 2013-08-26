@@ -183,6 +183,20 @@
 
 
 
+-(void) animateSellerButton:(float)xPoint
+{
+    float transitionTime = .15;
+
+
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+//        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.sellerButtonHighlightView.frame = CGRectMake(xPoint, self.sellerButtonHighlightView.frame.origin.y, self.sellerButtonHighlightView.frame.size.width, self.sellerButtonHighlightView.frame.size.height);
+    [UIView commitAnimations];
+
+
+}
 
 -(IBAction) productsButtonHit
 {
@@ -195,6 +209,8 @@
     self.sellerProductsButton.selected = YES;
     self.sellerInfoButton.selected = NO;
     self.sellerReviewsButton.selected = NO;
+    
+    [self animateSellerButton:self.sellerProductsButton.frame.origin.x];
 }
 
 -(IBAction) infoButtonHit
@@ -205,12 +221,11 @@
     if ([self.infoView superview] == nil)
         [self.view addSubview:self.infoView];
     
-
-    
     self.sellerProductsButton.selected = NO;
     self.sellerInfoButton.selected = YES;
     self.sellerReviewsButton.selected = NO;
-    
+
+    [self animateSellerButton:self.sellerInfoButton.frame.origin.x];
 }
 
 -(IBAction) reviewsButtonHit
@@ -225,6 +240,8 @@
     self.sellerProductsButton.selected = NO;
     self.sellerInfoButton.selected = NO;
     self.sellerReviewsButton.selected = YES;
+    
+    [self animateSellerButton:self.sellerReviewsButton.frame.origin.x];
 }
 
 
