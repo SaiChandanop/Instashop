@@ -562,13 +562,14 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField, self.phoneTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, self.stpCreditCardNumberTextField.cardNumberField, nil];
+    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField, self.phoneTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, nil];
     
     for (int i = 0; i < [fields count]; i++)
         ((UITextField *)[fields objectAtIndex:i]).delegate = self;
     
     [self setKeyboardControls:[[BSKeyboardControls alloc] initWithFields:fields]];
     [self.keyboardControls setDelegate:self];
+  
 }
 
 - (void)keyboardControls:(BSKeyboardControls *)theKeyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction

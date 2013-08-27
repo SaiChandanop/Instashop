@@ -72,8 +72,10 @@
 
 	NSLog(@"remote notification occured, push string: %@, instagram user id: %@", self.pushDeviceTokenString, [InstagramUserObject getStoredUserObject].userID);
     if ([InstagramUserObject getStoredUserObject].userID != nil)
+    {
         [UserAPIHandler updateUserPushIdentityWithPushID:self.pushDeviceTokenString withInstagramID:[InstagramUserObject getStoredUserObject].userID];
-
+        [SellersAPIHandler updateSellerPushIDWithPushID:self.pushDeviceTokenString withInstagramID:[InstagramUserObject getStoredUserObject].userID];
+    }
     
 }
 

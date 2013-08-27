@@ -56,6 +56,38 @@
 }
 
 
+
++(void)updateSellerPushIDWithPushID:(NSString *)pushID withInstagramID:(NSString *)instagramID
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/create_seller.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    
+    
+    URLRequest.HTTPMethod = @"POST";
+    NSMutableString *thePostString  = [NSMutableString stringWithCapacity:0];
+    [thePostString appendString:[NSString stringWithFormat:@"action=%@", @"update_push_id"]];
+    [thePostString appendString:[NSString stringWithFormat:@"&instagram_id=%@", [InstagramUserObject getStoredUserObject].userID]];
+    [thePostString appendString:[NSString stringWithFormat:@"&push_id=%@", pushID]];
+    
+    [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    SellersAPIHandler *apiHandler = [[SellersAPIHandler alloc] init];
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(updateSellerPushIDFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+    
+}
+
+-(void)updateSellerPushIDFinished:(id)obj
+{
+    
+}
+
+
+
+
+
+
 +(void)makeCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject withSellerAddressDictionary:(NSDictionary *)addressDictionary
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/create_seller.php"];
