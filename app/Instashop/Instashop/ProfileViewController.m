@@ -16,6 +16,7 @@
 #import "GroupDiskManager.h"
 #import "GKImagePicker.h"
 #import "InstagramUserObject.h"
+#import "NavBarTitleView.h"
 
 #define PROFILE_IMAGE_VIEW_KEY @"PROFILE_IMAGE_VIEW_KEY"
 
@@ -138,18 +139,8 @@
 
 -(void) setTitleViewText:(NSString *)theText
 {
-    if (self.titleViewLabel == nil)
-    {
-        self.titleViewLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 150, 44)];
-        self.titleViewLabel.backgroundColor = [UIColor clearColor];
-        self.titleViewLabel.font = [UIFont boldSystemFontOfSize:14];
-        self.titleViewLabel.textAlignment = NSTextAlignmentCenter;
-        self.titleViewLabel.textColor = [UIColor whiteColor];
-    }
-    
     self.titleViewLabel.text = theText;
-    
-    [self.navigationItem setTitleView:self.titleViewLabel];
+    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:theText]];
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result
