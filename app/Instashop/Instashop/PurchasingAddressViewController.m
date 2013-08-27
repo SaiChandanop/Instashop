@@ -48,6 +48,7 @@
 @synthesize cityTextField;
 @synthesize stateTextField;
 @synthesize zipTextField;
+@synthesize dummyTextField;
 @synthesize phoneTextField;
 @synthesize checkRatesButton;
 @synthesize doneButton;
@@ -86,6 +87,7 @@
 {
     [super viewDidLoad];
     
+    self.dummyTextField = [[UITextField alloc] init];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.contentScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
@@ -545,7 +547,8 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [self.keyboardControls setActiveField:textField];
+    if (textField != self.dummyTextField)
+        [self.keyboardControls setActiveField:textField];
 }
 
 #pragma mark -
@@ -562,7 +565,7 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField, self.phoneTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, nil];
+    NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField, self.phoneTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, self.dummyTextField, nil];
     
     for (int i = 0; i < [fields count]; i++)
         ((UITextField *)[fields objectAtIndex:i]).delegate = self;
@@ -574,8 +577,10 @@
 
 - (void)keyboardControls:(BSKeyboardControls *)theKeyboardControls selectedField:(UIView *)field inDirection:(BSKeyboardControlsDirection)direction
 {
+    if (field == self.dummyTextField)
+        [self.stpCreditCardNumberTextField.cardNumberField becomeFirstResponder];
     //    UIView *view = theKeyboardControls.activeField.superview.superview;
-    //    [self.containerScrollView scrollRectToVisible:view.frame animated:YES];
+//        [self.containerScrollView scrollRectToVisible:view.frame animated:YES];
 }
 
 - (void)keyboardControlsDonePressed:(BSKeyboardControls *)theKeyboardControls

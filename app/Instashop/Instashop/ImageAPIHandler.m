@@ -68,13 +68,10 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 - (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
 {
-    NSLog(@"here 1");
-
     NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)[cachedResponse response];
     
     // Look up the cache policy used in our request
     if([connection currentRequest].cachePolicy == NSURLRequestUseProtocolCachePolicy) {
-        NSLog(@"here 2");
         NSDictionary *headers = [httpResponse allHeaderFields];
         NSString *cacheControl = [headers valueForKey:@"Cache-Control"];
         NSString *expires = [headers valueForKey:@"Expires"];
@@ -83,8 +80,6 @@ static ImageAPIHandler *sharedImageAPIHandler;
             return nil; // don't cache this
         }
     }
-    
-    NSLog(@"here 3");
     
     return cachedResponse;
     

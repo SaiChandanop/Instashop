@@ -54,6 +54,7 @@
     UITextField *stateTextField;
     UITextField *zipTextField;
     UITextField *phoneTextField;
+    UITextField *dummyTextField;
     
     
     UIView *creditCardContainerView;
@@ -122,7 +123,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *stateTextField;
 @property (nonatomic, retain) IBOutlet UITextField *zipTextField;
 @property (nonatomic, retain) IBOutlet UITextField *phoneTextField;
-
+@property (nonatomic, retain) IBOutlet UITextField *dummyTextField;
 
 @property (nonatomic, retain) IBOutlet UIView *creditCardContainerView;
 @property (nonatomic, retain) IBOutlet PKView *stpCreditCardNumberTextField;
