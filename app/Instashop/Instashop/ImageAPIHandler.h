@@ -12,6 +12,8 @@
 {
     NSMutableDictionary *mediaCache;
     UIImageView *theImageView;
+    
+    NSData *receivedData;
 }
 
 
@@ -22,4 +24,5 @@
 @property (nonatomic, retain) NSMutableDictionary *mediaCache;
 @property (nonatomic, retain) UIImageView *theImageView;
 
+@property (nonatomic, retain) NSData *receivedData;
 @end
