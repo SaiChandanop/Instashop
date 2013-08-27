@@ -26,7 +26,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     
     if ([sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString])
     {
-
+        
         referenceImageView.image = [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString];
         referenceImageView.alpha = 1;
         
@@ -39,7 +39,8 @@ static ImageAPIHandler *sharedImageAPIHandler;
         ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
         handler.delegate = theDelegate;
         handler.theImageView = referenceImageView;
-    
+        handler.receivedData = [[NSMutableData alloc] init];
+        
         NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:instagramMediaURLString]];
         
         NSURLConnection *connection = [[NSURLConnection alloc]
@@ -49,35 +50,48 @@ static ImageAPIHandler *sharedImageAPIHandler;
         [connection scheduleInRunLoop:[NSRunLoop currentRunLoop]
                               forMode:NSRunLoopCommonModes];
         [connection start];
- }
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *) response
+{
+    [receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    self.receivedData = [[NSData alloc] initWithData:data];
-
+    [self.receivedData appendData:data];
+ 
+  //   NSLog(@"%@ received data!", self);
 }
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+ //   NSLog(@"receivedData.length: %d", [self.receivedData length]);
     UIImage *responseImage = [UIImage imageWithData:self.receivedData];
     
-    [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:[[[connection originalRequest] URL] absoluteString]];
-    self.theImageView.image = responseImage;
-    self.theImageView.alpha = 1;
-    
-    if ([self.delegate respondsToSelector:@selector(imageRequestFinished:)])
+    NSString *key =[[[connection originalRequest] URL] absoluteString];
+    if (responseImage != nil)
     {
-        [self.delegate imageRequestFinished:self.theImageView];
+        [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:key];
+        self.theImageView.image = responseImage;
+        self.theImageView.alpha = 1;
+        
+        if ([self.delegate respondsToSelector:@selector(imageRequestFinished:)])
+        {
+            [self.delegate imageRequestFinished:self.theImageView];
+        }
+        
+        if ([self.theImageView isKindOfClass:[ISAsynchImageView class]])
+        {
+            [(ISAsynchImageView *)self.theImageView ceaseAnimations];
+        }
     }
-    
-    if ([self.theImageView isKindOfClass:[ISAsynchImageView class]])
+    else
     {
-        [(ISAsynchImageView *)self.theImageView ceaseAnimations];
+      //  NSLog(@"image request fail at key: %@", key);
+        
     }
-    
-    
 }
-
 +(void)makeProfileImageRequestWithReferenceImageView:(UIImageView *)referenceImageView withInstagramID:(NSString *)instagramID
 {
     NSString *urlString = [NSString stringWithFormat:@"http://instashop.com/upload/%@.jpeg", instagramID];
