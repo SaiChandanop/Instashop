@@ -125,8 +125,9 @@
     
 }
 
-+(void)uploadImage:(UIImage *)image
++(void)uploadProfileImage:(UIImage *)image withDelegate:(id)theDelegate
 {
+    NSLog(@"uploadProfileImage, image: %@, withDelegate: %@", image, theDelegate);
  
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"profile_image_upload.php", @""];
     NSURL *url = [NSURL URLWithString:urlRequestString];
@@ -191,11 +192,26 @@
     [request setHTTPBody:body];
     
     // now lets make the connection to the web
-    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
-    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
+//    NSData *returnData = [NSURLConnection sendSynchronousRequest:request returningResponse:nil error:nil];
+//    NSString *returnString = [[NSString alloc] initWithData:returnData encoding:NSUTF8StringEncoding];
     
-    NSLog(@"%@", returnString);
+//    NSLog(@"%@", returnString);
     
+    SellersAPIHandler *apiHandler = [[SellersAPIHandler alloc] init];
+    apiHandler.delegate = theDelegate;
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:request delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(uploadImageRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+    
+}
+
+-(void)uploadImageRequestFinished:(id)object
+{
+    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSLog(@"uploadImageRequestFinished, responseString: %@", responseString);
+    
+    [self.delegate loadTheProfileImageViewWithID:[InstagramUserObject getStoredUserObject].userID];
     
 }
 @end

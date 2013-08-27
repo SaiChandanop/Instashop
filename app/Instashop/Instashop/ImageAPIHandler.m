@@ -52,8 +52,24 @@ static ImageAPIHandler *sharedImageAPIHandler;
 }
 
 
+
++(void)makeProfileImageRequestWithReferenceImageView:(UIImageView *)referenceImageView withInstagramID:(NSString *)instagramID
+{
+    NSString *urlString = [NSString stringWithFormat:@"http://instashop.com/upload/%@.jpeg", instagramID];
+    
+    NSLog(@"makeProfileImageRequestWithReferenceImageView, urlString: %@", urlString);
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
+    
+    ImageAPIHandler *imageAPIHandler = [[ImageAPIHandler alloc] init];
+    imageAPIHandler.theImageView = referenceImageView;
+    imageAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:imageAPIHandler context:NULL];
+    [imageAPIHandler.theWebRequest addTarget:imageAPIHandler action:@selector(imageRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [imageAPIHandler.theWebRequest start];
+    
+}
+
 -(void)imageRequestFinished:(id)obj
-{ 
+{
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
     [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:[self.theWebRequest.request.URL absoluteString]];
     self.theImageView.image = responseImage;
@@ -69,4 +85,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
         [(ISAsynchImageView *)self.theImageView ceaseAnimations];
     }
 }
+
+
+
 @end

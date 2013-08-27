@@ -19,7 +19,6 @@
 #import "NavBarTitleView.h"
 #import "SellersAPIHandler.h"
 
-#define PROFILE_IMAGE_VIEW_KEY @"PROFILE_IMAGE_VIEW_KEY"
 
 
 @interface ProfileViewController ()
@@ -86,8 +85,8 @@
     self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER;
     self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
     [self.productSelectTableViewController refreshContent];
- 
-    [self loadTheProfileView];
+    
+    
     
     self.infoView.frame = self.theTableView.frame;
     
@@ -128,6 +127,10 @@
     [self setTitleViewText:[InstagramUserObject getStoredUserObject].username];
     self.usernameLabel.text = [InstagramUserObject getStoredUserObject].fullName;
     self.bioTextView.text = [InstagramUserObject getStoredUserObject].bio;
+    
+    [self loadTheProfileImageViewWithID:[InstagramUserObject getStoredUserObject].userID];
+    
+    
 }
 
 -(void) backButtonHit
@@ -151,11 +154,11 @@
     {
         if ([request.url rangeOfString:@"media"].length > 0)
         {
-/*            NSDictionary *dataDictionary = [[result objectForKey:@"data"] objectAtIndex:0];
-            NSDictionary *imagesDictionary = [dataDictionary objectForKey:@"images"];
-            NSDictionary *standardDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[standardDictionary objectForKey:@"url"] withImageView:self.backgroundImageView];
- */
+            /*            NSDictionary *dataDictionary = [[result objectForKey:@"data"] objectAtIndex:0];
+             NSDictionary *imagesDictionary = [dataDictionary objectForKey:@"images"];
+             NSDictionary *standardDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[standardDictionary objectForKey:@"url"] withImageView:self.backgroundImageView];
+             */
         }
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
@@ -164,8 +167,11 @@
             self.bioTextView.text = [dataDictionary objectForKey:@"bio"];
             self.usernameLabel.text = [dataDictionary objectForKey:@"full_name"];
             [self setTitleViewText:[dataDictionary objectForKey:@"username"]];
-
-             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
+            
+            [self loadTheProfileImageViewWithID:[dataDictionary objectForKey:@"id"]];
+            
+            
+            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
             
             NSDictionary *countsDictionary = [dataDictionary objectForKey:@"counts"];
             [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
@@ -180,16 +186,16 @@
 -(void) animateSellerButton:(UIButton *)receivingButton
 {
     float transitionTime = .15;
-
-
+    
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
-//        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    //        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     self.sellerButtonHighlightView.frame = CGRectMake(receivingButton.frame.origin.x, self.sellerButtonHighlightView.frame.origin.y, receivingButton.frame.size.width, self.sellerButtonHighlightView.frame.size.height);
     [UIView commitAnimations];
-
-
+    
+    
 }
 
 -(IBAction) productsButtonHit
@@ -218,7 +224,7 @@
     self.sellerProductsButton.selected = NO;
     self.sellerInfoButton.selected = YES;
     self.sellerReviewsButton.selected = NO;
-
+    
     [self animateSellerButton:self.sellerInfoButton];
 }
 
@@ -226,10 +232,10 @@
 {
     if ([self.theTableView superview] != nil)
         [self.theTableView removeFromSuperview];
-
+    
     if ([self.infoView superview] != nil)
         [self.infoView removeFromSuperview];
-
+    
     
     self.sellerProductsButton.selected = NO;
     self.sellerInfoButton.selected = NO;
@@ -251,9 +257,9 @@
         imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
         imagePicker.delegate = self;
         imagePicker.resizeableCropArea = YES;
-    
-    
-        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate; 
+        
+        
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [delegate.appRootViewController presentViewController:imagePicker.imagePickerController animated:YES completion:nil];
     }
     
@@ -261,15 +267,10 @@
 
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image
 {
-    [[GroupDiskManager sharedManager] saveDataToDiskWithObject:image withKey:PROFILE_IMAGE_VIEW_KEY];
-    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
     
-    [SellersAPIHandler uploadImage:image];
-    
-    [self loadTheProfileView];
-   
+    [SellersAPIHandler uploadProfileImage:image withDelegate:self];
 }
 
 - (void)imagePickerDidCancel:(GKImagePicker *)imagePicker
@@ -286,21 +287,15 @@
 {
     UIImage *image = [info valueForKey:UIImagePickerControllerOriginalImage];
     
-    [[GroupDiskManager sharedManager] saveDataToDiskWithObject:image withKey:PROFILE_IMAGE_VIEW_KEY];
-    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
- 
-    [SellersAPIHandler uploadImage:image];
     
-    [self loadTheProfileView];
+    [SellersAPIHandler uploadProfileImage:image withDelegate:self];
 }
 
-- (void) loadTheProfileView
+- (void) loadTheProfileImageViewWithID:(NSString *)theID
 {
-    UIImage *theImage = [[GroupDiskManager sharedManager] loadDataFromDiskWithKey:PROFILE_IMAGE_VIEW_KEY];
-    if (theImage != nil)
-        self.backgroundImageView.image = theImage;
+    [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:theID];
 }
 
 

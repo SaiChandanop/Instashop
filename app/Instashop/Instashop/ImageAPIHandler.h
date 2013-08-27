@@ -16,6 +16,7 @@
 
 
 +(void)makeImageRequestWithDelegate:(id)theDelegate withInstagramMediaURLString:(NSString *)instagramMediaURLString withImageView:(UIImageView *)referenceImageView;
++(void)makeProfileImageRequestWithReferenceImageView:(UIImageView *)referenceImageView withInstagramID:(NSString *)instagramID;
 
 
 @property (nonatomic, retain) NSMutableDictionary *mediaCache;
