@@ -17,6 +17,7 @@
 #import "GKImagePicker.h"
 #import "InstagramUserObject.h"
 #import "NavBarTitleView.h"
+#import "SellersAPIHandler.h"
 
 #define PROFILE_IMAGE_VIEW_KEY @"PROFILE_IMAGE_VIEW_KEY"
 
@@ -252,7 +253,7 @@
         imagePicker.resizeableCropArea = YES;
     
     
-        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate; 
         [delegate.appRootViewController presentViewController:imagePicker.imagePickerController animated:YES completion:nil];
     }
     
@@ -264,6 +265,8 @@
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    [SellersAPIHandler uploadImage:image];
     
     [self loadTheProfileView];
    
@@ -287,6 +290,8 @@
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+ 
+    [SellersAPIHandler uploadImage:image];
     
     [self loadTheProfileView];
 }
