@@ -15,13 +15,14 @@
 
 +(void)makeBuyerCreateRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"create_buyer.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"buyer_management.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
-    [postString appendString:[NSString stringWithFormat:@"userID=%@&", instagramUserObject.userID]];
-    [postString appendString:[NSString stringWithFormat:@"username=%@", instagramUserObject.username]];
+    [postString appendString:[NSString stringWithFormat:@"function=%@&", @"create"]];
+    [postString appendString:[NSString stringWithFormat:@"&instagram_id=%@", instagramUserObject.userID]];
+    [postString appendString:[NSString stringWithFormat:@"&username=%@", instagramUserObject.username]];
     
     
     URLRequest.HTTPMethod = @"POST";
@@ -38,4 +39,33 @@
 {
     
 }
+
+
++(void)updateUserPushIdentityWithPushID:(NSString *)pushID withInstagramID:(NSString *)instagramID
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"buyer_management.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    
+    
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:[NSString stringWithFormat:@"function=%@&", @"update_push_id"]];
+    [postString appendString:[NSString stringWithFormat:@"&instagram_id=%@", instagramID]];
+    [postString appendString:[NSString stringWithFormat:@"&push_id=%@", pushID]];
+    
+    
+    URLRequest.HTTPMethod = @"POST";
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    UserAPIHandler *userAPIHandler = [[UserAPIHandler alloc] init];
+    userAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:userAPIHandler context:NULL];
+    [userAPIHandler.theWebRequest addTarget:userAPIHandler action:@selector(updateRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [userAPIHandler.theWebRequest start];
+    
+}
+
+-(void)updateRequestFinished:(id)object
+{
+    
+}
+
 @end

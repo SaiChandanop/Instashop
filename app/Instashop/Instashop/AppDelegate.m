@@ -11,6 +11,7 @@
 #import "ZenCartAuthenticationAPIHandler.h"
 #import "AttributesManager.h"
 #import "SellersAPIHandler.h"
+#import "UserAPIHandler.h"
 
 #define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
 #define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
@@ -31,7 +32,7 @@
 
 //    [ZenCartAuthenticationAPIHandler makeLoginRequest];
     
-    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
     
     
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
@@ -43,7 +44,10 @@
     
     
     if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         self.window.rootViewController = self.appRootViewController;
+    }
     else
         self.window.rootViewController = self.authenticationViewController;
     
@@ -65,8 +69,11 @@
                                    ntohl(tokenBytes[0]), ntohl(tokenBytes[1]), ntohl(tokenBytes[2]),
                                    ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                                    ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
-    
-	NSLog(@"%@", self.pushDeviceTokenString);
+
+	NSLog(@"remote notification occured, push string: %@, instagram user id: %@", self.pushDeviceTokenString, [InstagramUserObject getStoredUserObject].userID);
+    if ([InstagramUserObject getStoredUserObject].userID != nil)
+        [UserAPIHandler updateUserPushIdentityWithPushID:self.pushDeviceTokenString withInstagramID:[InstagramUserObject getStoredUserObject].userID];
+
     
 }
 
@@ -77,6 +84,8 @@
 
 -(void)userDidLogin
 {
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
+    
     self.window.rootViewController = self.appRootViewController;
 }
 

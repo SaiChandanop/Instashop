@@ -15,4 +15,7 @@
 
 +(void)makeBuyerCreateRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject;
 
+
++(void)updateUserPushIdentityWithPushID:(NSString *)pushID withInstagramID:(NSString *)instagramID;
+
 @end
