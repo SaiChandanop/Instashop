@@ -256,7 +256,7 @@
         GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
         imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
         imagePicker.delegate = self;
-        imagePicker.resizeableCropArea = YES;
+        imagePicker.resizeableCropArea = NO;
         
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
