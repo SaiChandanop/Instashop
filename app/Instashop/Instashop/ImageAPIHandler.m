@@ -64,6 +64,32 @@ static ImageAPIHandler *sharedImageAPIHandler;
  
   //   NSLog(@"%@ received data!", self);
 }
+
+
+- (NSCachedURLResponse *)connection:(NSURLConnection *)connection willCacheResponse:(NSCachedURLResponse *)cachedResponse
+{
+    NSLog(@"here 1");
+
+    NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)[cachedResponse response];
+    
+    // Look up the cache policy used in our request
+    if([connection currentRequest].cachePolicy == NSURLRequestUseProtocolCachePolicy) {
+        NSLog(@"here 2");
+        NSDictionary *headers = [httpResponse allHeaderFields];
+        NSString *cacheControl = [headers valueForKey:@"Cache-Control"];
+        NSString *expires = [headers valueForKey:@"Expires"];
+        if((cacheControl == nil) && (expires == nil)) {
+            NSLog(@"server does not provide expiration information and we are using NSURLRequestUseProtocolCachePolicy");
+            return nil; // don't cache this
+        }
+    }
+    
+    NSLog(@"here 3");
+    
+    return cachedResponse;
+    
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
  //   NSLog(@"receivedData.length: %d", [self.receivedData length]);
@@ -96,33 +122,30 @@ static ImageAPIHandler *sharedImageAPIHandler;
 {
     NSString *urlString = [NSString stringWithFormat:@"http://instashop.com/upload/%@.jpeg", instagramID];
     
-    NSLog(@"makeProfileImageRequestWithReferenceImageView, urlString: %@", urlString);
+    NSLog(@"makeProfileImageRequestWithReferenceImageView!!, urlString: %@", urlString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]];
     
     ImageAPIHandler *imageAPIHandler = [[ImageAPIHandler alloc] init];
     imageAPIHandler.theImageView = referenceImageView;
-    imageAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:imageAPIHandler context:NULL];
-    [imageAPIHandler.theWebRequest addTarget:imageAPIHandler action:@selector(imageRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
-    [imageAPIHandler.theWebRequest start];
+    imageAPIHandler.receivedData = [[NSMutableData alloc] init];
     
-}
+    [[NSURLCache sharedURLCache] removeAllCachedResponses];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc]
+                                   initWithRequest:URLRequest
+                                   delegate:imageAPIHandler
+                                   startImmediately:NO];
+    
+//    connection.currentRequest.cachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+//    connection.ca
+    [connection scheduleInRunLoop:[NSRunLoop currentRunLoop]
+                          forMode:NSRunLoopCommonModes];
+    [connection start];
 
--(void)imageRequestFinished:(id)obj
-{
-    UIImage *responseImage = [UIImage imageWithData:self.responseData];
-    [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:[self.theWebRequest.request.URL absoluteString]];
-    self.theImageView.image = responseImage;
-    self.theImageView.alpha = 1;
     
-    if ([self.delegate respondsToSelector:@selector(imageRequestFinished:)])
-    {
-        [self.delegate imageRequestFinished:self.theImageView];
-    }
     
-    if ([self.theImageView isKindOfClass:[ISAsynchImageView class]])
-    {
-        [(ISAsynchImageView *)self.theImageView ceaseAnimations];
-    }
+    
+    
 }
 
 
