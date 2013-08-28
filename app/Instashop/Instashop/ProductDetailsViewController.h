@@ -55,7 +55,7 @@
     
 }
 
-- (void) loadWithMediaInstagramID:(NSString *)mediaInstagramID;
+- (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID;
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
 - (void) categorySelectionCompleteWithArray:(NSArray *)theArray;

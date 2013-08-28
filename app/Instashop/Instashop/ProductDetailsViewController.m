@@ -106,7 +106,7 @@
 }
 
 
-- (void) loadWithMediaInstagramID:(NSString *)mediaInstagramID
+- (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID
 {
 
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -115,6 +115,15 @@
     [appDelegate.instagram requestWithParams:params delegate:self];
 
     
+    NSLog(@"productObject: %@", productObject);
+    
+    
+    self.titleTextView.text = [productObject objectForKey:@"products_name"];
+    self.descriptionTextView.text = [productObject objectForKey:@"products_description"];
+    self.retailPriceTextField.text = [productObject objectForKey:@"products_price"];
+    self.instashopPriceTextField.text = [productObject objectForKey:@"products_list_price"];
+    
+    
 }
 
 
@@ -122,7 +131,33 @@
 
     NSLog(@"result: %@", result);
     
-    [self loadViewsWithInstagramInfoDictionary:[result objectForKey:@"data"]];
+    //[self loadViewsWithInstagramInfoDictionary:[result objectForKey:@"data"]];
+    
+    NSDictionary *theDictionary = [result objectForKey:@"data"];
+    
+    
+    NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
+    NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+    
+    NSString *instagramProductImageURLString = [startResultionDictionary objectForKey:@"url"];
+    
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:instagramProductImageURLString withImageView:self.theImageView];
+    
+    /*
+    NSDictionary *captionDictionary = [theDictionary objectForKey:@"caption"];
+    
+    if (captionDictionary != nil)
+        if (![captionDictionary isKindOfClass:[NSNull class]])
+            self.titleTextView.text = [captionDictionary objectForKey:@"text"];
+    
+    */
+    self.instragramMediaInfoDictionary = theDictionary;
+    self.instagramPictureURLString = instagramProductImageURLString;
+
+    
+    
+    
+    
 //    [self loadViewsWithInstagramInfoDictionary:self.requestedProductObject];
     
 }
