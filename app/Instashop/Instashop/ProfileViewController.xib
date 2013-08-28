@@ -15,10 +15,12 @@
                 <outlet property="buyerFavoritesButton" destination="gnT-LL-BbX" id="pOD-7f-bAJ"/>
                 <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
                 <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
+                <outlet property="infoButton" destination="Y1m-tI-oLk" id="JbW-xT-R7J"/>
                 <outlet property="infoView" destination="lbj-mj-hZE" id="6FS-4J-lub"/>
                 <outlet property="productSelectTableViewController" destination="7F9-di-1kk" id="dWx-NX-xgu"/>
                 <outlet property="profileBackgroundPhotoButton" destination="TvE-Jz-6Ul" id="zNT-zV-SVE"/>
                 <outlet property="profileImageView" destination="RHM-oM-kVi" id="P34-lA-dJo"/>
+                <outlet property="reviewsButton" destination="NTQ-U5-mGl" id="x0T-05-8Q6"/>
                 <outlet property="sellerButtonHighlightView" destination="ab7-af-cdJ" id="Cop-ke-rQe"/>
                 <outlet property="sellerButtonsView" destination="Mg9-br-9gn" id="dz3-fS-2tN"/>
                 <outlet property="sellerInfoButton" destination="YZG-hB-owP" id="29u-Fh-47j"/>
@@ -46,7 +48,7 @@
                     <rect key="frame" x="0.0" y="47" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="gnT-LL-BbX">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="gnT-LL-BbX">
                     <rect key="frame" x="0.0" y="5" width="107" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -63,7 +65,7 @@
                         <action selector="favoritesButtonHit" destination="-1" eventType="touchUpInside" id="dNF-dU-zoW"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="NTQ-U5-mGl">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="NTQ-U5-mGl">
                     <rect key="frame" x="213" y="5" width="107" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -79,7 +81,7 @@
                         <action selector="reviewsButtonHit" destination="-1" eventType="touchUpInside" id="NWC-mK-3ZN"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Y1m-tI-oLk">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Y1m-tI-oLk">
                     <rect key="frame" x="107" y="5" width="106" height="42"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -175,7 +177,7 @@
                             <rect key="frame" x="0.0" y="47" width="320" height="5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Of6-Fq-GtT">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Of6-Fq-GtT">
                             <rect key="frame" x="0.0" y="5" width="107" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -192,7 +194,7 @@
                                 <action selector="productsButtonHit" destination="-1" eventType="touchUpInside" id="wiU-7m-AF7"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="ZNf-Le-k0Y">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="ZNf-Le-k0Y">
                             <rect key="frame" x="213" y="5" width="107" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -208,7 +210,7 @@
                                 <action selector="reviewsButtonHit" destination="-1" eventType="touchUpInside" id="spg-tp-pAT"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="YZG-hB-owP">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="YZG-hB-owP">
                             <rect key="frame" x="107" y="5" width="106" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>

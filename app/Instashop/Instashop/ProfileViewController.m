@@ -73,6 +73,9 @@
     self.sellerInfoButton.selected = NO;
     self.sellerReviewsButton.selected = NO;
     
+    self.buyerFavoritesButton.selected = YES;
+    self.infoButton.selected = NO;
+    self.reviewsButton.selected = NO;
 
 }
 
@@ -244,6 +247,10 @@
         [self.infoView removeFromSuperview];
     
     
+    self.buyerFavoritesButton.selected = YES;
+    self.infoButton.selected = NO;
+    self.reviewsButton.selected = NO;
+    
     [self animateSellerButton:self.buyerFavoritesButton];
     
 }
@@ -275,6 +282,11 @@
     self.sellerInfoButton.selected = YES;
     self.sellerReviewsButton.selected = NO;
     
+    
+    self.buyerFavoritesButton.selected = NO;
+    self.infoButton.selected = YES;
+    self.reviewsButton.selected = NO;
+    
     [self animateSellerButton:self.sellerInfoButton];
 }
 
@@ -290,6 +302,11 @@
     self.sellerProductsButton.selected = NO;
     self.sellerInfoButton.selected = NO;
     self.sellerReviewsButton.selected = YES;
+    
+    
+    self.buyerFavoritesButton.selected = NO;
+    self.infoButton.selected = NO;
+    self.reviewsButton.selected = YES;
     
     [self animateSellerButton:self.sellerReviewsButton];
 }
