@@ -12,7 +12,7 @@
 #import "FeedRequestFinishedProtocol.h"
 
 #define PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS 1
-#define PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER 2
+#define PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER 2
 
 
 @class ProductCreateViewController;

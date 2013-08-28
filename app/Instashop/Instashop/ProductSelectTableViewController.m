@@ -139,7 +139,7 @@
             case PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS:
                 [ProductAPIHandler getAllProductsWithDelegate:self];
                 break;
-            case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER:
+            case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER:
                 [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
                 
             default:
@@ -157,7 +157,7 @@
     
     NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
     
-    if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER)
+    if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER)
     {
         if ([self.productRequestorReferenceObject compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
         {

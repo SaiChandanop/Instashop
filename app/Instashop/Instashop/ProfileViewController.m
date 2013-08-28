@@ -93,6 +93,16 @@
         self.buyerButtonsView.frame = self.sellerButtonsView.frame;
         [self.sellerButtonsView removeFromSuperview];
         [self.view addSubview:self.buyerButtonsView];
+        
+        
+/*        self.productSelectTableViewController.cellDelegate = self;
+        self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
+        self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
+ 
+ */
+        [self.productSelectTableViewController refreshContent];
+        
+        
     }
     else
     {
@@ -100,7 +110,7 @@
         [appDelegate.instagram requestWithParams:params delegate:self];
         
         self.productSelectTableViewController.cellDelegate = self;
-        self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER;
+        self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
         self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
         [self.productSelectTableViewController refreshContent];
         
@@ -219,6 +229,13 @@
 -(IBAction)favoritesButtonHit
 {
     NSLog(@"favoritesButtonHit");
+    
+    if ([self.theTableView superview] == nil)
+        [self.view addSubview:self.theTableView];
+    
+    if ([self.infoView superview] != nil)
+        [self.infoView removeFromSuperview];
+    
     
     [self animateSellerButton:self.buyerFavoritesButton];
     
