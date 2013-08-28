@@ -118,11 +118,11 @@
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TvE-Jz-6Ul">
-                    <rect key="frame" x="110" y="12" width="210" height="121"/>
+                    <rect key="frame" x="273" y="0.0" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" backgroundImage="cell_disclosure_new.png"/>
+                    <state key="normal" backgroundImage="edit_photo.png"/>
                     <connections>
                         <action selector="imagePickButtonHit" destination="-1" eventType="touchUpInside" id="Xeg-ae-iYH"/>
                     </connections>
@@ -260,7 +260,6 @@
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <tableViewController id="7F9-di-1kk" customClass="ProductSelectTableViewController">
@@ -296,8 +295,8 @@
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bottom_shadow.png" width="320" height="50"/>
-        <image name="cell_disclosure_new.png" width="44" height="44"/>
         <image name="cell_separator.png" width="320" height="5"/>
+        <image name="edit_photo.png" width="44" height="44"/>
         <image name="feedImageShadow.png" width="106" height="106"/>
         <image name="instagram_gray_icon.png" width="44" height="44"/>
         <image name="lightMenuBG.png" width="320" height="548"/>
