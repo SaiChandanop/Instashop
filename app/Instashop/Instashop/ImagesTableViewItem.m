@@ -58,7 +58,7 @@
     {
         self.objectDictionary = theDictionary;
         [self.coverButton setImage:[UIImage imageNamed:@"add_product.png"] forState:UIControlStateNormal];
-        self.coverButton.backgroundColor = [UIColor blueColor];
+        self.coverButton.backgroundColor = [UIColor clearColor];
     }
     else
     {
