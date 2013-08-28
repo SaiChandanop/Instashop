@@ -17,6 +17,7 @@
 #import "SellersAPIHandler.h"
 #import "SizePickerViewViewController.h"
 #import "ProfileViewController.h"
+#import "ProductDetailsViewController.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -214,6 +215,15 @@
 -(void)editButtonHit
 {
     NSLog(@"editButtonHit");
+    
+    ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
+    productDetailsViewController.parentController = self;
+    productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
+    [self.navigationController pushViewController:productDetailsViewController animated:YES];
+    
+    [productDetailsViewController loadWithMediaInstagramID:[self.requestedProductObject objectForKey:@"products_instagram_id"]];
+    
+//    [productDetailsViewController loadViewsWithInstagramInfoDictionary:self.requestedProductObject];
     
 }
 - (void)request:(IGRequest *)request didLoad:(id)result {

@@ -14,6 +14,7 @@
 #import "SizeQuantityTableViewCell.h"
 #import "ProductCreateContainerObject.h"
 #import "NavBarTitleView.h"
+#import "AppDelegate.h"
 
 
 @interface ProductDetailsViewController ()
@@ -105,6 +106,26 @@
 }
 
 
+- (void) loadWithMediaInstagramID:(NSString *)mediaInstagramID
+{
+
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@", mediaInstagramID], @"method", nil];
+    [appDelegate.instagram requestWithParams:params delegate:self];
+
+    
+}
+
+
+- (void)request:(IGRequest *)request didLoad:(id)result {
+
+    NSLog(@"result: %@", result);
+    
+    [self loadViewsWithInstagramInfoDictionary:[result objectForKey:@"data"]];
+//    [self loadViewsWithInstagramInfoDictionary:self.requestedProductObject];
+    
+}
 
 - (IBAction) categoryButtonHit
 {
@@ -157,6 +178,7 @@
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
 {
+    NSLog(@"theDictionary: %@", theDictionary);
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
     NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
     

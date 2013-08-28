@@ -11,13 +11,13 @@
 #import "CategoriesTableViewController.h"
 #import "CategoriesViewController.h"
 #import "SizeQuantityTableViewController.h"
-
+#import "IGRequest.h"
 #import "ISDarkRowContainerView.h"
 #import "ISLightRowContainerView.h"
 
 @class ProductCreateViewController;
 
-@interface ProductDetailsViewController : UIViewController <UITextFieldDelegate, UITextViewDelegate>
+@interface ProductDetailsViewController : UIViewController <IGRequestDelegate, UITextFieldDelegate, UITextViewDelegate>
 {
     ProductCreateViewController *parentController;
     SizeQuantityTableViewController *sizeQuantityTableViewController;
@@ -54,6 +54,8 @@
     
     
 }
+
+- (void) loadWithMediaInstagramID:(NSString *)mediaInstagramID;
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
 - (void) categorySelectionCompleteWithArray:(NSArray *)theArray;
