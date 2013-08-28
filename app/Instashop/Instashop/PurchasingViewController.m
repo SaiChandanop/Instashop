@@ -181,9 +181,6 @@
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     
     self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 8);
-    
-    
-
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -193,9 +190,32 @@
 //        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
     
     
+}
+
+-(void)loadForEdit
+{
+
+    
+    
+    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    editButton.frame = CGRectMake(0,0,40, 44);
+    [editButton setTitle:@"Edit" forState:UIControlStateNormal];
+    editButton.backgroundColor = [UIColor clearColor];
+    [editButton addTarget:self action:@selector(editButtonHit) forControlEvents:UIControlEventTouchUpInside];
+
+    
+    UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton];
+    self.navigationItem.rightBarButtonItem = editBarButtonItem;
+
     
 }
 
+
+-(void)editButtonHit
+{
+    NSLog(@"editButtonHit");
+    
+}
 - (void)request:(IGRequest *)request didLoad:(id)result {
         
     if ([request.url rangeOfString:@"users"].length > 0)
@@ -206,6 +226,9 @@
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
             self.sellerLabel.text = [dataDictionary objectForKey:@"username"];
             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerProfileImageView];
+            
+            if ([(NSString *)[dataDictionary objectForKey:@"id"] compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+                [self loadForEdit];
         }
     }
     else if ([request.url rangeOfString:@"likes"].length > 0)
