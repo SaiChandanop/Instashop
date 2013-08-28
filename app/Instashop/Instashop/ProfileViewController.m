@@ -44,6 +44,7 @@
 @synthesize theTableView;
 @synthesize followersButton;
 @synthesize followingButton;
+@synthesize profileBackgroundPhotoButton;
 @synthesize bioTextView;
 @synthesize titleViewLabel;
 @synthesize isSelfProfile;
@@ -114,6 +115,9 @@
         [self.productSelectTableViewController refreshContent];
         
     }
+    
+    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+        [self.profileBackgroundPhotoButton removeFromSuperview];
         
     
 }

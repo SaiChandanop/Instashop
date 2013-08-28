@@ -17,6 +17,7 @@
                 <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
                 <outlet property="infoView" destination="lbj-mj-hZE" id="6FS-4J-lub"/>
                 <outlet property="productSelectTableViewController" destination="7F9-di-1kk" id="dWx-NX-xgu"/>
+                <outlet property="profileBackgroundPhotoButton" destination="TvE-Jz-6Ul" id="zNT-zV-SVE"/>
                 <outlet property="profileImageView" destination="RHM-oM-kVi" id="P34-lA-dJo"/>
                 <outlet property="sellerButtonHighlightView" destination="ab7-af-cdJ" id="Cop-ke-rQe"/>
                 <outlet property="sellerButtonsView" destination="Mg9-br-9gn" id="dz3-fS-2tN"/>
@@ -117,7 +118,7 @@
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="TvE-Jz-6Ul">
-                    <rect key="frame" x="146" y="43" width="117" height="34"/>
+                    <rect key="frame" x="110" y="12" width="210" height="121"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                     <connections>

@@ -31,6 +31,7 @@
     UIButton *sellerProductsButton;
     UIButton *sellerInfoButton;
     UIButton *sellerReviewsButton;
+    UIButton *profileBackgroundPhotoButton;
     UIView *sellerButtonHighlightView;
     UIView *buyerButtonHighlightView;
     UIView *infoView;
@@ -71,6 +72,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *sellerProductsButton;
 @property (nonatomic, retain) IBOutlet UIButton *sellerInfoButton;
 @property (nonatomic, retain) IBOutlet UIButton *sellerReviewsButton;
+@property (nonatomic, retain) IBOutlet UIButton *profileBackgroundPhotoButton;
 @property (nonatomic, retain) IBOutlet UIView *sellerButtonHighlightView;
 @property (nonatomic, retain) IBOutlet UIView *buyerButtonHighlightView;
 @property (nonatomic, retain) IBOutlet UIView *infoView;
