@@ -10,6 +10,9 @@
                 <outlet property="addBackgroundImageButton" destination="TvE-Jz-6Ul" id="39D-0l-1qb"/>
                 <outlet property="backgroundImageView" destination="uUu-tP-DTR" id="sNn-qt-g3h"/>
                 <outlet property="bioTextView" destination="Is0-fy-PaS" id="AqD-lb-Arg"/>
+                <outlet property="buyerButtonHighlightView" destination="C2T-NL-Bzu" id="Dkl-3o-KjQ"/>
+                <outlet property="buyerButtonsView" destination="RL3-QZ-KZp" id="VqF-GE-ciU"/>
+                <outlet property="buyerFavoritesButton" destination="gnT-LL-BbX" id="pOD-7f-bAJ"/>
                 <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
                 <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
                 <outlet property="infoView" destination="lbj-mj-hZE" id="6FS-4J-lub"/>
@@ -55,6 +58,9 @@
                     <state key="selected">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="favoritesButtonHit" destination="-1" eventType="touchUpInside" id="dNF-dU-zoW"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="NTQ-U5-mGl">
                     <rect key="frame" x="213" y="5" width="107" height="42"/>
@@ -68,6 +74,9 @@
                     <state key="selected">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="reviewsButtonHit" destination="-1" eventType="touchUpInside" id="NWC-mK-3ZN"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Y1m-tI-oLk">
                     <rect key="frame" x="107" y="5" width="106" height="42"/>
@@ -81,6 +90,9 @@
                     <state key="selected">
                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="infoButtonHit" destination="-1" eventType="touchUpInside" id="PnG-Wp-jMz"/>
+                    </connections>
                 </button>
                 <view contentMode="scaleToFill" id="C2T-NL-Bzu">
                     <rect key="frame" x="0.0" y="45" width="107" height="2"/>

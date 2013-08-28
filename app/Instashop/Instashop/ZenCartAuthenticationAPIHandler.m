@@ -26,7 +26,7 @@
     
 //    NSString *urlRequestString = [NSString stringWithFormat:@"http://www.instashopdev.com.php53-17.ord1-1.websitetestlink.com/zen/zenalchemy50admin/categories.php"];
     
-    NSLog(@"urlRequestString: %@", urlRequestString);
+//.    NSLog(@"urlRequestString: %@", urlRequestString);
     
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";

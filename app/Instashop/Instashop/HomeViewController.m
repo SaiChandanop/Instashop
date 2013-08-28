@@ -118,7 +118,6 @@
 
 -(void)createSellerCancelButtonHit:(UINavigationController *)theNavigationController
 {
-    NSLog(@"createSellerCancelButtonHit: %@", theNavigationController);
     [self.parentController createSellerShouldExit:theNavigationController];
 }
 

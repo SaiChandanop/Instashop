@@ -131,7 +131,6 @@
 -(void)igDidLogin
 {
     [self.loginWebView removeFromSuperview];
-    NSLog(@"Instagram did login");
     // here i can store accessToken
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [[NSUserDefaults standardUserDefaults] setObject:appDelegate.instagram.accessToken forKey:@"accessToken"];
@@ -194,7 +193,6 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSLog(@"Instagram did load: %@", result);
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     if ([[metaDictionary objectForKey:@"code"] intValue] == 200)

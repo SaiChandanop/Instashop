@@ -228,7 +228,7 @@ float transitionTime = .456;
 
 -(void)createSellerShouldExit:(UINavigationController *)theNavigationController
 {
-    NSLog(@"createSellerShouldExit: %@", theNavigationController);
+
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];

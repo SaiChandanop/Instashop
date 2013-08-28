@@ -34,8 +34,11 @@
 @synthesize profileImageView;
 @synthesize usernameLabel;
 @synthesize sellerButtonsView;
+@synthesize buyerButtonsView;
 @synthesize sellerProductsButton, sellerInfoButton, sellerReviewsButton;
 @synthesize sellerButtonHighlightView;
+@synthesize buyerButtonHighlightView;
+@synthesize buyerFavoritesButton;
 @synthesize infoView;
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
@@ -43,6 +46,7 @@
 @synthesize followingButton;
 @synthesize bioTextView;
 @synthesize titleViewLabel;
+@synthesize isSelfProfile;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,21 +80,33 @@
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.profileInstagramID], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    
-    params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
-    [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    self.productSelectTableViewController.cellDelegate = self;
-    self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER;
-    self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
-    [self.productSelectTableViewController refreshContent];
-    
-    
+
     
     self.infoView.frame = self.theTableView.frame;
+
+
+
+    if (self.isSelfProfile && [InstagramUserObject getStoredUserObject].zencartID == nil)
+    {
+        
+        NSLog(@"show buyer");
+        self.buyerButtonsView.frame = self.sellerButtonsView.frame;
+        [self.sellerButtonsView removeFromSuperview];
+        [self.view addSubview:self.buyerButtonsView];
+    }
+    else
+    {
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
+        [appDelegate.instagram requestWithParams:params delegate:self];
+        
+        self.productSelectTableViewController.cellDelegate = self;
+        self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_USER;
+        self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
+        [self.productSelectTableViewController refreshContent];
+        
+    }
+        
     
-    NSLog(@"[InstagramUserObject getStoredUserObject].bio;: %@", [InstagramUserObject getStoredUserObject].bio);
 }
 
 
@@ -105,6 +121,8 @@
 
 -(void)loadNavigationControlls
 {
+    
+    self.isSelfProfile = YES;
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
@@ -191,10 +209,18 @@
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
-    //        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.buyerButtonHighlightView.frame = CGRectMake(receivingButton.frame.origin.x, self.buyerButtonHighlightView.frame.origin.y, receivingButton.frame.size.width, self.buyerButtonHighlightView.frame.size.height);
     self.sellerButtonHighlightView.frame = CGRectMake(receivingButton.frame.origin.x, self.sellerButtonHighlightView.frame.origin.y, receivingButton.frame.size.width, self.sellerButtonHighlightView.frame.size.height);
     [UIView commitAnimations];
     
+    
+}
+
+-(IBAction)favoritesButtonHit
+{
+    NSLog(@"favoritesButtonHit");
+    
+    [self animateSellerButton:self.buyerFavoritesButton];
     
 }
 
