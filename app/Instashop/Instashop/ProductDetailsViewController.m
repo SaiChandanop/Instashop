@@ -15,7 +15,7 @@
 #import "ProductCreateContainerObject.h"
 #import "NavBarTitleView.h"
 #import "AppDelegate.h"
-
+#import "ProductAPIHandler.h"
 
 @interface ProductDetailsViewController ()
 
@@ -43,6 +43,8 @@
 @synthesize pricesView;
 @synthesize sizeQuantityView;
 @synthesize originalPriceViewRect;
+@synthesize editingProductObject;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -109,6 +111,7 @@
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID
 {
 
+    self.editingProductObject = [[NSDictionary alloc] initWithDictionary:productObject];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@", mediaInstagramID], @"method", nil];
@@ -164,9 +167,30 @@
     [self.sizeQuantityTableViewController.tableView reloadData];
     
     [self updateLayout];
+    
+    
+    
+    UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    deleteButton.frame = CGRectMake(0,0,80, 44);
+    [deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
+    deleteButton.backgroundColor = [UIColor clearColor];
+    [deleteButton addTarget:self action:@selector(deleteButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    
+    
+    UIBarButtonItem *deletBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
+    self.navigationItem.rightBarButtonItem = deletBarButtonItem;
+
+    
+    
 }
 
 
+-(void)deleteButtonHit
+{
+    NSLog(@"delete: %@", self.editingProductObject);
+    [self.navigationController popToRootViewControllerAnimated:YES];
+    [ProductAPIHandler deleteProductWithProductID:[self.editingProductObject objectForKey:@"product_id"]];
+}
 - (void)request:(IGRequest *)request didLoad:(id)result {
 
     

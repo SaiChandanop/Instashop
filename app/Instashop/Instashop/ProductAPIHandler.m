@@ -181,4 +181,35 @@
 }
 
 
++(void)deleteProductWithProductID:(NSString *)productID
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"product_functions/productManager.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"POST";
+
+    
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:[NSString stringWithFormat:@"action=%@&", @"delete"]];
+    [postString appendString:[NSString stringWithFormat:@"&product_id=%@&", productID]];
+    
+    
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(productDeleteComplete:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+    
+}
+
+
+-(void)productDeleteComplete:(id)obj
+{
+    NSString* newStr = [[[NSString alloc] initWithData:self.responseData
+                                              encoding:NSUTF8StringEncoding] autorelease];
+ 
+    NSLog(@"productDeleteComplete: %@", newStr);
+    
+}
+
 @end

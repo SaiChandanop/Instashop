@@ -26,7 +26,7 @@
     NSDictionary *instragramMediaInfoDictionary;
     NSString *instagramPictureURLString;
     CGRect originalPriceViewRect;
-    
+    NSDictionary *editingProductObject;
     UIScrollView *containerScrollView;
 
     
@@ -71,6 +71,7 @@
 
 @property (nonatomic, retain) NSMutableArray *attributesArray;
 @property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;
+@property (nonatomic, retain) NSDictionary *editingProductObject;
 @property (nonatomic, retain) NSString *instagramPictureURLString;
 @property (nonatomic, assign) int sizeTableExposedCount;
 @property (nonatomic, assign) CGRect originalPriceViewRect;
