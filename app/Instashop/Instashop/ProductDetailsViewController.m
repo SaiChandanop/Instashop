@@ -151,7 +151,7 @@
         if ([itemDictionary objectForKey:@"size"] != nil)
             [itemDictionary setObject:[itemDictionary objectForKey:@"size"] forKey:SIZE_DICTIONARY_KEY];
         
-        if ([dict objectForKey:@"quantity"] != nil)
+        if ([itemDictionary objectForKey:@"quantity"] != nil)
             [itemDictionary setObject:[itemDictionary objectForKey:@"quantity"] forKey:QUANTITY_DICTIONARY_KEY];
 
         [dict setObject:itemDictionary forKey:[NSString stringWithFormat:@"%d", i]];
@@ -163,6 +163,7 @@
     NSLog(@"cellSizeQuantityValueDictionary: %@", self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary);
     [self.sizeQuantityTableViewController.tableView reloadData];
     
+    [self updateLayout];
 }
 
 
@@ -401,6 +402,7 @@
     }
     self.descriptionTextView.scrollEnabled = NO;
 }
+
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
