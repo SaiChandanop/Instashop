@@ -187,10 +187,27 @@
 
 -(void)deleteButtonHit
 {
-    NSLog(@"delete: %@", self.editingProductObject);
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    [ProductAPIHandler deleteProductWithProductID:[self.editingProductObject objectForKey:@"product_id"]];
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Wait"
+                                                        message:@"Are you sure you want to delete?"
+                                                       delegate:self
+                                              cancelButtonTitle:@"NO"
+                                              otherButtonTitles:@"YES", nil];
+    [alertView show];
+    
 }
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+        [ProductAPIHandler deleteProductWithProductID:[self.editingProductObject objectForKey:@"product_id"]];
+    }
+    
+}
+
+
 - (void)request:(IGRequest *)request didLoad:(id)result {
 
     
