@@ -14,6 +14,37 @@
 
 @implementation ProductAPIHandler
 
++(void)getLikedProductsByInstagramIDs:(NSArray *)instagramIDs withDelegate:(id)delegate
+{
+    NSMutableString *likedIDsString = [NSMutableString stringWithCapacity:0];
+    
+    for (int i = 0; i < [instagramIDs count]; i++)
+    {
+        [likedIDsString appendString:[instagramIDs objectAtIndex:i]];
+        if (i != [instagramIDs count] -1)
+            [likedIDsString appendString:@"___"];
+        
+    }
+    likedIDsString = [likedIDsString stringByReplacingOccurrencesOfString:@"null" withString:@""];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?liked_ids=", likedIDsString];
+    
+    NSLog(@"urlRequestString: %@", urlRequestString);
+    
+    
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"GET";
+    
+    
+    ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
+    productAPIHandler.delegate = delegate;
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+
+    
+    
+}
+
 
 +(void)getProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate
 {

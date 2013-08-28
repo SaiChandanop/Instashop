@@ -95,11 +95,10 @@
         [self.view addSubview:self.buyerButtonsView];
         
         
-/*        self.productSelectTableViewController.cellDelegate = self;
-        self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
+        self.productSelectTableViewController.contentRequestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/liked", @"method", @"-1", @"count", nil];
+        self.productSelectTableViewController.cellDelegate = self;
+        self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
         self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
- 
- */
         [self.productSelectTableViewController refreshContent];
         
         

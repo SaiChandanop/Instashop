@@ -35,10 +35,10 @@
 {
     self = [super initWithStyle:style];
     if (self) {
-
         
         
-       
+        
+        
     }
     return self;
 }
@@ -46,32 +46,62 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
     [refreshControl addTarget:self action:@selector(refreshContent)
              forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
-
+    
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
-    int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
-
+    NSLog(@"request did load!!: %@", request.url);
     
-    if (responseCode == 200)
+    
+    
+    if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER)
     {
-        NSArray *dataArray = [result objectForKey:@"data"];
+        NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+        int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
+        
+     
+        NSLog(@"here @ PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER");
+        NSMutableArray *likedInstagramIDs = [NSMutableArray arrayWithCapacity:0];
+        if (responseCode == 200)
+        {
+            NSArray *dataArray = [result objectForKey:@"data"];
+         
+            for (int i = 0; i < [dataArray count]; i++)
+            {
+                NSDictionary *dict = [dataArray objectAtIndex:i];
+                [likedInstagramIDs addObject:[dict objectForKey:@"id"]];
+            }
 
-        [self.contentArray removeAllObjects];
-        [self.contentArray addObjectsFromArray:dataArray];
-        if (self.referenceTableView != nil)
-            [self.referenceTableView reloadData];
-        else
-            [self.tableView reloadData];
+            [ProductAPIHandler getLikedProductsByInstagramIDs:likedInstagramIDs withDelegate:self];
+            
+        }
+    }
+    
+    else
+    {
+        NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+        int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
+        
+        
+        if (responseCode == 200)
+        {
+            NSArray *dataArray = [result objectForKey:@"data"];
+            
+            [self.contentArray removeAllObjects];
+            [self.contentArray addObjectsFromArray:dataArray];
+            if (self.referenceTableView != nil)
+                [self.referenceTableView reloadData];
+            else
+                [self.tableView reloadData];
+        }
     }
 }
 
@@ -84,7 +114,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    [tableView setSeparatorColor:[UIColor clearColor]];   
+    [tableView setSeparatorColor:[UIColor clearColor]];
     return 1;
 }
 
@@ -107,7 +137,7 @@
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray];
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-
+    
     return cell;
 }
 
@@ -141,12 +171,12 @@
                 break;
             case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER:
                 [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
-                
+                break;
             default:
                 break;
         }
     }
-        
+    
     
 }
 
@@ -165,7 +195,7 @@
             [self.contentArray addObject:addClass];
         }
     }
-
+    
     
     [self.contentArray addObjectsFromArray:sorted];
     [self.refreshControl endRefreshing];
