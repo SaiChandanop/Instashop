@@ -63,6 +63,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     [super viewDidLoad];
+    self.profileBackgroundPhotoButton.alpha = 0;
     // Do any additional setup after loading the view from its nib.
     
     self.sellerButtonHighlightView.backgroundColor = [ISConstants getISGreenColor];
@@ -119,8 +120,8 @@
         
     }
     
-    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
-        [self.profileBackgroundPhotoButton removeFromSuperview];
+    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+        self.profileBackgroundPhotoButton.alpha = 1;
         
     
 }
