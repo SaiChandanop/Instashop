@@ -124,6 +124,30 @@
     self.instashopPriceTextField.text = [productObject objectForKey:@"products_list_price"];
     
     
+    NSMutableArray *theCategoriesArray = [NSMutableArray arrayWithCapacity:0];
+    
+    for (int i = 1; i < 10; i++)
+    {
+        NSString *attributeString = [NSString stringWithFormat:@"attribute_%d", i];
+        NSString *attributeValue = [productObject objectForKey:attributeString];
+        
+        if (![attributeValue isKindOfClass:[NSNull class]])
+            if ([attributeValue length] > 0)        
+                [theCategoriesArray addObject:attributeValue];
+        
+     
+    }
+    
+    [self categorySelectionCompleteWithArray:theCategoriesArray];
+
+    
+    self.sizeQuantityTableViewController.rowShowCount = 0;
+    self.sizeQuantityTableViewController.availableSizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
+    self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
+    [self.sizeQuantityTableViewController.tableView reloadData];
+
+    
+    
 }
 
 
@@ -131,34 +155,13 @@
 
     NSLog(@"result: %@", result);
     
-    //[self loadViewsWithInstagramInfoDictionary:[result objectForKey:@"data"]];
-    
     NSDictionary *theDictionary = [result objectForKey:@"data"];
-    
-    
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
     NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-    
     NSString *instagramProductImageURLString = [startResultionDictionary objectForKey:@"url"];
-    
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:instagramProductImageURLString withImageView:self.theImageView];
-    
-    /*
-    NSDictionary *captionDictionary = [theDictionary objectForKey:@"caption"];
-    
-    if (captionDictionary != nil)
-        if (![captionDictionary isKindOfClass:[NSNull class]])
-            self.titleTextView.text = [captionDictionary objectForKey:@"text"];
-    
-    */
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
-
-    
-    
-    
-    
-//    [self loadViewsWithInstagramInfoDictionary:self.requestedProductObject];
     
 }
 
