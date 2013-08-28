@@ -121,6 +121,8 @@
                     <rect key="frame" x="110" y="12" width="210" height="121"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" backgroundImage="cell_disclosure_new.png"/>
                     <connections>
                         <action selector="imagePickButtonHit" destination="-1" eventType="touchUpInside" id="Xeg-ae-iYH"/>
                     </connections>
@@ -294,6 +296,7 @@
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bottom_shadow.png" width="320" height="50"/>
+        <image name="cell_disclosure_new.png" width="44" height="44"/>
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="feedImageShadow.png" width="106" height="106"/>
         <image name="instagram_gray_icon.png" width="44" height="44"/>
