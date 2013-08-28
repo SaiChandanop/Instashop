@@ -58,6 +58,7 @@
     {
         self.objectDictionary = theDictionary;
         [self.coverButton setImage:[UIImage imageNamed:@"closebutton_white"] forState:UIControlStateNormal];
+        self.coverButton.backgroundColor = [UIColor redColor];
     }
     else
     {
