@@ -37,8 +37,8 @@
 @synthesize buyerButtonsView;
 @synthesize sellerProductsButton, sellerInfoButton, sellerReviewsButton;
 @synthesize sellerButtonHighlightView;
-@synthesize buyerButtonHighlightView;
 @synthesize buyerFavoritesButton;
+@synthesize buyerButtonHighlightView;
 @synthesize infoView;
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
@@ -65,10 +65,13 @@
     // Do any additional setup after loading the view from its nib.
     
     self.sellerButtonHighlightView.backgroundColor = [ISConstants getISGreenColor];
+    self.buyerButtonHighlightView.backgroundColor = [ISConstants getISGreenColor];
     
     self.sellerProductsButton.selected = YES;
     self.sellerInfoButton.selected = NO;
     self.sellerReviewsButton.selected = NO;
+    
+
 }
 
 
