@@ -140,20 +140,34 @@
     
     [self categorySelectionCompleteWithArray:theCategoriesArray];
 
-    
-    self.sizeQuantityTableViewController.rowShowCount = 0;
-    self.sizeQuantityTableViewController.availableSizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
-    self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
-    [self.sizeQuantityTableViewController.tableView reloadData];
 
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     
+    NSArray *sizeQuantityArray = [productObject objectForKey:@"size_quantity"];
+    for (int i = 0; i < [sizeQuantityArray count]; i++)
+    {
+        NSMutableDictionary *itemDictionary = [NSMutableDictionary dictionaryWithDictionary:[sizeQuantityArray objectAtIndex:i]];
+        
+        if ([itemDictionary objectForKey:@"size"] != nil)
+            [itemDictionary setObject:[itemDictionary objectForKey:@"size"] forKey:SIZE_DICTIONARY_KEY];
+        
+        if ([dict objectForKey:@"quantity"] != nil)
+            [itemDictionary setObject:[itemDictionary objectForKey:@"quantity"] forKey:QUANTITY_DICTIONARY_KEY];
+
+        [dict setObject:itemDictionary forKey:[NSString stringWithFormat:@"%d", i]];
+    }
+    
+    self.sizeQuantityTableViewController.rowShowCount = [[dict allKeys] count];
+    [self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary addEntriesFromDictionary:dict];
+    
+    NSLog(@"cellSizeQuantityValueDictionary: %@", self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary);
+    [self.sizeQuantityTableViewController.tableView reloadData];
     
 }
 
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
 
-    NSLog(@"result: %@", result);
     
     NSDictionary *theDictionary = [result objectForKey:@"data"];
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
@@ -364,7 +378,9 @@
         else
             self.addSizeButton.alpha = 1;
             
-                
+        
+        
+        NSLog(@"self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary: %@", self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary);
     }
 }
 
