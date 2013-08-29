@@ -24,7 +24,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
         sharedImageAPIHandler.mediaCache = [[NSMutableDictionary alloc] initWithCapacity:0];
     }
 
-    if ([sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString])
+/*    if ([sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString])
     {
         
         referenceImageView.image = [sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString];
@@ -36,7 +36,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     }
     else
     {
-
+*/
         ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
         handler.delegate = theDelegate;
         handler.contextObject = instagramMediaURLString;
@@ -44,7 +44,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
         handler.theWebRequest = [SMWebRequest requestWithURLRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:instagramMediaURLString]] delegate:handler context:NULL];
         [handler.theWebRequest addTarget:handler action:@selector(instagramImageReqeustFinsihed:) forRequestEvents:SMWebRequestEventComplete];
         [handler.theWebRequest start];
-    }
+//    }
 }
 
 - (void) instagramImageReqeustFinsihed:(id)obj
