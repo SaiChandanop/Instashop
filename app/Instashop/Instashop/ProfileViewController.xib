@@ -9,10 +9,11 @@
             <connections>
                 <outlet property="addBackgroundImageButton" destination="TvE-Jz-6Ul" id="39D-0l-1qb"/>
                 <outlet property="backgroundImageView" destination="uUu-tP-DTR" id="sNn-qt-g3h"/>
-                <outlet property="bioTextView" destination="Is0-fy-PaS" id="AqD-lb-Arg"/>
+                <outlet property="bioTextView" destination="Is0-fy-PaS" id="IRm-yU-3Q4"/>
                 <outlet property="buyerButtonHighlightView" destination="C2T-NL-Bzu" id="Dkl-3o-KjQ"/>
                 <outlet property="buyerButtonsView" destination="RL3-QZ-KZp" id="VqF-GE-ciU"/>
                 <outlet property="buyerFavoritesButton" destination="gnT-LL-BbX" id="pOD-7f-bAJ"/>
+                <outlet property="followButton" destination="Eqt-pa-nKB" id="eaN-xw-iQA"/>
                 <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
                 <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
                 <outlet property="infoButton" destination="Y1m-tI-oLk" id="JbW-xT-R7J"/>
@@ -24,6 +25,7 @@
                 <outlet property="sellerButtonHighlightView" destination="ab7-af-cdJ" id="Cop-ke-rQe"/>
                 <outlet property="sellerButtonsView" destination="Mg9-br-9gn" id="dz3-fS-2tN"/>
                 <outlet property="sellerInfoButton" destination="YZG-hB-owP" id="29u-Fh-47j"/>
+                <outlet property="sellerInfoView" destination="PYc-oN-Upy" id="rfk-rg-SXg"/>
                 <outlet property="sellerProductsButton" destination="Of6-Fq-GtT" id="aPF-Cz-gn8"/>
                 <outlet property="sellerReviewsButton" destination="ZNf-Le-k0Y" id="hVI-qz-JqR"/>
                 <outlet property="theTableView" destination="Mlb-xD-ESb" id="srm-0a-3lb"/>
@@ -105,7 +107,7 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
-        <view contentMode="scaleToFill" id="1">
+        <view contentMode="scaleToFill" id="1" customClass="TPKeyboardAvoidingScrollView">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -237,6 +239,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="feedImageShadow.png" id="tUn-qY-YOf">
                     <rect key="frame" x="2" y="67" width="106" height="106"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="RHM-oM-kVi">
                     <rect key="frame" x="6" y="71" width="98" height="98"/>
@@ -260,6 +263,22 @@
                         <outlet property="delegate" destination="7F9-di-1kk" id="oWS-bz-uvB"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eqt-pa-nKB">
+                    <rect key="frame" x="6" y="46" width="98" height="20"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Follow" backgroundImage="follow_btn_background.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <state key="selected" title="Following" backgroundImage="menuDarkBG.png"/>
+                </button>
+                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_shadow.png" id="d5h-vJ-PI0">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
@@ -283,9 +302,67 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Is0-fy-PaS">
-                    <rect key="frame" x="12" y="12" width="297" height="315"/>
+                    <rect key="frame" x="6" y="6" width="314" height="329"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                </textView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
+        <view contentMode="scaleToFill" id="PYc-oN-Upy">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="341"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lightMenuBG.png" id="rcl-6h-fS9">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="341"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="znR-xa-c7U">
+                    <rect key="frame" x="12" y="0.0" width="297" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuDarkBG.png" id="HMy-Rl-biZ">
+                    <rect key="frame" x="0.0" y="43" width="320" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bJT-mj-sYt">
+                    <rect key="frame" x="12" y="43" width="297" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CBD-8G-E68">
+                    <rect key="frame" x="12" y="88" width="297" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" id="2n3-TD-9MH" customClass="ISDarkRowContainerView">
+                    <rect key="frame" x="0.0" y="132" width="320" height="48"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="bR1-nR-QlE">
+                            <rect key="frame" x="6" y="6" width="314" height="42"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                        </textView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" text="Description" id="WbD-Ao-ueC">
+                    <rect key="frame" x="7" y="184" width="313" height="141"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="textColor" red="1" green="0.97251751470000003" blue="0.98899760410000004" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                 </textView>
@@ -300,9 +377,11 @@
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="edit_photo.png" width="50" height="50"/>
         <image name="feedImageShadow.png" width="106" height="106"/>
+        <image name="follow_btn_background.png" width="98" height="20"/>
         <image name="instagram_gray_icon.png" width="44" height="44"/>
         <image name="lightMenuBG.png" width="320" height="548"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
+        <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>

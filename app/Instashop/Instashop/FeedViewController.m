@@ -44,10 +44,10 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
 
-    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 23, 20)];
+    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenuButton.png"]];
-    homeImageView.frame = CGRectMake(0,0,23,20);
+    homeImageView.frame = CGRectMake(0,0,44,44);
     [homeCustomView addSubview:homeImageView];
     
     UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -63,7 +63,7 @@
     UIView *discoverCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *discoverImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"magnify.png"]];
-    discoverImageView.frame = CGRectMake(22,11,22,22);
+    discoverImageView.frame = CGRectMake(0,0,44,44);
     [discoverCustomView addSubview:discoverImageView];
     
     UIButton *discoverButton = [UIButton buttonWithType:UIButtonTypeCustom];

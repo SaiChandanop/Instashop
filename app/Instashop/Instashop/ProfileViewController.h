@@ -25,6 +25,8 @@
     UIButton *followersButton;
     UIButton *followingButton;
     
+    UIButton *followButton;
+    
     UIView *sellerButtonsView;
     UIView *buyerButtonsView;
     
@@ -39,6 +41,8 @@
     UIButton *profileBackgroundPhotoButton;
     UIView *sellerButtonHighlightView;
     UIView *buyerButtonHighlightView;
+    
+    UIView *sellerInfoView;
     UIView *infoView;
     UITextView *bioTextView;
     
@@ -71,6 +75,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *followersButton;
 @property (nonatomic, retain) IBOutlet UIButton *followingButton;
 
+@property (nonatomic, retain) IBOutlet UIButton *followButton;
+
 @property (nonatomic, retain) IBOutlet UIView *sellerButtonsView;
 @property (nonatomic, retain) IBOutlet UIView *buyerButtonsView;
 @property (nonatomic, retain) IBOutlet UIButton *buyerFavoritesButton;
@@ -83,6 +89,8 @@
 @property (nonatomic, retain) IBOutlet UIButton *profileBackgroundPhotoButton;
 @property (nonatomic, retain) IBOutlet UIView *sellerButtonHighlightView;
 @property (nonatomic, retain) IBOutlet UIView *buyerButtonHighlightView;
+
+@property (nonatomic, retain) IBOutlet UIView *sellerInfoView;
 @property (nonatomic, retain) IBOutlet UIView *infoView;
 @property (nonatomic, retain) IBOutlet UITextView *bioTextView;
 

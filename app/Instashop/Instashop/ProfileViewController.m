@@ -18,6 +18,7 @@
 #import "InstagramUserObject.h"
 #import "NavBarTitleView.h"
 #import "SellersAPIHandler.h"
+#import <QuartzCore/QuartzCore.h>
 
 
 
@@ -39,6 +40,7 @@
 @synthesize sellerButtonHighlightView;
 @synthesize buyerFavoritesButton;
 @synthesize buyerButtonHighlightView;
+@synthesize sellerInfoView;
 @synthesize infoView;
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
@@ -48,6 +50,7 @@
 @synthesize bioTextView;
 @synthesize titleViewLabel;
 @synthesize isSelfProfile;
+@synthesize followButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,6 +79,13 @@
     self.buyerFavoritesButton.selected = YES;
     self.infoButton.selected = NO;
     self.reviewsButton.selected = NO;
+    
+    self.followButton.backgroundColor = [ISConstants getISGreenColor];
+    self.followButton.layer.shadowColor = [UIColor blackColor].CGColor;
+    self.followButton.layer.shadowOpacity = .75;
+    self.followButton.layer.shadowRadius = 2.5;
+    self.followButton.layer.shadowOffset = CGSizeMake(0, 0);
+//    self.followButton.layer.cornerRadius = 2;
 
 }
 
@@ -125,7 +135,7 @@
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
         self.profileBackgroundPhotoButton.alpha = .5;
-        
+    
     
 }
 
