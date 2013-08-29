@@ -344,6 +344,7 @@
 		7B2C59DC17B95B4D00CEDD5A /* SizePickerViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizePickerViewViewController.h; sourceTree = "<group>"; };
 		7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizePickerViewViewController.m; sourceTree = "<group>"; };
 		7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizePickerViewViewController.xib; sourceTree = "<group>"; };
+		7B2F2A2317CEFD860050E0EE /* EditProductCompleteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditProductCompleteProtocol.h; sourceTree = "<group>"; };
 		7B31BD6517C6C74E00D24F55 /* ImagesTableViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImagesTableViewItem.h; sourceTree = "<group>"; };
 		7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewItem.m; sourceTree = "<group>"; };
 		7B31BD6917C6D0FF00D24F55 /* NavBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavBarTitleView.h; sourceTree = "<group>"; };
@@ -778,6 +779,7 @@
 				7B5D625517C55AA700D6C8B1 /* StripeTokenReceiverProtocol.h */,
 				7B0D255117CBADCB00E43FA6 /* TableCellAddClass.h */,
 				7B0D255217CBADCB00E43FA6 /* TableCellAddClass.m */,
+				7B2F2A2317CEFD860050E0EE /* EditProductCompleteProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

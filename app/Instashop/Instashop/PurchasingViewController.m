@@ -21,6 +21,7 @@
 #import "ProductPreviewViewController.h"
 #import "MBProgressHUD.h"
 #import "CreateProductAPIHandler.h"
+#import "EditProductCompleteProtocol.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -557,10 +558,8 @@
     
     if (theCreateObject.mainObject.editingReferenceID != nil)
     {
-//        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
+        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
         [ProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
-        
-        
     }
     else
     {
@@ -571,8 +570,27 @@
 }
 
 
+-(void)editProductComplete
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController  *rootVC = delegate.appRootViewController;
 
+    
+    [MBProgressHUD hideAllHUDsForView:rootVC.view animated:NO];
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Edited!"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"That's great"
+                                              otherButtonTitles:nil];
+    [alertView show];
+    
+    
+}
 
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 
 @end

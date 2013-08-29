@@ -10,7 +10,7 @@
 #import "InstagramUserObject.h"
 #import "FeedRequestFinishedProtocol.h"
 #import "ProductPurchaseCompleteProtocol.h"
-
+#import "EditProductCompleteProtocol.h"
 
 @implementation ProductAPIHandler
 
@@ -270,8 +270,13 @@
         
         NSLog(@"-------------------------------------------------------!: %d", i);
         ProductCreateObject *obj = [ar objectAtIndex:i];
-        [ProductAPIHandler editProductSizeQuantityWithDelegate:self withProductObject:obj withProductID:productCreateContainerObject.mainObject.editingReferenceID];
+        [ProductAPIHandler editProductSizeQuantityWithDelegate:self.delegate withProductObject:obj withProductID:productCreateContainerObject.mainObject.editingReferenceID];
     }
+    
+    if ([self.delegate conformsToProtocol:@protocol(EditProductCompleteProtocol)])
+        [(id<EditProductCompleteProtocol>)self.delegate editProductComplete];
+
+    
 }
 
 
@@ -321,9 +326,15 @@
 
 -(void)editSizeQuantityFinished:(id)object
 {
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
-    NSLog(@"productSizeQuantityCreateFinished: %@", newStr);
+//    NSString* newStr = [[[NSString alloc] initWithData:responseData
+  //                                            encoding:NSUTF8StringEncoding] autorelease];
+    NSLog(@"editSizeQuantityFinished: %@", self.delegate);
+    
+    
+    
+    
+    
+    
     
 }
 

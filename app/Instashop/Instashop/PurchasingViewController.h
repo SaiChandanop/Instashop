@@ -11,9 +11,10 @@
 #import "IGRequest.h"
 #import "ISAsynchImageView.h"
 #import "FeedRequestFinishedProtocol.h"
+#import "EditProductCompleteProtocol.h"
 @class FeedViewController;
 
-@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol>
+@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol>
 {
     SizePickerViewViewController *sizePickerViewViewController;
     
