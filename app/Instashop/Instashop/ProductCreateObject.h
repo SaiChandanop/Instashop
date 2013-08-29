@@ -23,6 +23,8 @@
     
     NSString *instagramPictureURLString;
     NSDictionary *instragramMediaInfoDictionary;
+    
+    NSString *editingReferenceID;
 }
 
 @property (nonatomic, retain) NSString *title;
@@ -39,4 +41,5 @@
 @property (nonatomic, retain) NSString *instagramPictureURLString;
 @property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;
 
+@property (nonatomic, retain) NSString *editingReferenceID;
 @end

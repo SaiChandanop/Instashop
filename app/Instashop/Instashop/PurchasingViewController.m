@@ -18,6 +18,9 @@
 #import "SizePickerViewViewController.h"
 #import "ProfileViewController.h"
 #import "ProductDetailsViewController.h"
+#import "ProductPreviewViewController.h"
+#import "MBProgressHUD.h"
+#import "CreateProductAPIHandler.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -531,6 +534,44 @@
             [self.navigationController pushViewController:profileViewController animated:YES];
         }    
 }
+
+
+-(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
+{
+    ProductPreviewViewController *productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
+    productPreviewViewController.view.frame = CGRectMake(productPreviewViewController.view.frame.origin.x, productPreviewViewController.view.frame.origin.y, productPreviewViewController.view.frame.size.width, productPreviewViewController.view.frame.size.height);
+    productPreviewViewController.parentController = self;
+    productPreviewViewController.view.frame = productPreviewViewController.view.frame;
+    [self.navigationController pushViewController:productPreviewViewController animated:YES];
+    [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
+    
+    
+}
+
+
+- (void)previewDoneButtonHit:(ProductCreateContainerObject *)theCreateObject
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController  *rootVC = delegate.appRootViewController;
+    
+    
+    if (theCreateObject.mainObject.editingReferenceID != nil)
+    {
+//        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
+        [CreateProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
+        
+        
+    }
+    else
+    {
+        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Creating Product";
+        [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
+    }
+    
+}
+
+
+
 
 
 

@@ -103,9 +103,21 @@
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
-    [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Creating Product";
+
     
-    [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
+    if (theCreateObject.mainObject.editingReferenceID != nil)
+    {
+        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
+        [CreateProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
+    
+        
+    }
+    else
+    {
+        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Creating Product";
+        [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
+    }
+
 }
 
 

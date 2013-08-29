@@ -119,5 +119,60 @@
 }
 
 
++(void)editProductCreateObject:(id)delegate withProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
+{
+    ProductCreateObject *theProductCreateObject = productCreateContainerObject.mainObject;
+    
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"product_functions/productManager.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"POST";
+    
+    InstagramUserObject *userInstagramObject = [InstagramUserObject getStoredUserObject];
+    
+    
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:@"action=edit&"];
+    [postString appendString:[NSString stringWithFormat:@"instagramUserId=%@&", userInstagramObject.userID]];
+    [postString appendString:[NSString stringWithFormat:@"object_instagram_id=%@&", [theProductCreateObject.instragramMediaInfoDictionary objectForKey:@"id"]]];
+    [postString appendString:[NSString stringWithFormat:@"object_title=%@&", theProductCreateObject.title]];
+    [postString appendString:[NSString stringWithFormat:@"object_description=%@&", theProductCreateObject.description]];
+    [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", theProductCreateObject.quantity]];
+    [postString appendString:[NSString stringWithFormat:@"object_price=%@&", [theProductCreateObject.retailPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
+    [postString appendString:[NSString stringWithFormat:@"object_list_price=%@&", [theProductCreateObject.listPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
+    [postString appendString:[NSString stringWithFormat:@"object_weight=%@&", theProductCreateObject.shippingWeight]];
+    [postString appendString:[NSString stringWithFormat:@"object_image_urlstring=%@&", theProductCreateObject.instagramPictureURLString]];
+    [postString appendString:[NSString stringWithFormat:@"edit_product_id=%@&", theProductCreateObject.editingReferenceID]];
+    
+    
+    
+    
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    CreateProductAPIHandler *productAPIHandler = [[CreateProductAPIHandler alloc] init];
+    productAPIHandler.contextObject = productCreateContainerObject;
+    productAPIHandler.delegate = delegate;
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(editContainerFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+    
+}
+
+
+
+-(void)editContainerFinished:(id)obj
+{
+    NSString* newStr = [[[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding] autorelease];
+
+    NSLog(@"productContainerCreateFinished: %@", newStr);
+    
+}
+
+
+
+
+
+
 
 @end

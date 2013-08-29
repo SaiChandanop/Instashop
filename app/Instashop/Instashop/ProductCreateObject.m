@@ -23,5 +23,6 @@
 
 @synthesize instagramPictureURLString;
 @synthesize instragramMediaInfoDictionary;
+@synthesize editingReferenceID;
 
 @end

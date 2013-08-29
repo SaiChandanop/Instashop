@@ -31,6 +31,7 @@
 @synthesize instragramMediaInfoDictionary;
 @synthesize sizeQuantityTableViewController;
 @synthesize parentController;
+@synthesize editingProductID;
 @synthesize attributesArray;
 @synthesize containerScrollView;
 @synthesize theImageView;
@@ -125,7 +126,7 @@
     self.descriptionTextView.text = [productObject objectForKey:@"products_description"];
     self.retailPriceTextField.text = [productObject objectForKey:@"products_price"];
     self.instashopPriceTextField.text = [productObject objectForKey:@"products_list_price"];
-    
+    self.editingProductID = [productObject objectForKey:@"product_id"];
     
     NSMutableArray *theCategoriesArray = [NSMutableArray arrayWithCapacity:0];
     
@@ -340,6 +341,7 @@
         productCreateContainerObject.mainObject.listPrice = self.instashopPriceTextField.text;
         productCreateContainerObject.mainObject.quantity = [NSString stringWithFormat:@"%d", totalQuantity];
         productCreateContainerObject.mainObject.categoriesArray = [[NSArray alloc] initWithArray:self.attributesArray];
+        productCreateContainerObject.mainObject.editingReferenceID = self.editingProductID;
         //    self.productCreateObject.shippingWeight = self.shippingTextField.text;
         
         

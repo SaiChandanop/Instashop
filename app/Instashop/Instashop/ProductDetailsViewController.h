@@ -28,7 +28,7 @@
     CGRect originalPriceViewRect;
     NSDictionary *editingProductObject;
     UIScrollView *containerScrollView;
-
+    NSString *editingProductID;
     
     UIImageView *theImageView;
 
@@ -75,7 +75,7 @@
 @property (nonatomic, retain) NSString *instagramPictureURLString;
 @property (nonatomic, assign) int sizeTableExposedCount;
 @property (nonatomic, assign) CGRect originalPriceViewRect;
-
+@property (nonatomic, retain) NSString *editingProductID;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
 
