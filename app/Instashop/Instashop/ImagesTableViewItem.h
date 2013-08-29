@@ -22,7 +22,6 @@
 
 
 - (void) cleanContent;
-- (id) initWithFrame:(CGRect)frame withButtonDelegate:(id)theDelegate;
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary;
 
 

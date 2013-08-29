@@ -11,7 +11,6 @@
 #import "CellSelectionOccuredProtocol.h"
 @implementation ImagesTableViewCell
 
-@synthesize delegate;
 
 
 @synthesize itemOne;
@@ -27,7 +26,7 @@
 }
 
 
-- (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray
+- (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray withDelegate:(id)theDelegate
 {
     int startValue = theIndexPath.row * 3;
 
@@ -35,28 +34,27 @@
     
     if (self.itemOne == nil)
     {
-        self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(1, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
+        self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(1, 0, imageWidth, imageWidth + 2)];
         [self addSubview:self.itemOne];
     }
     
     if (self.itemTwo == nil)
     {
-        self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(107, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
+        self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(107, 0, imageWidth, imageWidth + 2)];
         [self addSubview:self.itemTwo];
     }
     
     if (self.itemThree == nil)
     {
-        self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(213, 0, imageWidth, imageWidth + 2) withButtonDelegate:self.delegate];
+        self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(213, 0, imageWidth, imageWidth + 2)];
         [self addSubview:self.itemThree];
     }
 
-    /*
-    NSLog(@"self.itemOne: %@", self.itemOne);
-    NSLog(@"self.itemTwo: %@", self.itemTwo);
-    NSLog(@"self.itemThree: %@", self.itemThree);
-    */
     
+    self.itemOne.delegate = theDelegate;
+    self.itemTwo.delegate = theDelegate;
+    self.itemThree.delegate = theDelegate;
+        
     
     [self.itemOne cleanContent];
     [self.itemTwo cleanContent];

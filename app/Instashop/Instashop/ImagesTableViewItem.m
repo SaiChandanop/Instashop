@@ -21,12 +21,10 @@
 @synthesize imageProductURL;
 @synthesize objectDictionary;
 
-- (id)initWithFrame:(CGRect)frame withButtonDelegate:(id)theDelegate
+- (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        
-        self.delegate = theDelegate;
         
         float contentInset = 4;
         
@@ -64,6 +62,7 @@
     else
     {
         [self.coverButton setTitle:@"" forState:UIControlStateNormal];
+        [self.coverButton setImage:nil forState:UIControlStateNormal];
         
     self.backgroundImageView.alpha = 1;
     
@@ -99,6 +98,8 @@
 
 - (void) coverButtonHit
 {
+    
+    NSLog(@"coverbuttonhit, self.delegate: %@", self.delegate);
     if (self.objectDictionary != nil)    {
         if ([self.objectDictionary isKindOfClass:[TableCellAddClass class]])
         {

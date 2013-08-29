@@ -11,20 +11,14 @@
 
 @interface ImagesTableViewCell : UITableViewCell
 {
-    id delegate;
-    
     ImagesTableViewItem *itemOne;
     ImagesTableViewItem *itemTwo;
     ImagesTableViewItem *itemThree;
-    
-    
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight;
-- (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray;
+- (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray withDelegate:(id)delegate;
 
-
-@property (nonatomic, retain) id delegate;
 
 @property (nonatomic, retain) ImagesTableViewItem *itemOne;
 @property (nonatomic, retain) ImagesTableViewItem *itemTwo;
