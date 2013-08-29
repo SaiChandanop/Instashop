@@ -85,7 +85,7 @@
     }
     
     if (self.imageProductURL != nil)
-        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:self.contentImageView];
+        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
     }
 }
 

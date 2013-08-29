@@ -192,11 +192,7 @@
     {
         if ([request.url rangeOfString:@"media"].length > 0)
         {
-            /*            NSDictionary *dataDictionary = [[result objectForKey:@"data"] objectAtIndex:0];
-             NSDictionary *imagesDictionary = [dataDictionary objectForKey:@"images"];
-             NSDictionary *standardDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[standardDictionary objectForKey:@"url"] withImageView:self.backgroundImageView];
-             */
+
         }
         else if ([request.url rangeOfString:@"users"].length > 0)
         {

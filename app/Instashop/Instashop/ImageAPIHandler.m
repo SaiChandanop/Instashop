@@ -41,6 +41,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
         handler.delegate = theDelegate;
         handler.contextObject = instagramMediaURLString;
         handler.receivedData = [[NSMutableData alloc] init];
+    handler.theImageView = referenceImageView;
         handler.theWebRequest = [SMWebRequest requestWithURLRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:instagramMediaURLString]] delegate:handler context:NULL];
         [handler.theWebRequest addTarget:handler action:@selector(instagramImageReqeustFinsihed:) forRequestEvents:SMWebRequestEventComplete];
         [handler.theWebRequest start];
@@ -53,7 +54,25 @@ static ImageAPIHandler *sharedImageAPIHandler;
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
     [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:self.contextObject];
     
-    [self.delegate imageReturnedWithURL:self.contextObject withImage:responseImage];
+        
+    if (self.theImageView != nil)
+    {
+        self.theImageView.image = responseImage;
+        self.theImageView.alpha = 1;
+        
+        if ([self.delegate respondsToSelector:@selector(imageRequestFinished:)])
+        {
+            [self.delegate imageRequestFinished:self.theImageView];
+        }
+        
+        if ([self.theImageView isKindOfClass:[ISAsynchImageView class]])
+        {
+            [(ISAsynchImageView *)self.theImageView ceaseAnimations];
+        }
+
+    }
+     else
+         [self.delegate imageReturnedWithURL:self.contextObject withImage:responseImage];
 }
 
 
