@@ -558,7 +558,7 @@
     if (theCreateObject.mainObject.editingReferenceID != nil)
     {
 //        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
-        [CreateProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
+        [ProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
         
         
     }

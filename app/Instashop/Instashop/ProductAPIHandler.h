@@ -7,7 +7,7 @@
 //
 
 #import "RootAPIHandler.h"
-
+#import "ProductCreateContainerObject.h"
 @interface ProductAPIHandler : RootAPIHandler
 
 
@@ -22,4 +22,6 @@
 +(void)getLikedProductsByInstagramIDs:(NSArray *)instagramIDs withDelegate:(id)delegate;
 
 +(void)deleteProductWithProductID:(NSString *)productID;
++(void)editProductCreateObject:(id)delegate withProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject;
++(void)editProductSizeQuantityWithDelegate:(id)delegate withProductObject:(ProductCreateObject *)theProductCreateObject withProductID:(NSString *)productID;
 @end

@@ -13,7 +13,7 @@
 #import "MBProgressHUD.h"
 #import "AppDelegate.h"
 #import "NavBarTitleView.h"
-
+#import "ProductAPIHandler.h"
 @interface ProductCreateViewController ()
 
 @end
@@ -108,7 +108,7 @@
     if (theCreateObject.mainObject.editingReferenceID != nil)
     {
         [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
-        [CreateProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
+        [ProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
     
         
     }
