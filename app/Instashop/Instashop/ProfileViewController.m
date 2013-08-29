@@ -124,7 +124,7 @@
     }
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
-        self.profileBackgroundPhotoButton.alpha = 1;
+        self.profileBackgroundPhotoButton.alpha = .5;
         
     
 }
