@@ -18,7 +18,7 @@
 @synthesize backgroundImageView;
 @synthesize contentImageView;
 @synthesize coverButton;
-
+@synthesize imageProductURL;
 @synthesize objectDictionary;
 
 - (id)initWithFrame:(CGRect)frame withButtonDelegate:(id)theDelegate
@@ -52,6 +52,7 @@
     self.contentImageView.image = nil;
     self.objectDictionary = nil;
 }
+
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary
 {
     if ([theDictionary isKindOfClass:[TableCellAddClass class]])
@@ -72,21 +73,29 @@
     self.objectDictionary = [[NSDictionary alloc] initWithDictionary:theDictionary];
     
         
-    NSString *productURL = [self.objectDictionary objectForKey:@"products_url"];
-    if (productURL == nil)
+    self.imageProductURL = [self.objectDictionary objectForKey:@"products_url"];
+    if (self.imageProductURL == nil)
     {
         NSDictionary *imagesDictionary = [self.objectDictionary objectForKey:@"images"];
         if (imagesDictionary != nil)
         {
             NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-            productURL = [standardResolutionDictionary objectForKey:@"url"];
+            self.imageProductURL = [standardResolutionDictionary objectForKey:@"url"];
         }
     }
     
-    if (productURL != nil)
-        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:productURL withImageView:self.contentImageView];
+    if (self.imageProductURL != nil)
+        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:self.contentImageView];
     }
 }
+
+-(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
+{
+    if ([url compare:self.imageProductURL] == NSOrderedSame)
+        self.contentImageView.image = theImage;
+}
+
+
 
 - (void) coverButtonHit
 {

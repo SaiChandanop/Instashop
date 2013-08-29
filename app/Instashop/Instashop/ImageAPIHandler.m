@@ -23,7 +23,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
         sharedImageAPIHandler = [[ImageAPIHandler alloc] init];
         sharedImageAPIHandler.mediaCache = [[NSMutableDictionary alloc] initWithCapacity:0];
     }
-    
+
     if ([sharedImageAPIHandler.mediaCache objectForKey:instagramMediaURLString])
     {
         
@@ -36,22 +36,30 @@ static ImageAPIHandler *sharedImageAPIHandler;
     }
     else
     {
+
         ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
         handler.delegate = theDelegate;
-        handler.theImageView = referenceImageView;
+        handler.contextObject = instagramMediaURLString;
         handler.receivedData = [[NSMutableData alloc] init];
-        
-        NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:instagramMediaURLString]];
-        
-        NSURLConnection *connection = [[NSURLConnection alloc]
-                                       initWithRequest:URLRequest
-                                       delegate:handler
-                                       startImmediately:NO];
-        [connection scheduleInRunLoop:[NSRunLoop currentRunLoop]
-                              forMode:NSRunLoopCommonModes];
-        [connection start];
+        handler.theWebRequest = [SMWebRequest requestWithURLRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:instagramMediaURLString]] delegate:handler context:NULL];
+        [handler.theWebRequest addTarget:handler action:@selector(instagramImageReqeustFinsihed:) forRequestEvents:SMWebRequestEventComplete];
+        [handler.theWebRequest start];
     }
 }
+
+- (void) instagramImageReqeustFinsihed:(id)obj
+{
+    
+    UIImage *responseImage = [UIImage imageWithData:self.responseData];
+    [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:self.contextObject];
+    
+    [self.delegate imageReturnedWithURL:self.contextObject withImage:responseImage];
+}
+
+
+
+
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *) response
 {

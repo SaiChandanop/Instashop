@@ -16,6 +16,7 @@
     
     NSDictionary *objectDictionary;
     
+    NSString *imageProductURL;
     id delegate;
 }
 
@@ -31,5 +32,6 @@
 
 @property (nonatomic, retain) NSDictionary *objectDictionary;
 
+@property (nonatomic, retain) NSString *imageProductURL;
 @property (nonatomic, retain) id delegate;
 @end
