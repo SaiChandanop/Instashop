@@ -41,7 +41,6 @@
 @synthesize buyerFavoritesButton;
 @synthesize buyerButtonHighlightView;
 @synthesize sellerInfoView;
-@synthesize infoView;
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
 @synthesize followersButton;
@@ -103,7 +102,7 @@
     [appDelegate.instagram requestWithParams:params delegate:self];
 
     
-    self.infoView.frame = self.theTableView.frame;
+    self.sellerInfoView.frame = self.theTableView.frame;
 
 
 
@@ -321,8 +320,8 @@
     if ([self.theTableView superview] == nil)
         [self.view addSubview:self.theTableView];
     
-    if ([self.infoView superview] != nil)
-        [self.infoView removeFromSuperview];
+    if ([self.sellerInfoView superview] != nil)
+        [self.sellerInfoView removeFromSuperview];
     
     
     self.buyerFavoritesButton.selected = YES;
@@ -338,8 +337,8 @@
     if ([self.theTableView superview] == nil)
         [self.view addSubview:self.theTableView];
     
-    if ([self.infoView superview] != nil)
-        [self.infoView removeFromSuperview];
+    if ([self.sellerInfoView superview] != nil)
+        [self.sellerInfoView removeFromSuperview];
     
     self.sellerProductsButton.selected = YES;
     self.sellerInfoButton.selected = NO;
@@ -353,8 +352,8 @@
     if ([self.theTableView superview] != nil)
         [self.theTableView removeFromSuperview];
     
-    if ([self.infoView superview] == nil)
-        [self.view addSubview:self.infoView];
+    if ([self.sellerInfoView superview] == nil)
+        [self.view addSubview:self.sellerInfoView];
     
     self.sellerProductsButton.selected = NO;
     self.sellerInfoButton.selected = YES;
@@ -373,8 +372,8 @@
     if ([self.theTableView superview] != nil)
         [self.theTableView removeFromSuperview];
     
-    if ([self.infoView superview] != nil)
-        [self.infoView removeFromSuperview];
+    if ([self.sellerInfoView superview] != nil)
+        [self.sellerInfoView removeFromSuperview];
     
     
     self.sellerProductsButton.selected = NO;

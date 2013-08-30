@@ -17,7 +17,6 @@
                 <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
                 <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
                 <outlet property="infoButton" destination="Y1m-tI-oLk" id="JbW-xT-R7J"/>
-                <outlet property="infoView" destination="lbj-mj-hZE" id="6FS-4J-lub"/>
                 <outlet property="productSelectTableViewController" destination="7F9-di-1kk" id="dWx-NX-xgu"/>
                 <outlet property="profileBackgroundPhotoButton" destination="TvE-Jz-6Ul" id="zNT-zV-SVE"/>
                 <outlet property="profileImageView" destination="RHM-oM-kVi" id="P34-lA-dJo"/>

@@ -43,7 +43,6 @@
     UIView *buyerButtonHighlightView;
     
     UIView *sellerInfoView;
-    UIView *infoView;
     UITextView *bioTextView;
     
     ProductSelectTableViewController *productSelectTableViewController;
@@ -93,7 +92,6 @@
 @property (nonatomic, retain) IBOutlet UIView *buyerButtonHighlightView;
 
 @property (nonatomic, retain) IBOutlet UIView *sellerInfoView;
-@property (nonatomic, retain) IBOutlet UIView *infoView;
 @property (nonatomic, retain) IBOutlet UITextView *bioTextView;
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
