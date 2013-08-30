@@ -255,12 +255,21 @@
 -(IBAction)followOnInstagramButtonHit
 {
     NSLog(@"self.requestedInstagramProfileObject: %@", requestedInstagramProfileObject);
+    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
     if (!self.followButton.selected)
     {
-        AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;     
+        
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
      
+    }
+    else
+    {
+        
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"unfollow", @"action", nil];
+        [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+        
     }
 
     
@@ -301,7 +310,8 @@
             
             if (doesFollow)
                 self.followButton.selected = YES;
-            
+            else
+                self.followButton.selected = NO;
         }
         else if ([request.url rangeOfString:@"relationship"].length > 0)
         {
