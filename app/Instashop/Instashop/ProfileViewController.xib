@@ -8,14 +8,15 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
                 <outlet property="addBackgroundImageButton" destination="TvE-Jz-6Ul" id="39D-0l-1qb"/>
-                <outlet property="addressLabel" destination="znR-xa-c7U" id="Qqd-9G-vKc"/>
+                <outlet property="addressLabel" destination="znR-xa-c7U" id="7yd-jp-pcc"/>
                 <outlet property="backgroundImageView" destination="uUu-tP-DTR" id="sNn-qt-g3h"/>
-                <outlet property="bioTextView" destination="Is0-fy-PaS" id="IRm-yU-3Q4"/>
+                <outlet property="bioContainerView" destination="2n3-TD-9MH" id="aFb-qo-oFl"/>
+                <outlet property="bioTextView" destination="bR1-nR-QlE" id="DZ0-ba-Ja5"/>
                 <outlet property="buyerButtonHighlightView" destination="C2T-NL-Bzu" id="Dkl-3o-KjQ"/>
                 <outlet property="buyerButtonsView" destination="RL3-QZ-KZp" id="VqF-GE-ciU"/>
                 <outlet property="buyerFavoritesButton" destination="gnT-LL-BbX" id="pOD-7f-bAJ"/>
-                <outlet property="categoryLabel" destination="CBD-8G-E68" id="MpI-zI-Ms7"/>
-                <outlet property="emailLabel" destination="bJT-mj-sYt" id="GNY-bB-Liu"/>
+                <outlet property="categoryLabel" destination="CBD-8G-E68" id="Wvp-y1-w6o"/>
+                <outlet property="emailLabel" destination="bJT-mj-sYt" id="Cxt-nC-uW4"/>
                 <outlet property="followButton" destination="Eqt-pa-nKB" id="eaN-xw-iQA"/>
                 <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
                 <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
@@ -355,8 +356,12 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="bR1-nR-QlE">
-                            <rect key="frame" x="6" y="0.0" width="314" height="42"/>
+                            <rect key="frame" x="6" y="3" width="314" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <accessibility key="accessibilityConfiguration">
+                                <accessibilityTraits key="traits" none="YES" notEnabled="YES"/>
+                                <bool key="isElement" value="NO"/>
+                            </accessibility>
                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

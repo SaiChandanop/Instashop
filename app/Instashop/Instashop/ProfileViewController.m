@@ -51,7 +51,7 @@
 @synthesize isSelfProfile;
 @synthesize followButton;
 @synthesize requestedInstagramProfileObject;
-
+@synthesize bioContainerView;
 @synthesize addressLabel;
 @synthesize emailLabel;
 @synthesize categoryLabel;
@@ -94,7 +94,7 @@
     
     self.followButton.alpha = 0;
     
-    [SellersAPIHandler getSellerDetailsWithInstagramID:self.profileInstagramID withDelegate:self];
+    
     
 }
 
@@ -145,16 +145,21 @@
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
         self.profileBackgroundPhotoButton.alpha = .5;
     
+
+    self.bioContainerView.separatorImageView.alpha = 0;
+    
+    
+    
     
 }
 
 
 -(void)sellerDetailsResopnseDidOccurWithDictionary:(NSDictionary *)responseDictionary
 {
- 
-    NSLog(@"sellerDetailsResopnseDidOccurWithDictionary: %@", responseDictionary);
     
     NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", [responseDictionary objectForKey:@"seller_address"], [responseDictionary objectForKey:@"seller_city"], [responseDictionary objectForKey:@"seller_state"]];
+    
+    NSLog(@"addressString: %@", addressString);
     self.addressLabel.text = addressString;
     self.emailLabel.text = [responseDictionary objectForKey:@"seller_email"];
     self.categoryLabel.text = [responseDictionary objectForKey:@"seller_category"];
@@ -224,6 +229,8 @@
 
 -(void)loadViewsWithRequestedProfileObject:(NSDictionary *)theReqeustedProfileObject
 {
+    NSLog(@"theReqeustedProfileObject: %@", theReqeustedProfileObject);
+    
     self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
     
     self.bioTextView.text = [self.requestedInstagramProfileObject objectForKey:@"bio"];
@@ -240,7 +247,7 @@
     [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
     
     
-    
+    [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
 
     
 }
@@ -275,6 +282,9 @@
         else if ([request.url rangeOfString:@"follows"].length > 0)
         {
             NSArray *dataArray = [result objectForKey:@"data"];
+            
+            
+            
             
             if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
                 self.followButton.alpha = 1;

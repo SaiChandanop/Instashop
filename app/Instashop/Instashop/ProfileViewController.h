@@ -13,6 +13,7 @@
 #import "CellSelectionOccuredProtocol.h"
 #import "GKImagePicker.h"
 #import "SellerDetailResponseProtocol.h"
+#import "ISDarkRowContainerView.h"
 
 @interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate, SellerDetailResponseProtocol>
 {
@@ -58,6 +59,7 @@
     UILabel *addressLabel;
     UILabel *emailLabel;
     UILabel *categoryLabel;
+    ISDarkRowContainerView *bioContainerView;
     
     
 }
@@ -112,6 +114,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *addressLabel;
 @property (nonatomic, retain) IBOutlet UILabel *emailLabel;
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
+@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *bioContainerView;
 
 
 @end
