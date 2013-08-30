@@ -84,7 +84,7 @@
     self.infoButton.selected = NO;
     self.reviewsButton.selected = NO;
     
-    self.followButton.backgroundColor = [ISConstants getISGreenColor];
+    
     self.followButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.followButton.layer.shadowOpacity = .75;
     self.followButton.layer.shadowRadius = 2.5;
