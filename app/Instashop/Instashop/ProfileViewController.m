@@ -222,19 +222,22 @@
     [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
     
     
-    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
-        self.followButton.alpha = 1;
+    
 
     
 }
 
 -(IBAction)followOnInstagramButtonHit
 {
-    /*    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSLog(@"self.requestedInstagramProfileObject: %@", requestedInstagramProfileObject);
+//    if (!self.followButton.selected)
+  //  {
+        AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
      
-     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/280421250/relationship", @"method", @"follow", @"action", nil];
-     [theAppDelegate.instagram postRequestWithParams:params delegate:self];
-     */
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"unfollow", @"action", nil];
+        [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+     
+//    }
 
     
     
@@ -248,16 +251,58 @@
         {
 
         }
+        else if ([request.url rangeOfString:@"follows"].length > 0)
+        {
+            NSArray *dataArray = [result objectForKey:@"data"];
+            NSLog(@"follows!!: %@", dataArray);
+            
+            if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+                self.followButton.alpha = 1;
+            
+            BOOL doesFollow = NO;
+            
+            NSLog(@" self.requestedInstagramProfileObject: %@",  self.requestedInstagramProfileObject);
+            for (int i = 0; i < [dataArray count]; i++)
+            {
+                NSString *followID = [[dataArray objectAtIndex:i] objectForKey:@"id"];
+                NSLog(@"followID[%d]: %@, %@", i, followID, [self.requestedInstagramProfileObject objectForKey:@"id"]);
+                
+                if ([followID compare:(NSString *)[self.requestedInstagramProfileObject objectForKey:@"id"]] == NSOrderedSame)
+                    doesFollow = YES;
+            }
+            
+            NSLog(@"doesFollow: %d", doesFollow);
+            if (doesFollow)
+                self.followButton.selected = YES;
+            
+        }
+        else if ([request.url rangeOfString:@"relationship"].length > 0)
+        {
+            
+        }
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
             [self loadViewsWithRequestedProfileObject:dataDictionary];
+            
+            
+            AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            
+            NSLog(@"do follows");
+            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
+//            [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+            [theAppDelegate.instagram requestWithParams:params delegate:self];
+            
+            
     
         }
     }
 }
 
-
+- (void)request:(IGRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"request: %@, error: %@", request, error);
+}
 
 
 -(void) animateSellerButton:(UIButton *)receivingButton
