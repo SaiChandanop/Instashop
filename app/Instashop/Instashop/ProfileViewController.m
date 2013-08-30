@@ -87,6 +87,9 @@
     self.followButton.layer.shadowOffset = CGSizeMake(0, 0);
 //    self.followButton.layer.cornerRadius = 2;
 
+    
+    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+        self.followButton.alpha = 0;
 }
 
 
