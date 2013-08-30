@@ -272,6 +272,9 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" title="Following" backgroundImage="menuDarkBG.png"/>
+                    <connections>
+                        <action selector="followOnInstagramButtonHit" destination="-1" eventType="touchUpInside" id="Nut-Ut-Hhn"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_shadow.png" id="d5h-vJ-PI0">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="10"/>

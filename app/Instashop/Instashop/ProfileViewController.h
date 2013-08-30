@@ -53,7 +53,7 @@
     
     BOOL isSelfProfile;
     
-    
+    NSDictionary *requestedInstagramProfileObject;
     
 }
 
@@ -63,6 +63,8 @@
 -(IBAction) productsButtonHit;
 -(IBAction) infoButtonHit;
 -(IBAction) reviewsButtonHit;
+
+-(IBAction)followOnInstagramButtonHit;
 
 @property (nonatomic, retain) NSString *profileInstagramID;
 
@@ -100,4 +102,6 @@
 @property (nonatomic, retain) UILabel *titleViewLabel;
 
 @property (nonatomic, assign) BOOL isSelfProfile;
+
+@property (nonatomic, retain) NSDictionary *requestedInstagramProfileObject;
 @end

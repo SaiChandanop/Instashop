@@ -51,6 +51,7 @@
 @synthesize titleViewLabel;
 @synthesize isSelfProfile;
 @synthesize followButton;
+@synthesize requestedInstagramProfileObject;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -88,8 +89,7 @@
 //    self.followButton.layer.cornerRadius = 2;
 
     
-    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
-        self.followButton.alpha = 0;
+    self.followButton.alpha = 0;
 }
 
 
@@ -141,6 +141,10 @@
     
     
 }
+
+
+
+
 
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
@@ -198,6 +202,43 @@
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:theText]];
 }
 
+
+
+-(void)loadViewsWithRequestedProfileObject:(NSDictionary *)theReqeustedProfileObject
+{
+    self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
+    
+    self.bioTextView.text = [self.requestedInstagramProfileObject objectForKey:@"bio"];
+    self.usernameLabel.text = [self.requestedInstagramProfileObject objectForKey:@"full_name"];
+    [self setTitleViewText:[self.requestedInstagramProfileObject objectForKey:@"username"]];
+    
+    [self loadTheProfileImageViewWithID:[self.requestedInstagramProfileObject objectForKey:@"id"]];
+    
+    
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedInstagramProfileObject objectForKey:@"profile_picture"] withImageView:self.profileImageView];
+    
+    NSDictionary *countsDictionary = [self.requestedInstagramProfileObject objectForKey:@"counts"];
+    [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
+    [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
+    
+    
+    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+        self.followButton.alpha = 1;
+
+    
+}
+
+-(IBAction)followOnInstagramButtonHit
+{
+    /*    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+     
+     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/280421250/relationship", @"method", @"follow", @"action", nil];
+     [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+     */
+
+    
+    
+}
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
@@ -210,19 +251,8 @@
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
-            
-            self.bioTextView.text = [dataDictionary objectForKey:@"bio"];
-            self.usernameLabel.text = [dataDictionary objectForKey:@"full_name"];
-            [self setTitleViewText:[dataDictionary objectForKey:@"username"]];
-            
-            [self loadTheProfileImageViewWithID:[dataDictionary objectForKey:@"id"]];
-            
-            
-            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
-            
-            NSDictionary *countsDictionary = [dataDictionary objectForKey:@"counts"];
-            [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
-            [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
+            [self loadViewsWithRequestedProfileObject:dataDictionary];
+    
         }
     }
 }
