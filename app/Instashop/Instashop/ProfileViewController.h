@@ -12,8 +12,9 @@
 #import "ProductSelectTableViewController.h"
 #import "CellSelectionOccuredProtocol.h"
 #import "GKImagePicker.h"
+#import "SellerDetailResponseProtocol.h"
 
-@interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate>
+@interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate, SellerDetailResponseProtocol>
 {
     NSString *profileInstagramID;
     
@@ -53,6 +54,11 @@
     BOOL isSelfProfile;
     
     NSDictionary *requestedInstagramProfileObject;
+    
+    UILabel *addressLabel;
+    UILabel *emailLabel;
+    UILabel *categoryLabel;
+    
     
 }
 
@@ -102,4 +108,10 @@
 @property (nonatomic, assign) BOOL isSelfProfile;
 
 @property (nonatomic, retain) NSDictionary *requestedInstagramProfileObject;
+
+@property (nonatomic, retain) IBOutlet UILabel *addressLabel;
+@property (nonatomic, retain) IBOutlet UILabel *emailLabel;
+@property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
+
+
 @end

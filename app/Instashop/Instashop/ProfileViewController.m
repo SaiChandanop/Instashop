@@ -52,6 +52,10 @@
 @synthesize followButton;
 @synthesize requestedInstagramProfileObject;
 
+@synthesize addressLabel;
+@synthesize emailLabel;
+@synthesize categoryLabel;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -89,6 +93,9 @@
 
     
     self.followButton.alpha = 0;
+    
+    [SellersAPIHandler getSellerDetailsWithInstagramID:self.profileInstagramID withDelegate:self];
+    
 }
 
 
@@ -142,6 +149,18 @@
 }
 
 
+-(void)sellerDetailsResopnseDidOccurWithDictionary:(NSDictionary *)responseDictionary
+{
+ 
+    NSLog(@"sellerDetailsResopnseDidOccurWithDictionary: %@", responseDictionary);
+    
+    NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", [responseDictionary objectForKey:@"seller_address"], [responseDictionary objectForKey:@"seller_city"], [responseDictionary objectForKey:@"seller_state"]];
+    self.addressLabel.text = addressString;
+    self.emailLabel.text = [responseDictionary objectForKey:@"seller_email"];
+    self.categoryLabel.text = [responseDictionary objectForKey:@"seller_category"];
+    
+    
+}
 
 
 

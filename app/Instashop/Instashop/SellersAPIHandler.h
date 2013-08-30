@@ -17,4 +17,6 @@
 +(void)makeGetSellersRequestWithDelegate:(id)theDelegate withSellerInstagramID:(NSString *)sellerInstagramID;
 +(void)updateSellerPushIDWithPushID:(NSString *)pushID withInstagramID:(NSString *)instagramID;
 +(void)uploadProfileImage:(UIImage *)image withDelegate:(id)theDelegate;
+
++(void)getSellerDetailsWithInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate;
 @end

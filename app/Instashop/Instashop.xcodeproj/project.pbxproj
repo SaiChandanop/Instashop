@@ -546,6 +546,7 @@
 		7BE958F4175548B800A7E0AB /* ProductCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateViewController.h; sourceTree = "<group>"; };
 		7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateViewController.m; sourceTree = "<group>"; };
 		7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCreateViewController.xib; sourceTree = "<group>"; };
+		7BF02E5817D1301600981F28 /* SellerDetailResponseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerDetailResponseProtocol.h; sourceTree = "<group>"; };
 		7BF9DD75178C546F005148A8 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
 		7BF9DD76178C546F005148A8 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		7BF9DD77178C546F005148A8 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
@@ -783,6 +784,7 @@
 				7B0D255117CBADCB00E43FA6 /* TableCellAddClass.h */,
 				7B0D255217CBADCB00E43FA6 /* TableCellAddClass.m */,
 				7B2F2A2317CEFD860050E0EE /* EditProductCompleteProtocol.h */,
+				7BF02E5817D1301600981F28 /* SellerDetailResponseProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";

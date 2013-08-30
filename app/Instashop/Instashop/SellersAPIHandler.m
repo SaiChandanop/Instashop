@@ -12,7 +12,7 @@
 #import "SellerExistsResponderProtocol.h"
 #import "CreateSellerOccuredProtocol.h"
 #import "SellersRequestFinishedProtocol.h"
-
+#import "SellerDetailResponseProtocol.h"
 
 @implementation SellersAPIHandler
 
@@ -244,6 +244,47 @@
     NSLog(@"uploadImageRequestFinished, responseString: %@", responseString);
     
     [self.delegate loadTheProfileImageViewWithID:[InstagramUserObject getStoredUserObject].userID];
+    
+}
+
+
++(void)getSellerDetailsWithInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/sellerManager.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    
+    
+    URLRequest.HTTPMethod = @"POST";
+    NSMutableString *thePostString  = [NSMutableString stringWithCapacity:0];
+    [thePostString appendString:[NSString stringWithFormat:@"instagramID=%@", instagramID]];
+    [thePostString appendString:[NSString stringWithFormat:@"&action=%@", @"getSellerDetails"]];
+    [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    SellersAPIHandler *apiHandler = [[SellersAPIHandler alloc] init];
+    apiHandler.delegate = theDelegate;
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(getSellerDetailsFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+    
+}
+
+-(void)getSellerDetailsFinished:(id)object
+{
+    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSLog(@"getSellerDetailsFinished, responseString: %@", responseString);
+
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    
+    NSLog(@"responseDictionary: %@", responseDictionary);
+    
+    
+    if ([self.delegate conformsToProtocol:@protocol(SellerDetailResponseProtocol)])
+        [(id<SellerDetailResponseProtocol>)self.delegate sellerDetailsResopnseDidOccurWithDictionary:[NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil]];
+
+    
+    
+    
     
 }
 @end
