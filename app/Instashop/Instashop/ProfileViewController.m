@@ -89,8 +89,8 @@
     self.followButton.layer.shadowOpacity = .75;
     self.followButton.layer.shadowRadius = 2.5;
     self.followButton.layer.shadowOffset = CGSizeMake(0, 0);
-//    self.followButton.layer.cornerRadius = 2;
-
+    //    self.followButton.layer.cornerRadius = 2;
+    
     
     self.followButton.alpha = 0;
     
@@ -107,12 +107,12 @@
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.profileInstagramID], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-
+    
     
     self.sellerInfoView.frame = self.theTableView.frame;
-
-
-
+    
+    
+    
     if (self.isSelfProfile && [InstagramUserObject getStoredUserObject].zencartID == nil)
     {
         
@@ -145,7 +145,7 @@
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
         self.profileBackgroundPhotoButton.alpha = .5;
     
-
+    
     self.bioContainerView.separatorImageView.alpha = 0;
     
     
@@ -156,14 +156,15 @@
 
 -(void)sellerDetailsResopnseDidOccurWithDictionary:(NSDictionary *)responseDictionary
 {
-    
-    NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", [responseDictionary objectForKey:@"seller_address"], [responseDictionary objectForKey:@"seller_city"], [responseDictionary objectForKey:@"seller_state"]];
-    
-    NSLog(@"addressString: %@", addressString);
-    self.addressLabel.text = addressString;
-    self.emailLabel.text = [responseDictionary objectForKey:@"seller_email"];
-    self.categoryLabel.text = [responseDictionary objectForKey:@"seller_category"];
-    
+    if ([responseDictionary isKindOfClass:[NSDictionary class]])
+    {
+        NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", [responseDictionary objectForKey:@"seller_address"], [responseDictionary objectForKey:@"seller_city"], [responseDictionary objectForKey:@"seller_state"]];
+        
+        NSLog(@"addressString: %@", addressString);
+        self.addressLabel.text = addressString;
+        self.emailLabel.text = [responseDictionary objectForKey:@"seller_email"];
+        self.categoryLabel.text = [responseDictionary objectForKey:@"seller_category"];
+    }
     
 }
 
@@ -248,7 +249,7 @@
     
     
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
-
+    
     
 }
 
@@ -262,7 +263,7 @@
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
-     
+        
     }
     else
     {
@@ -271,7 +272,7 @@
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
         
     }
-
+    
     
     
 }
@@ -286,7 +287,7 @@
     {
         if ([request.url rangeOfString:@"media"].length > 0)
         {
-
+            
         }
         else if ([request.url rangeOfString:@"follows"].length > 0)
         {
