@@ -12,6 +12,7 @@
 #import "AppRootViewController.h"
 #import "ISConstants.h"
 #import "ShopsAPIHandler.h"
+#import "AppDelegate.h"
 
 @interface SuggestedStoresViewController ()
 
@@ -78,15 +79,11 @@
 
 -(void)backButtonHit
 {
-    NSLog(@"backButtonHit, self.approot: %@", self.appRootViewController);
-    
     [self.appRootViewController suggestedShopExitButtonHit:self.navigationController];
 }
 
 -(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray
 {
-    NSLog(@"suggestedShopsDidReturn: %@", suggestedShopArray);
-    
     [self.containerViewsArray removeAllObjects];
     
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
@@ -99,6 +96,7 @@
         [subview removeFromSuperview];
     }
 
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     for (int i = 0; i < [self.selectedShopsIDSArray count]; i++)
     {
@@ -108,15 +106,47 @@
         suggestedShopView.frame = CGRectMake(0, i * suggestedShopView.frame.size.height, self.view.frame.size.width, suggestedShopView.frame.size.height);
         [self.contentScrollView addSubview:suggestedShopView];
         
-        self.contentScrollView.contentSize = CGSizeMake(0, suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height);
+        self.contentScrollView.contentSize = CGSizeMake(0, suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height + 60);
+        
+        
+        
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.selectedShopsIDSArray objectAtIndex:i]], @"method", nil];
+        [appDelegate.instagram requestWithParams:params delegate:self];
+
+
+        [self.containerViewsArray addObject:suggestedShopView];
+        
     }
     
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+- (void)request:(IGRequest *)request didLoad:(id)result {
+  
+    
+    NSLog(@"result: %@", result);
+    if ([request.url rangeOfString:@"users"].length > 0)
+    {
+        NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        
+        NSString *dataInstagramID = [dataDictionary objectForKey:@"id"];
+        
+        for (int i = 0; i < [self.containerViewsArray count]; i++)
+        {
+            SuggestedShopView *shopView = [self.containerViewsArray objectAtIndex:i];
+            NSLog(@"shopView.shopViewInstagramID: %@", shopView.shopViewInstagramID);
+            NSLog(@"dataInstagramID: %@", dataInstagramID);
+            NSLog(@" ");
+            if ([shopView.shopViewInstagramID compare:dataInstagramID] == NSOrderedSame)
+            {
+                shopView.bioLabel.text = [dataDictionary objectForKey:@"bio"];
+                shopView.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
+            }
+        }
+    }
 }
+
+
+
 
 @end

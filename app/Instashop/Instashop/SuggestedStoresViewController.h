@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "SuggestedShopReturnProtocol.h"
-
+#import "Instagram.h"
 @class AppRootViewController;
 
-@interface SuggestedStoresViewController : UIViewController <SuggestedShopReturnProtocol>
+@interface SuggestedStoresViewController : UIViewController <SuggestedShopReturnProtocol, IGRequestDelegate>
 {
     AppRootViewController *appRootViewController;
     
