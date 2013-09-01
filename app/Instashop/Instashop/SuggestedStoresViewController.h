@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class AppRootViewController;
+
 @interface SuggestedStoresViewController : UIViewController
 {
+    AppRootViewController *appRootViewController;
+    
     UIScrollView *contentScrollView;
 }
+
+@property (nonatomic, retain) AppRootViewController *appRootViewController;
+
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 @end

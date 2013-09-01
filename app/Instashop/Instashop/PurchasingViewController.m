@@ -163,18 +163,13 @@
     
     self.categoryLabel.text = categoryString;
     
-    
-    
     NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];    
     if ([sizeQuantityArray count] == 1)
         if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
         {
             //Joel set your button style here
             self.sizeButton.enabled = NO;
-            
         }
-
-
 
     self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
     [self.view bringSubviewToFront:self.bottomView];

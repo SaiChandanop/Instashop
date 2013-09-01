@@ -287,6 +287,7 @@ float transitionTime = .456;
 {
     NSLog(@"root suggestedShopButtonHit");
     SuggestedStoresViewController *suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
+    suggestedStoresViewController.appRootViewController = self;
     
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:suggestedStoresViewController];
@@ -302,6 +303,22 @@ float transitionTime = .456;
     [UIView commitAnimations];
 
 }
+
+-(void)suggestedShopExitButtonHit:(UINavigationController *)navigationController
+{
+    
+    NSLog(@"profileExitButtonHit: %@", navigationController);
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+
+    
+    
+}
+
 
 
 @end

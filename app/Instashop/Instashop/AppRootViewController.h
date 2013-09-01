@@ -44,6 +44,7 @@
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 
 -(void)suggestedShopButtonHit;
+-(void)suggestedShopExitButtonHit:(UINavigationController *)navigationController;
 
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;
