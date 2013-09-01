@@ -11,6 +11,7 @@
 #import "NavBarTitleView.h"
 #import "AppRootViewController.h"
 #import "ISConstants.h"
+#import "ShopsAPIHandler.h"
 
 @interface SuggestedStoresViewController ()
 
@@ -32,6 +33,9 @@
 
 - (void)viewDidLoad
 {
+    
+    [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
+    
     [super viewDidLoad];
  
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
@@ -77,6 +81,12 @@
     NSLog(@"backButtonHit, self.approot: %@", self.appRootViewController);
     
     [self.appRootViewController suggestedShopExitButtonHit:self.navigationController];
+}
+
+-(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray
+{
+    NSLog(@"suggestedShopsDidReturn: %@", suggestedShopArray);
+    
 }
 
 - (void)didReceiveMemoryWarning

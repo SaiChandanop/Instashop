@@ -7,11 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SuggestedShopReturnProtocol.h"
 
 @class AppRootViewController;
 
-@interface SuggestedStoresViewController : UIViewController
+@interface SuggestedStoresViewController : UIViewController <SuggestedShopReturnProtocol>
 {
     AppRootViewController *appRootViewController;
     

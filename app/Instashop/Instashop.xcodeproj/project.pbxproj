@@ -125,6 +125,7 @@
 		7B5A56EB17D3D757007AABDA /* SuggestedStoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A56E917D3D757007AABDA /* SuggestedStoresViewController.xib */; };
 		7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */; };
 		7B5A56F017D3D80C007AABDA /* SuggestedShopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */; };
+		7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56F317D3DC89007AABDA /* ShopsAPIHandler.m */; };
 		7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624717C5122F00D6C8B1 /* ISConstants.m */; };
 		7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */; };
 		7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */; };
@@ -393,6 +394,9 @@
 		7B5A56EC17D3D7F8007AABDA /* SuggestedShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestedShopView.h; sourceTree = "<group>"; };
 		7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestedShopView.m; sourceTree = "<group>"; };
 		7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestedShopView.xib; sourceTree = "<group>"; };
+		7B5A56F217D3DC89007AABDA /* ShopsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopsAPIHandler.h; sourceTree = "<group>"; };
+		7B5A56F317D3DC89007AABDA /* ShopsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopsAPIHandler.m; sourceTree = "<group>"; };
+		7B5A56F517D3DD9D007AABDA /* SuggestedShopReturnProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestedShopReturnProtocol.h; sourceTree = "<group>"; };
 		7B5D624617C5122F00D6C8B1 /* ISConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISConstants.h; sourceTree = "<group>"; };
 		7B5D624717C5122F00D6C8B1 /* ISConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISConstants.m; sourceTree = "<group>"; };
 		7B5D624C17C5174300D6C8B1 /* ISLightRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLightRowContainerView.h; sourceTree = "<group>"; };
@@ -798,6 +802,7 @@
 				7B0D255217CBADCB00E43FA6 /* TableCellAddClass.m */,
 				7B2F2A2317CEFD860050E0EE /* EditProductCompleteProtocol.h */,
 				7BF02E5817D1301600981F28 /* SellerDetailResponseProtocol.h */,
+				7B5A56F517D3DD9D007AABDA /* SuggestedShopReturnProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -930,6 +935,15 @@
 				7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */,
 			);
 			name = SuggestedStores;
+			sourceTree = "<group>";
+		};
+		7B5A56F117D3DC79007AABDA /* Shops */ = {
+			isa = PBXGroup;
+			children = (
+				7B5A56F217D3DC89007AABDA /* ShopsAPIHandler.h */,
+				7B5A56F317D3DC89007AABDA /* ShopsAPIHandler.m */,
+			);
+			name = Shops;
 			sourceTree = "<group>";
 		};
 		7B5D624517C4F4B000D6C8B1 /* Views */ = {
@@ -1210,6 +1224,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7B5A56F117D3DC79007AABDA /* Shops */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
 				7BE958EF1755470000A7E0AB /* Products */,
@@ -1641,6 +1656,7 @@
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
 				7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */,
 				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
+				7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */,
 				7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */,
 				7B0D254B17CBA36F00E43FA6 /* GKImagePicker.m in Sources */,
 				7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */,

@@ -131,8 +131,6 @@
 
 +(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withProductCategoryObjectID:(NSString *)productCategoryObjectID withPostmasterDictionary:(NSDictionary *)postmasterDictionary
 {
-
-    
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"buy_product.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
@@ -162,16 +160,13 @@
     [productAPIHandler.theWebRequest start];
 
     
-    
 }
 
 -(void)productPurchasedComplete:(id)obj
 {
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
-    
-    
-    
+        
     
     if ([self.delegate conformsToProtocol:@protocol(ProductPurchaseCompleteProtocol)])
         [(id<ProductPurchaseCompleteProtocol>)self.delegate productPurchaceSuccessful];
