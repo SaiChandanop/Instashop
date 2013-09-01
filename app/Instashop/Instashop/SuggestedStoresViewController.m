@@ -13,6 +13,7 @@
 #import "ISConstants.h"
 #import "ShopsAPIHandler.h"
 #import "AppDelegate.h"
+#import "ImageAPIHandler.h"
 
 @interface SuggestedStoresViewController ()
 
@@ -123,30 +124,37 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
   
-    
-    NSLog(@"result: %@", result);
     if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        NSLog(@"dataDictionary: %@", dataDictionary);
         
         NSString *dataInstagramID = [dataDictionary objectForKey:@"id"];
         
         for (int i = 0; i < [self.containerViewsArray count]; i++)
         {
             SuggestedShopView *shopView = [self.containerViewsArray objectAtIndex:i];
-            NSLog(@"shopView.shopViewInstagramID: %@", shopView.shopViewInstagramID);
-            NSLog(@"dataInstagramID: %@", dataInstagramID);
-            NSLog(@" ");
+
             if ([shopView.shopViewInstagramID compare:dataInstagramID] == NSOrderedSame)
             {
                 shopView.bioLabel.text = [dataDictionary objectForKey:@"bio"];
                 shopView.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
+                shopView.bioLabel.numberOfLines = 0;
+                shopView.bioLabel.font = [UIFont systemFontOfSize:8];
+                
+                [ImageAPIHandler makeImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:shopView.profileImageView];
+                [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:shopView.theBackgroundImageView withInstagramID:shopView.shopViewInstagramID];
+                
+                [shopView bringSubviewToFront:shopView.profileImageView];
             }
         }
     }
 }
 
 
-
+-(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
+{
+    
+}
 
 @end
