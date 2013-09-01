@@ -127,4 +127,11 @@
 }
 
 
+-(IBAction)suggestedShopButtonHit
+{
+    NSLog(@"ib action: suggestedShopButtonHit");
+    
+    [self.parentController suggestedShopButtonHit];
+}
+
 @end

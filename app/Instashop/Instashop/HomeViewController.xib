@@ -149,6 +149,17 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mgw-bI-LnQ">
+                            <rect key="frame" x="11" y="8" width="289" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="suggestedShopButtonHit" destination="-1" eventType="touchUpInside" id="u4i-0B-5c3"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="43" userLabel="Notification">

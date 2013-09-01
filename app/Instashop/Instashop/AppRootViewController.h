@@ -43,6 +43,7 @@
 -(void) profileExitButtonHit:(UINavigationController *)navigationController;
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 
+-(void)suggestedShopButtonHit;
 
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;

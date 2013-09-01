@@ -120,6 +120,10 @@
 		7B51EB1917C30F03009FBE91 /* cell_disclosure_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1817C30F03009FBE91 /* cell_disclosure_new@2x.png */; };
 		7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */; };
 		7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */; };
+		7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56E817D3D757007AABDA /* SuggestedStoresViewController.m */; };
+		7B5A56EB17D3D757007AABDA /* SuggestedStoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A56E917D3D757007AABDA /* SuggestedStoresViewController.xib */; };
+		7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */; };
+		7B5A56F017D3D80C007AABDA /* SuggestedShopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */; };
 		7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624717C5122F00D6C8B1 /* ISConstants.m */; };
 		7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */; };
 		7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */; };
@@ -381,6 +385,12 @@
 		7B51EB1817C30F03009FBE91 /* cell_disclosure_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_disclosure_new@2x.png"; sourceTree = "<group>"; };
 		7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop_button_dark@2x.png"; sourceTree = "<group>"; };
 		7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop_button_light@2x.png"; sourceTree = "<group>"; };
+		7B5A56E717D3D757007AABDA /* SuggestedStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestedStoresViewController.h; sourceTree = "<group>"; };
+		7B5A56E817D3D757007AABDA /* SuggestedStoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestedStoresViewController.m; sourceTree = "<group>"; };
+		7B5A56E917D3D757007AABDA /* SuggestedStoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestedStoresViewController.xib; sourceTree = "<group>"; };
+		7B5A56EC17D3D7F8007AABDA /* SuggestedShopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestedShopView.h; sourceTree = "<group>"; };
+		7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestedShopView.m; sourceTree = "<group>"; };
+		7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestedShopView.xib; sourceTree = "<group>"; };
 		7B5D624617C5122F00D6C8B1 /* ISConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISConstants.h; sourceTree = "<group>"; };
 		7B5D624717C5122F00D6C8B1 /* ISConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISConstants.m; sourceTree = "<group>"; };
 		7B5D624C17C5174300D6C8B1 /* ISLightRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLightRowContainerView.h; sourceTree = "<group>"; };
@@ -906,6 +916,19 @@
 			name = shittyimages;
 			sourceTree = "<group>";
 		};
+		7B5A56E617D3D742007AABDA /* SuggestedStores */ = {
+			isa = PBXGroup;
+			children = (
+				7B5A56E717D3D757007AABDA /* SuggestedStoresViewController.h */,
+				7B5A56E817D3D757007AABDA /* SuggestedStoresViewController.m */,
+				7B5A56E917D3D757007AABDA /* SuggestedStoresViewController.xib */,
+				7B5A56EC17D3D7F8007AABDA /* SuggestedShopView.h */,
+				7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */,
+				7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */,
+			);
+			name = SuggestedStores;
+			sourceTree = "<group>";
+		};
 		7B5D624517C4F4B000D6C8B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1134,6 +1157,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B5A56E617D3D742007AABDA /* SuggestedStores */,
 				7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B0680CA17664BC2009154BF /* Buy */,
@@ -1528,6 +1552,7 @@
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
 				7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
+				7B5A56EB17D3D757007AABDA /* SuggestedStoresViewController.xib in Resources */,
 				7B5D62A717C5AF9F00D6C8B1 /* diners.png in Resources */,
 				2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */,
 				7B5D62B217C5AF9F00D6C8B1 /* visa@2x.png in Resources */,
@@ -1550,6 +1575,7 @@
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
 				7B5D62AA17C5AF9F00D6C8B1 /* discover@2x.png in Resources */,
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
+				7B5A56F017D3D80C007AABDA /* SuggestedShopView.xib in Resources */,
 				7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */,
 				7B9EAB3E1796E98600D2868D /* product_buy_bakcground_image_a.png in Resources */,
 				2E38E6B117CBDB6300A8BD54 /* lightMenuBG@2x.png in Resources */,
@@ -1589,6 +1615,7 @@
 				7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */,
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
+				7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,
@@ -1640,6 +1667,7 @@
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
 				7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
+				7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */,
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
 				7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */,
 				7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */,
