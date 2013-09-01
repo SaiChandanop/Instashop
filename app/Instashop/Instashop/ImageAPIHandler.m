@@ -37,8 +37,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     else
     {
 */
-    
-        NSLog(@"referenceImageView: %@", referenceImageView);
+
         ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
         handler.delegate = theDelegate;
         handler.contextObject = instagramMediaURLString;
@@ -55,9 +54,6 @@ static ImageAPIHandler *sharedImageAPIHandler;
     
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
     [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:self.contextObject];
-    
-   
-    NSLog(@"self.theImageView: %@", self.theImageView);
     
     if (self.theImageView != nil)
     {

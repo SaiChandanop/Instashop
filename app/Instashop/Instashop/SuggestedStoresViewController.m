@@ -127,8 +127,6 @@
     if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
-        NSLog(@"dataDictionary: %@", dataDictionary);
-        
         NSString *dataInstagramID = [dataDictionary objectForKey:@"id"];
         
         for (int i = 0; i < [self.containerViewsArray count]; i++)
