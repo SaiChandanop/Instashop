@@ -16,9 +16,18 @@
     AppRootViewController *appRootViewController;
     
     UIScrollView *contentScrollView;
+    
+    NSMutableArray *selectedShopsIDSArray;
+    NSMutableArray *containerViewsArray;
+    
+    
 }
 
 @property (nonatomic, retain) AppRootViewController *appRootViewController;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
+
+@property (nonatomic, retain) NSMutableArray *selectedShopsIDSArray;
+@property (nonatomic, retain) NSMutableArray *containerViewsArray;
+
 @end

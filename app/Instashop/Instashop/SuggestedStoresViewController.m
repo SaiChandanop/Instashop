@@ -21,12 +21,17 @@
 
 @synthesize appRootViewController;
 @synthesize contentScrollView;
+@synthesize selectedShopsIDSArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.containerViewsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        
     }
     return self;
 }
@@ -69,11 +74,6 @@
 
     
     
-    
-    
-    SuggestedShopView *aView = [[[NSBundle mainBundle] loadNibNamed:@"SuggestedShopView" owner:self options:nil] objectAtIndex:0];
-    aView.titleLabel.text = @"asdf";
-    [self.contentScrollView addSubview:aView];
 }
 
 -(void)backButtonHit
@@ -86,6 +86,30 @@
 -(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray
 {
     NSLog(@"suggestedShopsDidReturn: %@", suggestedShopArray);
+    
+    [self.containerViewsArray removeAllObjects];
+    
+    [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
+    
+    NSArray *subviewsArray = [self.contentScrollView subviews];
+    
+    for (int i = 0; i < [subviewsArray count]; i++)
+    {
+        UIView *subview = [subviewsArray objectAtIndex:i];
+        [subview removeFromSuperview];
+    }
+
+    
+    for (int i = 0; i < [self.selectedShopsIDSArray count]; i++)
+    {
+        SuggestedShopView *suggestedShopView = [[[NSBundle mainBundle] loadNibNamed:@"SuggestedShopView" owner:self options:nil] objectAtIndex:0];
+        suggestedShopView.shopViewInstagramID = [self.selectedShopsIDSArray objectAtIndex:i];
+        suggestedShopView.titleLabel.text = suggestedShopView.shopViewInstagramID;
+        suggestedShopView.frame = CGRectMake(0, i * suggestedShopView.frame.size.height, self.view.frame.size.width, suggestedShopView.frame.size.height);
+        [self.contentScrollView addSubview:suggestedShopView];
+        
+        self.contentScrollView.contentSize = CGSizeMake(0, suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height);
+    }
     
 }
 

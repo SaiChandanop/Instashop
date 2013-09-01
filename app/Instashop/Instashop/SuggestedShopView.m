@@ -10,6 +10,14 @@
 
 @implementation SuggestedShopView
 
+
+@synthesize shopViewInstagramID;
+@synthesize titleLabel;
+@synthesize bioLabel;
+@synthesize theBackgroundImageView;
+@synthesize profileImageView;
+
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];

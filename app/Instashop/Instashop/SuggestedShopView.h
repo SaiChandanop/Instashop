@@ -10,12 +10,16 @@
 
 @interface SuggestedShopView : UIView
 {
+    NSString *shopViewInstagramID;
+    
     UILabel *titleLabel;
     UILabel *bioLabel;
     
     UIImageView *theBackgroundImageView;
     UIImageView *profileImageView;
 }
+
+@property (nonatomic, retain) NSString *shopViewInstagramID;
 
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *bioLabel;
