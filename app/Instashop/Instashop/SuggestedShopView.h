@@ -8,27 +8,30 @@
 
 #import <UIKit/UIKit.h>
 
+@class SuggestedStoresViewController;
+
 @interface SuggestedShopView : UIView
 {
+    SuggestedStoresViewController *parentController;
     NSString *shopViewInstagramID;
     
     UILabel *titleLabel;
     UILabel *bioLabel;
-    
     UIImageView *theBackgroundImageView;
     UIImageView *profileImageView;
-    
     UIButton *followButton;
-    
 }
 
+-(IBAction)followButtonHit;
+
+@property (nonatomic, retain) SuggestedStoresViewController *parentController;
 @property (nonatomic, retain) NSString *shopViewInstagramID;
 
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *bioLabel;
-
 @property (nonatomic, retain) IBOutlet UIImageView *theBackgroundImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *profileImageView;
-
 @property (nonatomic, retain) IBOutlet UIButton *followButton;
+
+
 @end

@@ -15,7 +15,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="223"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vRf-h3-3qv">
+                <button opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vRf-h3-3qv">
                     <rect key="frame" x="21" y="96" width="98" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -24,6 +24,9 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <state key="selected" title="Following" backgroundImage="following_btn_background.png"/>
+                    <connections>
+                        <action selector="followButtonHit" destination="DZY-em-fqN" eventType="touchUpInside" id="jBc-N1-2F1"/>
+                    </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="gQK-oP-n44">
                     <rect key="frame" x="20" y="124" width="101" height="91"/>
@@ -54,6 +57,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="bioLabel" destination="CqH-kP-qze" id="bmW-Cq-kwW"/>
+                <outlet property="followButton" destination="vRf-h3-3qv" id="mWF-hu-fBo"/>
                 <outlet property="profileImageView" destination="gQK-oP-n44" id="qht-fA-HGW"/>
                 <outlet property="theBackgroundImageView" destination="KxM-yF-CZf" id="zLE-Rb-yPD"/>
                 <outlet property="titleLabel" destination="OeR-gy-3vm" id="mzP-d7-421"/>
