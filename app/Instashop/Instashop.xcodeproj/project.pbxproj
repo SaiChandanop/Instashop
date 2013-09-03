@@ -108,8 +108,6 @@
 		7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */; };
 		7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */; };
 		7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5218175FBDD800ABF49B /* productpreviewtabbar.png */; };
-		7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B49085C1758FE5B0047ED3B /* NotificationsViewController.m */; };
-		7B49085F1758FE5B0047ED3B /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B49085D1758FE5B0047ED3B /* NotificationsViewController.xib */; };
 		7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4908611758FE650047ED3B /* DiscoverViewController.m */; };
 		7B4908641758FE650047ED3B /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4908621758FE650047ED3B /* DiscoverViewController.xib */; };
 		7B4A78FA17B13C07002E872A /* purchase_button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4A78F917B13C07002E872A /* purchase_button_background.png */; };
@@ -126,6 +124,8 @@
 		7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */; };
 		7B5A56F017D3D80C007AABDA /* SuggestedShopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */; };
 		7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56F317D3DC89007AABDA /* ShopsAPIHandler.m */; };
+		7B5BFAE417D6945600F82F0B /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */; };
+		7B5BFAE517D6945600F82F0B /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5BFAE317D6945600F82F0B /* NotificationsViewController.xib */; };
 		7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624717C5122F00D6C8B1 /* ISConstants.m */; };
 		7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */; };
 		7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */; };
@@ -375,9 +375,6 @@
 		7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductPreviewViewController.m; sourceTree = "<group>"; };
 		7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductPreviewViewController.xib; sourceTree = "<group>"; };
 		7B3F5218175FBDD800ABF49B /* productpreviewtabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = productpreviewtabbar.png; sourceTree = "<group>"; };
-		7B49085B1758FE5B0047ED3B /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
-		7B49085C1758FE5B0047ED3B /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
-		7B49085D1758FE5B0047ED3B /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
 		7B4908601758FE650047ED3B /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		7B4908611758FE650047ED3B /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		7B4908621758FE650047ED3B /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
@@ -401,6 +398,9 @@
 		7B5A56F217D3DC89007AABDA /* ShopsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopsAPIHandler.h; sourceTree = "<group>"; };
 		7B5A56F317D3DC89007AABDA /* ShopsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopsAPIHandler.m; sourceTree = "<group>"; };
 		7B5A56F517D3DD9D007AABDA /* SuggestedShopReturnProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestedShopReturnProtocol.h; sourceTree = "<group>"; };
+		7B5BFAE117D6945600F82F0B /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
+		7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
+		7B5BFAE317D6945600F82F0B /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
 		7B5D624617C5122F00D6C8B1 /* ISConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISConstants.h; sourceTree = "<group>"; };
 		7B5D624717C5122F00D6C8B1 /* ISConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISConstants.m; sourceTree = "<group>"; };
 		7B5D624C17C5174300D6C8B1 /* ISLightRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLightRowContainerView.h; sourceTree = "<group>"; };
@@ -894,9 +894,6 @@
 		7B4908541758FE0A0047ED3B /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
-				7B49085B1758FE5B0047ED3B /* NotificationsViewController.h */,
-				7B49085C1758FE5B0047ED3B /* NotificationsViewController.m */,
-				7B49085D1758FE5B0047ED3B /* NotificationsViewController.xib */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -957,6 +954,16 @@
 				7B5A56F317D3DC89007AABDA /* ShopsAPIHandler.m */,
 			);
 			name = Shops;
+			sourceTree = "<group>";
+		};
+		7B5BFAD617D6928400F82F0B /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				7B5BFAE117D6945600F82F0B /* NotificationsViewController.h */,
+				7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */,
+				7B5BFAE317D6945600F82F0B /* NotificationsViewController.xib */,
+			);
+			name = Notifications;
 			sourceTree = "<group>";
 		};
 		7B5D624517C4F4B000D6C8B1 /* Views */ = {
@@ -1187,6 +1194,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B5BFAD617D6928400F82F0B /* Notifications */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B0680CA17664BC2009154BF /* Buy */,
 				7B15B2F817B2A9E700173752 /* Categories */,
@@ -1524,7 +1532,6 @@
 				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
-				7B49085F1758FE5B0047ED3B /* NotificationsViewController.xib in Resources */,
 				7B4908641758FE650047ED3B /* DiscoverViewController.xib in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
 				7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */,
@@ -1619,6 +1626,7 @@
 				2E0EAE22176F6E6700B65FC3 /* lmFAQIcon@2x.png in Resources */,
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
 				7B0D253D17CBA36300E43FA6 /* PLCameraSheetDoneButton.png in Resources */,
+				7B5BFAE517D6945600F82F0B /* NotificationsViewController.xib in Resources */,
 				2E0EAE24176F6E6700B65FC3 /* leftMenuButton@2x.png in Resources */,
 				2E628CAF17C6A19900CB7BE4 /* AppIcon60x60@2x.png in Resources */,
 				2E0EAE25176F6E6700B65FC3 /* lmDiscoverIcon@2x.png in Resources */,
@@ -1692,7 +1700,6 @@
 				7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */,
 				7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */,
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
-				7B49085E1758FE5B0047ED3B /* NotificationsViewController.m in Sources */,
 				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
 				7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */,
 				7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */,
@@ -1703,6 +1710,7 @@
 				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
 				7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */,
 				7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */,
+				7B5BFAE417D6945600F82F0B /* NotificationsViewController.m in Sources */,
 				7B1072BE175E7CDE00D9DC5D /* ProductDetailsViewController.m in Sources */,
 				7B5D628517C5AF7100D6C8B1 /* PKUSAddressZip.m in Sources */,
 				7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */,
@@ -1837,15 +1845,15 @@
 		7B61EE75174D2162002A483D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				PROVISIONING_PROFILE = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1860,8 +1868,8 @@
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "547CBEB8-017C-4061-8EEC-1B55491DC593";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "547CBEB8-017C-4061-8EEC-1B55491DC593";
+				PROVISIONING_PROFILE = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

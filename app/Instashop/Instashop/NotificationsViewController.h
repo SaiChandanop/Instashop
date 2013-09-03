@@ -2,7 +2,7 @@
 //  NotificationsViewController.h
 //  Instashop
 //
-//  Created by Josh Klobe on 5/31/13.
+//  Created by Josh Klobe on 9/3/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
 

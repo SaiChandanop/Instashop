@@ -10,7 +10,6 @@
 
 #import "FeedViewController.h"
 #import "HomeViewController.h"
-#import "NotificationsViewController.h"
 #import "DiscoverViewController.h"
 
 
@@ -21,7 +20,6 @@
     FeedViewController *feedViewController;
     HomeViewController *homeViewController;
     DiscoverViewController *discoverViewController;
-    NotificationsViewController *notificationsViewController;
     
     BOOL areViewsTransitioning;
     
@@ -58,7 +56,6 @@
 @property (strong, nonatomic) FeedViewController *feedViewController;
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) DiscoverViewController *discoverViewController;
-@property (strong, nonatomic) NotificationsViewController *notificationsViewController;
 
 @property (strong, nonatomic) UIButton *feedCoverButton;
 

@@ -17,13 +17,13 @@
 #import "InstagramUserObject.h"
 #import "SuggestedStoresViewController.h"
 #import "SearchViewController.h"
-
+#import "NotificationsViewController.h"
 
 @implementation AppRootViewController
 
 static AppRootViewController *theSharedRootViewController;
 
-@synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController, notificationsViewController;
+@synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController;
 @synthesize areViewsTransitioning;
 @synthesize feedCoverButton;
 
@@ -74,16 +74,6 @@ float transitionTime = .456;
     self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
-    
-    /*
-    UIView *gapView = [[UIView alloc] initWithFrame:CGRectMake(0,0,320,20)];
-    gapView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    [self.feedNavigationController.view addSubview:gapView];
-    */
-    
-    self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
-    self.notificationsViewController.view.frame = CGRectMake(0, self.view.frame.size.height * -1, self.view.frame.size.width, self.view.frame.size.height);
-//    [self.feedViewController.view insertSubview:self.notificationsViewController.view belowSubview:self.feedViewController.headerView];
     
     
     
@@ -149,14 +139,19 @@ float transitionTime = .456;
     {
         self.areViewsTransitioning = YES;
         
+        NotificationsViewController *notificationViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
+
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:notificationViewController];
+        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:navigationController .view];
+        
+        
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        if (self.notificationsViewController.view.frame.origin.y == 0)
-            self.notificationsViewController.view.frame = CGRectMake(self.feedViewController.view.frame.origin.x, -self.feedViewController.view.frame.size.height, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
-        else
-            self.notificationsViewController.view.frame = CGRectMake(self.feedViewController.view.frame.origin.x, 0, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
+        navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
         
     }

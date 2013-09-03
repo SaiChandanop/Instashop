@@ -134,4 +134,9 @@
     [self.parentController suggestedShopButtonHit];
 }
 
+-(IBAction)notificationsButtonHit
+{
+    [self.parentController notificationsButtonHit];
+    
+}
 @end
