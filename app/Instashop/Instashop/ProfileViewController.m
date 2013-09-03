@@ -257,9 +257,15 @@
     
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
 
+    
+    float descSpacer = self.descriptionLabel.frame.origin.y - self.bioContainerView.frame.origin.y - self.bioContainerView.frame.size.height;
     self.bioLabel.text = [self.requestedInstagramProfileObject objectForKey:@"bio"];
     self.bioLabel.numberOfLines = 0;
+    CGSize bioLabelSize = [self.bioLabel.text sizeWithFont:self.bioLabel.font constrainedToSize:CGSizeMake(self.bioLabel.frame.size.width, 1000) lineBreakMode:NSLineBreakByWordWrapping];
     
+    self.bioContainerView.frame = CGRectMake(self.bioContainerView.frame.origin.x, self.bioContainerView.frame.origin.y, self.bioContainerView.frame.size.width, bioLabelSize.height + 28);
+    self.bioLabel.frame = CGRectMake(self.bioLabel.frame.origin.x, self.bioLabel.frame.origin.y, self.bioLabel.frame.size.width, bioLabelSize.height + 1);
+    self.descriptionLabel.frame = CGRectMake(self.descriptionLabel.frame.origin.x, self.bioContainerView.frame.origin.y + bioLabelSize.height + descSpacer, self.descriptionLabel.frame.size.width, self.descriptionLabel.frame.size.height);
     
 }
 
