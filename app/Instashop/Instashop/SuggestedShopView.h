@@ -17,6 +17,9 @@
     
     UIImageView *theBackgroundImageView;
     UIImageView *profileImageView;
+    
+    UIButton *followButton;
+    
 }
 
 @property (nonatomic, retain) NSString *shopViewInstagramID;
@@ -27,4 +30,5 @@
 @property (nonatomic, retain) IBOutlet UIImageView *theBackgroundImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *profileImageView;
 
+@property (nonatomic, retain) IBOutlet UIButton *followButton;
 @end

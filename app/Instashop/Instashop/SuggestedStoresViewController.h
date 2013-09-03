@@ -18,7 +18,8 @@
     UIScrollView *contentScrollView;
     
     NSMutableArray *selectedShopsIDSArray;
-    NSMutableArray *containerViewsArray;
+
+    NSMutableDictionary *containerViewsDictionary;
     
     
 }
@@ -28,6 +29,6 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 
 @property (nonatomic, retain) NSMutableArray *selectedShopsIDSArray;
-@property (nonatomic, retain) NSMutableArray *containerViewsArray;
+@property (nonatomic, retain) NSMutableDictionary *containerViewsDictionary;
 
 @end

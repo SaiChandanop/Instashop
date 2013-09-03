@@ -32,7 +32,7 @@
         // Custom initialization
         
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
-        self.containerViewsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.containerViewsDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
         
     }
     return self;
@@ -44,11 +44,11 @@
     [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
     
     [super viewDidLoad];
- 
+    
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
-
+    
     
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
@@ -73,7 +73,7 @@
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
     [self.view insertSubview:bgImageView atIndex:0];
-
+    
     
     
 }
@@ -85,7 +85,7 @@
 
 -(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray
 {
-    [self.containerViewsArray removeAllObjects];
+    [self.containerViewsDictionary removeAllObjects];
     
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
     
@@ -96,7 +96,7 @@
         UIView *subview = [subviewsArray objectAtIndex:i];
         [subview removeFromSuperview];
     }
-
+    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     for (int i = 0; i < [self.selectedShopsIDSArray count]; i++)
@@ -113,26 +113,33 @@
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.selectedShopsIDSArray objectAtIndex:i]], @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
-
-
-        [self.containerViewsArray addObject:suggestedShopView];
         
+        
+        [self.containerViewsDictionary setObject:suggestedShopView forKey:suggestedShopView.shopViewInstagramID];
     }
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
+    [appDelegate.instagram requestWithParams:params delegate:self];
+    
     
 }
 
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
-  
-    if ([request.url rangeOfString:@"users"].length > 0)
+    
+    if ([request.url rangeOfString:@"follows"].length > 0)
+    {
+        NSArray *dataArray = [result objectForKey:@"data"];
+        NSLog(@"dataArray: %@", dataArray);
+    }
+    else if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
         NSString *dataInstagramID = [dataDictionary objectForKey:@"id"];
         
-        for (int i = 0; i < [self.containerViewsArray count]; i++)
-        {
-            SuggestedShopView *shopView = [self.containerViewsArray objectAtIndex:i];
-
+        SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:dataInstagramID];
+        
+        if (shopView != nil)
             if ([shopView.shopViewInstagramID compare:dataInstagramID] == NSOrderedSame)
             {
                 shopView.bioLabel.text = [dataDictionary objectForKey:@"bio"];
@@ -144,10 +151,11 @@
                 [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:shopView.theBackgroundImageView withInstagramID:shopView.shopViewInstagramID];
                 
                 [shopView bringSubviewToFront:shopView.profileImageView];
+                
             }
-        }
     }
 }
+
 
 
 -(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
