@@ -12,6 +12,7 @@
 #import "NavBarTitleView.h"
 #import "SearchResultTableCell.h"
 #import "AppRootViewController.h"
+#import "PurchasingViewController.h"
 @interface SearchViewController ()
 
 
@@ -73,6 +74,9 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
+    [self.searchResultsArray removeAllObjects];
+    [self.searchResultsTableView reloadData];
+    
     [self.theSearchBar resignFirstResponder];
     [SearchAPIHandler makeSearchRequestWithDelegate:self withRequestString:searchBar.text];
     
@@ -117,9 +121,30 @@
     [cell loadWithSearchResultObject:[self.searchResultsArray objectAtIndex:indexPath.row]];
     
     return cell;
+    
 }
 
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSDictionary *dict = [self.searchResultsArray objectAtIndex:indexPath.row];
+    
+    switch ([[dict objectForKey:@"type"] integerValue]) {
+        case SEARCH_RESULT_TYPE_PRODUCT:
+            NSLog(@"");
+            PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+            purchasingViewController.requestingProductID = [dict objectForKey:@"id"];
+            purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
+            [self.navigationController pushViewController:purchasingViewController animated:YES];
+
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+}
 
 
 

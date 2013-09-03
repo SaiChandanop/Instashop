@@ -80,6 +80,7 @@
 
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
+    NSLog(@"requestingProductID: %@", self.requestingProductID);
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
     
     self.sizeSelectedIndex = 0;
