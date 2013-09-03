@@ -99,13 +99,7 @@
 
 -(IBAction)discoverButtonHit
 {
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Coming Soon!"
-                                                        message:nil
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-    
-    [alertView show];
+    [self.parentController searchButtonHit];
 }
 
 

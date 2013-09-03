@@ -36,15 +36,23 @@
 -(void)notificationsButtonHit;
 -(void)discoverButtonHit;
 
--(void)createProductButtonHit;
--(void)createSellerButtonHit;
 
+-(void) createSellerButtonHit;
 -(void) createSellerShouldExit:(UINavigationController *)theNavigationController;
--(void) profileExitButtonHit:(UINavigationController *)navigationController;
+
+-(void)createProductButtonHit;
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 
--(void)suggestedShopButtonHit;
--(void)suggestedShopExitButtonHit:(UINavigationController *)navigationController;
+
+-(void) profileExitButtonHit:(UINavigationController *)navigationController;
+
+
+-(void) suggestedShopButtonHit;
+-(void) suggestedShopExitButtonHit:(UINavigationController *)navigationController;
+
+-(void) searchButtonHit;
+-(void) searchExitButtonHit:(UINavigationController *)navigationController;
+
 
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;

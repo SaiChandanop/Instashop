@@ -16,6 +16,8 @@
 #import "ProfileViewController.h"
 #import "InstagramUserObject.h"
 #import "SuggestedStoresViewController.h"
+#import "SearchViewController.h"
+
 
 @implementation AppRootViewController
 
@@ -316,9 +318,41 @@ float transitionTime = .456;
     [UIView commitAnimations];
 
     
-    
 }
 
+
+-(void)searchButtonHit
+{
+    SearchViewController *theVC = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+    theVC.appRootViewController = self;
+    
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:theVC];
+    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:navigationController .view];
+    
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+
+}
+
+-(void)searchExitButtonHit:(UINavigationController *)navigationController
+{
+    NSLog(@"searchExitButtonHit: %@", navigationController);
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+  
+    
+}
 
 
 @end
