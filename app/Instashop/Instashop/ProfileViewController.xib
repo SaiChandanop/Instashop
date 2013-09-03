@@ -10,7 +10,7 @@
                 <outlet property="addBackgroundImageButton" destination="TvE-Jz-6Ul" id="39D-0l-1qb"/>
                 <outlet property="addressLabel" destination="znR-xa-c7U" id="7yd-jp-pcc"/>
                 <outlet property="backgroundImageView" destination="uUu-tP-DTR" id="sNn-qt-g3h"/>
-                <outlet property="bioContainerView" destination="2n3-TD-9MH" id="aFb-qo-oFl"/>
+                <outlet property="bioContainerImageView" destination="JDN-mM-c24" id="MJe-Rg-iBO"/>
                 <outlet property="bioLabel" destination="59J-Xc-gnZ" id="dMq-2I-BuF"/>
                 <outlet property="buyerButtonHighlightView" destination="C2T-NL-Bzu" id="Dkl-3o-KjQ"/>
                 <outlet property="buyerButtonsView" destination="RL3-QZ-KZp" id="VqF-GE-ciU"/>
@@ -333,22 +333,19 @@
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" id="2n3-TD-9MH" customClass="ISDarkRowContainerView">
-                    <rect key="frame" x="0.0" y="132" width="320" height="28"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuDarkBG.png" id="JDN-mM-c24">
+                    <rect key="frame" x="0.0" y="130" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <subviews>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="59J-Xc-gnZ">
-                            <rect key="frame" x="12" y="2" width="297" height="26"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
+                </imageView>
+                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="59J-Xc-gnZ">
+                    <rect key="frame" x="11" y="139" width="297" height="26"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M0c-sH-xWq">
-                    <rect key="frame" x="12" y="168" width="297" height="33"/>
+                    <rect key="frame" x="12" y="182" width="297" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>

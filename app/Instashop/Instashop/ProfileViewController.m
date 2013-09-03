@@ -50,7 +50,7 @@
 @synthesize isSelfProfile;
 @synthesize followButton;
 @synthesize requestedInstagramProfileObject;
-@synthesize bioContainerView;
+@synthesize bioContainerImageView;
 @synthesize addressLabel;
 @synthesize emailLabel;
 @synthesize categoryLabel;
@@ -148,8 +148,6 @@
         self.profileBackgroundPhotoButton.alpha = .5;
     
     
-    self.bioContainerView.separatorImageView.alpha = 0;
-    
     
     
     
@@ -212,9 +210,7 @@
     
 
     self.bioLabel.text = [InstagramUserObject getStoredUserObject].bio;
-    self.bioLabel.numberOfLines = 0;
-//    self.bioTextView.frame = CGRectMake(bioTextView.frame.origin.x, bioTextView.frame.origin.y, bioTextView.frame.size.width, bioTextView.contentSize.height);
-
+    [self handleBioLayout];
 
     
     
@@ -234,11 +230,25 @@
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:theText]];
 }
 
+-(void)handleBioLayout
+{
+    float descSpacer = self.descriptionLabel.frame.origin.y - self.bioContainerImageView.frame.origin.y - self.bioContainerImageView.frame.size.height;
+    self.bioLabel.numberOfLines = 0;
+    CGSize bioLabelSize = [self.bioLabel.text sizeWithFont:self.bioLabel.font constrainedToSize:CGSizeMake(self.bioLabel.frame.size.width, 10000) lineBreakMode:NSLineBreakByWordWrapping];
+    
+    self.bioLabel.frame = CGRectMake(self.bioLabel.frame.origin.x, self.bioLabel.frame.origin.y, self.bioLabel.frame.size.width, bioLabelSize.height + 1);
+    self.bioContainerImageView.frame = CGRectMake(self.bioContainerImageView.frame.origin.x, self.bioContainerImageView.frame.origin.y, self.bioContainerImageView.frame.size.width, self.bioLabel.frame.size.height + 21);
+    self.descriptionLabel.frame = CGRectMake(self.descriptionLabel.frame.origin.x, self.bioContainerImageView.frame.origin.y + bioContainerImageView.frame.size.height + descSpacer, self.descriptionLabel.frame.size.width, self.descriptionLabel.frame.size.height);
+    
+    
+    self.infoContainerScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"lightMenuBG.png"]];
+    self.infoContainerScrollView.contentSize = CGSizeMake(0, self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 4);
+   
+}
 
 
 -(void)loadViewsWithRequestedProfileObject:(NSDictionary *)theReqeustedProfileObject
 {
-    NSLog(@"theReqeustedProfileObject: %@", theReqeustedProfileObject);
     
     self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
 
@@ -258,14 +268,9 @@
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
 
     
-    float descSpacer = self.descriptionLabel.frame.origin.y - self.bioContainerView.frame.origin.y - self.bioContainerView.frame.size.height;
     self.bioLabel.text = [self.requestedInstagramProfileObject objectForKey:@"bio"];
-    self.bioLabel.numberOfLines = 0;
-    CGSize bioLabelSize = [self.bioLabel.text sizeWithFont:self.bioLabel.font constrainedToSize:CGSizeMake(self.bioLabel.frame.size.width, 1000) lineBreakMode:NSLineBreakByWordWrapping];
-    
-    self.bioContainerView.frame = CGRectMake(self.bioContainerView.frame.origin.x, self.bioContainerView.frame.origin.y, self.bioContainerView.frame.size.width, bioLabelSize.height + 28);
-    self.bioLabel.frame = CGRectMake(self.bioLabel.frame.origin.x, self.bioLabel.frame.origin.y, self.bioLabel.frame.size.width, bioLabelSize.height + 1);
-    self.descriptionLabel.frame = CGRectMake(self.descriptionLabel.frame.origin.x, self.bioContainerView.frame.origin.y + bioLabelSize.height + descSpacer, self.descriptionLabel.frame.size.width, self.descriptionLabel.frame.size.height);
+    [self handleBioLayout];
+
     
 }
 

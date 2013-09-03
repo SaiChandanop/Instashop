@@ -53,7 +53,7 @@
     UILabel *addressLabel;
     UILabel *emailLabel;
     UILabel *categoryLabel;
-    ISDarkRowContainerView *bioContainerView;
+    UIImageView *bioContainerImageView;
     UILabel *bioLabel;
     UILabel *descriptionLabel;
     
@@ -111,8 +111,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *addressLabel;
 @property (nonatomic, retain) IBOutlet UILabel *emailLabel;
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
-@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *bioContainerView;
-
+@property (nonatomic, retain) IBOutlet UIImageView *bioContainerImageView;
 @property (nonatomic, retain) IBOutlet UILabel *bioLabel;
 @property (nonatomic, retain) IBOutlet UILabel *descriptionLabel;
 
