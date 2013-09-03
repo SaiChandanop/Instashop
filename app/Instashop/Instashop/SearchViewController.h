@@ -10,7 +10,7 @@
 #import "SearchReturnedReceiverProtocol.h"
 
 #define SEARCH_RESULT_TYPE_PRODUCT 0
-
+#define SEARCH_RESULT_TYPE_SELLER 1
 
 @class AppRootViewController;
 @interface SearchViewController : UIViewController <UISearchBarDelegate, SearchReturnedReceiverProtocol, UITableViewDataSource, UITableViewDelegate>

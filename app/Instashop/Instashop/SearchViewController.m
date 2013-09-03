@@ -13,6 +13,7 @@
 #import "SearchResultTableCell.h"
 #import "AppRootViewController.h"
 #import "PurchasingViewController.h"
+#import "ProfileViewController.h"
 @interface SearchViewController ()
 
 
@@ -138,6 +139,12 @@
             [self.navigationController pushViewController:purchasingViewController animated:YES];
 
             break;
+        case SEARCH_RESULT_TYPE_SELLER:
+            NSLog(@"");
+            
+            ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+            profileViewController.profileInstagramID = [dict objectForKey:@"id"];
+            [self.navigationController pushViewController:profileViewController animated:YES];
             
         default:
             break;

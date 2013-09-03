@@ -33,7 +33,9 @@
         case SEARCH_RESULT_TYPE_PRODUCT:
             self.textLabel.text = [NSString stringWithFormat:@"product: %@", [self.searchResultObject objectForKey:@"id"]];
             break;
-            
+        case SEARCH_RESULT_TYPE_SELLER:
+            self.textLabel.text = [NSString stringWithFormat:@"seller: %@", [self.searchResultObject objectForKey:@"id"]];
+            break;
         default:
             break;
     }
