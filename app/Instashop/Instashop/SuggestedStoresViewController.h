@@ -24,6 +24,8 @@
     
 }
 
+-(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected;
+
 @property (nonatomic, retain) AppRootViewController *appRootViewController;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;

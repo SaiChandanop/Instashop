@@ -104,7 +104,7 @@
         SuggestedShopView *suggestedShopView = [[[NSBundle mainBundle] loadNibNamed:@"SuggestedShopView" owner:self options:nil] objectAtIndex:0];
         suggestedShopView.parentController = self;
         suggestedShopView.shopViewInstagramID = [self.selectedShopsIDSArray objectAtIndex:i];
-        suggestedShopView.titleLabel.text = suggestedShopView.shopViewInstagramID;
+//        suggestedShopView.titleLabel.text = suggestedShopView.shopViewInstagramID;
         suggestedShopView.frame = CGRectMake(0, i * suggestedShopView.frame.size.height, self.view.frame.size.width, suggestedShopView.frame.size.height);
         [self.contentScrollView addSubview:suggestedShopView];
         
@@ -128,30 +128,31 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    if ([request.url rangeOfString:@"follows"].length > 0)
+    if ([request.url rangeOfString:@"relationship"].length > 0)
+    {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
+        [appDelegate.instagram requestWithParams:params delegate:self];
+
+    }
+    else if ([request.url rangeOfString:@"follows"].length > 0)
     {
         NSArray *dataArray = [result objectForKey:@"data"];
-//        NSLog(@"dataArray: %@", dataArray);
+
         
         NSMutableArray *likedIDsArray = [NSMutableArray arrayWithCapacity:0];
         
         for (int i =0; i < [dataArray count]; i++)
             [likedIDsArray addObject:[[dataArray objectAtIndex:i] objectForKey:@"id"]];
-
-        NSLog(@"likedIDSArray: %@", likedIDsArray);
         
         for (id key in self.containerViewsDictionary)
         {
             SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
-            NSLog(@"shopView: %@", shopView);
-            NSLog(@"shopView.followButton: %@", shopView.followButton);
             shopView.followButton.alpha = 1;
             if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
                 shopView.followButton.selected = YES;
             else
                 shopView.followButton.selected = NO;
-
-            
         }
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
@@ -178,9 +179,30 @@
     }
 }
 
--(void)shopFollowButtonHitWithID:(NSString *)instagramID
+-(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected
 {
     NSLog(@"shopFollowButtonHitWithID: %@", instagramID);
+    
+    AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    if (isSelected)
+    {
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"unfollow", @"action", nil];
+        [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+    }
+    else
+    {
+        
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
+        [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+    }
+
+
+    
+    
+    
+    
+    
 }
 
 -(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage

@@ -8,10 +8,12 @@
 
 #import "SuggestedShopView.h"
 #import "AppDelegate.h"
+#import "SuggestedStoresViewController.h"
+
 
 @implementation SuggestedShopView
 
-
+@synthesize parentController;
 @synthesize shopViewInstagramID;
 @synthesize titleLabel;
 @synthesize bioLabel;
@@ -31,6 +33,7 @@
 
 -(IBAction)followButtonHit
 {
-    
+    [self.parentController shopFollowButtonHitWithID:self.shopViewInstagramID withIsSelected:self.followButton.selected];
 }
+
 @end
