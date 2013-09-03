@@ -44,23 +44,21 @@
     UIView *sellerButtonHighlightView;
     UIView *buyerButtonHighlightView;
     
-    UIView *sellerInfoView;
-    UITextView *bioTextView;
     
     ProductSelectTableViewController *productSelectTableViewController;
     UITableView *theTableView;
-    
     UILabel *titleViewLabel;
     
-    BOOL isSelfProfile;
-    
-    NSDictionary *requestedInstagramProfileObject;
-    
+    UIScrollView *infoContainerScrollView;
     UILabel *addressLabel;
     UILabel *emailLabel;
     UILabel *categoryLabel;
     ISDarkRowContainerView *bioContainerView;
+    UILabel *bioLabel;
+    UILabel *descriptionLabel;
     
+    BOOL isSelfProfile;
+    NSDictionary *requestedInstagramProfileObject;
     
 }
 
@@ -99,8 +97,6 @@
 @property (nonatomic, retain) IBOutlet UIView *sellerButtonHighlightView;
 @property (nonatomic, retain) IBOutlet UIView *buyerButtonHighlightView;
 
-@property (nonatomic, retain) IBOutlet UIView *sellerInfoView;
-@property (nonatomic, retain) IBOutlet UITextView *bioTextView;
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 @property (nonatomic, retain) IBOutlet UITableView *theTableView;
@@ -111,10 +107,15 @@
 
 @property (nonatomic, retain) NSDictionary *requestedInstagramProfileObject;
 
+@property (nonatomic, retain) IBOutlet UIScrollView *infoContainerScrollView;
 @property (nonatomic, retain) IBOutlet UILabel *addressLabel;
 @property (nonatomic, retain) IBOutlet UILabel *emailLabel;
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
 @property (nonatomic, retain) IBOutlet ISDarkRowContainerView *bioContainerView;
+
+@property (nonatomic, retain) IBOutlet UILabel *bioLabel;
+@property (nonatomic, retain) IBOutlet UILabel *descriptionLabel;
+
 
 
 @end

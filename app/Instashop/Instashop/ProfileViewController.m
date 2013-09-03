@@ -40,13 +40,12 @@
 @synthesize sellerButtonHighlightView;
 @synthesize buyerFavoritesButton;
 @synthesize buyerButtonHighlightView;
-@synthesize sellerInfoView;
+@synthesize infoContainerScrollView;
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
 @synthesize followersButton;
 @synthesize followingButton;
 @synthesize profileBackgroundPhotoButton;
-@synthesize bioTextView;
 @synthesize titleViewLabel;
 @synthesize isSelfProfile;
 @synthesize followButton;
@@ -55,6 +54,9 @@
 @synthesize addressLabel;
 @synthesize emailLabel;
 @synthesize categoryLabel;
+@synthesize bioLabel;
+@synthesize descriptionLabel;
+@synthesize infoButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -109,7 +111,7 @@
     [appDelegate.instagram requestWithParams:params delegate:self];
     
     
-    self.sellerInfoView.frame = self.theTableView.frame;
+    self.infoContainerScrollView.frame = self.theTableView.frame;
     
     
     
@@ -205,9 +207,15 @@
     
     [self setTitleViewText:[InstagramUserObject getStoredUserObject].username];
     self.usernameLabel.text = [InstagramUserObject getStoredUserObject].fullName;
-    self.bioTextView.text = [InstagramUserObject getStoredUserObject].bio;
     
     [self loadTheProfileImageViewWithID:[InstagramUserObject getStoredUserObject].userID];
+    
+
+    self.bioLabel.text = [InstagramUserObject getStoredUserObject].bio;
+    self.bioLabel.numberOfLines = 0;
+//    self.bioTextView.frame = CGRectMake(bioTextView.frame.origin.x, bioTextView.frame.origin.y, bioTextView.frame.size.width, bioTextView.contentSize.height);
+
+
     
     
 }
@@ -233,8 +241,7 @@
     NSLog(@"theReqeustedProfileObject: %@", theReqeustedProfileObject);
     
     self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
-    
-    self.bioTextView.text = [self.requestedInstagramProfileObject objectForKey:@"bio"];
+
     self.usernameLabel.text = [self.requestedInstagramProfileObject objectForKey:@"full_name"];
     [self setTitleViewText:[self.requestedInstagramProfileObject objectForKey:@"username"]];
     
@@ -249,6 +256,9 @@
     
     
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
+
+    self.bioLabel.text = [self.requestedInstagramProfileObject objectForKey:@"bio"];
+    self.bioLabel.numberOfLines = 0;
     
     
 }
@@ -360,8 +370,8 @@
     if ([self.theTableView superview] == nil)
         [self.view addSubview:self.theTableView];
     
-    if ([self.sellerInfoView superview] != nil)
-        [self.sellerInfoView removeFromSuperview];
+    if ([self.infoContainerScrollView superview] != nil)
+        [self.infoContainerScrollView removeFromSuperview];
     
     
     self.buyerFavoritesButton.selected = YES;
@@ -377,8 +387,8 @@
     if ([self.theTableView superview] == nil)
         [self.view addSubview:self.theTableView];
     
-    if ([self.sellerInfoView superview] != nil)
-        [self.sellerInfoView removeFromSuperview];
+    if ([self.infoContainerScrollView superview] != nil)
+        [self.infoContainerScrollView removeFromSuperview];
     
     self.sellerProductsButton.selected = YES;
     self.sellerInfoButton.selected = NO;
@@ -392,8 +402,8 @@
     if ([self.theTableView superview] != nil)
         [self.theTableView removeFromSuperview];
     
-    if ([self.sellerInfoView superview] == nil)
-        [self.view addSubview:self.sellerInfoView];
+    if ([self.infoContainerScrollView superview] == nil)
+        [self.view addSubview:self.infoContainerScrollView];
     
     self.sellerProductsButton.selected = NO;
     self.sellerInfoButton.selected = YES;
@@ -412,8 +422,8 @@
     if ([self.theTableView superview] != nil)
         [self.theTableView removeFromSuperview];
     
-    if ([self.sellerInfoView superview] != nil)
-        [self.sellerInfoView removeFromSuperview];
+    if ([self.infoContainerScrollView superview] != nil)
+        [self.infoContainerScrollView removeFromSuperview];
     
     
     self.sellerProductsButton.selected = NO;
