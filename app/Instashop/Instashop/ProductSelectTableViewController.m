@@ -14,7 +14,7 @@
 #import "ProductAPIHandler.h"
 #import "TableCellAddClass.h"
 #import "InstagramUserObject.h"
-
+#import "SearchAPIHandler.h"
 
 @interface ProductSelectTableViewController ()
 
@@ -175,7 +175,7 @@
                 [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
                 break;
             case PRODUCT_REQUESTOR_TYPE_SEARCH:
-                
+                [SearchAPIHandler makeProductSearchRequestWithDelegate:self withSearchCategoriesArray:self.searchRequestObject.searchCategoriesArray withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
             default:
                 break;
         }
@@ -184,6 +184,10 @@
     
 }
 
+-(void)searchReturnedWithArray:(NSArray *)searchResultsArray
+{
+    
+}
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {

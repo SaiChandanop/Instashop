@@ -28,7 +28,6 @@
 @synthesize theSearchBar;
 @synthesize containerReferenceView;
 @synthesize productContainerView;
-@synthesize productSearchResultsArray;
 @synthesize productCategoriesNavigationController;
 @synthesize searchCategoriesButton;
 @synthesize shopsButton;
@@ -44,12 +43,8 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        self.productSearchResultsArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.freeSearchButtonsArray = [[NSMutableArray alloc] initWithCapacity:0];
-        
-        
     }
     return self;
 }
@@ -78,14 +73,10 @@
     self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SEARCH"]];
-
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-
+    
     self.highlightView.backgroundColor = [ISConstants getISGreenColor];
-    
-    
-    // Do any additional setup after loading the view from its nib.
     
     self.productContainerView = [[UIView alloc] initWithFrame:self.containerReferenceView.frame];
     self.productContainerView.backgroundColor = [UIColor clearColor];
@@ -105,10 +96,10 @@
                                                    
 
     self.productSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
+    self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_SEARCH;
     self.productSelectTableViewController.view.frame = CGRectMake(0, 0, self.productContainerView.frame.size.width, self.productContainerView.frame.size.height);
     self.productSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.productContainerView.frame.size.width, self.productContainerView.frame.size.height);
-    self.productSelectTableViewController.tableView.backgroundColor = [UIColor purpleColor];
-    [self.productContainerView addSubview:self.productSelectTableViewController.tableView];
+    self.productSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
                                              
 
     [self.containerReferenceView removeFromSuperview];
@@ -123,59 +114,24 @@
 
 -(void)runSearch
 {
+    [self.productContainerView addSubview:self.productSelectTableViewController.tableView];
     
-    [self.productSearchResultsArray removeAllObjects];
-    //    [SearchAPIHandler makeSearchRequestWithDelegate:self withRequestString:searchBar.text];
+    NSMutableArray *freeTextArray = [NSMutableArray arrayWithCapacity:0];
+    for (int i = 0; i < [self.freeSearchButtonsArray count]; i++)
+        [freeTextArray addObject:((SearchButtonContainer *)[self.freeSearchButtonsArray objectAtIndex:i]).searchTerm];
     
+    self.productSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:freeTextArray];
+    [self.productSelectTableViewController refreshContent];
     NSLog(@"run search");
 }
 
 
--(void)searchReturnedWithArray:(NSArray *)theSearchResultsArray
-{
-    NSLog(@"searchReturnedWithArray: %@", theSearchResultsArray);
-    
-    [self.productSearchResultsArray removeAllObjects];
-    [self.productSearchResultsArray addObjectsFromArray:theSearchResultsArray];
-    
-    //    [self.searchResultsTableView reloadData];
-    
-}
 
-/*
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{    
-    return [self.searchResultsArray count];
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    static NSString *CellIdentifier = @"Cell";
-    
-    SearchResultTableCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    if (cell == nil) {
-        cell = [[[SearchResultTableCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] autorelease];
-        cell.backgroundColor = [UIColor clearColor];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    }
-
-    [cell loadWithSearchResultObject:[self.searchResultsArray objectAtIndex:indexPath.row]];
-    
-    return cell;
-    
-}
-
- */
 
 -(void)moveHighlightToButton:(UIButton *)theButton
 {
+//    NSLog(@"moveHighlightToButton: %@", theButton);
+//    NSLog(@"self.highlightView.frame1: %@", NSStringFromCGRect(self.highlightView.frame));
     float transitionTime = .15;
     
     [UIView beginAnimations:nil context:nil];
@@ -184,7 +140,8 @@
     self.highlightView.frame = CGRectMake(theButton.frame.origin.x, self.highlightView.frame.origin.y, theButton.frame.size.width, self.highlightView.frame.size.height);
     [UIView commitAnimations];
 
-    
+//    NSLog(@"self.highlightView.frame2: %@", NSStringFromCGRect(self.highlightView.frame));
+//    NSLog(@" ");
     
     self.shopsButton.selected = NO;
     self.productsButton.selected = NO;
@@ -197,9 +154,7 @@
 {
     [self moveHighlightToButton:theButton];
     
-    
     [self.productContainerView removeFromSuperview];
-    
 }
 
 -(IBAction)productsButtonHit:(UIButton *)theButton
@@ -227,6 +182,7 @@
     [self.productCategoriesNavigationController popToRootViewControllerAnimated:YES];
     [self layoutSearchBarContainers];
 }
+
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {
     if ([self.selectedCategoriesArray count] > callingController.positionIndex)
@@ -266,8 +222,6 @@
     if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil)
     {
         [self runSearch];
-//        [self.parentController categorySelectionCompleteWithArray:self.selectedCategoriesArray];
-//        [self.navigationController popToViewController:parentController animated:YES];
     }
     else
     {
@@ -342,6 +296,8 @@
                                                                                                      
     }
     
+    if ([self.selectedCategoriesArray count] == 0 && [self.freeSearchButtonsArray count] == 0)
+        [self.productSelectTableViewController.tableView removeFromSuperview];
 }
 
 
@@ -350,53 +306,22 @@
     [theButton removeFromSuperview];
     [self.freeSearchButtonsArray removeObject:theButton];
     [self layoutSearchBarContainers];
-    
-    
 }
-
 
 
 -(int)getCurrentlySelectedTab
 {
+    int retVal = -1;
     if (self.shopsButton.selected)
-        return 0;
+        retVal = 0;
     else if (self.productsButton.selected)
-        return 1;
+        retVal = 1;
     else if (self.hashtagsButton.selected)
-        return 2;
+        retVal = 2;
     
+    return retVal;
 }
 
-
-/*
- - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
- {
- NSDictionary *dict = [self.searchResultsArray objectAtIndex:indexPath.row];
- 
- switch ([[dict objectForKey:@"type"] integerValue]) {
- case SEARCH_RESULT_TYPE_PRODUCT:
- NSLog(@"");
- PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
- purchasingViewController.requestingProductID = [dict objectForKey:@"id"];
- purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
- [self.navigationController pushViewController:purchasingViewController animated:YES];
- 
- break;
- case SEARCH_RESULT_TYPE_SELLER:
- NSLog(@"");
- 
- ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
- profileViewController.profileInstagramID = [dict objectForKey:@"id"];
- [self.navigationController pushViewController:profileViewController animated:YES];
- 
- default:
- break;
- }
- 
- 
- }
- 
- */
 
 
 @end

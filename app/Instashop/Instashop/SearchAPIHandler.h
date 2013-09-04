@@ -10,7 +10,8 @@
 
 @interface SearchAPIHandler : RootAPIHandler
 
-+(void)makeSearchRequestWithDelegate:(id)delegate withRequestString:(NSString *)requestString;
++(void)makeProductSearchRequestWithDelegate:(id)delegate withSearchCategoriesArray:(NSArray *)searchCategoriesArray withFreeformTextArray:(NSArray *)freeformTextArray;
+
 
 
 @end
