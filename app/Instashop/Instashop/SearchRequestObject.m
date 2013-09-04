@@ -12,4 +12,15 @@
 
 @synthesize searchCategoriesArray;
 @synthesize searchFreeTextArray;
+
+-(id)initWithCategoriesArray:(NSArray *)theCategoriesArray withFreeTextArray:(NSArray *)theFreeTextArray
+{
+    self = [super init];
+
+    self.searchCategoriesArray = [[NSArray alloc] initWithArray:theCategoriesArray];
+    self.searchFreeTextArray = [[NSArray alloc] initWithArray:theFreeTextArray];
+    
+    return self;
+}
+
 @end
