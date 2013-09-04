@@ -59,8 +59,8 @@
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
     NSLog(@"responseArray: %@", responseArray);
- //   if ([self.delegate conformsToProtocol:@protocol(SearchReturnedReceiverProtocol)])
-   //     [(id<SearchReturnedReceiverProtocol>)self.delegate searchReturnedWithArray:responseArray];
+    if ([self.delegate conformsToProtocol:@protocol(SearchReturnedReceiverProtocol)])
+        [(id<SearchReturnedReceiverProtocol>)self.delegate searchReturnedWithArray:responseArray];
 
 }
 @end
