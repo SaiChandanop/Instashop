@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SearchReturnedReceiverProtocol.h"
 #import "CategoriesTableViewController.h"
+#import "ProductSelectTableViewController.h"
 
 #define SEARCH_RESULT_TYPE_PRODUCT 0
 #define SEARCH_RESULT_TYPE_SELLER 1
@@ -33,12 +34,11 @@
     
     UIView *productContainerView;
     UINavigationController *productCategoriesNavigationController;
+    ProductSelectTableViewController *productSelectTableViewController;
     
     NSMutableArray *productSearchResultsArray;    
     NSMutableArray *selectedCategoriesArray;
     NSMutableArray *freeSearchButtonsArray;
-    
-    
 }
 
 -(IBAction)shopsButtonHit:(UIButton *)theButton;
@@ -61,7 +61,7 @@
 
 @property (nonatomic, retain) UIView *productContainerView;
 @property (nonatomic, retain) UINavigationController *productCategoriesNavigationController;
-
+@property (nonatomic, retain) ProductSelectTableViewController *productSelectTableViewController;
 @property (nonatomic, retain) NSMutableArray *productSearchResultsArray;
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
 @property (nonatomic, retain) NSMutableArray *freeSearchButtonsArray;

@@ -104,6 +104,12 @@
     [self.productContainerView addSubview:productCategoriesNavigationController.view];
                                                    
 
+    self.productSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
+    self.productSelectTableViewController.view.frame = CGRectMake(0, 0, self.productContainerView.frame.size.width, self.productContainerView.frame.size.height);
+    self.productSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.productContainerView.frame.size.width, self.productContainerView.frame.size.height);
+    self.productSelectTableViewController.tableView.backgroundColor = [UIColor purpleColor];
+    [self.productContainerView addSubview:self.productSelectTableViewController.tableView];
+                                             
 
     [self.containerReferenceView removeFromSuperview];
 }
@@ -136,7 +142,7 @@
     
 }
 
-
+/*
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -166,6 +172,7 @@
     
 }
 
+ */
 
 -(void)moveHighlightToButton:(UIButton *)theButton
 {
@@ -348,6 +355,17 @@
 }
 
 
+
+-(int)getCurrentlySelectedTab
+{
+    if (self.shopsButton.selected)
+        return 0;
+    else if (self.productsButton.selected)
+        return 1;
+    else if (self.hashtagsButton.selected)
+        return 2;
+    
+}
 
 
 /*

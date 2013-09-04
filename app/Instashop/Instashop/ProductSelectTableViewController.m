@@ -30,6 +30,7 @@
 @synthesize referenceTableView;
 @synthesize productRequestorType;
 @synthesize productRequestorReferenceObject;
+@synthesize searchRequestObject;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -173,6 +174,8 @@
             case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER:
                 [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
                 break;
+            case PRODUCT_REQUESTOR_TYPE_SEARCH:
+                
             default:
                 break;
         }

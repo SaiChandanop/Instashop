@@ -104,6 +104,7 @@
 		7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */; };
 		7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */; };
 		7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECE17C7AB4400F4D5D8 /* badcamera.png */; };
+		7B396BE817D7819E0042754D /* SearchRequestObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B396BE717D7819E0042754D /* SearchRequestObject.m */; };
 		7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */; };
 		7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */; };
 		7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */; };
@@ -370,6 +371,8 @@
 		7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		7B376ECE17C7AB4400F4D5D8 /* badcamera.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = badcamera.png; sourceTree = "<group>"; };
+		7B396BE617D7819E0042754D /* SearchRequestObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchRequestObject.h; sourceTree = "<group>"; };
+		7B396BE717D7819E0042754D /* SearchRequestObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchRequestObject.m; sourceTree = "<group>"; };
 		7B3F520F175FAAF400ABF49B /* ProductCreateObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateObject.h; sourceTree = "<group>"; };
 		7B3F5210175FAAF400ABF49B /* ProductCreateObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateObject.m; sourceTree = "<group>"; };
 		7B3F5213175FB3A000ABF49B /* ProductPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductPreviewViewController.h; sourceTree = "<group>"; };
@@ -852,6 +855,15 @@
 			name = Profile;
 			sourceTree = "<group>";
 		};
+		7B396BE517D7806A0042754D /* old */ = {
+			isa = PBXGroup;
+			children = (
+				7B7A7F8617D6525800247A26 /* SearchResultTableCell.h */,
+				7B7A7F8717D6525800247A26 /* SearchResultTableCell.m */,
+			);
+			name = old;
+			sourceTree = "<group>";
+		};
 		7B3F520E175FAAB900ABF49B /* ProductObject */ = {
 			isa = PBXGroup;
 			children = (
@@ -1249,12 +1261,12 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				7B7A7F8117D64B4500247A26 /* Search */,
-				7B5A56F117D3DC79007AABDA /* Shops */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
 				7BE958EF1755470000A7E0AB /* Products */,
+				7B7A7F8117D64B4500247A26 /* Search */,
 				7B6C500C178B566A00CDF0A7 /* Sellers */,
+				7B5A56F117D3DC79007AABDA /* Shops */,
 				7BC890B017668B5200D4756D /* Stripe */,
 				7BE3D36B174D536B0045C4B4 /* User */,
 				7B7B9DF41753E26F000F4A3E /* ZenCart */,
@@ -1269,13 +1281,14 @@
 		7B7A7F7B17D64AA100247A26 /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				7B396BE517D7806A0042754D /* old */,
 				7B7A7F7C17D64ACE00247A26 /* SearchViewController.h */,
 				7B7A7F7D17D64ACE00247A26 /* SearchViewController.m */,
 				7B7A7F7E17D64ACE00247A26 /* SearchViewController.xib */,
-				7B7A7F8617D6525800247A26 /* SearchResultTableCell.h */,
-				7B7A7F8717D6525800247A26 /* SearchResultTableCell.m */,
 				7BE43D5817D6E3DA0031F5CF /* SearchButtonContainer.h */,
 				7BE43D5917D6E3DA0031F5CF /* SearchButtonContainer.m */,
+				7B396BE617D7819E0042754D /* SearchRequestObject.h */,
+				7B396BE717D7819E0042754D /* SearchRequestObject.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -1758,6 +1771,7 @@
 				7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */,
 				7B5D628217C5AF7100D6C8B1 /* PKCardExpiry.m in Sources */,
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
+				7B396BE817D7819E0042754D /* SearchRequestObject.m in Sources */,
 				7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */,
 				7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */,
 				7B0D254E17CBA36F00E43FA6 /* GKImageCropOverlayView.m in Sources */,
