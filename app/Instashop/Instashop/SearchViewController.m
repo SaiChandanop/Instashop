@@ -84,17 +84,21 @@
     self.productContainerView = [[UIView alloc] initWithFrame:self.containerReferenceView.frame];
     self.productContainerView.backgroundColor = [UIColor clearColor];
     
-    /*
-    UINavigationController
-    self.productCategoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
-    self.productCategoriesTableViewController.view.backgroundColor = [UIColor clearColor];
-    self.productCategoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
-    self.productCategoriesTableViewController.positionIndex = 0;
-    self.productCategoriesTableViewController.parentController = self;
-    self.productCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
-    [self.productContainerView addSubview:self.productCategoriesTableViewController.tableView];
+    
+    CategoriesTableViewController *productCategoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    productCategoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+    productCategoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
+    productCategoriesTableViewController.positionIndex = 0;
+    productCategoriesTableViewController.parentController = self;
+    productCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
 
- */
+    
+    self.productCategoriesNavigationController = [[UINavigationController alloc] initWithRootViewController:productCategoriesTableViewController];
+    [self.productCategoriesNavigationController setNavigationBarHidden:YES];
+    [self.productContainerView addSubview:productCategoriesNavigationController.view];
+                                                   
+
+
     [self.containerReferenceView removeFromSuperview];
 }
 
@@ -241,8 +245,6 @@
     }
     else
     {
-        
-        
         CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
         categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
         categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
@@ -259,7 +261,7 @@
         categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
         
         
-        [self.navigationController pushViewController:containerViewController animated:YES];
+        [self.productCategoriesNavigationController pushViewController:containerViewController animated:YES];
         
         NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
         for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
