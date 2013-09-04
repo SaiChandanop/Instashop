@@ -167,8 +167,8 @@
             {
                 shopView.bioLabel.text = [dataDictionary objectForKey:@"bio"];
                 shopView.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
-                shopView.bioLabel.numberOfLines = 0;
-                shopView.bioLabel.font = [UIFont systemFontOfSize:8];
+                //shopView.bioLabel.numberOfLines = 0;
+                //shopView.bioLabel.font = [UIFont systemFontOfSize:8];
                 
                 [ImageAPIHandler makeImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:shopView.profileImageView];
                 [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:shopView.theBackgroundImageView withInstagramID:shopView.shopViewInstagramID];
