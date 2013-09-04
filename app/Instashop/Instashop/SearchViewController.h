@@ -20,6 +20,10 @@
     
     UISearchBar *theSearchBar;
     
+    UIImageView *searchTermsImageView;
+    UIButton *searchCategoriesButton;
+    
+    
     UIButton *shopsButton;
     UIButton *productsButton;
     UIButton *hashtagsButton;
@@ -34,6 +38,8 @@
     
     NSMutableArray *selectedCategoriesArray;
     
+    
+    
 }
 
 -(IBAction)shopsButtonHit:(UIButton *)theButton;
@@ -43,6 +49,9 @@
 @property (nonatomic, retain) AppRootViewController *appRootViewController;
 
 @property (nonatomic, retain) IBOutlet UISearchBar *theSearchBar;
+
+@property (nonatomic, retain) IBOutlet UIImageView *searchTermsImageView;
+@property (nonatomic, retain) UIButton *searchCategoriesButton;
 
 @property (nonatomic, retain) IBOutlet UIButton *shopsButton;
 @property (nonatomic, retain) IBOutlet UIButton *productsButton;

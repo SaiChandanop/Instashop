@@ -11,6 +11,7 @@
                 <outlet property="hashtagsButton" destination="4wh-hG-SQp" id="42G-bK-ozK"/>
                 <outlet property="highlightView" destination="TG3-7r-sth" id="MpU-qe-BAd"/>
                 <outlet property="productsButton" destination="oGT-8f-sdG" id="YzU-wq-mZD"/>
+                <outlet property="searchTermsImageView" destination="vGa-6E-pA1" id="lXq-1A-3bw"/>
                 <outlet property="shopsButton" destination="mfp-wi-XmK" id="b8s-TK-nCz"/>
                 <outlet property="theSearchBar" destination="Jre-Pb-f4O" id="TlD-Bb-h5u"/>
                 <outlet property="view" destination="1" id="3"/>
