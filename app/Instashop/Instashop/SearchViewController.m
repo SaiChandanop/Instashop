@@ -15,6 +15,7 @@
 #import "PurchasingViewController.h"
 #import "ProfileViewController.h"
 #import "AttributesManager.h"
+#import "SearchButtonContainer.h"
 
 @interface SearchViewController ()
 
@@ -37,6 +38,7 @@
 @synthesize selectedCategoriesArray;
 @synthesize searchTermsImageView;
 
+@synthesize freeSearchButtonsArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,6 +47,9 @@
         
         self.searchResultsArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        self.freeSearchButtonsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        
         
     }
     return self;
@@ -110,26 +115,6 @@
     [self.appRootViewController searchExitButtonHit:self.navigationController];
 }
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [self.searchResultsArray removeAllObjects];
-//    [self.searchResultsTableView reloadData];
-    
-    [self.theSearchBar resignFirstResponder];
-    [SearchAPIHandler makeSearchRequestWithDelegate:self withRequestString:searchBar.text];
-    
-}
-
--(void)searchReturnedWithArray:(NSArray *)theSearchResultsArray
-{
-    NSLog(@"searchReturnedWithArray: %@", theSearchResultsArray);
-    
-    [self.searchResultsArray removeAllObjects];
-    [self.searchResultsArray addObjectsFromArray:theSearchResultsArray];
-    
-//    [self.searchResultsTableView reloadData];
-    
-}
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -236,10 +221,12 @@
 -(void)searchCategoriesButtonHit
 {
     NSLog(@"searchCategoriesButtonHit");
+    self.searchCategoriesButton.frame = CGRectMake(0,0,0,0);
     [self.selectedCategoriesArray removeAllObjects];
     [self.searchCategoriesButton removeFromSuperview];
     [self.searchCategoriesButton release];
     [self.productCategoriesNavigationController popToRootViewControllerAnimated:YES];
+    [self layoutSearchBarContainers];
 }
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {
@@ -274,7 +261,7 @@
     [self.searchCategoriesButton setTitle:titleString forState:UIControlStateNormal];
     self.searchCategoriesButton.frame = CGRectMake(self.searchCategoriesButton.frame.origin.x, self.searchCategoriesButton.frame.origin.y, buttonTextSize.width + 5, self.searchCategoriesButton.frame.size.height);
     
-    
+    [self layoutSearchBarContainers];
     
     
     if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil)
@@ -301,15 +288,84 @@
         
         
         [self.productCategoriesNavigationController pushViewController:containerViewController animated:YES];
-        
-        
-
     }
     
 }
 
 
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.searchResultsArray removeAllObjects];
+    //    [self.searchResultsTableView reloadData];
+    
+    [self.theSearchBar resignFirstResponder];
+    //    [SearchAPIHandler makeSearchRequestWithDelegate:self withRequestString:searchBar.text];
+    
+    
+    SearchButtonContainer *searchButtonContainer = [[SearchButtonContainer buttonWithType:UIButtonTypeRoundedRect] retain];
+    searchButtonContainer.searchTerm = searchBar.text;
+    searchButtonContainer.backgroundColor = [UIColor colorWithRed:223.0f/255.0f green:223.0f/255.0f blue:223.0f/255.0f alpha:1];
+    [searchButtonContainer addTarget:self action:@selector(searchButtonContainerHit:) forControlEvents:UIControlEventTouchUpInside];
+    [searchButtonContainer setTitle:[NSString stringWithFormat:@"%@ X ", searchBar.text] forState:UIControlStateNormal];
+    searchButtonContainer.titleLabel.textColor = [UIColor colorWithRed:89.0f/255.0f green:89.0f/255.0f blue:89.0f/255.0f alpha:1];
+    [self.freeSearchButtonsArray addObject:searchButtonContainer];
+    
+    [self layoutSearchBarContainers];
+    searchBar.text = @"";
+    
+}
 
+-(void)searchReturnedWithArray:(NSArray *)theSearchResultsArray
+{
+    NSLog(@"searchReturnedWithArray: %@", theSearchResultsArray);
+    
+    [self.searchResultsArray removeAllObjects];
+    [self.searchResultsArray addObjectsFromArray:theSearchResultsArray];
+    
+    //    [self.searchResultsTableView reloadData];
+    
+}
+
+
+-(void)layoutSearchBarContainers
+{
+
+    float indentPoint = self.searchCategoriesButton.frame.origin.x + self.searchCategoriesButton.frame.size.width + 15;
+    
+    for (int i = 0; i < [self.freeSearchButtonsArray count]; i++)
+    {
+        UIView *aView = [self.freeSearchButtonsArray objectAtIndex:i];
+        [aView removeFromSuperview];
+    }
+    
+    int yPoint = self.searchCategoriesButton.frame.origin.y;
+    if (self.searchCategoriesButton == nil)
+        yPoint = self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8;
+        
+    
+    for (int i = 0; i < [self.freeSearchButtonsArray count]; i++)
+    {
+        SearchButtonContainer *buttonContainer = [self.freeSearchButtonsArray objectAtIndex:i];
+        
+        buttonContainer.frame = CGRectMake(indentPoint, self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8, [buttonContainer.titleLabel.text sizeWithFont:buttonContainer.titleLabel.font].width, self.searchTermsImageView.frame.size.height - self.searchTermsImageView.frame.size.height / 16);
+        buttonContainer.titleLabel.text = buttonContainer.searchTerm;
+        [self.view addSubview:buttonContainer];
+        
+        indentPoint = buttonContainer.frame.origin.x + buttonContainer.frame.size.width + 15;
+                                                                                                     
+    }
+    
+}
+
+
+-(void)searchButtonContainerHit:(SearchButtonContainer *)theButton
+{
+    [theButton removeFromSuperview];
+    [self.freeSearchButtonsArray removeObject:theButton];
+    [self layoutSearchBarContainers];
+    
+    
+}
 
 
 

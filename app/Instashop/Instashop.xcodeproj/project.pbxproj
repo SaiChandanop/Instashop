@@ -230,6 +230,7 @@
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
 		7BE3D377174D772B0045C4B4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D376174D772B0045C4B4 /* Utils.m */; };
+		7BE43D5A17D6E3DA0031F5CF /* SearchButtonContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE43D5917D6E3DA0031F5CF /* SearchButtonContainer.m */; };
 		7BE688C9176B7801007D383B /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE688C7176B7801007D383B /* FeedViewController.m */; };
 		7BE688CA176B7801007D383B /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE688C8176B7801007D383B /* FeedViewController.xib */; };
 		7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F11755473400A7E0AB /* ProductAPIHandler.m */; };
@@ -566,6 +567,8 @@
 		7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIHandler.m; sourceTree = "<group>"; };
 		7BE3D375174D772B0045C4B4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		7BE3D376174D772B0045C4B4 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		7BE43D5817D6E3DA0031F5CF /* SearchButtonContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchButtonContainer.h; sourceTree = "<group>"; };
+		7BE43D5917D6E3DA0031F5CF /* SearchButtonContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchButtonContainer.m; sourceTree = "<group>"; };
 		7BE688C6176B7801007D383B /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		7BE688C7176B7801007D383B /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		7BE688C8176B7801007D383B /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
@@ -1271,6 +1274,8 @@
 				7B7A7F7E17D64ACE00247A26 /* SearchViewController.xib */,
 				7B7A7F8617D6525800247A26 /* SearchResultTableCell.h */,
 				7B7A7F8717D6525800247A26 /* SearchResultTableCell.m */,
+				7BE43D5817D6E3DA0031F5CF /* SearchButtonContainer.h */,
+				7BE43D5917D6E3DA0031F5CF /* SearchButtonContainer.m */,
 			);
 			name = Search;
 			sourceTree = "<group>";
@@ -1739,6 +1744,7 @@
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
 				7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */,
 				7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */,
+				7BE43D5A17D6E3DA0031F5CF /* SearchButtonContainer.m in Sources */,
 				7BF9DD8F178C546F005148A8 /* SBJsonStreamTokeniser.m in Sources */,
 				7BF9DD90178C546F005148A8 /* SBJsonStreamWriter.m in Sources */,
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
