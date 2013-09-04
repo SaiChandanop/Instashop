@@ -34,10 +34,8 @@
     UIView *productContainerView;
     UINavigationController *productCategoriesNavigationController;
     
-    NSMutableArray *searchResultsArray;
-    
+    NSMutableArray *productSearchResultsArray;    
     NSMutableArray *selectedCategoriesArray;
-    
     NSMutableArray *freeSearchButtonsArray;
     
     
@@ -64,11 +62,8 @@
 @property (nonatomic, retain) UIView *productContainerView;
 @property (nonatomic, retain) UINavigationController *productCategoriesNavigationController;
 
-@property (nonatomic, retain) NSMutableArray *searchResultsArray;
-
-
+@property (nonatomic, retain) NSMutableArray *productSearchResultsArray;
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
-
 @property (nonatomic, retain) NSMutableArray *freeSearchButtonsArray;
 
 @end

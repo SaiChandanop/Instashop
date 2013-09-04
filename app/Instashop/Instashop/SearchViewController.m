@@ -28,7 +28,7 @@
 @synthesize theSearchBar;
 @synthesize containerReferenceView;
 @synthesize productContainerView;
-@synthesize searchResultsArray;
+@synthesize productSearchResultsArray;
 @synthesize productCategoriesNavigationController;
 @synthesize searchCategoriesButton;
 @synthesize shopsButton;
@@ -45,9 +45,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        self.searchResultsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.productSearchResultsArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
-        
         self.freeSearchButtonsArray = [[NSMutableArray alloc] initWithCapacity:0];
         
         
@@ -116,6 +115,28 @@
 }
 
 
+-(void)runSearch
+{
+    
+    [self.productSearchResultsArray removeAllObjects];
+    //    [SearchAPIHandler makeSearchRequestWithDelegate:self withRequestString:searchBar.text];
+    
+    NSLog(@"run search");
+}
+
+
+-(void)searchReturnedWithArray:(NSArray *)theSearchResultsArray
+{
+    NSLog(@"searchReturnedWithArray: %@", theSearchResultsArray);
+    
+    [self.productSearchResultsArray removeAllObjects];
+    [self.productSearchResultsArray addObjectsFromArray:theSearchResultsArray];
+    
+    //    [self.searchResultsTableView reloadData];
+    
+}
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
@@ -123,9 +144,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-//    tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    
+{    
     return [self.searchResultsArray count];
 }
 
@@ -147,33 +166,6 @@
     
 }
 
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSDictionary *dict = [self.searchResultsArray objectAtIndex:indexPath.row];
-    
-    switch ([[dict objectForKey:@"type"] integerValue]) {
-        case SEARCH_RESULT_TYPE_PRODUCT:
-            NSLog(@"");
-            PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
-            purchasingViewController.requestingProductID = [dict objectForKey:@"id"];
-            purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
-            [self.navigationController pushViewController:purchasingViewController animated:YES];
-
-            break;
-        case SEARCH_RESULT_TYPE_SELLER:
-            NSLog(@"");
-            
-            ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
-            profileViewController.profileInstagramID = [dict objectForKey:@"id"];
-            [self.navigationController pushViewController:profileViewController animated:YES];
-            
-        default:
-            break;
-    }
-    
-    
-}
 
 -(void)moveHighlightToButton:(UIButton *)theButton
 {
@@ -266,6 +258,7 @@
     
     if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil)
     {
+        [self runSearch];
 //        [self.parentController categorySelectionCompleteWithArray:self.selectedCategoriesArray];
 //        [self.navigationController popToViewController:parentController animated:YES];
     }
@@ -295,12 +288,8 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    [self.searchResultsArray removeAllObjects];
-    //    [self.searchResultsTableView reloadData];
-    
     [self.theSearchBar resignFirstResponder];
-    //    [SearchAPIHandler makeSearchRequestWithDelegate:self withRequestString:searchBar.text];
-    
+
     
     SearchButtonContainer *searchButtonContainer = [[SearchButtonContainer buttonWithType:UIButtonTypeRoundedRect] retain];
     searchButtonContainer.searchTerm = searchBar.text;
@@ -313,16 +302,7 @@
     [self layoutSearchBarContainers];
     searchBar.text = @"";
     
-}
-
--(void)searchReturnedWithArray:(NSArray *)theSearchResultsArray
-{
-    NSLog(@"searchReturnedWithArray: %@", theSearchResultsArray);
-    
-    [self.searchResultsArray removeAllObjects];
-    [self.searchResultsArray addObjectsFromArray:theSearchResultsArray];
-    
-    //    [self.searchResultsTableView reloadData];
+    [self runSearch];
     
 }
 
@@ -367,6 +347,38 @@
     
 }
 
+
+
+
+/*
+ - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ NSDictionary *dict = [self.searchResultsArray objectAtIndex:indexPath.row];
+ 
+ switch ([[dict objectForKey:@"type"] integerValue]) {
+ case SEARCH_RESULT_TYPE_PRODUCT:
+ NSLog(@"");
+ PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+ purchasingViewController.requestingProductID = [dict objectForKey:@"id"];
+ purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
+ [self.navigationController pushViewController:purchasingViewController animated:YES];
+ 
+ break;
+ case SEARCH_RESULT_TYPE_SELLER:
+ NSLog(@"");
+ 
+ ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+ profileViewController.profileInstagramID = [dict objectForKey:@"id"];
+ [self.navigationController pushViewController:profileViewController animated:YES];
+ 
+ default:
+ break;
+ }
+ 
+ 
+ }
+ 
+ */
 
 
 @end
