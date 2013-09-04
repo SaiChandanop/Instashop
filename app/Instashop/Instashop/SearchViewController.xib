@@ -7,10 +7,10 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController">
             <connections>
+                <outlet property="containerReferenceView" destination="Hki-aL-SSW" id="BWh-MQ-o3R"/>
                 <outlet property="hashtagsButton" destination="4wh-hG-SQp" id="42G-bK-ozK"/>
                 <outlet property="highlightView" destination="TG3-7r-sth" id="MpU-qe-BAd"/>
                 <outlet property="productsButton" destination="oGT-8f-sdG" id="YzU-wq-mZD"/>
-                <outlet property="searchResultsTableView" destination="HAb-Hm-JDB" id="dhp-bS-h9h"/>
                 <outlet property="shopsButton" destination="mfp-wi-XmK" id="b8s-TK-nCz"/>
                 <outlet property="theSearchBar" destination="Jre-Pb-f4O" id="TlD-Bb-h5u"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -21,15 +21,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="HAb-Hm-JDB">
-                    <rect key="frame" x="0.0" y="125" width="320" height="443"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <connections>
-                        <outlet property="dataSource" destination="-1" id="A6G-5s-Fqc"/>
-                        <outlet property="delegate" destination="-1" id="h34-tL-6Bp"/>
-                    </connections>
-                </tableView>
                 <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Jre-Pb-f4O">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -104,7 +95,12 @@
                     </connections>
                 </button>
                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TG3-7r-sth">
-                    <rect key="frame" x="0.0" y="121" width="107" height="2"/>
+                    <rect key="frame" x="0.0" y="119" width="107" height="2"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                </view>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hki-aL-SSW">
+                    <rect key="frame" x="0.0" y="121" width="320" height="447"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>

@@ -14,6 +14,7 @@
 #import "AppRootViewController.h"
 #import "PurchasingViewController.h"
 #import "ProfileViewController.h"
+#import "AttributesManager.h"
 
 @interface SearchViewController ()
 
@@ -24,19 +25,25 @@
 
 @synthesize appRootViewController;
 @synthesize theSearchBar;
-@synthesize searchResultsTableView;
+@synthesize containerReferenceView;
+@synthesize productContainerView;
 @synthesize searchResultsArray;
-
+@synthesize productCategoriesNavigationController;
 
 @synthesize shopsButton;
 @synthesize productsButton;
 @synthesize hashtagsButton;
 
+@synthesize selectedCategoriesArray;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        
         self.searchResultsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
+        
     }
     return self;
 }
@@ -66,11 +73,29 @@
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SELECT A PHOTO"]];
 
+    
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
 
     self.highlightView.backgroundColor = [ISConstants getISGreenColor];
     
     
     // Do any additional setup after loading the view from its nib.
+    
+    self.productContainerView = [[UIView alloc] initWithFrame:self.containerReferenceView.frame];
+    self.productContainerView.backgroundColor = [UIColor clearColor];
+    
+    /*
+    UINavigationController
+    self.productCategoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    self.productCategoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+    self.productCategoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
+    self.productCategoriesTableViewController.positionIndex = 0;
+    self.productCategoriesTableViewController.parentController = self;
+    self.productCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
+    [self.productContainerView addSubview:self.productCategoriesTableViewController.tableView];
+
+ */
+    [self.containerReferenceView removeFromSuperview];
 }
 
 -(void)backButtonHit
@@ -82,7 +107,7 @@
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
     [self.searchResultsArray removeAllObjects];
-    [self.searchResultsTableView reloadData];
+//    [self.searchResultsTableView reloadData];
     
     [self.theSearchBar resignFirstResponder];
     [SearchAPIHandler makeSearchRequestWithDelegate:self withRequestString:searchBar.text];
@@ -96,7 +121,7 @@
     [self.searchResultsArray removeAllObjects];
     [self.searchResultsArray addObjectsFromArray:theSearchResultsArray];
     
-    [self.searchResultsTableView reloadData];
+//    [self.searchResultsTableView reloadData];
     
 }
 
@@ -181,17 +206,76 @@
 -(IBAction)shopsButtonHit:(UIButton *)theButton
 {
     [self moveHighlightToButton:theButton];
+    
+    
+    [self.productContainerView removeFromSuperview];
+    
 }
 
 -(IBAction)productsButtonHit:(UIButton *)theButton
 {
     [self moveHighlightToButton:theButton];
+    
+    if ([self.productContainerView superview] == nil)
+        [self.view addSubview:self.productContainerView];
+         
 }
 
 -(IBAction)hashtagButtonHit:(UIButton *)theButton
 {
     [self moveHighlightToButton:theButton];    
 }
+
+-(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
+{
+    if ([self.selectedCategoriesArray count] > callingController.positionIndex)
+        [self.selectedCategoriesArray removeObjectsInRange:NSMakeRange(callingController.positionIndex, [self.selectedCategoriesArray count] - callingController.positionIndex)];
+    
+    [self.selectedCategoriesArray addObject:theCategory];
+    
+    
+    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil)
+    {
+//        [self.parentController categorySelectionCompleteWithArray:self.selectedCategoriesArray];
+//        [self.navigationController popToViewController:parentController animated:YES];
+    }
+    else
+    {
+        
+        
+        CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+        categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+        categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
+        categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
+        categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
+        categoriesTableViewController.parentController = self;
+        categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
+        
+        
+        UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+        containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+        [containerViewController.view addSubview:categoriesTableViewController.tableView];
+        
+        categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
+        
+        
+        [self.navigationController pushViewController:containerViewController animated:YES];
+        
+        NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
+        for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
+        {
+            [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
+            if (i != [self.selectedCategoriesArray count] -1)
+                [titleString appendString:@" >"];
+            
+        }
+        
+        categoriesTableViewController.navigationController.navigationBar.topItem.title = titleString;
+    }
+    
+}
+
+
 
 
 
