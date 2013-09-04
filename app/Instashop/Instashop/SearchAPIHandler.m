@@ -53,17 +53,14 @@
 
 -(void)searchRequestComplete:(id)obj
 {
+    NSString* newStr = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSLog(@"newStr: %@", newStr);
+    NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
-    NSLog(@"searchRequestComplete: %@", newStr);
-    
-/*    NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    
-    
-    if ([self.delegate conformsToProtocol:@protocol(SearchReturnedReceiverProtocol)])
-        [(id<SearchReturnedReceiverProtocol>)self.delegate searchReturnedWithArray:responseArray];
-  */
+    NSLog(@"responseArray: %@", responseArray);
+ //   if ([self.delegate conformsToProtocol:@protocol(SearchReturnedReceiverProtocol)])
+   //     [(id<SearchReturnedReceiverProtocol>)self.delegate searchReturnedWithArray:responseArray];
+
 }
 @end
