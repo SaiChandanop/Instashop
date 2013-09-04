@@ -14,6 +14,7 @@
 #import "AppRootViewController.h"
 #import "PurchasingViewController.h"
 #import "ProfileViewController.h"
+
 @interface SearchViewController ()
 
 
@@ -26,6 +27,10 @@
 @synthesize searchResultsTableView;
 @synthesize searchResultsArray;
 
+
+@synthesize shopsButton;
+@synthesize productsButton;
+@synthesize hashtagsButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,7 +66,8 @@
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SELECT A PHOTO"]];
 
-    
+
+    self.highlightView.backgroundColor = [ISConstants getISGreenColor];
     
     
     // Do any additional setup after loading the view from its nib.
@@ -153,8 +159,39 @@
     
 }
 
+-(void)moveHighlightToButton:(UIButton *)theButton
+{
+    float transitionTime = .15;
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    self.highlightView.frame = CGRectMake(theButton.frame.origin.x, self.highlightView.frame.origin.y, theButton.frame.size.width, self.highlightView.frame.size.height);
+    [UIView commitAnimations];
 
+    
+    
+    self.shopsButton.selected = NO;
+    self.productsButton.selected = NO;
+    self.hashtagsButton.selected = NO;
+    
+    theButton.selected = YES;
+}
 
+-(IBAction)shopsButtonHit:(UIButton *)theButton
+{
+    [self moveHighlightToButton:theButton];
+}
+
+-(IBAction)productsButtonHit:(UIButton *)theButton
+{
+    [self moveHighlightToButton:theButton];
+}
+
+-(IBAction)hashtagButtonHit:(UIButton *)theButton
+{
+    [self moveHighlightToButton:theButton];    
+}
 
 
 
