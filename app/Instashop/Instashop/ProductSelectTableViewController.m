@@ -191,7 +191,6 @@
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
-    NSLog(@"feedRequestFinishedWithArrray: %@", theArray);
     [self.contentArray removeAllObjects];
     
     NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
