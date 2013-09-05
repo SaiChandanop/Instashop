@@ -130,8 +130,6 @@
 
 -(void)moveHighlightToButton:(UIButton *)theButton
 {
-//    NSLog(@"moveHighlightToButton: %@", theButton);
-//    NSLog(@"self.highlightView.frame1: %@", NSStringFromCGRect(self.highlightView.frame));
     float transitionTime = .15;
     
     [UIView beginAnimations:nil context:nil];
@@ -140,9 +138,6 @@
     self.highlightView.frame = CGRectMake(theButton.frame.origin.x, self.highlightView.frame.origin.y, theButton.frame.size.width, self.highlightView.frame.size.height);
     [UIView commitAnimations];
 
-//    NSLog(@"self.highlightView.frame2: %@", NSStringFromCGRect(self.highlightView.frame));
-//    NSLog(@" ");
-    
     self.shopsButton.selected = NO;
     self.productsButton.selected = NO;
     self.hashtagsButton.selected = NO;
@@ -159,10 +154,10 @@
 
 -(IBAction)productsButtonHit:(UIButton *)theButton
 {
-    [self moveHighlightToButton:theButton];
-    
     if ([self.productContainerView superview] == nil)
         [self.view addSubview:self.productContainerView];
+
+    [self moveHighlightToButton:theButton];
          
 }
 
@@ -306,6 +301,8 @@
     [theButton removeFromSuperview];
     [self.freeSearchButtonsArray removeObject:theButton];
     [self layoutSearchBarContainers];
+    
+    [self runSearch];
 }
 
 

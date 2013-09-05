@@ -105,10 +105,7 @@
     
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
-    
-    NSLog(@"getProductsRequestFinished: %@", newStr);
-    
-    
+        
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
 //    NSLog(@"responseArray: %@", responseArray);
