@@ -30,15 +30,15 @@
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="65" customClass="TPKeyboardAvoidingScrollView">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="578"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="367">
-                    <rect key="frame" x="0.0" y="497" width="320" height="5"/>
+                    <rect key="frame" x="0.0" y="444" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="370">
-                    <rect key="frame" x="0.0" y="574" width="320" height="5"/>
+                    <rect key="frame" x="0.0" y="521" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="358">
@@ -62,7 +62,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="368">
-                    <rect key="frame" x="0.0" y="502" width="320" height="72"/>
+                    <rect key="frame" x="0.0" y="449" width="320" height="72"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="rTn-T6-1Sk">
@@ -132,7 +132,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="369">
-                    <rect key="frame" x="18" y="508" width="282" height="54"/>
+                    <rect key="frame" x="18" y="455" width="282" height="54"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <attributedString key="attributedText">
                         <fragment content="By tapping the 'Submit Application' button below, you are confirming that you agree to Instashop's ">
@@ -169,7 +169,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="51">
-                    <rect key="frame" x="-1" y="581" width="320" height="44"/>
+                    <rect key="frame" x="-1" y="528" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
                     <state key="normal" title="Submit Application">
@@ -197,26 +197,12 @@
                     <rect key="frame" x="0.0" y="43" width="320" height="5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nfT-GK-0A0">
-                    <rect key="frame" x="-1" y="452" width="321" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                    <state key="normal" title="Follow Intstashop">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected" title="Following Instashop">
-                        <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="followInstashopButtonHit" destination="-1" eventType="touchUpInside" id="nYT-qL-yXa"/>
-                    </connections>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lmVerifiedRetailerIcon.png" id="Vad-dv-amf">
                     <rect key="frame" x="275" y="48" width="44" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_disclosure_new.png" id="LP5-1n-a4b">
-                    <rect key="frame" x="227" y="539" width="40" height="40"/>
+                    <rect key="frame" x="231" y="533" width="40" height="40"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_disclosure_new.png" id="3JV-wq-Vk0">
@@ -268,6 +254,20 @@
                 </textField>
             </subviews>
         </scrollView>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="nfT-GK-0A0">
+            <rect key="frame" x="0.0" y="0.0" width="321" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+            <state key="normal" title="Follow Intstashop">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <state key="selected" title="Following Instashop">
+                <color key="titleColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+            <connections>
+                <action selector="followInstashopButtonHit" destination="-1" eventType="touchUpInside" id="nYT-qL-yXa"/>
+            </connections>
+        </button>
     </objects>
     <resources>
         <image name="cell_disclosure_new.png" width="44" height="44"/>
