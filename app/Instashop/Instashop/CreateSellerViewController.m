@@ -87,10 +87,9 @@
     
     // Page Control
     self.pageControl = [[UIPageControl alloc] init];
-    self.pageControl.frame = CGRectMake(30.0, 400.0, 50.0, 50.0);
+    self.pageControl.frame = CGRectMake(0.0, 360.0, 320.0, 50.0);
     self.pageControl.numberOfPages = kHowToPageNumber;
     self.pageControl.currentPage = 0;
-    self.pageControl.backgroundColor = [UIColor redColor];
     
     // Maybe you want a left view so that the previous menu can't be seen.
     CreateSellerTutorialView *leftView = [[CreateSellerTutorialView alloc] initWithFrame:CGRectMake(-320.0, 0.0, screenWidth, howToViewBoundsHeight)];
@@ -108,6 +107,7 @@
         [tutorialView addSubview:graphic];
         [self.createSellerHowToScrollView addSubview:tutorialView];
     }
+    self.createSellerHowToScrollView.delegate = self;
     [self.view addSubview:self.createSellerHowToScrollView];
     [self.view addSubview:pageControl];
     
@@ -241,6 +241,13 @@
 -(void)backButtonHit
 {
     [self.delegate createSellerCancelButtonHit:self.navigationController];
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat pageWidth = self.createSellerHowToScrollView.frame.size.width;
+    float fractionalPage = self.createSellerHowToScrollView.contentOffset.x/320.0;
+    NSInteger page = lround(fractionalPage);
+    self.pageControl.currentPage = page;
 }
 
 -(void)categorySelectionCompleteWithArray:(NSArray *)selectionArray
