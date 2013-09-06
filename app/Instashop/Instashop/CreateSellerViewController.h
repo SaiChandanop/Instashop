@@ -11,6 +11,7 @@
 #import "BSKeyboardControls.h"
 #import "IGRequest.h"
 #import "CreateSellerOccuredProtocol.h"
+#import "CreateSellerTutorialView.h"
 
 @class HomeViewController;
 @interface CreateSellerViewController : UIViewController <UITextFieldDelegate, BSKeyboardControlsDelegate, IGRequestDelegate, CreateSellerOccuredProtocol>
@@ -49,6 +50,8 @@
 @property (nonatomic, retain) HomeViewController *delegate;
 
 @property (nonatomic, retain) IBOutlet TPKeyboardAvoidingScrollView *containerScrollView;
+@property (nonatomic, retain) UIScrollView *createSellerHowToScrollView;
+@property (nonatomic, retain) UIPageControl *pageControl;
 
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *addressTextField;

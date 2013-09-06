@@ -20,10 +20,11 @@
 
 @end
 
+#define kHowToPageNumber 4
+
 @implementation CreateSellerViewController
 
 @synthesize delegate;
-
 
 @synthesize containerScrollView;
 
@@ -42,6 +43,12 @@
 @synthesize keyboardControls;
 @synthesize followInstashopButton;
 @synthesize thanksSellerImageView;
+@synthesize createSellerHowToScrollView;
+@synthesize pageControl;
+
+// use lightmenubg. 
+
+//*** The words on the navigation bar of the Create Seller View Controller shifts towards the right when the view is closed.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,8 +68,6 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
 
-    
-    
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
@@ -71,10 +76,81 @@
 //    CGFloat whiteSpace = 11.0f;
     //CGFloat topSpace = 64.0f;
     
+    // Scroll View
+    self.createSellerHowToScrollView = [[UIScrollView alloc] initWithFrame:screenBound];
+    self.createSellerHowToScrollView.pagingEnabled = YES;
+    self.createSellerHowToScrollView.showsHorizontalScrollIndicator = NO;
+    int arbitraryNumberSmallerThanBoundHeight = 33.0;
+    // Needs to be less than bound height to disable vertical scrolling.
+    self.createSellerHowToScrollView.contentSize = CGSizeMake(1280.0, arbitraryNumberSmallerThanBoundHeight);
+    float howToViewBoundsHeight = self.createSellerHowToScrollView.bounds.size.height;
+    
+    // Page Control
+    self.pageControl = [[UIPageControl alloc] init];
+    self.pageControl.frame = CGRectMake(30.0, 400.0, 50.0, 50.0);
+    self.pageControl.numberOfPages = kHowToPageNumber;
+    self.pageControl.currentPage = 0;
+    self.pageControl.backgroundColor = [UIColor redColor];
+    
+    // Maybe you want a left view so that the previous menu can't be seen.
+    CreateSellerTutorialView *leftView = [[CreateSellerTutorialView alloc] initWithFrame:CGRectMake(-320.0, 0.0, screenWidth, howToViewBoundsHeight)];
+    [self.createSellerHowToScrollView addSubview:leftView];
+    
+    NSArray *arrayOfLabels = [[NSArray alloc] initWithObjects:@"target-title.png", @"share-title.png", @"manage-title.png", @"grow-title.png", nil];
+    NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"target-graphic.png", @"share-graphic.png", @"manage-graphic.png", @"grow-graphic.png", nil];
+    
+    for (int p = 0; p < kHowToPageNumber; p++) {
+        CreateSellerTutorialView *tutorialView = [[CreateSellerTutorialView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
+        UIImageView *label = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[arrayOfLabels objectAtIndex:p]]];
+        UIImageView *graphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[arrayOfImages objectAtIndex:p]]];
+        graphic.frame = CGRectMake((320 - graphic.bounds.size.width)/2, (screenHeight - graphic.bounds.size.height)/2 + 10, graphic.bounds.size.width, graphic.bounds.size.width);
+        [tutorialView addSubview:label];
+        [tutorialView addSubview:graphic];
+        [self.createSellerHowToScrollView addSubview:tutorialView];
+    }
+    [self.view addSubview:self.createSellerHowToScrollView];
+    [self.view addSubview:pageControl];
+    
+    // This is individual set up of each view.
+    /*
+    // Target View
+    UIImageView *targetLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"target-title.png"]];
+    UIImageView *targetGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"target-graphic.png"]];
+    UIView *targetView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, screenWidth, howToViewBoundsHeight)];
+    [targetView addSubview:backgroundImage];
+    [targetView addSubview:targetGraphic];
+    [targetView addSubview:targetLabel];
+    
+    // Share View
+    UIImageView *shareLabel = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"share-title.png"]];
+    UIImageView *shareGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"share-graphic.png"]];
+    shareGraphic.frame = CGRectMake((320 - shareGraphic.bounds.size.width)/2, (screenHeight - shareGraphic.bounds.size.height)/2, shareGraphic.bounds.size.width, shareGraphic.bounds.size.width);
+    UIView *shareView = [[UIView alloc] initWithFrame:CGRectMake(320.0, 0, screenWidth, howToViewBoundsHeight)];
+    [shareView addSubview:backgroundImage];
+    [shareView addSubview:shareGraphic];
+    [shareView addSubview:shareLabel];
+    
+    // Manage View
+    UIImageView *manageLabel
+    = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"manage-title.png"]];
+    UIImageView *manageGraphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"manage-graphic.png"]];
+    manageGraphic.frame = CGRectMake((320 - manageGraphic.bounds.size.width)/2, (screenHeight - manageGraphic.bounds.size.height)/2, manageGraphic.bounds.size.width, manageGraphic.bounds.size.width);
+    UIView *manageView = [[UIView alloc] initWithFrame:CGRectMake(640.0, 0, screenWidth, howToViewBoundsHeight)];
+    [manageView addSubview:backgroundImage];
+    [manageView addSubview:manageGraphic];
+    [manageView addSubview:manageLabel];
+    
+    [self.createSellerHowToScrollView addSubview:leftView];
+    [self.createSellerHowToScrollView addSubview:targetView];
+    [self.createSellerHowToScrollView addSubview:shareView];
+    [self.createSellerHowToScrollView addSubview:manageView];
+    self.view = self.createSellerHowToScrollView;*/
+    
+    /*
     self.containerScrollView.frame = CGRectMake(0, 66, screenWidth, screenHeight - 66);
     self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
 //    self.containerScrollView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:self.containerScrollView];
+    [self.view addSubview:self.containerScrollView];*/
     
     self.instagramUsernameLabel.text = [InstagramUserObject getStoredUserObject].username;
     
