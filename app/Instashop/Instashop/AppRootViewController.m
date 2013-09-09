@@ -208,6 +208,7 @@ float transitionTime = .456;
 
 -(void)createSellerButtonHit
 {
+    
     CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
     createSellerViewController.delegate = self.homeViewController;
     
@@ -222,7 +223,6 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     createNavigationController.view.frame = CGRectMake(0, 0, createNavigationController .view.frame.size.width, createNavigationController.view.frame.size.height);
     [UIView commitAnimations];
-    
 }
 
 -(void)createSellerShouldExit:(UINavigationController *)theNavigationController

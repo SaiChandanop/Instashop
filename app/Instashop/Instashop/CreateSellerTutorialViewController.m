@@ -1,22 +1,20 @@
 //
-//  CreateSellerTutorialView.m
+//  CreateSellerTutorialViewController.m
 //  Instashop
 //
-//  Created by Susan Yee on 9/6/13.
+//  Created by Susan Yee on 9/9/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
 
-#import "CreateSellerTutorialView.h"
+#import "CreateSellerTutorialViewController.h"
 
-@implementation CreateSellerTutorialView
+@implementation CreateSellerTutorialViewController
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-        UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
-        [self addSubview:backgroundImage];
     }
     return self;
 }

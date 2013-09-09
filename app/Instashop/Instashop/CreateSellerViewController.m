@@ -82,31 +82,48 @@
     self.createSellerHowToScrollView.showsHorizontalScrollIndicator = NO;
     int arbitraryNumberSmallerThanBoundHeight = 33.0;
     // Needs to be less than bound height to disable vertical scrolling.
-    self.createSellerHowToScrollView.contentSize = CGSizeMake(1280.0, arbitraryNumberSmallerThanBoundHeight);
+    self.createSellerHowToScrollView.contentSize = CGSizeMake(screenWidth * 5, arbitraryNumberSmallerThanBoundHeight);
     float howToViewBoundsHeight = self.createSellerHowToScrollView.bounds.size.height;
     
     // Page Control
     self.pageControl = [[UIPageControl alloc] init];
-    self.pageControl.frame = CGRectMake(0.0, 360.0, 320.0, 50.0);
+    float pageControlHeight = 50.0;
+    self.pageControl.frame = CGRectMake(0.0, screenHeight - pageControlHeight, 320.0, pageControlHeight);
     self.pageControl.numberOfPages = kHowToPageNumber;
     self.pageControl.currentPage = 0;
     
     // Maybe you want a left view so that the previous menu can't be seen.
-    CreateSellerTutorialView *leftView = [[CreateSellerTutorialView alloc] initWithFrame:CGRectMake(-320.0, 0.0, screenWidth, howToViewBoundsHeight)];
+    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(-320.0, 0.0, screenWidth, howToViewBoundsHeight)];
     [self.createSellerHowToScrollView addSubview:leftView];
     
     NSArray *arrayOfLabels = [[NSArray alloc] initWithObjects:@"target-title.png", @"share-title.png", @"manage-title.png", @"grow-title.png", nil];
     NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"target-graphic.png", @"share-graphic.png", @"manage-graphic.png", @"grow-graphic.png", nil];
     
-    for (int p = 0; p < kHowToPageNumber; p++) {
-        CreateSellerTutorialView *tutorialView = [[CreateSellerTutorialView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
+    for (int p = 0; p <= kHowToPageNumber; p++) {
+        // I don't think a separate CreateSellerTutorialView class is necessary.  Can just use UIView.
+        if (p == kHowToPageNumber) {
+            self.containerScrollView.frame = CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight - 66);
+            self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
+            [self.createSellerHowToScrollView addSubview:self.containerScrollView];
+            break;
+        }
+        UIView *tutorialView = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
+        UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
+        [tutorialView addSubview:backgroundImage];
         UIImageView *label = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[arrayOfLabels objectAtIndex:p]]];
         UIImageView *graphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[arrayOfImages objectAtIndex:p]]];
         graphic.frame = CGRectMake((320 - graphic.bounds.size.width)/2, (screenHeight - graphic.bounds.size.height)/2 + 10, graphic.bounds.size.width, graphic.bounds.size.width);
         [tutorialView addSubview:label];
         [tutorialView addSubview:graphic];
+        if (p == (kHowToPageNumber - 1)) {
+            UIButton *signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(50.0, 200.0, 50.0, 50.0)];
+            signUpButton.backgroundColor = [UIColor redColor];
+            [signUpButton addTarget:self action:@selector(signUp) forControlEvents:UIControlEventTouchUpInside];
+            [tutorialView addSubview:signUpButton];
+        }
         [self.createSellerHowToScrollView addSubview:tutorialView];
     }
+    
     self.createSellerHowToScrollView.delegate = self;
     [self.view addSubview:self.createSellerHowToScrollView];
     [self.view addSubview:pageControl];
@@ -146,12 +163,6 @@
     [self.createSellerHowToScrollView addSubview:manageView];
     self.view = self.createSellerHowToScrollView;*/
     
-    /*
-    self.containerScrollView.frame = CGRectMake(0, 66, screenWidth, screenHeight - 66);
-    self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
-//    self.containerScrollView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:self.containerScrollView];*/
-    
     self.instagramUsernameLabel.text = [InstagramUserObject getStoredUserObject].username;
     
     /*
@@ -168,9 +179,6 @@
     
     
     [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    
-    
-
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
@@ -238,6 +246,16 @@
     
 }
 
+- (void) signUp {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    [self.createSellerHowToScrollView scrollRectToVisible:CGRectMake(1280.0, 0.0, screenWidth, screenHeight) animated:YES];
+    self.createSellerHowToScrollView.scrollEnabled = NO;
+}
+
 -(void)backButtonHit
 {
     [self.delegate createSellerCancelButtonHit:self.navigationController];
@@ -245,7 +263,7 @@
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat pageWidth = self.createSellerHowToScrollView.frame.size.width;
-    float fractionalPage = self.createSellerHowToScrollView.contentOffset.x/320.0;
+    float fractionalPage = self.createSellerHowToScrollView.contentOffset.x/pageWidth;
     NSInteger page = lround(fractionalPage);
     self.pageControl.currentPage = page;
 }

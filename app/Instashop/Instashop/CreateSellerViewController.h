@@ -11,7 +11,6 @@
 #import "BSKeyboardControls.h"
 #import "IGRequest.h"
 #import "CreateSellerOccuredProtocol.h"
-#import "CreateSellerTutorialView.h"
 
 @class HomeViewController;
 @interface CreateSellerViewController : UIViewController <UITextFieldDelegate, BSKeyboardControlsDelegate, IGRequestDelegate, CreateSellerOccuredProtocol, UIScrollViewDelegate>
