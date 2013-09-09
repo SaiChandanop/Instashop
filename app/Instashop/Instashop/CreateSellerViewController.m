@@ -82,29 +82,25 @@
     self.createSellerHowToScrollView.showsHorizontalScrollIndicator = NO;
     int arbitraryNumberSmallerThanBoundHeight = 33.0;
     // Needs to be less than bound height to disable vertical scrolling.
-    self.createSellerHowToScrollView.contentSize = CGSizeMake(screenWidth * 5, arbitraryNumberSmallerThanBoundHeight);
+    self.createSellerHowToScrollView.contentSize = CGSizeMake(screenWidth * 4, arbitraryNumberSmallerThanBoundHeight);
     float howToViewBoundsHeight = self.createSellerHowToScrollView.bounds.size.height;
-    
-    // Page Control
-    self.pageControl = [[UIPageControl alloc] init];
-    float pageControlHeight = 50.0;
-    self.pageControl.frame = CGRectMake(0.0, screenHeight - pageControlHeight, 320.0, pageControlHeight);
-    self.pageControl.numberOfPages = kHowToPageNumber;
-    self.pageControl.currentPage = 0;
     
     // Maybe you want a left view so that the previous menu can't be seen.
     UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(-320.0, 0.0, screenWidth, howToViewBoundsHeight)];
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
+    [leftView addSubview:backgroundImage];
     [self.createSellerHowToScrollView addSubview:leftView];
     
     NSArray *arrayOfLabels = [[NSArray alloc] initWithObjects:@"target-title.png", @"share-title.png", @"manage-title.png", @"grow-title.png", nil];
     NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"target-graphic.png", @"share-graphic.png", @"manage-graphic.png", @"grow-graphic.png", nil];
     
     for (int p = 0; p <= kHowToPageNumber; p++) {
-        // I don't think a separate CreateSellerTutorialView class is necessary.  Can just use UIView.
+        
         if (p == kHowToPageNumber) {
-            self.containerScrollView.frame = CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight - 66);
-            self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
-            [self.createSellerHowToScrollView addSubview:self.containerScrollView];
+            UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
+            UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
+            [rightView addSubview:backgroundImage];
+            [self.createSellerHowToScrollView addSubview:rightView];
             break;
         }
         UIView *tutorialView = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
@@ -116,7 +112,7 @@
         [tutorialView addSubview:label];
         [tutorialView addSubview:graphic];
         if (p == (kHowToPageNumber - 1)) {
-            UIButton *signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(50.0, 200.0, 50.0, 50.0)];
+            UIButton *signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0, 200.0, 50.0, 50.0)];
             signUpButton.backgroundColor = [UIColor redColor];
             [signUpButton addTarget:self action:@selector(signUp) forControlEvents:UIControlEventTouchUpInside];
             [tutorialView addSubview:signUpButton];
@@ -126,6 +122,13 @@
     
     self.createSellerHowToScrollView.delegate = self;
     [self.view addSubview:self.createSellerHowToScrollView];
+    
+    // Page Control
+    self.pageControl = [[UIPageControl alloc] init];
+    float pageControlHeight = 50.0;
+    self.pageControl.frame = CGRectMake(0.0, screenHeight - 66 - pageControlHeight, screenWidth, pageControlHeight);
+    self.pageControl.numberOfPages = kHowToPageNumber;
+    self.pageControl.currentPage = 0;
     [self.view addSubview:pageControl];
     
     // This is individual set up of each view.
@@ -248,10 +251,19 @@
 
 - (void) signUp {
     
+    [self.pageControl removeFromSuperview];
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
+    int arbitraryNumberSmallerThanBoundHeight = 33.0;
+    // Needs to be less than bound height to disable vertical scrolling.
+    self.createSellerHowToScrollView.contentSize = CGSizeMake(screenWidth * 5, arbitraryNumberSmallerThanBoundHeight);
+    self.containerScrollView.frame = CGRectMake(4 * screenWidth, 0.0, screenWidth, screenHeight - 66);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
+    self.containerScrollView.backgroundColor = [UIColor blackColor];
+    [self.createSellerHowToScrollView addSubview:self.containerScrollView];
+    [self.createSellerHowToScrollView bringSubviewToFront:self.containerScrollView];
     [self.createSellerHowToScrollView scrollRectToVisible:CGRectMake(1280.0, 0.0, screenWidth, screenHeight) animated:YES];
     self.createSellerHowToScrollView.scrollEnabled = NO;
 }
