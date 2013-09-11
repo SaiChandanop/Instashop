@@ -37,6 +37,7 @@
 @property (strong, nonatomic) AppRootViewController *appRootViewController;
 
 @property (strong, nonatomic) NSString *pushDeviceTokenString;
+@property (nonatomic, assign) BOOL firstRun;
 
 
 @end

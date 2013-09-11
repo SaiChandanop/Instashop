@@ -12,6 +12,7 @@
 #import "AttributesManager.h"
 #import "SellersAPIHandler.h"
 #import "UserAPIHandler.h"
+#import "FirstTimeUserViewController.h"
 
 #define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
 #define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
@@ -24,6 +25,7 @@
 
 @synthesize instagram, authenticationViewController, appRootViewController;
 @synthesize pushDeviceTokenString;
+@synthesize firstRun;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -31,6 +33,16 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 
 //    [ZenCartAuthenticationAPIHandler makeLoginRequest];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"firstRun"]) {
+        self.firstRun = TRUE;
+        [defaults setObject:[NSDate date] forKey:@"firstRun"];
+    }
+    else {
+        self.firstRun = FALSE;
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
     
     
@@ -170,6 +182,12 @@
 {
     [_window release];
     [super dealloc];
+}
+
+// probably wouldn't want it to be here.
+- (void) showTutorial {
+    FirstTimeUserViewController *tutorial = [[FirstTimeUserViewController alloc] init];
+    
 }
 
 

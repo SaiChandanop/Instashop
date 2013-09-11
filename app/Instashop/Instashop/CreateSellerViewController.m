@@ -94,6 +94,13 @@
     NSArray *arrayOfLabels = [[NSArray alloc] initWithObjects:@"target-title.png", @"share-title.png", @"manage-title.png", @"grow-title.png", nil];
     NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"target-graphic.png", @"share-graphic.png", @"manage-graphic.png", @"grow-graphic.png", nil];
     
+    NSString *stringTextOne = [NSString stringWithFormat:@"Text 1"];
+    NSString *stringTextTwo = [NSString stringWithFormat:@"Text 2"];
+    NSString *stringTextThree = [NSString stringWithFormat:@"Text 3"];
+    NSString *stringTextFour = [NSString stringWithFormat:@"Text 4"];
+    
+    NSArray *arrayOfTexts = [[NSArray alloc] initWithObjects:stringTextOne, stringTextTwo, stringTextThree, stringTextFour, nil];
+    
     for (int p = 0; p <= kHowToPageNumber; p++) {
         
         if (p == kHowToPageNumber) {
@@ -109,10 +116,15 @@
         UIImageView *label = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[arrayOfLabels objectAtIndex:p]]];
         UIImageView *graphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[arrayOfImages objectAtIndex:p]]];
         graphic.frame = CGRectMake((320 - graphic.bounds.size.width)/2, (screenHeight - graphic.bounds.size.height)/2 + 10, graphic.bounds.size.width, graphic.bounds.size.width);
+        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 400.0, 220.0, 60.0)];
+        textLabel.text = [arrayOfTexts objectAtIndex:p];
+        textLabel.textColor = [UIColor blackColor];
+        textLabel.textAlignment = NSTextAlignmentCenter;
+        [tutorialView addSubview:textLabel];
         [tutorialView addSubview:label];
         [tutorialView addSubview:graphic];
         if (p == (kHowToPageNumber - 1)) {
-            UIButton *signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0, 200.0, 50.0, 50.0)];
+            UIButton *signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0, 350.0, 50.0, 50.0)];
             signUpButton.backgroundColor = [UIColor redColor];
             [signUpButton addTarget:self action:@selector(signUp) forControlEvents:UIControlEventTouchUpInside];
             [tutorialView addSubview:signUpButton];
@@ -129,6 +141,8 @@
     self.pageControl.frame = CGRectMake(0.0, screenHeight - 66 - pageControlHeight, screenWidth, pageControlHeight);
     self.pageControl.numberOfPages = kHowToPageNumber;
     self.pageControl.currentPage = 0;
+    self.pageControl.pageIndicatorTintColor = [UIColor redColor];
+    self.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
     [self.view addSubview:pageControl];
     
     // This is individual set up of each view.
@@ -261,7 +275,6 @@
     self.createSellerHowToScrollView.contentSize = CGSizeMake(screenWidth * 5, arbitraryNumberSmallerThanBoundHeight);
     self.containerScrollView.frame = CGRectMake(4 * screenWidth, 0.0, screenWidth, screenHeight - 66);
     self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
-    self.containerScrollView.backgroundColor = [UIColor blackColor];
     [self.createSellerHowToScrollView addSubview:self.containerScrollView];
     [self.createSellerHowToScrollView bringSubviewToFront:self.containerScrollView];
     [self.createSellerHowToScrollView scrollRectToVisible:CGRectMake(1280.0, 0.0, screenWidth, screenHeight) animated:YES];
