@@ -39,7 +39,8 @@
 -(void)checkSellerExistsCallFinished:(id)obj
 {
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-
+    
+    if ([responseDictionary isKindOfClass:[NSDictionary class]])
     if ([responseDictionary objectForKey:@"zencart_id"] != nil)
     {
         InstagramUserObject *theUserObject =[InstagramUserObject getStoredUserObject];
