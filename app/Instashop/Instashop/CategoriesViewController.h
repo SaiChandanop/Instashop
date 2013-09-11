@@ -13,6 +13,7 @@
 @interface CategoriesViewController : UIViewController
 {
     id parentController;
+    NSArray *potentialCategoriesArray;
     NSMutableArray *selectedCategoriesArray;
     
     UITableView *initialTableReference;
@@ -21,6 +22,7 @@
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController;
 
 @property (nonatomic, retain) id parentController;
+@property (nonatomic, retain) NSArray *potentialCategoriesArray;
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
 
 @property (nonatomic, retain) UITableView *initialTableReference;

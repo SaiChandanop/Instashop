@@ -18,6 +18,7 @@
 @implementation CategoriesViewController
 
 @synthesize parentController;
+@synthesize potentialCategoriesArray;
 @synthesize selectedCategoriesArray;
 @synthesize initialTableReference;
 
@@ -45,13 +46,15 @@
     categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
     categoriesTableViewController.positionIndex = 0;
     categoriesTableViewController.parentController = self;
-    categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
+    categoriesTableViewController.categoriesArray = [NSArray arrayWithArray:self.potentialCategoriesArray];
     [self.view addSubview:categoriesTableViewController.tableView];
     
     categoriesTableViewController.navigationController.navigationBar.topItem.title = @"Categories";
     
     self.initialTableReference = categoriesTableViewController.tableView;
 }
+
+
 
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
