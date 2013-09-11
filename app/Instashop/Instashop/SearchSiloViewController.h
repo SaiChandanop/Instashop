@@ -29,6 +29,7 @@
     NSMutableArray *freeSearchButtonsArray;
 
     
+    int searchType;
 }
 
 
@@ -47,6 +48,6 @@
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
 @property (nonatomic, retain) NSMutableArray *freeSearchButtonsArray;
 
-
+@property (nonatomic, assign) int searchType;
 
 @end

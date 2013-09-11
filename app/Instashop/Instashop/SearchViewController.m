@@ -15,6 +15,7 @@
 #import "ProfileViewController.h"
 #import "AttributesManager.h"
 #import "SearchButtonContainer.h"
+#import "CategoriesViewController.h"
 
 @interface SearchViewController ()
 
@@ -24,6 +25,9 @@
 @implementation SearchViewController
 
 @synthesize appRootViewController;
+
+@synthesize productSearchViewController;
+@synthesize shopSearchViewController;
 @synthesize shopsButton;
 @synthesize productsButton;
 
@@ -67,9 +71,17 @@
     
     
     self.productSearchViewController = [[SearchSiloViewController alloc] initWithNibName:@"SearchSiloViewController" bundle:nil];
+    self.productSearchViewController.searchType = CATEGORIES_TYPE_PRODUCT;
     self.productSearchViewController.view.frame = CGRectMake(0, self.highlightView.frame.origin.y + self.highlightView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.highlightView.frame.origin.y + self. self.highlightView.frame.size.height));
     [self.view addSubview:self.productSearchViewController.view];
+
     
+    self.shopSearchViewController = [[SearchSiloViewController alloc] initWithNibName:@"SearchSiloViewController" bundle:nil];
+    self.shopSearchViewController.searchType = CATEGORIES_TYPE_SELLER;
+    self.shopSearchViewController.view.frame = CGRectMake(0, self.highlightView.frame.origin.y + self.highlightView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.highlightView.frame.origin.y + self. self.highlightView.frame.size.height));
+    [self.view addSubview:self.shopSearchViewController.view];
+
+    self.shopSearchViewController.view.alpha = 0;
     
                                                              
 }
@@ -99,14 +111,18 @@
 -(IBAction)shopsButtonHit:(UIButton *)theButton
 {
     [self moveHighlightToButton:theButton];
-//    [self.productContainerView removeFromSuperview];
+
+    self.productSearchViewController.view.alpha = 0;
+    self.shopSearchViewController.view.alpha = 1;
 }
 
 -(IBAction)productsButtonHit:(UIButton *)theButton
 {
-//    if ([self.productContainerView superview] == nil)
-//        [self.view addSubview:self.productContainerView];
+
     [self moveHighlightToButton:theButton];
+    
+    self.productSearchViewController.view.alpha = 1;
+    self.shopSearchViewController.view.alpha = 0;
          
 }
 

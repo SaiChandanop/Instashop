@@ -10,6 +10,8 @@
 #import "CategoriesTableViewController.h"
 #import "SearchButtonContainer.h"
 #import "AttributesManager.h"
+#import "CategoriesViewController.h"
+
 @interface SearchSiloViewController ()
 
 @end
@@ -26,6 +28,8 @@
 @synthesize freeSearchButtonsArray;
 @synthesize searchPromptLabel;
 @synthesize separatorImageView;
+@synthesize searchType;
+@synthesize productSelectTableViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,16 +55,21 @@
     [self.view addSubview:self.contentContainerView];
     
     CategoriesTableViewController *productCategoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    productCategoriesTableViewController.categoriesType = self.searchType;
     productCategoriesTableViewController.view.backgroundColor = [UIColor clearColor];
     productCategoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
     productCategoriesTableViewController.positionIndex = 0;
     productCategoriesTableViewController.parentController = self;
-    productCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
+    if (self.searchType == CATEGORIES_TYPE_SELLER)
+        productCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getShopsCategories];
+    else
+        productCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
     
     
     self.categoriesNavigationController = [[UINavigationController alloc] initWithRootViewController:productCategoriesTableViewController];
     [self.categoriesNavigationController setNavigationBarHidden:YES];
     [self.contentContainerView addSubview:categoriesNavigationController.view];
+    
     
     
     self.productSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
