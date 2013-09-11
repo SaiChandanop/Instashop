@@ -12,6 +12,7 @@
 #import "ISConstants.h"
 #import "SellersAPIHandler.h"
 #import "AppRootViewController.h"
+#import "ProfileViewController.h"
 @interface DiscoverViewController ()
 
 @end
@@ -82,6 +83,10 @@
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
     NSLog(@"%@ theSelectionObject: %@", self, theSelectionObject);
+    
+    ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+    profileViewController.profileInstagramID = [theSelectionObject objectForKey:@"instagram_id"];
+    [self.navigationController pushViewController:profileViewController animated:YES];
 }
 
 
