@@ -24,6 +24,9 @@
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="Jw4-5N-Opg"/>
+                    </connections>
                 </searchBar>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Menu_BG.png" translatesAutoresizingMaskIntoConstraints="NO" id="xkF-aC-l5j">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="36"/>

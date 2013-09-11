@@ -141,13 +141,14 @@
     [self layoutSearchBarContainers];
     
     
-    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil)
+    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil || self.searchType ==  CATEGORIES_TYPE_SELLER)
     {
         [self runSearch];
     }
     else
     {
         CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+        categoriesTableViewController.categoriesType = self.searchType;
         categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
         categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
         categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
