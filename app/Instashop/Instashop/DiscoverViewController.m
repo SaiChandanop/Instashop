@@ -10,7 +10,8 @@
 #import "DiscoverTableViewController.h"
 #import "NavBarTitleView.h"
 #import "ISConstants.h"
-
+#import "SellersAPIHandler.h"
+#import "AppRootViewController.h"
 @interface DiscoverViewController ()
 
 @end
@@ -18,6 +19,9 @@
 @implementation DiscoverViewController
 
 @synthesize parentController;
+@synthesize discoverTableViewController;
+
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,13 +62,21 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     
+    self.discoverTableViewController = [[DiscoverTableViewController alloc] initWithNibName:@"DiscoverTableViewController" bundle:nil];
+    [self.view addSubview:self.discoverTableViewController.tableView];
     
-    DiscoverTableViewController *discoverTableViewController = [[DiscoverTableViewController alloc] initWithNibName:@"DiscoverTableViewController" bundle:nil];
-    [self.view addSubview:discoverTableViewController.tableView];
-        
+    
+    [SellersAPIHandler makeGetAllSellersRequestWithDelegate:self];
     // Do any additional setup after loading the view from its nib.
+    
 }
 
+-(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
+{
+    NSLog(@"sellersRequestFinishedWithResponseObject: %@", responseArray);
+    self.discoverTableViewController.sellersObjectsArray = [[NSArray alloc] initWithArray:responseArray];
+    [self.discoverTableViewController.tableView reloadData];
+}
 
 -(void)backButtonHit
 {

@@ -285,7 +285,23 @@
 
     
     
+}
+
++(void)makeGetAllSellersRequestWithDelegate:(id)theDelegate
+{
     
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/get_sellers.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    
+    
+    SellersAPIHandler *apiHandler = [[SellersAPIHandler alloc] init];
+    apiHandler.delegate = theDelegate;
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(getSellersRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
     
 }
+
+
+
 @end

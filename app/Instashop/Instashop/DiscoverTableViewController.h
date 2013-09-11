@@ -9,5 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface DiscoverTableViewController : UITableViewController
+{
+    NSArray *sellersObjectsArray;
+    
+}
+@property (nonatomic, retain) NSArray *sellersObjectsArray;
 
 @end

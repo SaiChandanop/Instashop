@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "SellersRequestFinishedProtocol.h"
+#import "DiscoverTableViewController.h"
 @class AppRootViewController;
-@interface DiscoverViewController : UIViewController
+@interface DiscoverViewController : UIViewController <SellersRequestFinishedProtocol>
 {
     AppRootViewController *parentController;
+    DiscoverTableViewController *discoverTableViewController;
 }
 @property (nonatomic, retain) AppRootViewController *parentController;
+@property (nonatomic, retain) DiscoverTableViewController *discoverTableViewController;
 @end
