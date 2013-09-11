@@ -99,8 +99,6 @@
 		7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */; };
 		7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */; };
 		7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */; };
-		7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B34813917624E5800C055AE /* DiscoverTableViewController.m */; };
-		7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */; };
 		7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */; };
 		7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */; };
 		7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECE17C7AB4400F4D5D8 /* badcamera.png */; };
@@ -109,8 +107,6 @@
 		7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */; };
 		7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */; };
 		7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B3F5218175FBDD800ABF49B /* productpreviewtabbar.png */; };
-		7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4908611758FE650047ED3B /* DiscoverViewController.m */; };
-		7B4908641758FE650047ED3B /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B4908621758FE650047ED3B /* DiscoverViewController.xib */; };
 		7B4A78FA17B13C07002E872A /* purchase_button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4A78F917B13C07002E872A /* purchase_button_background.png */; };
 		7B4A78FC17B14329002E872A /* buy_sizes.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B4A78FB17B14329002E872A /* buy_sizes.png */; };
 		7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */; };
@@ -364,9 +360,6 @@
 		7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewItem.m; sourceTree = "<group>"; };
 		7B31BD6917C6D0FF00D24F55 /* NavBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavBarTitleView.h; sourceTree = "<group>"; };
 		7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavBarTitleView.m; sourceTree = "<group>"; };
-		7B34813817624E5800C055AE /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
-		7B34813917624E5800C055AE /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
-		7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
 		7B376EC917C7A35000F4D5D8 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -379,9 +372,6 @@
 		7B3F5214175FB3A000ABF49B /* ProductPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductPreviewViewController.m; sourceTree = "<group>"; };
 		7B3F5215175FB3A000ABF49B /* ProductPreviewViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductPreviewViewController.xib; sourceTree = "<group>"; };
 		7B3F5218175FBDD800ABF49B /* productpreviewtabbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = productpreviewtabbar.png; sourceTree = "<group>"; };
-		7B4908601758FE650047ED3B /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
-		7B4908611758FE650047ED3B /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
-		7B4908621758FE650047ED3B /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
 		7B4A78F917B13C07002E872A /* purchase_button_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = purchase_button_background.png; sourceTree = "<group>"; };
 		7B4A78FB17B14329002E872A /* buy_sizes.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buy_sizes.png; sourceTree = "<group>"; };
 		7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppRootViewController.h; sourceTree = "<group>"; };
@@ -835,16 +825,6 @@
 			name = NavBarTitleView;
 			sourceTree = "<group>";
 		};
-		7B34813717624E3600C055AE /* DiscoverTableViewController */ = {
-			isa = PBXGroup;
-			children = (
-				7B34813817624E5800C055AE /* DiscoverTableViewController.h */,
-				7B34813917624E5800C055AE /* DiscoverTableViewController.m */,
-				7B34813A17624E5800C055AE /* DiscoverTableViewController.xib */,
-			);
-			name = DiscoverTableViewController;
-			sourceTree = "<group>";
-		};
 		7B376EC817C7A33300F4D5D8 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -893,17 +873,6 @@
 				7BE688C8176B7801007D383B /* FeedViewController.xib */,
 			);
 			name = Feed;
-			sourceTree = "<group>";
-		};
-		7B4908531758FE010047ED3B /* Discover */ = {
-			isa = PBXGroup;
-			children = (
-				7B34813717624E3600C055AE /* DiscoverTableViewController */,
-				7B4908601758FE650047ED3B /* DiscoverViewController.h */,
-				7B4908611758FE650047ED3B /* DiscoverViewController.m */,
-				7B4908621758FE650047ED3B /* DiscoverViewController.xib */,
-			);
-			name = Discover;
 			sourceTree = "<group>";
 		};
 		7B4908541758FE0A0047ED3B /* Notifications */ = {
@@ -1213,7 +1182,6 @@
 				7B0680CA17664BC2009154BF /* Buy */,
 				7B15B2F817B2A9E700173752 /* Categories */,
 				7B74C3CD179716670006289C /* CreateSeller */,
-				7B4908531758FE010047ED3B /* Discover */,
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
 				7B5BFAD617D6928400F82F0B /* Notifications */,
@@ -1550,7 +1518,6 @@
 				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
-				7B4908641758FE650047ED3B /* DiscoverViewController.xib in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
 				7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */,
 				7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */,
@@ -1571,7 +1538,6 @@
 				7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */,
 				7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */,
 				2E38E6AF17CBD28C00A8BD54 /* closebutton_white@2x.png in Resources */,
-				7B34813C17624E5800C055AE /* DiscoverTableViewController.xib in Resources */,
 				7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */,
 				2E628CB117C6A19900CB7BE4 /* AppIcon76x76@2x.png in Resources */,
 				7B602DA417664F4400663A73 /* purchaseheader.png in Resources */,
@@ -1720,7 +1686,6 @@
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
 				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
 				7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */,
-				7B4908631758FE650047ED3B /* DiscoverViewController.m in Sources */,
 				7B0D254B17CBA36F00E43FA6 /* GKImagePicker.m in Sources */,
 				7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */,
 				7B7A7F7F17D64ACE00247A26 /* SearchViewController.m in Sources */,
@@ -1736,7 +1701,6 @@
 				7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */,
 				7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */,
 				7B5D626817C5AF3700D6C8B1 /* STPToken.m in Sources */,
-				7B34813B17624E5800C055AE /* DiscoverTableViewController.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,

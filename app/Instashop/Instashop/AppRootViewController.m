@@ -23,7 +23,7 @@
 
 static AppRootViewController *theSharedRootViewController;
 
-@synthesize feedNavigationController, feedViewController, homeViewController, discoverViewController;
+@synthesize feedNavigationController, feedViewController, homeViewController;
 @synthesize areViewsTransitioning;
 @synthesize feedCoverButton;
 
@@ -62,11 +62,6 @@ float transitionTime = .456;
     self.homeViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.homeViewController.view];
     
-    
-    self.discoverViewController = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
-    self.discoverViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:self.discoverViewController.view];
-    
    
     self.feedViewController = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
     self.feedViewController.parentController = self;
@@ -74,7 +69,6 @@ float transitionTime = .456;
     self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
-    
     
     
 	// Do any additional setup after loading the view.
@@ -169,9 +163,7 @@ float transitionTime = .456;
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        self.discoverViewController.view.frame =CGRectMake(0,  self.discoverViewController.view.frame.origin.y, self.discoverViewController.view.frame.size.width, self.discoverViewController.view.frame.size.height);
         self.feedViewController.view.frame =CGRectMake(self.feedViewController.view.frame.origin.x  -  self.feedViewController.view.frame.size.width,  self.feedViewController.view.frame.origin.y, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
-        
         [UIView commitAnimations];
         
     }
