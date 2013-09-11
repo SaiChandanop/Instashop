@@ -22,7 +22,6 @@
 @synthesize theSearchBar;
 @synthesize contentContainerView;
 @synthesize categoriesNavigationController;
-@synthesize searchCategoriesButton;
 @synthesize selectedCategoriesArray;
 @synthesize searchTermsImageView;
 @synthesize freeSearchButtonsArray;
@@ -94,16 +93,7 @@
     NSLog(@"run search");
 }
 
--(void)searchCategoriesButtonHit
-{
-    NSLog(@"searchCategoriesButtonHit");
-    self.searchCategoriesButton.frame = CGRectMake(0,0,0,0);
-    [self.selectedCategoriesArray removeAllObjects];
-    [self.searchCategoriesButton removeFromSuperview];
-    [self.searchCategoriesButton release];
-    [self.categoriesNavigationController popToRootViewControllerAnimated:YES];
-    [self layoutSearchBarContainers];
-}
+
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {
@@ -112,16 +102,6 @@
     
     [self.selectedCategoriesArray addObject:theCategory];
     
-    if ([self.searchCategoriesButton superview] == nil)
-    {
-        self.searchCategoriesButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
-        self.searchCategoriesButton.frame = CGRectMake(15, self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8, 0, self.searchTermsImageView.frame.size.height - self.searchTermsImageView.frame.size.height / 16);
-        self.searchCategoriesButton.backgroundColor = [UIColor colorWithRed:223.0f/255.0f green:223.0f/255.0f blue:223.0f/255.0f alpha:1];
-        self.searchCategoriesButton.titleLabel.textColor = [UIColor colorWithRed:89.0f/255.0f green:89.0f/255.0f blue:89.0f/255.0f alpha:1];
-        [self.searchCategoriesButton addTarget:self action:@selector(searchCategoriesButtonHit) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.searchCategoriesButton];
-        
-    }
     
     NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
     for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
@@ -131,12 +111,6 @@
             [titleString appendString:@" >"];
         
     }
-    
-    [titleString appendString:@" X "];
-    
-    CGSize buttonTextSize = [titleString sizeWithFont:self.searchCategoriesButton.titleLabel.font];
-    [self.searchCategoriesButton setTitle:titleString forState:UIControlStateNormal];
-    self.searchCategoriesButton.frame = CGRectMake(self.searchCategoriesButton.frame.origin.x, self.searchCategoriesButton.frame.origin.y, buttonTextSize.width + 5, self.searchCategoriesButton.frame.size.height);
     
     [self layoutSearchBarContainers];
     
@@ -170,41 +144,17 @@
 }
 
 
-- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
-{
-    [self.theSearchBar resignFirstResponder];
-    
-    
-    SearchButtonContainer *searchButtonContainer = [[SearchButtonContainer buttonWithType:UIButtonTypeRoundedRect] retain];
-    searchButtonContainer.searchTerm = searchBar.text;
-    searchButtonContainer.backgroundColor = [UIColor colorWithRed:223.0f/255.0f green:223.0f/255.0f blue:223.0f/255.0f alpha:1];
-    [searchButtonContainer addTarget:self action:@selector(searchButtonContainerHit:) forControlEvents:UIControlEventTouchUpInside];
-    [searchButtonContainer setTitle:[NSString stringWithFormat:@"%@ X ", searchBar.text] forState:UIControlStateNormal];
-    searchButtonContainer.titleLabel.textColor = [UIColor colorWithRed:89.0f/255.0f green:89.0f/255.0f blue:89.0f/255.0f alpha:1];
-    [self.freeSearchButtonsArray addObject:searchButtonContainer];
-    
-    [self layoutSearchBarContainers];
-    searchBar.text = @"";
-    
-    [self runSearch];
-    
-}
 
 
 -(void)layoutSearchBarContainers
 {
-    
-    float indentPoint = self.searchCategoriesButton.frame.origin.x + self.searchCategoriesButton.frame.size.width + 15;
+    float indentPoint = 15;
     
     for (int i = 0; i < [self.freeSearchButtonsArray count]; i++)
     {
         UIView *aView = [self.freeSearchButtonsArray objectAtIndex:i];
         [aView removeFromSuperview];
     }
-    
-    int yPoint = self.searchCategoriesButton.frame.origin.y;
-    if (self.searchCategoriesButton == nil)
-        yPoint = self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8;
     
     
     for (int i = 0; i < [self.freeSearchButtonsArray count]; i++)
@@ -232,6 +182,31 @@
     
     [self runSearch];
 }
+
+
+
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
+{
+    [self.theSearchBar resignFirstResponder];
+    
+    
+    SearchButtonContainer *searchButtonContainer = [[SearchButtonContainer buttonWithType:UIButtonTypeRoundedRect] retain];
+    searchButtonContainer.searchTerm = searchBar.text;
+    searchButtonContainer.backgroundColor = [UIColor colorWithRed:223.0f/255.0f green:223.0f/255.0f blue:223.0f/255.0f alpha:1];
+    [searchButtonContainer addTarget:self action:@selector(searchButtonContainerHit:) forControlEvents:UIControlEventTouchUpInside];
+    [searchButtonContainer setTitle:[NSString stringWithFormat:@"%@ X ", searchBar.text] forState:UIControlStateNormal];
+    searchButtonContainer.titleLabel.textColor = [UIColor colorWithRed:89.0f/255.0f green:89.0f/255.0f blue:89.0f/255.0f alpha:1];
+    [self.freeSearchButtonsArray addObject:searchButtonContainer];
+    
+    [self layoutSearchBarContainers];
+    searchBar.text = @"";
+    
+    [self runSearch];
+    
+}
+
+
 
 
 

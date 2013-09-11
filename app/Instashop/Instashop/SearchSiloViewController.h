@@ -18,9 +18,6 @@
     UILabel *searchPromptLabel;
     UIImageView *separatorImageView;
     
-    UIButton *searchCategoriesButton;
-    
-    
     UIView *contentContainerView;
     UINavigationController *categoriesNavigationController;
     ProductSelectTableViewController *productSelectTableViewController;
@@ -37,9 +34,6 @@
 @property (nonatomic, retain) IBOutlet UIImageView *searchTermsImageView;
 @property (nonatomic, retain) IBOutlet UILabel *searchPromptLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *separatorImageView;
-
-@property (nonatomic, retain) UIButton *searchCategoriesButton;
-
 
 @property (nonatomic, retain) UIView *contentContainerView;
 @property (nonatomic, retain) UINavigationController *categoriesNavigationController;
