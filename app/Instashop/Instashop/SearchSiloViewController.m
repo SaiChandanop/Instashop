@@ -49,7 +49,6 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     self.contentContainerView = [[UIView alloc] initWithFrame:CGRectMake(0,self.separatorImageView.frame.origin.y + self.separatorImageView.frame.size.height,320, self.view.frame.size.height - (self.separatorImageView.frame.origin.x + self.separatorImageView.frame.size.height))];
-                                 
     self.contentContainerView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.contentContainerView];
     
@@ -82,15 +81,22 @@
 
 -(void)runSearch
 {
-    [self.contentContainerView addSubview:self.productSelectTableViewController.tableView];
-    
     NSMutableArray *freeTextArray = [NSMutableArray arrayWithCapacity:0];
     for (int i = 0; i < [self.freeSearchButtonsArray count]; i++)
         [freeTextArray addObject:((SearchButtonContainer *)[self.freeSearchButtonsArray objectAtIndex:i]).searchTerm];
     
-    self.productSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:freeTextArray];
-    [self.productSelectTableViewController refreshContent];
-    NSLog(@"run search");
+    NSLog(@"run search: %@", freeTextArray);
+    NSLog(@"self.selectedCategoriesArray: %@", self.selectedCategoriesArray);
+    
+    if ([freeTextArray count] > 0 || [self.selectedCategoriesArray count] > 0)
+    {
+        if ([self.productSelectTableViewController.tableView superview] == nil)
+            [self.contentContainerView addSubview:self.productSelectTableViewController.tableView];
+        
+        self.productSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:freeTextArray];
+        [self.productSelectTableViewController refreshContent];
+        NSLog(@"run search");
+    }
 }
 
 
@@ -111,9 +117,6 @@
             [titleString appendString:@" >"];
         
     }
-    
-    [self layoutSearchBarContainers];
-    
     
     if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil || self.searchType ==  CATEGORIES_TYPE_SELLER)
     {
@@ -141,6 +144,7 @@
         [self.categoriesNavigationController pushViewController:containerViewController animated:YES];
     }
     
+    [self layoutSearchBarContainers];
 }
 
 
@@ -178,10 +182,12 @@
 {
     [theButton removeFromSuperview];
     [self.freeSearchButtonsArray removeObject:theButton];
-    [self layoutSearchBarContainers];
     
+    [self layoutSearchBarContainers];
     [self runSearch];
 }
+
+
 
 
 
