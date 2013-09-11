@@ -151,13 +151,13 @@
 {
     [self moveHighlightToButton:theButton];
     
-    [self.productContainerView removeFromSuperview];
+//    [self.productContainerView removeFromSuperview];
 }
 
 -(IBAction)productsButtonHit:(UIButton *)theButton
 {
-    if ([self.productContainerView superview] == nil)
-        [self.view addSubview:self.productContainerView];
+//    if ([self.productContainerView superview] == nil)
+//        [self.view addSubview:self.productContainerView];
 
     [self moveHighlightToButton:theButton];
          
