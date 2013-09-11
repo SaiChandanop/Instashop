@@ -88,7 +88,8 @@
 
 -(void)backButtonHit
 {
-//    [self.theSearchBar resignFirstResponder];
+    [self.productSearchViewController.theSearchBar resignFirstResponder];
+    [self.shopSearchViewController.theSearchBar resignFirstResponder];
     [self.appRootViewController searchExitButtonHit:self.navigationController];
 }
 
