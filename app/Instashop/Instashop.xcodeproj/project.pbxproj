@@ -67,6 +67,8 @@
 		2EB259B11767B50D0054618D /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AF1767B50D0054618D /* magnify@2x.png */; };
 		2ED088C317CAD54500439A7D /* bottom_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */; };
 		2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */; };
+		7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320D717E0DB700045D7AC /* DiscoverViewController.m */; };
+		7B0320DA17E0DB700045D7AC /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */; };
 		7B0D253717CBA36300E43FA6 /* PLCameraSheetButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */; };
 		7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */; };
 		7B0D253917CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */; };
@@ -200,7 +202,6 @@
 		7B7A7F7F17D64ACE00247A26 /* SearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7F7D17D64ACE00247A26 /* SearchViewController.m */; };
 		7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7A7F7E17D64ACE00247A26 /* SearchViewController.xib */; };
 		7B7A7F8417D64B5500247A26 /* SearchAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7F8317D64B5500247A26 /* SearchAPIHandler.m */; };
-		7B7A7F8817D6525800247A26 /* SearchResultTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7F8717D6525800247A26 /* SearchResultTableCell.m */; };
 		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
 		7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */; };
 		7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D517B2CE80002CEB36 /* cell_background.png */; };
@@ -308,6 +309,9 @@
 		2EB259AF1767B50D0054618D /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "magnify@2x.png"; path = "Assets/magnify@2x.png"; sourceTree = "<group>"; };
 		2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_shadow@2x.png"; sourceTree = "<group>"; };
 		2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram_gray_icon@2x.png"; sourceTree = "<group>"; };
+		7B0320D617E0DB700045D7AC /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
+		7B0320D717E0DB700045D7AC /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
+		7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
 		7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButton@2x.png"; sourceTree = "<group>"; };
 		7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButtonPressed@2x.png"; sourceTree = "<group>"; };
 		7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetDoneButton@2x.png"; sourceTree = "<group>"; };
@@ -518,8 +522,6 @@
 		7B7A7F8217D64B5500247A26 /* SearchAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchAPIHandler.h; sourceTree = "<group>"; };
 		7B7A7F8317D64B5500247A26 /* SearchAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchAPIHandler.m; sourceTree = "<group>"; };
 		7B7A7F8517D651C800247A26 /* SearchReturnedReceiverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchReturnedReceiverProtocol.h; sourceTree = "<group>"; };
-		7B7A7F8617D6525800247A26 /* SearchResultTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchResultTableCell.h; sourceTree = "<group>"; };
-		7B7A7F8717D6525800247A26 /* SearchResultTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchResultTableCell.m; sourceTree = "<group>"; };
 		7B7B9DF51753E280000F4A3E /* ZenCartAuthenticationAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCartAuthenticationAPIHandler.h; sourceTree = "<group>"; };
 		7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCartAuthenticationAPIHandler.m; sourceTree = "<group>"; };
 		7B8BC4D217B2CCBF002CEB36 /* CategorySelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySelectCell.h; sourceTree = "<group>"; };
@@ -702,6 +704,16 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		7B0320D517E0DA7D0045D7AC /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				7B0320D617E0DB700045D7AC /* DiscoverViewController.h */,
+				7B0320D717E0DB700045D7AC /* DiscoverViewController.m */,
+				7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */,
+			);
+			name = Discover;
+			sourceTree = "<group>";
+		};
 		7B0680CA17664BC2009154BF /* Buy */ = {
 			isa = PBXGroup;
 			children = (
@@ -833,15 +845,6 @@
 				7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */,
 			);
 			name = Profile;
-			sourceTree = "<group>";
-		};
-		7B396BE517D7806A0042754D /* old */ = {
-			isa = PBXGroup;
-			children = (
-				7B7A7F8617D6525800247A26 /* SearchResultTableCell.h */,
-				7B7A7F8717D6525800247A26 /* SearchResultTableCell.m */,
-			);
-			name = old;
 			sourceTree = "<group>";
 		};
 		7B3F520E175FAAB900ABF49B /* ProductObject */ = {
@@ -1182,6 +1185,7 @@
 				7B0680CA17664BC2009154BF /* Buy */,
 				7B15B2F817B2A9E700173752 /* Categories */,
 				7B74C3CD179716670006289C /* CreateSeller */,
+				7B0320D517E0DA7D0045D7AC /* Discover */,
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
 				7B5BFAD617D6928400F82F0B /* Notifications */,
@@ -1249,7 +1253,6 @@
 		7B7A7F7B17D64AA100247A26 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				7B396BE517D7806A0042754D /* old */,
 				7B7A7F7C17D64ACE00247A26 /* SearchViewController.h */,
 				7B7A7F7D17D64ACE00247A26 /* SearchViewController.m */,
 				7B7A7F7E17D64ACE00247A26 /* SearchViewController.xib */,
@@ -1547,6 +1550,7 @@
 				7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */,
 				7B602DAC1766543100663A73 /* buybutton@2x.png in Resources */,
 				7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */,
+				7B0320DA17E0DB700045D7AC /* DiscoverViewController.xib in Resources */,
 				7B5D62B117C5AF9F00D6C8B1 /* visa.png in Resources */,
 				7B602DB6176670F600663A73 /* buyheader.png in Resources */,
 				7B5D62A117C5AF9F00D6C8B1 /* amex.png in Resources */,
@@ -1697,7 +1701,6 @@
 				7B1072BE175E7CDE00D9DC5D /* ProductDetailsViewController.m in Sources */,
 				7B5D628517C5AF7100D6C8B1 /* PKUSAddressZip.m in Sources */,
 				7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */,
-				7B7A7F8817D6525800247A26 /* SearchResultTableCell.m in Sources */,
 				7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */,
 				7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */,
 				7B5D626817C5AF3700D6C8B1 /* STPToken.m in Sources */,
@@ -1715,6 +1718,7 @@
 				7BF9DD8A178C546F005148A8 /* SBJsonParser.m in Sources */,
 				7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */,
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
+				7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */,
 				7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
 				7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */,

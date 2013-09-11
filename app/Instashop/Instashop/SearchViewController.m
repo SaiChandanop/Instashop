@@ -10,7 +10,6 @@
 #import "SearchAPIHandler.h"
 #import "ISConstants.h"
 #import "NavBarTitleView.h"
-#import "SearchResultTableCell.h"
 #import "AppRootViewController.h"
 #import "PurchasingViewController.h"
 #import "ProfileViewController.h"
