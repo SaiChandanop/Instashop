@@ -102,6 +102,8 @@
     self.productSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
                                              
 
+    [self.view addSubview:self.productContainerView];
+    
     [self.containerReferenceView removeFromSuperview];
 }
 
