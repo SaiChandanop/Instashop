@@ -139,4 +139,10 @@
     [self.parentController notificationsButtonHit];
     
 }
+
+-(IBAction)discoverButtonHit
+{
+    [self.parentController discoverButtonHit];
+    
+}
 @end

@@ -71,6 +71,8 @@
 		7B0320DA17E0DB700045D7AC /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */; };
 		7B0320DE17E0E1340045D7AC /* SearchSiloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320DC17E0E1340045D7AC /* SearchSiloViewController.m */; };
 		7B0320DF17E0E1340045D7AC /* SearchSiloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320DD17E0E1340045D7AC /* SearchSiloViewController.xib */; };
+		7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */; };
+		7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */; };
 		7B0D253717CBA36300E43FA6 /* PLCameraSheetButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */; };
 		7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */; };
 		7B0D253917CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */; };
@@ -317,6 +319,9 @@
 		7B0320DB17E0E1340045D7AC /* SearchSiloViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchSiloViewController.h; sourceTree = "<group>"; };
 		7B0320DC17E0E1340045D7AC /* SearchSiloViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchSiloViewController.m; sourceTree = "<group>"; };
 		7B0320DD17E0E1340045D7AC /* SearchSiloViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchSiloViewController.xib; sourceTree = "<group>"; };
+		7B0320E817E0F9FD0045D7AC /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
+		7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
+		7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
 		7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButton@2x.png"; sourceTree = "<group>"; };
 		7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButtonPressed@2x.png"; sourceTree = "<group>"; };
 		7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetDoneButton@2x.png"; sourceTree = "<group>"; };
@@ -712,6 +717,7 @@
 		7B0320D517E0DA7D0045D7AC /* Discover */ = {
 			isa = PBXGroup;
 			children = (
+				7B0320E217E0F9AE0045D7AC /* Table */,
 				7B0320D617E0DB700045D7AC /* DiscoverViewController.h */,
 				7B0320D717E0DB700045D7AC /* DiscoverViewController.m */,
 				7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */,
@@ -738,6 +744,16 @@
 				7B396BE717D7819E0042754D /* SearchRequestObject.m */,
 			);
 			name = ContextObjects;
+			sourceTree = "<group>";
+		};
+		7B0320E217E0F9AE0045D7AC /* Table */ = {
+			isa = PBXGroup;
+			children = (
+				7B0320E817E0F9FD0045D7AC /* DiscoverTableViewController.h */,
+				7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */,
+				7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */,
+			);
+			name = Table;
 			sourceTree = "<group>";
 		};
 		7B0680CA17664BC2009154BF /* Buy */ = {
@@ -1545,6 +1561,7 @@
 				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
+				7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
 				7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */,
 				7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */,
@@ -1758,6 +1775,7 @@
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
 				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
+				7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */,
 				7B5D628417C5AF7100D6C8B1 /* PKTextField.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
 				7B0D254D17CBA36F00E43FA6 /* GKImageCropView.m in Sources */,

@@ -18,6 +18,7 @@
 #import "SuggestedStoresViewController.h"
 #import "SearchViewController.h"
 #import "NotificationsViewController.h"
+#import "DiscoverViewController.h"
 
 @implementation AppRootViewController
 
@@ -157,16 +158,34 @@ float transitionTime = .456;
     
     if (!self.areViewsTransitioning)
     {
-        self.areViewsTransitioning = YES;
+        DiscoverViewController *discoverViewController = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
+        discoverViewController.parentController = self;
+        
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:discoverViewController];
+        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:navigationController .view];
+        
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        self.feedViewController.view.frame =CGRectMake(self.feedViewController.view.frame.origin.x  -  self.feedViewController.view.frame.size.width,  self.feedViewController.view.frame.origin.y, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
+        navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
         
+        
     }
+}
+
+-(void)discoverBackButtonHit:(UINavigationController *)navigationController
+{
+        NSLog(@"discoverBackButtonHit: %@", navigationController);
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:transitionTime];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [UIView commitAnimations];
 }
 
 -(void)createProductButtonHit

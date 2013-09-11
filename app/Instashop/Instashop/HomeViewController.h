@@ -32,6 +32,7 @@
 -(IBAction)logOutButtonHit;
 -(IBAction)suggestedShopButtonHit;
 -(IBAction)notificationsButtonHit;
+-(IBAction)discoverButtonHit;
 
 @property (nonatomic, retain) AppRootViewController *parentController;
 
