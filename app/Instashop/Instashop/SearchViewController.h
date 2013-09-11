@@ -10,6 +10,8 @@
 #import "SearchReturnedReceiverProtocol.h"
 #import "CategoriesTableViewController.h"
 #import "ProductSelectTableViewController.h"
+#import "SearchSiloViewController.h"
+
 
 #define SEARCH_RESULT_TYPE_PRODUCT 0
 #define SEARCH_RESULT_TYPE_SELLER 1
@@ -19,51 +21,29 @@
 {
     AppRootViewController *appRootViewController;
     
-    UISearchBar *theSearchBar;
-    
-    UIImageView *searchTermsImageView;
-    UIButton *searchCategoriesButton;
-    
+    SearchSiloViewController *productSearchViewController;
+    SearchSiloViewController *shopSearchViewController;
     
     UIButton *shopsButton;
     UIButton *productsButton;
-    UIButton *hashtagsButton;
     UIView *highlightView;
     
-    UIView *containerReferenceView;
     
-    UIView *productContainerView;
-    UINavigationController *productCategoriesNavigationController;
-    ProductSelectTableViewController *productSelectTableViewController;
     
-    NSMutableArray *selectedCategoriesArray;
-    NSMutableArray *freeSearchButtonsArray;
 }
 
--(IBAction)shopsButtonHit:(UIButton *)theButton;
--(IBAction)productsButtonHit:(UIButton *)theButton;
--(IBAction)hashtagButtonHit:(UIButton *)theButton;
+- (IBAction) shopsButtonHit:(UIButton *)theButton;
+- (IBAction) productsButtonHit:(UIButton *)theButton;
 
 @property (nonatomic, retain) AppRootViewController *appRootViewController;
 
-@property (nonatomic, retain) IBOutlet UISearchBar *theSearchBar;
-
-@property (nonatomic, retain) IBOutlet UIImageView *searchTermsImageView;
-@property (nonatomic, retain) UIButton *searchCategoriesButton;
+@property (nonatomic, retain) SearchSiloViewController *productSearchViewController;
+@property (nonatomic, retain) SearchSiloViewController *shopSearchViewController;
 
 @property (nonatomic, retain) IBOutlet UIButton *shopsButton;
 @property (nonatomic, retain) IBOutlet UIButton *productsButton;
-@property (nonatomic, retain) IBOutlet UIButton *hashtagsButton;
 @property (nonatomic, retain) IBOutlet UIView *highlightView;
 
-@property (nonatomic, retain) IBOutlet UIView *containerReferenceView;
 
-@property (nonatomic, retain) UIView *productContainerView;
-@property (nonatomic, retain) UINavigationController *productCategoriesNavigationController;
-@property (nonatomic, retain) ProductSelectTableViewController *productSelectTableViewController;
-
-
-@property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
-@property (nonatomic, retain) NSMutableArray *freeSearchButtonsArray;
 
 @end
