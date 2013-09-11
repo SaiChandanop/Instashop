@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstTimeUserViewController : UIViewController
+@interface FirstTimeUserViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, retain) UIScrollView *tutorialScrollView;
 @property (nonatomic, retain) UIPageControl *pageControl;

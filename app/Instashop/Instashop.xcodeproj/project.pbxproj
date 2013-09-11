@@ -12,11 +12,11 @@
 		1903FF7217DA6D0800CD65F8 /* manage-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6917DA6D0800CD65F8 /* manage-graphic@2x.png */; };
 		1903FF7317DA6D0800CD65F8 /* manage-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6A17DA6D0800CD65F8 /* manage-title@2x.png */; };
 		1903FF7417DA6D0800CD65F8 /* share-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6B17DA6D0800CD65F8 /* share-graphic@2x.png */; };
-		1903FF7517DA6D0800CD65F8 /* share-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6C17DA6D0800CD65F8 /* share-title@2x.png */; };
 		1903FF7617DA6D0800CD65F8 /* target-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6D17DA6D0800CD65F8 /* target-graphic@2x.png */; };
 		1903FF7717DA6D0800CD65F8 /* target-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6E17DA6D0800CD65F8 /* target-title@2x.png */; };
 		1903FF7817DA6D0800CD65F8 /* target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6F17DA6D0800CD65F8 /* target@2x.png */; };
 		193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */; };
+		193433E017E11817007744E6 /* CreateSellerTutorialScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433DE17E11690007744E6 /* CreateSellerTutorialScrollView.m */; };
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
@@ -187,7 +187,6 @@
 		7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE46174D2162002A483D /* UIKit.framework */; };
 		7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE48174D2162002A483D /* Foundation.framework */; };
 		7B61EE4B174D2162002A483D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE4A174D2162002A483D /* CoreGraphics.framework */; };
-		7B61EE51174D2162002A483D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE4F174D2162002A483D /* InfoPlist.strings */; };
 		7B61EE53174D2162002A483D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B61EE52174D2162002A483D /* main.m */; };
 		7B61EE57174D2162002A483D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B61EE56174D2162002A483D /* AppDelegate.m */; };
 		7B61EE59174D2162002A483D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE58174D2162002A483D /* Default.png */; };
@@ -271,6 +270,8 @@
 		1903FF6F17DA6D0800CD65F8 /* target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target@2x.png"; sourceTree = "<group>"; };
 		193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTimeUserViewController.h; sourceTree = "<group>"; };
 		193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTimeUserViewController.m; sourceTree = "<group>"; };
+		193433DD17E11690007744E6 /* CreateSellerTutorialScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateSellerTutorialScrollView.h; sourceTree = "<group>"; };
+		193433DE17E11690007744E6 /* CreateSellerTutorialScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateSellerTutorialScrollView.m; sourceTree = "<group>"; };
 		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
@@ -1227,6 +1228,8 @@
 				7B74C3CE179716850006289C /* CreateSellerViewController.h */,
 				7B74C3CF179716850006289C /* CreateSellerViewController.m */,
 				7B74C3D0179716850006289C /* CreateSellerViewController.xib */,
+				193433DD17E11690007744E6 /* CreateSellerTutorialScrollView.h */,
+				193433DE17E11690007744E6 /* CreateSellerTutorialScrollView.m */,
 			);
 			name = CreateSeller;
 			sourceTree = "<group>";
@@ -1587,8 +1590,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B61EE51174D2162002A483D /* InfoPlist.strings in Resources */,
-				1903FF7517DA6D0800CD65F8 /* share-title@2x.png in Resources */,
 				7B5D62A317C5AF9F00D6C8B1 /* cvc-amex.png in Resources */,
 				7B61EE59174D2162002A483D /* Default.png in Resources */,
 				7B5D62A517C5AF9F00D6C8B1 /* cvc.png in Resources */,
@@ -1750,6 +1751,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				193433E017E11817007744E6 /* CreateSellerTutorialScrollView.m in Sources */,
 				193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */,
 				7B61EE53174D2162002A483D /* main.m in Sources */,
 				7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */,

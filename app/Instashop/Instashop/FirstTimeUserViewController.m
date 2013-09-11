@@ -7,6 +7,7 @@
 //
 
 #import "FirstTimeUserViewController.h"
+#import "AppDelegate.h"
 
 @interface FirstTimeUserViewController ()
 
@@ -45,6 +46,7 @@
     self.tutorialScrollView = [[UIScrollView alloc] initWithFrame:screenBound];
     self.tutorialScrollView.pagingEnabled = YES;
     self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
+    self.tutorialScrollView.backgroundColor = [UIColor blackColor];
     int arbitraryNumberSmallerThanBoundHeight = 33.0;
     // Needs to be less than bound height to disable vertical scrolling.
     self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * 4, arbitraryNumberSmallerThanBoundHeight);
@@ -94,12 +96,11 @@
             [signUpButton addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
             [tutorialView addSubview:signUpButton];
         }
-       // [self.createSellerHowToScrollView addSubview:tutorialView];
     }
     
-    /*
-    self.createSellerHowToScrollView.delegate = self;
-    [self.view addSubview:self.createSellerHowToScrollView];
+    
+    self.tutorialScrollView.delegate = self;
+    [self.view addSubview:self.tutorialScrollView];
     
     // Page Control
     self.pageControl = [[UIPageControl alloc] init];
@@ -109,11 +110,18 @@
     self.pageControl.currentPage = 0;
     self.pageControl.pageIndicatorTintColor = [UIColor redColor];
     self.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
-    [self.view addSubview:pageControl];*/
+    [self.view addSubview:pageControl];
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat pageWidth = self.tutorialScrollView.frame.size.width;
+    float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
+    NSInteger page = lround(fractionalPage);
+    self.pageControl.currentPage = page;
 }
 
 - (void) closeTutorial {
-    [self.view removeFromSuperview];
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning

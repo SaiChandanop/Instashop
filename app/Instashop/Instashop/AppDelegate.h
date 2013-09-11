@@ -25,6 +25,7 @@
     
 }
 
+- (void) tutorialShown;
 -(void)userDidLogin;
 -(void)userDidLogout;
 -(void)makeSafariCallWithURL:(NSURL *)theURL;
@@ -37,7 +38,6 @@
 @property (strong, nonatomic) AppRootViewController *appRootViewController;
 
 @property (strong, nonatomic) NSString *pushDeviceTokenString;
-@property (nonatomic, assign) BOOL firstRun;
 
 
 @end
