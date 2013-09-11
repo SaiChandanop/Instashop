@@ -63,6 +63,7 @@
     
     
     self.discoverTableViewController = [[DiscoverTableViewController alloc] initWithNibName:@"DiscoverTableViewController" bundle:nil];
+    self.discoverTableViewController.parentController = self;
     [self.view addSubview:self.discoverTableViewController.tableView];
     
     
@@ -77,6 +78,13 @@
     self.discoverTableViewController.sellersObjectsArray = [[NSArray alloc] initWithArray:responseArray];
     [self.discoverTableViewController.tableView reloadData];
 }
+
+-(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
+{
+    NSLog(@"%@ theSelectionObject: %@", self, theSelectionObject);
+}
+
+
 
 -(void)backButtonHit
 {

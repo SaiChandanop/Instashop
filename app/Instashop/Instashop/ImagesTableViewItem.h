@@ -16,9 +16,11 @@
     UIButton *coverButton;
     
     NSDictionary *objectDictionary;
+    NSDictionary *instagramObjectDictionary;
     
     NSString *imageProductURL;
     id delegate;
+    
 }
 
 
@@ -31,6 +33,7 @@
 @property (nonatomic, retain) UIButton *coverButton;
 
 @property (nonatomic, retain) NSDictionary *objectDictionary;
+@property (nonatomic, retain) NSDictionary *instagramObjectDictionary;
 
 @property (nonatomic, retain) NSString *imageProductURL;
 @property (nonatomic, retain) id delegate;

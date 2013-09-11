@@ -9,8 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "SellersRequestFinishedProtocol.h"
 #import "DiscoverTableViewController.h"
+#import "CellSelectionOccuredProtocol.h"
+
 @class AppRootViewController;
-@interface DiscoverViewController : UIViewController <SellersRequestFinishedProtocol>
+@interface DiscoverViewController : UIViewController <SellersRequestFinishedProtocol, CellSelectionOccuredProtocol>
 {
     AppRootViewController *parentController;
     DiscoverTableViewController *discoverTableViewController;

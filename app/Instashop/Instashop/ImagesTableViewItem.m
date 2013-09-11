@@ -20,6 +20,7 @@
 @synthesize coverButton;
 @synthesize imageProductURL;
 @synthesize objectDictionary;
+@synthesize instagramObjectDictionary;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -110,12 +111,18 @@
         else if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
             [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
     }
+    else if (self.instagramObjectDictionary != nil)
+    {
+        if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
+            [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.instagramObjectDictionary];
+    }
 
 }
 
 
 - (void) loadContentWithInstagramDictionaryObject:(NSDictionary *)theDictionary
 {
+    self.instagramObjectDictionary = [[NSDictionary alloc] initWithDictionary:theDictionary];
     NSLog(@"theDictionary: %@", theDictionary);
     
     [self.coverButton setTitle:@"" forState:UIControlStateNormal];

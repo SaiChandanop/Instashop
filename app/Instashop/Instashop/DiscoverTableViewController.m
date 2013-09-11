@@ -15,7 +15,7 @@
 @implementation DiscoverTableViewController
 
 @synthesize sellersObjectsArray;
-
+@synthesize parentController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -54,7 +54,7 @@
         cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
     }
     
-    [cell loadWithIndexPath:indexPath withSellerDictionaryArray:self.sellersObjectsArray withDelegate:self];
+    [cell loadWithIndexPath:indexPath withSellerDictionaryArray:self.sellersObjectsArray withDelegate:self.parentController];
     
 
     
