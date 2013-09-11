@@ -106,44 +106,59 @@
     if ([self.selectedCategoriesArray count] > callingController.positionIndex)
         [self.selectedCategoriesArray removeObjectsInRange:NSMakeRange(callingController.positionIndex, [self.selectedCategoriesArray count] - callingController.positionIndex)];
     
-    [self.selectedCategoriesArray addObject:theCategory];
     
-    
-    NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
-    for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
-    {
-        [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
-        if (i != [self.selectedCategoriesArray count] -1)
-            [titleString appendString:@" >"];
-        
-    }
-    
-    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil || self.searchType ==  CATEGORIES_TYPE_SELLER)
+    if ([theCategory rangeOfString:@"All"].length > 0)
     {
         [self runSearch];
     }
+    
     else
     {
-        CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
-        categoriesTableViewController.categoriesType = self.searchType;
-        categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
-        categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
-        categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
-        categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
-        categoriesTableViewController.parentController = self;
-        categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
-        
-        
-        UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-        containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-        [containerViewController.view addSubview:categoriesTableViewController.tableView];
-        
-        categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
-        
-        
-        [self.categoriesNavigationController pushViewController:containerViewController animated:YES];
-    }
+        [self.selectedCategoriesArray addObject:theCategory];
     
+    
+        NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
+        for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
+        {
+            [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
+            if (i != [self.selectedCategoriesArray count] -1)
+                [titleString appendString:@" >"];
+        
+        }
+    
+        if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil || self.searchType ==  CATEGORIES_TYPE_SELLER)
+        {
+            [self runSearch];
+        }
+        else
+        {
+            NSLog(@"selr.selectedCategoriesArray: %@", self.selectedCategoriesArray);
+        
+            NSMutableArray *nextCategoriesArray = [NSMutableArray arrayWithCapacity:0];
+            [nextCategoriesArray addObject:[NSString stringWithFormat:@"All %@", titleString]];
+            [nextCategoriesArray addObjectsFromArray:[[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray]];
+        
+        
+            CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+            categoriesTableViewController.categoriesType = self.searchType;
+            categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+            categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
+            categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
+            categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
+            categoriesTableViewController.parentController = self;
+            categoriesTableViewController.categoriesArray = nextCategoriesArray;
+        
+        
+            UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+            containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+            [containerViewController.view addSubview:categoriesTableViewController.tableView];
+        
+            categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
+            
+            [self.categoriesNavigationController pushViewController:containerViewController animated:YES];
+        }
+    
+    }
     [self layoutSearchBarContainers];
 }
 
