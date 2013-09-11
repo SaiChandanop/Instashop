@@ -188,7 +188,8 @@
 -(IBAction)categoryButtonHit
 {
     CategoriesViewController *categoriesViewController = [[CategoriesViewController alloc] initWithNibName:nil bundle:nil];
-    categoriesViewController.potentialCategoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
+    categoriesViewController.categoriesType = CATEGORIES_TYPE_SELLER;
+    categoriesViewController.potentialCategoriesArray = [[AttributesManager getSharedAttributesManager] getShopsCategories];
     categoriesViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     categoriesViewController.parentController = self;
     [self.navigationController pushViewController:categoriesViewController animated:YES];

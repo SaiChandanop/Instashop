@@ -17,6 +17,7 @@
 @implementation CategoriesTableViewController
 
 @synthesize parentController;
+@synthesize categoriesType;
 @synthesize categoriesArray;
 @synthesize positionIndex;
 @synthesize basePriorCategoriesArray;
@@ -70,7 +71,7 @@
     
 
     
-    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchCategoriesArray] != nil)
+    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:searchCategoriesArray] != nil && self.categoriesType == CATEGORIES_TYPE_PRODUCT)
         cell.disclosureImageView.alpha = 1;
     else
         cell.disclosureImageView.alpha = 0;

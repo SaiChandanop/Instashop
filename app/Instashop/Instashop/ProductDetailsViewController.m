@@ -226,6 +226,7 @@
 {
     
     CategoriesViewController *categoriesViewController = [[CategoriesViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesViewController.categoriesType = CATEGORIES_TYPE_PRODUCT;
     categoriesViewController.potentialCategoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
     categoriesViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     categoriesViewController.parentController = self;

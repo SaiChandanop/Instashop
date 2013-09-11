@@ -772,13 +772,13 @@
 		7B15B2F817B2A9E700173752 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				7B15B2F917B2AA1800173752 /* CategoriesViewController.h */,
+				7B15B2FA17B2AA1800173752 /* CategoriesViewController.m */,
 				7B15B2FF17B2AB5A00173752 /* CategoriesTableViewController.h */,
 				7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */,
 				7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */,
 				7B8BC4D217B2CCBF002CEB36 /* CategorySelectCell.h */,
 				7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */,
-				7B15B2F917B2AA1800173752 /* CategoriesViewController.h */,
-				7B15B2FA17B2AA1800173752 /* CategoriesViewController.m */,
 			);
 			name = Categories;
 			sourceTree = "<group>";

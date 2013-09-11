@@ -18,7 +18,7 @@
 
 +(AttributesManager *)getSharedAttributesManager;
 
-
+-(NSArray *)getShopsCategories;
 -(NSArray *)getCategoriesWithArray:(NSArray *)theArray;
 -(NSArray *)getSizesWithArray:(NSArray *)theArray;
 

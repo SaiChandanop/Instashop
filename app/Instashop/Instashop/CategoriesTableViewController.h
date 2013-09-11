@@ -13,13 +13,14 @@
 @interface CategoriesTableViewController : UITableViewController
 {
     CategoriesViewController *parentController;
-    
+    int categoriesType;
     NSArray *categoriesArray;
     NSArray *basePriorCategoriesArray;
     int positionIndex;
 }
 
 @property (nonatomic, retain) CategoriesViewController *parentController;
+@property (nonatomic, assign) int categoriesType;
 @property (nonatomic, retain) NSArray *categoriesArray;
 @property (nonatomic, retain) NSArray *basePriorCategoriesArray;
 @property (nonatomic, assign) int positionIndex;

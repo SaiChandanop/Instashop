@@ -137,6 +137,11 @@ static AttributesManager *theManager;
     return self;
 }
 
+-(NSArray *)getShopsCategories
+{
+    return [NSArray arrayWithObjects:@"Art", @"Books & Media", @"Fashion", @"Health & Beauty", @"Home", @"Music", @"Sports", @"Technology", nil];
+}
+
 -(NSArray *)getCategoriesWithArray:(NSArray *)theArray
 {
     NSDictionary *dict = nil;

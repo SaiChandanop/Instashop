@@ -18,6 +18,7 @@
 @implementation CategoriesViewController
 
 @synthesize parentController;
+@synthesize categoriesType;
 @synthesize potentialCategoriesArray;
 @synthesize selectedCategoriesArray;
 @synthesize initialTableReference;
@@ -42,6 +43,7 @@
     self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    categoriesTableViewController.categoriesType = self.categoriesType;
     categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
     categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
     categoriesTableViewController.positionIndex = 0;
@@ -65,7 +67,7 @@
     [self.selectedCategoriesArray addObject:theCategory];
     
     
-    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil)
+    if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil || self.categoriesType == CATEGORIES_TYPE_SELLER)
     {
         [self.parentController categorySelectionCompleteWithArray:self.selectedCategoriesArray];
         [self.navigationController popToViewController:parentController animated:YES];
@@ -75,6 +77,7 @@
         
         
         CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+        categoriesTableViewController.categoriesType = self.categoriesType;
         categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
         categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
         categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
