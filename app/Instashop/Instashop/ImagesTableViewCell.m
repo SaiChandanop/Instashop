@@ -25,11 +25,8 @@
     return self;
 }
 
-
-- (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray withDelegate:(id)theDelegate
+-(void) handleLayoutWithDelegate:(id)theDelegate
 {
-    int startValue = theIndexPath.row * 3;
-
     float imageWidth = 106;
     
     if (self.itemOne == nil)
@@ -49,17 +46,23 @@
         self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(213, 0, imageWidth, imageWidth + 2)];
         [self addSubview:self.itemThree];
     }
-
+    
     
     self.itemOne.delegate = theDelegate;
     self.itemTwo.delegate = theDelegate;
     self.itemThree.delegate = theDelegate;
-        
+    
     
     [self.itemOne cleanContent];
     [self.itemTwo cleanContent];
     [self.itemThree cleanContent];
+    
+}
 
+- (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray withDelegate:(id)theDelegate
+{
+    [self handleLayoutWithDelegate:theDelegate];
+    int startValue = theIndexPath.row * 3;
     
     for (int i = 0; i < 3; i++)
     {
