@@ -920,13 +920,6 @@
 			name = Feed;
 			sourceTree = "<group>";
 		};
-		7B4908541758FE0A0047ED3B /* Notifications */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Notifications;
-			sourceTree = "<group>";
-		};
 		7B4D2E0D175CFCAA005DE4B6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
@@ -1231,7 +1224,6 @@
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
 				7B5BFAD617D6928400F82F0B /* Notifications */,
-				7B4908541758FE0A0047ED3B /* Notifications */,
 				7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */,
 				7B376EC817C7A33300F4D5D8 /* Profile */,
 				7B7A7F7B17D64AA100247A26 /* Search */,

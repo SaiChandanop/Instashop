@@ -113,6 +113,42 @@
 
 }
 
+
+- (void) loadContentWithInstagramDictionaryObject:(NSDictionary *)theDictionary
+{
+    NSLog(@"theDictionary: %@", theDictionary);
+    
+    [self.coverButton setTitle:@"" forState:UIControlStateNormal];
+    [self.coverButton setImage:nil forState:UIControlStateNormal];
+    
+    self.backgroundImageView.alpha = 1;
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [theDictionary objectForKey:@"instagram_id"]], @"method", nil];
+    [appDelegate.instagram requestWithParams:params delegate:self];
+    
+    
+    
+    
+}
+
+
+- (void)request:(IGRequest *)request didLoad:(id)result {
+    
+    if ([request.url rangeOfString:@"users"].length > 0)
+    {
+        NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        NSLog(@"dataDictionary: %@", dataDictionary);
+        
+        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.contentImageView];
+        
+    }
+
+    
+}
+
+
 -(void)dealloc
 {
     NSLog(@"%@ dealloc", self);

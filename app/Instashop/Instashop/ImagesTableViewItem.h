@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
-@interface ImagesTableViewItem : UIView
+@interface ImagesTableViewItem : UIView <IGRequestDelegate>
 {
     UIImageView *backgroundImageView;
     UIImageView *contentImageView;
@@ -23,7 +24,7 @@
 
 - (void) cleanContent;
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary;
-
+- (void) loadContentWithInstagramDictionaryObject:(NSDictionary *)theDictionary;
 
 @property (nonatomic, retain) UIImageView *backgroundImageView;
 @property (nonatomic, retain) UIImageView *contentImageView;

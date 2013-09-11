@@ -73,7 +73,7 @@
 
 -(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
 {
-    NSLog(@"sellersRequestFinishedWithResponseObject: %@", responseArray);
+//    NSLog(@"sellersRequestFinishedWithResponseObject: %@", responseArray);
     self.discoverTableViewController.sellersObjectsArray = [[NSArray alloc] initWithArray:responseArray];
     [self.discoverTableViewController.tableView reloadData];
 }

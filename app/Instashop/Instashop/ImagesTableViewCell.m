@@ -59,6 +59,50 @@
     
 }
 
+
+- (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withSellerDictionaryArray:(NSArray *)sellerDictionaryArray withDelegate:(id)theDelegate
+{
+    NSLog(@"loadWithIndexPath withSellerDictionaryArray");
+    [self handleLayoutWithDelegate:theDelegate];
+    int startValue = theIndexPath.row * 3;
+    
+    for (int i = 0; i < 3; i++)
+    {
+        int indexPosition = startValue + i;
+        
+        if (indexPosition < [sellerDictionaryArray count])
+        {
+            NSDictionary *productObjectDictionary = [sellerDictionaryArray objectAtIndex:indexPosition];
+            switch (i) {
+                case 0:
+                    [self.itemOne loadContentWithInstagramDictionaryObject:productObjectDictionary];
+                    break;
+                case 1:
+                    [self.itemTwo loadContentWithInstagramDictionaryObject:productObjectDictionary];
+                    break;
+                case 2:
+                    [self.itemThree loadContentWithInstagramDictionaryObject:productObjectDictionary];
+                    break;
+                    
+                default:
+                    break;
+            }
+        }
+        
+    }
+    
+    
+    [self bringSubviewToFront:self.itemOne];
+    [self bringSubviewToFront:self.itemTwo];
+    [self bringSubviewToFront:self.itemThree];
+    
+    
+}
+
+
+
+
+
 - (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray withDelegate:(id)theDelegate
 {
     [self handleLayoutWithDelegate:theDelegate];
