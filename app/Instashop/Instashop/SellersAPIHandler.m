@@ -271,15 +271,9 @@
 
 -(void)getSellerDetailsFinished:(id)object
 {
-    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
-    
-    NSLog(@"getSellerDetailsFinished, responseString: %@", responseString);
+    //NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+//    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
 
-    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    
-    NSLog(@"responseDictionary: %@", responseDictionary);
-    
-    
     if ([self.delegate conformsToProtocol:@protocol(SellerDetailResponseProtocol)])
         [(id<SellerDetailResponseProtocol>)self.delegate sellerDetailsResopnseDidOccurWithDictionary:[NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil]];
 

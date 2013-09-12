@@ -159,8 +159,6 @@
     if ([responseDictionary isKindOfClass:[NSDictionary class]])
     {
         NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", [responseDictionary objectForKey:@"seller_address"], [responseDictionary objectForKey:@"seller_city"], [responseDictionary objectForKey:@"seller_state"]];
-        
-        NSLog(@"addressString: %@", addressString);
         self.addressLabel.text = addressString;
         self.emailLabel.text = [responseDictionary objectForKey:@"seller_email"];
         self.categoryLabel.text = [responseDictionary objectForKey:@"seller_category"];
@@ -276,7 +274,6 @@
 
 -(IBAction)followOnInstagramButtonHit
 {
-    NSLog(@"self.requestedInstagramProfileObject: %@", requestedInstagramProfileObject);
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     if (!self.followButton.selected)
@@ -337,7 +334,6 @@
         }
         else if ([request.url rangeOfString:@"relationship"].length > 0)
         {
-            NSLog(@"do call again");
             NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
             [theAppDelegate.instagram requestWithParams:params delegate:self];
             

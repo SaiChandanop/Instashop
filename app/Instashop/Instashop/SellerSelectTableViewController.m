@@ -85,7 +85,6 @@
 
 -(void)searchReturnedWithArray:(NSArray *)searchResultsArray
 {
-    NSLog(@"searchReturnedWithArray: %@", searchResultsArray);
     [self.contentArray removeAllObjects];
     [self.contentArray addObjectsFromArray:searchResultsArray];
     [self.tableView reloadData];
