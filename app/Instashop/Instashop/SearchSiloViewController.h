@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ProductSelectTableViewController.h"
+#import "ObjectSelectTableViewController.h"
+
+
 
 
 @interface SearchSiloViewController : UIViewController
@@ -20,7 +22,7 @@
     
     UIView *contentContainerView;
     UINavigationController *categoriesNavigationController;
-    ProductSelectTableViewController *productSelectTableViewController;
+    ObjectSelectTableViewController *objectSelectTableViewController;
     
     NSMutableArray *selectedCategoriesArray;
     NSMutableArray *freeSearchTextArray;
@@ -37,7 +39,7 @@
 
 @property (nonatomic, retain) UIView *contentContainerView;
 @property (nonatomic, retain) UINavigationController *categoriesNavigationController;
-@property (nonatomic, retain) ProductSelectTableViewController *productSelectTableViewController;
+@property (nonatomic, retain) ObjectSelectTableViewController *objectSelectTableViewController;
 
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
 @property (nonatomic, retain) NSMutableArray *freeSearchTextArray;

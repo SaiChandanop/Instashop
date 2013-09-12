@@ -196,6 +196,8 @@
 		7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C3CF179716850006289C /* CreateSellerViewController.m */; };
 		7B74C3D2179716850006289C /* CreateSellerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B74C3D0179716850006289C /* CreateSellerViewController.xib */; };
 		7B79AE7C17E2186E0058E774 /* ObjectSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79AE7B17E2186E0058E774 /* ObjectSelectTableViewController.m */; };
+		7B79AE8017E21A900058E774 /* SellerSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79AE7E17E21A900058E774 /* SellerSelectTableViewController.m */; };
+		7B79AE8117E21A900058E774 /* SellerSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B79AE7F17E21A900058E774 /* SellerSelectTableViewController.xib */; };
 		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
 		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 		7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7444174D4AA1005E90B9 /* AuthenticationViewController.m */; };
@@ -508,6 +510,9 @@
 		7B74C3D0179716850006289C /* CreateSellerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSellerViewController.xib; sourceTree = "<group>"; };
 		7B79AE7A17E2186E0058E774 /* ObjectSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSelectTableViewController.h; sourceTree = "<group>"; };
 		7B79AE7B17E2186E0058E774 /* ObjectSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectSelectTableViewController.m; sourceTree = "<group>"; };
+		7B79AE7D17E21A900058E774 /* SellerSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerSelectTableViewController.h; sourceTree = "<group>"; };
+		7B79AE7E17E21A900058E774 /* SellerSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerSelectTableViewController.m; sourceTree = "<group>"; };
+		7B79AE7F17E21A900058E774 /* SellerSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SellerSelectTableViewController.xib; sourceTree = "<group>"; };
 		7B7A518317C4222F009AD081 /* CreateSellerOccuredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSellerOccuredProtocol.h; sourceTree = "<group>"; };
 		7B7A518417C422A5009AD081 /* SellersRequestFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellersRequestFinishedProtocol.h; sourceTree = "<group>"; };
 		7B7A518517C42367009AD081 /* ProductCreateContainerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateContainerProtocol.h; sourceTree = "<group>"; };
@@ -1208,6 +1213,9 @@
 		7B79AE7917E2182F0058E774 /* Seller */ = {
 			isa = PBXGroup;
 			children = (
+				7B79AE7D17E21A900058E774 /* SellerSelectTableViewController.h */,
+				7B79AE7E17E21A900058E774 /* SellerSelectTableViewController.m */,
+				7B79AE7F17E21A900058E774 /* SellerSelectTableViewController.xib */,
 			);
 			name = Seller;
 			sourceTree = "<group>";
@@ -1669,6 +1677,7 @@
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
 				7B0D253D17CBA36300E43FA6 /* PLCameraSheetDoneButton.png in Resources */,
 				7B5BFAE517D6945600F82F0B /* NotificationsViewController.xib in Resources */,
+				7B79AE8117E21A900058E774 /* SellerSelectTableViewController.xib in Resources */,
 				2E0EAE24176F6E6700B65FC3 /* leftMenuButton@2x.png in Resources */,
 				2E628CAF17C6A19900CB7BE4 /* AppIcon60x60@2x.png in Resources */,
 				2E0EAE25176F6E6700B65FC3 /* lmDiscoverIcon@2x.png in Resources */,
@@ -1802,6 +1811,7 @@
 				7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */,
 				7B0D254E17CBA36F00E43FA6 /* GKImageCropOverlayView.m in Sources */,
 				7B0D254F17CBA36F00E43FA6 /* GKCropBorderView.m in Sources */,
+				7B79AE8017E21A900058E774 /* SellerSelectTableViewController.m in Sources */,
 				7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */,
 				7B5D626B17C5AF3700D6C8B1 /* StripeError.m in Sources */,
 				7B5D628117C5AF7100D6C8B1 /* PKCardCVC.m in Sources */,

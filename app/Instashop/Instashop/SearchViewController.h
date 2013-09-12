@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "SearchReturnedReceiverProtocol.h"
 #import "CategoriesTableViewController.h"
-#import "ProductSelectTableViewController.h"
 #import "SearchSiloViewController.h"
 
 

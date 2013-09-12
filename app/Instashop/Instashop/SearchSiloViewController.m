@@ -11,6 +11,7 @@
 #import "SearchButtonContainer.h"
 #import "AttributesManager.h"
 #import "CategoriesViewController.h"
+#import "ProductSelectTableViewController.h"
 
 @interface SearchSiloViewController ()
 
@@ -28,7 +29,7 @@
 @synthesize searchPromptLabel;
 @synthesize separatorImageView;
 @synthesize searchType;
-@synthesize productSelectTableViewController;
+@synthesize objectSelectTableViewController;
 @synthesize searchButtonsArray;
 
 
@@ -70,13 +71,14 @@
     [self.contentContainerView addSubview:categoriesNavigationController.view];
     
     
-    
-    self.productSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
-    self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_SEARCH;
-    self.productSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
-    self.productSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
-    self.productSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
-    
+    if (self.searchType == CATEGORIES_TYPE_PRODUCT)
+    {
+        self.objectSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
+        self.objectSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_SEARCH;
+        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
+        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
+        self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
+    }
     
 }
 
@@ -84,14 +86,14 @@
 {
     if ([self.freeSearchTextArray count] > 0 || [self.selectedCategoriesArray count] > 0)
     {
-        if ([self.productSelectTableViewController.tableView superview] == nil)
+        if ([self.objectSelectTableViewController.tableView superview] == nil)
         {
             self.searchPromptLabel.alpha = 0;
-            [self.contentContainerView addSubview:self.productSelectTableViewController.tableView];
+            [self.contentContainerView addSubview:self.objectSelectTableViewController.tableView];
         }
         
-        self.productSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:self.freeSearchTextArray];
-        [self.productSelectTableViewController refreshContent];
+        self.objectSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:self.freeSearchTextArray];
+        [self.objectSelectTableViewController refreshContent];
     }
 }
 
@@ -220,7 +222,7 @@
     if ([self.searchButtonsArray count] == 0)
     {
         self.searchPromptLabel.alpha = 1;
-        [self.productSelectTableViewController.tableView removeFromSuperview];
+        [self.objectSelectTableViewController.tableView removeFromSuperview];
     }
 }
 

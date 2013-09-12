@@ -29,9 +29,6 @@
     self = [super initWithStyle:style];
     if (self) {
         
-        
-        
-        
     }
     return self;
 }
@@ -40,12 +37,7 @@
 {
     [super viewDidLoad];
     
-    self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
     
-    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
-    [refreshControl addTarget:self action:@selector(refreshContent)
-             forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refreshControl;
     
 }
 
@@ -98,10 +90,6 @@
     }
 }
 
-- (void)request:(IGRequest *)request didFailWithError:(NSError *)error
-{
-    NSLog(@"%@ request did fail with error: %@", self, error);
-}
 
 #pragma mark - Table view data source
 

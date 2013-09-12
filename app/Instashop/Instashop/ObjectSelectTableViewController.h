@@ -20,7 +20,6 @@
 #define PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER 3
 #define PRODUCT_REQUESTOR_TYPE_SEARCH 4
 
-@class ProductCreateViewController;
 
 @interface ObjectSelectTableViewController : UITableViewController <IGRequestDelegate, CellSelectionOccuredProtocol, FeedRequestFinishedProtocol, SearchReturnedReceiverProtocol>
 {
