@@ -20,15 +20,8 @@
 - (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withFeedItemsArray:(NSArray *)feedItemsArray withDelegate:(id)delegate;
 - (void) loadWithIndexPath:(NSIndexPath *)theIndexPath withSellerDictionaryArray:(NSArray *)sellerDictionaryArray withDelegate:(id)theDelegate;
 
-
-
 @property (nonatomic, retain) ImagesTableViewItem *itemOne;
 @property (nonatomic, retain) ImagesTableViewItem *itemTwo;
 @property (nonatomic, retain) ImagesTableViewItem *itemThree;
-
-
-
-
-
 
 @end

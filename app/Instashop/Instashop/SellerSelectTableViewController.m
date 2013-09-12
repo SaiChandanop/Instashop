@@ -7,7 +7,7 @@
 //
 
 #import "SellerSelectTableViewController.h"
-#import "ImagesTableViewCell.h"
+#import "SellersTableViewCell.h"
 
 @interface SellerSelectTableViewController ()
 
@@ -33,45 +33,55 @@
 
 -(void)refreshContent
 {
+    NSString *categoryString = nil;
+    if ([self.searchRequestObject.searchCategoriesArray count] > 0)
+        categoryString = [self.searchRequestObject.searchCategoriesArray objectAtIndex:0];
     
-    [self.tableView reloadData];
+    if (categoryString != nil)
+        [SearchAPIHandler makeSellerCategoryRequestWithDelegate:self withCategoryString:categoryString withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
+    
+
+    
+    
+ //   [self.tableView reloadData];
 }
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
-    // Return the number of rows in the section.
-    return 9;
+    NSLog(@"numberOfRowsInSection: %d", [self.contentArray count]);
+    return [self.contentArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
-    ImagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    SellersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
+        cell = [[SellersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    
-
-    
-    
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    
-
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"index: %d", indexPath.row];
+    [cell loadWithDictionary:[self.contentArray objectAtIndex:indexPath.row]];
     // Configure the cell...
     
     return cell;
+}
+
+
+-(void)searchReturnedWithArray:(NSArray *)searchResultsArray
+{
+    NSLog(@"searchReturnedWithArray: %@", searchResultsArray);
+    [self.contentArray removeAllObjects];
+    [self.contentArray addObjectsFromArray:searchResultsArray];
+    [self.tableView reloadData];
+//    [self feedRequestFinishedWithArrray:searchResultsArray];
 }
 
 

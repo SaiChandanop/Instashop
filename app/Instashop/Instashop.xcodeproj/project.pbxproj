@@ -198,6 +198,7 @@
 		7B79AE7C17E2186E0058E774 /* ObjectSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79AE7B17E2186E0058E774 /* ObjectSelectTableViewController.m */; };
 		7B79AE8017E21A900058E774 /* SellerSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79AE7E17E21A900058E774 /* SellerSelectTableViewController.m */; };
 		7B79AE8117E21A900058E774 /* SellerSelectTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B79AE7F17E21A900058E774 /* SellerSelectTableViewController.xib */; };
+		7B79AE8617E2237D0058E774 /* SellersTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79AE8517E2237D0058E774 /* SellersTableViewCell.m */; };
 		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
 		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 		7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7444174D4AA1005E90B9 /* AuthenticationViewController.m */; };
@@ -513,6 +514,8 @@
 		7B79AE7D17E21A900058E774 /* SellerSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerSelectTableViewController.h; sourceTree = "<group>"; };
 		7B79AE7E17E21A900058E774 /* SellerSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellerSelectTableViewController.m; sourceTree = "<group>"; };
 		7B79AE7F17E21A900058E774 /* SellerSelectTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SellerSelectTableViewController.xib; sourceTree = "<group>"; };
+		7B79AE8417E2237D0058E774 /* SellersTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellersTableViewCell.h; sourceTree = "<group>"; };
+		7B79AE8517E2237D0058E774 /* SellersTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellersTableViewCell.m; sourceTree = "<group>"; };
 		7B7A518317C4222F009AD081 /* CreateSellerOccuredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSellerOccuredProtocol.h; sourceTree = "<group>"; };
 		7B7A518417C422A5009AD081 /* SellersRequestFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellersRequestFinishedProtocol.h; sourceTree = "<group>"; };
 		7B7A518517C42367009AD081 /* ProductCreateContainerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateContainerProtocol.h; sourceTree = "<group>"; };
@@ -1220,6 +1223,26 @@
 			name = Seller;
 			sourceTree = "<group>";
 		};
+		7B79AE8217E221FE0058E774 /* ProductImages */ = {
+			isa = PBXGroup;
+			children = (
+				7B96C039174FED3700E4EDAD /* ImagesTableViewCell.h */,
+				7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */,
+				7B31BD6517C6C74E00D24F55 /* ImagesTableViewItem.h */,
+				7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */,
+			);
+			name = ProductImages;
+			sourceTree = "<group>";
+		};
+		7B79AE8317E222110058E774 /* Sellers */ = {
+			isa = PBXGroup;
+			children = (
+				7B79AE8417E2237D0058E774 /* SellersTableViewCell.h */,
+				7B79AE8517E2237D0058E774 /* SellersTableViewCell.m */,
+			);
+			name = Sellers;
+			sourceTree = "<group>";
+		};
 		7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
@@ -1366,10 +1389,8 @@
 		7B96C038174FED1D00E4EDAD /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				7B96C039174FED3700E4EDAD /* ImagesTableViewCell.h */,
-				7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */,
-				7B31BD6517C6C74E00D24F55 /* ImagesTableViewItem.h */,
-				7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */,
+				7B79AE8317E222110058E774 /* Sellers */,
+				7B79AE8217E221FE0058E774 /* ProductImages */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -1797,6 +1818,7 @@
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
+				7B79AE8617E2237D0058E774 /* SellersTableViewCell.m in Sources */,
 				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
 				7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */,
 				7B5D628417C5AF7100D6C8B1 /* PKTextField.m in Sources */,

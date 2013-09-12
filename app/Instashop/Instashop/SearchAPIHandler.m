@@ -51,13 +51,40 @@
     
 }
 
++(void)makeSellerCategoryRequestWithDelegate:(id)delegate withCategoryString:(NSString *)categoryString withFreeformTextArray:(NSArray *)freeformTextArray
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/get_sellers.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"POST";
+    
+    
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:[NSString stringWithFormat:@"category=%@", categoryString]];
+    [postString appendString:[NSString stringWithFormat:@"&freeform_text_array=%@&", freeformTextArray]];
+
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    SearchAPIHandler *apiHandler = [[SearchAPIHandler alloc] init];
+    apiHandler.delegate = delegate;
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(searchRequestComplete:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+}
+
+
+
 -(void)searchRequestComplete:(id)obj
 {
     NSString* newStr = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
+    NSLog(@"newStr: %@", newStr);
+    NSLog(@"responseArray: %@", responseArray);
+    
     if ([self.delegate conformsToProtocol:@protocol(SearchReturnedReceiverProtocol)])
         [(id<SearchReturnedReceiverProtocol>)self.delegate searchReturnedWithArray:responseArray];
-
+    
 }
+
+
 @end
