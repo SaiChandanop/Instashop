@@ -16,6 +16,7 @@
 
 @synthesize parentController;
 @synthesize cellDelegate;
+@synthesize rowSelectedDelegate;
 @synthesize contentArray;
 @synthesize contentRequestParameters;
 @synthesize referenceTableView;

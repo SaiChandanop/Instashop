@@ -10,10 +10,11 @@
 #import "ObjectSelectTableViewController.h"
 
 
-
+@class SearchViewController;
 
 @interface SearchSiloViewController : UIViewController
 {
+    SearchViewController *parentController;
     
     UISearchBar *theSearchBar;
     UIImageView *searchTermsImageView;
@@ -31,6 +32,7 @@
     int searchType;
 }
 
+@property (nonatomic, retain) SearchViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet UISearchBar *theSearchBar;
 @property (nonatomic, retain) IBOutlet UIImageView *searchTermsImageView;

@@ -25,6 +25,7 @@
 {
     id parentController;
     id cellDelegate;
+    id rowSelectedDelegate;
     
     NSMutableArray *contentArray;
     NSMutableDictionary *contentRequestParameters;
@@ -42,6 +43,8 @@
 
 @property (nonatomic, retain) id parentController;
 @property (nonatomic, retain) id cellDelegate;
+@property (nonatomic, retain) id rowSelectedDelegate;
+
 @property (nonatomic, retain) NSMutableArray *contentArray;
 @property (nonatomic, retain) NSMutableDictionary *contentRequestParameters;
 

@@ -16,7 +16,7 @@
 #define SEARCH_RESULT_TYPE_SELLER 1
 
 @class AppRootViewController;
-@interface SearchViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
+@interface SearchViewController : UIViewController <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate, CellSelectionOccuredProtocol>
 {
     AppRootViewController *appRootViewController;
     

@@ -71,12 +71,14 @@
     
     
     self.productSearchViewController = [[SearchSiloViewController alloc] initWithNibName:@"SearchSiloViewController" bundle:nil];
+    self.productSearchViewController.parentController = self;
     self.productSearchViewController.searchType = CATEGORIES_TYPE_PRODUCT;
     self.productSearchViewController.view.frame = CGRectMake(0, self.highlightView.frame.origin.y + self.highlightView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.highlightView.frame.origin.y + self. self.highlightView.frame.size.height));
     [self.view addSubview:self.productSearchViewController.view];
 
     
     self.shopSearchViewController = [[SearchSiloViewController alloc] initWithNibName:@"SearchSiloViewController" bundle:nil];
+    self.shopSearchViewController.parentController = self;
     self.shopSearchViewController.searchType = CATEGORIES_TYPE_SELLER;
     self.shopSearchViewController.view.frame = CGRectMake(0, self.highlightView.frame.origin.y + self.highlightView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.highlightView.frame.origin.y + self. self.highlightView.frame.size.height));
     [self.view addSubview:self.shopSearchViewController.view];
@@ -127,8 +129,16 @@
          
 }
 
+-(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
+{
+    NSLog(@"%@ cellSelectionOccured: %@", self, theSelectionObject);
 
+}
 
+-(void) rowSelectionOccured:(NSDictionary *)theSelectionObject
+{
+    NSLog(@"rowSelectionOccured: %@", theSelectionObject);
+}
 
 
 -(int)getCurrentlySelectedTab

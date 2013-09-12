@@ -33,19 +33,12 @@
 
 -(void)refreshContent
 {
-    
-    NSLog(@"refreshContent called");
     NSString *categoryString = nil;
     if ([self.searchRequestObject.searchCategoriesArray count] > 0)
         categoryString = [self.searchRequestObject.searchCategoriesArray objectAtIndex:0];
     
     if (categoryString != nil)
-        [SearchAPIHandler makeSellerCategoryRequestWithDelegate:self withCategoryString:categoryString withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
-    
-
-    
-    
- //   [self.tableView reloadData];
+        [SearchAPIHandler makeSellerCategoryRequestWithDelegate:self withCategoryString:categoryString withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];    
 }
 
 
@@ -56,7 +49,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    NSLog(@"numberOfRowsInSection: %d", [self.contentArray count]);
     return [self.contentArray count];
 }
 
@@ -83,6 +75,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.rowSelectedDelegate rowSelectionOccured:[self.contentArray objectAtIndex:indexPath.row]];
+}
+
+
+
 
 -(void)searchReturnedWithArray:(NSArray *)searchResultsArray
 {
@@ -90,6 +89,7 @@
     [self.contentArray removeAllObjects];
     [self.contentArray addObjectsFromArray:searchResultsArray];
     [self.tableView reloadData];
+    [self.refreshControl endRefreshing];
 //    [self feedRequestFinishedWithArrray:searchResultsArray];
 }
 
