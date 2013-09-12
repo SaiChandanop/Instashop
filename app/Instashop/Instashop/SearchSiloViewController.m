@@ -85,7 +85,10 @@
     if ([self.freeSearchTextArray count] > 0 || [self.selectedCategoriesArray count] > 0)
     {
         if ([self.productSelectTableViewController.tableView superview] == nil)
+        {
+            self.searchPromptLabel.alpha = 0;
             [self.contentContainerView addSubview:self.productSelectTableViewController.tableView];
+        }
         
         self.productSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:self.freeSearchTextArray];
         [self.productSelectTableViewController refreshContent];
@@ -215,7 +218,10 @@
     }
     
     if ([self.searchButtonsArray count] == 0)
+    {
+        self.searchPromptLabel.alpha = 1;
         [self.productSelectTableViewController.tableView removeFromSuperview];
+    }
 }
 
 
