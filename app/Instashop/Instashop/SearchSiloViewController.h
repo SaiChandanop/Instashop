@@ -23,9 +23,9 @@
     ProductSelectTableViewController *productSelectTableViewController;
     
     NSMutableArray *selectedCategoriesArray;
-    NSMutableArray *freeSearchButtonsArray;
+    NSMutableArray *freeSearchTextArray;
 
-    
+    NSMutableArray *searchButtonsArray;
     int searchType;
 }
 
@@ -40,7 +40,9 @@
 @property (nonatomic, retain) ProductSelectTableViewController *productSelectTableViewController;
 
 @property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
-@property (nonatomic, retain) NSMutableArray *freeSearchButtonsArray;
+@property (nonatomic, retain) NSMutableArray *freeSearchTextArray;
+
+@property (nonatomic, retain) NSMutableArray *searchButtonsArray;
 
 @property (nonatomic, assign) int searchType;
 
