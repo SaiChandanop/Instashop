@@ -23,14 +23,6 @@
 @implementation ProductSelectTableViewController
 
 
-@synthesize parentController;
-@synthesize cellDelegate;
-@synthesize contentArray;
-@synthesize contentRequestParameters;
-@synthesize referenceTableView;
-@synthesize productRequestorType;
-@synthesize productRequestorReferenceObject;
-@synthesize searchRequestObject;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {

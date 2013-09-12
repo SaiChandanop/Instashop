@@ -195,6 +195,7 @@
 		7B74C3CC179712A20006289C /* PurchasingCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B74C3CA179712A20006289C /* PurchasingCompleteViewController.xib */; };
 		7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C3CF179716850006289C /* CreateSellerViewController.m */; };
 		7B74C3D2179716850006289C /* CreateSellerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B74C3D0179716850006289C /* CreateSellerViewController.xib */; };
+		7B79AE7C17E2186E0058E774 /* ObjectSelectTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B79AE7B17E2186E0058E774 /* ObjectSelectTableViewController.m */; };
 		7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743A174D42F2005E90B9 /* IGRequest.m */; };
 		7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A743C174D42F2005E90B9 /* Instagram.m */; };
 		7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7444174D4AA1005E90B9 /* AuthenticationViewController.m */; };
@@ -505,6 +506,8 @@
 		7B74C3CE179716850006289C /* CreateSellerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSellerViewController.h; sourceTree = "<group>"; };
 		7B74C3CF179716850006289C /* CreateSellerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateSellerViewController.m; sourceTree = "<group>"; };
 		7B74C3D0179716850006289C /* CreateSellerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CreateSellerViewController.xib; sourceTree = "<group>"; };
+		7B79AE7A17E2186E0058E774 /* ObjectSelectTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectSelectTableViewController.h; sourceTree = "<group>"; };
+		7B79AE7B17E2186E0058E774 /* ObjectSelectTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ObjectSelectTableViewController.m; sourceTree = "<group>"; };
 		7B7A518317C4222F009AD081 /* CreateSellerOccuredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CreateSellerOccuredProtocol.h; sourceTree = "<group>"; };
 		7B7A518417C422A5009AD081 /* SellersRequestFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellersRequestFinishedProtocol.h; sourceTree = "<group>"; };
 		7B7A518517C42367009AD081 /* ProductCreateContainerProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateContainerProtocol.h; sourceTree = "<group>"; };
@@ -803,14 +806,15 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
-		7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */ = {
+		7B1072AF175E6C6800D9DC5D /* ObjectSelectTableVC */ = {
 			isa = PBXGroup;
 			children = (
-				7B1072B0175E6C8C00D9DC5D /* ProductSelectTableViewController.h */,
-				7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */,
-				7B1072B2175E6C8C00D9DC5D /* ProductSelectTableViewController.xib */,
+				7B79AE7917E2182F0058E774 /* Seller */,
+				7B79AE7817E217E70058E774 /* Product */,
+				7B79AE7A17E2186E0058E774 /* ObjectSelectTableViewController.h */,
+				7B79AE7B17E2186E0058E774 /* ObjectSelectTableViewController.m */,
 			);
-			name = ProductSelectTableVC;
+			name = ObjectSelectTableVC;
 			sourceTree = "<group>";
 		};
 		7B1072B5175E7CB300D9DC5D /* Details */ = {
@@ -1191,6 +1195,23 @@
 			name = CreateSeller;
 			sourceTree = "<group>";
 		};
+		7B79AE7817E217E70058E774 /* Product */ = {
+			isa = PBXGroup;
+			children = (
+				7B1072B0175E6C8C00D9DC5D /* ProductSelectTableViewController.h */,
+				7B1072B1175E6C8C00D9DC5D /* ProductSelectTableViewController.m */,
+				7B1072B2175E6C8C00D9DC5D /* ProductSelectTableViewController.xib */,
+			);
+			name = Product;
+			sourceTree = "<group>";
+		};
+		7B79AE7917E2182F0058E774 /* Seller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Seller;
+			sourceTree = "<group>";
+		};
 		7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */ = {
 			isa = PBXGroup;
 			children = (
@@ -1224,7 +1245,7 @@
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
 				7B5BFAD617D6928400F82F0B /* Notifications */,
-				7B1072AF175E6C6800D9DC5D /* ProductSelectTableVC */,
+				7B1072AF175E6C6800D9DC5D /* ObjectSelectTableVC */,
 				7B376EC817C7A33300F4D5D8 /* Profile */,
 				7B7A7F7B17D64AA100247A26 /* Search */,
 				7BE958F3175548A100A7E0AB /* Sell */,
@@ -1721,6 +1742,7 @@
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
 				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,
 				7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */,
+				7B79AE7C17E2186E0058E774 /* ObjectSelectTableViewController.m in Sources */,
 				7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */,
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
 				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
