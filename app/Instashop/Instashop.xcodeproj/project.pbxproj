@@ -226,6 +226,7 @@
 		7B9EAB3F1796E98600D2868D /* product_buy_bakcground_image_b.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EAB3D1796E98600D2868D /* product_buy_bakcground_image_b.png */; };
 		7B9EAB411796EA1400D2868D /* product_buy_bakcground_image_c.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EAB401796EA1400D2868D /* product_buy_bakcground_image_c.png */; };
 		7B9EAB43179702C900D2868D /* product_buy_button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B9EAB42179702C900D2868D /* product_buy_button_background.png */; };
+		7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */; };
 		7BA4270C1794681500A9732E /* cpbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270B1794681500A9732E /* cpbackimage.png */; };
 		7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270D17946F5F00A9732E /* attributes1.csv */; };
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
@@ -236,7 +237,6 @@
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
 		7BE3D377174D772B0045C4B4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D376174D772B0045C4B4 /* Utils.m */; };
-		7BE43D5A17D6E3DA0031F5CF /* SearchButtonContainer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE43D5917D6E3DA0031F5CF /* SearchButtonContainer.m */; };
 		7BE688C9176B7801007D383B /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE688C7176B7801007D383B /* FeedViewController.m */; };
 		7BE688CA176B7801007D383B /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE688C8176B7801007D383B /* FeedViewController.xib */; };
 		7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F11755473400A7E0AB /* ProductAPIHandler.m */; };
@@ -566,6 +566,8 @@
 		7B9EAB3D1796E98600D2868D /* product_buy_bakcground_image_b.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = product_buy_bakcground_image_b.png; sourceTree = "<group>"; };
 		7B9EAB401796EA1400D2868D /* product_buy_bakcground_image_c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = product_buy_bakcground_image_c.png; sourceTree = "<group>"; };
 		7B9EAB42179702C900D2868D /* product_buy_button_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = product_buy_button_background.png; sourceTree = "<group>"; };
+		7B9EE92017E2735400D723BD /* SearchButtonContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchButtonContainerView.h; sourceTree = "<group>"; };
+		7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchButtonContainerView.m; sourceTree = "<group>"; };
 		7BA4270B1794681500A9732E /* cpbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cpbackimage.png; sourceTree = "<group>"; };
 		7BA4270D17946F5F00A9732E /* attributes1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes1.csv; sourceTree = "<group>"; };
 		7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAuthenticationHandler.h; sourceTree = "<group>"; };
@@ -583,8 +585,6 @@
 		7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIHandler.m; sourceTree = "<group>"; };
 		7BE3D375174D772B0045C4B4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		7BE3D376174D772B0045C4B4 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
-		7BE43D5817D6E3DA0031F5CF /* SearchButtonContainer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchButtonContainer.h; sourceTree = "<group>"; };
-		7BE43D5917D6E3DA0031F5CF /* SearchButtonContainer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchButtonContainer.m; sourceTree = "<group>"; };
 		7BE688C6176B7801007D383B /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		7BE688C7176B7801007D383B /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		7BE688C8176B7801007D383B /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
@@ -749,8 +749,8 @@
 		7B0320E117E0E14C0045D7AC /* ContextObjects */ = {
 			isa = PBXGroup;
 			children = (
-				7BE43D5817D6E3DA0031F5CF /* SearchButtonContainer.h */,
-				7BE43D5917D6E3DA0031F5CF /* SearchButtonContainer.m */,
+				7B9EE92017E2735400D723BD /* SearchButtonContainerView.h */,
+				7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */,
 				7B396BE617D7819E0042754D /* SearchRequestObject.h */,
 				7B396BE717D7819E0042754D /* SearchRequestObject.m */,
 			);
@@ -1754,6 +1754,7 @@
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
+				7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */,
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,
 				7B7A7F8417D64B5500247A26 /* SearchAPIHandler.m in Sources */,
@@ -1812,7 +1813,6 @@
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
 				7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */,
 				7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */,
-				7BE43D5A17D6E3DA0031F5CF /* SearchButtonContainer.m in Sources */,
 				7BF9DD8F178C546F005148A8 /* SBJsonStreamTokeniser.m in Sources */,
 				7BF9DD90178C546F005148A8 /* SBJsonStreamWriter.m in Sources */,
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,

@@ -8,11 +8,11 @@
 
 #import "SearchSiloViewController.h"
 #import "CategoriesTableViewController.h"
-#import "SearchButtonContainer.h"
 #import "AttributesManager.h"
 #import "CategoriesViewController.h"
 #import "ProductSelectTableViewController.h"
 #import "SellerSelectTableViewController.h"
+#import "SearchButtonContainerView.h"
 @interface SearchSiloViewController ()
 
 @end
@@ -174,14 +174,14 @@
         
         for (int i = 0; i < [self.searchButtonsArray count]; i++)
         {
-            SearchButtonContainer *theButtonContainer = [self.searchButtonsArray objectAtIndex:i];
+            SearchButtonContainerView *theButtonContainer = [self.searchButtonsArray objectAtIndex:i];
             if (theButtonContainer.type == SEARCH_BUTTON_TYPE_CATEGORIES)
                 proceed = NO;
         }
         
         if (proceed)
         {
-            SearchButtonContainer *buttonContainer = [[SearchButtonContainer alloc] init];
+            SearchButtonContainerView *buttonContainer = [[SearchButtonContainerView alloc] init];
             buttonContainer.type = SEARCH_BUTTON_TYPE_CATEGORIES;
             [self.searchButtonsArray addObject:buttonContainer];
             
@@ -197,7 +197,7 @@
         
         for (int j = 0; j < [self.searchButtonsArray count]; j++)
         {
-            SearchButtonContainer *theButtonContainer = [self.searchButtonsArray objectAtIndex:j];
+            SearchButtonContainerView *theButtonContainer = [self.searchButtonsArray objectAtIndex:j];
             
             
             if ([theButtonContainer.searchTerm compare:[self.freeSearchTextArray objectAtIndex:i]] == NSOrderedSame)
@@ -205,7 +205,7 @@
         }
         if (proceed)
         {
-            SearchButtonContainer *buttonContainer = [[SearchButtonContainer alloc] init];
+            SearchButtonContainerView *buttonContainer = [[SearchButtonContainerView alloc] init];
             buttonContainer.type = SEARCH_BUTTON_TYPE_FREE;
             [self.searchButtonsArray addObject:buttonContainer];
             
@@ -216,17 +216,18 @@
     
     for (int i = 0; i < [self.searchButtonsArray count]; i++)
     {
-        SearchButtonContainer *aView = [self.searchButtonsArray objectAtIndex:i];
+        SearchButtonContainerView *aView = [self.searchButtonsArray objectAtIndex:i];
         [aView removeFromSuperview];
     }
     
     for (int i = 0; i < [self.searchButtonsArray count]; i++)
     {
-        SearchButtonContainer *theButton = [self.searchButtonsArray objectAtIndex:i];
-        theButton.frame = CGRectMake(indentPoint, self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8, [theButton.titleLabel.text sizeWithFont:theButton.titleLabel.font].width, self.searchTermsImageView.frame.size.height - self.searchTermsImageView.frame.size.height / 16);
+        SearchButtonContainerView *buttonContainerView = [self.searchButtonsArray objectAtIndex:i];
+        buttonContainerView.frame = CGRectMake(indentPoint, self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 15, self.searchTermsImageView.frame.size.height - self.searchTermsImageView.frame.size.height / 16);
         
-        indentPoint = theButton.frame.origin.x + theButton.frame.size.width + 15;
-        [self.view addSubview:theButton];
+        indentPoint = buttonContainerView.frame.origin.x + buttonContainerView.frame.size.width + 15;
+        [self.view addSubview:buttonContainerView];
+        [buttonContainerView sizeViewWithFrame];
     }
     
     if ([self.searchButtonsArray count] == 0)
@@ -237,7 +238,7 @@
 }
 
 
--(void)searchButtonContainerHit:(SearchButtonContainer *)theButton
+-(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton
 {
 
     switch (theButton.type) {

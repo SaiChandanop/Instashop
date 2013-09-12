@@ -14,7 +14,6 @@
 #import "PurchasingViewController.h"
 #import "ProfileViewController.h"
 #import "AttributesManager.h"
-#import "SearchButtonContainer.h"
 #import "CategoriesViewController.h"
 
 @interface SearchViewController ()

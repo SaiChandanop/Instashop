@@ -11,6 +11,7 @@
 
 
 @class SearchViewController;
+@class SearchButtonContainerView;
 
 @interface SearchSiloViewController : UIViewController
 {
@@ -31,6 +32,8 @@
     NSMutableArray *searchButtonsArray;
     int searchType;
 }
+
+-(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton;
 
 @property (nonatomic, retain) SearchViewController *parentController;
 
