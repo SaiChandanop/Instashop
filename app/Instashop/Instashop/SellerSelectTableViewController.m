@@ -33,6 +33,8 @@
 
 -(void)refreshContent
 {
+    
+    NSLog(@"refreshContent called");
     NSString *categoryString = nil;
     if ([self.searchRequestObject.searchCategoriesArray count] > 0)
         categoryString = [self.searchRequestObject.searchCategoriesArray objectAtIndex:0];
@@ -67,6 +69,13 @@
         cell = [[SellersTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
+    
+    if (indexPath.row % 2 == 0)
+        cell.backgroundColor = [UIColor colorWithRed:208.0f/255.0f green:208.0f/255.0f blue:208.0f/255.0f alpha:1];
+    else
+        cell.backgroundColor = [UIColor colorWithRed:233.0f/255.0f green:233.0f/255.0f blue:233.0f/255.0f alpha:1];
+    
+    
     
     [cell loadWithDictionary:[self.contentArray objectAtIndex:indexPath.row]];
     // Configure the cell...

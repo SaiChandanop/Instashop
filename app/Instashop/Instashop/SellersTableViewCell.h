@@ -7,12 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IGRequest.h"
 
-@interface SellersTableViewCell : UITableViewCell
+@interface SellersTableViewCell : UITableViewCell <IGRequestDelegate>
 {
     UIImageView *sellerImageView;
     UILabel *sellerTextLabel;
 }
+
+- (void) loadWithDictionary:(NSDictionary *)theDictionary;
 
 @property (nonatomic, retain) UIImageView *sellerImageView;
 @property (nonatomic, retain) UILabel *sellerTextLabel;

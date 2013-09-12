@@ -138,7 +138,7 @@
 }
 
 
--(void)refreshContent;
+-(void)refreshContent
 {
     if (self.contentRequestParameters != nil)
     {

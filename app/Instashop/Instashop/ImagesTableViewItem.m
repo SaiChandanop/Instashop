@@ -146,8 +146,6 @@
     if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
-        NSLog(@"dataDictionary: %@", dataDictionary);
-        
         [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.contentImageView];
         
     }
