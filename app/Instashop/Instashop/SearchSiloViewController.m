@@ -12,7 +12,7 @@
 #import "AttributesManager.h"
 #import "CategoriesViewController.h"
 #import "ProductSelectTableViewController.h"
-
+#import "SellerSelectTableViewController.h"
 @interface SearchSiloViewController ()
 
 @end
@@ -71,7 +71,15 @@
     [self.contentContainerView addSubview:categoriesNavigationController.view];
     
     
-    if (self.searchType == CATEGORIES_TYPE_PRODUCT)
+    if (self.searchType == CATEGORIES_TYPE_SELLER)
+    {
+        self.objectSelectTableViewController = [[SellerSelectTableViewController alloc] initWithNibName:@"SellerSelectTableViewController" bundle:nil];
+        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
+        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
+        self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
+        
+    }
+    else
     {
         self.objectSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
         self.objectSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_SEARCH;
@@ -79,6 +87,7 @@
         self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
     }
+
     
 }
 
@@ -121,8 +130,6 @@
         }
         else
         {
-            NSLog(@"selr.selectedCategoriesArray: %@", self.selectedCategoriesArray);
-        
             NSMutableArray *nextCategoriesArray = [NSMutableArray arrayWithCapacity:0];
             [nextCategoriesArray addObject:[NSString stringWithFormat:@"All %@", [self getCategoriesString]]];
             [nextCategoriesArray addObjectsFromArray:[[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray]];

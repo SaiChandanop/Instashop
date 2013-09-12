@@ -78,7 +78,7 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"index: %d", indexPath.row];
+    cell.textLabel.text = @"wrong";
     // Configure the cell...
     
     return cell;
