@@ -37,7 +37,6 @@
     self.theScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0,44, self.view.frame.size.width, self.view.frame.size.height - 44)];
     [self.view addSubview:self.theScrollView];
     
-    
     self.discoverTopCategoryTableViewController = [[DiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
     self.discoverTopCategoryTableViewController.parentController = self;
     self.discoverTopCategoryTableViewController.view.frame = CGRectMake(0,0,self.theScrollView.frame.size.width, self.theScrollView.frame.size.height);

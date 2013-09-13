@@ -75,8 +75,6 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     if (![defaults objectForKey:@"firstBecomeSellerRun"]) {
-        self.firstRun = TRUE;
-        [defaults setObject:[NSDate date] forKey:@"firstBecomeSellerRun"];
         
         // Become Seller Tutorial
         self.createSellerHowToScrollView = [[CreateSellerTutorialScrollView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
@@ -94,14 +92,12 @@
         [self.view addSubview:pageControl];
     }
     else {
-        self.firstRun = FALSE;
         CGRect statusBar = [[UIApplication sharedApplication] statusBarFrame];
         float topHeight = self.navigationController.navigationBar.bounds.size.height + statusBar.size.height;
         self.containerScrollView.frame = CGRectMake(0.0, topHeight, screenWidth, screenHeight - topHeight);
         self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
         [self.view addSubview:self.containerScrollView];
     }
-    [[NSUserDefaults standardUserDefaults] synchronize];
     
     self.instagramUsernameLabel.text = [InstagramUserObject getStoredUserObject].username;
     
@@ -179,6 +175,10 @@
 
 - (void) signUp {
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSDate date] forKey:@"firstBecomeSellerRun"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     [self.pageControl removeFromSuperview];
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;

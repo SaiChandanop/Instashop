@@ -8,12 +8,14 @@
 
 #import "FirstTimeUserViewController.h"
 #import "AppDelegate.h"
+#import "DiscoverViewController.h"
+#import "SuggestedStoresViewController.h"
 
 @interface FirstTimeUserViewController ()
 
 @end
 
-#define kHowToPageNumber 4
+#define kHowToPageNumber 3
 
 @implementation FirstTimeUserViewController
 
@@ -47,26 +49,22 @@
     self.tutorialScrollView.pagingEnabled = YES;
     self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];
-    int arbitraryNumberSmallerThanBoundHeight = 33.0;
+    
     // Needs to be less than bound height to disable vertical scrolling.
-    self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * 4, arbitraryNumberSmallerThanBoundHeight);
+    self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, 33.3);
     float howToViewBoundsHeight = self.tutorialScrollView.bounds.size.height;
     
-    // Maybe you want a left view so that the previous menu can't be seen.
-    UIView *leftView = [[UIView alloc] initWithFrame:CGRectMake(-320.0, 0.0, screenWidth, howToViewBoundsHeight)];
-    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
-    [leftView addSubview:backgroundImage];
-    [self.tutorialScrollView addSubview:leftView];
+    UIView *firstView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
+    firstView.backgroundColor = [UIColor blackColor];
+    [self.tutorialScrollView addSubview:firstView];
     
-    NSArray *arrayOfLabels = [[NSArray alloc] initWithObjects:@"target-title.png", @"share-title.png", @"manage-title.png", @"grow-title.png", nil];
-    NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"target-graphic.png", @"share-graphic.png", @"manage-graphic.png", @"grow-graphic.png", nil];
+    DiscoverViewController *discoverView = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
+    discoverView.view.frame = CGRectMake(screenWidth, 0.0, screenWidth, screenHeight);
+    [self.tutorialScrollView addSubview:discoverView.view];
     
-    NSString *stringTextOne = [NSString stringWithFormat:@"Text 1"];
-    NSString *stringTextTwo = [NSString stringWithFormat:@"Text 2"];
-    NSString *stringTextThree = [NSString stringWithFormat:@"Text 3"];
-    NSString *stringTextFour = [NSString stringWithFormat:@"Text 4"];
-    
-    NSArray *arrayOfTexts = [[NSArray alloc] initWithObjects:stringTextOne, stringTextTwo, stringTextThree, stringTextFour, nil];
+    SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
+    suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
+    [self.tutorialScrollView addSubview:suggestedStoreView.view];
     
     for (int p = 0; p <= kHowToPageNumber; p++) {
         
@@ -80,16 +78,6 @@
         UIView *tutorialView = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
         UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
         [tutorialView addSubview:backgroundImage];
-        UIImageView *label = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[arrayOfLabels objectAtIndex:p]]];
-        UIImageView *graphic = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[arrayOfImages objectAtIndex:p]]];
-        graphic.frame = CGRectMake((320 - graphic.bounds.size.width)/2, (screenHeight - graphic.bounds.size.height)/2 + 10, graphic.bounds.size.width, graphic.bounds.size.width);
-        UILabel *textLabel = [[UILabel alloc] initWithFrame:CGRectMake(50.0, 400.0, 220.0, 60.0)];
-        textLabel.text = [arrayOfTexts objectAtIndex:p];
-        textLabel.textColor = [UIColor blackColor];
-        textLabel.textAlignment = NSTextAlignmentCenter;
-        [tutorialView addSubview:textLabel];
-        [tutorialView addSubview:label];
-        [tutorialView addSubview:graphic];
         if (p == (kHowToPageNumber - 1)) {
             UIButton *signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0, 350.0, 50.0, 50.0)];
             signUpButton.backgroundColor = [UIColor redColor];
@@ -105,7 +93,7 @@
     // Page Control
     self.pageControl = [[UIPageControl alloc] init];
     float pageControlHeight = 50.0;
-    self.pageControl.frame = CGRectMake(0.0, screenHeight - 66 - pageControlHeight, screenWidth, pageControlHeight);
+    self.pageControl.frame = CGRectMake(0.0, screenHeight - pageControlHeight, screenWidth, pageControlHeight);
     self.pageControl.numberOfPages = kHowToPageNumber;
     self.pageControl.currentPage = 0;
     self.pageControl.pageIndicatorTintColor = [UIColor redColor];

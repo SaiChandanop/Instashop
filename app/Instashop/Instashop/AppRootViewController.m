@@ -84,11 +84,10 @@ float transitionTime = .456;
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
     
-    /*
-    if (!self.firstRun) {
+    if (self.firstRun) {
         
         FirstTimeUserViewController *tutorial = [[FirstTimeUserViewController alloc] init];
-        tutorial.view.frame = CGRectMake(0, tutorial.view.frame.size.width, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
+        tutorial.view.frame = CGRectMake(0, 0.0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
         [self.view addSubview:tutorial.view];
         
         [UIView beginAnimations:nil context:nil];
@@ -97,7 +96,7 @@ float transitionTime = .456;
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
         tutorial.view.frame = CGRectMake(0, 0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
         [UIView commitAnimations];
-    }*/
+    }
     
 	// Do any additional setup after loading the view.
     
