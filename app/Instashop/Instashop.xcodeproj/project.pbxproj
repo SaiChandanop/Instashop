@@ -238,6 +238,7 @@
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
 		7BE3D377174D772B0045C4B4 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D376174D772B0045C4B4 /* Utils.m */; };
+		7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE66DA117E3523200BE3B64 /* CategoriesAPIHandler.m */; };
 		7BE688C9176B7801007D383B /* FeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE688C7176B7801007D383B /* FeedViewController.m */; };
 		7BE688CA176B7801007D383B /* FeedViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE688C8176B7801007D383B /* FeedViewController.xib */; };
 		7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F11755473400A7E0AB /* ProductAPIHandler.m */; };
@@ -587,6 +588,8 @@
 		7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserAPIHandler.m; sourceTree = "<group>"; };
 		7BE3D375174D772B0045C4B4 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		7BE3D376174D772B0045C4B4 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		7BE66DA017E3523200BE3B64 /* CategoriesAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesAPIHandler.h; sourceTree = "<group>"; };
+		7BE66DA117E3523200BE3B64 /* CategoriesAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesAPIHandler.m; sourceTree = "<group>"; };
 		7BE688C6176B7801007D383B /* FeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedViewController.h; sourceTree = "<group>"; };
 		7BE688C7176B7801007D383B /* FeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedViewController.m; sourceTree = "<group>"; };
 		7BE688C8176B7801007D383B /* FeedViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FeedViewController.xib; sourceTree = "<group>"; };
@@ -1322,6 +1325,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7BE66D9F17E3520F00BE3B64 /* Categories */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
 				7BE958EF1755470000A7E0AB /* Products */,
@@ -1474,6 +1478,15 @@
 				7B5D624717C5122F00D6C8B1 /* ISConstants.m */,
 			);
 			name = Utils;
+			sourceTree = "<group>";
+		};
+		7BE66D9F17E3520F00BE3B64 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7BE66DA017E3523200BE3B64 /* CategoriesAPIHandler.h */,
+				7BE66DA117E3523200BE3B64 /* CategoriesAPIHandler.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 		7BE958EF1755470000A7E0AB /* Products */ = {
@@ -1799,6 +1812,7 @@
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
+				7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */,
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
 				7BE688C9176B7801007D383B /* FeedViewController.m in Sources */,

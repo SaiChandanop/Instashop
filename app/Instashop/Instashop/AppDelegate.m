@@ -12,6 +12,7 @@
 #import "AttributesManager.h"
 #import "SellersAPIHandler.h"
 #import "UserAPIHandler.h"
+#import "CategoriesAPIHandler.h"
 
 #define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
 #define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
@@ -32,9 +33,6 @@
 
 //    [ZenCartAuthenticationAPIHandler makeLoginRequest];
     
-    
-    
-    
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
     self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
 //    [self.instagram authorize:[NSArray arrayWithObjects:@"relationships", @"comments", @"likes", nil]];
@@ -54,11 +52,8 @@
     
     [self.window makeKeyAndVisible];
    
-    /*
-   [[UIBarButtonItem appearance]
-     setBackButtonBackgroundImage:[UIImage imageNamed:@"backbutton.png"]
-     forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
- */
+    [CategoriesAPIHandler makeCategoriesRequest];
+
     return YES;
 }
 
@@ -153,6 +148,8 @@
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
 {
+    NSLog(@"applicationWillEnterForeground");
+    [CategoriesAPIHandler makeCategoriesRequest];
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 

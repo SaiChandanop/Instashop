@@ -37,8 +37,96 @@ static AttributesManager *theManager;
     if (theManager == nil)
     {
         theManager = [[AttributesManager alloc] init];
+        theManager.attributesDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
     }
     return theManager;
+}
+
+
+-(void)processAttributesString:(NSString *)myText
+{
+    NSLog(@"processAttributesString!");
+    NSArray *linesArray = [myText componentsSeparatedByString:@"\n"];
+    //        NSLog(@"linesArray: %@", linesArray);
+    
+    NSMutableArray *theParsingArray = [NSMutableArray arrayWithCapacity:0];
+    
+    NSMutableArray *currentKeysArray = [NSMutableArray arrayWithCapacity:0];
+    
+    
+    int lastIndex = 99;
+    for (int i = 0; i < [linesArray count]; i++)
+    {
+        NSArray *lineObjects = [[linesArray objectAtIndex:i] componentsSeparatedByString:@","];
+        
+        for (int j = 0; j < [lineObjects count]; j++)
+            if ([[lineObjects objectAtIndex:j] length] > 0)
+            {
+                NSString *keyObject = [lineObjects objectAtIndex:j];
+                
+                if (j < lastIndex)
+                {
+                    if (j >= [currentKeysArray count])
+                        [currentKeysArray addObject:keyObject];
+                    else
+                        [currentKeysArray replaceObjectAtIndex:j withObject:keyObject];
+                    
+                    lastIndex = j;
+                }
+                else
+                {
+                    if (j >= [currentKeysArray count])
+                        [currentKeysArray addObject:keyObject];
+                    else
+                        [currentKeysArray replaceObjectAtIndex:j withObject:keyObject];
+                    
+                    lastIndex = j;
+                    
+                    if (lastIndex < [currentKeysArray count] - 1)
+                        for (int k = 0; k < [currentKeysArray count]  - lastIndex; k++)
+                            [currentKeysArray removeLastObject];
+                    
+                    NSArray *tempArray = [NSArray arrayWithArray:currentKeysArray];
+                    lastIndex = 99;
+                    [theParsingArray addObject:tempArray];
+                }
+            }
+    }
+    
+    
+    
+    NSMutableDictionary *attributesDict = [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    for (int i = 0; i < [theParsingArray count]; i++)
+    {
+        NSArray *objectsArray = [theParsingArray objectAtIndex:i];
+        
+        NSMutableDictionary *scopeDict = [NSMutableDictionary dictionaryWithCapacity:0];
+        for (int j = 0; j < [objectsArray count]; j++)
+        {
+            NSString *key = [objectsArray objectAtIndex:j];
+            if (j == 0)
+            {
+                if ([attributesDict objectForKey:key] == nil)
+                    [attributesDict setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
+                
+                scopeDict = [attributesDict objectForKey:key];
+            }
+            else
+            {
+                if ([scopeDict objectForKey:key] == nil)
+                    [scopeDict setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
+                
+                scopeDict = [scopeDict objectForKey:key];
+            }
+        }
+        
+    }
+    
+    ///        NSLog(@"attributesDict: %@", attributesDict);
+    
+    [self.attributesDictionary setDictionary:attributesDict];
+    
 }
 
 
@@ -49,92 +137,10 @@ static AttributesManager *theManager;
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"attributes1" ofType:@"csv"];
     if (filePath) {
         
-        self.attributesDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
-        
         NSString *myText = [NSString stringWithContentsOfFile:filePath];
-        NSArray *linesArray = [myText componentsSeparatedByString:@"\n"];
-        //        NSLog(@"linesArray: %@", linesArray);
-        
-        NSMutableArray *theParsingArray = [NSMutableArray arrayWithCapacity:0];
-        
-        NSMutableArray *currentKeysArray = [NSMutableArray arrayWithCapacity:0];
-        
-        
-        int lastIndex = 99;
-        for (int i = 0; i < [linesArray count]; i++)
-        {
-            NSArray *lineObjects = [[linesArray objectAtIndex:i] componentsSeparatedByString:@","];
-            
-            for (int j = 0; j < [lineObjects count]; j++)
-                if ([[lineObjects objectAtIndex:j] length] > 0)
-                {
-                    NSString *keyObject = [lineObjects objectAtIndex:j];
-                    
-                    if (j < lastIndex)
-                    {
-                        if (j >= [currentKeysArray count])
-                            [currentKeysArray addObject:keyObject];
-                        else
-                            [currentKeysArray replaceObjectAtIndex:j withObject:keyObject];
-                        
-                        lastIndex = j;
-                    }
-                    else
-                    {
-                        if (j >= [currentKeysArray count])
-                            [currentKeysArray addObject:keyObject];
-                        else
-                            [currentKeysArray replaceObjectAtIndex:j withObject:keyObject];
-                        
-                        lastIndex = j;
-                        
-                        if (lastIndex < [currentKeysArray count] - 1)
-                            for (int k = 0; k < [currentKeysArray count]  - lastIndex; k++)
-                                [currentKeysArray removeLastObject];
-                        
-                        NSArray *tempArray = [NSArray arrayWithArray:currentKeysArray];
-                        lastIndex = 99;
-                        [theParsingArray addObject:tempArray];
-                    }
-                }
-        }
-        
-        
-        
-        NSMutableDictionary *attributesDict = [NSMutableDictionary dictionaryWithCapacity:0];
-        
-        for (int i = 0; i < [theParsingArray count]; i++)
-        {
-            NSArray *objectsArray = [theParsingArray objectAtIndex:i];
-            
-            NSMutableDictionary *scopeDict = [NSMutableDictionary dictionaryWithCapacity:0];
-            for (int j = 0; j < [objectsArray count]; j++)
-            {
-                NSString *key = [objectsArray objectAtIndex:j];
-                if (j == 0)
-                {
-                    if ([attributesDict objectForKey:key] == nil)
-                        [attributesDict setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
-                    
-                    scopeDict = [attributesDict objectForKey:key];
-                }
-                else
-                {
-                    if ([scopeDict objectForKey:key] == nil)
-                        [scopeDict setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
-                    
-                    scopeDict = [scopeDict objectForKey:key];
-                }
-            }
-            
-        }
-        
-        ///        NSLog(@"attributesDict: %@", attributesDict);
-        
-        [self.attributesDictionary setDictionary:attributesDict];
-        
+        [self processAttributesString:myText];
     }
-    return self;
+            return self;
 }
 
 -(NSArray *)getShopsCategories

@@ -17,6 +17,7 @@
 @interface AttributesManager : NSObject
 
 +(AttributesManager *)getSharedAttributesManager;
+-(void)processAttributesString:(NSString *)myText;
 
 -(NSArray *)getShopsCategories;
 -(NSArray *)getCategoriesWithArray:(NSArray *)theArray;
