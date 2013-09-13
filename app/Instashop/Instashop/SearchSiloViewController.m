@@ -166,7 +166,7 @@
 
 -(void)layoutSearchBarContainers
 {
-    float indentPoint = 15;
+    float indentPoint = 10;
     
     if ([self.selectedCategoriesArray count] > 0)
     {
@@ -223,7 +223,7 @@
     for (int i = 0; i < [self.searchButtonsArray count]; i++)
     {
         SearchButtonContainerView *buttonContainerView = [self.searchButtonsArray objectAtIndex:i];
-        buttonContainerView.frame = CGRectMake(indentPoint, self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 15, self.searchTermsImageView.frame.size.height - self.searchTermsImageView.frame.size.height / 16);
+        buttonContainerView.frame = CGRectMake(indentPoint, self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 20, self.searchTermsImageView.frame.size.height - self.searchTermsImageView.frame.size.height / 4);
         
         indentPoint = buttonContainerView.frame.origin.x + buttonContainerView.frame.size.width + 15;
         [self.view addSubview:buttonContainerView];
