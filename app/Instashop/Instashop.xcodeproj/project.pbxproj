@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		19792FF417E3ABF2004607AE /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19792FF317E3ABF2004607AE /* FirstTimeUserViewController.m */; };
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
@@ -257,6 +258,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		19792FF217E3ABF2004607AE /* FirstTimeUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimeUserViewController.h; sourceTree = "<group>"; };
+		19792FF317E3ABF2004607AE /* FirstTimeUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTimeUserViewController.m; sourceTree = "<group>"; };
 		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
@@ -637,6 +640,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		19792FF117E3ABE8004607AE /* FirstTimeUserWalkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				19792FF217E3ABF2004607AE /* FirstTimeUserViewController.h */,
+				19792FF317E3ABF2004607AE /* FirstTimeUserViewController.m */,
+			);
+			name = FirstTimeUserWalkthrough;
+			sourceTree = "<group>";
+		};
 		2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
@@ -1274,6 +1286,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				19792FF117E3ABE8004607AE /* FirstTimeUserWalkthrough */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B0680CA17664BC2009154BF /* Buy */,
 				7B15B2F817B2A9E700173752 /* Categories */,
@@ -1783,6 +1796,7 @@
 				7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */,
 				7BE3D377174D772B0045C4B4 /* Utils.m in Sources */,
 				7B5D628617C5AF7100D6C8B1 /* PKView.m in Sources */,
+				19792FF417E3ABF2004607AE /* FirstTimeUserViewController.m in Sources */,
 				7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */,
 				7B0320DE17E0E1340045D7AC /* SearchSiloViewController.m in Sources */,
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
