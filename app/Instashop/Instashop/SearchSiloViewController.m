@@ -247,6 +247,9 @@
         self.searchPromptLabel.alpha = 1;
         [self.objectSelectTableViewController.tableView removeFromSuperview];
     }
+    else
+        self.searchPromptLabel.alpha = 0;
+        
 }
 
 
