@@ -43,6 +43,9 @@
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
+    NSLog(@"search, urlRequestString: %@", urlRequestString);
+    NSLog(@"post string: %@", postString);
+    
     SearchAPIHandler *apiHandler = [[SearchAPIHandler alloc] init];
     apiHandler.delegate = delegate;
     apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
@@ -58,11 +61,30 @@
     URLRequest.HTTPMethod = @"POST";
     
     
+    
+    NSMutableString *freeTextPostString = [NSMutableString stringWithCapacity:0];
+    for (int i = 0; i < [freeformTextArray count]; i++)
+    {
+        [freeTextPostString appendString:[freeformTextArray objectAtIndex:i]];
+        if (i != [freeformTextArray count] -1)
+            [freeTextPostString appendString:@"___"];
+    }
+    
+
+    
+    
+    
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"category=%@", categoryString]];
-    [postString appendString:[NSString stringWithFormat:@"&freeform_text_array=%@&", freeformTextArray]];
+    [postString appendString:[NSString stringWithFormat:@"&freetext_string=%@", freeTextPostString]];
 
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    
+    NSLog(@"search, urlRequestString: %@", urlRequestString);
+    NSLog(@"post string: %@", postString);
+
+    
     
     SearchAPIHandler *apiHandler = [[SearchAPIHandler alloc] init];
     apiHandler.delegate = delegate;
@@ -78,6 +100,8 @@
     NSString* newStr = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
+    NSLog(@"responseArray: %@", responseArray);
+//    NSLog(@"newStr: %@", newStr);
     if ([self.delegate conformsToProtocol:@protocol(SearchReturnedReceiverProtocol)])
         [(id<SearchReturnedReceiverProtocol>)self.delegate searchReturnedWithArray:responseArray];
     
