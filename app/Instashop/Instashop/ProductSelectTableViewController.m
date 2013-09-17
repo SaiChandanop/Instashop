@@ -173,7 +173,7 @@
 {
     [self.contentArray removeAllObjects];
     
-    NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
+//    NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
     
     if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER)
     {
@@ -185,7 +185,7 @@
     }
     
     
-    [self.contentArray addObjectsFromArray:sorted];
+    [self.contentArray addObjectsFromArray:theArray];
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }
