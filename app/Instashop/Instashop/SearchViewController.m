@@ -84,7 +84,8 @@
 
     self.shopSearchViewController.view.alpha = 0;
     
-                                                             
+    
+    self.productsButton.selected = YES;
 }
 
 -(void)backButtonHit
