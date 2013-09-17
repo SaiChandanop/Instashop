@@ -236,9 +236,9 @@
     for (int i = 0; i < [self.searchButtonsArray count]; i++)
     {
         SearchButtonContainerView *buttonContainerView = [self.searchButtonsArray objectAtIndex:i];
-        buttonContainerView.frame = CGRectMake(indentPoint, self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 20, self.searchTermsImageView.frame.size.height - self.searchTermsImageView.frame.size.height / 4);
+        buttonContainerView.frame = CGRectMake(indentPoint, self.searchTermsImageView.frame.origin.y + self.searchTermsImageView.frame.size.height / 8, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 28, self.searchTermsImageView.frame.size.height - self.searchTermsImageView.frame.size.height / 4);
         
-        indentPoint = buttonContainerView.frame.origin.x + buttonContainerView.frame.size.width + 15;
+        indentPoint = buttonContainerView.frame.origin.x + buttonContainerView.frame.size.width + 10;
         [self.view addSubview:buttonContainerView];
         [buttonContainerView sizeViewWithFrame];
     }
@@ -289,7 +289,11 @@
     NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
     for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
     {
-        [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
+        if (i == 0)
+            [titleString appendString:[NSString stringWithFormat:@"%@", [self.selectedCategoriesArray objectAtIndex:i]]];
+        else
+            [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
+        
         if (i != [self.selectedCategoriesArray count] -1)
             [titleString appendString:@" >"];
         
