@@ -57,7 +57,7 @@
 -(void) sizeViewWithFrame
 {
      
-    self.searchLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+    self.searchLabel.frame = CGRectMake(8, 0, self.frame.size.width, self.frame.size.height);
     self.exitImageView.frame = CGRectMake(self.frame.size.width - self.exitImageView.image.size.width - 4, self.frame.size.height / 2 - self.exitImageView.image.size.height / 2, self.exitImageView.image.size.width, self.exitImageView.image.size.height);
     self.coverButton.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     
