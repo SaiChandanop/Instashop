@@ -342,7 +342,7 @@ float transitionTime = .456;
     
     if (navigationController == nil)
     {
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.theSearchViewController];
+        navigationController = [[UINavigationController alloc] initWithRootViewController:self.theSearchViewController];
         navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:navigationController .view];
     }
