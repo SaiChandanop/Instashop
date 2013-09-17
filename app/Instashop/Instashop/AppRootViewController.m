@@ -19,6 +19,8 @@
 #import "SearchViewController.h"
 #import "NotificationsViewController.h"
 #import "DiscoverViewController.h"
+#import "SearchViewController.h"
+
 
 @implementation AppRootViewController
 
@@ -27,6 +29,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize feedNavigationController, feedViewController, homeViewController;
 @synthesize areViewsTransitioning;
 @synthesize feedCoverButton;
+@synthesize theSearchViewController;
 
 float transitionTime = .456;
 
@@ -329,20 +332,26 @@ float transitionTime = .456;
 
 -(void)searchButtonHit
 {
-    SearchViewController *theVC = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
-    theVC.appRootViewController = self;
+    if (self.theSearchViewController == nil)
+    {
+        self.theSearchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+        self.theSearchViewController.appRootViewController = self;
+    }
     
+    UINavigationController *navigationController = self.theSearchViewController.navigationController;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:theVC];
-    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:navigationController .view];
-    
+    if (navigationController == nil)
+    {
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.theSearchViewController];
+        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:navigationController .view];
+    }
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    navigationController .view.frame = CGRectMake(0, 14, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 
 }
