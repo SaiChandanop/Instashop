@@ -133,6 +133,8 @@
         }
         else
         {
+            [self layoutSearchBarContainers];
+            
             NSMutableArray *nextCategoriesArray = [NSMutableArray arrayWithCapacity:0];
             [nextCategoriesArray addObject:[NSString stringWithFormat:@"All %@", [self getCategoriesString]]];
             [nextCategoriesArray addObjectsFromArray:[[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray]];
@@ -161,7 +163,17 @@
     
 }
 
-
+-(SearchButtonContainerView *)getActiveSearchButtonContainerView
+{
+    SearchButtonContainerView *existingContainerView = nil;
+    for (int i = 0; i < [self.searchButtonsArray count]; i++)
+    {
+        SearchButtonContainerView *theButtonContainer = [self.searchButtonsArray objectAtIndex:i];
+        if (theButtonContainer.type == SEARCH_BUTTON_TYPE_CATEGORIES)
+            existingContainerView = theButtonContainer;
+    }
+    return existingContainerView;
+}
 
 
 -(void)layoutSearchBarContainers
@@ -170,23 +182,20 @@
     
     if ([self.selectedCategoriesArray count] > 0)
     {
-        BOOL proceed = YES;
+        SearchButtonContainerView *existingContainerView = [self getActiveSearchButtonContainerView];
         
-        for (int i = 0; i < [self.searchButtonsArray count]; i++)
+        if (existingContainerView != nil)
         {
-            SearchButtonContainerView *theButtonContainer = [self.searchButtonsArray objectAtIndex:i];
-            if (theButtonContainer.type == SEARCH_BUTTON_TYPE_CATEGORIES)
-                proceed = NO;
+            [self.searchButtonsArray removeObject:existingContainerView];
+            [existingContainerView removeFromSuperview];
         }
+
         
-        if (proceed)
-        {
             SearchButtonContainerView *buttonContainer = [[SearchButtonContainerView alloc] init];
             buttonContainer.type = SEARCH_BUTTON_TYPE_CATEGORIES;
             [self.searchButtonsArray addObject:buttonContainer];
             
             [buttonContainer loadWithSearchTerm:[self getCategoriesString] withClickDelegate:self];
-        }
         
     }
     
@@ -244,6 +253,13 @@
     switch (theButton.type) {
         case SEARCH_BUTTON_TYPE_CATEGORIES:
             [self.selectedCategoriesArray removeAllObjects];
+            SearchButtonContainerView *existingContainerView = [self getActiveSearchButtonContainerView];
+            if (existingContainerView != nil)
+            {
+                [self.searchButtonsArray removeObject:existingContainerView];
+                [existingContainerView removeFromSuperview];
+            }
+            [self layoutSearchBarContainers];
             [self.categoriesNavigationController popToRootViewControllerAnimated:YES];
             break;
         
