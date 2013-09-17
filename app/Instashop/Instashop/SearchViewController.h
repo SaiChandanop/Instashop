@@ -25,8 +25,8 @@
     
     UIButton *shopsButton;
     UIButton *productsButton;
-    UIView *highlightView;
-    
+    UIView *nibHighlightView;
+    UIView *theHighlightView;
     
     
 }
@@ -41,7 +41,9 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *shopsButton;
 @property (nonatomic, retain) IBOutlet UIButton *productsButton;
-@property (nonatomic, retain) IBOutlet UIView *highlightView;
+@property (nonatomic, retain) IBOutlet UIView *nibHighlightView;
+@property (nonatomic, retain) UIView *theHighlightView;
+
 
 
 
