@@ -193,7 +193,10 @@
         
             SearchButtonContainerView *buttonContainer = [[SearchButtonContainerView alloc] init];
             buttonContainer.type = SEARCH_BUTTON_TYPE_CATEGORIES;
-            [self.searchButtonsArray addObject:buttonContainer];
+            if ([self.searchButtonsArray count] > 0)
+                [self.searchButtonsArray insertObject:buttonContainer atIndex:0];
+            else
+                [self.searchButtonsArray addObject:buttonContainer];
             
             [buttonContainer loadWithSearchTerm:[self getCategoriesString] withClickDelegate:self];
         
