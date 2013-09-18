@@ -12,7 +12,7 @@
 #import "ImageAPIHandler.h"
 #import "PurchasingViewController.h"
 #import "ISConstants.h"
-#import "NavControllerAccessor.h"
+
 
 @interface FeedViewController ()
 
@@ -40,8 +40,10 @@
     [super viewDidLoad];
 
     
-    [NavControllerAccessor setIOS7NavigationBarStyleWithNavigationController:self.navigationController];
-    
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
+
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"leftMenuButton.png"]];

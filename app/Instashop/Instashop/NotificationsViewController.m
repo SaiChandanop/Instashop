@@ -9,7 +9,6 @@
 #import "NotificationsViewController.h"
 #import "ISConstants.h"
 #import "NavBarTitleView.h"
-#import "NavControllerAccessor.h"
 @interface NotificationsViewController ()
 
 @end
@@ -29,7 +28,9 @@
 {
     [super viewDidLoad];
     
-    [NavControllerAccessor setIOS7NavigationBarStyleWithNavigationController:self.navigationController];
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
     
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     

@@ -19,7 +19,7 @@
 #import "NavBarTitleView.h"
 #import "SellersAPIHandler.h"
 #import <QuartzCore/QuartzCore.h>
-#import "NavControllerAccessor.h"
+
 
 
 @interface ProfileViewController ()
@@ -182,7 +182,9 @@
 {
     
     self.isSelfProfile = YES;
-    [NavControllerAccessor setIOS7NavigationBarStyleWithNavigationController:self.navigationController];
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
     
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
