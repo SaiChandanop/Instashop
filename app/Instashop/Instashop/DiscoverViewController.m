@@ -42,6 +42,7 @@
     self.navigationController.navigationBar.translucent = NO;
 
     
+//<<<<<<< HEAD
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
@@ -61,8 +62,14 @@
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"DISCOVER"]];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    
-    
+/*
+=======
+    self.discoverTopCategoryTableViewController = [[DiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
+    self.discoverTopCategoryTableViewController.parentController = self;
+    self.discoverTopCategoryTableViewController.view.frame = CGRectMake(0,0,self.theScrollView.frame.size.width, self.theScrollView.frame.size.height);
+    [self.theScrollView addSubview:self.discoverTopCategoryTableViewController.view];
+>>>>>>> walkthroughs
+*/
     self.discoverTableViewController = [[DiscoverTableViewController alloc] initWithNibName:@"DiscoverTableViewController" bundle:nil];
     self.discoverTableViewController.parentController = self;
     [self.view addSubview:self.discoverTableViewController.tableView];

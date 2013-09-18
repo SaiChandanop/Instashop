@@ -60,5 +60,6 @@
 @property (strong, nonatomic) UIButton *feedCoverButton;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;
+@property (nonatomic, assign) BOOL firstRun;
 
 @end

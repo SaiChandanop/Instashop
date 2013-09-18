@@ -5,19 +5,19 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>86E0ECA4-7006-4723-96BD-045FB05A032A</string>
+	<string>CFEC98BF-B432-4177-A2E9-E834F5A72D33</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Instashop</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>8B55B2CF-8FB4-4BC3-99B3-8BDF1643AAB5</key>
+		<key>6421AE8F-CE6E-4B0F-9F32-A0D713C1A668</key>
 		<string>ssh://github.com/Alchemy-50/Instashop.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>app/Instashop/Instashop.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>8B55B2CF-8FB4-4BC3-99B3-8BDF1643AAB5</key>
+		<key>6421AE8F-CE6E-4B0F-9F32-A0D713C1A668</key>
 		<string>../../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
@@ -25,14 +25,14 @@
 	<key>IDESourceControlProjectVersion</key>
 	<integer>110</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>8B55B2CF-8FB4-4BC3-99B3-8BDF1643AAB5</string>
+	<string>6421AE8F-CE6E-4B0F-9F32-A0D713C1A668</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>8B55B2CF-8FB4-4BC3-99B3-8BDF1643AAB5</string>
+			<string>6421AE8F-CE6E-4B0F-9F32-A0D713C1A668</string>
 			<key>IDESourceControlWCCName</key>
 			<string>Instashop</string>
 		</dict>

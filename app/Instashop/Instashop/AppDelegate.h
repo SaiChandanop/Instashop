@@ -25,6 +25,7 @@
     
 }
 
+- (void) tutorialShown;
 -(void)userDidLogin;
 -(void)userDidLogout;
 -(void)makeSafariCallWithURL:(NSURL *)theURL;

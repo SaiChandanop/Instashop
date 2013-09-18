@@ -20,7 +20,7 @@
 #import "NotificationsViewController.h"
 #import "DiscoverViewController.h"
 #import "SearchViewController.h"
-
+#import "FirstTimeUserViewController.h"
 
 @implementation AppRootViewController
 
@@ -30,6 +30,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize areViewsTransitioning;
 @synthesize feedCoverButton;
 @synthesize theSearchViewController;
+@synthesize firstRun;
 
 float transitionTime = .456;
 
@@ -58,7 +59,16 @@ float transitionTime = .456;
     
     [self setNeedsStatusBarAppearanceUpdate];
     
- 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"firstRun"]) {
+        self.firstRun = TRUE;
+        [defaults setObject:[NSDate date] forKey:@"firstRun"];
+    }
+    else {
+        self.firstRun = FALSE;
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
     [AttributesManager getSharedAttributesManager];
     
     self.homeViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
@@ -73,7 +83,21 @@ float transitionTime = .456;
     self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
-    
+    /*
+    if (self.firstRun) {
+        
+        FirstTimeUserViewController *tutorial = [[FirstTimeUserViewController alloc] init];
+        tutorial.view.frame = CGRectMake(0, 0.0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
+        [self.view addSubview:tutorial.view];
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:transitionTime];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+        tutorial.view.frame = CGRectMake(0, 0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
+        [UIView commitAnimations];
+    }
+     */
     
 	// Do any additional setup after loading the view.
     
@@ -222,6 +246,7 @@ float transitionTime = .456;
 
 -(void)createSellerButtonHit
 {
+    
     CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
     createSellerViewController.delegate = self.homeViewController;
     
@@ -236,7 +261,6 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     createNavigationController.view.frame = CGRectMake(0, 0, createNavigationController .view.frame.size.width, createNavigationController.view.frame.size.height);
     [UIView commitAnimations];
-    
 }
 
 -(void)createSellerShouldExit:(UINavigationController *)theNavigationController

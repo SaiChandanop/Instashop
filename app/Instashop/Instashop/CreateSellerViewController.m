@@ -22,10 +22,11 @@
 
 @end
 
+#define kHowToPageNumber 4
+
 @implementation CreateSellerViewController
 
 @synthesize delegate;
-
 
 @synthesize containerScrollView;
 
@@ -44,6 +45,11 @@
 @synthesize keyboardControls;
 @synthesize followInstashopButton;
 @synthesize thanksSellerImageView;
+@synthesize createSellerHowToScrollView;
+@synthesize pageControl;
+@synthesize firstRun;
+
+//*** The words on the navigation bar of the Create Seller View Controller shifts towards the right when the view is closed.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,24 +65,41 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.translucent = NO;
-
-    
-    
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-//    CGFloat whiteSpace = 11.0f;
-    //CGFloat topSpace = 64.0f;
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
     
-    self.containerScrollView.frame = CGRectMake(0, 66, screenWidth, screenHeight - 66);
-    self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
-//    self.containerScrollView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:self.containerScrollView];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    if (![defaults objectForKey:@"firstBecomeSellerRun"]) {
+        
+        // Become Seller Tutorial
+        self.createSellerHowToScrollView = [[CreateSellerTutorialScrollView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
+        self.createSellerHowToScrollView.delegate = self;
+        [self.view addSubview:self.createSellerHowToScrollView];
+        
+        // Page Control
+        self.pageControl = [[UIPageControl alloc] init];
+        float pageControlHeight = 50.0;
+        self.pageControl.frame = CGRectMake(0.0, screenHeight - 66 - pageControlHeight, screenWidth, pageControlHeight);
+        self.pageControl.numberOfPages = kHowToPageNumber;
+        self.pageControl.currentPage = 0;
+        self.pageControl.pageIndicatorTintColor = [UIColor redColor];
+        self.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
+        [self.view addSubview:pageControl];
+    }
+    else {
+        CGRect statusBar = [[UIApplication sharedApplication] statusBarFrame];
+        float topHeight = self.navigationController.navigationBar.bounds.size.height + statusBar.size.height;
+        self.containerScrollView.frame = CGRectMake(0.0, topHeight, screenWidth, screenHeight - topHeight);
+        self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
+        [self.view addSubview:self.containerScrollView];
+    }
     
     self.instagramUsernameLabel.text = [InstagramUserObject getStoredUserObject].username;
     
@@ -92,11 +115,7 @@
      self.categoryTextField.text = @"testcat";
     */
     
-    
     [self.submitButton setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-    
-    
-
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
@@ -115,13 +134,9 @@
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"BECOME A SELLER"]];
     
-    
-    
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
     [self.view insertSubview:bgImageView atIndex:0];
-    
-
     
     //self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField,
     NSArray *fields = [NSArray arrayWithObjects:self.nameTextField,self.emailTextField, self.addressTextField, self.cityTextField, self.stateTextField, self.zipTextField, self.phoneTextField, self.websiteTextField, nil];
@@ -129,9 +144,6 @@
     for (int i = 0; i < [fields count]; i++)
         ((UITextField *)[fields objectAtIndex:i]).delegate = self;
 
-    
-    
-    
     [self setKeyboardControls:[[BSKeyboardControls alloc] initWithFields:fields]];
     [self.keyboardControls setDelegate:self];
     
@@ -155,7 +167,6 @@
     [self.websiteTextField setValue:[UIColor lightGrayColor]
                                 forKeyPath:@"_placeholderLabel.textColor"];
 
-
     if ([InstagramUserObject getStoredUserObject].fullName != nil)
         self.nameTextField.text = [InstagramUserObject getStoredUserObject].fullName;
 
@@ -164,9 +175,40 @@
     
 }
 
+- (void) signUp {
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSDate date] forKey:@"firstBecomeSellerRun"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
+    [self.pageControl removeFromSuperview];
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"Menu_BG.png"]];
+    backgroundImage.frame = CGRectMake(4 * screenWidth, 0.0, screenWidth, screenHeight - 66);
+    // Needs to be less than bound height to disable vertical scrolling.
+    self.createSellerHowToScrollView.contentSize = CGSizeMake(screenWidth * 5, 33.3);
+    self.containerScrollView.frame = CGRectMake(4 * screenWidth, 0.0, screenWidth, screenHeight - 66);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.submitButton.frame.origin.y + self.submitButton.frame.size.height);
+    [self.createSellerHowToScrollView addSubview:backgroundImage];
+    [self.createSellerHowToScrollView addSubview:self.containerScrollView];
+    [self.createSellerHowToScrollView bringSubviewToFront:self.containerScrollView];
+    [self.createSellerHowToScrollView scrollRectToVisible:CGRectMake(1280.0, 0.0, screenWidth, screenHeight) animated:YES];
+    self.createSellerHowToScrollView.scrollEnabled = NO;
+}
+
 -(void)backButtonHit
 {
     [self.delegate createSellerCancelButtonHit:self.navigationController];
+}
+
+- (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat pageWidth = self.createSellerHowToScrollView.frame.size.width;
+    float fractionalPage = self.createSellerHowToScrollView.contentOffset.x/pageWidth;
+    NSInteger page = lround(fractionalPage);
+    self.pageControl.currentPage = page;
 }
 
 -(void)categorySelectionCompleteWithArray:(NSArray *)selectionArray
