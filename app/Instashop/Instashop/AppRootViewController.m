@@ -19,6 +19,7 @@
 #import "SearchViewController.h"
 #import "NotificationsViewController.h"
 #import "DiscoverViewController.h"
+#import "FirstTimeUserViewController.h"
 
 @implementation AppRootViewController
 
@@ -27,6 +28,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize feedNavigationController, feedViewController, homeViewController;
 @synthesize areViewsTransitioning;
 @synthesize feedCoverButton;
+@synthesize firstRun;
 
 float transitionTime = .456;
 
@@ -55,6 +57,16 @@ float transitionTime = .456;
     
     [self setNeedsStatusBarAppearanceUpdate];
     
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if (![defaults objectForKey:@"firstRun"]) {
+        self.firstRun = TRUE;
+        [defaults setObject:[NSDate date] forKey:@"firstRun"];
+    }
+    else {
+        self.firstRun = FALSE;
+    }
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
  
     [AttributesManager getSharedAttributesManager];
     
@@ -71,6 +83,19 @@ float transitionTime = .456;
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
     
+    if (!self.firstRun) { // False for testing right now.
+        
+        FirstTimeUserViewController *tutorial = [[FirstTimeUserViewController alloc] init];
+        tutorial.view.frame = CGRectMake(0, tutorial.view.frame.size.height, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
+        [self.view addSubview:tutorial.view];
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:transitionTime];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+        tutorial.view.frame = CGRectMake(0, 0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
+        [UIView commitAnimations];
+    }
     
 	// Do any additional setup after loading the view.
     

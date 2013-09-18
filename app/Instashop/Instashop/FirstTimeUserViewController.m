@@ -49,8 +49,6 @@
     self.tutorialScrollView.pagingEnabled = YES;
     self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];
-    
-    // Needs to be less than bound height to disable vertical scrolling.
     self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, 33.3);
     float howToViewBoundsHeight = self.tutorialScrollView.bounds.size.height;
     

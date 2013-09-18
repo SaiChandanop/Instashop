@@ -25,10 +25,7 @@
 @implementation CreateSellerViewController
 
 @synthesize delegate;
-
-
 @synthesize containerScrollView;
-
 @synthesize nameTextField;
 @synthesize addressTextField;
 @synthesize cityTextField;
