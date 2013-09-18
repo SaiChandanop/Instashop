@@ -53,19 +53,10 @@
     firstView.backgroundColor = [UIColor blackColor];
     [self.tutorialScrollView addSubview:firstView];
     
+    // Have trouble testing DiscoverViewController on Simulator but works fine on device.
     DiscoverViewController *discoverView = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
-    discoverView.view.frame = CGRectMake(0.0, 0.0, screenWidth, discoverView.view.bounds.size.height);
-    
-    UIScrollView *discoverScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height)];
-    discoverScrollView.showsVerticalScrollIndicator = YES;
-    [discoverScrollView addSubview:discoverView.view];
-    
-    
-    //UIView *clearView = [[UIView alloc] init];
-    //clearView.backgroundColor = [UIColor clearColor];
-    //clearView.frame = CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height);
-    [self.tutorialScrollView addSubview:discoverScrollView];
-    //[self.tutorialScrollView addSubview:clearView];
+    discoverView.view.frame = CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height);
+    [self.tutorialScrollView addSubview:discoverView.view];
     
     SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
@@ -109,11 +100,6 @@
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
     
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-
     CGFloat pageWidth = self.tutorialScrollView.frame.size.width;
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
     NSInteger page = lround(fractionalPage);
