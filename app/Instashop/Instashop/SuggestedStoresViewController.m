@@ -14,6 +14,8 @@
 #import "ShopsAPIHandler.h"
 #import "AppDelegate.h"
 #import "ImageAPIHandler.h"
+#import "NavControllerAccessor.h"
+
 
 @interface SuggestedStoresViewController ()
 
@@ -45,10 +47,7 @@
     
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.translucent = NO;
-    
+    [NavControllerAccessor setIOS7NavigationBarStyleWithNavigationController:self.navigationController];
     
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];

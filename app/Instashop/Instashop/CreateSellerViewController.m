@@ -16,7 +16,7 @@
 #import "MBProgressHUD.h"
 #import "NavBarTitleView.h"
 #import "AttributesManager.h"
-
+#import "NavControllerAccessor.h"
 
 @interface CreateSellerViewController ()
 
@@ -70,9 +70,9 @@
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.translucent = NO;
+    [NavControllerAccessor setIOS7NavigationBarStyleWithNavigationController:self.navigationController];
+    
+    
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     

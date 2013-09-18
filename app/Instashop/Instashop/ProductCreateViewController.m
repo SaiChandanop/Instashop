@@ -14,6 +14,7 @@
 #import "AppDelegate.h"
 #import "NavBarTitleView.h"
 #import "ProductAPIHandler.h"
+#import "NavControllerAccessor.h"
 @interface ProductCreateViewController ()
 
 @end
@@ -38,9 +39,7 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
-    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    self.navigationController.navigationBar.translucent = NO;
+    [NavControllerAccessor setIOS7NavigationBarStyleWithNavigationController:self.navigationController];
       
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     

@@ -97,7 +97,7 @@ float transitionTime = .456;
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
         tutorial.view.frame = CGRectMake(0, 0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
         [UIView commitAnimations];
-    }
+    }e
      */
     
 	// Do any additional setup after loading the view.
@@ -105,7 +105,7 @@ float transitionTime = .456;
         [self setNeedsStatusBarAppearanceUpdate];
 }
 
--(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
+//-(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
 
 
 

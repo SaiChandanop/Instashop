@@ -243,6 +243,7 @@
 		7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */; };
 		7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */; };
 		7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */; };
+		7BE1D9FD17EA6A2B006C2F3E /* NavControllerAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1D9FC17EA6A2B006C2F3E /* NavControllerAccessor.m */; };
 		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
@@ -603,6 +604,8 @@
 		7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProductAPIHandler.m; sourceTree = "<group>"; };
 		7BD5C20B1795BDC9006F311A /* ProductCreateContainerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateContainerObject.h; sourceTree = "<group>"; };
 		7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateContainerObject.m; sourceTree = "<group>"; };
+		7BE1D9FB17EA6A2B006C2F3E /* NavControllerAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavControllerAccessor.h; sourceTree = "<group>"; };
+		7BE1D9FC17EA6A2B006C2F3E /* NavControllerAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavControllerAccessor.m; sourceTree = "<group>"; };
 		7BE29B96177A20870093BB25 /* AttributesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesManager.h; sourceTree = "<group>"; };
 		7BE29B97177A20870093BB25 /* AttributesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesManager.m; sourceTree = "<group>"; };
 		7BE29B99177A21000093BB25 /* attributes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes.csv; sourceTree = "<group>"; };
@@ -1495,6 +1498,15 @@
 			name = Create;
 			sourceTree = "<group>";
 		};
+		7BE1D9FA17EA6A0D006C2F3E /* NavControllerAccessor */ = {
+			isa = PBXGroup;
+			children = (
+				7BE1D9FB17EA6A2B006C2F3E /* NavControllerAccessor.h */,
+				7BE1D9FC17EA6A2B006C2F3E /* NavControllerAccessor.m */,
+			);
+			name = NavControllerAccessor;
+			sourceTree = "<group>";
+		};
 		7BE29B95177A20710093BB25 /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1516,6 +1528,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7BE1D9FA17EA6A0D006C2F3E /* NavControllerAccessor */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
 				7B3F520E175FAAB900ABF49B /* ProductObject */,
 				7B2C4B8C17C418490080F3F5 /* Protocols */,
@@ -1916,6 +1929,7 @@
 				7B5D626B17C5AF3700D6C8B1 /* StripeError.m in Sources */,
 				7B5D628117C5AF7100D6C8B1 /* PKCardCVC.m in Sources */,
 				7B15B2FB17B2AA1800173752 /* CategoriesViewController.m in Sources */,
+				7BE1D9FD17EA6A2B006C2F3E /* NavControllerAccessor.m in Sources */,
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,
 				7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */,
@@ -2001,15 +2015,15 @@
 		7B61EE75174D2162002A483D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josh Klobe (V544PARN99)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
+				PROVISIONING_PROFILE = "26ABE3CB-6578-46CA-BB68-F31A89E18D78";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26ABE3CB-6578-46CA-BB68-F31A89E18D78";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2017,15 +2031,15 @@
 		7B61EE76174D2162002A483D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josh Klobe (V544PARN99)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
+				PROVISIONING_PROFILE = "26ABE3CB-6578-46CA-BB68-F31A89E18D78";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26ABE3CB-6578-46CA-BB68-F31A89E18D78";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

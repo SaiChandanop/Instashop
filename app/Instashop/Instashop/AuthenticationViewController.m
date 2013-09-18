@@ -50,7 +50,8 @@
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+//    if ([[UIDevice currentDevice].systemVersion floatValue] > 7.0f)
+//        return UIStatusBarStyleLightContent;
 }
 
 -(IBAction) loginButtonHit
