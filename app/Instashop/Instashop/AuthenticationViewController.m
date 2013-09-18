@@ -43,7 +43,8 @@
     if ([UIScreen mainScreen].bounds.size.height < 500)
         [self.view addSubview:self.iphoneShortView];
     
-    [self setNeedsStatusBarAppearanceUpdate];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f)
+        [self setNeedsStatusBarAppearanceUpdate];
 
     // Do any additional setup after loading the view from its nib.
 }

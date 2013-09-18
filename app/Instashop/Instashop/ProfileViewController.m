@@ -182,7 +182,8 @@
 {
     
     self.isSelfProfile = YES;
-    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f)
+        [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
     
