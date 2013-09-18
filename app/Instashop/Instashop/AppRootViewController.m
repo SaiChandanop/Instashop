@@ -57,7 +57,8 @@ float transitionTime = .456;
 {
     [super viewDidLoad];
     
-    [self setNeedsStatusBarAppearanceUpdate];
+    if ([[UIDevice currentDevice].systemVersion floatValue] > 7.0f)
+        [self setNeedsStatusBarAppearanceUpdate];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"firstRun"]) {
@@ -100,8 +101,8 @@ float transitionTime = .456;
      */
     
 	// Do any additional setup after loading the view.
-    
-    [self setNeedsStatusBarAppearanceUpdate];
+    if ([[UIDevice currentDevice].systemVersion floatValue] > 7.0f)
+        [self setNeedsStatusBarAppearanceUpdate];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
