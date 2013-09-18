@@ -67,8 +67,7 @@
     [self setFields:nil];
     [self setSegmentedControlTintControl:nil];
     [self setPreviousTitle:nil];
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f)
-        [self setBarTintColor:nil];
+    [self setBarTintColor:nil];
     [self setNextTitle:nil];
     [self setDoneTitle:nil];
     [self setDoneTintColor:nil];

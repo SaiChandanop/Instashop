@@ -70,16 +70,13 @@
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f)
-        [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    // Joel, this can be tested anytime.  Once you are done testing, just put an exclamation mark in front of the bracketed function in the line below.
-    // Should look like this: if (![defaults objectForKey:@"firstBecomeSellerRun"]) {
-    if ([defaults objectForKey:@"firstBecomeSellerRun"]) {
+    if (![defaults objectForKey:@"firstBecomeSellerRun"]) {
         
         // Become Seller Tutorial
         self.createSellerHowToScrollView = [[CreateSellerTutorialScrollView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
