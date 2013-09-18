@@ -76,7 +76,10 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if (![defaults objectForKey:@"firstBecomeSellerRun"]) {
+    // Joel, you can just put an exclamation mark in front of the bracketed function below when you're done testing.
+    // So it should just look like this: if (![defaults objectForKey:@"firstBecomeSellerRun"]) {
+    // when you're done testing.  
+    if ([defaults objectForKey:@"firstBecomeSellerRun"]) {
         
         // Become Seller Tutorial
         self.createSellerHowToScrollView = [[CreateSellerTutorialScrollView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
