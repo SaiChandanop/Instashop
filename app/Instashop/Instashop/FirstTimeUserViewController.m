@@ -40,25 +40,27 @@
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
-    
-    //    CGFloat whiteSpace = 11.0f;
-    //CGFloat topSpace = 64.0f;
-    
+
     // Scroll View
+    
     self.tutorialScrollView = [[UIScrollView alloc] initWithFrame:screenBound];
     self.tutorialScrollView.pagingEnabled = YES;
     self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
+    self.tutorialScrollView.showsVerticalScrollIndicator = YES;
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];
-    self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, 33.3);
-    float howToViewBoundsHeight = self.tutorialScrollView.bounds.size.height;
+    self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, screenHeight);
     
-    UIView *firstView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
+    UIView *firstView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight + 33.0)];
     firstView.backgroundColor = [UIColor blackColor];
     [self.tutorialScrollView addSubview:firstView];
     
     DiscoverViewController *discoverView = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
-    discoverView.view.frame = CGRectMake(screenWidth, 0.0, screenWidth, screenHeight);
+    discoverView.view.frame = CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height);
+    UIView *clearView = [[UIView alloc] init];
+    clearView.backgroundColor = [UIColor clearColor];
+    clearView.frame = CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height);
     [self.tutorialScrollView addSubview:discoverView.view];
+    [self.tutorialScrollView addSubview:clearView];
     
     SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
@@ -96,14 +98,23 @@
     self.pageControl.currentPage = 0;
     self.pageControl.pageIndicatorTintColor = [UIColor redColor];
     self.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
+    self.pageControl.defersCurrentPageDisplay = YES;
     [self.view addSubview:pageControl];
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
     CGFloat pageWidth = self.tutorialScrollView.frame.size.width;
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
+    if (fractionalPage == 1.0) {
+        self.tutorialScrollView.pagingEnabled = NO;
+    }
+    else {
+        self.tutorialScrollView.pagingEnabled = YES;
+    }
     NSInteger page = lround(fractionalPage);
     self.pageControl.currentPage = page;
+    NSLog(@"This is the current page: %i", (int) page);
+  
 }
 
 - (void) closeTutorial {
