@@ -94,9 +94,7 @@
     [MBProgressHUD hideAllHUDsForView:self.loginWebView animated:YES];
 
 }
--(void)makeLoginRequestWithURL:(NSURL *)theURL
-{
-    
+-(void)makeLoginRequestWithURL:(NSURL *)theURL {
     
     self.loginWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height)];
     self.loginWebView.delegate = self;

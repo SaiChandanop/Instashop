@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1903FF7017DA6D0800CD65F8 /* grow-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6717DA6D0800CD65F8 /* grow-graphic@2x.png */; };
+		1903FF7117DA6D0800CD65F8 /* grow-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6817DA6D0800CD65F8 /* grow-title@2x.png */; };
+		1903FF7217DA6D0800CD65F8 /* manage-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6917DA6D0800CD65F8 /* manage-graphic@2x.png */; };
+		1903FF7317DA6D0800CD65F8 /* manage-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6A17DA6D0800CD65F8 /* manage-title@2x.png */; };
+		1903FF7417DA6D0800CD65F8 /* share-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6B17DA6D0800CD65F8 /* share-graphic@2x.png */; };
+		1903FF7617DA6D0800CD65F8 /* target-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6D17DA6D0800CD65F8 /* target-graphic@2x.png */; };
+		1903FF7717DA6D0800CD65F8 /* target-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6E17DA6D0800CD65F8 /* target-title@2x.png */; };
+		1903FF7817DA6D0800CD65F8 /* target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6F17DA6D0800CD65F8 /* target@2x.png */; };
+		193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */; };
+		193433E017E11817007744E6 /* CreateSellerTutorialScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433DE17E11690007744E6 /* CreateSellerTutorialScrollView.m */; };
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
@@ -180,7 +190,6 @@
 		7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE46174D2162002A483D /* UIKit.framework */; };
 		7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE48174D2162002A483D /* Foundation.framework */; };
 		7B61EE4B174D2162002A483D /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B61EE4A174D2162002A483D /* CoreGraphics.framework */; };
-		7B61EE51174D2162002A483D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE4F174D2162002A483D /* InfoPlist.strings */; };
 		7B61EE53174D2162002A483D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B61EE52174D2162002A483D /* main.m */; };
 		7B61EE57174D2162002A483D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B61EE56174D2162002A483D /* AppDelegate.m */; };
 		7B61EE59174D2162002A483D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B61EE58174D2162002A483D /* Default.png */; };
@@ -257,6 +266,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1903FF6717DA6D0800CD65F8 /* grow-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grow-graphic@2x.png"; sourceTree = "<group>"; };
+		1903FF6817DA6D0800CD65F8 /* grow-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grow-title@2x.png"; sourceTree = "<group>"; };
+		1903FF6917DA6D0800CD65F8 /* manage-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manage-graphic@2x.png"; sourceTree = "<group>"; };
+		1903FF6A17DA6D0800CD65F8 /* manage-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manage-title@2x.png"; sourceTree = "<group>"; };
+		1903FF6B17DA6D0800CD65F8 /* share-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-graphic@2x.png"; sourceTree = "<group>"; };
+		1903FF6C17DA6D0800CD65F8 /* share-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-title@2x.png"; sourceTree = "<group>"; };
+		1903FF6D17DA6D0800CD65F8 /* target-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target-graphic@2x.png"; sourceTree = "<group>"; };
+		1903FF6E17DA6D0800CD65F8 /* target-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target-title@2x.png"; sourceTree = "<group>"; };
+		1903FF6F17DA6D0800CD65F8 /* target@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "target@2x.png"; sourceTree = "<group>"; };
+		193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTimeUserViewController.h; sourceTree = "<group>"; };
+		193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTimeUserViewController.m; sourceTree = "<group>"; };
+		193433DD17E11690007744E6 /* CreateSellerTutorialScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateSellerTutorialScrollView.h; sourceTree = "<group>"; };
+		193433DE17E11690007744E6 /* CreateSellerTutorialScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateSellerTutorialScrollView.m; sourceTree = "<group>"; };
 		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
@@ -637,6 +659,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1903FF6617DA6CF500CD65F8 /* CreateSellerPNG */ = {
+			isa = PBXGroup;
+			children = (
+				1903FF6717DA6D0800CD65F8 /* grow-graphic@2x.png */,
+				1903FF6817DA6D0800CD65F8 /* grow-title@2x.png */,
+				1903FF6917DA6D0800CD65F8 /* manage-graphic@2x.png */,
+				1903FF6A17DA6D0800CD65F8 /* manage-title@2x.png */,
+				1903FF6B17DA6D0800CD65F8 /* share-graphic@2x.png */,
+				1903FF6C17DA6D0800CD65F8 /* share-title@2x.png */,
+				1903FF6D17DA6D0800CD65F8 /* target-graphic@2x.png */,
+				1903FF6E17DA6D0800CD65F8 /* target-title@2x.png */,
+				1903FF6F17DA6D0800CD65F8 /* target@2x.png */,
+			);
+			name = CreateSellerPNG;
+			sourceTree = "<group>";
+		};
+		193433D317E0FCEE007744E6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */,
+				193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */ = {
 			isa = PBXGroup;
 			children = (
@@ -1202,9 +1249,12 @@
 		7B74C3CD179716670006289C /* CreateSeller */ = {
 			isa = PBXGroup;
 			children = (
+				1903FF6617DA6CF500CD65F8 /* CreateSellerPNG */,
 				7B74C3CE179716850006289C /* CreateSellerViewController.h */,
 				7B74C3CF179716850006289C /* CreateSellerViewController.m */,
 				7B74C3D0179716850006289C /* CreateSellerViewController.xib */,
+				193433DD17E11690007744E6 /* CreateSellerTutorialScrollView.h */,
+				193433DE17E11690007744E6 /* CreateSellerTutorialScrollView.m */,
 			);
 			name = CreateSeller;
 			sourceTree = "<group>";
@@ -1274,6 +1324,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				193433D317E0FCEE007744E6 /* Login */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B0680CA17664BC2009154BF /* Buy */,
 				7B15B2F817B2A9E700173752 /* Categories */,
@@ -1608,7 +1659,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7B61EE51174D2162002A483D /* InfoPlist.strings in Resources */,
 				7B5D62A317C5AF9F00D6C8B1 /* cvc-amex.png in Resources */,
 				7B61EE59174D2162002A483D /* Default.png in Resources */,
 				7B5D62A517C5AF9F00D6C8B1 /* cvc.png in Resources */,
@@ -1638,11 +1688,13 @@
 				7B0D253A17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png in Resources */,
 				7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */,
 				7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */,
+				1903FF7117DA6D0800CD65F8 /* grow-title@2x.png in Resources */,
 				7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */,
 				2E38E6AF17CBD28C00A8BD54 /* closebutton_white@2x.png in Resources */,
 				7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */,
 				2E628CB117C6A19900CB7BE4 /* AppIcon76x76@2x.png in Resources */,
 				7B602DA417664F4400663A73 /* purchaseheader.png in Resources */,
+				1903FF7717DA6D0800CD65F8 /* target-title@2x.png in Resources */,
 				7B602DA61766537700663A73 /* savetofavoritesbutton.png in Resources */,
 				7B602DA9176653BD00663A73 /* quantitybutton.png in Resources */,
 				7B602DAA176653BD00663A73 /* sizebutton.png in Resources */,
@@ -1674,10 +1726,13 @@
 				2E41683D17CE7403002850BD /* add_product@2x.png in Resources */,
 				2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */,
 				2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */,
+				1903FF7417DA6D0800CD65F8 /* share-graphic@2x.png in Resources */,
 				2E1B437B17CFECEA00B28603 /* follow_btn_background@2x.png in Resources */,
 				2E8007C217D1631400489639 /* following_btn_background@2x.png in Resources */,
 				2ED088C317CAD54500439A7D /* bottom_shadow@2x.png in Resources */,
+				1903FF7217DA6D0800CD65F8 /* manage-graphic@2x.png in Resources */,
 				2E628CAE17C6A19900CB7BE4 /* AppIcon60x60.png in Resources */,
+				1903FF7317DA6D0800CD65F8 /* manage-title@2x.png in Resources */,
 				7B5D62A617C5AF9F00D6C8B1 /* cvc@2x.png in Resources */,
 				7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */,
 				2E0EAE0F176F6E6700B65FC3 /* setPersonalIcon@2x.png.png in Resources */,
@@ -1689,6 +1744,7 @@
 				7B5D62AE17C5AF9F00D6C8B1 /* mastercard@2x.png in Resources */,
 				2E0EAE16176F6E6700B65FC3 /* setBillingIcon@2x.png.png in Resources */,
 				7B9B4EFD17C5C3420089C580 /* thanksseller.png in Resources */,
+				1903FF7017DA6D0800CD65F8 /* grow-graphic@2x.png in Resources */,
 				2E0EAE17176F6E6700B65FC3 /* menuLightBG@2x.png in Resources */,
 				2E0EAE18176F6E6700B65FC3 /* menuBottomShadow@2x.png in Resources */,
 				7B5D628E17C5AF9500D6C8B1 /* textfield@2x.png in Resources */,
@@ -1703,6 +1759,7 @@
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
 				7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
+				1903FF7817DA6D0800CD65F8 /* target@2x.png in Resources */,
 				7B5A56EB17D3D757007AABDA /* SuggestedStoresViewController.xib in Resources */,
 				7B5D62A717C5AF9F00D6C8B1 /* diners.png in Resources */,
 				2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */,
@@ -1747,6 +1804,7 @@
 				7B9E844217B159CE00E6FE47 /* toolbar_back.png in Resources */,
 				7B9E844617B15A6000E6FE47 /* toolbar_title_iumage.png in Resources */,
 				7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */,
+				1903FF7617DA6D0800CD65F8 /* target-graphic@2x.png in Resources */,
 				2E628CB317C6A19900CB7BE4 /* iTunesArtwork@2x.png in Resources */,
 				7B0320DF17E0E1340045D7AC /* SearchSiloViewController.xib in Resources */,
 				7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */,
@@ -1765,6 +1823,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				193433E017E11817007744E6 /* CreateSellerTutorialScrollView.m in Sources */,
+				193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */,
 				7B61EE53174D2162002A483D /* main.m in Sources */,
 				7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */,
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,

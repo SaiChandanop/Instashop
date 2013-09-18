@@ -11,9 +11,10 @@
 #import "BSKeyboardControls.h"
 #import "IGRequest.h"
 #import "CreateSellerOccuredProtocol.h"
+#import "CreateSellerTutorialScrollView.h"
 
 @class HomeViewController;
-@interface CreateSellerViewController : UIViewController <UITextFieldDelegate, BSKeyboardControlsDelegate, IGRequestDelegate, CreateSellerOccuredProtocol>
+@interface CreateSellerViewController : UIViewController <UITextFieldDelegate, BSKeyboardControlsDelegate, IGRequestDelegate, CreateSellerOccuredProtocol, UIScrollViewDelegate, CreateSellerTutorialDelegate>
 {
     HomeViewController *delegate;
     
@@ -41,6 +42,7 @@
     UIImageView *thanksSellerImageView;
 }
 
+- (void) signUp;
 -(IBAction)categoryButtonHit;
 -(IBAction)cancelButtonHit;
 -(IBAction)doneButtonHit;
@@ -49,6 +51,8 @@
 @property (nonatomic, retain) HomeViewController *delegate;
 
 @property (nonatomic, retain) IBOutlet TPKeyboardAvoidingScrollView *containerScrollView;
+@property (nonatomic, retain) CreateSellerTutorialScrollView *createSellerHowToScrollView;
+@property (nonatomic, retain) UIPageControl *pageControl;
 
 @property (nonatomic, retain) IBOutlet UITextField *nameTextField;
 @property (nonatomic, retain) IBOutlet UITextField *addressTextField;
@@ -70,4 +74,6 @@
 @property (nonatomic, retain) IBOutlet BSKeyboardControls *keyboardControls;
 
 @property (nonatomic, retain) UIImageView *thanksSellerImageView;
+@property (nonatomic, assign) BOOL firstRun;
+
 @end

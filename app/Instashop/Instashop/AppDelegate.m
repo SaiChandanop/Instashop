@@ -32,7 +32,6 @@
     self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
 
 //    [ZenCartAuthenticationAPIHandler makeLoginRequest];
-    
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
     self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
 //    [self.instagram authorize:[NSArray arrayWithObjects:@"relationships", @"comments", @"likes", nil]];
@@ -82,7 +81,7 @@
 -(void)userDidLogin
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-    
+   
     self.window.rootViewController = self.appRootViewController;
 }
 
@@ -132,8 +131,6 @@
     NSLog(@"didReceiveRemoteNotification: %@", userInfo);
 }
 
-
-
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -168,9 +165,6 @@
     [_window release];
     [super dealloc];
 }
-
-
-
 
 /*
 // Optional UITabBarControllerDelegate method.

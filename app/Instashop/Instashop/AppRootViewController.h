@@ -11,13 +11,14 @@
 #import "FeedViewController.h"
 #import "HomeViewController.h"
 
-
+@class SearchViewController;
 
 @interface AppRootViewController : UIViewController
 {
     UINavigationController *feedNavigationController;
     FeedViewController *feedViewController;
     HomeViewController *homeViewController;
+    SearchViewController *theSearchViewController;
 
     
     BOOL areViewsTransitioning;
@@ -54,9 +55,11 @@
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;
 @property (strong, nonatomic) HomeViewController *homeViewController;
+@property (strong, nonatomic) SearchViewController *theSearchViewController;
 
 @property (strong, nonatomic) UIButton *feedCoverButton;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;
+@property (nonatomic, assign) BOOL firstRun;
 
 @end

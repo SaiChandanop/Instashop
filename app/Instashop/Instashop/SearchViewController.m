@@ -29,7 +29,7 @@
 @synthesize shopSearchViewController;
 @synthesize shopsButton;
 @synthesize productsButton;
-
+@synthesize nibHighlightView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -66,25 +66,30 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
-    self.highlightView.backgroundColor = [ISConstants getISGreenColor];
+    self.theHighlightView = [[UIView alloc] initWithFrame:self.nibHighlightView.frame];
+    self.theHighlightView.backgroundColor = [ISConstants getISGreenColor];
+    [self.view addSubview:self.theHighlightView];
+    
+    [self.nibHighlightView removeFromSuperview];
     
     
     self.productSearchViewController = [[SearchSiloViewController alloc] initWithNibName:@"SearchSiloViewController" bundle:nil];
     self.productSearchViewController.parentController = self;
     self.productSearchViewController.searchType = CATEGORIES_TYPE_PRODUCT;
-    self.productSearchViewController.view.frame = CGRectMake(0, self.highlightView.frame.origin.y + self.highlightView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.highlightView.frame.origin.y + self. self.highlightView.frame.size.height));
+    self.productSearchViewController.view.frame = CGRectMake(0, self.theHighlightView.frame.origin.y + self.theHighlightView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.theHighlightView.frame.origin.y + self. self.theHighlightView.frame.size.height));
     [self.view addSubview:self.productSearchViewController.view];
 
     
     self.shopSearchViewController = [[SearchSiloViewController alloc] initWithNibName:@"SearchSiloViewController" bundle:nil];
     self.shopSearchViewController.parentController = self;
     self.shopSearchViewController.searchType = CATEGORIES_TYPE_SELLER;
-    self.shopSearchViewController.view.frame = CGRectMake(0, self.highlightView.frame.origin.y + self.highlightView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.highlightView.frame.origin.y + self. self.highlightView.frame.size.height));
+    self.shopSearchViewController.view.frame = CGRectMake(0, self.theHighlightView.frame.origin.y + self.theHighlightView.frame.size.height, self.view.frame.size.width, self.view.frame.size.height - (self.theHighlightView.frame.origin.y + self. self.theHighlightView.frame.size.height));
     [self.view addSubview:self.shopSearchViewController.view];
 
     self.shopSearchViewController.view.alpha = 0;
     
-                                                             
+    
+    self.productsButton.selected = YES;
 }
 
 -(void)backButtonHit
@@ -96,12 +101,13 @@
 
 -(void)moveHighlightToButton:(UIButton *)theButton
 {
+    NSLog(@"moveHighlightToButton called");
     float transitionTime = .15;
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
-    self.highlightView.frame = CGRectMake(theButton.frame.origin.x, self.highlightView.frame.origin.y, theButton.frame.size.width, self.highlightView.frame.size.height);
+    self.theHighlightView.frame = CGRectMake(theButton.frame.origin.x, self.theHighlightView.frame.origin.y, theButton.frame.size.width, self.theHighlightView.frame.size.height);
     [UIView commitAnimations];
 
     self.shopsButton.selected = NO;

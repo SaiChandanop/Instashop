@@ -61,7 +61,7 @@
 {
     [super viewDidLoad];
 
-    self.topBarView.backgroundColor = [ISConstants getISGreenColor];
+    self.topBarView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.theScrollView.contentSize = CGSizeMake(0, self.logoutView.frame.origin.y + self.logoutView.frame.size.height);

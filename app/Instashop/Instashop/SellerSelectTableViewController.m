@@ -33,7 +33,7 @@
 
 -(void)refreshContent
 {
-    NSString *categoryString = nil;
+    NSString *categoryString = @"";
     if ([self.searchRequestObject.searchCategoriesArray count] > 0)
         categoryString = [self.searchRequestObject.searchCategoriesArray objectAtIndex:0];
     
