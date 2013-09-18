@@ -46,21 +46,26 @@
     self.tutorialScrollView = [[UIScrollView alloc] initWithFrame:screenBound];
     self.tutorialScrollView.pagingEnabled = YES;
     self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
-    self.tutorialScrollView.showsVerticalScrollIndicator = YES;
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];
     self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, screenHeight);
     
-    UIView *firstView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight + 33.0)];
+    UIView *firstView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
     firstView.backgroundColor = [UIColor blackColor];
     [self.tutorialScrollView addSubview:firstView];
     
     DiscoverViewController *discoverView = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
-    discoverView.view.frame = CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height);
-    UIView *clearView = [[UIView alloc] init];
-    clearView.backgroundColor = [UIColor clearColor];
-    clearView.frame = CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height);
-    [self.tutorialScrollView addSubview:discoverView.view];
-    [self.tutorialScrollView addSubview:clearView];
+    discoverView.view.frame = CGRectMake(0.0, 0.0, screenWidth, discoverView.view.bounds.size.height);
+    
+    UIScrollView *discoverScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height)];
+    discoverScrollView.showsVerticalScrollIndicator = YES;
+    [discoverScrollView addSubview:discoverView.view];
+    
+    
+    //UIView *clearView = [[UIView alloc] init];
+    //clearView.backgroundColor = [UIColor clearColor];
+    //clearView.frame = CGRectMake(screenWidth, 0.0, screenWidth, discoverView.view.bounds.size.height);
+    [self.tutorialScrollView addSubview:discoverScrollView];
+    //[self.tutorialScrollView addSubview:clearView];
     
     SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
@@ -103,18 +108,17 @@
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+
     CGFloat pageWidth = self.tutorialScrollView.frame.size.width;
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
-    if (fractionalPage == 1.0) {
-        self.tutorialScrollView.pagingEnabled = NO;
-    }
-    else {
-        self.tutorialScrollView.pagingEnabled = YES;
-    }
     NSInteger page = lround(fractionalPage);
     self.pageControl.currentPage = page;
-    NSLog(@"This is the current page: %i", (int) page);
-  
+    NSLog(@"Yes scroll did occur");
 }
 
 - (void) closeTutorial {
