@@ -67,7 +67,7 @@
     [self setFields:nil];
     [self setSegmentedControlTintControl:nil];
     [self setPreviousTitle:nil];
-    [self setBarTintColor:nil];
+   // [self setBarTintColor:nil];
     [self setNextTitle:nil];
     [self setDoneTitle:nil];
     [self setDoneTintColor:nil];

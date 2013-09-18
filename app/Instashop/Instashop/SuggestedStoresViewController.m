@@ -14,16 +14,23 @@
 #import "ShopsAPIHandler.h"
 #import "AppDelegate.h"
 #import "ImageAPIHandler.h"
+#import "FirstTimeUserViewController.h"
 
 @interface SuggestedStoresViewController ()
 
 @end
 
+#define kLoginTutorialDone 3
+
 @implementation SuggestedStoresViewController
 
 @synthesize appRootViewController;
+@synthesize firstTimeUserViewController;
 @synthesize contentScrollView;
 @synthesize selectedShopsIDSArray;
+@synthesize followingCount;
+@synthesize initiated;
+@synthesize buttonShown;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,7 +40,8 @@
         
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.containerViewsDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
-        
+        self.followingCount = 0;
+        self.initiated = FALSE;        
     }
     return self;
 }
@@ -45,7 +53,7 @@
     
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+ //   [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
     
@@ -113,7 +121,6 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.selectedShopsIDSArray objectAtIndex:i]], @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
         
-        
         [self.containerViewsDictionary setObject:suggestedShopView forKey:suggestedShopView.shopViewInstagramID];
         
         suggestedShopView.followButton.alpha = 0;
@@ -138,21 +145,36 @@
     else if ([request.url rangeOfString:@"follows"].length > 0)
     {
         NSArray *dataArray = [result objectForKey:@"data"];
-
         
         NSMutableArray *likedIDsArray = [NSMutableArray arrayWithCapacity:0];
         
         for (int i =0; i < [dataArray count]; i++)
             [likedIDsArray addObject:[[dataArray objectAtIndex:i] objectForKey:@"id"]];
+        NSLog(@"This is the size of likedIDsArray: %i", likedIDsArray.count);
+        
+        if (self.firstTimeUserViewController != NULL && likedIDsArray.count == kLoginTutorialDone) {
+            [self.firstTimeUserViewController showCloseTutorialButton];
+            self.buttonShown = TRUE;
+        }
+        else if (self.buttonShown) {
+            [self.firstTimeUserViewController hideCloseTutorialButton];
+            self.buttonShown = FALSE;
+        }
         
         for (id key in self.containerViewsDictionary)
         {
             SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
             shopView.followButton.alpha = 1;
-            if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
+            if ([likedIDsArray containsObject:shopView.shopViewInstagramID]) {
                 shopView.followButton.selected = YES;
-            else
+                if (!self.initiated) {
+                    self.followingCount += 1;
+                    NSLog(@"This is the number of users this user follows: %i", self.followingCount);
+                }
+            }
+            else {
                 shopView.followButton.selected = NO;
+            }
         }
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
@@ -181,6 +203,8 @@
 
 -(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected
 {
+    NSLog(@"This is the app root view controller: %@", self.appRootViewController);
+    self.initiated = TRUE;
     NSLog(@"shopFollowButtonHitWithID: %@", instagramID);
     
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -189,19 +213,20 @@
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"unfollow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+        self.followingCount -= 1;
+
+        NSLog(@"This is the number of users this user follows: %i", self.followingCount);
+
     }
     else
     {
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+        self.followingCount += 1;
+        
+        NSLog(@"This is the number of users this user follows: %i", self.followingCount);
     }
-
-
-    
-    
-    
-    
     
 }
 

@@ -12,5 +12,10 @@
 
 @property (nonatomic, retain) UIScrollView *tutorialScrollView;
 @property (nonatomic, retain) UIPageControl *pageControl;
+@property (nonatomic, retain) UIButton *loginTutorialDone;
+
+- (void) showCloseTutorialButton;
+- (void) hideCloseTutorialButton;
+
 
 @end

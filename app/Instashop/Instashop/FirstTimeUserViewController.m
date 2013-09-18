@@ -21,6 +21,7 @@
 
 @synthesize tutorialScrollView;
 @synthesize pageControl;
+@synthesize loginTutorialDone;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,7 +61,12 @@
     
     SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
+    suggestedStoreView.firstTimeUserViewController = self;
     [self.tutorialScrollView addSubview:suggestedStoreView.view];
+    
+    self.loginTutorialDone = [[UIButton alloc] initWithFrame:CGRectMake(960.0, screenHeight, 320.0, 480.0)];
+    self.loginTutorialDone.backgroundColor = [UIColor redColor];
+    [self.loginTutorialDone addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
     
     for (int p = 0; p <= kHowToPageNumber; p++) {
         
@@ -104,7 +110,25 @@
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
     NSInteger page = lround(fractionalPage);
     self.pageControl.currentPage = page;
-    NSLog(@"Yes scroll did occur");
+}
+
+- (void) showCloseTutorialButton {
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.loginTutorialDone.frame = CGRectMake(0, 0, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void) hideCloseTutorialButton {
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.loginTutorialDone.frame = CGRectMake(0, 480.0, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
+    [UIView commitAnimations];
 }
 
 - (void) closeTutorial {
