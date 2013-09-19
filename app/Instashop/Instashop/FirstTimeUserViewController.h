@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppRootViewController;
+
 @interface FirstTimeUserViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, retain) UIScrollView *tutorialScrollView;

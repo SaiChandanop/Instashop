@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		19792FF417E3ABF2004607AE /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19792FF317E3ABF2004607AE /* FirstTimeUserViewController.m */; };
+		19F4029D17EA799E007D922C /* login_tutorial1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19F4029C17EA799E007D922C /* login_tutorial1.jpg */; };
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
@@ -260,6 +261,7 @@
 /* Begin PBXFileReference section */
 		19792FF217E3ABF2004607AE /* FirstTimeUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimeUserViewController.h; sourceTree = "<group>"; };
 		19792FF317E3ABF2004607AE /* FirstTimeUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTimeUserViewController.m; sourceTree = "<group>"; };
+		19F4029C17EA799E007D922C /* login_tutorial1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_tutorial1.jpg; sourceTree = "<group>"; };
 		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
@@ -643,6 +645,7 @@
 		19792FF117E3ABE8004607AE /* FirstTimeUserWalkthrough */ = {
 			isa = PBXGroup;
 			children = (
+				19F4029C17EA799E007D922C /* login_tutorial1.jpg */,
 				19792FF217E3ABF2004607AE /* FirstTimeUserViewController.h */,
 				19792FF317E3ABF2004607AE /* FirstTimeUserViewController.m */,
 			);
@@ -1720,6 +1723,7 @@
 				7B5D62A717C5AF9F00D6C8B1 /* diners.png in Resources */,
 				2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */,
 				7B5D62B217C5AF9F00D6C8B1 /* visa@2x.png in Resources */,
+				19F4029D17EA799E007D922C /* login_tutorial1.jpg in Resources */,
 				2E0EAE1F176F6E6700B65FC3 /* lmPrivacyPolicyIcon@2x.png in Resources */,
 				2E0EAE20176F6E6700B65FC3 /* lmHomeIcon@2x.png in Resources */,
 				7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */,

@@ -50,9 +50,14 @@
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];
     self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, screenHeight);
     
-    UIView *firstView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
-    firstView.backgroundColor = [UIColor blackColor];
-    [self.tutorialScrollView addSubview:firstView];
+    UIView *welcomeView = [[UIView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
+    welcomeView.backgroundColor = [UIColor blackColor];
+    UIImage *welcomeImage = [UIImage imageNamed:@"login_tutorial1.jpg"];
+    UIImageView *welcomeImageView = [[UIImageView alloc] initWithFrame:welcomeView.frame];
+    [welcomeImageView setImage:welcomeImage];
+    welcomeImageView.contentMode = UIViewContentModeScaleAspectFill;
+    [welcomeView addSubview:welcomeImageView];
+    [self.tutorialScrollView addSubview:welcomeView];
     
     // Have trouble testing DiscoverViewController on Simulator but works fine on device.
     DiscoverViewController *discoverView = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
@@ -64,9 +69,10 @@
     suggestedStoreView.firstTimeUserViewController = self;
     [self.tutorialScrollView addSubview:suggestedStoreView.view];
     
-    self.loginTutorialDone = [[UIButton alloc] initWithFrame:CGRectMake(960.0, screenHeight, 320.0, 480.0)];
+    self.loginTutorialDone = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 2.0, screenHeight, 320.0, 480.0)];
     self.loginTutorialDone.backgroundColor = [UIColor redColor];
     [self.loginTutorialDone addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
+    [self.tutorialScrollView addSubview:self.loginTutorialDone];
     
     for (int p = 0; p <= kHowToPageNumber; p++) {
         
@@ -114,20 +120,31 @@
 
 - (void) showCloseTutorialButton {
     
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1.0];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.loginTutorialDone.frame = CGRectMake(0, 0, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
+    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, 200.0, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
     [UIView commitAnimations];
 }
 
 - (void) hideCloseTutorialButton {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:1.0];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.loginTutorialDone.frame = CGRectMake(0, 480.0, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
+    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, 480.0, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
     [UIView commitAnimations];
 }
 

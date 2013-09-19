@@ -216,11 +216,9 @@
         self.followingCount -= 1;
 
         NSLog(@"This is the number of users this user follows: %i", self.followingCount);
-
     }
     else
     {
-        
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
         self.followingCount += 1;

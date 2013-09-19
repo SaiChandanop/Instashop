@@ -49,8 +49,6 @@ float transitionTime = .456;
     return theSharedRootViewController;
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -67,7 +65,6 @@ float transitionTime = .456;
     }
     [[NSUserDefaults standardUserDefaults] synchronize];
     
- 
     [AttributesManager getSharedAttributesManager];
     
     self.homeViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
@@ -104,7 +101,9 @@ float transitionTime = .456;
 
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
 
+- (void) closeFirstTimeTutorial {
 
+}
 
 -(void)ceaseTransition
 {
@@ -350,7 +349,6 @@ float transitionTime = .456;
 
     
 }
-
 
 -(void)searchButtonHit
 {

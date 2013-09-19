@@ -25,13 +25,29 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Instashop/SuggestedStoresViewController.m"
-            timestampString = "401240192.615332"
+            filePath = "Instashop/FirstTimeUserViewController.m"
+            timestampString = "401242855.474917"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "156"
-            endingLineNumber = "156"
-            landmarkName = "-request:didLoad:"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "-showCloseTutorialButton"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Instashop/FirstTimeUserViewController.m"
+            timestampString = "401242855.474917"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "151"
+            endingLineNumber = "151"
+            landmarkName = "-closeTutorial"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
