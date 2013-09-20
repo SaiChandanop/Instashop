@@ -28,9 +28,8 @@
 @synthesize firstTimeUserViewController;
 @synthesize contentScrollView;
 @synthesize selectedShopsIDSArray;
-@synthesize followingCount;
 @synthesize initiated;
-@synthesize buttonShown;
+@synthesize closeTutorialButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -40,8 +39,6 @@
         
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.containerViewsDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
-        self.followingCount = 0;
-        self.initiated = FALSE;        
     }
     return self;
 }
@@ -56,8 +53,6 @@
  //   [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
-    
-    
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
@@ -81,9 +76,7 @@
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
     [self.view insertSubview:bgImageView atIndex:0];
-    
-    
-    
+
 }
 
 -(void)backButtonHit
@@ -126,10 +119,19 @@
         suggestedShopView.followButton.alpha = 0;
     }
     
+    if (self.firstTimeUserViewController != NULL) {
+        
+        self.closeTutorialButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.contentScrollView.frame.size.height + 30.0, 320.0, 60.0)];
+        self.closeTutorialButton.backgroundColor = [UIColor yellowColor];
+        [self.closeTutorialButton addTarget:self.firstTimeUserViewController action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
+        [self.contentScrollView addSubview:self.closeTutorialButton];
+        
+       // [self.firstTimeUserViewController showCloseTutorialButton];
+    }
+    
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    
+
 }
 
 
@@ -152,26 +154,25 @@
             [likedIDsArray addObject:[[dataArray objectAtIndex:i] objectForKey:@"id"]];
         NSLog(@"This is the size of likedIDsArray: %i", likedIDsArray.count);
         
+        /*
+        if (self.firstTimeUserViewController != NULL) {
+            
+        }*/
         if (self.firstTimeUserViewController != NULL && likedIDsArray.count == kLoginTutorialDone) {
-            [self.firstTimeUserViewController showCloseTutorialButton];
-            self.buttonShown = TRUE;
+            self.closeTutorialButton.enabled = YES;
+            self.closeTutorialButton.backgroundColor = [UIColor yellowColor];
         }
-        else if (self.buttonShown) {
-            [self.firstTimeUserViewController hideCloseTutorialButton];
-            self.buttonShown = FALSE;
+        else if (self.firstTimeUserViewController != NULL && likedIDsArray.count < kLoginTutorialDone) {
+            self.closeTutorialButton.enabled = NO;
+            self.closeTutorialButton.backgroundColor = [UIColor grayColor];
         }
         
         for (id key in self.containerViewsDictionary)
         {
             SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
             shopView.followButton.alpha = 1;
-            if ([likedIDsArray containsObject:shopView.shopViewInstagramID]) {
+            if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
                 shopView.followButton.selected = YES;
-                if (!self.initiated) {
-                    self.followingCount += 1;
-                    NSLog(@"This is the number of users this user follows: %i", self.followingCount);
-                }
-            }
             else {
                 shopView.followButton.selected = NO;
             }
@@ -204,7 +205,6 @@
 -(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected
 {
     NSLog(@"This is the app root view controller: %@", self.appRootViewController);
-    self.initiated = TRUE;
     NSLog(@"shopFollowButtonHitWithID: %@", instagramID);
     
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -213,17 +213,13 @@
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"unfollow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
-        self.followingCount -= 1;
 
-        NSLog(@"This is the number of users this user follows: %i", self.followingCount);
     }
     else
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
-        self.followingCount += 1;
         
-        NSLog(@"This is the number of users this user follows: %i", self.followingCount);
     }
     
 }

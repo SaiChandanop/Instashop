@@ -12,12 +12,12 @@
 
 @interface FirstTimeUserViewController : UIViewController <UIScrollViewDelegate>
 
+@property (nonatomic, retain) AppRootViewController *parentViewController;
 @property (nonatomic, retain) UIScrollView *tutorialScrollView;
 @property (nonatomic, retain) UIPageControl *pageControl;
 @property (nonatomic, retain) UIButton *loginTutorialDone;
 
-- (void) showCloseTutorialButton;
-- (void) hideCloseTutorialButton;
+- (void) closeTutorial;
 
 
 @end

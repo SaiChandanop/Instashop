@@ -26,6 +26,7 @@
 static AppRootViewController *theSharedRootViewController;
 
 @synthesize feedNavigationController, feedViewController, homeViewController;
+@synthesize firstTimeUserViewController;
 @synthesize areViewsTransitioning;
 @synthesize feedCoverButton;
 @synthesize firstRun;
@@ -82,15 +83,16 @@ float transitionTime = .456;
     
     if (!self.firstRun) { // False for testing right now.
         
-        FirstTimeUserViewController *tutorial = [[FirstTimeUserViewController alloc] init];
-        tutorial.view.frame = CGRectMake(0, tutorial.view.frame.size.height, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
-        [self.view addSubview:tutorial.view];
+        self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
+        self.firstTimeUserViewController.view.frame = CGRectMake(0, self.firstTimeUserViewController.view.frame.size.height, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
+        self.firstTimeUserViewController.parentViewController = self;
+        [self.view addSubview:self.firstTimeUserViewController.view];
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        tutorial.view.frame = CGRectMake(0, 0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
+        self.firstTimeUserViewController.view.frame = CGRectMake(0, 0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
         [UIView commitAnimations];
     }
     
@@ -272,6 +274,22 @@ float transitionTime = .456;
    
 }
 
+- (void) firstTimeTutorialExit {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.firstTimeUserViewController.view.frame = CGRectMake(0, screenHeight, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
+    [UIView commitAnimations];
+    
+}
+
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController
 {
     [UIView beginAnimations:nil context:nil];
@@ -321,7 +339,6 @@ float transitionTime = .456;
     SuggestedStoresViewController *suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     suggestedStoresViewController.appRootViewController = self;
     
-    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:suggestedStoresViewController];
     navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:navigationController .view];
@@ -333,12 +350,10 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
-
 }
 
 -(void)suggestedShopExitButtonHit:(UINavigationController *)navigationController
 {
-    
     NSLog(@"profileExitButtonHit: %@", navigationController);
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];

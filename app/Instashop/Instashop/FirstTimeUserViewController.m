@@ -16,12 +16,14 @@
 @end
 
 #define kHowToPageNumber 3
+#define kButtonHeight 100.0
 
 @implementation FirstTimeUserViewController
 
 @synthesize tutorialScrollView;
 @synthesize pageControl;
 @synthesize loginTutorialDone;
+@synthesize parentViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,7 +71,7 @@
     suggestedStoreView.firstTimeUserViewController = self;
     [self.tutorialScrollView addSubview:suggestedStoreView.view];
     
-    self.loginTutorialDone = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 2.0, screenHeight, 320.0, 480.0)];
+    self.loginTutorialDone = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 2.0, screenHeight, screenWidth, kButtonHeight)];
     self.loginTutorialDone.backgroundColor = [UIColor redColor];
     [self.loginTutorialDone addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
     [self.tutorialScrollView addSubview:self.loginTutorialDone];
@@ -99,9 +101,11 @@
     [self.view addSubview:self.tutorialScrollView];
     
     // Page Control
+    
     self.pageControl = [[UIPageControl alloc] init];
+    float pageControlWidth = 100.0;
     float pageControlHeight = 50.0;
-    self.pageControl.frame = CGRectMake(0.0, screenHeight - pageControlHeight, screenWidth, pageControlHeight);
+    self.pageControl.frame = CGRectMake(((screenWidth - pageControlWidth)/2), screenHeight - pageControlHeight - 50.0, pageControlWidth, pageControlHeight);
     self.pageControl.numberOfPages = kHowToPageNumber;
     self.pageControl.currentPage = 0;
     self.pageControl.pageIndicatorTintColor = [UIColor redColor];
@@ -129,7 +133,7 @@
     [UIView setAnimationDuration:1.0];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, 200.0, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
+    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, (screenHeight - self.loginTutorialDone.frame.size.height), screenWidth, kButtonHeight);
     [UIView commitAnimations];
 }
 
@@ -144,12 +148,13 @@
     [UIView setAnimationDuration:1.0];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, 480.0, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
+    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, screenHeight, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
     [UIView commitAnimations];
 }
 
 - (void) closeTutorial {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.parentViewController firstTimeTutorialExit];
+  //  [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)didReceiveMemoryWarning
