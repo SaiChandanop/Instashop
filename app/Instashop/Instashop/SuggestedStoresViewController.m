@@ -70,9 +70,7 @@
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SUGGESTED SHOPS"]];
-    
-    
-    
+
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
     [self.view insertSubview:bgImageView atIndex:0];
@@ -86,6 +84,11 @@
 
 -(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray
 {
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
     [self.containerViewsDictionary removeAllObjects];
     
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
@@ -121,12 +124,11 @@
     
     if (self.firstTimeUserViewController != NULL) {
         
-        self.closeTutorialButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, self.contentScrollView.frame.size.height + 30.0, 320.0, 60.0)];
+        float buttonHeight = 60.0;
+        self.closeTutorialButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, screenHeight -buttonHeight, screenWidth, buttonHeight)];
         self.closeTutorialButton.backgroundColor = [UIColor yellowColor];
         [self.closeTutorialButton addTarget:self.firstTimeUserViewController action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
-        [self.contentScrollView addSubview:self.closeTutorialButton];
-        
-       // [self.firstTimeUserViewController showCloseTutorialButton];
+        [self.view addSubview:self.closeTutorialButton];
     }
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];

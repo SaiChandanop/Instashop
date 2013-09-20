@@ -189,8 +189,7 @@ float transitionTime = .456;
         
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:discoverViewController];
         navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:navigationController .view];
-        
+        [self.view addSubview:navigationController.view];
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
