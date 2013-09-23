@@ -49,6 +49,8 @@
     UIView *sizeQuantityView;
     UIButton *addSizeButton;
     
+    UILabel *urlLabel;
+    
     UIView *pricesView;
     
     
@@ -65,6 +67,9 @@
 
 - (IBAction) addSizeButtonHit;
 - (void) updateLayout;
+
+- (IBAction) urlButtonHit;
+
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;
 @property (nonatomic, retain) SizeQuantityTableViewController *sizeQuantityTableViewController;
@@ -98,6 +103,7 @@
 
 @property (nonatomic, retain) UIView *sizeQuantityView;
 @property (nonatomic, retain) IBOutlet UIButton *addSizeButton;
+@property (nonatomic, retain) IBOutlet UILabel *urlLabel;
 
 @property (nonatomic, retain) IBOutlet UIView *pricesView;
 

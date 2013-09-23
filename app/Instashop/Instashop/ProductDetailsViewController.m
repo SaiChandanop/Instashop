@@ -16,7 +16,7 @@
 #import "NavBarTitleView.h"
 #import "AppDelegate.h"
 #import "ProductAPIHandler.h"
-
+#import "ViglinkSellViewController.h"
 @interface ProductDetailsViewController ()
 
 @end
@@ -45,6 +45,7 @@
 @synthesize sizeQuantityView;
 @synthesize originalPriceViewRect;
 @synthesize editingProductObject;
+@synthesize urlLabel;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -167,7 +168,7 @@
     NSLog(@"cellSizeQuantityValueDictionary: %@", self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary);
     [self.sizeQuantityTableViewController.tableView reloadData];
     
-    [self updateLayout];
+//    [self updateLayout];
     
     
     
@@ -300,7 +301,7 @@
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
-    
+/*
     NSMutableArray *productsArray = [NSMutableArray arrayWithCapacity:0];
     
     for (id key in self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary)
@@ -330,8 +331,10 @@
     }
     
     productCreateContainerObject.objectSizePermutationsArray = [[NSArray alloc] initWithArray:productsArray];
+ 
     productCreateContainerObject.tableViewCellSizeQuantityValueDictionary = self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary;
-    if (totalQuantity > 0)
+ */
+    if (self.attributesArray.count > 0)
     {
         productCreateContainerObject.mainObject = [[ProductCreateObject alloc] init];
         productCreateContainerObject.mainObject.instagramPictureURLString = self.instagramPictureURLString;
@@ -344,6 +347,7 @@
         productCreateContainerObject.mainObject.quantity = [NSString stringWithFormat:@"%d", totalQuantity];
         productCreateContainerObject.mainObject.categoriesArray = [[NSArray alloc] initWithArray:self.attributesArray];
         productCreateContainerObject.mainObject.editingReferenceID = self.editingProductID;
+        productCreateContainerObject.mainObject.referenceURLString = self.urlLabel.text;
         //    self.productCreateObject.shippingWeight = self.shippingTextField.text;
         
         
@@ -352,14 +356,18 @@
     }
     else
     {
-        if ([self.selectedCategoriesLabel.text length] == 0)
-        {
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                             message:@"Please Select a category"
                                                            delegate:self
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
-            [alertView show];
+        [alertView show];
+    }
+   /* else
+    {
+        if ([self.selectedCategoriesLabel.text length] == 0)
+        {
+    
         }
         else
         {
@@ -373,6 +381,7 @@
         
         
     }
+    */
   
     [self resignResponders];
 }
@@ -417,7 +426,7 @@
         [self.addSizeButton setTitle:@"Add Another Size" forState:UIControlStateNormal];
         
         [self.sizeQuantityTableViewController ownerAddRowButtonHitWithTableView:self.sizeQuantityTableViewController.tableView];
-        [self updateLayout];
+//        [self updateLayout];
         
         if (self.sizeQuantityTableViewController.rowShowCount > 0 && [[self.sizeQuantityTableViewController getRemainingAvailableSizesArray] count] == 0)
             self.addSizeButton.alpha = 0;
@@ -490,6 +499,25 @@
 
     return YES;
     
+}
+
+- (IBAction) urlButtonHit
+{
+    ViglinkSellViewController *viglinkSellViewController = [[ViglinkSellViewController alloc] initWithNibName:@"ViglinkSellViewController" bundle:nil];
+    viglinkSellViewController.delegate = self;
+    [self.navigationController presentViewController:viglinkSellViewController animated:YES completion:nil];
+    
+//    [self.navigationController pushViewController:viglinkSellViewController animated:YES];
+}
+
+-(void) linkSelectedWithURLString:(NSString *)theURLString
+{
+    NSLog(@"theURLString: %@", theURLString);
+    if (theURLString != nil)
+    {
+        self.urlLabel.text = [theURLString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

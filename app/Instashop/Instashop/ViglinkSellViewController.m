@@ -15,6 +15,8 @@
 
 @implementation ViglinkSellViewController
 
+@synthesize delegate;
+
 @synthesize webContainerView, theWebView, webSearchBar;
 
 
@@ -49,12 +51,18 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(IBAction)backButtonHit
+{
+    [self.delegate linkSelectedWithURLString:nil];
+}
 -(IBAction)selectPageLinkButtonHit
 {
     NSString *linkString = [self.theWebView.request.URL absoluteString];
 
-    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:linkString];
+    
+//    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:linkString];
     NSLog(@"linkString: %@", linkString);
+    [self.delegate linkSelectedWithURLString:linkString];
 }
 
 - (void)didReceiveMemoryWarning

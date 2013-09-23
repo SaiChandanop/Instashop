@@ -20,7 +20,7 @@
     NSString *listPrice;
     NSString *instashopPrice;
     NSString *shippingWeight;
-    
+    NSString *referenceURLString;
     NSString *instagramPictureURLString;
     NSDictionary *instragramMediaInfoDictionary;
     
@@ -37,7 +37,7 @@
 @property (nonatomic, retain) NSString *listPrice;
 @property (nonatomic, retain) NSString *instashopPrice;
 @property (nonatomic, retain) NSString *shippingWeight;
-
+@property (nonatomic, retain) NSString *referenceURLString;
 @property (nonatomic, retain) NSString *instagramPictureURLString;
 @property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;
 

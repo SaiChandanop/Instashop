@@ -10,14 +10,18 @@
 
 @interface ViglinkSellViewController : UIViewController <UISearchBarDelegate, UIWebViewDelegate>
 {
+    id delegate;
+    
     UIView *webContainerView;
     UIWebView *theWebView;
     UISearchBar *webSearchBar;
     
 }
 
+-(IBAction)backButtonHit;
 -(IBAction)selectPageLinkButtonHit;
 
+@property (nonatomic, retain) id delegate;
 @property (nonatomic, retain) IBOutlet UIView *webContainerView;
 @property (nonatomic, retain) IBOutlet UIWebView *theWebView;
 @property (nonatomic, retain) IBOutlet UISearchBar *webSearchBar;
