@@ -111,6 +111,9 @@
 		7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */; };
 		7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */; };
 		7B1B302E17BE8ED100BB6420 /* BSKeyboardControls.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */; };
+		7B260E8B17F0B56300F8F873 /* ViglinkSellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B260E8917F0B56300F8F873 /* ViglinkSellViewController.m */; };
+		7B260E8C17F0B56300F8F873 /* ViglinkSellViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B260E8A17F0B56300F8F873 /* ViglinkSellViewController.xib */; };
+		7B260E9017F0BA7700F8F873 /* ViglinkAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B260E8F17F0BA7700F8F873 /* ViglinkAPIHandler.m */; };
 		7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */; };
 		7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */; };
 		7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */; };
@@ -390,6 +393,11 @@
 		7B1B302A17BE8ED000BB6420 /* BSKeyboardControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSKeyboardControls.h; sourceTree = "<group>"; };
 		7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSKeyboardControls.m; sourceTree = "<group>"; };
 		7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = BSKeyboardControls.strings; sourceTree = "<group>"; };
+		7B260E8817F0B56300F8F873 /* ViglinkSellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViglinkSellViewController.h; sourceTree = "<group>"; };
+		7B260E8917F0B56300F8F873 /* ViglinkSellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViglinkSellViewController.m; sourceTree = "<group>"; };
+		7B260E8A17F0B56300F8F873 /* ViglinkSellViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViglinkSellViewController.xib; sourceTree = "<group>"; };
+		7B260E8E17F0BA7700F8F873 /* ViglinkAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViglinkAPIHandler.h; sourceTree = "<group>"; };
+		7B260E8F17F0BA7700F8F873 /* ViglinkAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViglinkAPIHandler.m; sourceTree = "<group>"; };
 		7B2C4B8D17C418700080F3F5 /* CellSelectionOccuredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellSelectionOccuredProtocol.h; sourceTree = "<group>"; };
 		7B2C4B8E17C41C160080F3F5 /* FeedRequestFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedRequestFinishedProtocol.h; sourceTree = "<group>"; };
 		7B2C4B8F17C41DFF0080F3F5 /* SellerExistsResponderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerExistsResponderProtocol.h; sourceTree = "<group>"; };
@@ -912,6 +920,25 @@
 			name = BSKeyboardControls;
 			sourceTree = "<group>";
 		};
+		7B260E8217F0B4BC00F8F873 /* VigLink */ = {
+			isa = PBXGroup;
+			children = (
+				7B260E8817F0B56300F8F873 /* ViglinkSellViewController.h */,
+				7B260E8917F0B56300F8F873 /* ViglinkSellViewController.m */,
+				7B260E8A17F0B56300F8F873 /* ViglinkSellViewController.xib */,
+			);
+			name = VigLink;
+			sourceTree = "<group>";
+		};
+		7B260E8D17F0BA6800F8F873 /* Viglink */ = {
+			isa = PBXGroup;
+			children = (
+				7B260E8E17F0BA7700F8F873 /* ViglinkAPIHandler.h */,
+				7B260E8F17F0BA7700F8F873 /* ViglinkAPIHandler.m */,
+			);
+			name = Viglink;
+			sourceTree = "<group>";
+		};
 		7B2C4B8C17C418490080F3F5 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1376,6 +1403,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7B260E8D17F0BA6800F8F873 /* Viglink */,
 				7BE66D9F17E3520F00BE3B64 /* Categories */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
@@ -1553,6 +1581,7 @@
 		7BE958F3175548A100A7E0AB /* Sell */ = {
 			isa = PBXGroup;
 			children = (
+				7B260E8217F0B4BC00F8F873 /* VigLink */,
 				7B1072B5175E7CB300D9DC5D /* Details */,
 				7B3F5212175FB38300ABF49B /* Preview */,
 				7BE958F4175548B800A7E0AB /* ProductCreateViewController.h */,
@@ -1672,6 +1701,7 @@
 				7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
 				7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */,
+				7B260E8C17F0B56300F8F873 /* ViglinkSellViewController.xib in Resources */,
 				7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */,
 				7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */,
 				7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */,
@@ -1884,10 +1914,12 @@
 				7BF9DD8A178C546F005148A8 /* SBJsonParser.m in Sources */,
 				7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */,
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
+				7B260E8B17F0B56300F8F873 /* ViglinkSellViewController.m in Sources */,
 				7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */,
 				7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
 				7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */,
+				7B260E9017F0BA7700F8F873 /* ViglinkAPIHandler.m in Sources */,
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
 				7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */,
 				7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */,
