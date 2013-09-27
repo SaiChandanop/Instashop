@@ -18,7 +18,6 @@
     NSString *username;
     NSString *website;
     NSString *zencartID;
-        
 }
 
 +(void)deleteStoredUserObject;
@@ -35,4 +34,6 @@
 @property (nonatomic, retain) NSString *username;
 @property (nonatomic, retain) NSString *website;
 @property (nonatomic, retain) NSString *zencartID;
+@property (nonatomic, retain) NSNumber *firstTimeUser;
+
 @end

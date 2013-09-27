@@ -22,8 +22,11 @@
 @synthesize username;
 @synthesize website;
 @synthesize zencartID;
+@synthesize firstTimeUser;
 
 
+
+// The self.firstTimeUser can't be saved here 
 -(id)initWithDictionary:(NSDictionary *)theDict
 {
     self = [super init];
@@ -36,6 +39,7 @@
     self.username = [theDict objectForKey:@"username"];
     self.website = [theDict objectForKey:@"website"];
     self.zencartID = [theDict objectForKey:@"zencartID"];
+    self.firstTimeUser = [theDict objectForKey:@"firstTimeUser"]; // susan added this
     
     return self;
 }
@@ -50,7 +54,7 @@
     [encoder encodeObject:self.username forKey:@"username"];
     [encoder encodeObject:self.website forKey:@"website"];
     [encoder encodeObject:self.zencartID forKey:@"zencartID"];
-    
+    [encoder encodeObject:self.firstTimeUser forKey:@"firstTimeUser"]; // susan added this
 }
 
 - (id)initWithCoder:(NSCoder *)decoder {
@@ -64,11 +68,13 @@
         self.profilePicture = [decoder decodeObjectForKey:@"profilePicture"];
         self.username = [decoder decodeObjectForKey:@"username"];
         self.website = [decoder decodeObjectForKey:@"website"];
-        self.zencartID = [decoder decodeObjectForKey:@"zencartID"];        
+        self.zencartID = [decoder decodeObjectForKey:@"zencartID"];
+        self.firstTimeUser = [decoder decodeObjectForKey:@"firstTimeUser"]; // susan added this.
     }
     return self;
 }
 
+// Generally used for creating a seller - susan 
 -(NSString *)userObjectAsPostString
 {
     NSLog(@"self.username: %@", self.username);
@@ -103,7 +109,6 @@
 
 -(void)setAsStoredUser:(InstagramUserObject *)theObject
 {
-
     [[GroupDiskManager sharedManager] saveDataToDiskWithObject:theObject withKey:CURRENT_USER_OBJECT_STORAGE_KEY];
 }
 

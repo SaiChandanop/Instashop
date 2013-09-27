@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		193714A117F602E000A81C05 /* HTWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 193714A017F602E000A81C05 /* HTWebView.m */; };
 		19792FF417E3ABF2004607AE /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19792FF317E3ABF2004607AE /* FirstTimeUserViewController.m */; };
 		19F4029D17EA799E007D922C /* login_tutorial1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 19F4029C17EA799E007D922C /* login_tutorial1.jpg */; };
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
@@ -259,6 +260,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1937149F17F602E000A81C05 /* HTWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTWebView.h; sourceTree = "<group>"; };
+		193714A017F602E000A81C05 /* HTWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTWebView.m; sourceTree = "<group>"; };
 		19792FF217E3ABF2004607AE /* FirstTimeUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FirstTimeUserViewController.h; sourceTree = "<group>"; };
 		19792FF317E3ABF2004607AE /* FirstTimeUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FirstTimeUserViewController.m; sourceTree = "<group>"; };
 		19F4029C17EA799E007D922C /* login_tutorial1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = login_tutorial1.jpg; sourceTree = "<group>"; };
@@ -642,6 +645,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1937149E17F602C900A81C05 /* WebView */ = {
+			isa = PBXGroup;
+			children = (
+				1937149F17F602E000A81C05 /* HTWebView.h */,
+				193714A017F602E000A81C05 /* HTWebView.m */,
+			);
+			name = WebView;
+			sourceTree = "<group>";
+		};
 		19792FF117E3ABE8004607AE /* FirstTimeUserWalkthrough */ = {
 			isa = PBXGroup;
 			children = (
@@ -1341,6 +1353,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				1937149E17F602C900A81C05 /* WebView */,
 				7BE66D9F17E3520F00BE3B64 /* Categories */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
@@ -1825,6 +1838,7 @@
 				7B5D628517C5AF7100D6C8B1 /* PKUSAddressZip.m in Sources */,
 				7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */,
 				7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */,
+				193714A117F602E000A81C05 /* HTWebView.m in Sources */,
 				7B3F5216175FB3A000ABF49B /* ProductPreviewViewController.m in Sources */,
 				7B5D626817C5AF3700D6C8B1 /* STPToken.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,

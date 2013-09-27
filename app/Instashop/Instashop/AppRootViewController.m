@@ -72,16 +72,16 @@ float transitionTime = .456;
     self.homeViewController.parentController = self;
     self.homeViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.homeViewController.view];
-    
    
     self.feedViewController = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
     self.feedViewController.parentController = self;
     self.feedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.feedViewController];
-    self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
+    self.feedNavigationController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
     
-    if (!self.firstRun) { // False for testing right now.
+    NSLog(@"This is the instagram first user object: %@", [InstagramUserObject getStoredUserObject].firstTimeUser);
+    if ([InstagramUserObject getStoredUserObject].firstTimeUser == nil) {
         
         self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
         self.firstTimeUserViewController.view.frame = CGRectMake(0, self.firstTimeUserViewController.view.frame.size.height, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
@@ -162,11 +162,9 @@ float transitionTime = .456;
         
         NotificationsViewController *notificationViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
 
-        
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:notificationViewController];
         navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:navigationController .view];
-        
+        [self.view addSubview:navigationController.view];
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
@@ -197,8 +195,6 @@ float transitionTime = .456;
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
         navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
-        
-        
     }
 }
 
@@ -225,13 +221,6 @@ float transitionTime = .456;
         UINavigationController *productCreateNavigationController = [[UINavigationController alloc] initWithRootViewController:productCreateViewController];
         productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:productCreateNavigationController .view];
-        
-        /*
-        UIView *bufferView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-        bufferView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-
-        [self.view addSubview:bufferView];
-        */  
          
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
@@ -270,14 +259,13 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
     [UIView commitAnimations];
-   
 }
 
 - (void) firstTimeTutorialExit {
     
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
+//    CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
     [UIView beginAnimations:nil context:nil];
@@ -286,7 +274,14 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     self.firstTimeUserViewController.view.frame = CGRectMake(0, screenHeight, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
     [UIView commitAnimations];
-    
+
+//    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+
+    InstagramUserObject *theUserObject = [InstagramUserObject getStoredUserObject];
+   // [encoder encodeObject:theUserObject.firstTimeUser forKey:@"website"];
+
+    theUserObject.firstTimeUser = [NSNumber numberWithBool:FALSE];
+    [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
 }
 
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController
@@ -360,8 +355,6 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
-
-    
 }
 
 -(void)searchButtonHit
@@ -384,8 +377,8 @@ float transitionTime = .456;
 
 }
 
--(void)searchExitButtonHit:(UINavigationController *)navigationController
-{
+-(void)searchExitButtonHit:(UINavigationController *)navigationController {
+    
     NSLog(@"searchExitButtonHit: %@", navigationController);
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
@@ -393,8 +386,6 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
-  
-    
 }
 
 

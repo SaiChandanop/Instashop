@@ -16,6 +16,9 @@
 #import "InstagramUserObject.h"
 #import "AppDelegate.h"
 #import "ISConstants.h"
+#import "HTWebView.h"
+
+
 
 @interface HomeViewController ()
 
@@ -30,6 +33,7 @@
 @synthesize logoutView;
 @synthesize topBarView;
 @synthesize sellerLabel;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -142,7 +146,17 @@
 
 -(IBAction)discoverButtonHit
 {
-    [self.parentController discoverButtonHit];
+    //[self.parentController discoverButtonHit];
     
+    // So what I'm understanding about the HTWebView Class is that it takes the text of a web object and then converts it into
+    // text to put on the user interface.  It doesn't have any dynamic or changing aspects.  It only delivers text to a UIView.
+    // Otherwise, I would be seeing a loadRequest method in either HTWebView.m or in a class that uses HTWebView.m
+    // Look at member.json in HomeTalk app.
+    // So there needs to be some member object to work with and its aspects will be converted to visible text here.  
+    HTWebView *exampleWebView = [[HTWebView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 200.0)];
+    NSString *url = [NSString stringWithFormat:@" http:\/\/meeganmakes.com<\/a>" ];
+    [exampleWebView loadWithContent:url andFontSize:14];
+    exampleWebView.backgroundColor = [UIColor yellowColor];
+    [self.view addSubview:exampleWebView];
 }
 @end
