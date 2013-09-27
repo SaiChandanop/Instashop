@@ -134,10 +134,6 @@
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [theDictionary objectForKey:@"instagram_id"]], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    
-    
-    
 }
 
 

@@ -152,7 +152,7 @@
     // text to put on the user interface.  It doesn't have any dynamic or changing aspects.  It only delivers text to a UIView.
     // Otherwise, I would be seeing a loadRequest method in either HTWebView.m or in a class that uses HTWebView.m
     // Look at member.json in HomeTalk app.
-    // So there needs to be some member object to work with and its aspects will be converted to visible text here.  
+    // So there needs to be some member object to work with and its aspects will be converted to visible text here.
     HTWebView *exampleWebView = [[HTWebView alloc] initWithFrame:CGRectMake(0, 0, 200.0, 200.0)];
     NSString *url = [NSString stringWithFormat:@" http:\/\/meeganmakes.com<\/a>" ];
     [exampleWebView loadWithContent:url andFontSize:14];

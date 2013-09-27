@@ -24,8 +24,6 @@
 @synthesize zencartID;
 @synthesize firstTimeUser;
 
-
-
 // The self.firstTimeUser can't be saved here 
 -(id)initWithDictionary:(NSDictionary *)theDict
 {
@@ -93,6 +91,8 @@
     [string appendString:[NSString stringWithFormat:@"username=%@", self.username]];
     [string appendString:[NSString stringWithFormat:@"&"]];
     [string appendString:[NSString stringWithFormat:@"website=%@", [Utils getEscapedStringFromUnescapedString:self.website]]];
+    [string appendString:[NSString stringWithFormat:@"&"]];
+    [string appendString:[NSString stringWithFormat:@"firstTimeUser=%@", self.firstTimeUser]];
     
     return string;
 }
@@ -104,6 +104,7 @@
 
 +(InstagramUserObject *)getStoredUserObject
 {
+    NSLog(@"This is the Instagram Object: %@", [[GroupDiskManager sharedManager] loadDataFromDiskWithKey:CURRENT_USER_OBJECT_STORAGE_KEY]);
     return [[GroupDiskManager sharedManager] loadDataFromDiskWithKey:CURRENT_USER_OBJECT_STORAGE_KEY];
 }
 
@@ -125,6 +126,7 @@
     [string appendString:[NSString stringWithFormat:@"username: %@%@", self.username, endlineTerminator]];
     [string appendString:[NSString stringWithFormat:@"website: %@%@", self.website, endlineTerminator]];
     [string appendString:[NSString stringWithFormat:@"zencartID: %@%@", self.zencartID, endlineTerminator]];
+    [string appendString:[NSString stringWithFormat:@"firstTimeUser:%@%@", self.firstTimeUser, endlineTerminator]];
     return string;
 }
 

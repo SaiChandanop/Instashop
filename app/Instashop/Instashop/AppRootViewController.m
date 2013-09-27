@@ -81,7 +81,8 @@ float transitionTime = .456;
     [self.view addSubview:self.feedNavigationController.view];
     
     NSLog(@"This is the instagram first user object: %@", [InstagramUserObject getStoredUserObject].firstTimeUser);
-    if ([InstagramUserObject getStoredUserObject].firstTimeUser == nil) {
+    // The reason that this runs even though it is
+    if (([InstagramUserObject getStoredUserObject] != Nil) && [InstagramUserObject getStoredUserObject].firstTimeUser == nil) {
         
         self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
         self.firstTimeUserViewController.view.frame = CGRectMake(0, self.firstTimeUserViewController.view.frame.size.height, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);

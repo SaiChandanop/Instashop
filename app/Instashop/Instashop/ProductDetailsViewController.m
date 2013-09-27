@@ -219,7 +219,6 @@
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:instagramProductImageURLString withImageView:self.theImageView];
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
-    
 }
 
 - (IBAction) categoryButtonHit
@@ -288,8 +287,7 @@
     if (captionDictionary != nil)
         if (![captionDictionary isKindOfClass:[NSNull class]])
             self.titleTextView.text = [captionDictionary objectForKey:@"text"];
-        
-
+    
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
 }
