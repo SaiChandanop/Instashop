@@ -86,6 +86,7 @@
 +(void)getAllProductsWithDelegate:(id)delegate
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"get_products.php?requesting_seller_id=ALL"];
+    NSLog(@"urlRequestStringurlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"GET";
         
@@ -105,7 +106,8 @@
     
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
-        
+    
+//    NSLog(@"newStr: %@", newStr);
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
 //    NSLog(@"responseArray: %@", responseArray);
