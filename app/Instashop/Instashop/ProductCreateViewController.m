@@ -89,12 +89,17 @@
 
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
+    
+    [self previewDoneButtonHit:productCreateContainerObject];
+    
+    /*
     ProductPreviewViewController *productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
     productPreviewViewController.view.frame = CGRectMake(productPreviewViewController.view.frame.origin.x, productPreviewViewController.view.frame.origin.y, productPreviewViewController.view.frame.size.width, productPreviewViewController.view.frame.size.height);
     productPreviewViewController.parentController = self;
     productPreviewViewController.view.frame = productPreviewViewController.view.frame;
     [self.navigationController pushViewController:productPreviewViewController animated:YES];
     [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
+     */
  
 }
 
