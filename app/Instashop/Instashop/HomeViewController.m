@@ -78,10 +78,10 @@
 
 -(void)loadStates
 {
-    if ([InstagramUserObject getStoredUserObject].zencartID == nil)
+/*    if ([InstagramUserObject getStoredUserObject].zencartID == nil)
         self.sellerLabel.text = @"Become a Seller";
     else
-        self.sellerLabel.text = @"Create New Product";
+  */      self.sellerLabel.text = @"Create New Product";
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -97,13 +97,14 @@
 
 -(IBAction) sellerButtonHit
 {
-
+/*
     if ([InstagramUserObject getStoredUserObject].zencartID == nil)
     {
         [self.parentController createSellerButtonHit];
     }
     else
-       [self.parentController createProductButtonHit];
+  */
+    [self.parentController createProductButtonHit];
 }
 
 
