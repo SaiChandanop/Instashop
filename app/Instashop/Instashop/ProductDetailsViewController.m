@@ -123,7 +123,7 @@
     NSLog(@"productObject: %@", productObject);
     
     
-    self.titleTextView.text = [productObject objectForKey:@"products_name"];
+//    self.titleTextView.text = [productObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [productObject objectForKey:@"products_description"];
     self.retailPriceTextField.text = [productObject objectForKey:@"products_price"];
     self.instashopPriceTextField.text = [productObject objectForKey:@"products_list_price"];
@@ -220,6 +220,8 @@
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:instagramProductImageURLString withImageView:self.theImageView];
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
+    
+    NSLog(@"theDictionary: %@", theDictionary);
     
 }
 

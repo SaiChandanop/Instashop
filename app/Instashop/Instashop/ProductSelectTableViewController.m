@@ -189,7 +189,7 @@
     
     [self.contentArray addObjectsFromArray:sorted];
     
-    NSLog(@"contentArray: %@", contentArray);
+//    NSLog(@"contentArray: %@", contentArray);
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }
