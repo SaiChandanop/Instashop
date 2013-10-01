@@ -221,7 +221,7 @@
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
     
-    NSLog(@"theDictionary: %@", theDictionary);
+//    NSLog(@"theDictionary: %@", theDictionary);
     
 }
 
@@ -278,7 +278,7 @@
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
 {
-    NSLog(@"theDictionary: %@", theDictionary);
+ //   NSLog(@"theDictionary: %@", theDictionary);
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
     NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
     

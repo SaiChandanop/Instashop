@@ -43,6 +43,24 @@ static AttributesManager *theManager;
 }
 
 
+/*
+-(void)processAttributesString:(NSString *)myText
+{
+ 
+    Womens
+        Clothing
+            Coats & Jackets
+        Dresses
+        Lingerie
+        Pants
+        Shirts
+        Shorts
+        Skirts
+    
+    
+}*/
+
+
 -(void)processAttributesString:(NSString *)myText
 {
     NSLog(@"processAttributesString!");
@@ -150,6 +168,7 @@ static AttributesManager *theManager;
 
 -(NSArray *)getCategoriesWithArray:(NSArray *)theArray
 {
+//    NSLog(@"attributesDictionary: %@", self.attributesDictionary);
     NSDictionary *dict = nil;
     
     if ([theArray count] == 0)

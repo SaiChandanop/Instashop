@@ -14,8 +14,6 @@
                 <outlet property="descriptionTextView" destination="Jno-Ib-Cbd" id="ufc-jW-YIC"/>
                 <outlet property="instashopPriceContainerView" destination="pnS-Zp-Njq" id="6zb-tT-ZdP"/>
                 <outlet property="pricesView" destination="556" id="558"/>
-                <outlet property="retailPriceContainerView" destination="kn4-i3-kyr" id="mCb-iu-acQ"/>
-                <outlet property="retailPriceTextField" destination="471" id="486"/>
                 <outlet property="selectedCategoriesLabel" destination="536" id="542"/>
                 <outlet property="theImageView" destination="497" id="498"/>
                 <outlet property="titleTextView" destination="NWM-z8-r25" id="Qho-V8-1kQ"/>
@@ -91,35 +89,11 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" id="556" userLabel="Prices View">
-                    <rect key="frame" x="0.0" y="406" width="320" height="137"/>
+                    <rect key="frame" x="0.0" y="406" width="320" height="101"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <view contentMode="scaleToFill" id="kn4-i3-kyr" customClass="ISDarkRowContainerView">
-                            <rect key="frame" x="0.0" y="-8" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            <subviews>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Retail Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="470">
-                                    <rect key="frame" x="10" y="8" width="190" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="$0.00" textAlignment="right" minimumFontSize="17" id="471">
-                                    <rect key="frame" x="193" y="8" width="117" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <color key="textColor" red="0.99350649349999998" green="0.98701298699999995" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
-                                    <connections>
-                                        <outlet property="delegate" destination="-1" id="ahT-RX-YtA"/>
-                                    </connections>
-                                </textField>
-                            </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        </view>
                         <view contentMode="scaleToFill" id="pnS-Zp-Njq" customClass="ISLightRowContainerView">
-                            <rect key="frame" x="0.0" y="36" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="URL" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="477">
@@ -150,11 +124,11 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="554">
-                            <rect key="frame" x="0.0" y="80" width="320" height="5"/>
+                            <rect key="frame" x="0.0" y="44" width="320" height="5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="395">
-                            <rect key="frame" x="0.0" y="85" width="320" height="52"/>
+                            <rect key="frame" x="0.0" y="49" width="320" height="52"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.9314516129" alpha="1" colorSpace="calibratedWhite"/>
                             <fontDescription key="fontDescription" name="Helvetica-Light" family="Helvetica" pointSize="16"/>
