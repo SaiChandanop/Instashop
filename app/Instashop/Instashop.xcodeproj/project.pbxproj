@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		03B2BC8117FB49F600340C48 /* PurchaseWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03B2BC7F17FB49F600340C48 /* PurchaseWebViewController.m */; };
+		03B2BC8217FB49F600340C48 /* PurchaseWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03B2BC8017FB49F600340C48 /* PurchaseWebViewController.xib */; };
 		1903FF7017DA6D0800CD65F8 /* grow-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6717DA6D0800CD65F8 /* grow-graphic@2x.png */; };
 		1903FF7117DA6D0800CD65F8 /* grow-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6817DA6D0800CD65F8 /* grow-title@2x.png */; };
 		1903FF7217DA6D0800CD65F8 /* manage-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6917DA6D0800CD65F8 /* manage-graphic@2x.png */; };
@@ -269,6 +271,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		03B2BC7E17FB49F600340C48 /* PurchaseWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseWebViewController.h; sourceTree = "<group>"; };
+		03B2BC7F17FB49F600340C48 /* PurchaseWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseWebViewController.m; sourceTree = "<group>"; };
+		03B2BC8017FB49F600340C48 /* PurchaseWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PurchaseWebViewController.xib; sourceTree = "<group>"; };
 		1903FF6717DA6D0800CD65F8 /* grow-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grow-graphic@2x.png"; sourceTree = "<group>"; };
 		1903FF6817DA6D0800CD65F8 /* grow-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grow-title@2x.png"; sourceTree = "<group>"; };
 		1903FF6917DA6D0800CD65F8 /* manage-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manage-graphic@2x.png"; sourceTree = "<group>"; };
@@ -670,6 +675,9 @@
 		03B2BC7D17FB49DE00340C48 /* PurchaseWeb */ = {
 			isa = PBXGroup;
 			children = (
+				03B2BC7E17FB49F600340C48 /* PurchaseWebViewController.h */,
+				03B2BC7F17FB49F600340C48 /* PurchaseWebViewController.m */,
+				03B2BC8017FB49F600340C48 /* PurchaseWebViewController.xib */,
 			);
 			name = PurchaseWeb;
 			sourceTree = "<group>";
@@ -1850,6 +1858,7 @@
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
 				7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */,
 				2E628CAA17C6A19900CB7BE4 /* AppIcon29x29.png in Resources */,
+				03B2BC8217FB49F600340C48 /* PurchaseWebViewController.xib in Resources */,
 				7B0D253917CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1924,6 +1933,7 @@
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
 				7B260E8B17F0B56300F8F873 /* ViglinkSellViewController.m in Sources */,
 				7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */,
+				03B2BC8117FB49F600340C48 /* PurchaseWebViewController.m in Sources */,
 				7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
 				7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */,
