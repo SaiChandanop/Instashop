@@ -57,6 +57,8 @@
 
 - (void) loadContentViews;
 
+- (void)webControllerBackButtonHit;
+
 
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
 

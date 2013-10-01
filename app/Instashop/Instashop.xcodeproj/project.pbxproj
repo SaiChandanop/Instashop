@@ -667,6 +667,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		03B2BC7D17FB49DE00340C48 /* PurchaseWeb */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = PurchaseWeb;
+			sourceTree = "<group>";
+		};
 		1903FF6617DA6CF500CD65F8 /* CreateSellerPNG */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,6 +838,7 @@
 		7B0680CA17664BC2009154BF /* Buy */ = {
 			isa = PBXGroup;
 			children = (
+				03B2BC7D17FB49DE00340C48 /* PurchaseWeb */,
 				7B602DAE1766709800663A73 /* Address */,
 				7B602DAF1766709E00663A73 /* Complete */,
 				7B602D9E17664F1700663A73 /* PurchasingViewController.h */,
