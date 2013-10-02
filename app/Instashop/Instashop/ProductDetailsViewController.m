@@ -107,6 +107,9 @@
 
 
     self.descriptionTextView.textColor = [UIColor lightGrayColor];
+    
+    self.addSizeButton.alpha = 0;
+    [self.addSizeButton removeFromSuperview];
 }
 
 
