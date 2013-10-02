@@ -150,12 +150,10 @@ static AttributesManager *theManager;
         
     }
     
-    NSLog(@"attributesDict: %@", attributesDict);
+
     
     NSDictionary *artDict = [attributesDict objectForKey:@"Art"];
     NSDictionary *postersDict = [artDict objectForKey:@"Posters"];
-    NSLog(@"artDict: %@", artDict);
-    NSLog(@"postersDict: %@", postersDict);
 
     [self.attributesDictionary setDictionary:attributesDict];
     

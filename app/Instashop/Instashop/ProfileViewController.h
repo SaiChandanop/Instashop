@@ -46,6 +46,7 @@
     
     
     ProductSelectTableViewController *productSelectTableViewController;
+    ProductSelectTableViewController *favoritesSelectTableViewController;
     UITableView *theTableView;
     UILabel *titleViewLabel;
     
@@ -99,6 +100,7 @@
 
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
+@property (nonatomic, retain) IBOutlet ProductSelectTableViewController *favoritesSelectTableViewController;
 @property (nonatomic, retain) IBOutlet UITableView *theTableView;
 
 @property (nonatomic, retain) UILabel *titleViewLabel;
