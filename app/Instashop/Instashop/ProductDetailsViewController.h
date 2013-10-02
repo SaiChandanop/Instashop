@@ -53,8 +53,10 @@
     
     UIView *pricesView;
     
+    UIImageView *facebookButtonImageView;
+    UIImageView *twitterButtonImageView;
     
-    
+    UIButton *nextButton;
 }
 
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID;
@@ -69,6 +71,9 @@
 - (void) updateLayout;
 
 - (IBAction) urlButtonHit;
+
+- (IBAction) facebookButtonHit;
+- (IBAction) twitterButtonHit;
 
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;
@@ -107,5 +112,9 @@
 
 @property (nonatomic, retain) IBOutlet UIView *pricesView;
 
+@property (nonatomic, retain) IBOutlet UIImageView *facebookButtonImageView;
+@property (nonatomic, retain) IBOutlet UIImageView *twitterButtonImageView;
+
+@property (nonatomic, retain) IBOutlet UIButton *nextButton;
 
 @end

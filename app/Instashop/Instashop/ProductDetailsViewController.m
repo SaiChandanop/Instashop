@@ -47,6 +47,10 @@
 @synthesize editingProductObject;
 @synthesize urlLabel;
 
+@synthesize facebookButtonImageView;
+@synthesize twitterButtonImageView;
+
+@synthesize nextButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -89,7 +93,7 @@
     [self.containerScrollView  insertSubview:self.sizeQuantityTableViewController.tableView belowSubview:self.pricesView];
     
     
-    self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.pricesView.frame.size.height);
+    self.containerScrollView.contentSize = CGSizeMake(0, self.nextButton.frame.origin.y + self.nextButton.frame.size.height);
     
     self.originalPriceViewRect = self.pricesView.frame;
     
@@ -561,6 +565,18 @@
     return returnValue;
     
 }
+
+- (IBAction) facebookButtonHit
+{
+    NSLog(@"facebookButtonHit");
+}
+
+- (IBAction) twitterButtonHit
+{
+    NSLog(@"twitterButtonHit");
+}
+
+
 
 -(void)resignResponders
 {
