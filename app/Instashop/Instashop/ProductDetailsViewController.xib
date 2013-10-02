@@ -102,22 +102,28 @@
                     <rect key="frame" x="1" y="406" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="S2Z-26-cdB">
-                            <rect key="frame" x="12" y="7" width="141" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="S2Z-26-cdB">
+                            <rect key="frame" x="0.0" y="0.0" width="160" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Facebook">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <state key="normal" title="Facebook  " image="facebook_off.png" backgroundImage="Menu_BG.png">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="selected" image="facebook_on.png" backgroundImage="Menu_BG.png"/>
                             <connections>
                                 <action selector="facebookButtonHit" destination="-1" eventType="touchUpInside" id="ZaH-dU-KPA"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eXS-7E-IRt">
-                            <rect key="frame" x="161" y="7" width="141" height="30"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eXS-7E-IRt">
+                            <rect key="frame" x="160" y="0.0" width="160" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <state key="normal" title="Twitter">
+                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                            <state key="normal" title="Twitter  " image="twitter_off.png" backgroundImage="Menu_BG.png">
+                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <state key="selected" image="twitter_on.png" backgroundImage="Menu_BG.png"/>
                             <connections>
                                 <action selector="twitterButtonHit" destination="-1" eventType="touchUpInside" id="5YB-xf-a3v"/>
                             </connections>
@@ -174,7 +180,12 @@
         </scrollView>
     </objects>
     <resources>
+        <image name="Menu_BG.png" width="320" height="548"/>
         <image name="cell_separator.png" width="320" height="5"/>
+        <image name="facebook_off.png" width="44" height="44"/>
+        <image name="facebook_on.png" width="44" height="44"/>
         <image name="top_shadow.png" width="320" height="50"/>
+        <image name="twitter_off.png" width="44" height="44"/>
+        <image name="twitter_on.png" width="44" height="44"/>
     </resources>
 </document>
