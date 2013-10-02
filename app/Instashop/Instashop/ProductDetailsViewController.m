@@ -526,8 +526,9 @@
     if (theURLString != nil)
     {
         self.urlLabel.text = [theURLString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
-        [self.navigationController dismissViewControllerAnimated:YES completion:nil];
     }
+    
+    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
