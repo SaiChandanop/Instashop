@@ -41,29 +41,38 @@ static AttributesManager *theManager;
     }
     return theManager;
 }
-
-
 /*
 -(void)processAttributesString:(NSString *)myText
 {
+    NSMutableDictionary *retDict = [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    
+    NSMutableDictionary *womensDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"z"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Dresses"];
+    
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Lingerie"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Pants"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Shirts"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Shorts"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Skirts"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Dresses"];
+    
+    [retDict setObject:womensDictionary forKey:@"Womens"];
+    
  
-    Womens
-        Clothing
-            Coats & Jackets
-        Dresses
-        Lingerie
-        Pants
-        Shirts
-        Shorts
-        Skirts
+    NSLog(@"retDict: %@", retDict);
+    [self.attributesDictionary setDictionary:retDict];
+ 
     
-    
-}*/
-
-
+}
+*/
 -(void)processAttributesString:(NSString *)myText
 {
-    NSLog(@"processAttributesString!");
+
+//    [self AprocessAttributesString:myText];
     NSArray *linesArray = [myText componentsSeparatedByString:@"\n"];
     //        NSLog(@"linesArray: %@", linesArray);
     
@@ -141,8 +150,13 @@ static AttributesManager *theManager;
         
     }
     
-    ///        NSLog(@"attributesDict: %@", attributesDict);
+    NSLog(@"attributesDict: %@", attributesDict);
     
+    NSDictionary *artDict = [attributesDict objectForKey:@"Art"];
+    NSDictionary *postersDict = [artDict objectForKey:@"Posters"];
+    NSLog(@"artDict: %@", artDict);
+    NSLog(@"postersDict: %@", postersDict);
+
     [self.attributesDictionary setDictionary:attributesDict];
     
 }
