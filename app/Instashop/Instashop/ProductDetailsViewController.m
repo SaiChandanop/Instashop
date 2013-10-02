@@ -47,8 +47,8 @@
 @synthesize editingProductObject;
 @synthesize urlLabel;
 
-@synthesize facebookButtonImageView;
-@synthesize twitterButtonImageView;
+@synthesize facebookButton;
+@synthesize twitterButton;
 
 @synthesize nextButton;
 

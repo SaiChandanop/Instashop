@@ -53,8 +53,9 @@
     
     UIView *pricesView;
     
-    UIImageView *facebookButtonImageView;
-    UIImageView *twitterButtonImageView;
+
+    UIButton *facebookButton;
+    UIButton *twitterButton;
     
     UIButton *nextButton;
 }
@@ -112,8 +113,9 @@
 
 @property (nonatomic, retain) IBOutlet UIView *pricesView;
 
-@property (nonatomic, retain) IBOutlet UIImageView *facebookButtonImageView;
-@property (nonatomic, retain) IBOutlet UIImageView *twitterButtonImageView;
+@property (nonatomic, retain) IBOutlet UIButton *facebookButton;
+@property (nonatomic, retain) IBOutlet UIButton *twitterButton;
+
 
 @property (nonatomic, retain) IBOutlet UIButton *nextButton;
 
