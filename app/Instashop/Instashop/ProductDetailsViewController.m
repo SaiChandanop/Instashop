@@ -297,7 +297,8 @@
     
     if (captionDictionary != nil)
         if (![captionDictionary isKindOfClass:[NSNull class]])
-            self.titleTextView.text = [captionDictionary objectForKey:@"text"];
+            self.descriptionTextView.text = [captionDictionary objectForKey:@"text"];
+            //self.titleTextView.text = [captionDictionary objectForKey:@"text"];
         
 
     self.instragramMediaInfoDictionary = theDictionary;

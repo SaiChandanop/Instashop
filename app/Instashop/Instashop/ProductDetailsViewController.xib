@@ -16,7 +16,6 @@
                 <outlet property="nextButton" destination="hEV-gH-EDR" id="7XK-xr-vIU"/>
                 <outlet property="selectedCategoriesLabel" destination="536" id="542"/>
                 <outlet property="theImageView" destination="497" id="498"/>
-                <outlet property="titleTextView" destination="NWM-z8-r25" id="Qho-V8-1kQ"/>
                 <outlet property="twitterButton" destination="eXS-7E-IRt" id="gUO-gQ-xQV"/>
                 <outlet property="urlLabel" destination="RYv-Fm-h3E" id="oEE-xZ-yFu"/>
                 <outlet property="view" destination="1" id="489"/>
@@ -126,14 +125,6 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
-                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="NWM-z8-r25">
-                    <rect key="frame" x="20" y="5" width="280" height="50"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                </textView>
                 <view contentMode="scaleToFill" id="pnS-Zp-Njq" customClass="ISLightRowContainerView">
                     <rect key="frame" x="1" y="359" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
