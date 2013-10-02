@@ -52,8 +52,10 @@
     UILabel *urlLabel;
     
     UIView *pricesView;
-    
 
+    ISLightRowContainerView *urlContainerView;
+
+    ISLightRowContainerView *socialButtonContainerView;
     UIButton *facebookButton;
     UIButton *twitterButton;
     
@@ -113,6 +115,9 @@
 
 @property (nonatomic, retain) IBOutlet UIView *pricesView;
 
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *urlContainerView;
+
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *socialButtonContainerView;
 @property (nonatomic, retain) IBOutlet UIButton *facebookButton;
 @property (nonatomic, retain) IBOutlet UIButton *twitterButton;
 

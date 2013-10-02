@@ -47,6 +47,9 @@
 @synthesize editingProductObject;
 @synthesize urlLabel;
 
+@synthesize urlContainerView;
+
+@synthesize socialButtonContainerView;
 @synthesize facebookButton;
 @synthesize twitterButton;
 
@@ -470,11 +473,13 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    NSLog(@"shouldChangeTextInRange");
+    float verticaloffset = 6;
     if (textView == self.descriptionTextView)
     {
         
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:.2];
+//        [UIView beginAnimations:nil context:nil];
+ //       [UIView setAnimationDuration:.2];
 
         
         
@@ -485,23 +490,20 @@
         textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height);
 
         self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textFrame.size.height + 13);
+
         self.descriptionContainerView.backgroundImageView.frame = CGRectMake(0, 0, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height);
 
+        self.urlContainerView.frame = CGRectMake(self.urlContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height, self.urlContainerView.frame.size.width, self.urlContainerView.frame.size.height);
+        
+        
+        self.socialButtonContainerView.frame = CGRectMake(self.socialButtonContainerView.frame.origin.x, self.urlContainerView.frame.origin.y + self.urlContainerView.frame.size.height + 40, self.socialButtonContainerView.frame.size.width, self.socialButtonContainerView.frame.size.height);
 
+        self.categoriesContainerView.frame = CGRectMake(self.categoriesContainerView.frame.origin.x, self.socialButtonContainerView.frame.origin.y + self.socialButtonContainerView.frame.size.height + verticaloffset, self.categoriesContainerView.frame.size.width, self.categoriesContainerView.frame.size.height);
 
-        self.categoriesContainerView.frame = CGRectMake(self.categoriesContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height, self.categoriesContainerView.frame.size.width, self.categoriesContainerView.frame.size.height);
-
+        self.nextButton.frame = CGRectMake(self.nextButton.frame.origin.x, self.categoriesContainerView.frame.origin.y + self.categoriesContainerView.frame.size.height + verticaloffset, self.nextButton.frame.size.width, self.nextButton.frame.size.height);
         
-        
-        self.sizeQuantityTableViewController.tableView.frame = CGRectMake(self.sizeQuantityTableViewController.tableView.frame.origin.x, self.categoriesContainerView.frame.origin.y + self.categoriesContainerView.frame.size.height + 8, self.sizeQuantityTableViewController.tableView.frame.size.width, self.sizeQuantityTableViewController.tableView.frame.size.height);
-        
-        
-        self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height, self.sizeQuantityTableViewController.tableView.frame.size.width, self.addSizeButton.frame.size.height);
-                                                                          
-        self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.addSizeButton.frame.origin.y + self.addSizeButton.frame.size.height, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
-        
-        self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.pricesView.frame.size.height + 1);
-        [UIView commitAnimations];
+        self.containerScrollView.contentSize = CGSizeMake(0, self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 1);
+//        [UIView commitAnimations];
 
     }
 
@@ -567,6 +569,7 @@
     return returnValue;
     
 }
+
 
 - (IBAction) facebookButtonHit
 {
