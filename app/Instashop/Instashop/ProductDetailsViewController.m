@@ -115,6 +115,9 @@
 
     self.descriptionTextView.textColor = [UIColor lightGrayColor];
     
+    self.facebookButton.selected = NO;
+    self.twitterButton.selected = NO;
+    
     self.addSizeButton.alpha = 0;
     [self.addSizeButton removeFromSuperview];
 }
@@ -574,11 +577,13 @@
 - (IBAction) facebookButtonHit
 {
     NSLog(@"facebookButtonHit");
+    self.facebookButton.selected = !self.facebookButton.selected;
 }
 
 - (IBAction) twitterButtonHit
 {
     NSLog(@"twitterButtonHit");
+    self.twitterButton.selected = !self.twitterButton.selected;
 }
 
 

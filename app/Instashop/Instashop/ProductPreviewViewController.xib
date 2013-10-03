@@ -151,9 +151,6 @@
     </objects>
     <resources>
         <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>
