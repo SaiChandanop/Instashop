@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -148,11 +148,11 @@
                     </subviews>
                 </scrollView>
                 <view contentMode="scaleToFill" id="B12-y8-tzH">
-                    <rect key="frame" x="0.0" y="462" width="320" height="58"/>
+                    <rect key="frame" x="0.0" y="470" width="320" height="50"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <view contentMode="scaleToFill" id="85">
-                            <rect key="frame" x="0.0" y="8" width="320" height="50"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="#left" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="104">
@@ -195,11 +195,12 @@
                             <color key="backgroundColor" white="0.90000000000000002" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="269">
-                            <rect key="frame" x="122" y="0.0" width="77" height="58"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                            <state key="normal" image="buybutton.png">
-                                <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <color key="backgroundColor" red="0.38431372549999998" green="0.70980392160000005" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <state key="normal" title="BUY">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <state key="highlighted">
@@ -218,9 +219,11 @@
         </view>
     </objects>
     <resources>
-        <image name="buybutton.png" width="76" height="58"/>
+        <image name="cell_separator.png" width="320" height="5"/>
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="top_shadow.png" width="320" height="50"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>
