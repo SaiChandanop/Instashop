@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -220,10 +220,7 @@
     <resources>
         <image name="buybutton.png" width="76" height="58"/>
         <image name="cell_separator.png" width="320" height="5"/>
-        <image name="cell_separator.png" width="320" height="5"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="top_shadow.png" width="320" height="50"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>
