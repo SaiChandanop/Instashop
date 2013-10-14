@@ -87,7 +87,7 @@
     self.descriptionTextView.text = @"";
     
     
-    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarShopsyLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
     self.heartImageView.image = [UIImage imageNamed:@"heart.png"];

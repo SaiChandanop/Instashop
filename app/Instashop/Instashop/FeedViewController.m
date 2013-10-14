@@ -75,7 +75,7 @@
     self.navigationItem.rightBarButtonItem = discoverBarButtonItem;
 
 
-    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarShopsyLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
     self.productSelectTableViewController.cellDelegate = self;
