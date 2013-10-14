@@ -10,6 +10,7 @@
 #import "CIALBrowserViewController.h"
 #import "UIWebViewAdditions.h"
 #import "UnpreventableUILongPressGestureRecognizer.h"
+#import "ISConstants.h"
 
 @interface CIALBrowserViewController ()
 - (void)addBookmark;
@@ -84,6 +85,7 @@
                                                            style:UIBarButtonItemStylePlain
                                                           target:self
                                                           action:@selector(goBack:)] autorelease];
+
         forwardButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserForward.png"]
                                                               style:UIBarButtonItemStylePlain
                                                              target:self
@@ -91,6 +93,8 @@
         UIBarButtonItem *bookmarkButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
                                                                                              target:self
                                                                                              action:@selector(viewBookmark:)] autorelease];
+        [bookmarkButtonItem setTintColor:[UIColor blackColor]];
+        
         actionButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                           target:self
                                                                           action:@selector(actionButton:)] autorelease];
@@ -228,6 +232,8 @@
                                                                                              target:self
                                                                                              action:@selector(viewBookmark:)] autorelease];
         
+        [bookmarkButtonItem setTintColor:[UIColor blackColor]];
+        
         [buttons addObject:flexibleSpaceButtonItem];
         [buttons addObject:backButtonItem];
         [buttons addObject:flexibleSpaceButtonItem];
@@ -250,6 +256,9 @@
         [self.view addSubview:webView];
         [webView release];
     }
+    
+//    [bookmarkButtonItem setTintColor:[UIColor blackColor]];
+    [actionButtonItem setTintColor:[UIColor blackColor]];
 
     // Create a long press recognizer for handling links long press
     UnpreventableUILongPressGestureRecognizer *longPressRecognizer = [[UnpreventableUILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressRecognized:)];
@@ -267,7 +276,7 @@
     NSLog(@"self.initialHTMLContent: %@", self.initialHTMLContent);
     if (self.initialHTMLContent != nil)
     {
-        webView.frame = CGRectMake(webView.frame.origin.x, navigationBar.frame.origin.y, webView.frame.size.width, webView.frame.size.height + navigationBar.frame.size.height);
+        webView.frame = CGRectMake(webView.frame.origin.x, navigationBar.frame.origin.y, webView.frame.size.width, webView.frame.size.height + navigationBar.frame.size.height + 5);
         [navigationBar removeFromSuperview];
         [webView loadHTMLString:self.initialHTMLContent baseURL:initialURL];
         
@@ -276,6 +285,8 @@
     NSLog(@"locationField: %@", locationField);
 
     [locationField resignFirstResponder];
+    
+    self.view.backgroundColor = [ISConstants getISGreenColor];
 }
 
 - (void)dealloc {
