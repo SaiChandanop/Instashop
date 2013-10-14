@@ -22,13 +22,11 @@
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
-		2E0EAE08176F6E6700B65FC3 /* toolbarISLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */; };
+		2E0EAE08176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE4176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png */; };
 		2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE5176F6E6700B65FC3 /* toolbarBG@2x.png */; };
 		2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE6176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png */; };
 		2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE7176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png */; };
 		2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE8176F6E6700B65FC3 /* setShippingIcon@2x.png.png */; };
-		2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE9176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png */; };
-		2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADEA176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png */; };
 		2E0EAE0F176F6E6700B65FC3 /* setPersonalIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADEB176F6E6700B65FC3 /* setPersonalIcon@2x.png.png */; };
 		2E0EAE10176F6E6700B65FC3 /* setLogOutIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADEC176F6E6700B65FC3 /* setLogOutIcon@2x.png.png */; };
 		2E0EAE11176F6E6700B65FC3 /* setFacebook_OnIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADED176F6E6700B65FC3 /* setFacebook_OnIcon@2x.png.png */; };
@@ -294,13 +292,11 @@
 		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
-		2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarISLogo@2x.png"; sourceTree = "<group>"; };
+		2E0EADE4176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarShopsyLogo@2x.png"; sourceTree = "<group>"; };
 		2E0EADE5176F6E6700B65FC3 /* toolbarBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarBG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE6176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setTwitter_OffIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADE7176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setTwitter_OnIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADE8176F6E6700B65FC3 /* setShippingIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setShippingIcon@2x.png.png"; sourceTree = "<group>"; };
-		2E0EADE9176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setPinterest_OffIcon@2x.png.png"; sourceTree = "<group>"; };
-		2E0EADEA176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setPinterest_OnIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADEB176F6E6700B65FC3 /* setPersonalIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setPersonalIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADEC176F6E6700B65FC3 /* setLogOutIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setLogOutIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADED176F6E6700B65FC3 /* setFacebook_OnIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setFacebook_OnIcon@2x.png.png"; sourceTree = "<group>"; };
@@ -799,13 +795,11 @@
 				2E0EADEE176F6E6700B65FC3 /* setInviteFriendIcon@2x.png.png */,
 				2E0EADEC176F6E6700B65FC3 /* setLogOutIcon@2x.png.png */,
 				2E0EADEB176F6E6700B65FC3 /* setPersonalIcon@2x.png.png */,
-				2E0EADE9176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png */,
-				2E0EADEA176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png */,
 				2E0EADE8176F6E6700B65FC3 /* setShippingIcon@2x.png.png */,
 				2E0EADE6176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png */,
 				2E0EADE7176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png */,
 				2E0EADE5176F6E6700B65FC3 /* toolbarBG@2x.png */,
-				2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */,
+				2E0EADE4176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png */,
 				2EB259AC1767B3280054618D /* top_shadow@2x.png */,
 				2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */,
 				2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */,
@@ -1775,7 +1769,7 @@
 				2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */,
 				2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */,
 				2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */,
-				2E0EAE08176F6E6700B65FC3 /* toolbarISLogo@2x.png in Resources */,
+				2E0EAE08176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png in Resources */,
 				2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */,
 				2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */,
 				2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */,
@@ -1783,8 +1777,6 @@
 				2E7CFF9717C3A98500657CFC /* gray_x@2x.png in Resources */,
 				2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */,
 				2E41683D17CE7403002850BD /* add_product@2x.png in Resources */,
-				2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */,
-				2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */,
 				1903FF7417DA6D0800CD65F8 /* share-graphic@2x.png in Resources */,
 				2E1B437B17CFECEA00B28603 /* follow_btn_background@2x.png in Resources */,
 				2E8007C217D1631400489639 /* following_btn_background@2x.png in Resources */,
