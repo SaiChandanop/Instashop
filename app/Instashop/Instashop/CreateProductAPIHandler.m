@@ -14,6 +14,7 @@
 
 +(void)createProductContainerObject:(id)delegate withProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
+    
     ProductCreateObject *theProductCreateObject = productCreateContainerObject.mainObject;
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"create_product.php"];
@@ -22,6 +23,15 @@
     
     InstagramUserObject *userInstagramObject = [InstagramUserObject getStoredUserObject];
     
+    NSMutableString *productCategoriesString = [NSMutableString stringWithCapacity:0];
+    
+    for (int i = 0; i < [productCreateContainerObject.mainObject.categoriesArray count]; i++)
+    {
+        [productCategoriesString appendString:[productCreateContainerObject.mainObject.categoriesArray objectAtIndex:i]];
+        if (i != [productCreateContainerObject.mainObject.categoriesArray count] - 1)
+            [productCategoriesString appendString:@"!!"];
+            
+    }
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:@"create_type=product_object&"];
@@ -30,6 +40,7 @@
     [postString appendString:[NSString stringWithFormat:@"object_title=%@&", theProductCreateObject.title]];
     [postString appendString:[NSString stringWithFormat:@"object_description=%@&", theProductCreateObject.description]];
     [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", theProductCreateObject.quantity]];
+    [postString appendString:[NSString stringWithFormat:@"object_categories=%@&", productCategoriesString]];
     
 //    [postString appendString:[NSString stringWithFormat:@"object_price=%@&", [theProductCreateObject.retailPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
 //    [postString appendString:[NSString stringWithFormat:@"object_list_price=%@&", [theProductCreateObject.listPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
@@ -43,6 +54,7 @@
     [postString appendString:[NSString stringWithFormat:@"object_external_url=%@&", theProductCreateObject.referenceURLString]];
     
     NSLog(@"!!theProductCreateObject.referenceURLString: %@", theProductCreateObject.referenceURLString);
+    NSLog(@"postString: %@", postString);
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     

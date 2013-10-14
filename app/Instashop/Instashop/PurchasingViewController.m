@@ -290,6 +290,7 @@
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
+    NSLog(@"theArray: %@", theArray);
     if ([theArray count] > 0)
         self.requestedProductObject = [theArray objectAtIndex:0];
     
