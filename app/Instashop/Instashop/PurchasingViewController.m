@@ -22,7 +22,6 @@
 #import "MBProgressHUD.h"
 #import "CreateProductAPIHandler.h"
 #import "EditProductCompleteProtocol.h"
-#import "PurchaseWebViewController.h"
 #import "CIALBrowserViewController.h"
 #import "ViglinkAPIHandler.h"
 @interface PurchasingViewController ()
@@ -317,8 +316,6 @@
     browserViewController.initialHTMLContent = htmlString;
     
     NSString *urlString = [self.requestedProductObject objectForKey:@"products_external_url"];
-    if ([urlString rangeOfString:@"http://"].length == 0)
-        urlString = [NSString stringWithFormat:@"http://%@", urlString];
     
     browserViewController.initialURL = [NSURL URLWithString:urlString];
     [self.navigationController pushViewController:browserViewController animated:YES];

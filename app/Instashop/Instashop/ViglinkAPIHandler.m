@@ -18,7 +18,7 @@
     [urlRequestString appendString:[NSString stringWithFormat:@"key=%@", @"603bf197cf154d2916539b465ba2895e"]];
     [urlRequestString appendString:[NSString stringWithFormat:@"&loc=%@", theURLString]];
     [urlRequestString appendString:[NSString stringWithFormat:@"&out=%@", theURLString]];
-//    [urlRequestString appendString:[NSString stringWithFormat:@"&format=%@", @"jsonp"]];
+    [urlRequestString appendString:[NSString stringWithFormat:@"&format=%@", @"text"]];
     
 
 //    API Key: 603bf197cf154d2916539b465ba2895e
@@ -43,7 +43,7 @@
 {
     NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
-//    NSLog(@"viglinkCallReturned: %@", responseString);
+    NSLog(@"viglinkCallReturned: %@", responseString);
     [self.delegate viglinkCallReturned:responseString];
 }
 @end

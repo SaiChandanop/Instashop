@@ -21,7 +21,6 @@
 #import "DiscoverViewController.h"
 #import "SearchViewController.h"
 #import "FirstTimeUserViewController.h"
-#import "ViglinkSellViewController.h"
 
 
 @implementation AppRootViewController
@@ -105,8 +104,7 @@ float transitionTime = .456;
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-    ViglinkSellViewController *viglinkSellViewController = [[ViglinkSellViewController alloc] initWithNibName:@"ViglinkSellViewController" bundle:nil];
-//    [self.view addSubview:viglinkSellViewController.view];
+
     
 }
 

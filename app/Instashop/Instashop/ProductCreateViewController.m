@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 #import "NavBarTitleView.h"
 #import "ProductAPIHandler.h"
-#import "ViglinkSellViewController.h"
+
 @interface ProductCreateViewController ()
 
 @end

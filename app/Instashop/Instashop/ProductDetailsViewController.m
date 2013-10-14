@@ -16,7 +16,6 @@
 #import "NavBarTitleView.h"
 #import "AppDelegate.h"
 #import "ProductAPIHandler.h"
-#import "ViglinkSellViewController.h"
 #import "CIALBrowserViewController.h"
 @interface ProductDetailsViewController ()
 
@@ -542,15 +541,13 @@
 {
     NSLog(@"self.browserViewController.locationField.url: %@", self.browserViewController.url);
     
+    self.urlLabel.text = [self.browserViewController.url absoluteString];
     [self linkSelectedWithURLString:[self.browserViewController.url absoluteString]];
 }
 -(void) linkSelectedWithURLString:(NSString *)theURLString
 {
     NSLog(@"theURLString: %@", theURLString);
-    if (theURLString != nil)
-    {
-        self.urlLabel.text = [theURLString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
-    }
+
     [self.navigationController popViewControllerAnimated:YES];
 //    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }

@@ -262,7 +262,9 @@
     
     NSLog(@"webview: %@", webView);
     NSLog(@"self.webview: %@", self.webView);
-    NSLog(@"initialURL: %@", self.initialURL);
+//    NSLog(@"initialURL: %@", self.initialURL);
+    
+    NSLog(@"self.initialHTMLContent: %@", self.initialHTMLContent);
     if (self.initialHTMLContent != nil)
     {
         webView.frame = CGRectMake(webView.frame.origin.x, navigationBar.frame.origin.y, webView.frame.size.width, webView.frame.size.height + navigationBar.frame.size.height);
