@@ -35,7 +35,6 @@
 @synthesize profileImageView;
 @synthesize usernameLabel;
 @synthesize sellerButtonsView;
-@synthesize buyerButtonsView;
 @synthesize sellerProductsButton, sellerInfoButton, sellerReviewsButton;
 @synthesize sellerButtonHighlightView;
 @synthesize buyerFavoritesButton;

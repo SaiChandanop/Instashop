@@ -12,8 +12,6 @@
                 <outlet property="backgroundImageView" destination="uUu-tP-DTR" id="sNn-qt-g3h"/>
                 <outlet property="bioContainerImageView" destination="JDN-mM-c24" id="MJe-Rg-iBO"/>
                 <outlet property="bioLabel" destination="59J-Xc-gnZ" id="dMq-2I-BuF"/>
-                <outlet property="buyerButtonHighlightView" destination="C2T-NL-Bzu" id="Dkl-3o-KjQ"/>
-                <outlet property="buyerButtonsView" destination="RL3-QZ-KZp" id="VqF-GE-ciU"/>
                 <outlet property="buyerFavoritesButton" destination="ZNf-Le-k0Y" id="3bE-lB-vTr"/>
                 <outlet property="categoryLabel" destination="CBD-8G-E68" id="Wvp-y1-w6o"/>
                 <outlet property="descriptionLabel" destination="M0c-sH-xWq" id="r5m-az-8Sw"/>
@@ -21,12 +19,10 @@
                 <outlet property="followButton" destination="Eqt-pa-nKB" id="eaN-xw-iQA"/>
                 <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
                 <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
-                <outlet property="infoButton" destination="Y1m-tI-oLk" id="JbW-xT-R7J"/>
                 <outlet property="infoContainerScrollView" destination="z26-Ac-txH" id="sDF-9T-NOB"/>
                 <outlet property="productSelectTableViewController" destination="7F9-di-1kk" id="dWx-NX-xgu"/>
                 <outlet property="profileBackgroundPhotoButton" destination="TvE-Jz-6Ul" id="zNT-zV-SVE"/>
                 <outlet property="profileImageView" destination="RHM-oM-kVi" id="P34-lA-dJo"/>
-                <outlet property="reviewsButton" destination="NTQ-U5-mGl" id="x0T-05-8Q6"/>
                 <outlet property="sellerButtonHighlightView" destination="ab7-af-cdJ" id="Cop-ke-rQe"/>
                 <outlet property="sellerButtonsView" destination="Mg9-br-9gn" id="dz3-fS-2tN"/>
                 <outlet property="sellerInfoButton" destination="YZG-hB-owP" id="29u-Fh-47j"/>
@@ -37,79 +33,6 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="RL3-QZ-KZp" userLabel="View - Non-seller Content Buttons">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="52"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Menu_BG.png" id="rEc-Gw-RIH">
-                    <rect key="frame" x="0.0" y="5" width="320" height="42"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_separator.png" id="hpV-Iw-iAr">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_separator.png" id="X82-cu-DwB">
-                    <rect key="frame" x="0.0" y="47" width="320" height="5"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="gnT-LL-BbX">
-                    <rect key="frame" x="0.0" y="5" width="107" height="42"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Favorites" backgroundImage="menuLightBG.png">
-                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="favoritesButtonHit" destination="-1" eventType="touchUpInside" id="dNF-dU-zoW"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="NTQ-U5-mGl">
-                    <rect key="frame" x="213" y="5" width="107" height="42"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Reviews" backgroundImage="menuLightBG.png">
-                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="reviewsButtonHit" destination="-1" eventType="touchUpInside" id="NWC-mK-3ZN"/>
-                    </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="Y1m-tI-oLk">
-                    <rect key="frame" x="107" y="5" width="106" height="42"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Info" backgroundImage="menuDarkBG.png">
-                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <state key="selected">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="infoButtonHit" destination="-1" eventType="touchUpInside" id="PnG-Wp-jMz"/>
-                    </connections>
-                </button>
-                <view contentMode="scaleToFill" id="C2T-NL-Bzu">
-                    <rect key="frame" x="0.0" y="45" width="107" height="2"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                </view>
-            </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-        </view>
         <view contentMode="scaleToFill" id="1">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
