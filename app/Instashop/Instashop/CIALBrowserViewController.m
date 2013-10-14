@@ -31,6 +31,7 @@
 @synthesize actionActionSheet = _actionActionSheet;
 @synthesize modal = _modal;
 @synthesize enabledSafari = _enabledSafari;
+@synthesize initialHTMLContent;
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url
 {
@@ -253,7 +254,14 @@
     longPressRecognizer.allowableMovement = 20;
     longPressRecognizer.minimumPressDuration = 1.0f;
     [webView addGestureRecognizer:longPressRecognizer];
-    [longPressRecognizer release]; 
+    [longPressRecognizer release];
+    
+    NSLog(@"self.initialHTMLContent: %@", self.initialHTMLContent);
+    
+    NSLog(@"webview: %@", webView);
+    NSLog(@"self.webview: %@", self.webView);
+    if (self.initialHTMLContent != nil)
+        [webView loadHTMLString:self.initialHTMLContent baseURL:[NSURL URLWithString:@""]];
 }
 
 - (void)dealloc {

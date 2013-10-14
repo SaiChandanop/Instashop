@@ -24,6 +24,7 @@
 #import "EditProductCompleteProtocol.h"
 #import "PurchaseWebViewController.h"
 #import "CIALBrowserViewController.h"
+#import "ViglinkAPIHandler.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -312,11 +313,32 @@
     [self.navigationController pushViewController:purchaseWebViewController animated:YES];
     
 */
-    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
+    
+    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    
+    
+    /*
+     CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
     
     [self.navigationController pushViewController:browserViewController animated:YES];
     [browserViewController openThisURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
+     
+     */
     
+}
+
+-(void)viglinkCallReturned:(NSString *)htmlString
+{
+//    NSLog(@"!!!viglinkCallReturned: %@", htmlString);
+
+    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
+    browserViewController.initialHTMLContent = htmlString;
+    [self.navigationController pushViewController:browserViewController animated:YES];
+//    [browserViewController openThisURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
+
+     
+
+     
 }
 
 -(IBAction)buyButtonHitBAK

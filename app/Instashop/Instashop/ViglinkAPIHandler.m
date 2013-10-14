@@ -14,14 +14,17 @@
 {
  
     NSMutableString *urlRequestString = [NSMutableString stringWithCapacity:0];
-//    [urlRequestString appendString:[NSString stringWithFormat:@"http://redirect.viglink.com/api/click?"]];
     [urlRequestString appendString:[NSString stringWithFormat:@"http://redirect.viglink.com?"]];
     [urlRequestString appendString:[NSString stringWithFormat:@"key=%@", @"603bf197cf154d2916539b465ba2895e"]];
     [urlRequestString appendString:[NSString stringWithFormat:@"&loc=%@", theURLString]];
     [urlRequestString appendString:[NSString stringWithFormat:@"&out=%@", theURLString]];
-    [urlRequestString appendString:[NSString stringWithFormat:@"&format=%@", @"jsonp"]];
+//    [urlRequestString appendString:[NSString stringWithFormat:@"&format=%@", @"jsonp"]];
     
-                                  
+
+//    API Key: 603bf197cf154d2916539b465ba2895e
+//    Secret Key: e7cd33e835c68f317ebbedc59ee679e170f12912
+    
+    
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
 
@@ -40,6 +43,7 @@
 {
     NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"viglinkCallReturned: %@", responseString);
+//    NSLog(@"viglinkCallReturned: %@", responseString);
+    [self.delegate viglinkCallReturned:responseString];
 }
 @end

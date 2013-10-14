@@ -45,6 +45,8 @@
     UIPrintInteractionController *printInteraction;
     
     NSMutableURLRequest* req;
+    
+    NSString *initialHTMLContent;
 }
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url;
@@ -53,6 +55,8 @@
 @property (nonatomic, retain) UIPopoverController *bookmarkPopoverController;
 @property (nonatomic, retain) UIPopoverController *addBookmarkPopoverController;
 @property (nonatomic, retain) UIActionSheet *actionActionSheet;
+@property (nonatomic, retain) UIWebView *webView;
+@property (nonatomic, retain) NSString *initialHTMLContent;
 @property (getter = isModal) BOOL modal;
 @property BOOL enabledSafari;
 
