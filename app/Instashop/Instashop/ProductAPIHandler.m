@@ -110,7 +110,7 @@
 //    NSLog(@"newStr: %@", newStr);
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"responseArray: %@", responseArray);
+//    NSLog(@"responseArray: %@", responseArray);
 
     if (responseArray == nil)
     {

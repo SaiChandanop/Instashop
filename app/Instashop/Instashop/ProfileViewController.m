@@ -34,11 +34,11 @@
 @synthesize addBackgroundImageButton;
 @synthesize profileImageView;
 @synthesize usernameLabel;
-@synthesize sellerButtonsView;
-@synthesize sellerProductsButton, sellerInfoButton, sellerReviewsButton;
-@synthesize sellerButtonHighlightView;
-@synthesize buyerFavoritesButton;
-@synthesize buyerButtonHighlightView;
+
+@synthesize productsButton;
+@synthesize infoButton;
+@synthesize favoritesButton;
+@synthesize buttonHighlightView;
 @synthesize infoContainerScrollView;
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
@@ -55,7 +55,6 @@
 @synthesize categoryLabel;
 @synthesize bioLabel;
 @synthesize descriptionLabel;
-@synthesize infoButton;
 @synthesize favoritesSelectTableViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -75,17 +74,11 @@
     self.profileBackgroundPhotoButton.alpha = 0;
     // Do any additional setup after loading the view from its nib.
     
-    self.sellerButtonHighlightView.backgroundColor = [ISConstants getISGreenColor];
-    self.buyerButtonHighlightView.backgroundColor = [ISConstants getISGreenColor];
+    self.buttonHighlightView.backgroundColor = [ISConstants getISGreenColor];
     
-    self.sellerProductsButton.selected = YES;
-    self.sellerInfoButton.selected = NO;
-    self.sellerReviewsButton.selected = NO;
-    
-    self.buyerFavoritesButton.selected = YES;
+    self.productsButton.selected = YES;
     self.infoButton.selected = NO;
-    self.reviewsButton.selected = NO;
-    
+    self.favoritesButton.selected = NO;
     
     self.followButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.followButton.layer.shadowOpacity = .75;
@@ -93,11 +86,7 @@
     self.followButton.layer.shadowOffset = CGSizeMake(0, 0);
     //    self.followButton.layer.cornerRadius = 2;
     
-    
     self.followButton.alpha = 0;
-    
-    
-    
 }
 
 
@@ -372,52 +361,15 @@
 {
     float transitionTime = .15;
     
-    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
-    self.buyerButtonHighlightView.frame = CGRectMake(receivingButton.frame.origin.x, self.buyerButtonHighlightView.frame.origin.y, receivingButton.frame.size.width, self.buyerButtonHighlightView.frame.size.height);
-    self.sellerButtonHighlightView.frame = CGRectMake(receivingButton.frame.origin.x, self.sellerButtonHighlightView.frame.origin.y, receivingButton.frame.size.width, self.sellerButtonHighlightView.frame.size.height);
+    self.buttonHighlightView.frame = CGRectMake(receivingButton.frame.origin.x, self.buttonHighlightView.frame.origin.y, receivingButton.frame.size.width, self.buttonHighlightView.frame.size.height);
     [UIView commitAnimations];
     
     
 }
 
--(IBAction)favoritesButtonHit
-{
-    float transitionTime = .15;
-    
-    NSLog(@"favoritesButtonHit");
-    
-    if (self.productSelectTableViewController != nil)
-        [self.productSelectTableViewController.tableView removeFromSuperview];
-    
-    if ([self.theTableView superview] == nil)
-        [self.view addSubview:self.theTableView];
-    
-    if ([self.favoritesSelectTableViewController.tableView superview] == nil)
-        [self.view addSubview:self.favoritesSelectTableViewController.tableView];
-    
-    
-    if ([self.infoContainerScrollView superview] != nil)
-        [self.infoContainerScrollView removeFromSuperview];
-    
-    
-    self.buyerFavoritesButton.selected = YES;
-    self.infoButton.selected = NO;
-    self.reviewsButton.selected = NO;
-  
-    /*
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    self.sellerButtonHighlightView.frame = CGRectMake(220, self.buyerButtonHighlightView.frame.origin.y, self.buyerFavoritesButton.frame.size.width, self.buyerButtonHighlightView.frame.size.height);
-    [UIView commitAnimations];
-    
-    NSLog(@"self.sellerButtonHighlightView.frame: %@", self.sellerButtonHighlightView);
-//    [self animateSellerButton:self.buyerFavoritesButton];
-    */
-}
 
 -(IBAction) productsButtonHit
 {
@@ -431,11 +383,11 @@
     if ([self.infoContainerScrollView superview] != nil)
         [self.infoContainerScrollView removeFromSuperview];
     
-    self.sellerProductsButton.selected = YES;
-    self.sellerInfoButton.selected = NO;
-    self.sellerReviewsButton.selected = NO;
+    self.productsButton.selected = YES;
+    self.infoButton.selected = NO;
+    self.favoritesButton.selected = NO;
     
-    [self animateSellerButton:self.sellerProductsButton];
+    [self animateSellerButton:self.productsButton];
 }
 
 -(IBAction) infoButtonHit
@@ -454,39 +406,36 @@
     if ([self.infoContainerScrollView superview] == nil)
         [self.view addSubview:self.infoContainerScrollView];
     
-    self.sellerProductsButton.selected = NO;
-    self.sellerInfoButton.selected = YES;
-    self.sellerReviewsButton.selected = NO;
-    
-    
-    self.buyerFavoritesButton.selected = NO;
+    self.productsButton.selected = NO;
     self.infoButton.selected = YES;
-    self.reviewsButton.selected = NO;
+    self.favoritesButton.selected = NO;
     
-    [self animateSellerButton:self.sellerInfoButton];
+    [self animateSellerButton:self.infoButton];
 }
 
--(IBAction) reviewsButtonHit
+-(IBAction)favoritesButtonHit
 {
-    if ([self.theTableView superview] != nil)
-        [self.theTableView removeFromSuperview];
+    if (self.productSelectTableViewController != nil)
+        [self.productSelectTableViewController.tableView removeFromSuperview];
+    
+    if ([self.theTableView superview] == nil)
+        [self.view addSubview:self.theTableView];
+    
+    if ([self.favoritesSelectTableViewController.tableView superview] == nil)
+        [self.view addSubview:self.favoritesSelectTableViewController.tableView];
+    
     
     if ([self.infoContainerScrollView superview] != nil)
         [self.infoContainerScrollView removeFromSuperview];
     
     
-    self.sellerProductsButton.selected = NO;
-    self.sellerInfoButton.selected = NO;
-    self.sellerReviewsButton.selected = YES;
-    
-    
-    self.buyerFavoritesButton.selected = NO;
+    self.favoritesButton.selected = YES;
     self.infoButton.selected = NO;
-    self.reviewsButton.selected = YES;
+    self.productsButton.selected = NO;
     
-    [self animateSellerButton:self.sellerReviewsButton];
+    [self animateSellerButton:self.favoritesButton];
+    
 }
-
 
 
 

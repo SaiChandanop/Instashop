@@ -12,21 +12,20 @@
                 <outlet property="backgroundImageView" destination="uUu-tP-DTR" id="sNn-qt-g3h"/>
                 <outlet property="bioContainerImageView" destination="JDN-mM-c24" id="MJe-Rg-iBO"/>
                 <outlet property="bioLabel" destination="59J-Xc-gnZ" id="dMq-2I-BuF"/>
-                <outlet property="buyerFavoritesButton" destination="ZNf-Le-k0Y" id="3bE-lB-vTr"/>
+                <outlet property="buttonHighlightView" destination="ab7-af-cdJ" id="FsU-ZS-T2N"/>
                 <outlet property="categoryLabel" destination="CBD-8G-E68" id="Wvp-y1-w6o"/>
                 <outlet property="descriptionLabel" destination="M0c-sH-xWq" id="r5m-az-8Sw"/>
                 <outlet property="emailLabel" destination="bJT-mj-sYt" id="Cxt-nC-uW4"/>
+                <outlet property="favoritesButton" destination="ZNf-Le-k0Y" id="mT8-ig-bxb"/>
                 <outlet property="followButton" destination="Eqt-pa-nKB" id="eaN-xw-iQA"/>
                 <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
                 <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
+                <outlet property="infoButton" destination="YZG-hB-owP" id="mIl-gK-fo0"/>
                 <outlet property="infoContainerScrollView" destination="z26-Ac-txH" id="sDF-9T-NOB"/>
                 <outlet property="productSelectTableViewController" destination="7F9-di-1kk" id="dWx-NX-xgu"/>
+                <outlet property="productsButton" destination="Of6-Fq-GtT" id="6cr-zw-KpQ"/>
                 <outlet property="profileBackgroundPhotoButton" destination="TvE-Jz-6Ul" id="zNT-zV-SVE"/>
                 <outlet property="profileImageView" destination="RHM-oM-kVi" id="P34-lA-dJo"/>
-                <outlet property="sellerButtonHighlightView" destination="ab7-af-cdJ" id="Cop-ke-rQe"/>
-                <outlet property="sellerButtonsView" destination="Mg9-br-9gn" id="dz3-fS-2tN"/>
-                <outlet property="sellerInfoButton" destination="YZG-hB-owP" id="29u-Fh-47j"/>
-                <outlet property="sellerProductsButton" destination="Of6-Fq-GtT" id="aPF-Cz-gn8"/>
                 <outlet property="theTableView" destination="Mlb-xD-ESb" id="srm-0a-3lb"/>
                 <outlet property="usernameLabel" destination="Be8-Z5-0ND" id="u7j-pO-ecN"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -135,8 +134,7 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <connections>
-                                <action selector="favoritesButtonHit" destination="-1" eventType="touchUpInside" id="xZy-Sx-IK3"/>
-                                <action selector="reviewsButtonHit" destination="-1" eventType="touchUpInside" id="spg-tp-pAT"/>
+                                <action selector="favoritesButtonHit" destination="-1" eventType="touchUpInside" id="HWO-S6-SNK"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="YZG-hB-owP">
@@ -280,7 +278,9 @@
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
+        <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bottom_shadow.png" width="320" height="50"/>
+        <image name="cell_separator.png" width="320" height="5"/>
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="edit_photo.png" width="50" height="50"/>
         <image name="feedImageShadow.png" width="106" height="106"/>
@@ -289,6 +289,9 @@
         <image name="instagram_gray_icon.png" width="44" height="44"/>
         <image name="lightMenuBG.png" width="320" height="548"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuLightBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>

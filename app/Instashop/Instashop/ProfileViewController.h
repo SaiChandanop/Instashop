@@ -29,20 +29,13 @@
     
     UIButton *followButton;
     
-    UIView *sellerButtonsView;
     
-    UIButton *buyerFavoritesButton;
+    UIButton *productsButton;
     UIButton *infoButton;
-    UIButton *reviewsButton;
-    
-    UIButton *sellerProductsButton;
-    UIButton *sellerInfoButton;
-    UIButton *sellerReviewsButton;
+    UIButton *favoritesButton;
+    UIView *buttonHighlightView;
     
     UIButton *profileBackgroundPhotoButton;
-    UIView *sellerButtonHighlightView;
-    UIView *buyerButtonHighlightView;
-    
     
     ProductSelectTableViewController *productSelectTableViewController;
     ProductSelectTableViewController *favoritesSelectTableViewController;
@@ -84,17 +77,16 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *followButton;
 
-@property (nonatomic, retain) IBOutlet UIView *sellerButtonsView;
-@property (nonatomic, retain) IBOutlet UIButton *buyerFavoritesButton;
-@property (nonatomic, retain) IBOutlet UIButton *infoButton;
-@property (nonatomic, retain) IBOutlet UIButton *reviewsButton;
 
-@property (nonatomic, retain) IBOutlet UIButton *sellerProductsButton;
-@property (nonatomic, retain) IBOutlet UIButton *sellerInfoButton;
-@property (nonatomic, retain) IBOutlet UIButton *sellerReviewsButton;
+
+@property (nonatomic, retain) IBOutlet UIButton *productsButton;
+@property (nonatomic, retain) IBOutlet UIButton *infoButton;
+@property (nonatomic, retain) IBOutlet UIButton *favoritesButton;
+@property (nonatomic, retain) IBOutlet UIView *buttonHighlightView;
+
+
 @property (nonatomic, retain) IBOutlet UIButton *profileBackgroundPhotoButton;
-@property (nonatomic, retain) IBOutlet UIView *sellerButtonHighlightView;
-@property (nonatomic, retain) IBOutlet UIView *buyerButtonHighlightView;
+
 
 
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
