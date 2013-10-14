@@ -52,9 +52,14 @@
     UILabel *urlLabel;
     
     UIView *pricesView;
+
+    ISLightRowContainerView *urlContainerView;
+
+    ISLightRowContainerView *socialButtonContainerView;
+    UIButton *facebookButton;
+    UIButton *twitterButton;
     
-    
-    
+    UIButton *nextButton;
 }
 
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID;
@@ -69,6 +74,9 @@
 - (void) updateLayout;
 
 - (IBAction) urlButtonHit;
+
+- (IBAction) facebookButtonHit;
+- (IBAction) twitterButtonHit;
 
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;
@@ -107,5 +115,13 @@
 
 @property (nonatomic, retain) IBOutlet UIView *pricesView;
 
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *urlContainerView;
+
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *socialButtonContainerView;
+@property (nonatomic, retain) IBOutlet UIButton *facebookButton;
+@property (nonatomic, retain) IBOutlet UIButton *twitterButton;
+
+
+@property (nonatomic, retain) IBOutlet UIButton *nextButton;
 
 @end

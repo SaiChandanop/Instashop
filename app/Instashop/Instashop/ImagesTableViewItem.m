@@ -123,7 +123,7 @@
 - (void) loadContentWithInstagramDictionaryObject:(NSDictionary *)theDictionary
 {
     self.instagramObjectDictionary = [[NSDictionary alloc] initWithDictionary:theDictionary];
-    NSLog(@"theDictionary: %@", theDictionary);
+ //   NSLog(@"theDictionary: %@", theDictionary);
     
     [self.coverButton setTitle:@"" forState:UIControlStateNormal];
     [self.coverButton setImage:nil forState:UIControlStateNormal];

@@ -22,6 +22,7 @@
 #import "MBProgressHUD.h"
 #import "CreateProductAPIHandler.h"
 #import "EditProductCompleteProtocol.h"
+#import "PurchaseWebViewController.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -98,6 +99,10 @@
     
     self.quantityButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.quantityButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    self.retailPriceLabel.alpha = 0;
+    self.listPriceLabel.alpha = 0;
+    self.numberAvailableLabel.alpha = 0;
 }
 
 
@@ -292,7 +297,24 @@
 }
 
 
+- (void)webControllerBackButtonHit
+{
+    
+}
 -(IBAction)buyButtonHit
+{
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+    PurchaseWebViewController *purchaseWebViewController = [[PurchaseWebViewController alloc] initWithNibName:@"PurchaseWebViewController" bundle:nil];
+    purchaseWebViewController.theURLString = [self.requestedProductObject objectForKey:@"products_external_url"];
+    purchaseWebViewController.delegate = self;
+    [self.navigationController pushViewController:purchaseWebViewController animated:YES];
+    
+
+    
+    
+}
+
+-(IBAction)buyButtonHitBAK
 {
      NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     

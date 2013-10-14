@@ -40,8 +40,9 @@
     
     [postString appendString:[NSString stringWithFormat:@"object_weight=%@&", theProductCreateObject.shippingWeight]];
     [postString appendString:[NSString stringWithFormat:@"object_image_urlstring=%@&", theProductCreateObject.instagramPictureURLString]];
+    [postString appendString:[NSString stringWithFormat:@"object_external_url=%@&", theProductCreateObject.referenceURLString]];
     
-    
+    NSLog(@"!!theProductCreateObject.referenceURLString: %@", theProductCreateObject.referenceURLString);
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     

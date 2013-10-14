@@ -41,11 +41,38 @@ static AttributesManager *theManager;
     }
     return theManager;
 }
-
-
+/*
 -(void)processAttributesString:(NSString *)myText
 {
-    NSLog(@"processAttributesString!");
+    NSMutableDictionary *retDict = [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    
+    NSMutableDictionary *womensDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
+    
+    
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"z"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Dresses"];
+    
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Lingerie"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Pants"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Shirts"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Shorts"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Skirts"];
+    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Dresses"];
+    
+    [retDict setObject:womensDictionary forKey:@"Womens"];
+    
+ 
+    NSLog(@"retDict: %@", retDict);
+    [self.attributesDictionary setDictionary:retDict];
+ 
+    
+}
+*/
+-(void)processAttributesString:(NSString *)myText
+{
+
+//    [self AprocessAttributesString:myText];
     NSArray *linesArray = [myText componentsSeparatedByString:@"\n"];
     //        NSLog(@"linesArray: %@", linesArray);
     
@@ -123,8 +150,11 @@ static AttributesManager *theManager;
         
     }
     
-    ///        NSLog(@"attributesDict: %@", attributesDict);
+
     
+    NSDictionary *artDict = [attributesDict objectForKey:@"Art"];
+    NSDictionary *postersDict = [artDict objectForKey:@"Posters"];
+
     [self.attributesDictionary setDictionary:attributesDict];
     
 }
@@ -150,6 +180,7 @@ static AttributesManager *theManager;
 
 -(NSArray *)getCategoriesWithArray:(NSArray *)theArray
 {
+//    NSLog(@"attributesDictionary: %@", self.attributesDictionary);
     NSDictionary *dict = nil;
     
     if ([theArray count] == 0)
