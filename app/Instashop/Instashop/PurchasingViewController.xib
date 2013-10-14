@@ -77,11 +77,11 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <view contentMode="scaleToFill" id="323">
-                            <rect key="frame" x="0.0" y="368" width="320" height="60"/>
+                            <rect key="frame" x="0.0" y="368" width="320" height="100"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuDarkBG.png" id="fHV-sH-I3P">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="55"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 </imageView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="190">
@@ -111,7 +111,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="327">
-                            <rect key="frame" x="20" y="328" width="278" height="30"/>
+                            <rect key="frame" x="16" y="327" width="291" height="30"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -207,6 +207,15 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </view>
+        <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="0Mw-2n-phD">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+            <items>
+                <barButtonItem title="Item" id="8nR-qe-05t"/>
+            </items>
+            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="barTintColor" red="0.38431372549999998" green="0.70980392160000005" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
+        </toolbar>
     </objects>
     <resources>
         <image name="cell_separator.png" width="320" height="5"/>

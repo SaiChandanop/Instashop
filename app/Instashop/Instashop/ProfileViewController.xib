@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F37" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -8,14 +8,11 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
                 <outlet property="addBackgroundImageButton" destination="TvE-Jz-6Ul" id="39D-0l-1qb"/>
-                <outlet property="addressLabel" destination="znR-xa-c7U" id="7yd-jp-pcc"/>
                 <outlet property="backgroundImageView" destination="uUu-tP-DTR" id="sNn-qt-g3h"/>
                 <outlet property="bioContainerImageView" destination="JDN-mM-c24" id="MJe-Rg-iBO"/>
                 <outlet property="bioLabel" destination="59J-Xc-gnZ" id="dMq-2I-BuF"/>
                 <outlet property="buttonHighlightView" destination="ab7-af-cdJ" id="FsU-ZS-T2N"/>
-                <outlet property="categoryLabel" destination="CBD-8G-E68" id="Wvp-y1-w6o"/>
                 <outlet property="descriptionLabel" destination="M0c-sH-xWq" id="r5m-az-8Sw"/>
-                <outlet property="emailLabel" destination="bJT-mj-sYt" id="Cxt-nC-uW4"/>
                 <outlet property="favoritesButton" destination="ZNf-Le-k0Y" id="mT8-ig-bxb"/>
                 <outlet property="followButton" destination="Eqt-pa-nKB" id="eaN-xw-iQA"/>
                 <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
@@ -122,7 +119,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageWhenHighlighted="NO" adjustsImageWhenDisabled="NO" lineBreakMode="middleTruncation" id="ZNf-Le-k0Y">
-                            <rect key="frame" x="217" y="3" width="99" height="44"/>
+                            <rect key="frame" x="213" y="5" width="108" height="42"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -229,44 +226,19 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="341"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="znR-xa-c7U">
-                    <rect key="frame" x="12" y="0.0" width="297" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuDarkBG.png" id="HMy-Rl-biZ">
-                    <rect key="frame" x="0.0" y="43" width="320" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                </imageView>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="bJT-mj-sYt">
-                    <rect key="frame" x="12" y="43" width="297" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shop Category" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CBD-8G-E68">
-                    <rect key="frame" x="12" y="88" width="297" height="44"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="menuDarkBG.png" id="JDN-mM-c24">
-                    <rect key="frame" x="0.0" y="130" width="320" height="44"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bio" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="59J-Xc-gnZ">
-                    <rect key="frame" x="11" y="139" width="297" height="26"/>
+                    <rect key="frame" x="11" y="9" width="297" height="26"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="M0c-sH-xWq">
-                    <rect key="frame" x="12" y="182" width="297" height="33"/>
+                    <rect key="frame" x="12" y="52" width="297" height="33"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="12"/>
                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -288,7 +260,6 @@
         <image name="following_btn_background.png" width="98" height="20"/>
         <image name="instagram_gray_icon.png" width="44" height="44"/>
         <image name="lightMenuBG.png" width="320" height="548"/>
-        <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
