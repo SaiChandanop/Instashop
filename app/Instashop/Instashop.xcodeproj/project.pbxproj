@@ -250,6 +250,16 @@
 		7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */; };
 		7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */; };
 		7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */; };
+		7BDED692180C7A28001FF165 /* CIALBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BDED681180C7A28001FF165 /* CIALBrowser.bundle */; };
+		7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED683180C7A28001FF165 /* CIALBrowser.m */; };
+		7BDED694180C7A28001FF165 /* AddBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED685180C7A28001FF165 /* AddBookmarkViewController.m */; };
+		7BDED695180C7A28001FF165 /* BookmarkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED687180C7A28001FF165 /* BookmarkObject.m */; };
+		7BDED696180C7A28001FF165 /* CIALBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED689180C7A28001FF165 /* CIALBrowserViewController.m */; };
+		7BDED697180C7A28001FF165 /* EditBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED68B180C7A28001FF165 /* EditBookmarkViewController.m */; };
+		7BDED698180C7A28001FF165 /* UIWebViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED68D180C7A28001FF165 /* UIWebViewAdditions.m */; };
+		7BDED699180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED68F180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m */; };
+		7BDED69A180C7A28001FF165 /* ViewBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED691180C7A28001FF165 /* ViewBookmarkViewController.m */; };
+		7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDED69B180C7A48001FF165 /* MessageUI.framework */; };
 		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
@@ -620,6 +630,24 @@
 		7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProductAPIHandler.m; sourceTree = "<group>"; };
 		7BD5C20B1795BDC9006F311A /* ProductCreateContainerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateContainerObject.h; sourceTree = "<group>"; };
 		7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateContainerObject.m; sourceTree = "<group>"; };
+		7BDED681180C7A28001FF165 /* CIALBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CIALBrowser.bundle; sourceTree = "<group>"; };
+		7BDED682180C7A28001FF165 /* CIALBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIALBrowser.h; sourceTree = "<group>"; };
+		7BDED683180C7A28001FF165 /* CIALBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIALBrowser.m; sourceTree = "<group>"; };
+		7BDED684180C7A28001FF165 /* AddBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookmarkViewController.h; sourceTree = "<group>"; };
+		7BDED685180C7A28001FF165 /* AddBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookmarkViewController.m; sourceTree = "<group>"; };
+		7BDED686180C7A28001FF165 /* BookmarkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkObject.h; sourceTree = "<group>"; };
+		7BDED687180C7A28001FF165 /* BookmarkObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkObject.m; sourceTree = "<group>"; };
+		7BDED688180C7A28001FF165 /* CIALBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIALBrowserViewController.h; sourceTree = "<group>"; };
+		7BDED689180C7A28001FF165 /* CIALBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIALBrowserViewController.m; sourceTree = "<group>"; };
+		7BDED68A180C7A28001FF165 /* EditBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBookmarkViewController.h; sourceTree = "<group>"; };
+		7BDED68B180C7A28001FF165 /* EditBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBookmarkViewController.m; sourceTree = "<group>"; };
+		7BDED68C180C7A28001FF165 /* UIWebViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewAdditions.h; sourceTree = "<group>"; };
+		7BDED68D180C7A28001FF165 /* UIWebViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewAdditions.m; sourceTree = "<group>"; };
+		7BDED68E180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnpreventableUILongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		7BDED68F180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnpreventableUILongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		7BDED690180C7A28001FF165 /* ViewBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewBookmarkViewController.h; sourceTree = "<group>"; };
+		7BDED691180C7A28001FF165 /* ViewBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewBookmarkViewController.m; sourceTree = "<group>"; };
+		7BDED69B180C7A48001FF165 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7BE29B96177A20870093BB25 /* AttributesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesManager.h; sourceTree = "<group>"; };
 		7BE29B97177A20870093BB25 /* AttributesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesManager.m; sourceTree = "<group>"; };
 		7BE29B99177A21000093BB25 /* attributes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes.csv; sourceTree = "<group>"; };
@@ -666,6 +694,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */,
 				7B5D62B517C5AFEB00D6C8B1 /* QuartzCore.framework in Frameworks */,
 				7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */,
 				7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */,
@@ -1233,6 +1262,7 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BDED69B180C7A48001FF165 /* MessageUI.framework */,
 				7B5D62B417C5AFEB00D6C8B1 /* QuartzCore.framework */,
 				7B61EE46174D2162002A483D /* UIKit.framework */,
 				7B61EE48174D2162002A483D /* Foundation.framework */,
@@ -1545,6 +1575,30 @@
 			name = Create;
 			sourceTree = "<group>";
 		};
+		7BDED680180C7A1A001FF165 /* CIALBrowser */ = {
+			isa = PBXGroup;
+			children = (
+				7BDED681180C7A28001FF165 /* CIALBrowser.bundle */,
+				7BDED682180C7A28001FF165 /* CIALBrowser.h */,
+				7BDED683180C7A28001FF165 /* CIALBrowser.m */,
+				7BDED684180C7A28001FF165 /* AddBookmarkViewController.h */,
+				7BDED685180C7A28001FF165 /* AddBookmarkViewController.m */,
+				7BDED686180C7A28001FF165 /* BookmarkObject.h */,
+				7BDED687180C7A28001FF165 /* BookmarkObject.m */,
+				7BDED688180C7A28001FF165 /* CIALBrowserViewController.h */,
+				7BDED689180C7A28001FF165 /* CIALBrowserViewController.m */,
+				7BDED68A180C7A28001FF165 /* EditBookmarkViewController.h */,
+				7BDED68B180C7A28001FF165 /* EditBookmarkViewController.m */,
+				7BDED68C180C7A28001FF165 /* UIWebViewAdditions.h */,
+				7BDED68D180C7A28001FF165 /* UIWebViewAdditions.m */,
+				7BDED68E180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.h */,
+				7BDED68F180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m */,
+				7BDED690180C7A28001FF165 /* ViewBookmarkViewController.h */,
+				7BDED691180C7A28001FF165 /* ViewBookmarkViewController.m */,
+			);
+			name = CIALBrowser;
+			sourceTree = "<group>";
+		};
 		7BE29B95177A20710093BB25 /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
@@ -1566,6 +1620,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7BDED680180C7A1A001FF165 /* CIALBrowser */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
 				7B3F520E175FAAB900ABF49B /* ProductObject */,
 				7B2C4B8C17C418490080F3F5 /* Protocols */,
@@ -1719,6 +1774,7 @@
 				7B676F6F17BC79C7004FC53B /* previewsocialshittyimage.png in Resources */,
 				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
+				7BDED692180C7A28001FF165 /* CIALBrowser.bundle in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
 				7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
@@ -1886,6 +1942,7 @@
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
+				7BDED697180C7A28001FF165 /* EditBookmarkViewController.m in Sources */,
 				7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */,
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,
@@ -1902,6 +1959,7 @@
 				7B0320DE17E0E1340045D7AC /* SearchSiloViewController.m in Sources */,
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
+				7BDED69A180C7A28001FF165 /* ViewBookmarkViewController.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
 				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,
 				7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */,
@@ -1910,8 +1968,10 @@
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
 				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
 				7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */,
+				7BDED694180C7A28001FF165 /* AddBookmarkViewController.m in Sources */,
 				7B0D254B17CBA36F00E43FA6 /* GKImagePicker.m in Sources */,
 				7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */,
+				7BDED698180C7A28001FF165 /* UIWebViewAdditions.m in Sources */,
 				7B7A7F7F17D64ACE00247A26 /* SearchViewController.m in Sources */,
 				7B0D255017CBA36F00E43FA6 /* GKResizeableCropOverlayView.m in Sources */,
 				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
@@ -1927,6 +1987,7 @@
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
+				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */,
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -1941,6 +2002,7 @@
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
 				7B260E8B17F0B56300F8F873 /* ViglinkSellViewController.m in Sources */,
 				7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */,
+				7BDED699180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m in Sources */,
 				03B2BC8117FB49F600340C48 /* PurchaseWebViewController.m in Sources */,
 				7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
@@ -1954,6 +2016,7 @@
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
+				7BDED696180C7A28001FF165 /* CIALBrowserViewController.m in Sources */,
 				7B79AE8617E2237D0058E774 /* SellersTableViewCell.m in Sources */,
 				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
 				7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */,
@@ -1972,6 +2035,7 @@
 				7B79AE8017E21A900058E774 /* SellerSelectTableViewController.m in Sources */,
 				7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */,
 				7B5D626B17C5AF3700D6C8B1 /* StripeError.m in Sources */,
+				7BDED695180C7A28001FF165 /* BookmarkObject.m in Sources */,
 				7B5D628117C5AF7100D6C8B1 /* PKCardCVC.m in Sources */,
 				7B15B2FB17B2AA1800173752 /* CategoriesViewController.m in Sources */,
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,

@@ -23,6 +23,7 @@
 #import "CreateProductAPIHandler.h"
 #import "EditProductCompleteProtocol.h"
 #import "PurchaseWebViewController.h"
+#import "CIALBrowserViewController.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -305,13 +306,16 @@
 -(IBAction)buyButtonHit
 {
     NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-    PurchaseWebViewController *purchaseWebViewController = [[PurchaseWebViewController alloc] initWithNibName:@"PurchaseWebViewController" bundle:nil];
+/*    PurchaseWebViewController *purchaseWebViewController = [[PurchaseWebViewController alloc] initWithNibName:@"PurchaseWebViewController" bundle:nil];
     purchaseWebViewController.theURLString = [self.requestedProductObject objectForKey:@"products_external_url"];
     purchaseWebViewController.delegate = self;
     [self.navigationController pushViewController:purchaseWebViewController animated:YES];
     
-
+*/
+    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
     
+    [self.navigationController pushViewController:browserViewController animated:YES];
+    [browserViewController openThisURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
     
 }
 
