@@ -264,10 +264,15 @@
     NSLog(@"self.webview: %@", self.webView);
     NSLog(@"initialURL: %@", self.initialURL);
     if (self.initialHTMLContent != nil)
+    {
+        webView.frame = CGRectMake(webView.frame.origin.x, navigationBar.frame.origin.y, webView.frame.size.width, webView.frame.size.height + navigationBar.frame.size.height);
+        [navigationBar removeFromSuperview];
         [webView loadHTMLString:self.initialHTMLContent baseURL:initialURL];
+        
+    }
     
     NSLog(@"locationField: %@", locationField);
-    [navigationBar resignFirstResponder];
+
     [locationField resignFirstResponder];
 }
 
