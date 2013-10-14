@@ -333,6 +333,12 @@
 
     CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
     browserViewController.initialHTMLContent = htmlString;
+    
+    NSString *urlString = [self.requestedProductObject objectForKey:@"products_external_url"];
+    if ([urlString rangeOfString:@"http://"].length == 0)
+        urlString = [NSString stringWithFormat:@"http://%@", urlString];
+    
+    browserViewController.initialURL = [NSURL URLWithString:urlString];
     [self.navigationController pushViewController:browserViewController animated:YES];
 //    [browserViewController openThisURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
 

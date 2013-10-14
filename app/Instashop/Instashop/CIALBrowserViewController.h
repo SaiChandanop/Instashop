@@ -47,6 +47,7 @@
     NSMutableURLRequest* req;
     
     NSString *initialHTMLContent;
+    NSURL *initialURL;
 }
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url;
@@ -57,6 +58,7 @@
 @property (nonatomic, retain) UIActionSheet *actionActionSheet;
 @property (nonatomic, retain) UIWebView *webView;
 @property (nonatomic, retain) NSString *initialHTMLContent;
+@property (nonatomic, retain) NSURL *initialURL;
 @property (getter = isModal) BOOL modal;
 @property BOOL enabledSafari;
 

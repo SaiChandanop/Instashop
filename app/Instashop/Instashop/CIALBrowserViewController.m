@@ -26,6 +26,8 @@
 
 @implementation CIALBrowserViewController
 
+@synthesize initialURL;
+
 @synthesize bookmarkPopoverController = _bookmarkPopoverController;
 @synthesize addBookmarkPopoverController = _addBookmarkPopoverController;
 @synthesize actionActionSheet = _actionActionSheet;
@@ -256,12 +258,17 @@
     [webView addGestureRecognizer:longPressRecognizer];
     [longPressRecognizer release];
     
-    NSLog(@"self.initialHTMLContent: %@", self.initialHTMLContent);
+//    NSLog(@"self.initialHTMLContent: %@", self.initialHTMLContent);
     
     NSLog(@"webview: %@", webView);
     NSLog(@"self.webview: %@", self.webView);
+    NSLog(@"initialURL: %@", self.initialURL);
     if (self.initialHTMLContent != nil)
-        [webView loadHTMLString:self.initialHTMLContent baseURL:[NSURL URLWithString:@""]];
+        [webView loadHTMLString:self.initialHTMLContent baseURL:initialURL];
+    
+    NSLog(@"locationField: %@", locationField);
+    [navigationBar resignFirstResponder];
+    [locationField resignFirstResponder];
 }
 
 - (void)dealloc {
@@ -338,6 +345,8 @@
     locationField.text = url.absoluteString;
     
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
+    
+    [locationField resignFirstResponder];
 }
 
 - (void)goBack:(id) sender {
@@ -431,7 +440,7 @@
         return NO;
     [req release];
     req = (NSMutableURLRequest *)[request retain];
-    
+    [locationField resignFirstResponder];
     return YES;
 }
 
@@ -440,6 +449,7 @@
 }
 
 - (void) webViewDidFinishLoad:(UIWebView *) sender {
+    [locationField resignFirstResponder];
     // Disable the defaut actionSheet when doing a long press
     [webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';"];
     [webView stringByEvaluatingJavaScriptFromString:@"document.documentElement.style.webkitTouchCallout='none';"];
