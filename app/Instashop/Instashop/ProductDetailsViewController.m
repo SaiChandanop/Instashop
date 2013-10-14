@@ -17,6 +17,7 @@
 #import "AppDelegate.h"
 #import "ProductAPIHandler.h"
 #import "ViglinkSellViewController.h"
+#import "CIALBrowserViewController.h"
 @interface ProductDetailsViewController ()
 
 @end
@@ -52,7 +53,7 @@
 @synthesize socialButtonContainerView;
 @synthesize facebookButton;
 @synthesize twitterButton;
-
+@synthesize browserViewController;
 @synthesize nextButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -527,13 +528,22 @@
 
 - (IBAction) urlButtonHit
 {
-    ViglinkSellViewController *viglinkSellViewController = [[ViglinkSellViewController alloc] initWithNibName:@"ViglinkSellViewController" bundle:nil];
-    viglinkSellViewController.delegate = self;
-    [self.navigationController presentViewController:viglinkSellViewController animated:YES completion:nil];
+
+    self.browserViewController = [[CIALBrowserViewController alloc] init];
+     [self.navigationController pushViewController:browserViewController animated:YES];
+
+    browserViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ] autorelease];
     
-//    [self.navigationController pushViewController:viglinkSellViewController animated:YES];
+    
+
 }
 
+-(void)browserSaveHit
+{
+    NSLog(@"self.browserViewController.locationField.url: %@", self.browserViewController.url);
+    
+    [self linkSelectedWithURLString:[self.browserViewController.url absoluteString]];
+}
 -(void) linkSelectedWithURLString:(NSString *)theURLString
 {
     NSLog(@"theURLString: %@", theURLString);
@@ -541,8 +551,8 @@
     {
         self.urlLabel.text = [theURLString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
     }
-    
-    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    [self.navigationController popViewControllerAnimated:YES];
+//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string

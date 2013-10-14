@@ -307,24 +307,7 @@
 -(IBAction)buyButtonHit
 {
     NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-/*    PurchaseWebViewController *purchaseWebViewController = [[PurchaseWebViewController alloc] initWithNibName:@"PurchaseWebViewController" bundle:nil];
-    purchaseWebViewController.theURLString = [self.requestedProductObject objectForKey:@"products_external_url"];
-    purchaseWebViewController.delegate = self;
-    [self.navigationController pushViewController:purchaseWebViewController animated:YES];
-    
-*/
-    
     [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
-    
-    
-    /*
-     CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
-    
-    [self.navigationController pushViewController:browserViewController animated:YES];
-    [browserViewController openThisURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
-     
-     */
-    
 }
 
 -(void)viglinkCallReturned:(NSString *)htmlString

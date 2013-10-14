@@ -14,6 +14,7 @@
 #import "IGRequest.h"
 #import "ISDarkRowContainerView.h"
 #import "ISLightRowContainerView.h"
+#import "CIALBrowserViewController.h"
 
 @class ProductCreateViewController;
 
@@ -60,6 +61,8 @@
     UIButton *twitterButton;
     
     UIButton *nextButton;
+    
+    CIALBrowserViewController *browserViewController;
 }
 
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID;
@@ -124,4 +127,5 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *nextButton;
 
+@property (nonatomic, retain) CIALBrowserViewController *browserViewController;
 @end
