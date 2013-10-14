@@ -22,7 +22,6 @@
                 <outlet property="retailPriceLabel" destination="115" id="p9W-Ve-8I3"/>
                 <outlet property="sellerLabel" destination="49" id="262"/>
                 <outlet property="sellerProfileImageView" destination="298" id="302"/>
-                <outlet property="titleLabel" destination="320" id="321"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>
@@ -96,16 +95,7 @@
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="320">
-                            <rect key="frame" x="20" y="0.0" width="280" height="50"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                            <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <size key="shadowOffset" width="1" height="1"/>
-                        </label>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="# likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="upX-2d-e7j">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="upX-2d-e7j">
                             <rect key="frame" x="200" y="282" width="73" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -220,10 +210,7 @@
     </objects>
     <resources>
         <image name="cell_separator.png" width="320" height="5"/>
-        <image name="cell_separator.png" width="320" height="5"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="top_shadow.png" width="320" height="50"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>
