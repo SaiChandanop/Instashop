@@ -308,18 +308,14 @@
     [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
 }
 
--(void)viglinkCallReturned:(NSString *)htmlString
+-(void)viglinkCallReturned:(NSString *)urlString
 {
 //    NSLog(@"!!!viglinkCallReturned: %@", htmlString);
-
+//    NSString *urlString = [self.requestedProductObject objectForKey:@"products_external_url"];
     CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
-    browserViewController.initialHTMLContent = htmlString;
-    
-    NSString *urlString = [self.requestedProductObject objectForKey:@"products_external_url"];
-    
-    browserViewController.initialURL = [NSURL URLWithString:urlString];
     [self.navigationController pushViewController:browserViewController animated:YES];
-//    [browserViewController openThisURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
+    [browserViewController loadView];
+    [browserViewController openThisURL:[NSURL URLWithString:urlString]];
 
      
 

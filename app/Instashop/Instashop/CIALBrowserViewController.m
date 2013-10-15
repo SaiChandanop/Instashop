@@ -27,14 +27,11 @@
 
 @implementation CIALBrowserViewController
 
-@synthesize initialURL;
-
 @synthesize bookmarkPopoverController = _bookmarkPopoverController;
 @synthesize addBookmarkPopoverController = _addBookmarkPopoverController;
 @synthesize actionActionSheet = _actionActionSheet;
 @synthesize modal = _modal;
 @synthesize enabledSafari = _enabledSafari;
-@synthesize initialHTMLContent;
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url
 {
@@ -267,12 +264,8 @@
     [webView addGestureRecognizer:longPressRecognizer];
     [longPressRecognizer release];
     
-//    NSLog(@"self.initialHTMLContent: %@", self.initialHTMLContent);
     
-    NSLog(@"webview: %@", webView);
-    NSLog(@"self.webview: %@", self.webView);
-//    NSLog(@"initialURL: %@", self.initialURL);
-    
+    /*
     NSLog(@"self.initialHTMLContent: %@", self.initialHTMLContent);
     if (self.initialHTMLContent != nil)
     {
@@ -281,8 +274,8 @@
         [webView loadHTMLString:self.initialHTMLContent baseURL:initialURL];
         
     }
+    */
     
-    NSLog(@"locationField: %@", locationField);
 
     [locationField resignFirstResponder];
     
@@ -859,6 +852,12 @@
 
 - (void)openThisURL:(NSURL *)url {
     [self loadURL:url];
+    
+    NSLog(@"!!!openThisURL");
+    webView.frame = CGRectMake(webView.frame.origin.x, navigationBar.frame.origin.y, webView.frame.size.width, webView.frame.size.height + navigationBar.frame.size.height + 5);
+    [navigationBar removeFromSuperview];
+    
+    
 }
 
 - (void)dismissViewBookmMarkViewController:(ViewBookmarkViewController *)viewController {
