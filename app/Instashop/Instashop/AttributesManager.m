@@ -7,6 +7,8 @@
 //
 
 #import "AttributesManager.h"
+#import "GroupDiskManager.h"
+
 
 @implementation NSArray (indexKeyedDictionaryExtension)
 
@@ -41,123 +43,32 @@ static AttributesManager *theManager;
     }
     return theManager;
 }
-/*
--(void)processAttributesString:(NSString *)myText
-{
-    NSMutableDictionary *retDict = [NSMutableDictionary dictionaryWithCapacity:0];
-    
-    
-    NSMutableDictionary *womensDictionary = [NSMutableDictionary dictionaryWithCapacity:0];
-    
-    
-    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"z"];
-    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Dresses"];
-    
-    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Lingerie"];
-    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Pants"];
-    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Shirts"];
-    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Shorts"];
-    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Skirts"];
-    [womensDictionary setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:@"Dresses"];
-    
-    [retDict setObject:womensDictionary forKey:@"Womens"];
-    
- 
-    NSLog(@"retDict: %@", retDict);
-    [self.attributesDictionary setDictionary:retDict];
- 
-    
-}
-*/
--(void)processAttributesString:(NSString *)myText
-{
 
-//    [self AprocessAttributesString:myText];
-    NSArray *linesArray = [myText componentsSeparatedByString:@"\n"];
-    //        NSLog(@"linesArray: %@", linesArray);
+
+
+
+-(void)processAttributesString:(NSString *)myText
+{
     
-    NSMutableArray *theParsingArray = [NSMutableArray arrayWithCapacity:0];
-    
-    NSMutableArray *currentKeysArray = [NSMutableArray arrayWithCapacity:0];
-    
-    
-    int lastIndex = 99;
-    for (int i = 0; i < [linesArray count]; i++)
-    {
-        NSArray *lineObjects = [[linesArray objectAtIndex:i] componentsSeparatedByString:@","];
-        
-        for (int j = 0; j < [lineObjects count]; j++)
-            if ([[lineObjects objectAtIndex:j] length] > 0)
-            {
-                NSString *keyObject = [lineObjects objectAtIndex:j];
-                
-                if (j < lastIndex)
-                {
-                    if (j >= [currentKeysArray count])
-                        [currentKeysArray addObject:keyObject];
-                    else
-                        [currentKeysArray replaceObjectAtIndex:j withObject:keyObject];
-                    
-                    lastIndex = j;
-                }
-                else
-                {
-                    if (j >= [currentKeysArray count])
-                        [currentKeysArray addObject:keyObject];
-                    else
-                        [currentKeysArray replaceObjectAtIndex:j withObject:keyObject];
-                    
-                    lastIndex = j;
-                    
-                    if (lastIndex < [currentKeysArray count] - 1)
-                        for (int k = 0; k < [currentKeysArray count]  - lastIndex; k++)
-                            [currentKeysArray removeLastObject];
-                    
-                    NSArray *tempArray = [NSArray arrayWithArray:currentKeysArray];
-                    lastIndex = 99;
-                    [theParsingArray addObject:tempArray];
-                }
-            }
+    NSData* plistData = [myText dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *error;
+    NSPropertyListFormat format;
+    NSDictionary* plist = [NSPropertyListSerialization propertyListFromData:plistData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
+    if(!plist){
+        NSLog(@"Error: %@",error);
+        [error release];
     }
     
     
+    NSLog(@"!!!");
     
-    NSMutableDictionary *attributesDict = [NSMutableDictionary dictionaryWithCapacity:0];
+//    NSString *path = [NSString stringWithFormat:@"%@/%@", [[GroupDiskManager sharedManager] getFolderPath], @"testplist.plist"];
+    self.attributesDictionary = [[NSMutableDictionary alloc] initWithDictionary:plist];
     
-    for (int i = 0; i < [theParsingArray count]; i++)
-    {
-        NSArray *objectsArray = [theParsingArray objectAtIndex:i];
-        
-        NSMutableDictionary *scopeDict = [NSMutableDictionary dictionaryWithCapacity:0];
-        for (int j = 0; j < [objectsArray count]; j++)
-        {
-            NSString *key = [objectsArray objectAtIndex:j];
-            if (j == 0)
-            {
-                if ([attributesDict objectForKey:key] == nil)
-                    [attributesDict setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
-                
-                scopeDict = [attributesDict objectForKey:key];
-            }
-            else
-            {
-                if ([scopeDict objectForKey:key] == nil)
-                    [scopeDict setObject:[NSMutableDictionary dictionaryWithCapacity:0] forKey:key];
-                
-                scopeDict = [scopeDict objectForKey:key];
-            }
-        }
-        
-    }
-    
-
-    
-    NSDictionary *artDict = [attributesDict objectForKey:@"Art"];
-    NSDictionary *postersDict = [artDict objectForKey:@"Posters"];
-
-    [self.attributesDictionary setDictionary:attributesDict];
-    
+   
 }
+
+
 
 
 
@@ -168,7 +79,7 @@ static AttributesManager *theManager;
     if (filePath) {
         
         NSString *myText = [NSString stringWithContentsOfFile:filePath];
-        [self processAttributesString:myText];
+//        [self processAttributesString:myText];
     }
             return self;
 }
