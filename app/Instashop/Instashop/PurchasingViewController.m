@@ -7,6 +7,7 @@
 //
 
 #import "PurchasingViewController.h"
+#import "FlagManagerAPIHandler.h"
 #import "ImageAPIHandler.h"
 #import "FeedViewController.h"
 #import "AppDelegate.h"
@@ -24,6 +25,7 @@
 #import "EditProductCompleteProtocol.h"
 #import "CIALBrowserViewController.h"
 #import "ViglinkAPIHandler.h"
+
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -92,8 +94,11 @@
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarShopsyLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
-    self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
+    UIImage *shareButtonImage = [UIImage imageNamed:@"leftMenuButton.png"];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(openActionSheet)];
+    self.navigationItem.rightBarButtonItem = shareButton;
     
+    self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
     
     self.sizeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.sizeButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
@@ -616,6 +621,31 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+- (void) openActionSheet {
+    
+    UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", nil];
+    shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+}
+
+- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if ([buttonTitle isEqualToString:@"Flag"]) {
+        
+        [actionSheet dismissWithClickedButtonIndex:2 animated:YES];
+        UIActionSheet *flagActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Inappropriate", @"Incorrect Link", @"Other", nil];
+        flagActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        [flagActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+    }
+    
+    if ([buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Other"]) {
+        
+        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:buttonTitle andProductID:self.requestingProductID];
+    }
 }
 
 

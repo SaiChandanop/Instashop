@@ -17,6 +17,7 @@
 		1903FF7817DA6D0800CD65F8 /* target@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6F17DA6D0800CD65F8 /* target@2x.png */; };
 		193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */; };
 		193433E017E11817007744E6 /* CreateSellerTutorialScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433DE17E11690007744E6 /* CreateSellerTutorialScrollView.m */; };
+		19EE231B1811E5CB0007E475 /* FlagManagerAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EE231A1811DA9B0007E475 /* FlagManagerAPIHandler.m */; };
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
@@ -292,6 +293,8 @@
 		193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTimeUserViewController.m; sourceTree = "<group>"; };
 		193433DD17E11690007744E6 /* CreateSellerTutorialScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CreateSellerTutorialScrollView.h; sourceTree = "<group>"; };
 		193433DE17E11690007744E6 /* CreateSellerTutorialScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CreateSellerTutorialScrollView.m; sourceTree = "<group>"; };
+		19EE23191811DA9B0007E475 /* FlagManagerAPIHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlagManagerAPIHandler.h; sourceTree = "<group>"; };
+		19EE231A1811DA9B0007E475 /* FlagManagerAPIHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlagManagerAPIHandler.m; sourceTree = "<group>"; };
 		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
@@ -718,6 +721,15 @@
 				193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */,
 			);
 			name = Login;
+			sourceTree = "<group>";
+		};
+		19EE23181811DA670007E475 /* FlagManager */ = {
+			isa = PBXGroup;
+			children = (
+				19EE23191811DA9B0007E475 /* FlagManagerAPIHandler.h */,
+				19EE231A1811DA9B0007E475 /* FlagManagerAPIHandler.m */,
+			);
+			name = FlagManager;
 			sourceTree = "<group>";
 		};
 		2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */ = {
@@ -1424,6 +1436,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				19EE23181811DA670007E475 /* FlagManager */,
 				7B260E8D17F0BA6800F8F873 /* Viglink */,
 				7BE66D9F17E3520F00BE3B64 /* Categories */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
@@ -1900,6 +1913,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19EE231B1811E5CB0007E475 /* FlagManagerAPIHandler.m in Sources */,
 				193433E017E11817007744E6 /* CreateSellerTutorialScrollView.m in Sources */,
 				193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */,
 				7B61EE53174D2162002A483D /* main.m in Sources */,
