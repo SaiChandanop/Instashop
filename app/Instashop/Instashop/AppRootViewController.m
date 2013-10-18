@@ -22,6 +22,7 @@
 #import "SearchViewController.h"
 #import "FirstTimeUserViewController.h"
 
+
 @implementation AppRootViewController
 
 static AppRootViewController *theSharedRootViewController;
@@ -57,8 +58,7 @@ float transitionTime = .456;
 {
     [super viewDidLoad];
     
-    if ([[UIDevice currentDevice].systemVersion floatValue] > 7.0f)
-        [self setNeedsStatusBarAppearanceUpdate];
+    [self setNeedsStatusBarAppearanceUpdate];
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"firstRun"]) {
@@ -97,15 +97,18 @@ float transitionTime = .456;
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
         tutorial.view.frame = CGRectMake(0, 0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
         [UIView commitAnimations];
-    }e
+    }
      */
     
 	// Do any additional setup after loading the view.
-    if ([[UIDevice currentDevice].systemVersion floatValue] > 7.0f)
-        [self setNeedsStatusBarAppearanceUpdate];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+
+    
 }
 
-//-(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
+-(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
 
 
 

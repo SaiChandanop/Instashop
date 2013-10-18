@@ -25,7 +25,6 @@
     UIScrollView *contentScrollView;
     UIImageView *imageView;
     UIView *doubleTapView;
-    UILabel *titleLabel;
     UILabel *sellerLabel;
     UILabel *likesLabel;
     UILabel *listPriceLabel;
@@ -57,6 +56,8 @@
 
 - (void) loadContentViews;
 
+- (void)webControllerBackButtonHit;
+
 
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
 
@@ -67,7 +68,6 @@
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
 @property (nonatomic, retain) IBOutlet UIView *doubleTapView;
-@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
 @property (nonatomic, retain) IBOutlet UILabel *likesLabel;
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;

@@ -34,7 +34,7 @@
 @synthesize shippingValueTextField;
 @synthesize sellButton;
 @synthesize sizeQuantityTableViewController;
-
+@synthesize urlTextField;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -106,6 +106,7 @@
     self.categoryTextField.enabled = NO;
     self.descriptionTextField.editable = NO;
     self.listPriceValueTextField.enabled = NO;
+
     
     self.productCreateContainerObject = theProductCreateContainerObject;
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.productCreateContainerObject.mainObject.instagramPictureURLString withImageView:self.productImageView];
@@ -123,7 +124,7 @@
     self.titleLabel.text = self.productCreateContainerObject.mainObject.title;
     self.descriptionTextField.text = self.productCreateContainerObject.mainObject.description;
     self.listPriceValueTextField.text = self.productCreateContainerObject.mainObject.listPrice;
-    
+    self.urlTextField.text = self.productCreateContainerObject.mainObject.referenceURLString;
     
     NSLog(@"theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary: %@", theProductCreateContainerObject.tableViewCellSizeQuantityValueDictionary);
     

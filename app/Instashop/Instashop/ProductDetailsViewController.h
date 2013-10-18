@@ -14,6 +14,7 @@
 #import "IGRequest.h"
 #import "ISDarkRowContainerView.h"
 #import "ISLightRowContainerView.h"
+#import "CIALBrowserViewController.h"
 
 @class ProductCreateViewController;
 
@@ -49,10 +50,19 @@
     UIView *sizeQuantityView;
     UIButton *addSizeButton;
     
+    UILabel *urlLabel;
+    
     UIView *pricesView;
+
+    ISLightRowContainerView *urlContainerView;
+
+    ISLightRowContainerView *socialButtonContainerView;
+    UIButton *facebookButton;
+    UIButton *twitterButton;
     
+    UIButton *nextButton;
     
-    
+    CIALBrowserViewController *browserViewController;
 }
 
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID;
@@ -65,6 +75,12 @@
 
 - (IBAction) addSizeButtonHit;
 - (void) updateLayout;
+
+- (IBAction) urlButtonHit;
+
+- (IBAction) facebookButtonHit;
+- (IBAction) twitterButtonHit;
+
 
 @property (nonatomic, retain) ProductCreateViewController *parentController;
 @property (nonatomic, retain) SizeQuantityTableViewController *sizeQuantityTableViewController;
@@ -98,8 +114,18 @@
 
 @property (nonatomic, retain) UIView *sizeQuantityView;
 @property (nonatomic, retain) IBOutlet UIButton *addSizeButton;
+@property (nonatomic, retain) IBOutlet UILabel *urlLabel;
 
 @property (nonatomic, retain) IBOutlet UIView *pricesView;
 
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *urlContainerView;
 
+@property (nonatomic, retain) IBOutlet ISLightRowContainerView *socialButtonContainerView;
+@property (nonatomic, retain) IBOutlet UIButton *facebookButton;
+@property (nonatomic, retain) IBOutlet UIButton *twitterButton;
+
+
+@property (nonatomic, retain) IBOutlet UIButton *nextButton;
+
+@property (nonatomic, retain) CIALBrowserViewController *browserViewController;
 @end

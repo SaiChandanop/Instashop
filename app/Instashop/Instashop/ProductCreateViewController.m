@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 #import "NavBarTitleView.h"
 #import "ProductAPIHandler.h"
-#import "NavControllerAccessor.h"
+
 @interface ProductCreateViewController ()
 
 @end
@@ -39,7 +39,9 @@
 {
     [super viewDidLoad];
     
-    [NavControllerAccessor setIOS7NavigationBarStyleWithNavigationController:self.navigationController];
+    [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.navigationController.navigationBar.translucent = NO;
       
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
@@ -87,14 +89,18 @@
 
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
+    
+    [self previewDoneButtonHit:productCreateContainerObject];
+    
+    /*
     ProductPreviewViewController *productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
     productPreviewViewController.view.frame = CGRectMake(productPreviewViewController.view.frame.origin.x, productPreviewViewController.view.frame.origin.y, productPreviewViewController.view.frame.size.width, productPreviewViewController.view.frame.size.height);
     productPreviewViewController.parentController = self;
     productPreviewViewController.view.frame = productPreviewViewController.view.frame;
     [self.navigationController pushViewController:productPreviewViewController animated:YES];
     [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
-    
-
+     */
+ 
 }
 
 

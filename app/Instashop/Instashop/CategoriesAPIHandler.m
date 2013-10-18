@@ -13,7 +13,7 @@
 
 +(void)makeCategoriesRequest
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@/%@", ROOT_URI, @"categories", @"category_list.csv"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"categories.plist"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -31,7 +31,7 @@
     NSString* newStr = [[[NSString alloc] initWithData:self.responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-//    NSLog(@"categoreisRequestFinished: %@", newStr);
+    NSLog(@"categoreisRequestFinished: %@", newStr);
     [[AttributesManager getSharedAttributesManager] processAttributesString:newStr];
 }
 @end

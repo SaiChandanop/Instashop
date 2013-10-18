@@ -22,6 +22,8 @@
 #import "MBProgressHUD.h"
 #import "CreateProductAPIHandler.h"
 #import "EditProductCompleteProtocol.h"
+#import "CIALBrowserViewController.h"
+#import "ViglinkAPIHandler.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -39,7 +41,7 @@
 @synthesize categoryLabel;
 @synthesize descriptionContainerView;
 @synthesize requestedProductObject;
-@synthesize imageView, titleLabel, sellerLabel, likesLabel, descriptionTextView, listPriceLabel, retailPriceLabel, numberAvailableLabel, sellerProfileImageView;
+@synthesize imageView, sellerLabel, likesLabel, descriptionTextView, listPriceLabel, retailPriceLabel, numberAvailableLabel, sellerProfileImageView;
 @synthesize bottomView;
 @synthesize sizeSelectedIndex;
 @synthesize purchaseButton;
@@ -87,7 +89,7 @@
     self.descriptionTextView.text = @"";
     
     
-    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarISLogo.png"]];
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarShopsyLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
     self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
@@ -98,6 +100,10 @@
     
     self.quantityButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
     self.quantityButton.contentEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
+    
+    self.retailPriceLabel.alpha = 0;
+    self.listPriceLabel.alpha = 0;
+    self.numberAvailableLabel.alpha = 0;
 }
 
 
@@ -140,7 +146,6 @@
 
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
     
-    self.titleLabel.text = [self.requestedProductObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width,  self.descriptionTextView.contentSize.height);
 
@@ -285,6 +290,7 @@
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
+    NSLog(@"theArray: %@", theArray);
     if ([theArray count] > 0)
         self.requestedProductObject = [theArray objectAtIndex:0];
     
@@ -292,7 +298,31 @@
 }
 
 
+- (void)webControllerBackButtonHit
+{
+    
+}
 -(IBAction)buyButtonHit
+{
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+}
+
+-(void)viglinkCallReturned:(NSString *)urlString
+{
+//    NSLog(@"!!!viglinkCallReturned: %@", htmlString);
+//    NSString *urlString = [self.requestedProductObject objectForKey:@"products_external_url"];
+    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
+    [self.navigationController pushViewController:browserViewController animated:YES];
+    [browserViewController loadView];
+    [browserViewController openThisURL:[NSURL URLWithString:urlString]];
+
+     
+
+     
+}
+
+-(IBAction)buyButtonHitBAK
 {
      NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     

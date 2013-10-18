@@ -20,7 +20,7 @@
 @synthesize listPrice;
 @synthesize instashopPrice;
 @synthesize shippingWeight;
-
+@synthesize referenceURLString;
 @synthesize instagramPictureURLString;
 @synthesize instragramMediaInfoDictionary;
 @synthesize editingReferenceID;

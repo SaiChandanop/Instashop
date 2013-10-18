@@ -43,15 +43,13 @@
     if ([UIScreen mainScreen].bounds.size.height < 500)
         [self.view addSubview:self.iphoneShortView];
     
-    if ([[UIDevice currentDevice].systemVersion floatValue] > 7.0f)
-        [self setNeedsStatusBarAppearanceUpdate];
+    [self setNeedsStatusBarAppearanceUpdate];
 
     // Do any additional setup after loading the view from its nib.
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
-//    if ([[UIDevice currentDevice].systemVersion floatValue] > 7.0f)
-//        return UIStatusBarStyleLightContent;
+    return UIStatusBarStyleLightContent;
 }
 
 -(IBAction) loginButtonHit

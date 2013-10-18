@@ -32,6 +32,9 @@
     UITextField *shippingValueTextField;
     UIButton *sellButton;
     
+    UITextField *urlTextField;
+    
+    
     SizeQuantityTableViewController *sizeQuantityTableViewController;
 }
 
@@ -56,6 +59,7 @@
 @property (nonatomic, retain) IBOutlet UITextField *listPriceValueTextField;
 @property (nonatomic, retain) IBOutlet UITextField *shippingValueTextField;
 @property (nonatomic, retain) IBOutlet UIButton *sellButton;
+@property (nonatomic, retain) IBOutlet UITextField *urlTextField;
 
 @property (nonatomic, retain) IBOutlet SizeQuantityTableViewController *sizeQuantityTableViewController;
 @end

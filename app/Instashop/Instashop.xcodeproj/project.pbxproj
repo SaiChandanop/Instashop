@@ -20,13 +20,11 @@
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
-		2E0EAE08176F6E6700B65FC3 /* toolbarISLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */; };
+		2E0EAE08176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE4176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png */; };
 		2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE5176F6E6700B65FC3 /* toolbarBG@2x.png */; };
 		2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE6176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png */; };
 		2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE7176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png */; };
 		2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE8176F6E6700B65FC3 /* setShippingIcon@2x.png.png */; };
-		2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE9176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png */; };
-		2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADEA176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png */; };
 		2E0EAE0F176F6E6700B65FC3 /* setPersonalIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADEB176F6E6700B65FC3 /* setPersonalIcon@2x.png.png */; };
 		2E0EAE10176F6E6700B65FC3 /* setLogOutIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADEC176F6E6700B65FC3 /* setLogOutIcon@2x.png.png */; };
 		2E0EAE11176F6E6700B65FC3 /* setFacebook_OnIcon@2x.png.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADED176F6E6700B65FC3 /* setFacebook_OnIcon@2x.png.png */; };
@@ -78,6 +76,10 @@
 		2EB259B11767B50D0054618D /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AF1767B50D0054618D /* magnify@2x.png */; };
 		2ED088C317CAD54500439A7D /* bottom_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */; };
 		2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */; };
+		2EFD0A3817FBBB2C00E701B0 /* twitter_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */; };
+		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
+		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
+		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
 		7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320D717E0DB700045D7AC /* DiscoverViewController.m */; };
 		7B0320DA17E0DB700045D7AC /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */; };
 		7B0320DE17E0E1340045D7AC /* SearchSiloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320DC17E0E1340045D7AC /* SearchSiloViewController.m */; };
@@ -111,6 +113,7 @@
 		7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */; };
 		7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */; };
 		7B1B302E17BE8ED100BB6420 /* BSKeyboardControls.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */; };
+		7B260E9017F0BA7700F8F873 /* ViglinkAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B260E8F17F0BA7700F8F873 /* ViglinkAPIHandler.m */; };
 		7B2C59D217B9404F00CEDD5A /* SizeQuantityTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59D117B9404F00CEDD5A /* SizeQuantityTableViewCell.xib */; };
 		7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2C59DD17B95B4D00CEDD5A /* SizePickerViewViewController.m */; };
 		7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */; };
@@ -243,7 +246,16 @@
 		7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */; };
 		7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */; };
 		7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */; };
-		7BE1D9FD17EA6A2B006C2F3E /* NavControllerAccessor.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE1D9FC17EA6A2B006C2F3E /* NavControllerAccessor.m */; };
+		7BDED692180C7A28001FF165 /* CIALBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BDED681180C7A28001FF165 /* CIALBrowser.bundle */; };
+		7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED683180C7A28001FF165 /* CIALBrowser.m */; };
+		7BDED694180C7A28001FF165 /* AddBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED685180C7A28001FF165 /* AddBookmarkViewController.m */; };
+		7BDED695180C7A28001FF165 /* BookmarkObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED687180C7A28001FF165 /* BookmarkObject.m */; };
+		7BDED696180C7A28001FF165 /* CIALBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED689180C7A28001FF165 /* CIALBrowserViewController.m */; };
+		7BDED697180C7A28001FF165 /* EditBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED68B180C7A28001FF165 /* EditBookmarkViewController.m */; };
+		7BDED698180C7A28001FF165 /* UIWebViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED68D180C7A28001FF165 /* UIWebViewAdditions.m */; };
+		7BDED699180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED68F180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m */; };
+		7BDED69A180C7A28001FF165 /* ViewBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED691180C7A28001FF165 /* ViewBookmarkViewController.m */; };
+		7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BDED69B180C7A48001FF165 /* MessageUI.framework */; };
 		7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE29B97177A20870093BB25 /* AttributesManager.m */; };
 		7BE29B9A177A21000093BB25 /* attributes.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BE29B99177A21000093BB25 /* attributes.csv */; };
 		7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE3D36D174D537D0045C4B4 /* UserAPIHandler.m */; };
@@ -283,13 +295,11 @@
 		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
-		2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarISLogo@2x.png"; sourceTree = "<group>"; };
+		2E0EADE4176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarShopsyLogo@2x.png"; sourceTree = "<group>"; };
 		2E0EADE5176F6E6700B65FC3 /* toolbarBG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "toolbarBG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE6176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setTwitter_OffIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADE7176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setTwitter_OnIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADE8176F6E6700B65FC3 /* setShippingIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setShippingIcon@2x.png.png"; sourceTree = "<group>"; };
-		2E0EADE9176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setPinterest_OffIcon@2x.png.png"; sourceTree = "<group>"; };
-		2E0EADEA176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setPinterest_OnIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADEB176F6E6700B65FC3 /* setPersonalIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setPersonalIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADEC176F6E6700B65FC3 /* setLogOutIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setLogOutIcon@2x.png.png"; sourceTree = "<group>"; };
 		2E0EADED176F6E6700B65FC3 /* setFacebook_OnIcon@2x.png.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setFacebook_OnIcon@2x.png.png"; sourceTree = "<group>"; };
@@ -343,6 +353,10 @@
 		2EB259AF1767B50D0054618D /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "magnify@2x.png"; path = "Assets/magnify@2x.png"; sourceTree = "<group>"; };
 		2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_shadow@2x.png"; sourceTree = "<group>"; };
 		2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram_gray_icon@2x.png"; sourceTree = "<group>"; };
+		2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_on@2x.png"; sourceTree = "<group>"; };
+		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
+		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
+		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
 		7B0320D617E0DB700045D7AC /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		7B0320D717E0DB700045D7AC /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
@@ -391,6 +405,8 @@
 		7B1B302A17BE8ED000BB6420 /* BSKeyboardControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSKeyboardControls.h; sourceTree = "<group>"; };
 		7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSKeyboardControls.m; sourceTree = "<group>"; };
 		7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = BSKeyboardControls.strings; sourceTree = "<group>"; };
+		7B260E8E17F0BA7700F8F873 /* ViglinkAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViglinkAPIHandler.h; sourceTree = "<group>"; };
+		7B260E8F17F0BA7700F8F873 /* ViglinkAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViglinkAPIHandler.m; sourceTree = "<group>"; };
 		7B2C4B8D17C418700080F3F5 /* CellSelectionOccuredProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellSelectionOccuredProtocol.h; sourceTree = "<group>"; };
 		7B2C4B8E17C41C160080F3F5 /* FeedRequestFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedRequestFinishedProtocol.h; sourceTree = "<group>"; };
 		7B2C4B8F17C41DFF0080F3F5 /* SellerExistsResponderProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerExistsResponderProtocol.h; sourceTree = "<group>"; };
@@ -604,8 +620,24 @@
 		7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProductAPIHandler.m; sourceTree = "<group>"; };
 		7BD5C20B1795BDC9006F311A /* ProductCreateContainerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateContainerObject.h; sourceTree = "<group>"; };
 		7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateContainerObject.m; sourceTree = "<group>"; };
-		7BE1D9FB17EA6A2B006C2F3E /* NavControllerAccessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavControllerAccessor.h; sourceTree = "<group>"; };
-		7BE1D9FC17EA6A2B006C2F3E /* NavControllerAccessor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavControllerAccessor.m; sourceTree = "<group>"; };
+		7BDED681180C7A28001FF165 /* CIALBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CIALBrowser.bundle; sourceTree = "<group>"; };
+		7BDED682180C7A28001FF165 /* CIALBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIALBrowser.h; sourceTree = "<group>"; };
+		7BDED683180C7A28001FF165 /* CIALBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIALBrowser.m; sourceTree = "<group>"; };
+		7BDED684180C7A28001FF165 /* AddBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddBookmarkViewController.h; sourceTree = "<group>"; };
+		7BDED685180C7A28001FF165 /* AddBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddBookmarkViewController.m; sourceTree = "<group>"; };
+		7BDED686180C7A28001FF165 /* BookmarkObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BookmarkObject.h; sourceTree = "<group>"; };
+		7BDED687180C7A28001FF165 /* BookmarkObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BookmarkObject.m; sourceTree = "<group>"; };
+		7BDED688180C7A28001FF165 /* CIALBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIALBrowserViewController.h; sourceTree = "<group>"; };
+		7BDED689180C7A28001FF165 /* CIALBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIALBrowserViewController.m; sourceTree = "<group>"; };
+		7BDED68A180C7A28001FF165 /* EditBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditBookmarkViewController.h; sourceTree = "<group>"; };
+		7BDED68B180C7A28001FF165 /* EditBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditBookmarkViewController.m; sourceTree = "<group>"; };
+		7BDED68C180C7A28001FF165 /* UIWebViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UIWebViewAdditions.h; sourceTree = "<group>"; };
+		7BDED68D180C7A28001FF165 /* UIWebViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UIWebViewAdditions.m; sourceTree = "<group>"; };
+		7BDED68E180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnpreventableUILongPressGestureRecognizer.h; sourceTree = "<group>"; };
+		7BDED68F180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnpreventableUILongPressGestureRecognizer.m; sourceTree = "<group>"; };
+		7BDED690180C7A28001FF165 /* ViewBookmarkViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewBookmarkViewController.h; sourceTree = "<group>"; };
+		7BDED691180C7A28001FF165 /* ViewBookmarkViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewBookmarkViewController.m; sourceTree = "<group>"; };
+		7BDED69B180C7A48001FF165 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		7BE29B96177A20870093BB25 /* AttributesManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributesManager.h; sourceTree = "<group>"; };
 		7BE29B97177A20870093BB25 /* AttributesManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributesManager.m; sourceTree = "<group>"; };
 		7BE29B99177A21000093BB25 /* attributes.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes.csv; sourceTree = "<group>"; };
@@ -652,6 +684,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */,
 				7B5D62B517C5AFEB00D6C8B1 /* QuartzCore.framework in Frameworks */,
 				7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */,
 				7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */,
@@ -719,6 +752,10 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */,
+				2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */,
+				2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */,
+				2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */,
 				2E714CCF17E28CCE00014413 /* search_cancel@2x.png */,
 				2E8007C117D1631400489639 /* following_btn_background@2x.png */,
 				2E1B437A17CFECEA00B28603 /* follow_btn_background@2x.png */,
@@ -767,13 +804,11 @@
 				2E0EADEE176F6E6700B65FC3 /* setInviteFriendIcon@2x.png.png */,
 				2E0EADEC176F6E6700B65FC3 /* setLogOutIcon@2x.png.png */,
 				2E0EADEB176F6E6700B65FC3 /* setPersonalIcon@2x.png.png */,
-				2E0EADE9176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png */,
-				2E0EADEA176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png */,
 				2E0EADE8176F6E6700B65FC3 /* setShippingIcon@2x.png.png */,
 				2E0EADE6176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png */,
 				2E0EADE7176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png */,
 				2E0EADE5176F6E6700B65FC3 /* toolbarBG@2x.png */,
-				2E0EADE4176F6E6700B65FC3 /* toolbarISLogo@2x.png */,
+				2E0EADE4176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png */,
 				2EB259AC1767B3280054618D /* top_shadow@2x.png */,
 				2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */,
 				2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */,
@@ -913,6 +948,15 @@
 				7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */,
 			);
 			name = BSKeyboardControls;
+			sourceTree = "<group>";
+		};
+		7B260E8D17F0BA6800F8F873 /* Viglink */ = {
+			isa = PBXGroup;
+			children = (
+				7B260E8E17F0BA7700F8F873 /* ViglinkAPIHandler.h */,
+				7B260E8F17F0BA7700F8F873 /* ViglinkAPIHandler.m */,
+			);
+			name = Viglink;
 			sourceTree = "<group>";
 		};
 		7B2C4B8C17C418490080F3F5 /* Protocols */ = {
@@ -1059,12 +1103,12 @@
 		7B5D624517C4F4B000D6C8B1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7B1B302917BE8E9400BB6420 /* BSKeyboardControls */,
+				7B96C038174FED1D00E4EDAD /* Cells */,
 				7B31BD6817C6D0EC00D24F55 /* NavBarTitleView */,
 				7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */,
-				7B1B302917BE8E9400BB6420 /* BSKeyboardControls */,
 				7B94515817BE70D600D4AAB1 /* SizePicker */,
 				2E4B32E61767860B0099A469 /* TPKeyboardAvoiding */,
-				7B96C038174FED1D00E4EDAD /* Cells */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -1187,6 +1231,7 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BDED69B180C7A48001FF165 /* MessageUI.framework */,
 				7B5D62B417C5AFEB00D6C8B1 /* QuartzCore.framework */,
 				7B61EE46174D2162002A483D /* UIKit.framework */,
 				7B61EE48174D2162002A483D /* Foundation.framework */,
@@ -1379,6 +1424,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7B260E8D17F0BA6800F8F873 /* Viglink */,
 				7BE66D9F17E3520F00BE3B64 /* Categories */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
@@ -1498,13 +1544,28 @@
 			name = Create;
 			sourceTree = "<group>";
 		};
-		7BE1D9FA17EA6A0D006C2F3E /* NavControllerAccessor */ = {
+		7BDED680180C7A1A001FF165 /* CIALBrowser */ = {
 			isa = PBXGroup;
 			children = (
-				7BE1D9FB17EA6A2B006C2F3E /* NavControllerAccessor.h */,
-				7BE1D9FC17EA6A2B006C2F3E /* NavControllerAccessor.m */,
+				7BDED681180C7A28001FF165 /* CIALBrowser.bundle */,
+				7BDED682180C7A28001FF165 /* CIALBrowser.h */,
+				7BDED683180C7A28001FF165 /* CIALBrowser.m */,
+				7BDED684180C7A28001FF165 /* AddBookmarkViewController.h */,
+				7BDED685180C7A28001FF165 /* AddBookmarkViewController.m */,
+				7BDED686180C7A28001FF165 /* BookmarkObject.h */,
+				7BDED687180C7A28001FF165 /* BookmarkObject.m */,
+				7BDED688180C7A28001FF165 /* CIALBrowserViewController.h */,
+				7BDED689180C7A28001FF165 /* CIALBrowserViewController.m */,
+				7BDED68A180C7A28001FF165 /* EditBookmarkViewController.h */,
+				7BDED68B180C7A28001FF165 /* EditBookmarkViewController.m */,
+				7BDED68C180C7A28001FF165 /* UIWebViewAdditions.h */,
+				7BDED68D180C7A28001FF165 /* UIWebViewAdditions.m */,
+				7BDED68E180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.h */,
+				7BDED68F180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m */,
+				7BDED690180C7A28001FF165 /* ViewBookmarkViewController.h */,
+				7BDED691180C7A28001FF165 /* ViewBookmarkViewController.m */,
 			);
-			name = NavControllerAccessor;
+			name = CIALBrowser;
 			sourceTree = "<group>";
 		};
 		7BE29B95177A20710093BB25 /* Attributes */ = {
@@ -1528,7 +1589,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7BE1D9FA17EA6A0D006C2F3E /* NavControllerAccessor */,
+				7BDED680180C7A1A001FF165 /* CIALBrowser */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
 				7B3F520E175FAAB900ABF49B /* ProductObject */,
 				7B2C4B8C17C418490080F3F5 /* Protocols */,
@@ -1681,6 +1742,7 @@
 				7B676F6F17BC79C7004FC53B /* previewsocialshittyimage.png in Resources */,
 				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
+				7BDED692180C7A28001FF165 /* CIALBrowser.bundle in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
 				7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
@@ -1720,6 +1782,7 @@
 				7B5D62A117C5AF9F00D6C8B1 /* amex.png in Resources */,
 				2E628CB017C6A19900CB7BE4 /* AppIcon76x76.png in Resources */,
 				2EB259A91767A0D80054618D /* heart@2x.png in Resources */,
+				2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */,
 				2EB259AB1767A1D30054618D /* heart_red@2x.png in Resources */,
 				2EB259AD1767B3280054618D /* top_shadow@2x.png in Resources */,
 				2EB259B11767B50D0054618D /* magnify@2x.png in Resources */,
@@ -1729,7 +1792,7 @@
 				2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */,
 				2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */,
 				2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */,
-				2E0EAE08176F6E6700B65FC3 /* toolbarISLogo@2x.png in Resources */,
+				2E0EAE08176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png in Resources */,
 				2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */,
 				2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */,
 				2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */,
@@ -1737,8 +1800,6 @@
 				2E7CFF9717C3A98500657CFC /* gray_x@2x.png in Resources */,
 				2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */,
 				2E41683D17CE7403002850BD /* add_product@2x.png in Resources */,
-				2E0EAE0D176F6E6700B65FC3 /* setPinterest_OffIcon@2x.png.png in Resources */,
-				2E0EAE0E176F6E6700B65FC3 /* setPinterest_OnIcon@2x.png.png in Resources */,
 				1903FF7417DA6D0800CD65F8 /* share-graphic@2x.png in Resources */,
 				2E1B437B17CFECEA00B28603 /* follow_btn_background@2x.png in Resources */,
 				2E8007C217D1631400489639 /* following_btn_background@2x.png in Resources */,
@@ -1759,6 +1820,7 @@
 				7B9B4EFD17C5C3420089C580 /* thanksseller.png in Resources */,
 				1903FF7017DA6D0800CD65F8 /* grow-graphic@2x.png in Resources */,
 				2E0EAE17176F6E6700B65FC3 /* menuLightBG@2x.png in Resources */,
+				2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */,
 				2E0EAE18176F6E6700B65FC3 /* menuBottomShadow@2x.png in Resources */,
 				7B5D628E17C5AF9500D6C8B1 /* textfield@2x.png in Resources */,
 				7B0D253C17CBA36300E43FA6 /* PLCameraSheetButtonPressed.png in Resources */,
@@ -1769,6 +1831,7 @@
 				2E0EAE1C176F6E6700B65FC3 /* lmTermsofServiceIcon@2x.png in Resources */,
 				7B0D253717CBA36300E43FA6 /* PLCameraSheetButton@2x.png in Resources */,
 				7B0D253B17CBA36300E43FA6 /* PLCameraSheetButton.png in Resources */,
+				2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */,
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
 				7B5D62A917C5AF9F00D6C8B1 /* discover.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
@@ -1822,6 +1885,7 @@
 				7B0320DF17E0E1340045D7AC /* SearchSiloViewController.xib in Resources */,
 				7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */,
 				2E6BF27917CE502E008DF460 /* edit_photo@2x.png in Resources */,
+				2EFD0A3817FBBB2C00E701B0 /* twitter_on@2x.png in Resources */,
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
 				7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */,
 				2E628CAA17C6A19900CB7BE4 /* AppIcon29x29.png in Resources */,
@@ -1844,6 +1908,7 @@
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
+				7BDED697180C7A28001FF165 /* EditBookmarkViewController.m in Sources */,
 				7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */,
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,
@@ -1860,6 +1925,7 @@
 				7B0320DE17E0E1340045D7AC /* SearchSiloViewController.m in Sources */,
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
+				7BDED69A180C7A28001FF165 /* ViewBookmarkViewController.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
 				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,
 				7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */,
@@ -1868,8 +1934,10 @@
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
 				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
 				7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */,
+				7BDED694180C7A28001FF165 /* AddBookmarkViewController.m in Sources */,
 				7B0D254B17CBA36F00E43FA6 /* GKImagePicker.m in Sources */,
 				7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */,
+				7BDED698180C7A28001FF165 /* UIWebViewAdditions.m in Sources */,
 				7B7A7F7F17D64ACE00247A26 /* SearchViewController.m in Sources */,
 				7B0D255017CBA36F00E43FA6 /* GKResizeableCropOverlayView.m in Sources */,
 				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
@@ -1885,6 +1953,7 @@
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
+				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */,
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
@@ -1898,9 +1967,11 @@
 				7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */,
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
 				7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */,
+				7BDED699180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m in Sources */,
 				7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
 				7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */,
+				7B260E9017F0BA7700F8F873 /* ViglinkAPIHandler.m in Sources */,
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
 				7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */,
 				7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */,
@@ -1909,6 +1980,7 @@
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
+				7BDED696180C7A28001FF165 /* CIALBrowserViewController.m in Sources */,
 				7B79AE8617E2237D0058E774 /* SellersTableViewCell.m in Sources */,
 				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
 				7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */,
@@ -1927,9 +1999,9 @@
 				7B79AE8017E21A900058E774 /* SellerSelectTableViewController.m in Sources */,
 				7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */,
 				7B5D626B17C5AF3700D6C8B1 /* StripeError.m in Sources */,
+				7BDED695180C7A28001FF165 /* BookmarkObject.m in Sources */,
 				7B5D628117C5AF7100D6C8B1 /* PKCardCVC.m in Sources */,
 				7B15B2FB17B2AA1800173752 /* CategoriesViewController.m in Sources */,
-				7BE1D9FD17EA6A2B006C2F3E /* NavControllerAccessor.m in Sources */,
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,
 				7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */,
@@ -2015,15 +2087,15 @@
 		7B61EE75174D2162002A483D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josh Klobe (V544PARN99)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "26ABE3CB-6578-46CA-BB68-F31A89E18D78";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26ABE3CB-6578-46CA-BB68-F31A89E18D78";
+				PROVISIONING_PROFILE = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2031,15 +2103,15 @@
 		7B61EE76174D2162002A483D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josh Klobe (V544PARN99)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "26ABE3CB-6578-46CA-BB68-F31A89E18D78";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "26ABE3CB-6578-46CA-BB68-F31A89E18D78";
+				PROVISIONING_PROFILE = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "BFADB48A-9AF9-4299-ACF1-2AA095C7712E";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
