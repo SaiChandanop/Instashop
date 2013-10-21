@@ -94,7 +94,7 @@
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarShopsyLogo.png"]];
     self.navigationItem.titleView = theImageView;
     
-    UIImage *shareButtonImage = [UIImage imageNamed:@"leftMenuButton.png"];
+    UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(openActionSheet)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
