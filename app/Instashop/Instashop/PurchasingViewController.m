@@ -644,7 +644,10 @@
     
     if ([buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Other"]) {
         
-        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:buttonTitle andProductID:self.requestingProductID];
+        NSString *userID = [InstagramUserObject getStoredUserObject].userID;
+        NSLog(@"This is the userID: %@", userID);
+        
+        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:buttonTitle andProductID:self.requestingProductID userID: userID];
     }
 }
 

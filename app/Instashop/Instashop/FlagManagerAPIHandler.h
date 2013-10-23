@@ -10,6 +10,6 @@
 
 @interface FlagManagerAPIHandler : RootAPIHandler
 
-+ (void) makeFlagDeclarationRequestComplaint:(NSString *)complaintString andProductID:(NSString*) product_ID;
++ (void) makeFlagDeclarationRequestComplaint:(NSString *)complaintString andProductID:(NSString*) product_ID userID: (NSString *) user_ID;
 
 @end

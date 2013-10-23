@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "InstagramUserObject.h"
 #import "SizePickerViewViewController.h"
 #import "IGRequest.h"
 #import "ISAsynchImageView.h"
