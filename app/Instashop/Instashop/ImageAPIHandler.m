@@ -37,7 +37,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     else
     {
 */
-
+/*
         ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
         handler.delegate = theDelegate;
         handler.contextObject = instagramMediaURLString;
@@ -47,6 +47,28 @@ static ImageAPIHandler *sharedImageAPIHandler;
         [handler.theWebRequest addTarget:handler action:@selector(instagramImageReqeustFinsihed:) forRequestEvents:SMWebRequestEventComplete];
         [handler.theWebRequest start];
 //    }
+ */
+    
+    
+    
+    ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
+    handler.delegate = theDelegate;
+    handler.contextObject = instagramMediaURLString;
+    handler.receivedData = [[NSMutableData alloc] init];
+    handler.theImageView = referenceImageView;
+    
+    
+    
+    
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:instagramMediaURLString]
+                                                  cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
+	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:handler
+                                                          startImmediately:NO];
+    
+    [connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    [connection start];
+    
+    
 }
 
 - (void) instagramImageReqeustFinsihed:(id)obj
@@ -82,7 +104,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *) response
 {
-    [receivedData setLength:0];
+    [self.receivedData setLength:0];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
@@ -133,6 +155,10 @@ static ImageAPIHandler *sharedImageAPIHandler;
         {
             [(ISAsynchImageView *)self.theImageView ceaseAnimations];
         }
+        
+        [self.delegate imageReturnedWithURL:self.contextObject withImage:responseImage];
+        
+        
     }
     else
     {

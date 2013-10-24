@@ -339,7 +339,7 @@
                      ACAccount *twitterAccount =
                      [arrayOfAccounts lastObject];
                      
-                     NSDictionary *message = @{@"status": [NSString stringWithFormat:@"sh tw test: %@", [[NSDate date] description]]};
+                     NSDictionary *message = @{@"status": [NSString stringWithFormat:@"sh tw test: %@ %@", [[NSDate date] description], self.urlLabel.text]};
                      
                      NSURL *requestURL = [NSURL
                                           URLWithString:@"http://api.twitter.com/1/statuses/update.json"];
@@ -402,7 +402,7 @@
                      ACAccount *facebookAccount =
                      [arrayOfAccounts lastObject];
                      
-                     NSDictionary *message = @{@"message": [NSString stringWithFormat:@"sh fb test: %@", [[NSDate date] description]]};
+                     NSDictionary *message = @{@"message": [NSString stringWithFormat:@"sh fb test: %@ %@", [[NSDate date] description], self.urlLabel.text]};
                      
                     
                      NSURL *feedURL = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
@@ -447,8 +447,7 @@
 
 -(IBAction)previewButtonHit
 {
-    [self runSocialCalls];
-    return;
+    
     
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
@@ -511,8 +510,11 @@
         productCreateContainerObject.mainObject.referenceURLString = self.urlLabel.text;
         //    self.productCreateObject.shippingWeight = self.shippingTextField.text;
         
+        [self runSocialCalls];
         
         [self.parentController previewButtonHitWithProductCreateObject:productCreateContainerObject];
+        
+        
         
     }
     else
