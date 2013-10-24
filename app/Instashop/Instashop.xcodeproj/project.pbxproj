@@ -226,6 +226,8 @@
 		7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7A7F7E17D64ACE00247A26 /* SearchViewController.xib */; };
 		7B7A7F8417D64B5500247A26 /* SearchAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7F8317D64B5500247A26 /* SearchAPIHandler.m */; };
 		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
+		7B7FEF1F18199C2F00C58944 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7FEF1E18199C2F00C58944 /* Accounts.framework */; };
+		7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7FEF2018199D1E00C58944 /* Social.framework */; };
 		7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */; };
 		7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D517B2CE80002CEB36 /* cell_background.png */; };
 		7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */; };
@@ -592,6 +594,8 @@
 		7B7A7F8517D651C800247A26 /* SearchReturnedReceiverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchReturnedReceiverProtocol.h; sourceTree = "<group>"; };
 		7B7B9DF51753E280000F4A3E /* ZenCartAuthenticationAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCartAuthenticationAPIHandler.h; sourceTree = "<group>"; };
 		7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCartAuthenticationAPIHandler.m; sourceTree = "<group>"; };
+		7B7FEF1E18199C2F00C58944 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		7B7FEF2018199D1E00C58944 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		7B8BC4D217B2CCBF002CEB36 /* CategorySelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySelectCell.h; sourceTree = "<group>"; };
 		7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySelectCell.m; sourceTree = "<group>"; };
 		7B8BC4D517B2CE80002CEB36 /* cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_background.png; sourceTree = "<group>"; };
@@ -689,6 +693,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */,
+				7B7FEF1F18199C2F00C58944 /* Accounts.framework in Frameworks */,
 				7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */,
 				7B5D62B517C5AFEB00D6C8B1 /* QuartzCore.framework in Frameworks */,
 				7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */,
@@ -1246,6 +1252,8 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B7FEF2018199D1E00C58944 /* Social.framework */,
+				7B7FEF1E18199C2F00C58944 /* Accounts.framework */,
 				7BDED69B180C7A48001FF165 /* MessageUI.framework */,
 				7B5D62B417C5AFEB00D6C8B1 /* QuartzCore.framework */,
 				7B61EE46174D2162002A483D /* UIKit.framework */,
