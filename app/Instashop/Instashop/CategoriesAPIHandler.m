@@ -31,7 +31,7 @@
     NSString* newStr = [[[NSString alloc] initWithData:self.responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"categoreisRequestFinished: %@", newStr);
+//    NSLog(@"categoreisRequestFinished: %@", newStr);
     [[AttributesManager getSharedAttributesManager] processAttributesString:newStr];
 }
 @end
