@@ -27,7 +27,7 @@
 #import "ViglinkAPIHandler.h"
 #import "FBPostViewController.h"
 #import "SocialManager.h"
-
+#import <Social/Social.h>
 
 @interface PurchasingViewController ()
 
@@ -625,6 +625,8 @@
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    
 }
 
 - (void) openActionSheet {
@@ -646,39 +648,71 @@
         [flagActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
     }
     
-    if ([buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Other"]) {
+    else if ([buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Other"]) {
         
         NSString *userID = [InstagramUserObject getStoredUserObject].userID;
         NSLog(@"This is the userID: %@", userID);
         
         [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:buttonTitle andProductID:self.requestingProductID userID: userID];
     }
+    
+    else if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
+    {
+        [SocialManager requestInitialFacebookAccess];
+        
+        FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
+        fbPostViewController.delegate = self;
+        fbPostViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:fbPostViewController.view];
+        
+        [fbPostViewController loadWithImage:self.imageView.image withDescriptionText:[NSString stringWithFormat:@"%@, %@", self.descriptionTextView.text, [self.requestedProductObject objectForKey:@"products_external_url"]] withTitleText:@""];
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.45];
+        fbPostViewController.view.frame = CGRectMake(0,0, fbPostViewController.view.frame.size.width, fbPostViewController.view.frame.size.height);
+        [UIView commitAnimations];
+    }
+
+    else if ([buttonTitle compare:@"Twitter"] == NSOrderedSame)
+    {
+        SLComposeViewController *tweetController = [SLComposeViewController
+                                                    composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
+            
+            NSLog(@"here here");
+            [tweetController dismissViewControllerAnimated:YES completion:nil];
+            
+            switch(result){
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"SLComposeViewControllerResultCancelled");
+                default:
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"SLComposeViewControllerResultDone");
+                    break;
+            }};
+        
+        
+        
+        
+        UIImage *photoImage = self.imageView.image;
+        
+        
+        [tweetController setInitialText:self.descriptionTextView.text];
+        [tweetController addImage:photoImage];
+        [tweetController addURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
+        [tweetController setCompletionHandler:completionHandler];
+        
+        
+        [[AppRootViewController sharedRootViewController] presentViewController:tweetController animated:YES completion:nil];
+
+    }
+
+    
+    
 }
 
-- (void)twitterButtonHit
-{
-    NSLog(@"twitterButtonHit");
-}
-
-- (void)facebookButtonHit
-{
-    NSLog(@"facebookButtonHit");
-    
-    [SocialManager requestInitialFacebookAccess];
-    
-    FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
-    fbPostViewController.delegate = self;
-    fbPostViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:fbPostViewController.view];
-
-    [fbPostViewController loadWithImage:self.imageView.image withDescriptionText:self.descriptionTextView.text withTitleText:@""];
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.45];
-    fbPostViewController.view.frame = CGRectMake(0,0, fbPostViewController.view.frame.size.width, fbPostViewController.view.frame.size.height);
-    [UIView commitAnimations];
-    
-}
 
 -(void)dismissFBShareController:(FBPostViewController *)callingController
 {

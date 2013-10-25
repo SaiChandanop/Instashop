@@ -61,8 +61,6 @@
 
 - (void)webControllerBackButtonHit;
 
-- (IBAction)twitterButtonHit;
-- (IBAction)facebookButtonHit;
 
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
 

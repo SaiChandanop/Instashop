@@ -101,6 +101,7 @@
      }];
 }
 
+
 +(void)postToFacebookWithString:(NSString *)contentString withImage:(UIImage *)contentImage
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
