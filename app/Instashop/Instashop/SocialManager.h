@@ -12,6 +12,6 @@
 
 +(void)requestInitialFacebookAccess;
 +(void)postToTwitterWithString:(NSString *)contentString;
-+(void)postToFacebookWithString:(NSString *)contentString;
++(void)postToFacebookWithString:(NSString *)contentString withImage:(UIImage *)contentImage;
 
 @end

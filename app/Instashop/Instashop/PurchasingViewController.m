@@ -26,6 +26,9 @@
 #import "CIALBrowserViewController.h"
 #import "ViglinkAPIHandler.h"
 #import "FBPostViewController.h"
+#import "SocialManager.h"
+
+
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -660,6 +663,8 @@
 - (void)facebookButtonHit
 {
     NSLog(@"facebookButtonHit");
+    
+    [SocialManager requestInitialFacebookAccess];
     
     FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
     fbPostViewController.delegate = self;

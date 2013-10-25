@@ -40,6 +40,9 @@
                             <state key="normal" title="Button">
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="facebookButtonHit" destination="-1" eventType="touchUpInside" id="QI0-H7-H11"/>
+                            </connections>
                         </button>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="37">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
@@ -114,9 +117,6 @@
                                             <state key="selected" image="facebook_on.png" backgroundImage="Menu_BG.png">
                                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
-                                            <connections>
-                                                <action selector="facebookButtonHit" destination="-1" eventType="touchUpInside" id="OEz-PA-HjD"/>
-                                            </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="R0V-Kt-Lk4">
                                             <rect key="frame" x="160" y="2" width="160" height="42"/>
@@ -260,10 +260,16 @@
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
+        <image name="Menu_BG.png" width="320" height="548"/>
+        <image name="Menu_BG.png" width="320" height="548"/>
+        <image name="Menu_BG.png" width="320" height="548"/>
+        <image name="cell_separator.png" width="320" height="5"/>
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="facebook_off.png" width="44" height="44"/>
         <image name="facebook_on.png" width="44" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="top_shadow.png" width="320" height="50"/>
         <image name="top_shadow.png" width="320" height="50"/>
         <image name="twitter_off.png" width="44" height="44"/>
         <image name="twitter_on.png" width="44" height="44"/>

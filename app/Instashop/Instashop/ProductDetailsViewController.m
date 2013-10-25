@@ -325,7 +325,7 @@
     if (self.facebookButton.selected)
     {
         NSString *facebookString = [NSString stringWithFormat:@"sh fb test: %@ %@", [[NSDate date] description], self.urlLabel.text];
-        [SocialManager postToFacebookWithString:facebookString];
+        [SocialManager postToFacebookWithString:facebookString withImage:nil];
     }
 }
 

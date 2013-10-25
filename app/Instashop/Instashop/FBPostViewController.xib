@@ -7,6 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FBPostViewController">
             <connections>
+                <outlet property="contentTextView" destination="I6e-S7-qD9" id="s3B-7I-EBO"/>
                 <outlet property="descriptionTextView" destination="mkD-hT-RV0" id="EYD-gc-Uk0"/>
                 <outlet property="insetImageView" destination="SSI-MW-MD2" id="Hr0-X4-2jm"/>
                 <outlet property="titleLabel" destination="aNc-Ax-JZ3" id="pKa-eB-56z"/>

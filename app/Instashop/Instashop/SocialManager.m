@@ -101,7 +101,7 @@
      }];
 }
 
-+(void)postToFacebookWithString:(NSString *)contentString
++(void)postToFacebookWithString:(NSString *)contentString withImage:(UIImage *)contentImage
 {
     ACAccountStore *accountStore = [[ACAccountStore alloc] init];
     
@@ -115,6 +115,9 @@
     [options setObject:ACFacebookAudienceFriends forKey:ACFacebookAudienceKey];
     
     
+    NSString *feedURLString = @"https://graph.facebook.com/me/feed";
+    if (contentImage != nil)
+        feedURLString = @"https://graph.facebook.com/me/photos";
     [accountStore requestAccessToAccountsWithType:facebookAccountType
                                      options:options
                                   completion:^(BOOL granted, NSError *error)
@@ -133,12 +136,18 @@
                  NSDictionary *message = @{@"message": contentString};
                  
                  
-                 NSURL *feedURL = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
+                 NSURL *feedURL = [NSURL URLWithString:feedURLString];
                  
                  SLRequest *postRequest = [SLRequest
                                            requestForServiceType:SLServiceTypeFacebook
                                            requestMethod:SLRequestMethodPOST
                                            URL:feedURL parameters:message];
+                 
+                 if (contentImage != nil)
+                 {
+                     NSData *imageData = UIImagePNGRepresentation(contentImage);
+                     [postRequest addMultipartData:imageData withName:@"picture" type:@"image/png" filename:nil];
+                 }
                  
                  postRequest.account = facebookAccount;
                  
@@ -147,10 +156,11 @@
                                               NSHTTPURLResponse *urlResponse, NSError *error)
                   {
                       
-                      //                          NSString* newStr = [[[NSString alloc] initWithData:responseData
-                      //                                                                  encoding:NSUTF8StringEncoding] autorelease];
+                                                NSString* newStr = [[[NSString alloc] initWithData:responseData
+                                                                                        encoding:NSUTF8StringEncoding] autorelease];
                       
-                      //NSLog(@"facebook response string: %@", newStr);
+                      NSLog(@"facebook response string: %@", newStr);
+                      NSLog(@"facebook error: %@", error);
                   }];
              }
              else

@@ -14,6 +14,7 @@
     UIImageView *insetImageView;
     UITextView *descriptionTextView;
     UILabel *titleLabel;
+    UITextView *contentTextView;
 }
 
 - (void) loadWithImage:(UIImage *)theImage withDescriptionText:(NSString *)theDescriptionText withTitleText:(NSString *)theTitleText;
@@ -24,4 +25,5 @@
 @property (nonatomic, retain) IBOutlet UIImageView *insetImageView;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 @property (nonatomic, retain) IBOutlet UILabel *titleLabel;
+@property (nonatomic, retain) IBOutlet UITextView *contentTextView;
 @end

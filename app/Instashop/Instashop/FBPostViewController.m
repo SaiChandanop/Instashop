@@ -7,7 +7,7 @@
 //
 
 #import "FBPostViewController.h"
-
+#import "SocialManager.h"
 @interface FBPostViewController ()
 
 @end
@@ -18,6 +18,7 @@
 @synthesize insetImageView;
 @synthesize descriptionTextView;
 @synthesize titleLabel;
+@synthesize contentTextView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -58,6 +59,8 @@
 
 -(IBAction)shareButtonHit
 {
+    [SocialManager postToFacebookWithString:self.contentTextView.text withImage:self.insetImageView.image];
+    
     [self.delegate fbShareGoButtonHit:self];
 }
 
