@@ -232,6 +232,7 @@
 		7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D517B2CE80002CEB36 /* cell_background.png */; };
 		7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */; };
 		7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */; };
+		7B8CCFB7181AB220006E01A9 /* SocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CCFB6181AB220006E01A9 /* SocialManager.m */; };
 		7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
@@ -602,6 +603,8 @@
 		7B8BC4D917B364B4002CEB36 /* SizeQuantityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewController.h; sourceTree = "<group>"; };
 		7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewController.m; sourceTree = "<group>"; };
 		7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewController.xib; sourceTree = "<group>"; };
+		7B8CCFB5181AB220006E01A9 /* SocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialManager.h; sourceTree = "<group>"; };
+		7B8CCFB6181AB220006E01A9 /* SocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialManager.m; sourceTree = "<group>"; };
 		7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedImageShadow@2x.png"; sourceTree = "<group>"; };
 		7B96C034174FDEF800E4EDAD /* ImageAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAPIHandler.h; sourceTree = "<group>"; };
 		7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAPIHandler.m; sourceTree = "<group>"; };
@@ -1266,6 +1269,7 @@
 		7B61EE4C174D2162002A483D /* Instashop */ = {
 			isa = PBXGroup;
 			children = (
+				7B8CCFB4181AB1FB006E01A9 /* Social */,
 				7B5D624517C4F4B000D6C8B1 /* Views */,
 				7B7A7448174D4EAE005E90B9 /* VCs */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
@@ -1495,6 +1499,15 @@
 				7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */,
 			);
 			name = ZenCart;
+			sourceTree = "<group>";
+		};
+		7B8CCFB4181AB1FB006E01A9 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				7B8CCFB5181AB220006E01A9 /* SocialManager.h */,
+				7B8CCFB6181AB220006E01A9 /* SocialManager.m */,
+			);
+			name = Social;
 			sourceTree = "<group>";
 		};
 		7B94515817BE70D600D4AAB1 /* SizePicker */ = {
@@ -2011,6 +2024,7 @@
 				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
 				7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */,
 				7B5D628417C5AF7100D6C8B1 /* PKTextField.m in Sources */,
+				7B8CCFB7181AB220006E01A9 /* SocialManager.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
 				7B0D254D17CBA36F00E43FA6 /* GKImageCropView.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,

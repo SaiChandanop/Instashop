@@ -17,8 +17,8 @@
 #import "AppDelegate.h"
 #import "ProductAPIHandler.h"
 #import "CIALBrowserViewController.h"
-#import <Accounts/Accounts.h>
-#import <Social/Social.h>
+#import "SocialManager.h"
+
 @interface ProductDetailsViewController ()
 
 @end
@@ -316,131 +316,17 @@
 
 -(void) runSocialCalls
 {
-    ACAccountStore *account = [[ACAccountStore alloc] init];
-    
     if (self.twitterButton.selected)
     {
-        
-        ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:
-                                      ACAccountTypeIdentifierTwitter];
-        
-        [account requestAccessToAccountsWithType:accountType
-                                         options:nil
-                                      completion:^(BOOL granted, NSError *error)
-         {
-             if (granted == YES)
-             {
-                 
-                 NSArray *arrayOfAccounts = [account
-                                             accountsWithAccountType:accountType];
-                 
-                 if ([arrayOfAccounts count] > 0)
-                 {
-                     ACAccount *twitterAccount =
-                     [arrayOfAccounts lastObject];
-                     
-                     NSDictionary *message = @{@"status": [NSString stringWithFormat:@"sh tw test: %@ %@", [[NSDate date] description], self.urlLabel.text]};
-                     
-                     NSURL *requestURL = [NSURL
-                                          URLWithString:@"http://api.twitter.com/1/statuses/update.json"];
-                     
-                     SLRequest *postRequest = [SLRequest
-                                               requestForServiceType:SLServiceTypeTwitter
-                                               requestMethod:SLRequestMethodPOST
-                                               URL:requestURL parameters:message];
-                     
-                     postRequest.account = twitterAccount;
-                     
-                     [postRequest
-                      performRequestWithHandler:^(NSData *responseData,
-                                                  NSHTTPURLResponse *urlResponse, NSError *error)
-                      {
-                          NSLog(@"Twitter HTTP response: %i",
-                                [urlResponse statusCode]);
-                      }];
-                     
-                     
-                 }
-                 
-             }
-             else
-                 NSLog(@"access not granted");
-             
-             NSLog(@"twitter done");
-         }];
+        NSString *twitterString = [NSString stringWithFormat:@"sh tw test: %@ %@", [[NSDate date] description], self.urlLabel.text];
+        [SocialManager postToTwitterWithString:twitterString];
     }
-    
-    
     
     if (self.facebookButton.selected)
     {
-        
-        ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-        
-        ACAccountType *facebookAccountType = [accountStore
-                                              accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-        NSArray *permissionsArray = [NSArray arrayWithObjects:@"publish_stream", nil];
-        
-        NSMutableDictionary *options = [NSMutableDictionary dictionaryWithCapacity:0];
-        [options setObject:@"500395433370249" forKey:ACFacebookAppIdKey];
-        [options setObject:permissionsArray forKey:ACFacebookPermissionsKey];
-        [options setObject:ACFacebookAudienceFriends forKey:ACFacebookAudienceKey];
-        
-        
-        [account requestAccessToAccountsWithType:facebookAccountType
-                                         options:options
-                                      completion:^(BOOL granted, NSError *error)
-         {
-             if (granted == YES)
-             {
-                 
-                 NSArray *arrayOfAccounts = [account
-                                             accountsWithAccountType:facebookAccountType];
-                 
-                 if ([arrayOfAccounts count] > 0)
-                 {
-                     ACAccount *facebookAccount =
-                     [arrayOfAccounts lastObject];
-                     
-                     NSDictionary *message = @{@"message": [NSString stringWithFormat:@"sh fb test: %@ %@", [[NSDate date] description], self.urlLabel.text]};
-                     
-                    
-                     NSURL *feedURL = [NSURL URLWithString:@"https://graph.facebook.com/me/feed"];
-                     
-                     SLRequest *postRequest = [SLRequest
-                                               requestForServiceType:SLServiceTypeFacebook
-                                               requestMethod:SLRequestMethodPOST
-                                               URL:feedURL parameters:message];
-                     
-                     postRequest.account = facebookAccount;
-                     
-                     [postRequest
-                      performRequestWithHandler:^(NSData *responseData,
-                                                  NSHTTPURLResponse *urlResponse, NSError *error)
-                      {
-                          
-//                          NSString* newStr = [[[NSString alloc] initWithData:responseData
-  //                                                                  encoding:NSUTF8StringEncoding] autorelease];
-    
-                          //NSLog(@"facebook response string: %@", newStr);
-                      }];
-                 }
-                 else
-                 {
-                     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                                         message:@"To post to Facebook you need to head over to Settings and update your Facebook credentials"
-                                                                        delegate:nil
-                                                               cancelButtonTitle:@"Ok"
-                                                               otherButtonTitles:nil];
-                     [alertView show];
-                 }
-                 
-             }
-             else
-                 NSLog(@"facebook access not granted, error: %@", error);
-         }];
+        NSString *facebookString = [NSString stringWithFormat:@"sh fb test: %@ %@", [[NSDate date] description], self.urlLabel.text];
+        [SocialManager postToFacebookWithString:facebookString];
     }
-    
 }
 
 
@@ -452,39 +338,7 @@
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
-    /*
-     NSMutableArray *productsArray = [NSMutableArray arrayWithCapacity:0];
-     
-     for (id key in self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary)
-     {
-     NSDictionary *sizeObjectDictionary = [self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary objectForKey:key];
-     int objectQuantity = [[sizeObjectDictionary objectForKey:QUANTITY_DICTIONARY_KEY] intValue];
-     NSString *objectSize = [sizeObjectDictionary objectForKey:SIZE_DICTIONARY_KEY];
-     
-     if (objectQuantity > 0)
-     {
-     
-     ProductCreateObject *productCreateObject = [[ProductCreateObject alloc] init];
-     productCreateObject.instagramPictureURLString = self.instagramPictureURLString;
-     productCreateObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
-     productCreateObject.title = self.titleTextView.text;
-     productCreateObject.description = self.descriptionTextView.text;
-     productCreateObject.retailValue = self.retailPriceTextField.text;
-     productCreateObject.retailPrice = self.retailPriceTextField.text;
-     productCreateObject.quantity = [NSString stringWithFormat:@"%d", objectQuantity];
-     if (objectSize != nil)
-     productCreateObject.size = objectSize;
-     productCreateObject.categoriesArray = [NSArray arrayWithArray:self.attributesArray];
-     [productsArray addObject:productCreateObject];
-     
-     totalQuantity += objectQuantity;
-     }
-     }
-     
-     productCreateContainerObject.objectSizePermutationsArray = [[NSArray alloc] initWithArray:productsArray];
-     
-     productCreateContainerObject.tableViewCellSizeQuantityValueDictionary = self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary;
-     */
+    
     if ([self.urlLabel.text length] == 0)
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
@@ -526,25 +380,6 @@
                                                   otherButtonTitles:nil];
         [alertView show];
     }
-    /* else
-     {
-     if ([self.selectedCategoriesLabel.text length] == 0)
-     {
-     
-     }
-     else
-     {
-     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-     message:@"Please select a size and/or quantity"
-     delegate:self
-     cancelButtonTitle:@"Ok"
-     otherButtonTitles:nil];
-     [alertView show];
-     }
-     
-     
-     }
-     */
     
     [self resignResponders];
 }
@@ -734,40 +569,11 @@
 
     self.facebookButton.selected = !self.facebookButton.selected;
     
-    
+    [SocialManager requestInitialFacebookAccess];
 
     
     
-    
-    ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-    
-    ACAccountType *facebookAccountType = [accountStore
-                                          accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierFacebook];
-    NSArray *permissionsArray = [NSArray arrayWithObjects:@"email", nil];
-    
-    NSMutableDictionary *options = [NSMutableDictionary dictionaryWithCapacity:0];
-    [options setObject:@"500395433370249" forKey:ACFacebookAppIdKey];
-    [options setObject:permissionsArray forKey:ACFacebookPermissionsKey];
-    [options setObject:ACFacebookAudienceFriends forKey:ACFacebookAudienceKey];
-    
-    [accountStore requestAccessToAccountsWithType:facebookAccountType
-                                          options:options completion:^(BOOL granted, NSError *theError) {
-                                              
-                                              
-                                              NSLog(@"granted: %d, error: %@", granted, theError);
-                                              
-                                              
-                                              if (granted) {
-                                                  NSLog(@"granted!!!");
-                                                  
-                                                  
-                                              }
-                                              else
-                                              {
-                                                  // Handle Failure
-                                              }
-                                          }];
-    
+
     
     
     
