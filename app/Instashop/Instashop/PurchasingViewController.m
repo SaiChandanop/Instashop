@@ -25,7 +25,7 @@
 #import "EditProductCompleteProtocol.h"
 #import "CIALBrowserViewController.h"
 #import "ViglinkAPIHandler.h"
-
+#import "FBPostViewController.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -48,10 +48,11 @@
 @synthesize sizeSelectedIndex;
 @synthesize purchaseButton;
 @synthesize likesArray;
-
 @synthesize actionSheet;
 @synthesize quantityButton;
 @synthesize sizeButton;
+@synthesize facebookButton;
+@synthesize twitterButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -649,6 +650,58 @@
         
         [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:buttonTitle andProductID:self.requestingProductID userID: userID];
     }
+}
+
+- (void)twitterButtonHit
+{
+    NSLog(@"twitterButtonHit");
+}
+
+- (void)facebookButtonHit
+{
+    NSLog(@"facebookButtonHit");
+    
+    FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
+    fbPostViewController.delegate = self;
+    fbPostViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.view addSubview:fbPostViewController.view];
+
+    [fbPostViewController loadWithImage:self.imageView.image withDescriptionText:self.descriptionTextView.text withTitleText:@""];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.45];
+    fbPostViewController.view.frame = CGRectMake(0,0, fbPostViewController.view.frame.size.width, fbPostViewController.view.frame.size.height);
+    [UIView commitAnimations];
+    
+}
+
+-(void)dismissFBShareController:(FBPostViewController *)callingController
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.45];
+    callingController.view.frame = CGRectMake(0,self.view.frame.size.height, callingController.view.frame.size.width, callingController.view.frame.size.height);
+    [UIView commitAnimations];
+
+    
+}
+-(void)fbShareCancelButtonHit:(FBPostViewController *)callingController
+{
+    [self dismissFBShareController:callingController];
+}
+
+-(void)fbShareGoButtonHit:(FBPostViewController *)callingController
+{
+    [self dismissFBShareController:callingController];
+}
+
+-(void)twitterShareCancelButtonHit
+{
+    
+}
+
+-(void)twitterShareGoButtonHit
+{
+    
 }
 
 

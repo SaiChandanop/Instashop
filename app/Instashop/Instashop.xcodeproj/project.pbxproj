@@ -233,6 +233,9 @@
 		7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */; };
 		7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */; };
 		7B8CCFB7181AB220006E01A9 /* SocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CCFB6181AB220006E01A9 /* SocialManager.m */; };
+		7B8CCFBB181ABDA3006E01A9 /* FBPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CCFB9181ABDA3006E01A9 /* FBPostViewController.m */; };
+		7B8CCFBC181ABDA3006E01A9 /* FBPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CCFBA181ABDA3006E01A9 /* FBPostViewController.xib */; };
+		7B8CCFBE181ABEF6006E01A9 /* FaceBookShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CCFBD181ABEF6006E01A9 /* FaceBookShare@2x.png */; };
 		7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
@@ -605,6 +608,10 @@
 		7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewController.xib; sourceTree = "<group>"; };
 		7B8CCFB5181AB220006E01A9 /* SocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialManager.h; sourceTree = "<group>"; };
 		7B8CCFB6181AB220006E01A9 /* SocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialManager.m; sourceTree = "<group>"; };
+		7B8CCFB8181ABDA3006E01A9 /* FBPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBPostViewController.h; sourceTree = "<group>"; };
+		7B8CCFB9181ABDA3006E01A9 /* FBPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBPostViewController.m; sourceTree = "<group>"; };
+		7B8CCFBA181ABDA3006E01A9 /* FBPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBPostViewController.xib; sourceTree = "<group>"; };
+		7B8CCFBD181ABEF6006E01A9 /* FaceBookShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FaceBookShare@2x.png"; sourceTree = "<group>"; };
 		7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedImageShadow@2x.png"; sourceTree = "<group>"; };
 		7B96C034174FDEF800E4EDAD /* ImageAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAPIHandler.h; sourceTree = "<group>"; };
 		7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAPIHandler.m; sourceTree = "<group>"; };
@@ -775,6 +782,7 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7B8CCFBD181ABEF6006E01A9 /* FaceBookShare@2x.png */,
 				2E41D2211815A9F60032844A /* more_button@2x.png */,
 				2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */,
 				2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */,
@@ -1269,7 +1277,6 @@
 		7B61EE4C174D2162002A483D /* Instashop */ = {
 			isa = PBXGroup;
 			children = (
-				7B8CCFB4181AB1FB006E01A9 /* Social */,
 				7B5D624517C4F4B000D6C8B1 /* Views */,
 				7B7A7448174D4EAE005E90B9 /* VCs */,
 				7B7A7449174D4EB8005E90B9 /* Data */,
@@ -1506,6 +1513,9 @@
 			children = (
 				7B8CCFB5181AB220006E01A9 /* SocialManager.h */,
 				7B8CCFB6181AB220006E01A9 /* SocialManager.m */,
+				7B8CCFB8181ABDA3006E01A9 /* FBPostViewController.h */,
+				7B8CCFB9181ABDA3006E01A9 /* FBPostViewController.m */,
+				7B8CCFBA181ABDA3006E01A9 /* FBPostViewController.xib */,
 			);
 			name = Social;
 			sourceTree = "<group>";
@@ -1626,6 +1636,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7B8CCFB4181AB1FB006E01A9 /* Social */,
 				7BDED680180C7A1A001FF165 /* CIALBrowser */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
 				7B3F520E175FAAB900ABF49B /* ProductObject */,
@@ -1832,6 +1843,7 @@
 				2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */,
 				2E0EAE08176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png in Resources */,
 				2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */,
+				7B8CCFBE181ABEF6006E01A9 /* FaceBookShare@2x.png in Resources */,
 				2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */,
 				2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */,
 				7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */,
@@ -1899,6 +1911,7 @@
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
 				7B5D62AA17C5AF9F00D6C8B1 /* discover@2x.png in Resources */,
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
+				7B8CCFBC181ABDA3006E01A9 /* FBPostViewController.xib in Resources */,
 				7B5A56F017D3D80C007AABDA /* SuggestedShopView.xib in Resources */,
 				7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */,
 				7B9EAB3E1796E98600D2868D /* product_buy_bakcground_image_a.png in Resources */,
@@ -1946,6 +1959,7 @@
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */,
+				7B8CCFBB181ABDA3006E01A9 /* FBPostViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
 				7BDED697180C7A28001FF165 /* EditBookmarkViewController.m in Sources */,
 				7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */,

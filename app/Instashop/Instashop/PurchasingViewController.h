@@ -45,6 +45,8 @@
         
     UIActionSheet *actionSheet;
     
+    UIButton *facebookButton;
+    UIButton *twitterButton;
 }
 
 - (IBAction) likeButtonHit;
@@ -59,6 +61,8 @@
 
 - (void)webControllerBackButtonHit;
 
+- (IBAction)twitterButtonHit;
+- (IBAction)facebookButtonHit;
 
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
 
@@ -89,4 +93,8 @@
 @property (nonatomic, retain) NSArray *likesArray;
 
 @property (nonatomic, retain) UIActionSheet *actionSheet;
+
+@property (nonatomic, retain) IBOutlet UIButton *facebookButton;
+@property (nonatomic, retain) IBOutlet UIButton *twitterButton;
+
 @end
