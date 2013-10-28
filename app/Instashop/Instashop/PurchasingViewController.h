@@ -47,6 +47,8 @@
     
     UIButton *facebookButton;
     UIButton *twitterButton;
+    
+    NSString *viglinkString;
 }
 
 - (IBAction) likeButtonHit;
@@ -95,4 +97,5 @@
 @property (nonatomic, retain) IBOutlet UIButton *facebookButton;
 @property (nonatomic, retain) IBOutlet UIButton *twitterButton;
 
+@property (nonatomic, retain) NSString *viglinkString;
 @end

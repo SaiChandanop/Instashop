@@ -56,6 +56,7 @@
 @synthesize sizeButton;
 @synthesize facebookButton;
 @synthesize twitterButton;
+@synthesize viglinkString;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -196,6 +197,12 @@
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     
     self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 8);
+    
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+    
+    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    
+    
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -314,22 +321,26 @@
 -(IBAction)buyButtonHit
 {
     NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+//    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    
+    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
+    [self.navigationController pushViewController:browserViewController animated:YES];
+    [browserViewController loadView];
+    [browserViewController openThisURL:[NSURL URLWithString:viglinkString]];
+
+    
+    
 }
 
 -(void)viglinkCallReturned:(NSString *)urlString
 {
+    self.viglinkString = urlString;
 //    NSLog(@"!!!viglinkCallReturned: %@", htmlString);
 //    NSString *urlString = [self.requestedProductObject objectForKey:@"products_external_url"];
-    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
-    [self.navigationController pushViewController:browserViewController animated:YES];
-    [browserViewController loadView];
-    [browserViewController openThisURL:[NSURL URLWithString:urlString]];
-
-     
-
+    
      
 }
+
 
 -(IBAction)buyButtonHitBAK
 {
@@ -638,6 +649,7 @@
 
 - (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     
+    NSLog(@"vigLinkString: %@", self.viglinkString);
     NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
     
     if ([buttonTitle isEqualToString:@"Flag"]) {
@@ -698,10 +710,10 @@
         
         UIImage *photoImage = self.imageView.image;
         
-        NSString *postText = [NSString stringWithFormat:@"fb text goes here, %@", self.descriptionTextView.text];
+        NSString *postText = [NSString stringWithFormat:@"fb text goes %@", @"right here"];
         [facebookController setInitialText:postText];
         [facebookController addImage:photoImage];
-        [facebookController addURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
+        [facebookController addURL:[NSURL URLWithString:viglinkString]];
         [facebookController setCompletionHandler:completionHandler];
         
         
@@ -737,10 +749,10 @@
         UIImage *photoImage = self.imageView.image;
         
         
-        NSString *postText = [NSString stringWithFormat:@"tw text goes here, %@", self.descriptionTextView.text];
+        NSString *postText = [NSString stringWithFormat:@"tw text goes %@", @"right here"];
         [tweetController setInitialText:postText];
         [tweetController addImage:photoImage];
-        [tweetController addURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
+        [tweetController addURL:[NSURL URLWithString:viglinkString]];
         [tweetController setCompletionHandler:completionHandler];
         
         
