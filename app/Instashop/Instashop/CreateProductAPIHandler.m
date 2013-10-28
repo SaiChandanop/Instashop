@@ -38,9 +38,9 @@
     [postString appendString:[NSString stringWithFormat:@"instagramUserId=%@&", userInstagramObject.userID]];
     [postString appendString:[NSString stringWithFormat:@"object_instagram_id=%@&", [theProductCreateObject.instragramMediaInfoDictionary objectForKey:@"id"]]];
     [postString appendString:[NSString stringWithFormat:@"object_title=%@&", theProductCreateObject.title]];
-    [postString appendString:[NSString stringWithFormat:@"object_description=%@&", theProductCreateObject.description]];
+    [postString appendString:[NSString stringWithFormat:@"object_description=%@&", [theProductCreateObject.description stringByReplacingOccurrencesOfString:@"&" withString:@"%26"]]];
     [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", theProductCreateObject.quantity]];
-    [postString appendString:[NSString stringWithFormat:@"object_categories=%@&", productCategoriesString]];
+     [postString appendString:[NSString stringWithFormat:@"object_categories=%@&", [productCategoriesString stringByReplacingOccurrencesOfString:@"&" withString:@"%26"]]];
     
 //    [postString appendString:[NSString stringWithFormat:@"object_price=%@&", [theProductCreateObject.retailPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
 //    [postString appendString:[NSString stringWithFormat:@"object_list_price=%@&", [theProductCreateObject.listPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
