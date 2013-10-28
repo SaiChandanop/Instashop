@@ -658,7 +658,9 @@
     
     else if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
     {
-/*        [SocialManager requestInitialFacebookAccess];
+        [SocialManager requestInitialFacebookAccess];
+        
+/*
         
         FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
         fbPostViewController.delegate = self;
@@ -673,13 +675,13 @@
         [UIView commitAnimations];
  */
         
-        SLComposeViewController *tweetController = [SLComposeViewController
+        SLComposeViewController *facebookController = [SLComposeViewController
                                                     composeViewControllerForServiceType:SLServiceTypeFacebook];
         
         SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
             
             NSLog(@"here here");
-            [tweetController dismissViewControllerAnimated:YES completion:nil];
+            [facebookController dismissViewControllerAnimated:YES completion:nil];
             
             switch(result){
                 case SLComposeViewControllerResultCancelled:
@@ -696,14 +698,14 @@
         
         UIImage *photoImage = self.imageView.image;
         
+        NSString *postText = [NSString stringWithFormat:@"fb text goes here, %@", self.descriptionTextView.text];
+        [facebookController setInitialText:postText];
+        [facebookController addImage:photoImage];
+        [facebookController addURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
+        [facebookController setCompletionHandler:completionHandler];
         
-        [tweetController setInitialText:self.descriptionTextView.text];
-        [tweetController addImage:photoImage];
-        [tweetController addURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
-        [tweetController setCompletionHandler:completionHandler];
         
-        
-        [[AppRootViewController sharedRootViewController] presentViewController:tweetController animated:YES completion:nil];
+        [[AppRootViewController sharedRootViewController] presentViewController:facebookController animated:YES completion:nil];
 
         
         
@@ -735,7 +737,8 @@
         UIImage *photoImage = self.imageView.image;
         
         
-        [tweetController setInitialText:self.descriptionTextView.text];
+        NSString *postText = [NSString stringWithFormat:@"tw text goes here, %@", self.descriptionTextView.text];
+        [tweetController setInitialText:postText];
         [tweetController addImage:photoImage];
         [tweetController addURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
         [tweetController setCompletionHandler:completionHandler];
