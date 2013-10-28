@@ -658,7 +658,7 @@
     
     else if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
     {
-        [SocialManager requestInitialFacebookAccess];
+/*        [SocialManager requestInitialFacebookAccess];
         
         FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
         fbPostViewController.delegate = self;
@@ -671,6 +671,42 @@
         [UIView setAnimationDuration:0.45];
         fbPostViewController.view.frame = CGRectMake(0,0, fbPostViewController.view.frame.size.width, fbPostViewController.view.frame.size.height);
         [UIView commitAnimations];
+ */
+        
+        SLComposeViewController *tweetController = [SLComposeViewController
+                                                    composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
+            
+            NSLog(@"here here");
+            [tweetController dismissViewControllerAnimated:YES completion:nil];
+            
+            switch(result){
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"SLComposeViewControllerResultCancelled");
+                default:
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"SLComposeViewControllerResultDone");
+                    break;
+            }};
+        
+        
+        
+        
+        UIImage *photoImage = self.imageView.image;
+        
+        
+        [tweetController setInitialText:self.descriptionTextView.text];
+        [tweetController addImage:photoImage];
+        [tweetController addURL:[NSURL URLWithString:[self.requestedProductObject objectForKey:@"products_external_url"]]];
+        [tweetController setCompletionHandler:completionHandler];
+        
+        
+        [[AppRootViewController sharedRootViewController] presentViewController:tweetController animated:YES completion:nil];
+
+        
+        
     }
 
     else if ([buttonTitle compare:@"Twitter"] == NSOrderedSame)
