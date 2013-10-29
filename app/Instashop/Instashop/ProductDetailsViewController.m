@@ -327,7 +327,7 @@
         
         
         NSString *facebookString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
-        [SocialManager postToFacebookWithString:facebookString withImage:self.theImageView.image];
+        [SocialManager postToFacebookWithString:facebookString withImage:nil];
     }
 }
 
