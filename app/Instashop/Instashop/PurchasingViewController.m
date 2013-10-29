@@ -85,12 +85,12 @@
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
     
-    
+    /*
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
     NSDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-
+*/
     
     
 }
@@ -132,7 +132,7 @@
     self.commentsTableViewController.tableView.backgroundColor = [UIColor clearColor];
     self.commentsTableViewController.tableView.separatorColor = [UIColor clearColor];
     self.commentsTableViewController.parentController = self;
-    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSNull null], nil];
+//    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSNull null], nil];
     [self.commentsTableViewController.tableView reloadData];
     
     
@@ -153,8 +153,8 @@
 //        self.contentScrollView.userInteractionEnabled = NO;
         
         self.commentExitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.commentExitButton.backgroundColor = [UIColor redColor];
-        self.commentExitButton.frame = CGRectMake(0,0, self.contentScrollView.frame.size.width, 250);
+        self.commentExitButton.backgroundColor = [UIColor clearColor];
+        self.commentExitButton.frame = CGRectMake(0,0, self.contentScrollView.frame.size.width, 253);
         [self.commentExitButton addTarget:self action:@selector(commentsViewShouldReset) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:self.commentExitButton];
         
@@ -179,6 +179,7 @@
     [self commentsViewShouldReset];
     
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", self.commentTextField.text, @"text", nil];
+    NSLog(@"params: %@", params);
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.instagram  postRequestWithParams:params delegate:self];
 
@@ -313,7 +314,7 @@
 }
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSLog(@"request did load!, request.url: %@", request);
+    NSLog(@"request did load!, request.url: %@", request.url);
     NSLog(@"request did load!, result: %@", result);
     
     if ([request.url rangeOfString:@"comments"].length > 0)
