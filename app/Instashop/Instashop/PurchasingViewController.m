@@ -708,11 +708,11 @@
         
         
         
-        UIImage *photoImage = self.imageView.image;
+        //UIImage *photoImage = self.imageView.image;
         
         NSString *postText = [NSString stringWithFormat:@"fb text goes %@", @"right here"];
         [facebookController setInitialText:postText];
-        [facebookController addImage:photoImage];
+        //[facebookController addImage:photoImage];
         [facebookController addURL:[NSURL URLWithString:viglinkString]];
         [facebookController setCompletionHandler:completionHandler];
         
