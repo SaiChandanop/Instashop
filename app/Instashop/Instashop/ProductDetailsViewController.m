@@ -318,14 +318,16 @@
 {
     if (self.twitterButton.selected)
     {
-        NSString *twitterString = [NSString stringWithFormat:@"sh tw test: %@ %@", [[NSDate date] description], self.urlLabel.text];
+        NSString *twitterString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
         [SocialManager postToTwitterWithString:twitterString];
     }
     
     if (self.facebookButton.selected)
     {
-        NSString *facebookString = [NSString stringWithFormat:@"sh fb test: %@ %@", [[NSDate date] description], self.urlLabel.text];
-        [SocialManager postToFacebookWithString:facebookString withImage:nil];
+        
+        
+        NSString *facebookString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
+        [SocialManager postToFacebookWithString:facebookString withImage:self.theImageView.image];
     }
 }
 
