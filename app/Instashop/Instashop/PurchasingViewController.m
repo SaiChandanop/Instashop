@@ -710,7 +710,7 @@
         
         //UIImage *photoImage = self.imageView.image;
         
-        NSString *postText = [NSString stringWithFormat:@"%@ fb text goes %@", [self.requestedProductObject objectForKey:@"products_description"], @"right here"];
+        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsy"];
         [facebookController setInitialText:postText];
         //[facebookController addImage:photoImage];
         [facebookController addURL:[NSURL URLWithString:viglinkString]];
@@ -749,7 +749,7 @@
         UIImage *photoImage = self.imageView.image;
         
         
-        NSString *postText = [NSString stringWithFormat:@"%@ tw text goes %@", [self.requestedProductObject objectForKey:@"products_description"], @"right here"];
+        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsy"];
         [tweetController setInitialText:postText];
         [tweetController addImage:photoImage];
         [tweetController addURL:[NSURL URLWithString:viglinkString]];
