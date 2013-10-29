@@ -85,9 +85,11 @@
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
     
+    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    
     /*
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    
     NSDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
 */
@@ -266,6 +268,7 @@
     
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     
+    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
