@@ -13,12 +13,13 @@
 #import "ISAsynchImageView.h"
 #import "FeedRequestFinishedProtocol.h"
 #import "EditProductCompleteProtocol.h"
+#import "CommentsTableViewController.h"
 @class FeedViewController;
 
 @interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol>
 {
     SizePickerViewViewController *sizePickerViewViewController;
-    
+    CommentsTableViewController *commentsTableViewController;
     NSString *requestingProductID;
     NSDictionary *requestedPostmasterDictionary;
     
@@ -65,7 +66,7 @@
 
 
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
-
+@property (nonatomic, retain) IBOutlet CommentsTableViewController *commentsTableViewController;
 @property (nonatomic, retain) NSString *requestingProductID;
 @property (nonatomic, retain) NSDictionary *requestedPostmasterDictionary;
 

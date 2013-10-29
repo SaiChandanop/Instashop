@@ -57,6 +57,7 @@
 @synthesize facebookButton;
 @synthesize twitterButton;
 @synthesize viglinkString;
+@synthesize commentsTableViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -114,6 +115,8 @@
     self.retailPriceLabel.alpha = 0;
     self.listPriceLabel.alpha = 0;
     self.numberAvailableLabel.alpha = 0;
+    
+    [self.commentsTableViewController.tableView reloadData];
 }
 
 
@@ -202,6 +205,12 @@
     
     [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
     
+
+ 
+
+    params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
+    [appDelegate.instagram requestWithParams:params delegate:self];
+    
     
 }
 
@@ -250,7 +259,11 @@
      
 }
 - (void)request:(IGRequest *)request didLoad:(id)result {
-        
+    
+    if ([request.url rangeOfString:@"comments"].length > 0)
+    {
+        NSLog(@"comments!!: %@", result);
+    }
     if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *metaDictionary = [result objectForKey:@"meta"];

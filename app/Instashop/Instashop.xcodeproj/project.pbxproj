@@ -88,6 +88,9 @@
 		7B0320DF17E0E1340045D7AC /* SearchSiloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320DD17E0E1340045D7AC /* SearchSiloViewController.xib */; };
 		7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */; };
 		7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */; };
+		7B0691D118201D140083B1D9 /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0691D018201D140083B1D9 /* CommentsTableViewController.m */; };
+		7B0691D418201D270083B1D9 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */; };
+		7B0691D618201F9A0083B1D9 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */; };
 		7B0D253717CBA36300E43FA6 /* PLCameraSheetButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */; };
 		7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */; };
 		7B0D253917CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */; };
@@ -377,6 +380,11 @@
 		7B0320E817E0F9FD0045D7AC /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
+		7B0691CF18201D140083B1D9 /* CommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewController.h; sourceTree = "<group>"; };
+		7B0691D018201D140083B1D9 /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewController.m; sourceTree = "<group>"; };
+		7B0691D218201D270083B1D9 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
+		7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
+		7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
 		7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButton@2x.png"; sourceTree = "<group>"; };
 		7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButtonPressed@2x.png"; sourceTree = "<group>"; };
 		7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetDoneButton@2x.png"; sourceTree = "<group>"; };
@@ -902,6 +910,18 @@
 			name = Buy;
 			sourceTree = "<group>";
 		};
+		7B0691CE18201CFE0083B1D9 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				7B0691CF18201D140083B1D9 /* CommentsTableViewController.h */,
+				7B0691D018201D140083B1D9 /* CommentsTableViewController.m */,
+				7B0691D218201D270083B1D9 /* CommentsTableViewCell.h */,
+				7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */,
+				7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */,
+			);
+			name = Comments;
+			sourceTree = "<group>";
+		};
 		7B0D252D17CBA33E00E43FA6 /* GKImagePicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -1406,6 +1426,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B0691CE18201CFE0083B1D9 /* Comments */,
 				193433D317E0FCEE007744E6 /* Login */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B0680CA17664BC2009154BF /* Buy */,
@@ -1906,6 +1927,7 @@
 				2E628CAB17C6A19900CB7BE4 /* AppIcon29x29@2x.png in Resources */,
 				7B5D62AD17C5AF9F00D6C8B1 /* mastercard.png in Resources */,
 				2E0EAE26176F6E6700B65FC3 /* closebutton@2x.png in Resources */,
+				7B0691D618201F9A0083B1D9 /* CommentsTableViewCell.xib in Resources */,
 				2E0EAE27176F6E6700B65FC3 /* backbutton@2x.png in Resources */,
 				7BE29B9A177A21000093BB25 /* attributes.csv in Resources */,
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
@@ -1980,6 +2002,7 @@
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
 				7BDED69A180C7A28001FF165 /* ViewBookmarkViewController.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
+				7B0691D118201D140083B1D9 /* CommentsTableViewController.m in Sources */,
 				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,
 				7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */,
 				7B79AE7C17E2186E0058E774 /* ObjectSelectTableViewController.m in Sources */,
@@ -2009,6 +2032,7 @@
 				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */,
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
+				7B0691D418201D270083B1D9 /* CommentsTableViewCell.m in Sources */,
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
 				7BE688C9176B7801007D383B /* FeedViewController.m in Sources */,
 				7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */,
