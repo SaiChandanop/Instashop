@@ -262,7 +262,8 @@
     
     if ([request.url rangeOfString:@"comments"].length > 0)
     {
-        NSLog(@"comments!!: %@", result);
+        self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithArray:[result objectForKey:@"data"]];
+        [self.commentsTableViewController.tableView reloadData];
     }
     if ([request.url rangeOfString:@"users"].length > 0)
     {

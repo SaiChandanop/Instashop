@@ -9,5 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface CommentsTableViewController : UITableViewController
-
+{
+    NSArray *commentsDataArray;
+}
+@property (nonatomic, retain) NSArray *commentsDataArray;
 @end

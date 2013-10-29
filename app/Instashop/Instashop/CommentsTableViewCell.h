@@ -16,7 +16,7 @@
     UILabel *timeLabel;
 }
 
--(void)loadWithCommentObject:(NSDictionary *)commentDictionary;
+-(void)loadWithCommentObject:(NSDictionary *)commentDictionary withIndexPath:(NSIndexPath *)theIndexpath;
 
 @property (nonatomic, retain) IBOutlet UIImageView *profilePictureImageView;
 @property (nonatomic, retain) IBOutlet UILabel *usernameLabel;

@@ -14,6 +14,8 @@
 
 @implementation CommentsTableViewController
 
+@synthesize commentsDataArray;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -32,6 +34,8 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.view.backgroundColor = [UIColor clearColor];
+    self.tableView.backgroundColor = [UIColor clearColor];
 }
 
 - (void)didReceiveMemoryWarning
@@ -55,9 +59,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-
     // Return the number of rows in the section.
-    return 5;
+    return [self.commentsDataArray count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -72,7 +75,8 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    [cell loadWithCommentObject:nil];
+    [cell loadWithCommentObject:[self.commentsDataArray objectAtIndex:indexPath.row] withIndexPath:indexPath];
+
     
 //    cell.textLabel.text = [NSString stringWithFormat:@"%d, %d", indexPath.section, indexPath.row];
     

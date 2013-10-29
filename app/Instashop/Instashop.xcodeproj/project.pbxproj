@@ -91,6 +91,7 @@
 		7B0691D118201D140083B1D9 /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0691D018201D140083B1D9 /* CommentsTableViewController.m */; };
 		7B0691D418201D270083B1D9 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */; };
 		7B0691D618201F9A0083B1D9 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */; };
+		7B08B9BA182036190037B033 /* TTTTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B08B9B9182036190037B033 /* TTTTimeIntervalFormatter.m */; };
 		7B0D253717CBA36300E43FA6 /* PLCameraSheetButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */; };
 		7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */; };
 		7B0D253917CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */; };
@@ -385,6 +386,8 @@
 		7B0691D218201D270083B1D9 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
 		7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
 		7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
+		7B08B9B8182036190037B033 /* TTTTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTTimeIntervalFormatter.h; sourceTree = "<group>"; };
+		7B08B9B9182036190037B033 /* TTTTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButton@2x.png"; sourceTree = "<group>"; };
 		7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButtonPressed@2x.png"; sourceTree = "<group>"; };
 		7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetDoneButton@2x.png"; sourceTree = "<group>"; };
@@ -920,6 +923,15 @@
 				7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */,
 			);
 			name = Comments;
+			sourceTree = "<group>";
+		};
+		7B08B9B7182036020037B033 /* TimeFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				7B08B9B8182036190037B033 /* TTTTimeIntervalFormatter.h */,
+				7B08B9B9182036190037B033 /* TTTTimeIntervalFormatter.m */,
+			);
+			name = TimeFormatter;
 			sourceTree = "<group>";
 		};
 		7B0D252D17CBA33E00E43FA6 /* GKImagePicker */ = {
@@ -1657,6 +1669,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7B08B9B7182036020037B033 /* TimeFormatter */,
 				7B8CCFB4181AB1FB006E01A9 /* Social */,
 				7BDED680180C7A1A001FF165 /* CIALBrowser */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
@@ -2052,6 +2065,7 @@
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
 				7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */,
 				7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */,
+				7B08B9BA182036190037B033 /* TTTTimeIntervalFormatter.m in Sources */,
 				7BF9DD8F178C546F005148A8 /* SBJsonStreamTokeniser.m in Sources */,
 				7BF9DD90178C546F005148A8 /* SBJsonStreamWriter.m in Sources */,
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
