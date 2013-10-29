@@ -50,6 +50,9 @@
     UIButton *twitterButton;
     
     NSString *viglinkString;
+    
+    UITextField *commentTextField;
+    UIButton *commentExitButton;
 }
 
 - (IBAction) likeButtonHit;
@@ -64,6 +67,8 @@
 
 - (void)webControllerBackButtonHit;
 
+-(void)commentAddTextShouldBeginEditingWithTextField:(UITextField *)theTextField;
+-(void)commentAddTextShouldEndEditing;
 
 @property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
 @property (nonatomic, retain) IBOutlet CommentsTableViewController *commentsTableViewController;
@@ -99,4 +104,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *twitterButton;
 
 @property (nonatomic, retain) NSString *viglinkString;
+
+@property (nonatomic, retain) UITextField *commentTextField;
+@property (nonatomic, retain) UIButton *commentExitButton;
 @end

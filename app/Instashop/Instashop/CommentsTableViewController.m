@@ -15,6 +15,7 @@
 @implementation CommentsTableViewController
 
 @synthesize commentsDataArray;
+@synthesize parentController;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -62,9 +63,11 @@
         cell = [[[CommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] autorelease];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        cell.parentController = self;
         
     }
     
+    cell.parentController = self;
     if (indexPath.row % 2 == 0)
         cell.backgroundColor = [UIColor colorWithRed:196.0f/255.0f green:189.0f/255.0f blue:196.0f/255.0f alpha:1];
     else

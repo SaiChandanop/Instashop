@@ -8,9 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
+
+@class PurchasingViewController;
+
 @interface CommentsTableViewController : UITableViewController
 {
+    PurchasingViewController *parentController;
     NSArray *commentsDataArray;
 }
+
+@property (nonatomic, retain) PurchasingViewController *parentController;
 @property (nonatomic, retain) NSArray *commentsDataArray;
 @end

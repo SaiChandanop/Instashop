@@ -58,6 +58,8 @@
 @synthesize twitterButton;
 @synthesize viglinkString;
 @synthesize commentsTableViewController;
+@synthesize commentTextField;
+@synthesize commentExitButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -125,17 +127,64 @@
     self.listPriceLabel.alpha = 0;
     self.numberAvailableLabel.alpha = 0;
     
-    self.commentsTableViewController.tableView.userInteractionEnabled = NO;
+//    self.commentsTableViewController.tableView.userInteractionEnabled = NO;
     self.commentsTableViewController.view.backgroundColor = [UIColor clearColor];
     self.commentsTableViewController.tableView.backgroundColor = [UIColor clearColor];
     self.commentsTableViewController.tableView.separatorColor = [UIColor clearColor];
-    
-    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSMutableDictionary dictionaryWithCapacity:0], [NSMutableDictionary dictionaryWithCapacity:0], [NSMutableDictionary dictionaryWithCapacity:0]];
+    self.commentsTableViewController.parentController = self;
+    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSNull null], nil];
     [self.commentsTableViewController.tableView reloadData];
     
     
 }
 
+-(void)commentAddTextShouldBeginEditingWithTextField:(UITextField *)theTextField
+{
+    self.commentTextField = theTextField;
+    NSLog(@"commentAddTextShouldBeginEditing");
+    
+    [UIView animateWithDuration:.25f animations:^{
+        
+        self.contentScrollView.contentSize = CGSizeMake(0, self.contentScrollView.contentSize.height * 2);
+        
+        NSLog(@"self.contentScrollView.contentOffset: %f", self.contentScrollView.contentOffset.y);
+        
+        [self.contentScrollView setContentOffset:CGPointMake(0,155 + self.contentScrollView.contentOffset.y) animated:YES];
+//        self.contentScrollView.userInteractionEnabled = NO;
+        
+        self.commentExitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.commentExitButton.backgroundColor = [UIColor redColor];
+        self.commentExitButton.frame = CGRectMake(0,0, self.contentScrollView.frame.size.width, 250);
+        [self.commentExitButton addTarget:self action:@selector(commentsViewShouldReset) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.commentExitButton];
+        
+    } completion:nil];
+    
+}
+
+-(void)commentsViewShouldReset
+{
+    [self.commentTextField resignFirstResponder];
+    [self.commentExitButton removeFromSuperview];
+    [UIView animateWithDuration:.25f animations:^{
+        
+        [self.contentScrollView setContentOffset:CGPointMake(0,0) animated:YES];
+//        self.contentScrollView.userInteractionEnabled = YES;
+        
+    } completion:nil];
+}
+
+-(void)commentAddTextShouldEndEditing
+{
+    [self commentsViewShouldReset];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", self.commentTextField.text, @"text", nil];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.instagram  postRequestWithParams:params delegate:self];
+
+    
+    
+}
 
 - (void) loadContentViews
 {
@@ -264,11 +313,13 @@
 }
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
+    NSLog(@"request did load!, request.url: %@", request);
+    NSLog(@"request did load!, result: %@", result);
+    
     if ([request.url rangeOfString:@"comments"].length > 0)
     {
-        NSArray *dataArray = [result objectForKey:@"data"];
-        if ([dataArray count] == 0)
-            dataArray = [[NSArray alloc] initWithObjects:[NSMutableDictionary dictionaryWithCapacity:0], [NSMutableDictionary dictionaryWithCapacity:0], [NSMutableDictionary dictionaryWithCapacity:0], nil];
+        NSMutableArray *dataArray = [NSMutableArray arrayWithArray:[result objectForKey:@"data"]];
+        [dataArray addObject:[NSNull null]];
         
         self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height + ([dataArray count] * 44));
         self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * ([dataArray count]) );

@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CommentsTableViewCell : UITableViewCell
+@class CommentsTableViewController;
+@interface CommentsTableViewCell : UITableViewCell <UITextFieldDelegate>
 {
     UIImageView *profilePictureImageView;
     UILabel *usernameLabel;
     UILabel *commentTextLabel;
     UILabel *timeLabel;
+    
+    UITextField *commentTextField;
+    UIButton *commentGoButton;
+    
+    CommentsTableViewController *parentController;
+
 }
 
 -(void)loadWithCommentObject:(NSDictionary *)commentDictionary withIndexPath:(NSIndexPath *)theIndexpath;
@@ -23,4 +29,8 @@
 @property (nonatomic, retain) IBOutlet UILabel *commentTextLabel;
 @property (nonatomic, retain) IBOutlet UILabel *timeLabel;
 
+@property (nonatomic, retain) IBOutlet UITextField *commentTextField;
+@property (nonatomic, retain) IBOutlet UIButton *commentGoButton;
+
+@property (nonatomic, retain) CommentsTableViewController *parentController;
 @end
