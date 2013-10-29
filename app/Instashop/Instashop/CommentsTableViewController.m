@@ -62,9 +62,16 @@
         cell = [[[CommentsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier ] autorelease];
         cell.backgroundColor = [UIColor clearColor];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
+        
     }
     
-    [cell loadWithCommentObject:[self.commentsDataArray objectAtIndex:indexPath.row] withIndexPath:indexPath];
+    if (indexPath.row % 2 == 0)
+        cell.backgroundColor = [UIColor colorWithRed:196.0f/255.0f green:189.0f/255.0f blue:196.0f/255.0f alpha:1];
+    else
+        cell.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:210.0f/255.0f blue:211.0f/255.0f alpha:1];
+    
+    if (indexPath.row < [self.commentsDataArray count])
+        [cell loadWithCommentObject:[self.commentsDataArray objectAtIndex:indexPath.row] withIndexPath:indexPath];
 
     
     

@@ -74,7 +74,7 @@
     NSLog(@"viewDidAppear!!");
     self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionTextView.contentSize.height + 30);
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
-   
+    self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
  //   self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
 
     
@@ -129,6 +129,10 @@
     self.commentsTableViewController.view.backgroundColor = [UIColor clearColor];
     self.commentsTableViewController.tableView.backgroundColor = [UIColor clearColor];
     self.commentsTableViewController.tableView.separatorColor = [UIColor clearColor];
+    
+    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSMutableDictionary dictionaryWithCapacity:0], [NSMutableDictionary dictionaryWithCapacity:0], [NSMutableDictionary dictionaryWithCapacity:0]];
+    [self.commentsTableViewController.tableView reloadData];
+    
     
 }
 
@@ -263,18 +267,18 @@
     if ([request.url rangeOfString:@"comments"].length > 0)
     {
         NSArray *dataArray = [result objectForKey:@"data"];
+        if ([dataArray count] == 0)
+            dataArray = [[NSArray alloc] initWithObjects:[NSMutableDictionary dictionaryWithCapacity:0], [NSMutableDictionary dictionaryWithCapacity:0], [NSMutableDictionary dictionaryWithCapacity:0], nil];
         
         self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height + ([dataArray count] * 44));
         self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * ([dataArray count]) );
         self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height - 15);
         
-        
+
         self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithArray:dataArray];
         [self.commentsTableViewController.tableView reloadData];
-        
-        NSLog(@"self.commentsTableViewController.view.frame: %@", NSStringFromCGRect(self.commentsTableViewController.view.frame));
-        NSLog(@"self.commentsTableViewController.tableView.frame: %@", NSStringFromCGRect(self.commentsTableViewController.tableView.frame));
-        NSLog(@"contentScrollView.size: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
+
+
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
     {
