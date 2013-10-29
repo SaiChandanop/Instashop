@@ -71,16 +71,25 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    NSLog(@"viewDidAppear!!");
     self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionTextView.contentSize.height + 30);
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
    
-    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
+ //   self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
 
     
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeButtonHit)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
+    
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    NSDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
+    [appDelegate.instagram requestWithParams:params delegate:self];
+
+    
     
 }
 
@@ -116,7 +125,11 @@
     self.listPriceLabel.alpha = 0;
     self.numberAvailableLabel.alpha = 0;
     
-    [self.commentsTableViewController.tableView reloadData];
+    self.commentsTableViewController.tableView.userInteractionEnabled = NO;
+    self.commentsTableViewController.view.backgroundColor = [UIColor clearColor];
+    self.commentsTableViewController.tableView.backgroundColor = [UIColor clearColor];
+    self.commentsTableViewController.tableView.separatorColor = [UIColor clearColor];
+    
 }
 
 
@@ -199,19 +212,6 @@
     
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     
-    self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 8);
-    
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-    
-    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
-    
-
- 
-
-    params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
-    [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -253,7 +253,7 @@
   
     
     [productDetailsViewController loadWithProductObject:self.requestedProductObject withMediaInstagramID:[self.requestedProductObject objectForKey:@"products_instagram_id"]];
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+//    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
 
      
      
@@ -262,10 +262,21 @@
     
     if ([request.url rangeOfString:@"comments"].length > 0)
     {
-        self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithArray:[result objectForKey:@"data"]];
+        NSArray *dataArray = [result objectForKey:@"data"];
+        
+        self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height + ([dataArray count] * 44));
+        self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * ([dataArray count]) );
+        self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height - 15);
+        
+        
+        self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithArray:dataArray];
         [self.commentsTableViewController.tableView reloadData];
+        
+        NSLog(@"self.commentsTableViewController.view.frame: %@", NSStringFromCGRect(self.commentsTableViewController.view.frame));
+        NSLog(@"self.commentsTableViewController.tableView.frame: %@", NSStringFromCGRect(self.commentsTableViewController.tableView.frame));
+        NSLog(@"contentScrollView.size: %@", NSStringFromCGSize(self.contentScrollView.contentSize));
     }
-    if ([request.url rangeOfString:@"users"].length > 0)
+    else if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *metaDictionary = [result objectForKey:@"meta"];
         if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
@@ -320,7 +331,7 @@
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
-    NSLog(@"theArray: %@", theArray);
+ //   NSLog(@"theArray: %@", theArray);
     if ([theArray count] > 0)
         self.requestedProductObject = [theArray objectAtIndex:0];
     
@@ -334,7 +345,7 @@
 }
 -(IBAction)buyButtonHit
 {
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+//    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
 //    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
     
     CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];

@@ -27,7 +27,7 @@
     
     
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
-    NSLog(@"urlRequestString: %@", urlRequestString);
+//    NSLog(@"urlRequestString: %@", urlRequestString);
 
     URLRequest.HTTPMethod = @"GET";
 
@@ -44,7 +44,7 @@
 {
     NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"viglinkCallReturned: %@", responseString);
+
     [self.delegate viglinkCallReturned:responseString];
 }
 @end
