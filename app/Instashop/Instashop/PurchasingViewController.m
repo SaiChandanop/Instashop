@@ -746,7 +746,7 @@
     else if ([buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Other"]) {
         
         NSString *userID = [InstagramUserObject getStoredUserObject].userID;
-        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:1 andProductID:self.requestingProductID userID: userID delegate:self];
+        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:buttonTitle andProductID:self.requestingProductID userID: userID delegate:self];
     }
     
     else if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)

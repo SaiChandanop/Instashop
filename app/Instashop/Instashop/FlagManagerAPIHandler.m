@@ -10,7 +10,7 @@
 
 @implementation FlagManagerAPIHandler
 
-+ (void) makeFlagDeclarationRequestComplaint:(int)complaintType andProductID:(NSString*) product_ID userID: (NSString *) user_ID delegate:(id) delegate {
++ (void) makeFlagDeclarationRequestComplaint:(NSString*) buttonTitle andProductID:(NSString*) product_ID userID: (NSString *) user_ID delegate:(id) delegate {
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"flag_manager.php"];
     NSLog(@"urlRequestString: %@", urlRequestString);
@@ -22,10 +22,22 @@
     [dateFormatter setDateStyle:NSDateFormatterShortStyle];
     [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     NSString *timeString = [dateFormatter stringFromDate:now];
-
+    
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"Product_ID=%@&", product_ID]];
-    [postString appendString:[NSString stringWithFormat:@"complaint_type=%i&", complaintType]];
+    
+    if ([buttonTitle isEqualToString:@"Inappropriate"]) {
+        [postString appendString:[NSString stringWithFormat:@"complaint_type=%i&", 1]];
+    }
+    else if ([buttonTitle isEqualToString:@"Incorrect Link"]) {
+        [postString appendString:[NSString stringWithFormat:@"complaint_type=%i&", 2]];
+    }
+    else if ([buttonTitle isEqualToString:@"Other"]) {
+        [postString appendString:[NSString stringWithFormat:@"complaint_type=%i&", 0]];
+    }
+
+    // Wasn't sure if you wanted an int or a string stored in the database but saving an int would seem to save more space.
+    
     [postString appendString:[NSString stringWithFormat:@"Date=%@&", timeString]];
     [postString appendString:[NSString stringWithFormat:@"User_ID=%@&", user_ID]];
     NSLog(@"This is the postString: %@", postString);
