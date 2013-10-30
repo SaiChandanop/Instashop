@@ -201,6 +201,8 @@ static void *finishedContext            = @"finishedContext";
 
 -(IGRequest*)requestWithParams:(NSMutableDictionary*)params
                       delegate:(id<IGRequestDelegate>)delegate {
+    
+//    NSLog(@"instagram params: %@", params);
     if ([params objectForKey:@"method"] == nil) {
         NSLog(@"API Method must be specified");
         return nil;

@@ -85,7 +85,7 @@
     }
     
     if (self.imageProductURL != nil)
-        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
+        [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
     }
 }
 
@@ -146,7 +146,7 @@
     if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
-        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.contentImageView];
+        [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.contentImageView];
         
     }
 

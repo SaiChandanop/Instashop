@@ -13,9 +13,12 @@
 #import "ISAsynchImageView.h"
 #import "FeedRequestFinishedProtocol.h"
 #import "EditProductCompleteProtocol.h"
+<<<<<<< HEAD
 #import "FlagManagerAPIHandler.h"
 
+=======
 #import "CommentsTableViewController.h"
+>>>>>>> dce50b70d370729550c52290779e45566c48b968
 @class FeedViewController;
 
 @interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol, FlagManagerProtocol>

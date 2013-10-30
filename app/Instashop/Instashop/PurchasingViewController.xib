@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
@@ -9,6 +9,7 @@
             <connections>
                 <outlet property="bottomView" destination="B12-y8-tzH" id="Z4J-8z-vTz"/>
                 <outlet property="categoryLabel" destination="327" id="328"/>
+                <outlet property="commentsTableViewController" destination="ybj-UC-cNR" id="IDc-KP-N49"/>
                 <outlet property="contentScrollView" destination="eOa-Xa-eSQ" id="hgj-be-G18"/>
                 <outlet property="descriptionContainerView" destination="323" id="334"/>
                 <outlet property="descriptionTextView" destination="190" id="265"/>
@@ -92,6 +93,15 @@
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 </textView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="GXi-t6-ffs">
+                                    <rect key="frame" x="0.0" y="42" width="320" height="70"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <connections>
+                                        <outlet property="dataSource" destination="ybj-UC-cNR" id="BRo-7c-Q3R"/>
+                                        <outlet property="delegate" destination="ybj-UC-cNR" id="MkX-vL-fMh"/>
+                                    </connections>
+                                </tableView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
@@ -216,6 +226,16 @@
             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <color key="barTintColor" red="0.38431372549999998" green="0.70980392160000005" blue="0.58039215690000001" alpha="1" colorSpace="calibratedRGB"/>
         </toolbar>
+        <tableViewController id="ybj-UC-cNR" customClass="CommentsTableViewController">
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <connections>
+                <outlet property="view" destination="GXi-t6-ffs" id="9hZ-uF-vQA"/>
+            </connections>
+        </tableViewController>
     </objects>
     <resources>
         <image name="cell_separator.png" width="320" height="5"/>

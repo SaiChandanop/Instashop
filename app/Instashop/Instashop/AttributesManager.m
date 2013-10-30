@@ -58,14 +58,8 @@ static AttributesManager *theManager;
         NSLog(@"Error: %@",error);
         [error release];
     }
-    
-    
-    NSLog(@"!!!");
-    
-//    NSString *path = [NSString stringWithFormat:@"%@/%@", [[GroupDiskManager sharedManager] getFolderPath], @"testplist.plist"];
-    self.attributesDictionary = [[NSMutableDictionary alloc] initWithDictionary:plist];
-    
-   
+
+    self.attributesDictionary = [[NSMutableDictionary alloc] initWithDictionary:plist];   
 }
 
 

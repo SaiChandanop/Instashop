@@ -88,6 +88,10 @@
 		7B0320DF17E0E1340045D7AC /* SearchSiloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320DD17E0E1340045D7AC /* SearchSiloViewController.xib */; };
 		7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */; };
 		7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */; };
+		7B0691D118201D140083B1D9 /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0691D018201D140083B1D9 /* CommentsTableViewController.m */; };
+		7B0691D418201D270083B1D9 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */; };
+		7B0691D618201F9A0083B1D9 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */; };
+		7B08B9BA182036190037B033 /* TTTTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B08B9B9182036190037B033 /* TTTTimeIntervalFormatter.m */; };
 		7B0D253717CBA36300E43FA6 /* PLCameraSheetButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */; };
 		7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */; };
 		7B0D253917CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */; };
@@ -226,10 +230,16 @@
 		7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B7A7F7E17D64ACE00247A26 /* SearchViewController.xib */; };
 		7B7A7F8417D64B5500247A26 /* SearchAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7A7F8317D64B5500247A26 /* SearchAPIHandler.m */; };
 		7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */; };
+		7B7FEF1F18199C2F00C58944 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7FEF1E18199C2F00C58944 /* Accounts.framework */; };
+		7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B7FEF2018199D1E00C58944 /* Social.framework */; };
 		7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */; };
 		7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4D517B2CE80002CEB36 /* cell_background.png */; };
 		7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */; };
 		7B8BC4DD17B364B4002CEB36 /* SizeQuantityTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */; };
+		7B8CCFB7181AB220006E01A9 /* SocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CCFB6181AB220006E01A9 /* SocialManager.m */; };
+		7B8CCFBB181ABDA3006E01A9 /* FBPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B8CCFB9181ABDA3006E01A9 /* FBPostViewController.m */; };
+		7B8CCFBC181ABDA3006E01A9 /* FBPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CCFBA181ABDA3006E01A9 /* FBPostViewController.xib */; };
+		7B8CCFBE181ABEF6006E01A9 /* FaceBookShare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8CCFBD181ABEF6006E01A9 /* FaceBookShare@2x.png */; };
 		7B8E440417B1DD7F0076F5FA /* feedImageShadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */; };
 		7B96C036174FDEF800E4EDAD /* ImageAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */; };
 		7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B96C03A174FED3700E4EDAD /* ImagesTableViewCell.m */; };
@@ -371,6 +381,13 @@
 		7B0320E817E0F9FD0045D7AC /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
+		7B0691CF18201D140083B1D9 /* CommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewController.h; sourceTree = "<group>"; };
+		7B0691D018201D140083B1D9 /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewController.m; sourceTree = "<group>"; };
+		7B0691D218201D270083B1D9 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
+		7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewCell.m; sourceTree = "<group>"; };
+		7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentsTableViewCell.xib; sourceTree = "<group>"; };
+		7B08B9B8182036190037B033 /* TTTTimeIntervalFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTTTimeIntervalFormatter.h; sourceTree = "<group>"; };
+		7B08B9B9182036190037B033 /* TTTTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		7B0D252F17CBA36300E43FA6 /* PLCameraSheetButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButton@2x.png"; sourceTree = "<group>"; };
 		7B0D253017CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetButtonPressed@2x.png"; sourceTree = "<group>"; };
 		7B0D253117CBA36300E43FA6 /* PLCameraSheetDoneButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PLCameraSheetDoneButton@2x.png"; sourceTree = "<group>"; };
@@ -592,12 +609,20 @@
 		7B7A7F8517D651C800247A26 /* SearchReturnedReceiverProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchReturnedReceiverProtocol.h; sourceTree = "<group>"; };
 		7B7B9DF51753E280000F4A3E /* ZenCartAuthenticationAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZenCartAuthenticationAPIHandler.h; sourceTree = "<group>"; };
 		7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZenCartAuthenticationAPIHandler.m; sourceTree = "<group>"; };
+		7B7FEF1E18199C2F00C58944 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		7B7FEF2018199D1E00C58944 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		7B8BC4D217B2CCBF002CEB36 /* CategorySelectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategorySelectCell.h; sourceTree = "<group>"; };
 		7B8BC4D317B2CCBF002CEB36 /* CategorySelectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategorySelectCell.m; sourceTree = "<group>"; };
 		7B8BC4D517B2CE80002CEB36 /* cell_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_background.png; sourceTree = "<group>"; };
 		7B8BC4D917B364B4002CEB36 /* SizeQuantityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewController.h; sourceTree = "<group>"; };
 		7B8BC4DA17B364B4002CEB36 /* SizeQuantityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SizeQuantityTableViewController.m; sourceTree = "<group>"; };
 		7B8BC4DB17B364B4002CEB36 /* SizeQuantityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SizeQuantityTableViewController.xib; sourceTree = "<group>"; };
+		7B8CCFB5181AB220006E01A9 /* SocialManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SocialManager.h; sourceTree = "<group>"; };
+		7B8CCFB6181AB220006E01A9 /* SocialManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SocialManager.m; sourceTree = "<group>"; };
+		7B8CCFB8181ABDA3006E01A9 /* FBPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FBPostViewController.h; sourceTree = "<group>"; };
+		7B8CCFB9181ABDA3006E01A9 /* FBPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FBPostViewController.m; sourceTree = "<group>"; };
+		7B8CCFBA181ABDA3006E01A9 /* FBPostViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FBPostViewController.xib; sourceTree = "<group>"; };
+		7B8CCFBD181ABEF6006E01A9 /* FaceBookShare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FaceBookShare@2x.png"; sourceTree = "<group>"; };
 		7B8E440317B1DD7F0076F5FA /* feedImageShadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feedImageShadow@2x.png"; sourceTree = "<group>"; };
 		7B96C034174FDEF800E4EDAD /* ImageAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageAPIHandler.h; sourceTree = "<group>"; };
 		7B96C035174FDEF800E4EDAD /* ImageAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageAPIHandler.m; sourceTree = "<group>"; };
@@ -689,6 +714,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */,
+				7B7FEF1F18199C2F00C58944 /* Accounts.framework in Frameworks */,
 				7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */,
 				7B5D62B517C5AFEB00D6C8B1 /* QuartzCore.framework in Frameworks */,
 				7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */,
@@ -766,6 +793,7 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7B8CCFBD181ABEF6006E01A9 /* FaceBookShare@2x.png */,
 				2E41D2211815A9F60032844A /* more_button@2x.png */,
 				2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */,
 				2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */,
@@ -883,6 +911,27 @@
 				7B602DA017664F1700663A73 /* PurchasingViewController.xib */,
 			);
 			name = Buy;
+			sourceTree = "<group>";
+		};
+		7B0691CE18201CFE0083B1D9 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				7B0691CF18201D140083B1D9 /* CommentsTableViewController.h */,
+				7B0691D018201D140083B1D9 /* CommentsTableViewController.m */,
+				7B0691D218201D270083B1D9 /* CommentsTableViewCell.h */,
+				7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */,
+				7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */,
+			);
+			name = Comments;
+			sourceTree = "<group>";
+		};
+		7B08B9B7182036020037B033 /* TimeFormatter */ = {
+			isa = PBXGroup;
+			children = (
+				7B08B9B8182036190037B033 /* TTTTimeIntervalFormatter.h */,
+				7B08B9B9182036190037B033 /* TTTTimeIntervalFormatter.m */,
+			);
+			name = TimeFormatter;
 			sourceTree = "<group>";
 		};
 		7B0D252D17CBA33E00E43FA6 /* GKImagePicker */ = {
@@ -1246,6 +1295,8 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B7FEF2018199D1E00C58944 /* Social.framework */,
+				7B7FEF1E18199C2F00C58944 /* Accounts.framework */,
 				7BDED69B180C7A48001FF165 /* MessageUI.framework */,
 				7B5D62B417C5AFEB00D6C8B1 /* QuartzCore.framework */,
 				7B61EE46174D2162002A483D /* UIKit.framework */,
@@ -1387,6 +1438,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7B0691CE18201CFE0083B1D9 /* Comments */,
 				193433D317E0FCEE007744E6 /* Login */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B0680CA17664BC2009154BF /* Buy */,
@@ -1487,6 +1539,18 @@
 				7B7B9DF61753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m */,
 			);
 			name = ZenCart;
+			sourceTree = "<group>";
+		};
+		7B8CCFB4181AB1FB006E01A9 /* Social */ = {
+			isa = PBXGroup;
+			children = (
+				7B8CCFB5181AB220006E01A9 /* SocialManager.h */,
+				7B8CCFB6181AB220006E01A9 /* SocialManager.m */,
+				7B8CCFB8181ABDA3006E01A9 /* FBPostViewController.h */,
+				7B8CCFB9181ABDA3006E01A9 /* FBPostViewController.m */,
+				7B8CCFBA181ABDA3006E01A9 /* FBPostViewController.xib */,
+			);
+			name = Social;
 			sourceTree = "<group>";
 		};
 		7B94515817BE70D600D4AAB1 /* SizePicker */ = {
@@ -1605,6 +1669,8 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7B08B9B7182036020037B033 /* TimeFormatter */,
+				7B8CCFB4181AB1FB006E01A9 /* Social */,
 				7BDED680180C7A1A001FF165 /* CIALBrowser */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
 				7B3F520E175FAAB900ABF49B /* ProductObject */,
@@ -1811,6 +1877,7 @@
 				2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */,
 				2E0EAE08176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png in Resources */,
 				2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */,
+				7B8CCFBE181ABEF6006E01A9 /* FaceBookShare@2x.png in Resources */,
 				2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */,
 				2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */,
 				7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */,
@@ -1873,11 +1940,13 @@
 				2E628CAB17C6A19900CB7BE4 /* AppIcon29x29@2x.png in Resources */,
 				7B5D62AD17C5AF9F00D6C8B1 /* mastercard.png in Resources */,
 				2E0EAE26176F6E6700B65FC3 /* closebutton@2x.png in Resources */,
+				7B0691D618201F9A0083B1D9 /* CommentsTableViewCell.xib in Resources */,
 				2E0EAE27176F6E6700B65FC3 /* backbutton@2x.png in Resources */,
 				7BE29B9A177A21000093BB25 /* attributes.csv in Resources */,
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
 				7B5D62AA17C5AF9F00D6C8B1 /* discover@2x.png in Resources */,
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
+				7B8CCFBC181ABDA3006E01A9 /* FBPostViewController.xib in Resources */,
 				7B5A56F017D3D80C007AABDA /* SuggestedShopView.xib in Resources */,
 				7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */,
 				7B9EAB3E1796E98600D2868D /* product_buy_bakcground_image_a.png in Resources */,
@@ -1925,6 +1994,7 @@
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */,
+				7B8CCFBB181ABDA3006E01A9 /* FBPostViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
 				7BDED697180C7A28001FF165 /* EditBookmarkViewController.m in Sources */,
 				7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */,
@@ -1945,6 +2015,7 @@
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
 				7BDED69A180C7A28001FF165 /* ViewBookmarkViewController.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
+				7B0691D118201D140083B1D9 /* CommentsTableViewController.m in Sources */,
 				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,
 				7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */,
 				7B79AE7C17E2186E0058E774 /* ObjectSelectTableViewController.m in Sources */,
@@ -1974,6 +2045,7 @@
 				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */,
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
+				7B0691D418201D270083B1D9 /* CommentsTableViewCell.m in Sources */,
 				2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */,
 				7BE688C9176B7801007D383B /* FeedViewController.m in Sources */,
 				7BE29B98177A20870093BB25 /* AttributesManager.m in Sources */,
@@ -1993,6 +2065,7 @@
 				7BF9DD8E178C546F005148A8 /* SBJsonStreamParserState.m in Sources */,
 				7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */,
 				7B5D627F17C5AF7100D6C8B1 /* PKAddressZip.m in Sources */,
+				7B08B9BA182036190037B033 /* TTTTimeIntervalFormatter.m in Sources */,
 				7BF9DD8F178C546F005148A8 /* SBJsonStreamTokeniser.m in Sources */,
 				7BF9DD90178C546F005148A8 /* SBJsonStreamWriter.m in Sources */,
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
@@ -2003,6 +2076,7 @@
 				7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */,
 				7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */,
 				7B5D628417C5AF7100D6C8B1 /* PKTextField.m in Sources */,
+				7B8CCFB7181AB220006E01A9 /* SocialManager.m in Sources */,
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
 				7B0D254D17CBA36F00E43FA6 /* GKImageCropView.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,

@@ -17,6 +17,8 @@
 #import "AppDelegate.h"
 #import "ProductAPIHandler.h"
 #import "CIALBrowserViewController.h"
+#import "SocialManager.h"
+
 @interface ProductDetailsViewController ()
 
 @end
@@ -104,15 +106,15 @@
     
     
     [self.selectedCategoriesLabel setValue:[UIColor lightGrayColor]
-                             forKeyPath:@"_placeholderLabel.textColor"];
+                                forKeyPath:@"_placeholderLabel.textColor"];
     
     [self.instashopPriceTextField setValue:[UIColor lightGrayColor]
-                             forKeyPath:@"_placeholderLabel.textColor"];
-
-    [self.retailPriceTextField setValue:[UIColor lightGrayColor]
                                 forKeyPath:@"_placeholderLabel.textColor"];
-
-
+    
+    [self.retailPriceTextField setValue:[UIColor lightGrayColor]
+                             forKeyPath:@"_placeholderLabel.textColor"];
+    
+    
     self.descriptionTextView.textColor = [UIColor lightGrayColor];
     
     self.facebookButton.selected = NO;
@@ -125,18 +127,18 @@
 
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID
 {
-
+    
     self.editingProductObject = [[NSDictionary alloc] initWithDictionary:productObject];
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@", mediaInstagramID], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-
+    
     
     NSLog(@"productObject: %@", productObject);
     
     
-//    self.titleTextView.text = [productObject objectForKey:@"products_name"];
+    //    self.titleTextView.text = [productObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [productObject objectForKey:@"products_description"];
     self.retailPriceTextField.text = [productObject objectForKey:@"products_price"];
     self.instashopPriceTextField.text = [productObject objectForKey:@"products_list_price"];
@@ -150,15 +152,15 @@
         NSString *attributeValue = [productObject objectForKey:attributeString];
         
         if (![attributeValue isKindOfClass:[NSNull class]])
-            if ([attributeValue length] > 0)        
+            if ([attributeValue length] > 0)
                 [theCategoriesArray addObject:attributeValue];
         
-     
+        
     }
     
     [self categorySelectionCompleteWithArray:theCategoriesArray];
-
-
+    
+    
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     
     NSArray *sizeQuantityArray = [productObject objectForKey:@"size_quantity"];
@@ -171,7 +173,7 @@
         
         if ([itemDictionary objectForKey:@"quantity"] != nil)
             [itemDictionary setObject:[itemDictionary objectForKey:@"quantity"] forKey:QUANTITY_DICTIONARY_KEY];
-
+        
         [dict setObject:itemDictionary forKey:[NSString stringWithFormat:@"%d", i]];
     }
     
@@ -181,7 +183,7 @@
     NSLog(@"cellSizeQuantityValueDictionary: %@", self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary);
     [self.sizeQuantityTableViewController.tableView reloadData];
     
-//    [self updateLayout];
+    //    [self updateLayout];
     
     
     
@@ -194,7 +196,7 @@
     
     UIBarButtonItem *deletBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
     self.navigationItem.rightBarButtonItem = deletBarButtonItem;
-
+    
     
     
 }
@@ -224,7 +226,7 @@
 
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
-
+    
     
     NSDictionary *theDictionary = [result objectForKey:@"data"];
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
@@ -234,7 +236,7 @@
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
     
-//    NSLog(@"theDictionary: %@", theDictionary);
+    //    NSLog(@"theDictionary: %@", theDictionary);
     
 }
 
@@ -253,7 +255,7 @@
     [self resignResponders];
     
     
-        
+    
 }
 
 -(void)categorySelectionCompleteWithArray:(NSArray *)theArray
@@ -279,77 +281,66 @@
     self.sizeQuantityTableViewController.availableSizesArray = [[NSArray alloc] initWithArray:[[AttributesManager getSharedAttributesManager] getSizesWithArray:self.attributesArray]];
     self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
     [self.sizeQuantityTableViewController.tableView reloadData];
-
+    
     self.pricesView.frame = self.originalPriceViewRect;
-
+    
     [self addSizeButtonHit];
     
-
+    
 }
 
 
 
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary
 {
- //   NSLog(@"theDictionary: %@", theDictionary);
+    //   NSLog(@"theDictionary: %@", theDictionary);
     NSDictionary *imagesDictionary = [theDictionary objectForKey:@"images"];
     NSDictionary *startResultionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
     
     NSString *instagramProductImageURLString = [startResultionDictionary objectForKey:@"url"];
- 
+    
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:instagramProductImageURLString withImageView:self.theImageView];
- 
+    
     NSDictionary *captionDictionary = [theDictionary objectForKey:@"caption"];
     
     if (captionDictionary != nil)
         if (![captionDictionary isKindOfClass:[NSNull class]])
             self.descriptionTextView.text = [captionDictionary objectForKey:@"text"];
-            //self.titleTextView.text = [captionDictionary objectForKey:@"text"];
-        
-
+    //self.titleTextView.text = [captionDictionary objectForKey:@"text"];
+    
+    
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
 }
 
 
+-(void) runSocialCalls
+{
+    if (self.twitterButton.selected)
+    {
+        NSString *twitterString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
+        [SocialManager postToTwitterWithString:twitterString];
+    }
+    
+    if (self.facebookButton.selected)
+    {
+        
+        
+        NSString *facebookString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
+        [SocialManager postToFacebookWithString:facebookString withImage:nil];
+    }
+}
+
+
+
 -(IBAction)previewButtonHit
 {
+    
+    
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
-/*
-    NSMutableArray *productsArray = [NSMutableArray arrayWithCapacity:0];
     
-    for (id key in self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary)
-    {
-        NSDictionary *sizeObjectDictionary = [self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary objectForKey:key];
-        int objectQuantity = [[sizeObjectDictionary objectForKey:QUANTITY_DICTIONARY_KEY] intValue];
-        NSString *objectSize = [sizeObjectDictionary objectForKey:SIZE_DICTIONARY_KEY];
-
-        if (objectQuantity > 0)
-        {
-            
-            ProductCreateObject *productCreateObject = [[ProductCreateObject alloc] init];
-            productCreateObject.instagramPictureURLString = self.instagramPictureURLString;
-            productCreateObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
-            productCreateObject.title = self.titleTextView.text;
-            productCreateObject.description = self.descriptionTextView.text;
-            productCreateObject.retailValue = self.retailPriceTextField.text;
-            productCreateObject.retailPrice = self.retailPriceTextField.text;
-            productCreateObject.quantity = [NSString stringWithFormat:@"%d", objectQuantity];
-            if (objectSize != nil)
-                productCreateObject.size = objectSize;
-            productCreateObject.categoriesArray = [NSArray arrayWithArray:self.attributesArray];
-            [productsArray addObject:productCreateObject];
-            
-            totalQuantity += objectQuantity;
-        }
-    }
-    
-    productCreateContainerObject.objectSizePermutationsArray = [[NSArray alloc] initWithArray:productsArray];
- 
-    productCreateContainerObject.tableViewCellSizeQuantityValueDictionary = self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary;
- */
     if ([self.urlLabel.text length] == 0)
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
@@ -375,8 +366,11 @@
         productCreateContainerObject.mainObject.referenceURLString = self.urlLabel.text;
         //    self.productCreateObject.shippingWeight = self.shippingTextField.text;
         
+        [self runSocialCalls];
         
         [self.parentController previewButtonHitWithProductCreateObject:productCreateContainerObject];
+        
+        
         
     }
     else
@@ -388,26 +382,7 @@
                                                   otherButtonTitles:nil];
         [alertView show];
     }
-   /* else
-    {
-        if ([self.selectedCategoriesLabel.text length] == 0)
-        {
     
-        }
-        else
-        {
-            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                                message:@"Please select a size and/or quantity"
-                                                               delegate:self
-                                                      cancelButtonTitle:@"Ok"
-                                                      otherButtonTitles:nil];
-            [alertView show];
-        }
-        
-        
-    }
-    */
-  
     [self resignResponders];
 }
 
@@ -426,12 +401,12 @@
     
     else
         self.addSizeButton.frame = CGRectMake(self.addSizeButton.frame.origin.x, self.sizeQuantityTableViewController.tableView.frame.origin.y + self.sizeQuantityTableViewController.tableView.frame.size.height - 11, self.sizeQuantityTableViewController.tableView.frame.size.width, 44);
-
+    
     
     self.pricesView.frame = CGRectMake(self.pricesView.frame.origin.x, self.addSizeButton.frame.origin.y + self.addSizeButton.frame.size.height + 4, self.pricesView.frame.size.width, self.pricesView.frame.size.height);
     
     self.containerScrollView.contentSize = CGSizeMake(0, self.pricesView.frame.origin.y + self.pricesView.frame.size.height + 1);
-
+    
     
 }
 - (IBAction) addSizeButtonHit
@@ -451,13 +426,13 @@
         [self.addSizeButton setTitle:@"Add Another Size" forState:UIControlStateNormal];
         
         [self.sizeQuantityTableViewController ownerAddRowButtonHitWithTableView:self.sizeQuantityTableViewController.tableView];
-//        [self updateLayout];
+        //        [self updateLayout];
         
         if (self.sizeQuantityTableViewController.rowShowCount > 0 && [[self.sizeQuantityTableViewController getRemainingAvailableSizesArray] count] == 0)
             self.addSizeButton.alpha = 0;
         else
             self.addSizeButton.alpha = 1;
-            
+        
         
         
         NSLog(@"self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary: %@", self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary);
@@ -490,51 +465,51 @@
     if (textView == self.descriptionTextView)
     {
         
-//        [UIView beginAnimations:nil context:nil];
- //       [UIView setAnimationDuration:.2];
-
+        //        [UIView beginAnimations:nil context:nil];
+        //       [UIView setAnimationDuration:.2];
+        
         
         
         CGRect textFrame = textView.frame;
         textFrame.size.height = textView.contentSize.height;
         textView.frame = textFrame;
-  
+        
         textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height);
-
+        
         self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textFrame.size.height + 13);
-
+        
         self.descriptionContainerView.backgroundImageView.frame = CGRectMake(0, 0, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height);
-
+        
         self.urlContainerView.frame = CGRectMake(self.urlContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height, self.urlContainerView.frame.size.width, self.urlContainerView.frame.size.height);
         
         
         self.socialButtonContainerView.frame = CGRectMake(self.socialButtonContainerView.frame.origin.x, self.urlContainerView.frame.origin.y + self.urlContainerView.frame.size.height + 40, self.socialButtonContainerView.frame.size.width, self.socialButtonContainerView.frame.size.height);
-
+        
         self.categoriesContainerView.frame = CGRectMake(self.categoriesContainerView.frame.origin.x, self.socialButtonContainerView.frame.origin.y + self.socialButtonContainerView.frame.size.height + verticaloffset, self.categoriesContainerView.frame.size.width, self.categoriesContainerView.frame.size.height);
-
+        
         self.nextButton.frame = CGRectMake(self.nextButton.frame.origin.x, self.categoriesContainerView.frame.origin.y + self.categoriesContainerView.frame.size.height + verticaloffset, self.nextButton.frame.size.width, self.nextButton.frame.size.height);
         
         self.containerScrollView.contentSize = CGSizeMake(0, self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 1);
-//        [UIView commitAnimations];
-
+        //        [UIView commitAnimations];
+        
     }
-
     
-
+    
+    
     return YES;
     
 }
 
 - (IBAction) urlButtonHit
 {
-
+    
     self.browserViewController = [[CIALBrowserViewController alloc] init];
-     [self.navigationController pushViewController:browserViewController animated:YES];
-
+    [self.navigationController pushViewController:browserViewController animated:YES];
+    
     browserViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ] autorelease];
     
     
-
+    
 }
 
 -(void)browserSaveHit
@@ -547,9 +522,9 @@
 -(void) linkSelectedWithURLString:(NSString *)theURLString
 {
     NSLog(@"theURLString: %@", theURLString);
-
+    
     [self.navigationController popViewControllerAnimated:YES];
-//    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
+    //    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
@@ -581,9 +556,9 @@
         
         if ([string length] > 0)
             returnValue = NO;
-
+        
     }
-
+    
     
     return returnValue;
     
@@ -593,7 +568,18 @@
 - (IBAction) facebookButtonHit
 {
     NSLog(@"facebookButtonHit");
+
     self.facebookButton.selected = !self.facebookButton.selected;
+    
+    [SocialManager requestInitialFacebookAccess];
+
+    
+    
+
+    
+    
+    
+    
 }
 
 - (IBAction) twitterButtonHit
@@ -601,6 +587,9 @@
     NSLog(@"twitterButtonHit");
     self.twitterButton.selected = !self.twitterButton.selected;
 }
+
+
+
 
 
 
