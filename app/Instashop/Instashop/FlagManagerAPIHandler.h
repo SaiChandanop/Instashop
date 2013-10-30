@@ -8,8 +8,14 @@
 
 #import "RootAPIHandler.h"
 
+@protocol FlagManagerProtocol <NSObject>
+
+- (void) showComplaintReceivedAlert:(NSString *) message;
+
+@end
+
 @interface FlagManagerAPIHandler : RootAPIHandler
 
-+ (void) makeFlagDeclarationRequestComplaint:(NSString *)complaintString andProductID:(NSString*) product_ID userID: (NSString *) user_ID;
++ (void) makeFlagDeclarationRequestComplaint:(int)complaintType andProductID:(NSString*) product_ID userID: (NSString *) user_ID delegate: (id) delegate;
 
 @end

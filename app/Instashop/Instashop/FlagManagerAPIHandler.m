@@ -10,10 +10,7 @@
 
 @implementation FlagManagerAPIHandler
 
-+ (void) makeFlagDeclarationRequestComplaint:(NSString *)complaintString andProductID:(NSString*) product_ID userID: (NSString *) user_ID {
-
-    // Should I take into account the Instashop User? - YES
-    // Flag the User, time, reason and product.
++ (void) makeFlagDeclarationRequestComplaint:(int)complaintType andProductID:(NSString*) product_ID userID: (NSString *) user_ID delegate:(id) delegate {
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"flag_manager.php"];
     NSLog(@"urlRequestString: %@", urlRequestString);
@@ -22,20 +19,22 @@
     
     NSDate *now = [NSDate date];
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterFullStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
+    [dateFormatter setDateStyle:NSDateFormatterShortStyle];
+    [dateFormatter setTimeStyle:NSDateFormatterShortStyle];
     NSString *timeString = [dateFormatter stringFromDate:now];
 
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"Product_ID=%@&", product_ID]];
-    [postString appendString:[NSString stringWithFormat:@"complaint_string=%@&", complaintString]];
+    [postString appendString:[NSString stringWithFormat:@"complaint_type=%i&", complaintType]];
     [postString appendString:[NSString stringWithFormat:@"Date=%@&", timeString]];
     [postString appendString:[NSString stringWithFormat:@"User_ID=%@&", user_ID]];
+    NSLog(@"This is the postString: %@", postString);
 
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
     FlagManagerAPIHandler *flagManagerAPIHandler = [[FlagManagerAPIHandler alloc] init];
     // I don't need a Delegate ID since this complaint is being sent from one place right now.
+    flagManagerAPIHandler.delegate = delegate;
     flagManagerAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:flagManagerAPIHandler context:NULL];
     [flagManagerAPIHandler.theWebRequest addTarget:flagManagerAPIHandler action:@selector(getComplaintsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
     [flagManagerAPIHandler.theWebRequest start];
@@ -47,10 +46,11 @@
     
     // if else statement needs to go here checking whether php file returned saying that the user already sent complaint about this product or if user had not.
     
+    
     NSString* requestDoneStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"YES, COMPLAINT WAS RECEIVED: %@", requestDoneStr);
+    [self.delegate showComplaintReceivedAlert:requestDoneStr];
 }
 
 

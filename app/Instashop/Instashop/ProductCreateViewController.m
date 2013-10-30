@@ -66,9 +66,6 @@
     self.productSelectTableViewController.contentRequestParameters = [[NSMutableDictionary alloc] initWithDictionary:params];
     [self.productSelectTableViewController refreshContent];
     
-    
-    
-    
 }
 
 -(void)backButtonHit

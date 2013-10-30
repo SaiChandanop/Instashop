@@ -7,7 +7,6 @@
 //
 
 #import "PurchasingViewController.h"
-#import "FlagManagerAPIHandler.h"
 #import "ImageAPIHandler.h"
 #import "FeedViewController.h"
 #import "AppDelegate.h"
@@ -642,13 +641,32 @@
         [flagActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
     }
     
-    if ([buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Other"]) {
-        
+    if ([buttonTitle isEqualToString:@"Inappropriate"]) {
         NSString *userID = [InstagramUserObject getStoredUserObject].userID;
-        NSLog(@"This is the userID: %@", userID);
-        
-        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:buttonTitle andProductID:self.requestingProductID userID: userID];
+        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:1 andProductID:self.requestingProductID userID: userID delegate:self];
     }
+    
+    if ([buttonTitle isEqualToString:@"Incorrect Link"]) {
+        NSString *userID = [InstagramUserObject getStoredUserObject].userID;
+        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:2 andProductID:self.requestingProductID userID: userID delegate:self];
+    }
+    
+    if ([buttonTitle isEqualToString:@"Other"]) {
+        NSString *userID = [InstagramUserObject getStoredUserObject].userID;
+        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:0 andProductID:self.requestingProductID userID: userID delegate:self];
+    }
+
+}
+
+- (void) showComplaintReceivedAlert:(NSString *) message {
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:message
+                                                        message:nil
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Close"
+                                              otherButtonTitles:nil];
+    
+    [alertView show];
+    [alertView release];
 }
 
 
