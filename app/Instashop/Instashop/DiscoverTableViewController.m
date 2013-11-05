@@ -82,7 +82,7 @@ float cellHeight = 151;
     }
     
     
-    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray withDelegate:self];
+    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray withDelegate:self.parentController];
     
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

@@ -13,6 +13,7 @@
 #import "SellersAPIHandler.h"
 #import "AppRootViewController.h"
 #import "ProfileViewController.h"
+#import "PurchasingViewController.h"
 @interface DiscoverViewController ()
 
 @end
@@ -75,6 +76,15 @@
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
     NSLog(@"%@ theSelectionObject: %@", self, theSelectionObject);
+    
+    
+    PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+    purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
+    purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
+    [self.navigationController pushViewController:purchasingViewController animated:YES];
+
+    
+    
     /*
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
     profileViewController.profileInstagramID = [theSelectionObject objectForKey:@"instagram_id"];

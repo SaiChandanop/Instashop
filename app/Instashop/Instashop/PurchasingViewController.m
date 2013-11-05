@@ -267,7 +267,6 @@
     
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     
-    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -316,8 +315,8 @@
 }
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSLog(@"request did load!, request.url: %@", request.url);
-    NSLog(@"request did load!, result: %@", result);
+//    NSLog(@"request did load!, request.url: %@", request.url);
+//    NSLog(@"request did load!, result: %@", result);
     
     if ([request.url rangeOfString:@"comments"].length > 0)
     {
