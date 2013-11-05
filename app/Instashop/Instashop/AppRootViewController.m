@@ -21,7 +21,7 @@
 #import "DiscoverViewController.h"
 #import "SearchViewController.h"
 #import "FirstTimeUserViewController.h"
-
+#import "AmberAPIHandler.h"
 
 @implementation AppRootViewController
 
@@ -105,6 +105,8 @@ float transitionTime = .456;
     [self setNeedsStatusBarAppearanceUpdate];
     
 
+    [AmberAPIHandler makeAmberCall];
+    
     
 }
 

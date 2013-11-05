@@ -254,6 +254,9 @@
 		7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */; };
 		7BA4270C1794681500A9732E /* cpbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270B1794681500A9732E /* cpbackimage.png */; };
 		7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270D17946F5F00A9732E /* attributes1.csv */; };
+		7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */; };
+		7BC6E7DF18229C4500288B68 /* AmberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7DD18229C4500288B68 /* AmberViewController.m */; };
+		7BC6E7E018229C4500288B68 /* AmberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC6E7DE18229C4500288B68 /* AmberViewController.xib */; };
 		7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */; };
 		7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */; };
 		7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */; };
@@ -642,6 +645,11 @@
 		7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchButtonContainerView.m; sourceTree = "<group>"; };
 		7BA4270B1794681500A9732E /* cpbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cpbackimage.png; sourceTree = "<group>"; };
 		7BA4270D17946F5F00A9732E /* attributes1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes1.csv; sourceTree = "<group>"; };
+		7BC6E7D8182299A300288B68 /* AmberAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmberAPIHandler.h; sourceTree = "<group>"; };
+		7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmberAPIHandler.m; sourceTree = "<group>"; };
+		7BC6E7DC18229C4500288B68 /* AmberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmberViewController.h; sourceTree = "<group>"; };
+		7BC6E7DD18229C4500288B68 /* AmberViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmberViewController.m; sourceTree = "<group>"; };
+		7BC6E7DE18229C4500288B68 /* AmberViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AmberViewController.xib; sourceTree = "<group>"; };
 		7BC890B117668B6B00D4756D /* StripeAuthenticationHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StripeAuthenticationHandler.h; sourceTree = "<group>"; };
 		7BC890B217668B6B00D4756D /* StripeAuthenticationHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StripeAuthenticationHandler.m; sourceTree = "<group>"; };
 		7BD5C1FF17959811006F311A /* SizeQuantityTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SizeQuantityTableViewCell.h; sourceTree = "<group>"; };
@@ -1438,6 +1446,7 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
+				7BC6E7DB18229C2C00288B68 /* Amber */,
 				7B0691CE18201CFE0083B1D9 /* Comments */,
 				193433D317E0FCEE007744E6 /* Login */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
@@ -1491,9 +1500,9 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
-				19EE23181811DA670007E475 /* FlagManager */,
-				7B260E8D17F0BA6800F8F873 /* Viglink */,
+				7BC6E7D71822997100288B68 /* Amber */,
 				7BE66D9F17E3520F00BE3B64 /* Categories */,
+				19EE23181811DA670007E475 /* FlagManager */,
 				7B96C033174FDEEA00E4EDAD /* Images */,
 				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
 				7BE958EF1755470000A7E0AB /* Products */,
@@ -1502,6 +1511,7 @@
 				7B5A56F117D3DC79007AABDA /* Shops */,
 				7BC890B017668B5200D4756D /* Stripe */,
 				7BE3D36B174D536B0045C4B4 /* User */,
+				7B260E8D17F0BA6800F8F873 /* Viglink */,
 				7B7B9DF41753E26F000F4A3E /* ZenCart */,
 				7B7A7455174D52E3005E90B9 /* RootAPIHandler.h */,
 				7B7A7456174D52E3005E90B9 /* RootAPIHandler.m */,
@@ -1580,6 +1590,25 @@
 				7B79AE8217E221FE0058E774 /* ProductImages */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		7BC6E7D71822997100288B68 /* Amber */ = {
+			isa = PBXGroup;
+			children = (
+				7BC6E7D8182299A300288B68 /* AmberAPIHandler.h */,
+				7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */,
+			);
+			name = Amber;
+			sourceTree = "<group>";
+		};
+		7BC6E7DB18229C2C00288B68 /* Amber */ = {
+			isa = PBXGroup;
+			children = (
+				7BC6E7DC18229C4500288B68 /* AmberViewController.h */,
+				7BC6E7DD18229C4500288B68 /* AmberViewController.m */,
+				7BC6E7DE18229C4500288B68 /* AmberViewController.xib */,
+			);
+			name = Amber;
 			sourceTree = "<group>";
 		};
 		7BC890B017668B5200D4756D /* Stripe */ = {
@@ -1969,6 +1998,7 @@
 				1903FF7617DA6D0800CD65F8 /* target-graphic@2x.png in Resources */,
 				2E628CB317C6A19900CB7BE4 /* iTunesArtwork@2x.png in Resources */,
 				7B0320DF17E0E1340045D7AC /* SearchSiloViewController.xib in Resources */,
+				7BC6E7E018229C4500288B68 /* AmberViewController.xib in Resources */,
 				7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */,
 				2E6BF27917CE502E008DF460 /* edit_photo@2x.png in Resources */,
 				2EFD0A3817FBBB2C00E701B0 /* twitter_on@2x.png in Resources */,
@@ -1988,6 +2018,7 @@
 			files = (
 				19EE231B1811E5CB0007E475 /* FlagManagerAPIHandler.m in Sources */,
 				193433E017E11817007744E6 /* CreateSellerTutorialScrollView.m in Sources */,
+				7BC6E7DF18229C4500288B68 /* AmberViewController.m in Sources */,
 				193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */,
 				7B61EE53174D2162002A483D /* main.m in Sources */,
 				7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */,
@@ -2043,6 +2074,7 @@
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
 				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
+				7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */,
 				7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */,
 				2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */,
 				7B0691D418201D270083B1D9 /* CommentsTableViewCell.m in Sources */,

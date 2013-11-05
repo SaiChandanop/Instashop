@@ -28,7 +28,7 @@
 #import "FBPostViewController.h"
 #import "SocialManager.h"
 #import <Social/Social.h>
-
+#import "AmberViewController.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -407,10 +407,12 @@
 //    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
 //    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
     
-    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
-    [self.navigationController pushViewController:browserViewController animated:YES];
-    [browserViewController loadView];
-    [browserViewController openThisURL:[NSURL URLWithString:viglinkString]];
+    AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
+    
+//    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
+    [self.navigationController pushViewController:amberViewController animated:YES];
+//    [amberViewController loadView];
+//    [amberViewController openThisURL:[NSURL URLWithString:viglinkString]];
 
     
     
