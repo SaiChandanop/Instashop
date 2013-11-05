@@ -114,6 +114,9 @@
     self.productsButton.selected = NO;
     
     theButton.selected = YES;
+    
+    [self.productSearchViewController.theSearchBar resignFirstResponder];
+    [self.shopSearchViewController.theSearchBar resignFirstResponder];
 }
 
 -(IBAction)shopsButtonHit:(UIButton *)theButton
