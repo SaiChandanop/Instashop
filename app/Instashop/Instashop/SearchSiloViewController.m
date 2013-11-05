@@ -114,6 +114,7 @@
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {
+    [self.theSearchBar resignFirstResponder];
     if ([self.selectedCategoriesArray count] > callingController.positionIndex)
         [self.selectedCategoriesArray removeObjectsInRange:NSMakeRange(callingController.positionIndex, [self.selectedCategoriesArray count] - callingController.positionIndex)];
     
