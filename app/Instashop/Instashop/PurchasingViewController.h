@@ -14,7 +14,7 @@
 #import "FeedRequestFinishedProtocol.h"
 #import "EditProductCompleteProtocol.h"
 #import "FlagManagerAPIHandler.h"
-
+#import "CIALBrowserViewController.h"
 #import "CommentsTableViewController.h"
 @class FeedViewController;
 
@@ -55,6 +55,8 @@
     
     UITextField *commentTextField;
     UIButton *commentExitButton;
+    
+    CIALBrowserViewController *cialBrowserViewController;
 }
 
 - (IBAction) likeButtonHit;
@@ -109,4 +111,6 @@
 
 @property (nonatomic, retain) UITextField *commentTextField;
 @property (nonatomic, retain) UIButton *commentExitButton;
+
+@property (nonatomic, retain) CIALBrowserViewController *cialBrowserViewController;
 @end

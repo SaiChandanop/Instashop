@@ -59,6 +59,7 @@
 @synthesize commentsTableViewController;
 @synthesize commentTextField;
 @synthesize commentExitButton;
+@synthesize cialBrowserViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -76,8 +77,8 @@
     self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionTextView.contentSize.height + 30);
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
- //   self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
-
+    //   self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
+    
     
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeButtonHit)];
@@ -87,11 +88,11 @@
     [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
     
     /*
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
-    [appDelegate.instagram requestWithParams:params delegate:self];
-*/
+     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+     
+     NSDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
+     [appDelegate.instagram requestWithParams:params delegate:self];
+     */
     
     
 }
@@ -99,7 +100,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     NSLog(@"requestingProductID: %@", self.requestingProductID);
@@ -128,12 +129,12 @@
     self.listPriceLabel.alpha = 0;
     self.numberAvailableLabel.alpha = 0;
     
-//    self.commentsTableViewController.tableView.userInteractionEnabled = NO;
+    //    self.commentsTableViewController.tableView.userInteractionEnabled = NO;
     self.commentsTableViewController.view.backgroundColor = [UIColor clearColor];
     self.commentsTableViewController.tableView.backgroundColor = [UIColor clearColor];
     self.commentsTableViewController.tableView.separatorColor = [UIColor clearColor];
     self.commentsTableViewController.parentController = self;
-//    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSNull null], nil];
+    //    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSNull null], nil];
     [self.commentsTableViewController.tableView reloadData];
     
     
@@ -151,7 +152,7 @@
         NSLog(@"self.contentScrollView.contentOffset: %f", self.contentScrollView.contentOffset.y);
         
         [self.contentScrollView setContentOffset:CGPointMake(0,155 + self.contentScrollView.contentOffset.y) animated:YES];
-//        self.contentScrollView.userInteractionEnabled = NO;
+        //        self.contentScrollView.userInteractionEnabled = NO;
         
         self.commentExitButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.commentExitButton.backgroundColor = [UIColor clearColor];
@@ -170,7 +171,7 @@
     [UIView animateWithDuration:.25f animations:^{
         
         [self.contentScrollView setContentOffset:CGPointMake(0,0) animated:YES];
-//        self.contentScrollView.userInteractionEnabled = YES;
+        //        self.contentScrollView.userInteractionEnabled = YES;
         
     } completion:nil];
 }
@@ -183,7 +184,7 @@
     NSLog(@"params: %@", params);
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.instagram  postRequestWithParams:params delegate:self];
-
+    
     
     
 }
@@ -196,7 +197,7 @@
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.requestedProductObject objectForKey:@"owner_instagram_id"]], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-
+    
     params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
     
@@ -224,24 +225,24 @@
         if (i != [attributesArray count] -1)
             [categoryString appendString:@" > "];
     }
-
+    
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
     
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width,  self.descriptionTextView.contentSize.height);
-
+    
     
     
     
     
     self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
-
+    
     self.retailPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
     if (![[self.requestedProductObject objectForKey:@"products_list_price"] isKindOfClass:[NSNull class]])
     {
         NSString *listPriceString =[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_list_price"] floatValue]]];
         NSAttributedString *strikethroughString = [[NSAttributedString alloc] initWithString:listPriceString
-                                                                        attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
+                                                                                  attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
         
         
         self.listPriceLabel.attributedText = strikethroughString;
@@ -250,18 +251,18 @@
     
     self.categoryLabel.text = categoryString;
     
-    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];    
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     if ([sizeQuantityArray count] == 1)
         if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
         {
             //Joel set your button style here
             self.sizeButton.enabled = NO;
         }
-
+    
     self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
     [self.view bringSubviewToFront:self.bottomView];
     
-
+    
     [self.quantityButton setTitle:@"1" forState:UIControlStateNormal];
     
     
@@ -272,15 +273,15 @@
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
 {
     
-//    if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
-//        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
+    //    if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
+    //        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
     
     
 }
 
 -(void)loadForEdit
 {
-
+    
     
     
     UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -288,11 +289,11 @@
     [editButton setTitle:@"Edit" forState:UIControlStateNormal];
     editButton.backgroundColor = [UIColor clearColor];
     [editButton addTarget:self action:@selector(editButtonHit) forControlEvents:UIControlEventTouchUpInside];
-
+    
     
     UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton];
     self.navigationItem.rightBarButtonItem = editBarButtonItem;
-
+    
     
 }
 
@@ -305,18 +306,18 @@
     productDetailsViewController.parentController = self;
     productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
     [self.navigationController pushViewController:productDetailsViewController animated:YES];
-  
+    
     
     [productDetailsViewController loadWithProductObject:self.requestedProductObject withMediaInstagramID:[self.requestedProductObject objectForKey:@"products_instagram_id"]];
-//    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-
-     
-     
+    //    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
+    
+    
+    
 }
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-//    NSLog(@"request did load!, request.url: %@", request.url);
-//    NSLog(@"request did load!, result: %@", result);
+    //    NSLog(@"request did load!, request.url: %@", request.url);
+    //    NSLog(@"request did load!, result: %@", result);
     
     if ([request.url rangeOfString:@"comments"].length > 0)
     {
@@ -327,11 +328,11 @@
         self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * ([dataArray count]) );
         self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height - 15);
         
-
+        
         self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithArray:dataArray];
         [self.commentsTableViewController.tableView reloadData];
-
-
+        
+        
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
     {
@@ -359,7 +360,7 @@
             
         }
         else if ([request.httpMethod compare:@"DELETE"] == NSOrderedSame)
-        {            
+        {
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             
             NSMutableDictionary*params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
@@ -388,7 +389,7 @@
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
- //   NSLog(@"theArray: %@", theArray);
+    //   NSLog(@"theArray: %@", theArray);
     if ([theArray count] > 0)
         self.requestedProductObject = [theArray objectAtIndex:0];
     
@@ -402,33 +403,63 @@
 }
 -(IBAction)buyButtonHit
 {
-//    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
-//    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
     
-    AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
     
-//    CIALBrowserViewController *browserViewController = [[CIALBrowserViewController alloc] init];
-    [self.navigationController pushViewController:amberViewController animated:YES];
-//    [amberViewController loadView];
-//    [amberViewController openThisURL:[NSURL URLWithString:viglinkString]];
+    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    
+    
+    
+    
+    
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Which?"
+                                                        message:nil
+                                                       delegate:self
+                                              cancelButtonTitle:@"Amber"
+                                              otherButtonTitles:@"Viglink", nil];
+    [alertView show];
+    
+    
+    
+}
 
-    
-    
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if ([alertView.title compare:@"Which?"] == NSOrderedSame)
+    {
+        if (buttonIndex == 0)
+        {
+            AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
+            amberViewController.referenceURLString = self.viglinkString;
+            [self.navigationController pushViewController:amberViewController animated:YES];
+            [amberViewController loadView];            
+            [amberViewController run];
+        }
+        else
+        {
+            self.cialBrowserViewController = [[CIALBrowserViewController alloc] init];
+            [self.navigationController pushViewController:cialBrowserViewController animated:YES];
+            [self.cialBrowserViewController openThisURL:[NSURL URLWithString:self.viglinkString]];
+        }
+    }
+    else
+        [self.navigationController popToRootViewControllerAnimated:YES];        
 }
 
 -(void)viglinkCallReturned:(NSString *)urlString
 {
     self.viglinkString = urlString;
-//    NSLog(@"!!!viglinkCallReturned: %@", htmlString);
-//    NSString *urlString = [self.requestedProductObject objectForKey:@"products_external_url"];
+    NSLog(@"viglinkCallReturned: %@", self.viglinkString);
     
-     
+    
+    
+    
 }
 
 
 -(IBAction)buyButtonHitBAK
 {
-     NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     
     BOOL isSingleSize = NO;
     if ([sizeQuantityArray count] == 1)
@@ -537,7 +568,7 @@
         for (int i = 1; i <= [[[sizeQuantityArray objectAtIndex:0] objectForKey:@"quantity"] intValue]; i++)
             [quantityArray addObject:[NSString stringWithFormat:@"%d", i]];
     }
-
+    
     
     else if (self.sizeSelectedIndex >= 0)
     {
@@ -572,7 +603,7 @@
         [self.sizePickerViewViewController.saveButton addTarget:self action:@selector(pickerSaveButtonHit) forControlEvents:UIControlEventTouchUpInside];
         
         
-
+        
     }
     else
     {
@@ -622,7 +653,7 @@
     
     NSLog(@"likeButtonHit");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-          
+    
     if ([self likesArrayContainsSelf])
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
@@ -631,9 +662,9 @@
     else
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
-        [appDelegate.instagram postRequestWithParams:params delegate:self];        
+        [appDelegate.instagram postRequestWithParams:params delegate:self];
     }
-
+    
 }
 
 -(BOOL)likesArrayContainsSelf
@@ -663,7 +694,7 @@
             ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
             profileViewController.profileInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
             [self.navigationController pushViewController:profileViewController animated:YES];
-        }    
+        }
 }
 
 
@@ -704,7 +735,7 @@
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
-
+    
     
     [MBProgressHUD hideAllHUDsForView:rootVC.view animated:NO];
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Edited!"
@@ -717,12 +748,7 @@
     
 }
 
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    
-}
+
 
 - (void) openActionSheet {
     
@@ -754,23 +780,23 @@
     {
         [SocialManager requestInitialFacebookAccess];
         
-/*
-        
-        FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
-        fbPostViewController.delegate = self;
-        fbPostViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:fbPostViewController.view];
-        
-        [fbPostViewController loadWithImage:self.imageView.image withDescriptionText:[NSString stringWithFormat:@"%@, %@", self.descriptionTextView.text, [self.requestedProductObject objectForKey:@"products_external_url"]] withTitleText:@""];
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:0.45];
-        fbPostViewController.view.frame = CGRectMake(0,0, fbPostViewController.view.frame.size.width, fbPostViewController.view.frame.size.height);
-        [UIView commitAnimations];
- */
+        /*
+         
+         FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
+         fbPostViewController.delegate = self;
+         fbPostViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+         [self.view addSubview:fbPostViewController.view];
+         
+         [fbPostViewController loadWithImage:self.imageView.image withDescriptionText:[NSString stringWithFormat:@"%@, %@", self.descriptionTextView.text, [self.requestedProductObject objectForKey:@"products_external_url"]] withTitleText:@""];
+         
+         [UIView beginAnimations:nil context:nil];
+         [UIView setAnimationDuration:0.45];
+         fbPostViewController.view.frame = CGRectMake(0,0, fbPostViewController.view.frame.size.width, fbPostViewController.view.frame.size.height);
+         [UIView commitAnimations];
+         */
         
         SLComposeViewController *facebookController = [SLComposeViewController
-                                                    composeViewControllerForServiceType:SLServiceTypeFacebook];
+                                                       composeViewControllerForServiceType:SLServiceTypeFacebook];
         
         SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
             
@@ -800,11 +826,11 @@
         
         
         [[AppRootViewController sharedRootViewController] presentViewController:facebookController animated:YES completion:nil];
-
+        
         
         
     }
-
+    
     else if ([buttonTitle compare:@"Twitter"] == NSOrderedSame)
     {
         SLComposeViewController *tweetController = [SLComposeViewController
@@ -839,9 +865,9 @@
         
         
         [[AppRootViewController sharedRootViewController] presentViewController:tweetController animated:YES completion:nil];
-
+        
     }
-
+    
     
     
 }
@@ -863,7 +889,7 @@
     [UIView setAnimationDuration:0.45];
     callingController.view.frame = CGRectMake(0,self.view.frame.size.height, callingController.view.frame.size.width, callingController.view.frame.size.height);
     [UIView commitAnimations];
-
+    
     
 }
 -(void)fbShareCancelButtonHit:(FBPostViewController *)callingController

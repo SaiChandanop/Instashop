@@ -16,15 +16,24 @@
 
 @synthesize amberWebView;
 @synthesize loadingView;
+@synthesize referenceURLString;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+}
+
+-(void)run
+{
+    NSString *amberPath = [NSString stringWithFormat:@"https://mobile.amber.io/?public_token=6ad2af4e0e1e2fb08de9&unique_token=2388&test_mode=fake_confirm&callback_url=https://amber.io/workers/proposed_recipes/test_callback&show_tutorial=false&products=%@", [self.referenceURLString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    //http%3A%2F%2Fwww.footlocker.com%2Fproduct%2Fmodel%3A199142%2Fsku%3A99565600%2Fnike-air-max-stutter-step-mens%2Fred%2Fwhite
     
-    NSString *amberPath = @"https://mobile.amber.io/?public_token=6ad2af4e0e1e2fb08de9&unique_token=2388&test_mode=fake_confirm&callback_url=https://amber.io/workers/proposed_recipes/test_callback&show_tutorial=false&products=http%3A%2F%2Fwww.footlocker.com%2Fproduct%2Fmodel%3A199142%2Fsku%3A99565600%2Fnike-air-max-stutter-step-mens%2Fred%2Fwhite";
+    NSLog(@"amberPath: %@", amberPath);
+    
     NSURL *amberURL = [NSURL URLWithString:amberPath];
     NSURLRequest *amberRequestObj = [NSURLRequest requestWithURL:amberURL];
     [self.amberWebView loadRequest:amberRequestObj];
+   
 }
 
 
