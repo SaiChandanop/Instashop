@@ -128,7 +128,6 @@
     [productAPIHandler.theWebRequest start];
 }
 
-
 -(void)productSizeQuantityCreateFinished:(id)object
 {
     NSString* newStr = [[[NSString alloc] initWithData:responseData
@@ -136,13 +135,5 @@
     NSLog(@"productSizeQuantityCreateFinished: %@", newStr);
 
 }
-
-
-
-
-
-
-
-
 
 @end
