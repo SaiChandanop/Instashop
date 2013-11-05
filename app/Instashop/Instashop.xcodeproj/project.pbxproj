@@ -254,6 +254,7 @@
 		7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */; };
 		7BA4270C1794681500A9732E /* cpbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270B1794681500A9732E /* cpbackimage.png */; };
 		7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270D17946F5F00A9732E /* attributes1.csv */; };
+		7BAD992018298E2100089D5A /* DiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */; };
 		7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */; };
 		7BC6E7DF18229C4500288B68 /* AmberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7DD18229C4500288B68 /* AmberViewController.m */; };
 		7BC6E7E018229C4500288B68 /* AmberViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BC6E7DE18229C4500288B68 /* AmberViewController.xib */; };
@@ -645,6 +646,8 @@
 		7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchButtonContainerView.m; sourceTree = "<group>"; };
 		7BA4270B1794681500A9732E /* cpbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cpbackimage.png; sourceTree = "<group>"; };
 		7BA4270D17946F5F00A9732E /* attributes1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes1.csv; sourceTree = "<group>"; };
+		7BAD991E18298E2100089D5A /* DiscoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewCell.h; sourceTree = "<group>"; };
+		7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewCell.m; sourceTree = "<group>"; };
 		7BC6E7D8182299A300288B68 /* AmberAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmberAPIHandler.h; sourceTree = "<group>"; };
 		7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AmberAPIHandler.m; sourceTree = "<group>"; };
 		7BC6E7DC18229C4500288B68 /* AmberViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmberViewController.h; sourceTree = "<group>"; };
@@ -905,6 +908,8 @@
 				7B0320E817E0F9FD0045D7AC /* DiscoverTableViewController.h */,
 				7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */,
 				7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */,
+				7BAD991E18298E2100089D5A /* DiscoverTableViewCell.h */,
+				7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -2116,6 +2121,7 @@
 				7B5D628217C5AF7100D6C8B1 /* PKCardExpiry.m in Sources */,
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
 				7B396BE817D7819E0042754D /* SearchRequestObject.m in Sources */,
+				7BAD992018298E2100089D5A /* DiscoverTableViewCell.m in Sources */,
 				7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */,
 				7B74C3D1179716850006289C /* CreateSellerViewController.m in Sources */,
 				7B0D254E17CBA36F00E43FA6 /* GKImageCropOverlayView.m in Sources */,

@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "FeedRequestFinishedProtocol.h"
 @class DiscoverViewController;
 
-@interface DiscoverTableViewController : UITableViewController
+@interface DiscoverTableViewController : UITableViewController <FeedRequestFinishedProtocol>
 {
     DiscoverViewController *parentController;
     NSArray *sellersObjectsArray;
+    
+    NSArray *contentArray;
     
 }
 @property (nonatomic, retain) DiscoverViewController *parentController;
 @property (nonatomic, retain) NSArray *sellersObjectsArray;
 
+@property (nonatomic, retain) NSArray *contentArray;
 @end

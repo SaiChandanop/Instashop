@@ -7,7 +7,10 @@
 //
 
 #import "DiscoverTableViewController.h"
-#import "ImagesTableViewCell.h"
+#import "DiscoverTableViewCell.h"
+#import "ProductAPIHandler.h"
+
+float cellHeight = 151;
 @interface DiscoverTableViewController ()
 
 @end
@@ -16,6 +19,8 @@
 
 @synthesize sellersObjectsArray;
 @synthesize parentController;
+@synthesize contentArray;
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -29,42 +34,65 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [ProductAPIHandler getAllProductsWithDelegate:self];
+    
+    
 }
 
+-(void)feedRequestFinishedWithArrray:(NSArray *)theArray
+{
+
+    self.contentArray = [[NSArray alloc] initWithArray:theArray];
+    [self.tableView reloadData];
+    
+    NSLog(@"cellHeight: %f", cellHeight);
+    self.tableView.contentSize = CGSizeMake(0, cellHeight * [self getCount]);
+
+    NSLog(@"self.tableView: %@", self.tableView);
+}
+
+                                      
+-(int)getCount
+{
+    return [self.contentArray count] / 2;
+}
 
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
+    self.tableView.separatorColor = [UIColor clearColor];
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.sellersObjectsArray count] / 3 + 1;
+    return [self getCount];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
     
-    ImagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    DiscoverTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
+        cell = [[[DiscoverTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]] autorelease];
     }
     
-    [cell loadWithIndexPath:indexPath withSellerDictionaryArray:self.sellersObjectsArray withDelegate:self.parentController];
     
-
+    [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray withDelegate:self];
     
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  108;
+    return  cellHeight;
 }
 
 

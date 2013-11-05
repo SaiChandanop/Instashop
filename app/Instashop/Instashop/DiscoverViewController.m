@@ -58,42 +58,28 @@
     
     UIBarButtonItem *homBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeCustomView];
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
-    
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"DISCOVER"]];
-    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-/*
-=======
-    self.discoverTopCategoryTableViewController = [[DiscoverTableViewController alloc] initWithStyle:UITableViewStylePlain];
-    self.discoverTopCategoryTableViewController.parentController = self;
-    self.discoverTopCategoryTableViewController.view.frame = CGRectMake(0,0,self.theScrollView.frame.size.width, self.theScrollView.frame.size.height);
-    [self.theScrollView addSubview:self.discoverTopCategoryTableViewController.view];
->>>>>>> walkthroughs
-*/
+
+    
+    
+    
     self.discoverTableViewController = [[DiscoverTableViewController alloc] initWithNibName:@"DiscoverTableViewController" bundle:nil];
     self.discoverTableViewController.parentController = self;
     [self.view addSubview:self.discoverTableViewController.tableView];
     
-    
-    [SellersAPIHandler makeGetAllSellersRequestWithDelegate:self];
-    // Do any additional setup after loading the view from its nib.
-    
 }
 
--(void)sellersRequestFinishedWithResponseObject:(NSArray *)responseArray
-{
-//    NSLog(@"sellersRequestFinishedWithResponseObject: %@", responseArray);
-    self.discoverTableViewController.sellersObjectsArray = [[NSArray alloc] initWithArray:responseArray];
-    [self.discoverTableViewController.tableView reloadData];
-}
+
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
     NSLog(@"%@ theSelectionObject: %@", self, theSelectionObject);
-    
+    /*
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
     profileViewController.profileInstagramID = [theSelectionObject objectForKey:@"instagram_id"];
     [self.navigationController pushViewController:profileViewController animated:YES];
+     */
 }
 
 

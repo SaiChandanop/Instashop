@@ -31,7 +31,7 @@
     NSString* newStr = [[[NSString alloc] initWithData:self.responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"amber call finished: %@", newStr);
+ //   NSLog(@"amber call finished: %@", newStr);
     
 }
 @end

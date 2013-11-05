@@ -104,10 +104,6 @@ float transitionTime = .456;
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-
-    [AmberAPIHandler makeAmberCall];
-    
-    
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
