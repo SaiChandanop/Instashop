@@ -40,7 +40,6 @@
 
 - (void)viewDidLoad
 {
-    
     [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
     
     [super viewDidLoad];
@@ -48,8 +47,6 @@
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
-    
-    
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
@@ -68,14 +65,9 @@
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SUGGESTED SHOPS"]];
     
-    
-    
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
     [self.view insertSubview:bgImageView atIndex:0];
-    
-    
-    
 }
 
 -(void)backButtonHit
@@ -196,13 +188,6 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
     }
-
-
-    
-    
-    
-    
-    
 }
 
 -(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage

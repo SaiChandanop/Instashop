@@ -56,10 +56,10 @@
     self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, 33.3);
     float howToViewBoundsHeight = self.tutorialScrollView.bounds.size.height;
     
-    NSString * firstString = [NSString stringWithFormat:@"Upload products from Instagram and make it easy for your followers \n to shop"];
-    NSString * secondString = [NSString stringWithFormat:@"Receive Notifications after you like \n a product on Instagram and Shopsy \n will tell you where to buy!"];
+    NSString * firstString = [NSString stringWithFormat:@"Upload products from Instagram and make it easy for your followers to shop"];
+    NSString * secondString = [NSString stringWithFormat:@"Receive Notifications after you like a product on Instagram and Shopsy will \n tell you where to buy!"];
     
-    NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:firstString, secondString, nil];
+    NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:firstString, secondString, nil];\
     
     float buttonPosition = 515.0; // Change this number to change the button position.
     
@@ -73,7 +73,7 @@
         [greenButton setTitle:@"NEXT" forState:UIControlStateNormal];
         greenButton.titleLabel.textColor = textColor;
         greenButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        greenButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:13.0];
+        greenButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
         [greenButton setBackgroundColor:[ISConstants getISGreenColor]];
         [greenButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
         
