@@ -62,6 +62,7 @@ float transitionTime = .456;
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"firstRun"]) {
+        NSLog(@"Testing FirstTimeUserTutorial");
         self.firstRun = TRUE;
         [defaults setObject:[NSDate date] forKey:@"firstRun"];
     }
@@ -84,7 +85,8 @@ float transitionTime = .456;
     self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
-    /*
+    
+    // Can test first time user tutorial by changing to false statement
     if (self.firstRun) {
         
         FirstTimeUserViewController *tutorial = [[FirstTimeUserViewController alloc] init];
@@ -98,7 +100,7 @@ float transitionTime = .456;
         tutorial.view.frame = CGRectMake(0, 0, tutorial.view.frame.size.width, tutorial.view.frame.size.height);
         [UIView commitAnimations];
     }
-     */
+    
     
 	// Do any additional setup after loading the view.
     

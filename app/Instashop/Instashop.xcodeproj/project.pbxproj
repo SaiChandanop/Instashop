@@ -82,6 +82,8 @@
 		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
 		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
+		696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */; };
+		696DE14A182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */; };
 		7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320D717E0DB700045D7AC /* DiscoverViewController.m */; };
 		7B0320DA17E0DB700045D7AC /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */; };
 		7B0320DE17E0E1340045D7AC /* SearchSiloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320DC17E0E1340045D7AC /* SearchSiloViewController.m */; };
@@ -376,6 +378,8 @@
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
+		696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Post-Products-Phone.png"; sourceTree = "<group>"; };
+		696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Notifications-Phone.png"; sourceTree = "<group>"; };
 		7B0320D617E0DB700045D7AC /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		7B0320D717E0DB700045D7AC /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
@@ -822,6 +826,7 @@
 				2E531F0417C3BF6A006B6FF5 /* cell_separator@2x.png */,
 				2E7CFF9617C3A98500657CFC /* gray_x@2x.png */,
 				7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */,
+				696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */,
 				7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */,
 				7B51EB1817C30F03009FBE91 /* cell_disclosure_new@2x.png */,
 				7B602DAB1766543100663A73 /* buybutton@2x.png */,
@@ -864,6 +869,7 @@
 				2E0EADE5176F6E6700B65FC3 /* toolbarBG@2x.png */,
 				2E0EADE4176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png */,
 				2EB259AC1767B3280054618D /* top_shadow@2x.png */,
+				696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */,
 				2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */,
 				2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */,
 			);
@@ -1876,6 +1882,7 @@
 				7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */,
 				2E41D2221815A9F60032844A /* more_button@2x.png in Resources */,
 				7B5D62A217C5AF9F00D6C8B1 /* amex@2x.png in Resources */,
+				696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */,
 				7B0D253E17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed.png in Resources */,
 				7B0D253A17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png in Resources */,
 				7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */,
@@ -1906,6 +1913,7 @@
 				7B5D62AC17C5AF9F00D6C8B1 /* jcb@2x.png in Resources */,
 				7BE688CA176B7801007D383B /* FeedViewController.xib in Resources */,
 				2E628CAD17C6A19900CB7BE4 /* AppIcon40x40@2x.png in Resources */,
+				696DE14A182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png in Resources */,
 				2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */,
 				2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */,
 				2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */,

@@ -14,6 +14,7 @@
 #import "AppRootViewController.h"
 #import "ProfileViewController.h"
 #import "PurchasingViewController.h"
+
 @interface DiscoverViewController ()
 
 @end
@@ -22,8 +23,6 @@
 
 @synthesize parentController;
 @synthesize discoverTableViewController;
-
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -61,9 +60,6 @@
     self.navigationItem.leftBarButtonItem = homBarButtonItem;
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"DISCOVER"]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-
-    
-    
     
     self.discoverTableViewController = [[DiscoverTableViewController alloc] initWithNibName:@"DiscoverTableViewController" bundle:nil];
     self.discoverTableViewController.parentController = self;
@@ -77,13 +73,10 @@
 {
     NSLog(@"%@ theSelectionObject: %@", self, theSelectionObject);
     
-    
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
     purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
     [self.navigationController pushViewController:purchasingViewController animated:YES];
-
-    
     
     /*
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
