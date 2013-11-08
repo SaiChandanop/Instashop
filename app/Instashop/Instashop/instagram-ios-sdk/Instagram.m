@@ -233,7 +233,6 @@ static void *finishedContext            = @"finishedContext";
                               delegate:delegate];
 }
 
-
 -(IGRequest*)delRequestWithParams:(NSMutableDictionary*)params
                           delegate:(id<IGRequestDelegate>)delegate {
     if ([params objectForKey:@"method"] == nil) {
@@ -249,10 +248,6 @@ static void *finishedContext            = @"finishedContext";
                             httpMethod:@"DELETE"
                               delegate:delegate];
 }
-
-
-
-
 
 -(IGRequest*)requestWithMethodName:(NSString*)methodName
                             params:(NSMutableDictionary*)params

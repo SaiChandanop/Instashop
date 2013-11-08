@@ -17,11 +17,15 @@
 @end
 
 #define kHowToPageNumber 3
+#define kButtonHeight 100.0
 
 @implementation FirstTimeUserViewController
 
 @synthesize tutorialScrollView;
 @synthesize pageControl;
+@synthesize loginTutorialDone;
+@synthesize parentViewController;
+@synthesize nextButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -51,6 +55,17 @@
     self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];\
     self.tutorialScrollView.bounces = NO;  // Empty side view
+
+    // Next Button
+    float buttonPosition = 515.0; // Change this number to change the button position.
+    UIColor *textColor = [UIColor colorWithRed:70.0 green:70.0 blue:70.0 alpha:1.0];
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, buttonPosition, screenWidth, screenHeight - buttonPosition)];
+    [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+    self.nextButton.titleLabel.textColor = textColor;
+    self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
+    [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
+    [self.nextButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
     
     // Needs to be less than bound height to disable vertical scrolling.
     self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, 33.3);
@@ -61,21 +76,9 @@
     
     NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:firstString, secondString, nil];\
     
-    float buttonPosition = 515.0; // Change this number to change the button position.
-    
     NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"Tutorial-Post-Products-Phone.png", @"Tutorial-Notifications-Phone.png", nil];
     
-    UIColor *textColor = [UIColor colorWithRed:70.0 green:70.0 blue:70.0 alpha:1.0];
-    
     for (int p = 0; p < arrayOfImages.count; p++) {
-        
-        UIButton *greenButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, buttonPosition, screenWidth, screenHeight - buttonPosition)];
-        [greenButton setTitle:@"NEXT" forState:UIControlStateNormal];
-        greenButton.titleLabel.textColor = textColor;
-        greenButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        greenButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-        [greenButton setBackgroundColor:[ISConstants getISGreenColor]];
-        [greenButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, 150.0)];
         label.text = [arrayOfStringLabels objectAtIndex:p];
@@ -94,7 +97,6 @@
         
         [imageView setImage:image];
         [view addSubview:imageView];
-        [view addSubview:greenButton];
         [view addSubview:label];
         [self.tutorialScrollView addSubview:view];
     }
@@ -106,6 +108,7 @@
     
     SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
+    suggestedStoreView.firstTimeUserViewController = self;
     [self.tutorialScrollView addSubview:suggestedStoreView.view];
     
     /*
@@ -133,6 +136,7 @@
     
     self.tutorialScrollView.delegate = self;
     [self.view addSubview:self.tutorialScrollView];
+    [self.view addSubview:self.nextButton];
     
     // Page Control
     
@@ -151,21 +155,56 @@
     CGFloat pageWidth = self.tutorialScrollView.frame.size.width;
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
     NSInteger page = lround(fractionalPage);
-    self.pageControl.currentPage = page;
+    if (page == 2) {
+        
+    }
+   // self.pageControl.currentPage = page;
 }
 
-- (void) moveScrollView {
+- (void) showCloseTutorialButton {
+    
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-    NSLog(@"Hey you're supposed to move to the next slide!");
-    [self.tutorialScrollView setContentOffset:CGPointMake(self.tutorialScrollView.contentOffset.x + screenWidth, 0) animated:YES];
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, (screenHeight - self.loginTutorialDone.frame.size.height), screenWidth, kButtonHeight);
+    [UIView commitAnimations];
+}
+
+- (void) hideCloseTutorialButton {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:1.0];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, screenHeight, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void) moveScrollView {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    if (self.tutorialScrollView.contentOffset.x < screenWidth * 2) {
+        [self.tutorialScrollView setContentOffset:CGPointMake(self.tutorialScrollView.contentOffset.x + screenWidth, 0) animated:YES];
+    }
 }
 
 - (void) closeTutorial {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    [self.parentViewController firstTimeTutorialExit];
 }
 
 - (void)didReceiveMemoryWarning

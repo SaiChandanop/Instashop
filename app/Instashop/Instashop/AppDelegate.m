@@ -39,7 +39,6 @@
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
     self.appRootViewController = [[AppRootViewController alloc] initWithNibName:nil bundle:nil];
     
-    
     if ([self.instagram isSessionValid] && [InstagramUserObject getStoredUserObject])
     {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
@@ -47,7 +46,6 @@
     }
     else
         self.window.rootViewController = self.authenticationViewController;
-    
     
     [self.window makeKeyAndVisible];
    

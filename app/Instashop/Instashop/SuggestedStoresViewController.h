@@ -11,6 +11,8 @@
 #import "Instagram.h"
 @class AppRootViewController;
 
+@class FirstTimeUserViewController;
+
 @interface SuggestedStoresViewController : UIViewController <SuggestedShopReturnProtocol, IGRequestDelegate>
 {
     AppRootViewController *appRootViewController;
@@ -27,10 +29,14 @@
 -(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected;
 
 @property (nonatomic, retain) AppRootViewController *appRootViewController;
+@property (nonatomic, retain) FirstTimeUserViewController *firstTimeUserViewController;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
+@property (nonatomic, retain) UIButton *closeTutorialButton;
 
 @property (nonatomic, retain) NSMutableArray *selectedShopsIDSArray;
 @property (nonatomic, retain) NSMutableDictionary *containerViewsDictionary;
+@property (nonatomic) int followingCount;
+@property (nonatomic, assign) BOOL initiated;
 
 @end

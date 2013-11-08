@@ -10,6 +10,7 @@
 
 #import "FeedViewController.h"
 #import "HomeViewController.h"
+#import "FirstTimeUserViewController.h"
 
 @class SearchViewController;
 
@@ -39,6 +40,7 @@
 -(void) createSellerShouldExit:(UINavigationController *)theNavigationController;
 
 -(void)createProductButtonHit;
+- (void) firstTimeTutorialExit;
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 
 
@@ -56,6 +58,7 @@
 @property (strong, nonatomic) FeedViewController *feedViewController;
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) SearchViewController *theSearchViewController;
+@property (strong, nonatomic) FirstTimeUserViewController *firstTimeUserViewController;
 
 @property (strong, nonatomic) UIButton *feedCoverButton;
 

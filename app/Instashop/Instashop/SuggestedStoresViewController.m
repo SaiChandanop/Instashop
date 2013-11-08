@@ -14,16 +14,23 @@
 #import "ShopsAPIHandler.h"
 #import "AppDelegate.h"
 #import "ImageAPIHandler.h"
+#import "FirstTimeUserViewController.h"
 
 @interface SuggestedStoresViewController ()
 
 @end
+
+#define kLoginTutorialDone 3
+#define kButtonPosition 515.0 // Change this number to change the button position.
 
 @implementation SuggestedStoresViewController
 
 @synthesize appRootViewController;
 @synthesize contentScrollView;
 @synthesize selectedShopsIDSArray;
+@synthesize firstTimeUserViewController;
+@synthesize initiated;
+@synthesize closeTutorialButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -77,11 +84,18 @@
 
 -(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray
 {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
     [self.containerViewsDictionary removeAllObjects];
     
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
     
     NSArray *subviewsArray = [self.contentScrollView subviews];
+    NSLog(@"This is the subviewArray count: %i", subviewsArray.count);
     
     for (int i = 0; i < [subviewsArray count]; i++)
     {
@@ -90,7 +104,7 @@
     }
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
+    NSLog(@"This is the selectedShopsIDSArray count: %i", self.selectedShopsIDSArray.count);
     for (int i = 0; i < [self.selectedShopsIDSArray count]; i++)
     {
         SuggestedShopView *suggestedShopView = [[[NSBundle mainBundle] loadNibNamed:@"SuggestedShopView" owner:self options:nil] objectAtIndex:0];
@@ -103,18 +117,27 @@
         self.contentScrollView.contentSize = CGSizeMake(0, suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height + 60);
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.selectedShopsIDSArray objectAtIndex:i]], @"method", nil];
-        [appDelegate.instagram requestWithParams:params delegate:self];
-        
+        [appDelegate.instagram requestWithParams:params delegate:self];;
         
         [self.containerViewsDictionary setObject:suggestedShopView forKey:suggestedShopView.shopViewInstagramID];
         
         suggestedShopView.followButton.alpha = 0;
     }
     
+    if (self.firstTimeUserViewController != NULL) {
+    
+        self.firstTimeUserViewController.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, kButtonPosition, screenWidth, screenHeight - kButtonPosition)];
+        [self.firstTimeUserViewController.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+        self.firstTimeUserViewController.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+        self.firstTimeUserViewController.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
+        self.firstTimeUserViewController.nextButton.titleLabel.textColor = [UIColor colorWithRed:70.0 green:70.0 blue:70.0 alpha:1.0];
+        [self.firstTimeUserViewController.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
+        [self.firstTimeUserViewController.nextButton addTarget:self.firstTimeUserViewController action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:self.closeTutorialButton];
+    }
+    
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    
 }
 
 
@@ -136,6 +159,14 @@
         
         for (int i =0; i < [dataArray count]; i++)
             [likedIDsArray addObject:[[dataArray objectAtIndex:i] objectForKey:@"id"]];
+        
+        if (self.firstTimeUserViewController != NULL && likedIDsArray.count == kLoginTutorialDone) {
+            self.firstTimeUserViewController.nextButton.enabled = YES;
+        }
+        else if (self.firstTimeUserViewController != NULL && likedIDsArray.count < kLoginTutorialDone) {
+            self.firstTimeUserViewController.nextButton.enabled = NO;
+            [self.firstTimeUserViewController.nextButton setTitle:@"Follow 5 Stores" forState:UIControlStateDisabled];
+        }
         
         for (id key in self.containerViewsDictionary)
         {

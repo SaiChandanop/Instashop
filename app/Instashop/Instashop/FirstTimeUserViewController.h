@@ -8,9 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class AppRootViewController;
+
 @interface FirstTimeUserViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, retain) UIScrollView *tutorialScrollView;
 @property (nonatomic, retain) UIPageControl *pageControl;
+@property (nonatomic, retain) AppRootViewController *parentViewController;
+@property (nonatomic, retain) UIButton *nextButton;
+@property (nonatomic, retain) UIButton *loginTutorialDone;
 
 @end

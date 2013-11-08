@@ -37,7 +37,7 @@
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-//    NSLog(@"newStr: %@", newStr);
+   NSLog(@"newStr: %@", newStr);
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
