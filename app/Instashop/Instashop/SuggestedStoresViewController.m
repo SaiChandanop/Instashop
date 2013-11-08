@@ -15,6 +15,7 @@
 #import "AppDelegate.h"
 #import "ImageAPIHandler.h"
 #import "FirstTimeUserViewController.h"
+#import "InstagramUserObject.h"
 
 @interface SuggestedStoresViewController ()
 
@@ -153,8 +154,6 @@
     else if ([request.url rangeOfString:@"follows"].length > 0)
     {
         NSArray *dataArray = [result objectForKey:@"data"];
-
-        
         NSMutableArray *likedIDsArray = [NSMutableArray arrayWithCapacity:0];
         
         for (int i =0; i < [dataArray count]; i++)
@@ -167,15 +166,27 @@
             self.firstTimeUserViewController.nextButton.enabled = NO;
             [self.firstTimeUserViewController.nextButton setTitle:@"Follow 5 Stores" forState:UIControlStateDisabled];
         }
-        
-        for (id key in self.containerViewsDictionary)
-        {
-            SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
-            shopView.followButton.alpha = 1;
-            if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
-                shopView.followButton.selected = YES;
-            else
-                shopView.followButton.selected = NO;
+        if (![InstagramUserObject getStoredUserObject]) {
+            for (id key in self.containerViewsDictionary)
+            {
+                SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
+                shopView.followButton.alpha = 1;
+                if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
+                    shopView.followButton.selected = YES;
+                else
+                    shopView.followButton.selected = NO;
+            }
+        }
+        else {
+            for (id key in self.containerViewsDictionary)
+            {
+                SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
+                shopView.followButton.alpha = 1;
+                if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
+                    shopView.followButton.selected = YES;
+                else
+                    shopView.followButton.selected = NO;
+            }
         }
     }
     else if ([request.url rangeOfString:@"users"].length > 0)

@@ -106,11 +106,6 @@
     discoverView.view.frame = CGRectMake(screenWidth, 0.0, screenWidth, screenHeight);
     [self.tutorialScrollView addSubview:discoverView.view];*/
     
-    SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-    suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
-    suggestedStoreView.firstTimeUserViewController = self;
-    [self.tutorialScrollView addSubview:suggestedStoreView.view];
-    
     /*
     for (int p = arrayOfImages.count; p <= kHowToPageNumber; p++) {
         if (p == kHowToPageNumber) {

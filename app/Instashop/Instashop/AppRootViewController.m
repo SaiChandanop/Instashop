@@ -53,14 +53,18 @@ float transitionTime = .456;
     return theSharedRootViewController;
 }
 
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
     [self setNeedsStatusBarAppearanceUpdate];
     
+    /*
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     if (![defaults objectForKey:@"firstRun"]) {
         NSLog(@"Testing FirstTimeUserTutorial");
@@ -70,7 +74,8 @@ float transitionTime = .456;
     else {
         self.firstRun = FALSE;
     }
-    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    [[NSUserDefaults standardUserDefaults] synchronize];   May be unnecessary.   */
     
     [AttributesManager getSharedAttributesManager];
     
@@ -78,7 +83,6 @@ float transitionTime = .456;
     self.homeViewController.parentController = self;
     self.homeViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.homeViewController.view];
-    
    
     self.feedViewController = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
     self.feedViewController.parentController = self;
@@ -87,12 +91,24 @@ float transitionTime = .456;
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
     
+    NSLog(@"This is the stored object: %@", [InstagramUserObject getStoredUserObject]);
+    
     // Can test first time user tutorial by changing to false statement
-    if (self.firstRun) {
+    if (![InstagramUserObject getStoredUserObject]) {  //self.firstRun) {
+        
+       // InstagramUserObject *instagramUserObject = [[InstagramUserObject alloc] initWithDictionary:userDict];
+       // [instagramUserObject setAsStoredUser:instagramUserObject];
         
         self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
         self.firstTimeUserViewController.parentViewController = self;
         self.firstTimeUserViewController.view.frame = CGRectMake(0, 0.0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
+        
+        // SuggestedStoresViewController doesn't load because instagramuserobject is null.
+        SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
+        suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
+        suggestedStoreView.firstTimeUserViewController = self.firstTimeUserViewController;
+        [self.firstTimeUserViewController.tutorialScrollView addSubview:suggestedStoreView.view];
+        
         [self.view addSubview:self.firstTimeUserViewController.view];
         
         [UIView beginAnimations:nil context:nil];
@@ -103,11 +119,9 @@ float transitionTime = .456;
         [UIView commitAnimations];
     }
     
-    
 	// Do any additional setup after loading the view.
     
     [self setNeedsStatusBarAppearanceUpdate];
-    
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
