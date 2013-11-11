@@ -11,5 +11,5 @@
 @interface Utils : NSObject
 
 +(NSString *)getEscapedStringFromUnescapedString:(NSString *)unescaped;
-
++ (NSString *)urlencode:(NSString *)theString;
 @end

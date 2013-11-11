@@ -34,4 +34,52 @@
  //   NSLog(@"amber call finished: %@", newStr);
     
 }
+
++(void)makeAmberSupportedSiteCallWithReference:(NSString *)referenceURLString withResponseDelegate:(id)delegate
+{
+
+    NSString *urlRequestString = @"http://api.amber.io/v1.0/supported_sites";
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    AmberAPIHandler *apiHandler = [[AmberAPIHandler alloc] init];
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    apiHandler.delegate = delegate;
+    apiHandler.contextObject = referenceURLString;
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(supportedSiteHandlerFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+    
+}
+
+-(void)supportedSiteHandlerFinished:(id)obj
+{
+    NSString* newStr = [[[NSString alloc] initWithData:self.responseData
+                                              encoding:NSUTF8StringEncoding] autorelease];
+    
+//    NSLog(@"supportedSiteHandlerFinished: %@", newStr);
+    
+    
+    NSMutableArray *supportedSitesArray = [NSMutableArray arrayWithCapacity:0];
+    NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
+    
+    for (int i = 0; i < [responseArray count]; i++)
+    {
+        NSDictionary *dict = [responseArray objectAtIndex:i];
+        [supportedSitesArray addObject:[dict objectForKey:@"url"]];
+    }
+
+    NSLog(@"supportedSitesArray: %@", supportedSitesArray);
+    NSLog(@"contextObject: %@", self.contextObject);
+    
+    NSString *domainString = self.contextObject;
+    domainString = [domainString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+    domainString = [domainString stringByReplacingOccurrencesOfString:@"https://" withString:@""];
+    NSArray *componentsArray = [domainString componentsSeparatedByString:@"/"];
+    domainString = [componentsArray objectAtIndex:0];
+    domainString = [domainString stringByReplacingOccurrencesOfString:@"m." withString:@""];
+    domainString = [domainString stringByReplacingOccurrencesOfString:@"ww." withString:@""];
+    
+    NSLog(@"domainString: %@", domainString);
+    
+    [self.delegate amberSupportedSiteCallFinishedWithIsSupported:[supportedSitesArray containsObject:domainString]];
+    
+}
 @end

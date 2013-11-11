@@ -11,4 +11,7 @@
 @interface AmberAPIHandler : RootAPIHandler
 
 +(void)makeAmberCall;
+
++(void)makeAmberSupportedSiteCallWithReference:(NSString *)referenceURLString withResponseDelegate:(id)delegate;
+
 @end

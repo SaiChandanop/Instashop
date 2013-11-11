@@ -28,6 +28,8 @@
 #import "SocialManager.h"
 #import <Social/Social.h>
 #import "AmberViewController.h"
+#import "AmberAPIHandler.h"
+
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -416,7 +418,7 @@
                                                         message:nil
                                                        delegate:self
                                               cancelButtonTitle:@"Amber"
-                                              otherButtonTitles:@"Viglink", nil];
+                                              otherButtonTitles:@"Viglink", @"Full Process", nil];
     [alertView show];
     
     
@@ -435,15 +437,40 @@
             [amberViewController loadView];            
             [amberViewController run];
         }
-        else
+        else if (buttonIndex == 1)
         {
             self.cialBrowserViewController = [[CIALBrowserViewController alloc] init];
             [self.navigationController pushViewController:cialBrowserViewController animated:YES];
             [self.cialBrowserViewController openThisURL:[NSURL URLWithString:self.viglinkString]];
         }
+        else
+        {
+            [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
+        }
     }
     else
         [self.navigationController popToRootViewControllerAnimated:YES];        
+}
+
+-(void)amberSupportedSiteCallFinishedWithIsSupported:(BOOL)isSupported
+{
+    NSLog(@"amberSupportedSiteCallFinishedWithIsSupported, isSupported: %d", isSupported);
+    
+    if (isSupported)
+    {
+        AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
+        amberViewController.referenceURLString = [self.requestedProductObject objectForKey:@"products_external_url"];
+        [self.navigationController pushViewController:amberViewController animated:YES];
+        [amberViewController loadView];
+        [amberViewController run];
+    }
+    else
+    {
+        self.cialBrowserViewController = [[CIALBrowserViewController alloc] init];
+        [self.navigationController pushViewController:cialBrowserViewController animated:YES];
+        [self.cialBrowserViewController openThisURL:[NSURL URLWithString:self.viglinkString]];
+    }
+    
 }
 
 -(void)viglinkCallReturned:(NSString *)urlString
