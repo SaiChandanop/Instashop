@@ -62,6 +62,8 @@
 @synthesize commentTextField;
 @synthesize commentExitButton;
 @synthesize cialBrowserViewController;
+@synthesize isEditable;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -283,20 +285,7 @@
 
 -(void)loadForEdit
 {
-    
-    
-    
-    UIButton *editButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    editButton.frame = CGRectMake(0,0,40, 44);
-    [editButton setTitle:@"Edit" forState:UIControlStateNormal];
-    editButton.backgroundColor = [UIColor clearColor];
-    [editButton addTarget:self action:@selector(editButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIBarButtonItem *editBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:editButton];
-    self.navigationItem.rightBarButtonItem = editBarButtonItem;
-    
-    
+    self.isEditable = YES;        
 }
 
 
@@ -446,6 +435,14 @@
         else
         {
             [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
+        }
+    }
+    else if ([alertView.title compare:@"Wait"] == NSOrderedSame)
+    {
+        if (buttonIndex == 1)
+        {
+            [self.navigationController popToRootViewControllerAnimated:YES];
+            [ProductAPIHandler deleteProductWithProductID:[self.requestedProductObject objectForKey:@"product_id"]];
         }
     }
     else
@@ -776,20 +773,47 @@
 }
 
 
-
 - (void) openActionSheet {
-    
+
+    if (self.isEditable)
+    {
+        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit", @"Delete", nil];
+        shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+    }
+    else
+    {
     UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", nil];
     shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+    }
 }
 
-- (void) actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+- (void) actionSheet:(UIActionSheet *)theActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    
     
     NSLog(@"vigLinkString: %@", self.viglinkString);
-    NSString *buttonTitle = [actionSheet buttonTitleAtIndex:buttonIndex];
+    NSString *buttonTitle = [theActionSheet buttonTitleAtIndex:buttonIndex];
     
-    if ([buttonTitle isEqualToString:@"Flag"]) {
+    if ([buttonTitle isEqualToString:@"Edit"]) {
+        [self editButtonHit];
+    }
+    else if ([buttonTitle isEqualToString:@"Delete"])
+    {
+        NSLog(@"delete");
+        
+        
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Wait"
+                                                            message:@"Are you sure you want to delete?"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"NO"
+                                                  otherButtonTitles:@"YES", nil];
+        [alertView show];
+        
+        
+    }
+    else if ([buttonTitle isEqualToString:@"Flag"]) {
         
         [actionSheet dismissWithClickedButtonIndex:2 animated:YES];
         UIActionSheet *flagActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Inappropriate", @"Incorrect Link", @"Other", nil];
@@ -806,21 +830,6 @@
     else if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
     {
         [SocialManager requestInitialFacebookAccess];
-        
-        /*
-         
-         FBPostViewController *fbPostViewController = [[FBPostViewController alloc] initWithNibName:@"FBPostViewController" bundle:nil];
-         fbPostViewController.delegate = self;
-         fbPostViewController.view.frame = CGRectMake(self.view.frame.origin.x, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-         [self.view addSubview:fbPostViewController.view];
-         
-         [fbPostViewController loadWithImage:self.imageView.image withDescriptionText:[NSString stringWithFormat:@"%@, %@", self.descriptionTextView.text, [self.requestedProductObject objectForKey:@"products_external_url"]] withTitleText:@""];
-         
-         [UIView beginAnimations:nil context:nil];
-         [UIView setAnimationDuration:0.45];
-         fbPostViewController.view.frame = CGRectMake(0,0, fbPostViewController.view.frame.size.width, fbPostViewController.view.frame.size.height);
-         [UIView commitAnimations];
-         */
         
         SLComposeViewController *facebookController = [SLComposeViewController
                                                        composeViewControllerForServiceType:SLServiceTypeFacebook];

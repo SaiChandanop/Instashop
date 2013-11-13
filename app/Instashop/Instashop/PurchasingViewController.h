@@ -57,6 +57,8 @@
     UIButton *commentExitButton;
     
     CIALBrowserViewController *cialBrowserViewController;
+    
+    BOOL isEditable;
 }
 
 - (IBAction) likeButtonHit;
@@ -113,4 +115,9 @@
 @property (nonatomic, retain) UIButton *commentExitButton;
 
 @property (nonatomic, retain) CIALBrowserViewController *cialBrowserViewController;
+
+@property (nonatomic, assign) BOOL isEditable;
+
+
+
 @end

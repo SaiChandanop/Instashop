@@ -186,7 +186,7 @@
     //    [self updateLayout];
     
     
-    
+    /*
     UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     deleteButton.frame = CGRectMake(0,0,80, 44);
     [deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
@@ -196,7 +196,7 @@
     
     UIBarButtonItem *deletBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
     self.navigationItem.rightBarButtonItem = deletBarButtonItem;
-    
+    */
     
     
 }
