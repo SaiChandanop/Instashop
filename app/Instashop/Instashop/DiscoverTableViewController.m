@@ -9,6 +9,7 @@
 #import "DiscoverTableViewController.h"
 #import "DiscoverTableViewCell.h"
 #import "ProductAPIHandler.h"
+#import "MediaLikedObject.h"
 
 float cellHeight = 151;
 @interface DiscoverTableViewController ()
@@ -20,7 +21,8 @@ float cellHeight = 151;
 @synthesize sellersObjectsArray;
 @synthesize parentController;
 @synthesize contentArray;
-
+@synthesize unsortedDictionary;
+@synthesize likedArray;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -42,17 +44,82 @@ float cellHeight = 151;
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
-
-    self.contentArray = [[NSArray alloc] initWithArray:theArray];
-    [self.tableView reloadData];
+    self.likedArray = [[NSMutableArray alloc] initWithCapacity:0];
+    self.unsortedDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
     
-    NSLog(@"cellHeight: %f", cellHeight);
-    self.tableView.contentSize = CGSizeMake(0, cellHeight * [self getCount]);
-
-    NSLog(@"self.tableView: %@", self.tableView);
+    for (int i = 0; i < [theArray count]; i++)
+    {
+        NSDictionary *dict = [theArray objectAtIndex:i];
+        [self.unsortedDictionary setObject:dict forKey:[dict objectForKey:@"products_instagram_id"]];
+    }
+    
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSLog(@"theArray: %@", theArray);
+  
+    for (int i = 0; i < [theArray count]; i++)
+    {
+        NSDictionary *dict = [theArray objectAtIndex:i];
+        NSMutableDictionary  *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@", [dict objectForKey:@"products_instagram_id"]], @"method", nil];
+        [appDelegate.instagram requestWithParams:params delegate:self];
+    }
 }
 
-                                      
+
+- (void)request:(IGRequest *)request didLoad:(id)result
+{
+    NSDictionary *dataDict = [result objectForKey:@"data"];
+    
+    MediaLikedObject *likedObject = [[MediaLikedObject alloc] init];
+    likedObject.mediaID = [dataDict objectForKey:@"id"];
+    
+    NSDictionary *likesDict = [dataDict objectForKey:@"likes"];
+    likedObject.likedCount = [[likesDict objectForKey:@"count"] integerValue];
+    
+    [self.likedArray addObject:likedObject];
+    
+    if ([self.likedArray count] == [[self.unsortedDictionary allKeys] count] - 1)
+        [self sortAndPresent];
+    //    NSLog(@"likedObject.mediaID: %@", likedObject.mediaID);
+    //    NSLog(@"likedCount: %d", likedObject.likedCount);
+    //    NSLog(@"result: %@", result);
+}
+
+
+
+-(void)sortAndPresent
+{
+    self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
+    NSLog(@"sortAndPresent");
+    
+    [self.likedArray sortUsingComparator:
+     ^NSComparisonResult(id obj1, id obj2){
+         
+         MediaLikedObject *p1 = (MediaLikedObject*)obj1;
+         MediaLikedObject *p2 = (MediaLikedObject*)obj2;
+         if (p1.likedCount < p2.likedCount) {
+             return (NSComparisonResult)NSOrderedDescending;
+         }
+         
+         else if (p1.likedCount > p2.likedCount) {
+             return (NSComparisonResult)NSOrderedAscending;
+         }
+         else return (NSComparisonResult)NSOrderedSame;
+     }
+     ];
+    
+    for (int i = 0; i < [likedArray count]; i++)
+    {
+        MediaLikedObject *obj = [likedArray objectAtIndex:i];
+        [self.contentArray addObject:[self.unsortedDictionary objectForKey:obj.mediaID]];
+    }
+    
+    self.tableView.contentSize = CGSizeMake(0, cellHeight * [self getCount]);
+    [self.tableView reloadData];
+    
+}
+
+
+
 -(int)getCount
 {
     return [self.contentArray count] / 2;

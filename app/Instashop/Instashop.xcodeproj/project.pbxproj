@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0369D26B183338C400AA1C9F /* MediaLikedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369D26A183338C400AA1C9F /* MediaLikedObject.m */; };
 		1903FF7017DA6D0800CD65F8 /* grow-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6717DA6D0800CD65F8 /* grow-graphic@2x.png */; };
 		1903FF7117DA6D0800CD65F8 /* grow-title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6817DA6D0800CD65F8 /* grow-title@2x.png */; };
 		1903FF7217DA6D0800CD65F8 /* manage-graphic@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1903FF6917DA6D0800CD65F8 /* manage-graphic@2x.png */; };
@@ -297,6 +298,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0369D269183338C400AA1C9F /* MediaLikedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaLikedObject.h; sourceTree = "<group>"; };
+		0369D26A183338C400AA1C9F /* MediaLikedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLikedObject.m; sourceTree = "<group>"; };
 		1903FF6717DA6D0800CD65F8 /* grow-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grow-graphic@2x.png"; sourceTree = "<group>"; };
 		1903FF6817DA6D0800CD65F8 /* grow-title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "grow-title@2x.png"; sourceTree = "<group>"; };
 		1903FF6917DA6D0800CD65F8 /* manage-graphic@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "manage-graphic@2x.png"; sourceTree = "<group>"; };
@@ -911,11 +914,13 @@
 		7B0320E217E0F9AE0045D7AC /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				7BAD991E18298E2100089D5A /* DiscoverTableViewCell.h */,
+				7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */,
 				7B0320E817E0F9FD0045D7AC /* DiscoverTableViewController.h */,
 				7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */,
 				7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */,
-				7BAD991E18298E2100089D5A /* DiscoverTableViewCell.h */,
-				7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */,
+				0369D269183338C400AA1C9F /* MediaLikedObject.h */,
+				0369D26A183338C400AA1C9F /* MediaLikedObject.m */,
 			);
 			name = Table;
 			sourceTree = "<group>";
@@ -2048,6 +2053,7 @@
 				7B7A744D174D4ED9005E90B9 /* InstagramUserObject.m in Sources */,
 				7B7A7452174D505D005E90B9 /* GroupDiskManager.m in Sources */,
 				7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */,
+				0369D26B183338C400AA1C9F /* MediaLikedObject.m in Sources */,
 				7B7A745A174D52E3005E90B9 /* SMWebRequest.m in Sources */,
 				7B5D626917C5AF3700D6C8B1 /* STPView.m in Sources */,
 				7BE3D36E174D537D0045C4B4 /* UserAPIHandler.m in Sources */,

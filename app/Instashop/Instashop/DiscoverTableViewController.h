@@ -8,18 +8,24 @@
 
 #import <UIKit/UIKit.h>
 #import "FeedRequestFinishedProtocol.h"
+#import "IGRequest.h"
+
 @class DiscoverViewController;
 
-@interface DiscoverTableViewController : UITableViewController <FeedRequestFinishedProtocol>
+@interface DiscoverTableViewController : UITableViewController <FeedRequestFinishedProtocol, IGRequestDelegate>
 {
     DiscoverViewController *parentController;
     NSArray *sellersObjectsArray;
     
-    NSArray *contentArray;
+    NSMutableDictionary *unsortedDictionary;
+    NSMutableArray *likedArray;
+    NSMutableArray *contentArray;
     
 }
 @property (nonatomic, retain) DiscoverViewController *parentController;
 @property (nonatomic, retain) NSArray *sellersObjectsArray;
 
-@property (nonatomic, retain) NSArray *contentArray;
+@property (nonatomic, retain) NSMutableDictionary *unsortedDictionary;
+@property (nonatomic, retain) NSMutableArray *likedArray;
+@property (nonatomic, retain) NSMutableArray *contentArray;
 @end
