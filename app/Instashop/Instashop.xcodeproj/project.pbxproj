@@ -85,6 +85,8 @@
 		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
 		696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */; };
 		696DE14A182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */; };
+		69FC1E981834204200A52A90 /* InstashopWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FC1E971834204200A52A90 /* InstashopWebView.m */; };
+		69FC1E9B183424E700A52A90 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FC1E9A183424E700A52A90 /* WebViewController.m */; };
 		7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320D717E0DB700045D7AC /* DiscoverViewController.m */; };
 		7B0320DA17E0DB700045D7AC /* DiscoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */; };
 		7B0320DE17E0E1340045D7AC /* SearchSiloViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320DC17E0E1340045D7AC /* SearchSiloViewController.m */; };
@@ -383,6 +385,10 @@
 		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
 		696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Post-Products-Phone.png"; sourceTree = "<group>"; };
 		696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Notifications-Phone.png"; sourceTree = "<group>"; };
+		69FC1E961834204200A52A90 /* InstashopWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstashopWebView.h; sourceTree = "<group>"; };
+		69FC1E971834204200A52A90 /* InstashopWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstashopWebView.m; sourceTree = "<group>"; };
+		69FC1E99183424E700A52A90 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
+		69FC1E9A183424E700A52A90 /* WebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WebViewController.m; sourceTree = "<group>"; };
 		7B0320D617E0DB700045D7AC /* DiscoverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverViewController.h; sourceTree = "<group>"; };
 		7B0320D717E0DB700045D7AC /* DiscoverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverViewController.m; sourceTree = "<group>"; };
 		7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverViewController.xib; sourceTree = "<group>"; };
@@ -877,6 +883,17 @@
 				2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		69FC1E9518341FE400A52A90 /* WebViews */ = {
+			isa = PBXGroup;
+			children = (
+				69FC1E99183424E700A52A90 /* WebViewController.h */,
+				69FC1E9A183424E700A52A90 /* WebViewController.m */,
+				69FC1E961834204200A52A90 /* InstashopWebView.h */,
+				69FC1E971834204200A52A90 /* InstashopWebView.m */,
+			);
+			name = WebViews;
 			sourceTree = "<group>";
 		};
 		7B0320D517E0DA7D0045D7AC /* Discover */ = {
@@ -1479,6 +1496,7 @@
 				7BE958F3175548A100A7E0AB /* Sell */,
 				7BD5C1FB179596B3006F311A /* SizeQuantity */,
 				7B5A56E617D3D742007AABDA /* SuggestedStores */,
+				69FC1E9518341FE400A52A90 /* WebViews */,
 				7B4D2E0A175CFC75005DE4B6 /* AppRootViewController.h */,
 				7B4D2E0B175CFC75005DE4B6 /* AppRootViewController.m */,
 			);
@@ -2042,6 +2060,7 @@
 				7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */,
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
+				69FC1E9B183424E700A52A90 /* WebViewController.m in Sources */,
 				7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */,
 				7B8CCFBB181ABDA3006E01A9 /* FBPostViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
@@ -2147,6 +2166,7 @@
 				7B5D628117C5AF7100D6C8B1 /* PKCardCVC.m in Sources */,
 				7B15B2FB17B2AA1800173752 /* CategoriesViewController.m in Sources */,
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
+				69FC1E981834204200A52A90 /* InstashopWebView.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,
 				7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */,
 				7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */,

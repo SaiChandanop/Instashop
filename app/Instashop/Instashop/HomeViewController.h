@@ -33,6 +33,8 @@
 -(IBAction)suggestedShopButtonHit;
 -(IBAction)notificationsButtonHit;
 -(IBAction)discoverButtonHit;
+- (IBAction) privatePolicyButtonHit;
+- (IBAction) termsOfServiceButtonHit;
 
 @property (nonatomic, retain) AppRootViewController *parentController;
 

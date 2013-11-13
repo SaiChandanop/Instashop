@@ -102,7 +102,6 @@
         [self.tutorialScrollView addSubview:view];
     }
     
-    // SuggestedStoresViewController doesn't load because instagramuserobject is null.
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
@@ -120,6 +119,7 @@
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
     NSInteger page = lround(fractionalPage);
     
+    // this coding is really ugly.  
     if (page != 2) {
         [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
         self.nextButton.enabled = YES;

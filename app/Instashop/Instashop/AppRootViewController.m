@@ -22,6 +22,7 @@
 #import "SearchViewController.h"
 #import "FirstTimeUserViewController.h"
 #import "AmberAPIHandler.h"
+#import "WebViewController.h"
 
 @implementation AppRootViewController
 
@@ -56,11 +57,6 @@ float transitionTime = .456;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
     
     [self setNeedsStatusBarAppearanceUpdate];
     
@@ -246,7 +242,6 @@ float transitionTime = .456;
     createNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:createNavigationController .view];
     
-    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
@@ -264,7 +259,6 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
     [UIView commitAnimations];
-   
 }
 
 - (void) firstTimeTutorialExit {
@@ -330,11 +324,9 @@ float transitionTime = .456;
     SuggestedStoresViewController *suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     suggestedStoresViewController.appRootViewController = self;
     
-    
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:suggestedStoresViewController];
     navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:navigationController .view];
-    
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
@@ -342,7 +334,6 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
-
 }
 
 -(void)suggestedShopExitButtonHit:(UINavigationController *)navigationController
@@ -355,10 +346,7 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
-
-    
 }
-
 
 -(void)searchButtonHit
 {
@@ -383,7 +371,6 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController .view.frame = CGRectMake(0, 14, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
-
 }
 
 -(void)searchExitButtonHit:(UINavigationController *)navigationController
@@ -393,11 +380,42 @@ float transitionTime = .456;
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
-  
-    
 }
 
+- (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title {
+    
+    // Might want to pretty it up by making background color the same color.  
+    WebViewController *webView = [[WebViewController alloc] initWithWebView:websiteName title:title];
+    webView.appRootViewController = self;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webView];
+    // Would be better if it's put into the webviewcontroller class but navigation bar isn't allocated by the time this code is run.  Don't know how SuggestedStoresViewController does it yet.
+    [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    navigationController.navigationBar.translucent = NO;
+    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+
+    [self.view addSubview:navigationController.view];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController.view.frame = CGRectMake(0.0, 00.0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void) webViewExitButtonHit:(UINavigationController *)navigationController
+{
+    NSLog(@"searchExitButtonHit: %@", navigationController);
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+}
 
 @end
