@@ -10,11 +10,17 @@
 
 @class AppRootViewController;
 
+@class SuggestedStoresViewController;
+
 @interface FirstTimeUserViewController : UIViewController <UIScrollViewDelegate>
+
+- (void) closeTutorial;
+- (void) moveScrollView;
 
 @property (nonatomic, retain) UIScrollView *tutorialScrollView;
 @property (nonatomic, retain) UIPageControl *pageControl;
 @property (nonatomic, retain) AppRootViewController *parentViewController;
+@property (nonatomic, retain) SuggestedStoresViewController *suggestedStoresViewController;
 @property (nonatomic, retain) UIButton *nextButton;
 @property (nonatomic, retain) UIButton *loginTutorialDone;
 

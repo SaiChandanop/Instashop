@@ -45,7 +45,7 @@
 
 
 -(void) profileExitButtonHit:(UINavigationController *)navigationController;
-
+- (void) runTutorial;
 
 -(void) suggestedShopButtonHit;
 -(void) suggestedShopExitButtonHit:(UINavigationController *)navigationController;

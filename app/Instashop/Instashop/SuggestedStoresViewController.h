@@ -26,6 +26,7 @@
     
 }
 
+- (void) updateButton;
 -(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected;
 
 @property (nonatomic, retain) AppRootViewController *appRootViewController;
@@ -37,6 +38,7 @@
 @property (nonatomic, retain) NSMutableArray *selectedShopsIDSArray;
 @property (nonatomic, retain) NSMutableDictionary *containerViewsDictionary;
 @property (nonatomic) int followingCount;
+@property (nonatomic) int likedArrayCount;
 @property (nonatomic, assign) BOOL initiated;
 
 @end

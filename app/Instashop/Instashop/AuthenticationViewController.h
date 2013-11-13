@@ -31,6 +31,7 @@
 @property (nonatomic, retain) UIViewController *instagramLoginWebViewController;
 @property (nonatomic, retain) UILabel *backLabel;
 @property (nonatomic, retain) UIButton *backButton;
+@property (nonatomic, assign) BOOL firstTimeUser;
 
 @property (nonatomic, retain) IBOutlet UIView *iphoneShortView;
 

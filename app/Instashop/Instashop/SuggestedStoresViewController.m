@@ -32,13 +32,14 @@
 @synthesize firstTimeUserViewController;
 @synthesize initiated;
 @synthesize closeTutorialButton;
+@synthesize likedArrayCount;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        
+        self.likedArrayCount = 0;
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.containerViewsDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
         
@@ -86,11 +87,6 @@
 -(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray
 {
     
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
     [self.containerViewsDictionary removeAllObjects];
     
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
@@ -125,18 +121,6 @@
         suggestedShopView.followButton.alpha = 0;
     }
     
-    if (self.firstTimeUserViewController != NULL) {
-    
-        self.firstTimeUserViewController.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, kButtonPosition, screenWidth, screenHeight - kButtonPosition)];
-        [self.firstTimeUserViewController.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-        self.firstTimeUserViewController.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-        self.firstTimeUserViewController.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-        self.firstTimeUserViewController.nextButton.titleLabel.textColor = [UIColor colorWithRed:70.0 green:70.0 blue:70.0 alpha:1.0];
-        [self.firstTimeUserViewController.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
-        [self.firstTimeUserViewController.nextButton addTarget:self.firstTimeUserViewController action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:self.closeTutorialButton];
-    }
-    
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
 }
@@ -159,34 +143,17 @@
         for (int i =0; i < [dataArray count]; i++)
             [likedIDsArray addObject:[[dataArray objectAtIndex:i] objectForKey:@"id"]];
         
-        if (self.firstTimeUserViewController != NULL && likedIDsArray.count == kLoginTutorialDone) {
-            self.firstTimeUserViewController.nextButton.enabled = YES;
-        }
-        else if (self.firstTimeUserViewController != NULL && likedIDsArray.count < kLoginTutorialDone) {
-            self.firstTimeUserViewController.nextButton.enabled = NO;
-            [self.firstTimeUserViewController.nextButton setTitle:@"Follow 5 Stores" forState:UIControlStateDisabled];
-        }
-        if (![InstagramUserObject getStoredUserObject]) {
-            for (id key in self.containerViewsDictionary)
-            {
-                SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
-                shopView.followButton.alpha = 1;
-                if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
-                    shopView.followButton.selected = YES;
-                else
-                    shopView.followButton.selected = NO;
-            }
-        }
-        else {
-            for (id key in self.containerViewsDictionary)
-            {
-                SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
-                shopView.followButton.alpha = 1;
-                if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
-                    shopView.followButton.selected = YES;
-                else
-                    shopView.followButton.selected = NO;
-            }
+        self.likedArrayCount = likedIDsArray.count;
+        [self updateButton];
+        
+        for (id key in self.containerViewsDictionary)
+        {
+            SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:key];
+            shopView.followButton.alpha = 1;
+            if ([likedIDsArray containsObject:shopView.shopViewInstagramID])
+                shopView.followButton.selected = YES;
+            else
+                shopView.followButton.selected = NO;
         }
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
@@ -229,6 +196,35 @@
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+    }
+}
+
+- (void) updateButton {
+    
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+    CGSize screenSize = screenBound.size;
+    CGFloat screenWidth = screenSize.width;
+    CGFloat screenHeight = screenSize.height;
+    
+    CGFloat pageWidth = self.firstTimeUserViewController.tutorialScrollView.frame.size.width;
+    float offset = self.firstTimeUserViewController.tutorialScrollView.contentOffset.x;
+    float fractionalPage = offset/pageWidth;
+    NSInteger page = lround(fractionalPage);
+    // this gets updated only if I follow or unfollow someone.
+    // Code could probably be rearranged to be more efficient.
+    if ((offset == (screenWidth * 2)) && self.firstTimeUserViewController != NULL) {
+        if (self.likedArrayCount == kLoginTutorialDone) {
+            self.firstTimeUserViewController.nextButton.enabled = YES;
+            [self.firstTimeUserViewController.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+            [self.firstTimeUserViewController.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+            [self.firstTimeUserViewController.nextButton addTarget:self.firstTimeUserViewController action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
+        }
+        else if (self.likedArrayCount < kLoginTutorialDone) {
+            [self.firstTimeUserViewController.nextButton setTitle:@"Follow 5 Stores" forState:UIControlStateNormal];
+            self.firstTimeUserViewController.nextButton.enabled = NO;
+            [self.firstTimeUserViewController.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+            [self.firstTimeUserViewController.nextButton addTarget:self.firstTimeUserViewController action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
+        }
     }
 }
 

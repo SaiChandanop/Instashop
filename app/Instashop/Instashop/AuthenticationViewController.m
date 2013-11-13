@@ -17,12 +17,15 @@
 
 @end
 
+#define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
+
 @implementation AuthenticationViewController
 
 @synthesize loginWebView;
 
 @synthesize instagramLoginWebViewController, backLabel, backButton;
 @synthesize iphoneShortView;
+@synthesize firstTimeUser;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,9 +57,8 @@
 
 -(IBAction) loginButtonHit
 {
+    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    
     appDelegate.instagram.sessionDelegate = self;
     
     if ([appDelegate.instagram isSessionValid]) {
@@ -64,15 +66,15 @@
         [self igDidLogin];
     }
     else
-      [appDelegate.instagram authorize:[NSArray arrayWithObjects:@"comments", @"likes", nil]];
-    
+        [appDelegate.instagram authorize:[NSArray arrayWithObjects:@"comments", @"likes", nil]];
+      
+
 }
 
 -(IBAction) downloadButtonHit
 {
     NSURL *webURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/instagram/id389801252"];
     [[UIApplication sharedApplication] openURL: webURL];
-    
 }
 
 
@@ -131,13 +133,20 @@
     [self.loginWebView removeFromSuperview];
     // here i can store accessToken
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [[NSUserDefaults standardUserDefaults] setObject:appDelegate.instagram.accessToken forKey:@"accessToken"];
-	[[NSUserDefaults standardUserDefaults] synchronize];
     
+    Instagram *instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
+    instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
+
+    if (instagram.accessToken == NULL) {
+        
+        [appDelegate.appRootViewController runTutorial];
+    }
+    [[NSUserDefaults standardUserDefaults] setObject:appDelegate.instagram.accessToken forKey:@"accessToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self", @"method", nil];
     [appDelegate.instagram requestWithParams:params
                                     delegate:self];
-    
     [appDelegate userDidLogin];
     
     [self.loginWebView removeFromSuperview];
@@ -191,8 +200,8 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+
     if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
     {
         NSDictionary *userDict = [result objectForKey:@"data"];
@@ -209,21 +218,10 @@
     }
 }
 
-
-
-
-
 -(void)sellerExistsCallReturned
 {
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.appRootViewController.homeViewController loadStates];
 }
-
-
-
-
-
-
-
 
 @end
