@@ -25,6 +25,7 @@
 @synthesize pageControl;
 @synthesize loginTutorialDone;
 @synthesize parentViewController;
+@synthesize suggestedStoresViewController;
 @synthesize nextButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -100,62 +101,36 @@
         [view addSubview:label];
         [self.tutorialScrollView addSubview:view];
     }
-
-    /*
-    DiscoverViewController *discoverView = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
-    discoverView.view.frame = CGRectMake(screenWidth, 0.0, screenWidth, screenHeight);
-    [self.tutorialScrollView addSubview:discoverView.view];*/
     
-    /*
-    for (int p = arrayOfImages.count; p <= kHowToPageNumber; p++) {
-        if (p == kHowToPageNumber) {
-            UIView *rightView = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
-            UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
-            [rightView addSubview:backgroundImage];
-            [self.tutorialScrollView addSubview:rightView];
-        
-        }
-        
-        UIView *tutorialView = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
-        UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
-        [tutorialView addSubview:backgroundImage];
-        if (p == (kHowToPageNumber - 1)) {
-            UIButton *signUpButton = [[UIButton alloc] initWithFrame:CGRectMake(100.0, 350.0, 50.0, 50.0)];
-            signUpButton.backgroundColor = [UIColor redColor];
-            [signUpButton addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
-            [tutorialView addSubview:signUpButton];
-        }
-        
-    }*/
-    
+    // SuggestedStoresViewController doesn't load because instagramuserobject is null.
+    self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
+    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
+    self.suggestedStoresViewController.firstTimeUserViewController = self;
+    [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
     
     self.tutorialScrollView.delegate = self;
     [self.view addSubview:self.tutorialScrollView];
     [self.view addSubview:self.nextButton];
     
-    // Page Control
-    
-    /*
-    self.pageControl = [[UIPageControl alloc] init];
-    float pageControlHeight = 50.0;
-    self.pageControl.frame = CGRectMake(0.0, screenHeight - pageControlHeight, screenWidth, pageControlHeight);
-    self.pageControl.numberOfPages = kHowToPageNumber;
-    self.pageControl.currentPage = 0;
-    self.pageControl.pageIndicatorTintColor = [UIColor redColor];
-    self.pageControl.currentPageIndicatorTintColor = [UIColor blueColor];
-    [self.view addSubview:pageControl];*/
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    
     CGFloat pageWidth = self.tutorialScrollView.frame.size.width;
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
     NSInteger page = lround(fractionalPage);
-    if (page == 2) {
-        
+    
+    if (page != 2) {
+        [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+        self.nextButton.enabled = YES;
+        [self.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+        [self.nextButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
     }
-   // self.pageControl.currentPage = page;
+    
+    [self.suggestedStoresViewController updateButton];
 }
 
+/*
 - (void) showCloseTutorialButton {
     
     CGRect screenBound = [[UIScreen mainScreen] bounds];
@@ -184,7 +159,7 @@
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, screenHeight, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
     [UIView commitAnimations];
-}
+}*/
 
 - (void) moveScrollView {
     

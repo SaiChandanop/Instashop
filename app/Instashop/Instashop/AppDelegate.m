@@ -34,6 +34,7 @@
 //    [ZenCartAuthenticationAPIHandler makeLoginRequest];
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
     self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
+    
 //    [self.instagram authorize:[NSArray arrayWithObjects:@"relationships", @"comments", @"likes", nil]];
     
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
@@ -43,9 +44,12 @@
     {
         [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
         self.window.rootViewController = self.appRootViewController;
+
     }
-    else
+    else {
         self.window.rootViewController = self.authenticationViewController;
+    }
+    
     
     [self.window makeKeyAndVisible];
    
@@ -91,6 +95,7 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    // in the user logout the keys are all removed from the NSUserDefault.
     NSArray *keys = [[defaults dictionaryRepresentation] allKeys];
     for (int i = 0; i < [keys count]; i++)
         [defaults removeObjectForKey:[keys objectAtIndex:i]];

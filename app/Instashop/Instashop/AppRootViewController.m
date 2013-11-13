@@ -64,19 +64,6 @@ float transitionTime = .456;
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-    /*
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if (![defaults objectForKey:@"firstRun"]) {
-        NSLog(@"Testing FirstTimeUserTutorial");
-        self.firstRun = TRUE;
-        [defaults setObject:[NSDate date] forKey:@"firstRun"];
-    }
-    else {
-        self.firstRun = FALSE;
-    }
-    
-    [[NSUserDefaults standardUserDefaults] synchronize];   May be unnecessary.   */
-    
     [AttributesManager getSharedAttributesManager];
     
     self.homeViewController = [[HomeViewController alloc] initWithNibName:@"HomeViewController" bundle:nil];
@@ -91,42 +78,28 @@ float transitionTime = .456;
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
     
-    NSLog(@"This is the stored object: %@", [InstagramUserObject getStoredUserObject]);
-    
-    // Can test first time user tutorial by changing to false statement
-    if (![InstagramUserObject getStoredUserObject]) {  //self.firstRun) {
-        
-       // InstagramUserObject *instagramUserObject = [[InstagramUserObject alloc] initWithDictionary:userDict];
-       // [instagramUserObject setAsStoredUser:instagramUserObject];
-        
-        self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
-        self.firstTimeUserViewController.parentViewController = self;
-        self.firstTimeUserViewController.view.frame = CGRectMake(0, 0.0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
-        
-        // SuggestedStoresViewController doesn't load because instagramuserobject is null.
-        SuggestedStoresViewController *suggestedStoreView = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-        suggestedStoreView.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
-        suggestedStoreView.firstTimeUserViewController = self.firstTimeUserViewController;
-        [self.firstTimeUserViewController.tutorialScrollView addSubview:suggestedStoreView.view];
-        
-        [self.view addSubview:self.firstTimeUserViewController.view];
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:transitionTime];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        self.firstTimeUserViewController.view.frame = CGRectMake(0, 0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
-        [UIView commitAnimations];
-    }
-    
 	// Do any additional setup after loading the view.
     
     [self setNeedsStatusBarAppearanceUpdate];
 }
 
+- (void) runTutorial {
+    
+    self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
+    self.firstTimeUserViewController.parentViewController = self;
+    self.firstTimeUserViewController.view.frame = CGRectMake(0, 0.0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
+    
+    [self.view addSubview:self.firstTimeUserViewController.view];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.firstTimeUserViewController.view.frame = CGRectMake(0, 0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
+    [UIView commitAnimations];
+}
+
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
-
-
 
 -(void)ceaseTransition
 {
@@ -211,7 +184,6 @@ float transitionTime = .456;
         UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:discoverViewController];
         navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:navigationController .view];
-        
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
@@ -299,7 +271,6 @@ float transitionTime = .456;
     
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
-    //    CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
     [UIView beginAnimations:nil context:nil];
@@ -308,14 +279,6 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     self.firstTimeUserViewController.view.frame = CGRectMake(0.0, screenHeight, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
     [UIView commitAnimations];
-    
-    //    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    
-    InstagramUserObject *theUserObject = [InstagramUserObject getStoredUserObject];
-    // [encoder encodeObject:theUserObject.firstTimeUser forKey:@"website"];
-    
-   // theUserObject.firstTimeUser = [NSNumber numberWithBool:FALSE];
-   // [[InstagramUserObject getStoredUserObject] setAsStoredUser:theUserObject];
 }
 
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController
