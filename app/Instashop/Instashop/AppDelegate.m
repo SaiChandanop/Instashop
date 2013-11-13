@@ -83,7 +83,6 @@
 -(void)userDidLogin
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
-   
     self.window.rootViewController = self.appRootViewController;
 }
 
@@ -95,11 +94,14 @@
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
+    NSString *userString = [InstagramUserObject getStoredUserObject].userID;
+    NSString *defaultFirstUserKey = [userString stringByAppendingString:@"firstRun"];
     // in the user logout the keys are all removed from the NSUserDefault.
     NSArray *keys = [[defaults dictionaryRepresentation] allKeys];
-    for (int i = 0; i < [keys count]; i++)
-        [defaults removeObjectForKey:[keys objectAtIndex:i]];
-    
+    for (int i = 0; i < [keys count]; i++) {
+        if (![[keys objectAtIndex:i] isEqualToString:defaultFirstUserKey])
+            [defaults removeObjectForKey:[keys objectAtIndex:i]];
+    }
 }
 
 -(void)makeSafariCallWithURL:(NSURL *)theURL

@@ -43,9 +43,10 @@
 {
     AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [del.instagram logout];
-     
-    [InstagramUserObject deleteStoredUserObject];
+    
     [del userDidLogout];
+
+    [InstagramUserObject deleteStoredUserObject];
     
     [self.parentController homeButtonHit];
     

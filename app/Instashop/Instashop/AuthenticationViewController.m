@@ -134,13 +134,6 @@
     // here i can store accessToken
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    Instagram *instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
-    instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
-
-    if (instagram.accessToken == NULL) {
-        
-        [appDelegate.appRootViewController runTutorial];
-    }
     [[NSUserDefaults standardUserDefaults] setObject:appDelegate.instagram.accessToken forKey:@"accessToken"];
     [[NSUserDefaults standardUserDefaults] synchronize];
 
@@ -212,6 +205,16 @@
         [UserAPIHandler makeBuyerCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
         
         AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        
+        NSString *userString = [InstagramUserObject getStoredUserObject].userID;
+        NSString *defaultFirstUserKey = [userString stringByAppendingString:@"firstRun"];
+        NSLog(@"This is the key: %@", defaultFirstUserKey);
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        if (![defaults objectForKey:defaultFirstUserKey]) {
+            [defaults setObject:[NSDate date] forKey:defaultFirstUserKey];
+            [defaults synchronize];
+            [del.appRootViewController runTutorial];
+        }
         [del userDidLogin];
         
         [SellersAPIHandler makeCheckIfSellerExistsCallWithDelegate:self];

@@ -130,37 +130,6 @@
     [self.suggestedStoresViewController updateButton];
 }
 
-/*
-- (void) showCloseTutorialButton {
-    
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.0];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, (screenHeight - self.loginTutorialDone.frame.size.height), screenWidth, kButtonHeight);
-    [UIView commitAnimations];
-}
-
-- (void) hideCloseTutorialButton {
-    
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.0];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, screenHeight, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
-    [UIView commitAnimations];
-}*/
-
 - (void) moveScrollView {
     
     CGRect screenBound = [[UIScreen mainScreen] bounds];
