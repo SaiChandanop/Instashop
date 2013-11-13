@@ -402,7 +402,7 @@
     
     
     
-    
+    /*
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Which?"
                                                         message:nil
                                                        delegate:self
@@ -410,13 +410,13 @@
                                               otherButtonTitles:@"Viglink", @"Full Process", nil];
     [alertView show];
     
-    
+    */
     
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    if ([alertView.title compare:@"Which?"] == NSOrderedSame)
+/*    if ([alertView.title compare:@"Which?"] == NSOrderedSame)
     {
         if (buttonIndex == 0)
         {
@@ -437,7 +437,7 @@
             [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
         }
     }
-    else if ([alertView.title compare:@"Wait"] == NSOrderedSame)
+    else*/ if ([alertView.title compare:@"Wait"] == NSOrderedSame)
     {
         if (buttonIndex == 1)
         {
@@ -445,8 +445,9 @@
             [ProductAPIHandler deleteProductWithProductID:[self.requestedProductObject objectForKey:@"product_id"]];
         }
     }
-    else
-        [self.navigationController popToRootViewControllerAnimated:YES];        
+    
+    //else
+      //  [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)amberSupportedSiteCallFinishedWithIsSupported:(BOOL)isSupported
@@ -472,11 +473,12 @@
 
 -(void)viglinkCallReturned:(NSString *)urlString
 {
-    self.viglinkString = urlString;
-    NSLog(@"viglinkCallReturned: %@", self.viglinkString);
-    
-    
-    
+    if (self.viglinkString == nil)
+    {
+        self.viglinkString = urlString;
+        NSLog(@"viglinkCallReturned: %@", self.viglinkString);
+        [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
+    }
     
 }
 
