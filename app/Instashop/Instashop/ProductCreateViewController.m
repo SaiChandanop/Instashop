@@ -14,7 +14,7 @@
 #import "AppDelegate.h"
 #import "NavBarTitleView.h"
 #import "ProductAPIHandler.h"
-
+#import "SellersAPIHandler.h"
 @interface ProductCreateViewController ()
 
 @end
@@ -118,6 +118,11 @@
     {
         [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Creating Product";
         [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
+        
+        NSLog(@"make seller");
+        [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:[NSMutableDictionary dictionaryWithCapacity:0]];
+        
+        
     }
 
 }
