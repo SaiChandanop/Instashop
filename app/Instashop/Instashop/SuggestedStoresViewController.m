@@ -16,6 +16,7 @@
 #import "ImageAPIHandler.h"
 #import "FirstTimeUserViewController.h"
 #import "InstagramUserObject.h"
+#import "ProfileViewController.h"
 
 @interface SuggestedStoresViewController ()
 
@@ -33,6 +34,8 @@
 @synthesize initiated;
 @synthesize closeTutorialButton;
 @synthesize likedArrayCount;
+@synthesize isLaunchedFromMenu;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -233,4 +236,13 @@
     
 }
 
+-(void)shopViewButtonHitWithID:(NSString *)instagramID
+{
+    if (self.isLaunchedFromMenu)
+    {
+        ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+        profileViewController.profileInstagramID = instagramID;
+        [self.navigationController pushViewController:profileViewController animated:YES];
+    }
+}
 @end

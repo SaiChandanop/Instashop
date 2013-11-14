@@ -23,11 +23,13 @@
 
     NSMutableDictionary *containerViewsDictionary;
     
+    BOOL isLaunchedFromMenu;
     
 }
 
 - (void) updateButton;
 -(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected;
+-(void)shopViewButtonHitWithID:(NSString *)instagramID;
 
 @property (nonatomic, retain) AppRootViewController *appRootViewController;
 @property (nonatomic, retain) FirstTimeUserViewController *firstTimeUserViewController;
@@ -40,5 +42,5 @@
 @property (nonatomic) int followingCount;
 @property (nonatomic) int likedArrayCount;
 @property (nonatomic, assign) BOOL initiated;
-
+@property (nonatomic, assign) BOOL isLaunchedFromMenu;
 @end

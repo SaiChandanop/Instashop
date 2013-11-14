@@ -36,4 +36,9 @@
     [self.parentController shopFollowButtonHitWithID:self.shopViewInstagramID withIsSelected:self.followButton.selected];
 }
 
+-(IBAction)viewButtonHit
+{
+    [self.parentController shopViewButtonHitWithID:self.shopViewInstagramID];
+}
+
 @end

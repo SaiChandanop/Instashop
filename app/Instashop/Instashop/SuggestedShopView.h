@@ -12,6 +12,7 @@
 
 @interface SuggestedShopView : UIView
 {
+    
     SuggestedStoresViewController *parentController;
     NSString *shopViewInstagramID;
     
@@ -23,6 +24,7 @@
 }
 
 -(IBAction)followButtonHit;
+-(IBAction)viewButtonHit;
 
 @property (nonatomic, retain) SuggestedStoresViewController *parentController;
 @property (nonatomic, retain) NSString *shopViewInstagramID;
