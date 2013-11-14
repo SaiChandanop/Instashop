@@ -328,6 +328,7 @@ float transitionTime = .456;
 {
     NSLog(@"root suggestedShopButtonHit");
     SuggestedStoresViewController *suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
+    suggestedStoresViewController.isLaunchedFromMenu = YES;
     suggestedStoresViewController.appRootViewController = self;
     
     
