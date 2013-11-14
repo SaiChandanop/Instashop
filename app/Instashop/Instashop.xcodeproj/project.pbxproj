@@ -2231,15 +2231,15 @@
 		7B61EE75174D2162002A483D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0917067E-AC83-416F-95CA-B2F4A69632FD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0917067E-AC83-416F-95CA-B2F4A69632FD";
+				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2247,15 +2247,15 @@
 		7B61EE76174D2162002A483D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "0917067E-AC83-416F-95CA-B2F4A69632FD";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0917067E-AC83-416F-95CA-B2F4A69632FD";
+				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
