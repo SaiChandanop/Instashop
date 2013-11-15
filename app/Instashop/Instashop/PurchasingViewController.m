@@ -29,6 +29,7 @@
 #import <Social/Social.h>
 #import "AmberViewController.h"
 #import "AmberAPIHandler.h"
+#import "NotificationsAPIHandler.h"
 
 @interface PurchasingViewController ()
 
@@ -679,6 +680,11 @@
 {
     
     NSLog(@"likeButtonHit");
+    
+    NSLog(@"requestedProductObject: %@", requestedProductObject);
+    [NotificationsAPIHandler createUserLikedNotificationWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID];
+    
+    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     if ([self likesArrayContainsSelf])
