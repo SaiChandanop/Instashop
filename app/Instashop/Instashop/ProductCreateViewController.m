@@ -42,7 +42,7 @@
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
-      
+    
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton_white.png"]];
@@ -76,11 +76,39 @@
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
-    ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
-    productDetailsViewController.parentController = self;
-    productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
-    [self.navigationController pushViewController:productDetailsViewController animated:YES];
-    [productDetailsViewController loadViewsWithInstagramInfoDictionary:theSelectionObject];
+    NSLog(@"theSelectionObject: %@", theSelectionObject);
+    
+    [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"]];
+    
+    
+    self.currentSelectionObject = [[NSDictionary alloc] initWithDictionary:theSelectionObject];
+    
+    
+}
+
+-(void)checkFinishedWithBoolValue:(BOOL)exists
+{
+    
+    NSLog(@"exists: %d", exists);
+    
+    if (exists)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"You've used this image already"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    else
+    {
+    
+        ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
+        productDetailsViewController.parentController = self;
+        productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
+        [self.navigationController pushViewController:productDetailsViewController animated:YES];
+        [productDetailsViewController loadViewsWithInstagramInfoDictionary:self.currentSelectionObject];
+    }
 }
 
 
@@ -90,14 +118,14 @@
     [self previewDoneButtonHit:productCreateContainerObject];
     
     /*
-    ProductPreviewViewController *productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
-    productPreviewViewController.view.frame = CGRectMake(productPreviewViewController.view.frame.origin.x, productPreviewViewController.view.frame.origin.y, productPreviewViewController.view.frame.size.width, productPreviewViewController.view.frame.size.height);
-    productPreviewViewController.parentController = self;
-    productPreviewViewController.view.frame = productPreviewViewController.view.frame;
-    [self.navigationController pushViewController:productPreviewViewController animated:YES];
-    [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
+     ProductPreviewViewController *productPreviewViewController = [[ProductPreviewViewController alloc] initWithNibName:@"ProductPreviewViewController" bundle:nil];
+     productPreviewViewController.view.frame = CGRectMake(productPreviewViewController.view.frame.origin.x, productPreviewViewController.view.frame.origin.y, productPreviewViewController.view.frame.size.width, productPreviewViewController.view.frame.size.height);
+     productPreviewViewController.parentController = self;
+     productPreviewViewController.view.frame = productPreviewViewController.view.frame;
+     [self.navigationController pushViewController:productPreviewViewController animated:YES];
+     [productPreviewViewController loadWithProductCreateObject:productCreateContainerObject];
      */
- 
+    
 }
 
 
@@ -105,13 +133,13 @@
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
-
+    
     
     if (theCreateObject.mainObject.editingReferenceID != nil)
     {
         [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
         [ProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
-    
+        
         
     }
     else
@@ -134,7 +162,7 @@
         
         
     }
-
+    
 }
 
 
@@ -164,7 +192,7 @@
                                               cancelButtonTitle:@"Smashing"
                                               otherButtonTitles:nil];
     [alertView show];
-
+    
 }
 
 
