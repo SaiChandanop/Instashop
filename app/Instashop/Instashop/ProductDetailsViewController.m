@@ -18,6 +18,8 @@
 #import "ProductAPIHandler.h"
 #import "CIALBrowserViewController.h"
 #import "SocialManager.h"
+#import "NotificationsAPIHandler.h"
+#import "InstagramUserObject.h"
 
 @interface ProductDetailsViewController ()
 
@@ -320,14 +322,16 @@
     {
         NSString *twitterString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
         [SocialManager postToTwitterWithString:twitterString];
+        
+        [NotificationsAPIHandler createUserSocialNotificationWithProductID:[self.editingProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID withSocialType:@"twitter"];
     }
     
     if (self.facebookButton.selected)
     {
-        
-        
         NSString *facebookString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
         [SocialManager postToFacebookWithString:facebookString withImage:nil];
+        
+        [NotificationsAPIHandler createUserSocialNotificationWithProductID:[self.editingProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID withSocialType:@"facebook"];
     }
 }
 

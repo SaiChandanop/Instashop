@@ -854,6 +854,7 @@
                     break;
                 case SLComposeViewControllerResultDone:
                     NSLog(@"SLComposeViewControllerResultDone");
+                    [NotificationsAPIHandler createUserSocialNotificationWithProductID:[self.requestedProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID withSocialType:@"facebook"];
                     break;
             }};
         
@@ -892,6 +893,7 @@
                     break;
                 case SLComposeViewControllerResultDone:
                     NSLog(@"SLComposeViewControllerResultDone");
+                    [NotificationsAPIHandler createUserSocialNotificationWithProductID:[self.requestedProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID withSocialType:@"twitter"];
                     break;
             }};
         

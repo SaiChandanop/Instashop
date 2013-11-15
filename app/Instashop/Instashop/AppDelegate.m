@@ -132,6 +132,9 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo 
 {
+    if (self.appRootViewController.notificationsViewController != nil)
+        [self.appRootViewController.notificationsViewController loadNotifications];
+    
     NSLog(@"didReceiveRemoteNotification: %@", userInfo);
     
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Alert"

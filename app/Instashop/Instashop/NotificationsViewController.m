@@ -31,11 +31,18 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
+        [self loadNotifications];
         self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
         
     }
     return self;
+}
+
+
+-(void)loadNotifications
+{
+    [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
+    
 }
 
 - (void)viewDidLoad
@@ -108,11 +115,10 @@
         cell = [[[NotificationsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
         cell.backgroundColor = [UIColor clearColor];
     }
-    
+    [cell clearSubviews];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     NotificationsObject *notificationsObject = [self.contentArray objectAtIndex:indexPath.row];
-//    cell.textLabel.text = notificationObjects.message;
     [cell loadWithNotificationsObject:notificationsObject];
     
     return cell;

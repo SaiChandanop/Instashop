@@ -11,7 +11,7 @@
 @interface NotificationsAPIHandler : RootAPIHandler
 
 +(void)getAllNotificationsWithInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate;
-
++(void)createUserSocialNotificationWithProductID:(NSString *)productID withInstagramID:(NSString *)instagramID withSocialType:(NSString *)socialType;
 +(void)createUserLikedNotificationWithProductID:(NSString *)productID withInstagramID:(NSString *)instagramID;
 
 @end
