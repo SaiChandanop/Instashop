@@ -52,6 +52,8 @@
 
 -(void) searchButtonHit;
 -(void) searchExitButtonHit:(UINavigationController *)navigationController;
+- (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title;
+- (void) webViewExitButtonHit:(UINavigationController *)navigationController;
 
 
 @property (strong, nonatomic) UINavigationController *feedNavigationController;

@@ -102,7 +102,6 @@
         [self.tutorialScrollView addSubview:view];
     }
     
-    // SuggestedStoresViewController doesn't load because instagramuserobject is null.
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
@@ -120,6 +119,7 @@
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
     NSInteger page = lround(fractionalPage);
     
+    // this coding is really ugly.  
     if (page != 2) {
         [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
         self.nextButton.enabled = YES;
@@ -129,37 +129,6 @@
     
     [self.suggestedStoresViewController updateButton];
 }
-
-/*
-- (void) showCloseTutorialButton {
-    
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.0];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, (screenHeight - self.loginTutorialDone.frame.size.height), screenWidth, kButtonHeight);
-    [UIView commitAnimations];
-}
-
-- (void) hideCloseTutorialButton {
-    
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:1.0];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.loginTutorialDone.frame = CGRectMake(screenWidth * 2, screenHeight, self.loginTutorialDone.frame.size.width, self.loginTutorialDone.frame.size.height);
-    [UIView commitAnimations];
-}*/
 
 - (void) moveScrollView {
     

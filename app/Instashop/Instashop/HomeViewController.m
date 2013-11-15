@@ -14,6 +14,7 @@
 #import "CreateSellerViewController.h"
 #import "GroupDiskManager.h"
 #import "InstagramUserObject.h"
+#import "InstashopWebView.h"
 #import "AppDelegate.h"
 #import "ISConstants.h"
 
@@ -30,6 +31,8 @@
 @synthesize logoutView;
 @synthesize topBarView;
 @synthesize sellerLabel;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -43,13 +46,12 @@
 {
     AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [del.instagram logout];
-     
-    [InstagramUserObject deleteStoredUserObject];
+    
     [del userDidLogout];
+
+    [InstagramUserObject deleteStoredUserObject];
     
     [self.parentController homeButtonHit];
-    
-    
 }
 
 -(IBAction)homeButtonHit
@@ -123,6 +125,12 @@
     [self.parentController createSellerShouldExit:theNavigationController];
 }
 
+- (IBAction) privatePolicyButtonHit {
+    
+    [self.parentController webViewButtonHit:@"http://instashop.com/privacy" titleName:@"PRIVACY"];
+    NSLog(@"Yes, the private policy Button was hit");
+}
+
 -(IBAction)profileButtonHit
 {
     [self.parentController profileButtonHit];
@@ -136,6 +144,12 @@
     [self.parentController suggestedShopButtonHit];
 }
 
+- (IBAction) termsOfServiceButtonHit {
+    
+    [self.parentController webViewButtonHit:@"http://instashop.com/terms" titleName:@"TERMS"];
+    NSLog(@"Yes, the terms of Service Button was hit");
+}
+
 -(IBAction)notificationsButtonHit
 {
     [self.parentController notificationsButtonHit];
@@ -147,4 +161,5 @@
     [self.parentController discoverButtonHit];
     
 }
+
 @end
