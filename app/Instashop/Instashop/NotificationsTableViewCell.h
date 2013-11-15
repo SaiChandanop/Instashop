@@ -8,17 +8,27 @@
 
 #import <UIKit/UIKit.h>
 #import "NotificationsObject.h"
+#import "IGRequest.h"
+#import "NotificationsObject.h"
 
-@interface NotificationsTableViewCell : UITableViewCell
+@interface NotificationsTableViewCell : UITableViewCell <IGRequestDelegate>
 {
+    NotificationsObject *notificationsObject;
+    
+    UILabel *usernameLabel;
     UILabel *messageLabel;
     UILabel *timeLabel;
+    UIImageView *profileImageView;
 }
 
 -(void)loadWithNotificationsObject:(NotificationsObject *)theObject;
+-(void)clearSubviews;
 
+@property (nonatomic, retain) NotificationsObject *notificationsObject;
 
-@property (nonatomic, retain) IBOutlet UILabel *messageLabel;
-@property (nonatomic, retain) IBOutlet UILabel *timeLabel;
+@property (nonatomic, retain) UILabel *messageLabel;
+@property (nonatomic, retain) UILabel *timeLabel;
+@property (nonatomic, retain) UILabel *usernameLabel;
+@property (nonatomic, retain) UIImageView *profileImageView;
 @end
  

@@ -9,11 +9,15 @@
 #import "NotificationsTableViewCell.h"
 #import "NotificationsObject.h"
 #import "TTTTimeIntervalFormatter.h"
+#import "AppDelegate.h"
+#import "ImageAPIHandler.h"
 @implementation NotificationsTableViewCell
 
+@synthesize notificationsObject;
+@synthesize usernameLabel;
 @synthesize messageLabel;
 @synthesize timeLabel;
-
+@synthesize profileImageView;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -27,22 +31,47 @@
 
 -(void)loadWithNotificationsObject:(NotificationsObject *)theObject
 {
+    self.notificationsObject = theObject;
+    
+    self.usernameLabel = (UILabel *)[self viewWithTag:2];
     self.messageLabel = (UILabel *)[self viewWithTag:3];
     self.timeLabel = (UILabel *)[self viewWithTag:4];
+    self.profileImageView = (UIImageView *)[self viewWithTag:5];
     
-    self.messageLabel.text = theObject.message;
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.notificationsObject.dataDictionary objectForKey:@"creator_id"]], @"method", nil];
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [appDelegate.instagram requestWithParams:params delegate:self];
+    
+}
+
+
+- (void)request:(IGRequest *)request didLoad:(id)result
+{
+    NSLog(@"result: %@", result);
+ 
+    [ImageAPIHandler makeSynchImageRequestWithDelegate:nil withInstagramMediaURLString:[[result objectForKey:@"data"] objectForKey:@"profile_picture"] withImageView:self.profileImageView];
+
+    self.usernameLabel.text = [[result objectForKey:@"data"] objectForKey:@"username"];
+    self.messageLabel.text = [self.notificationsObject.message stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@ ",self.usernameLabel.text] withString:@""];
     
     
     TTTTimeIntervalFormatter *intervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
     intervalFormatter.usesAbbreviatedCalendarUnits = YES;
-    
-    NSLog(@"theObject.dataDictionary: %@", theObject.dataDictionary);
-    
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *startDate = [dateFormatter dateFromString:[theObject.dataDictionary objectForKey:@"notification_date"]];
+    NSDate *startDate = [dateFormatter dateFromString:[self.notificationsObject.dataDictionary objectForKey:@"notification_date"]];
     self.timeLabel.text = [intervalFormatter stringForTimeIntervalFromDate:[NSDate date] toDate:startDate];
+    
 }
+
+-(void)clearSubviews
+{
+    self.usernameLabel.text = @"";
+    self.messageLabel.text = @"";
+    self.timeLabel.text = @"";
+    self.profileImageView.image = nil;
+}
+
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {

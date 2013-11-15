@@ -35,6 +35,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize theSearchViewController;
 @synthesize firstRun;
 @synthesize notificationsViewController;
+@synthesize notificationsNavigationViewController;
 
 float transitionTime = .456;
 
@@ -154,17 +155,20 @@ float transitionTime = .456;
     {
         self.areViewsTransitioning = YES;
         
+        [self.notificationsViewController loadNotifications];
         
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.notificationsViewController];
-        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:navigationController.view];
-        
+        if (self.notificationsNavigationViewController == nil)
+        {
+            self.notificationsNavigationViewController = [[UINavigationController alloc] initWithRootViewController:self.notificationsViewController];
+            self.notificationsNavigationViewController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+            [self.view addSubview:self.notificationsNavigationViewController.view];
+        }
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        self.notificationsNavigationViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
         
     }
@@ -427,7 +431,7 @@ float transitionTime = .456;
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    theNavigationController.view.frame = CGRectMake(0, theNavigationController.view.frame.size.height, self.view.frame.size.width, theNavigationController.view.frame.size.height);
     [UIView commitAnimations];
 }
 
