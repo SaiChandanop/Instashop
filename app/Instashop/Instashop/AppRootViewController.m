@@ -23,6 +23,7 @@
 #import "FirstTimeUserViewController.h"
 #import "AmberAPIHandler.h"
 #import "WebViewController.h"
+#import "SettingsViewController.h"
 
 @implementation AppRootViewController
 
@@ -387,6 +388,32 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
+- (void) settingsButtonHit {
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+    settingsViewController.parentController = self;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    
+    [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [navigationController setTitle:@"SETTINGS"];
+    navigationController.navigationBar.translucent = NO;
+    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [self.view addSubview:navigationController.view];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void) settingsBackButtonHit:(UINavigationController *) navigationController {
+    
+}
+
 - (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title {
     
     // Might want to pretty it up by making background color the same color.  
@@ -412,7 +439,6 @@ float transitionTime = .456;
 
 - (void) webViewExitButtonHit:(UINavigationController *)navigationController
 {
-    NSLog(@"searchExitButtonHit: %@", navigationController);
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];

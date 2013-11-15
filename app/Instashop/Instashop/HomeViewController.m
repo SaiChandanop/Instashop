@@ -42,18 +42,6 @@
     return self;
 }
 
--(IBAction)logOutButtonHit
-{
-    AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [del.instagram logout];
-    
-    [del userDidLogout];
-
-    [InstagramUserObject deleteStoredUserObject];
-    
-    [self.parentController homeButtonHit];
-}
-
 -(IBAction)homeButtonHit
 {
     [self.parentController homeButtonHit];
@@ -66,7 +54,7 @@
     self.topBarView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    self.theScrollView.contentSize = CGSizeMake(0, self.logoutView.frame.origin.y + self.logoutView.frame.size.height);
+    self.theScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height);
     [self.view insertSubview:self.theScrollView belowSubview:self.topBarView];
     
     /* joel use these for reference
@@ -128,7 +116,6 @@
 - (IBAction) privatePolicyButtonHit {
     
     [self.parentController webViewButtonHit:@"http://instashop.com/privacy" titleName:@"PRIVACY"];
-    NSLog(@"Yes, the private policy Button was hit");
 }
 
 -(IBAction)profileButtonHit
@@ -136,18 +123,15 @@
     [self.parentController profileButtonHit];
 }
 
+- (IBAction) settingsButtonHit {
+    [self.parentController settingsButtonHit];
+}
 
 -(IBAction)suggestedShopButtonHit
 {
     NSLog(@"ib action: suggestedShopButtonHit");
     
     [self.parentController suggestedShopButtonHit];
-}
-
-- (IBAction) termsOfServiceButtonHit {
-    
-    [self.parentController webViewButtonHit:@"http://instashop.com/terms" titleName:@"TERMS"];
-    NSLog(@"Yes, the terms of Service Button was hit");
 }
 
 -(IBAction)notificationsButtonHit

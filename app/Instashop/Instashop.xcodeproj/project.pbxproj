@@ -84,6 +84,8 @@
 		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
 		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
+		6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6901344A1836B4E9005CE173 /* SettingsViewController.m */; };
+		6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6901344B1836B4E9005CE173 /* SettingsViewController.xib */; };
 		696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */; };
 		696DE14A182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */; };
 		69FC1E981834204200A52A90 /* InstashopWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FC1E971834204200A52A90 /* InstashopWebView.m */; };
@@ -389,6 +391,9 @@
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
+		690134491836B4E9005CE173 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		6901344A1836B4E9005CE173 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		6901344B1836B4E9005CE173 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Post-Products-Phone.png"; sourceTree = "<group>"; };
 		696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Notifications-Phone.png"; sourceTree = "<group>"; };
 		69FC1E961834204200A52A90 /* InstashopWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstashopWebView.h; sourceTree = "<group>"; };
@@ -904,6 +909,16 @@
 				2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		690134451836B47D005CE173 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				690134491836B4E9005CE173 /* SettingsViewController.h */,
+				6901344A1836B4E9005CE173 /* SettingsViewController.m */,
+				6901344B1836B4E9005CE173 /* SettingsViewController.xib */,
+			);
+			name = Settings;
 			sourceTree = "<group>";
 		};
 		69FC1E9518341FE400A52A90 /* WebViews */ = {
@@ -1517,6 +1532,7 @@
 				7B376EC817C7A33300F4D5D8 /* Profile */,
 				7B7A7F7B17D64AA100247A26 /* Search */,
 				7BE958F3175548A100A7E0AB /* Sell */,
+				690134451836B47D005CE173 /* Settings */,
 				7BD5C1FB179596B3006F311A /* SizeQuantity */,
 				7B5A56E617D3D742007AABDA /* SuggestedStores */,
 				69FC1E9518341FE400A52A90 /* WebViews */,
@@ -2033,6 +2049,7 @@
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
 				7B0D253D17CBA36300E43FA6 /* PLCameraSheetDoneButton.png in Resources */,
 				7B5BFAE517D6945600F82F0B /* NotificationsViewController.xib in Resources */,
+				6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */,
 				7B79AE8117E21A900058E774 /* SellerSelectTableViewController.xib in Resources */,
 				2E0EAE24176F6E6700B65FC3 /* leftMenuButton@2x.png in Resources */,
 				2E628CAF17C6A19900CB7BE4 /* AppIcon60x60@2x.png in Resources */,
@@ -2107,6 +2124,7 @@
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,
 				7B7A7F8417D64B5500247A26 /* SearchAPIHandler.m in Sources */,
+				6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */,
 				038FCD051835BAA800EC50D5 /* NotificationsAPIHandler.m in Sources */,
 				7B7A744D174D4ED9005E90B9 /* InstagramUserObject.m in Sources */,
 				7B7A7452174D505D005E90B9 /* GroupDiskManager.m in Sources */,

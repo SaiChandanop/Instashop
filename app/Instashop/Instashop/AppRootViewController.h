@@ -48,12 +48,13 @@
 
 -(void) profileExitButtonHit:(UINavigationController *)navigationController;
 - (void) runTutorial;
-
 -(void) suggestedShopButtonHit;
 -(void) suggestedShopExitButtonHit:(UINavigationController *)navigationController;
 
 -(void) searchButtonHit;
 -(void) searchExitButtonHit:(UINavigationController *)navigationController;
+- (void) settingsButtonHit;
+- (void) settingsBackButtonHit:(UINavigationController *) navigationController;
 - (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title;
 - (void) webViewExitButtonHit:(UINavigationController *)navigationController;
 
