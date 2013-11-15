@@ -11,7 +11,7 @@
 #import "FeedViewController.h"
 #import "HomeViewController.h"
 #import "FirstTimeUserViewController.h"
-
+#import "NotificationsViewController.h"
 @class SearchViewController;
 
 @interface AppRootViewController : UIViewController
@@ -20,7 +20,8 @@
     FeedViewController *feedViewController;
     HomeViewController *homeViewController;
     SearchViewController *theSearchViewController;
-
+    NotificationsViewController *notificationsViewController;
+    
     
     BOOL areViewsTransitioning;
     
@@ -28,6 +29,7 @@
 }
 
 
+-(void)popupViewControllerShouldExit:(UINavigationController *)theNavigationController;
 
 +(AppRootViewController *)sharedRootViewController;
 
@@ -61,6 +63,7 @@
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) SearchViewController *theSearchViewController;
 @property (strong, nonatomic) FirstTimeUserViewController *firstTimeUserViewController;
+@property (strong, nonatomic) NotificationsViewController *notificationsViewController;
 
 @property (strong, nonatomic) UIButton *feedCoverButton;
 

@@ -89,9 +89,7 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeButtonHit)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
-    
-    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
-    
+        
     /*
      AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
      
@@ -396,8 +394,10 @@
 -(IBAction)buyButtonHit
 {
     
-    
-    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    if (self.viglinkString == nil)
+        [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    else
+        [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
     
     
     
@@ -680,7 +680,7 @@
     
     NSLog(@"likeButtonHit");
     
-    NSLog(@"requestedProductObject: %@", requestedProductObject);
+//    NSLog(@"requestedProductObject: %@", requestedProductObject);
     [NotificationsAPIHandler createUserLikedNotificationWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID];
     
     

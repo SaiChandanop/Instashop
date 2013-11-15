@@ -119,8 +119,18 @@
         [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Creating Product";
         [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
         
+        NSMutableString *categoriesString = [NSMutableString stringWithCapacity:0];
+        
+        for (int i = 0; i < [theCreateObject.mainObject.categoriesArray count]; i++)
+        {
+            [categoriesString appendString:[theCreateObject.mainObject.categoriesArray objectAtIndex:i]];
+            if (i != [theCreateObject.mainObject.categoriesArray count] - 1)
+                [categoriesString appendString:@" > "];
+        }
+        
+        
         NSLog(@"make seller");
-        [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:[NSMutableDictionary dictionaryWithCapacity:0]];
+        [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:[NSMutableDictionary dictionaryWithObject:categoriesString forKey:@"seller_category"]];
         
         
     }

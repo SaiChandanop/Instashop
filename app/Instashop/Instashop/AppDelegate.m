@@ -133,6 +133,15 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo 
 {
     NSLog(@"didReceiveRemoteNotification: %@", userInfo);
+    
+    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
+                                                        message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+    [alertView show];
+
+    
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

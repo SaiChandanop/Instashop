@@ -34,6 +34,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize feedCoverButton;
 @synthesize theSearchViewController;
 @synthesize firstRun;
+@synthesize notificationsViewController;
 
 float transitionTime = .456;
 
@@ -59,6 +60,9 @@ float transitionTime = .456;
     [super viewDidLoad];
     
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
+    
     
     [AttributesManager getSharedAttributesManager];
     
@@ -150,12 +154,10 @@ float transitionTime = .456;
     {
         self.areViewsTransitioning = YES;
         
-        NotificationsViewController *notificationViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
-
         
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:notificationViewController];
+        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.notificationsViewController];
         navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:navigationController .view];
+        [self.view addSubview:navigationController.view];
         
         
         [UIView beginAnimations:nil context:nil];
@@ -416,6 +418,16 @@ float transitionTime = .456;
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+}
+
+-(void)popupViewControllerShouldExit:(UINavigationController *)theNavigationController
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }
 

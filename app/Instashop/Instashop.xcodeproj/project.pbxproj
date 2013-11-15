@@ -260,6 +260,9 @@
 		7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */; };
 		7BA4270C1794681500A9732E /* cpbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270B1794681500A9732E /* cpbackimage.png */; };
 		7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270D17946F5F00A9732E /* attributes1.csv */; };
+		7BA9C2EB18369505003C2DD5 /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9C2EA18369505003C2DD5 /* NotificationsTableViewCell.m */; };
+		7BA9C2EE18369513003C2DD5 /* NotificationsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9C2ED18369513003C2DD5 /* NotificationsObject.m */; };
+		7BA9C2F118369A36003C2DD5 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA9C2F018369A36003C2DD5 /* NotificationsTableViewCell.xib */; };
 		7BAD992018298E2100089D5A /* DiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */; };
 		7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */; };
 		7BC6E7DF18229C4500288B68 /* AmberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7DD18229C4500288B68 /* AmberViewController.m */; };
@@ -662,6 +665,12 @@
 		7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchButtonContainerView.m; sourceTree = "<group>"; };
 		7BA4270B1794681500A9732E /* cpbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cpbackimage.png; sourceTree = "<group>"; };
 		7BA4270D17946F5F00A9732E /* attributes1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes1.csv; sourceTree = "<group>"; };
+		7BA9C2E918369505003C2DD5 /* NotificationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewCell.h; sourceTree = "<group>"; };
+		7BA9C2EA18369505003C2DD5 /* NotificationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewCell.m; sourceTree = "<group>"; };
+		7BA9C2EC18369513003C2DD5 /* NotificationsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsObject.h; sourceTree = "<group>"; };
+		7BA9C2ED18369513003C2DD5 /* NotificationsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsObject.m; sourceTree = "<group>"; };
+		7BA9C2EF183695BB003C2DD5 /* NotificationsFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsFinishedProtocol.h; sourceTree = "<group>"; };
+		7BA9C2F018369A36003C2DD5 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		7BAD991E18298E2100089D5A /* DiscoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewCell.h; sourceTree = "<group>"; };
 		7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewCell.m; sourceTree = "<group>"; };
 		7BC6E7D8182299A300288B68 /* AmberAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmberAPIHandler.h; sourceTree = "<group>"; };
@@ -1095,6 +1104,7 @@
 				7BF02E5817D1301600981F28 /* SellerDetailResponseProtocol.h */,
 				7B5A56F517D3DD9D007AABDA /* SuggestedShopReturnProtocol.h */,
 				7B7A7F8517D651C800247A26 /* SearchReturnedReceiverProtocol.h */,
+				7BA9C2EF183695BB003C2DD5 /* NotificationsFinishedProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1210,6 +1220,7 @@
 		7B5BFAD617D6928400F82F0B /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				7BA9C2E3183694D7003C2DD5 /* Obj */,
 				7B5BFAE117D6945600F82F0B /* NotificationsViewController.h */,
 				7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */,
 				7B5BFAE317D6945600F82F0B /* NotificationsViewController.xib */,
@@ -1639,6 +1650,18 @@
 			name = Cells;
 			sourceTree = "<group>";
 		};
+		7BA9C2E3183694D7003C2DD5 /* Obj */ = {
+			isa = PBXGroup;
+			children = (
+				7BA9C2EC18369513003C2DD5 /* NotificationsObject.h */,
+				7BA9C2ED18369513003C2DD5 /* NotificationsObject.m */,
+				7BA9C2E918369505003C2DD5 /* NotificationsTableViewCell.h */,
+				7BA9C2EA18369505003C2DD5 /* NotificationsTableViewCell.m */,
+				7BA9C2F018369A36003C2DD5 /* NotificationsTableViewCell.xib */,
+			);
+			name = Obj;
+			sourceTree = "<group>";
+		};
 		7BC6E7D71822997100288B68 /* Amber */ = {
 			isa = PBXGroup;
 			children = (
@@ -2022,6 +2045,7 @@
 				2E0EAE27176F6E6700B65FC3 /* backbutton@2x.png in Resources */,
 				7BE29B9A177A21000093BB25 /* attributes.csv in Resources */,
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
+				7BA9C2F118369A36003C2DD5 /* NotificationsTableViewCell.xib in Resources */,
 				7B5D62AA17C5AF9F00D6C8B1 /* discover@2x.png in Resources */,
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
 				7B8CCFBC181ABDA3006E01A9 /* FBPostViewController.xib in Resources */,
@@ -2071,6 +2095,7 @@
 				193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */,
 				7B61EE53174D2162002A483D /* main.m in Sources */,
 				7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */,
+				7BA9C2EB18369505003C2DD5 /* NotificationsTableViewCell.m in Sources */,
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				69FC1E9B183424E700A52A90 /* WebViewController.m in Sources */,
@@ -2124,6 +2149,7 @@
 				7B5D626817C5AF3700D6C8B1 /* STPToken.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
+				7BA9C2EE18369513003C2DD5 /* NotificationsObject.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
 				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */,
