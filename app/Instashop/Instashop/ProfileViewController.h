@@ -15,7 +15,7 @@
 #import "SellerDetailResponseProtocol.h"
 #import "ISDarkRowContainerView.h"
 
-@interface ProfileViewController : UIViewController <IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate, SellerDetailResponseProtocol>
+@interface ProfileViewController : UIViewController <UIActionSheetDelegate, IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate, SellerDetailResponseProtocol>
 {
     NSString *profileInstagramID;
     

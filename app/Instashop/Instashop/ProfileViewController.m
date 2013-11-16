@@ -19,8 +19,8 @@
 #import "NavBarTitleView.h"
 #import "SellersAPIHandler.h"
 #import <QuartzCore/QuartzCore.h>
-
-
+#import <Social/Social.h>
+#import "SocialManager.h"
 
 @interface ProfileViewController ()
 
@@ -87,11 +87,99 @@
     //    self.followButton.layer.cornerRadius = 2;
     
     self.followButton.alpha = 0;
+    
+    UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+
+    
 }
 
 
+-(void)moreButtonHit
+{
+    NSLog(@"moreButtonHit");
+    
+    UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Instagram", nil];
+    shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+    
+}
 
+- (void) actionSheet:(UIActionSheet *)theActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSString *buttonTitle = [theActionSheet buttonTitleAtIndex:buttonIndex];
+    
+    if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
+    {
+        [SocialManager requestInitialFacebookAccess];
+        
+        SLComposeViewController *facebookController = [SLComposeViewController
+                                                       composeViewControllerForServiceType:SLServiceTypeFacebook];
+        
+        SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
+            
+            NSLog(@"here here");
+            [facebookController dismissViewControllerAnimated:YES completion:nil];
+            
+            switch(result){
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"SLComposeViewControllerResultCancelled");
+                default:
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"SLComposeViewControllerResultDone");
+                    break;
+            }};
 
+        NSString *postText = [NSString stringWithFormat:@"promo!"];
+        [facebookController setInitialText:postText];
+        [facebookController addImage:self.profileImageView.image];
+        [facebookController addURL:[NSURL URLWithString:@"http://alchemy50.com"]];
+        [facebookController setCompletionHandler:completionHandler];
+        
+        
+        [[AppRootViewController sharedRootViewController] presentViewController:facebookController animated:YES completion:nil];
+        
+        
+        
+    }
+    
+    else if ([buttonTitle compare:@"Twitter"] == NSOrderedSame)
+    {
+        SLComposeViewController *tweetController = [SLComposeViewController
+                                                    composeViewControllerForServiceType:SLServiceTypeTwitter];
+        
+        SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
+            
+            NSLog(@"here here");
+            [tweetController dismissViewControllerAnimated:YES completion:nil];
+            
+            switch(result){
+                case SLComposeViewControllerResultCancelled:
+                    NSLog(@"SLComposeViewControllerResultCancelled");
+                default:
+                    break;
+                case SLComposeViewControllerResultDone:
+                    NSLog(@"SLComposeViewControllerResultDone");
+                    break;
+            }};
+        
+        NSString *postText = [NSString stringWithFormat:@"promo!"];
+        [tweetController setInitialText:postText];
+        [tweetController addImage:self.profileImageView.image];
+        [tweetController addURL:[NSURL URLWithString:@"http://alchemy50.com"]];
+        [tweetController setCompletionHandler:completionHandler];
+        
+        
+        [[AppRootViewController sharedRootViewController] presentViewController:tweetController animated:YES completion:nil];
+        
+    }
+
+    
+    
+    
+}
 - (void)viewDidAppear:(BOOL)animated
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
