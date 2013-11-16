@@ -84,6 +84,8 @@
 		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
 		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
+		6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6901344A1836B4E9005CE173 /* SettingsViewController.m */; };
+		6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6901344B1836B4E9005CE173 /* SettingsViewController.xib */; };
 		696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */; };
 		696DE14A182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */; };
 		69FC1E981834204200A52A90 /* InstashopWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FC1E971834204200A52A90 /* InstashopWebView.m */; };
@@ -260,6 +262,9 @@
 		7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */; };
 		7BA4270C1794681500A9732E /* cpbackimage.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270B1794681500A9732E /* cpbackimage.png */; };
 		7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7BA4270D17946F5F00A9732E /* attributes1.csv */; };
+		7BA9C2EB18369505003C2DD5 /* NotificationsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9C2EA18369505003C2DD5 /* NotificationsTableViewCell.m */; };
+		7BA9C2EE18369513003C2DD5 /* NotificationsObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BA9C2ED18369513003C2DD5 /* NotificationsObject.m */; };
+		7BA9C2F118369A36003C2DD5 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA9C2F018369A36003C2DD5 /* NotificationsTableViewCell.xib */; };
 		7BAD992018298E2100089D5A /* DiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */; };
 		7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */; };
 		7BC6E7DF18229C4500288B68 /* AmberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7DD18229C4500288B68 /* AmberViewController.m */; };
@@ -386,6 +391,9 @@
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
+		690134491836B4E9005CE173 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
+		6901344A1836B4E9005CE173 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
+		6901344B1836B4E9005CE173 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Post-Products-Phone.png"; sourceTree = "<group>"; };
 		696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Notifications-Phone.png"; sourceTree = "<group>"; };
 		69FC1E961834204200A52A90 /* InstashopWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstashopWebView.h; sourceTree = "<group>"; };
@@ -662,6 +670,12 @@
 		7B9EE92117E2735400D723BD /* SearchButtonContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchButtonContainerView.m; sourceTree = "<group>"; };
 		7BA4270B1794681500A9732E /* cpbackimage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cpbackimage.png; sourceTree = "<group>"; };
 		7BA4270D17946F5F00A9732E /* attributes1.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = attributes1.csv; sourceTree = "<group>"; };
+		7BA9C2E918369505003C2DD5 /* NotificationsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewCell.h; sourceTree = "<group>"; };
+		7BA9C2EA18369505003C2DD5 /* NotificationsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewCell.m; sourceTree = "<group>"; };
+		7BA9C2EC18369513003C2DD5 /* NotificationsObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsObject.h; sourceTree = "<group>"; };
+		7BA9C2ED18369513003C2DD5 /* NotificationsObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsObject.m; sourceTree = "<group>"; };
+		7BA9C2EF183695BB003C2DD5 /* NotificationsFinishedProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsFinishedProtocol.h; sourceTree = "<group>"; };
+		7BA9C2F018369A36003C2DD5 /* NotificationsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsTableViewCell.xib; sourceTree = "<group>"; };
 		7BAD991E18298E2100089D5A /* DiscoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewCell.h; sourceTree = "<group>"; };
 		7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewCell.m; sourceTree = "<group>"; };
 		7BC6E7D8182299A300288B68 /* AmberAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmberAPIHandler.h; sourceTree = "<group>"; };
@@ -897,6 +911,16 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		690134451836B47D005CE173 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				690134491836B4E9005CE173 /* SettingsViewController.h */,
+				6901344A1836B4E9005CE173 /* SettingsViewController.m */,
+				6901344B1836B4E9005CE173 /* SettingsViewController.xib */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
 		69FC1E9518341FE400A52A90 /* WebViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -1095,6 +1119,7 @@
 				7BF02E5817D1301600981F28 /* SellerDetailResponseProtocol.h */,
 				7B5A56F517D3DD9D007AABDA /* SuggestedShopReturnProtocol.h */,
 				7B7A7F8517D651C800247A26 /* SearchReturnedReceiverProtocol.h */,
+				7BA9C2EF183695BB003C2DD5 /* NotificationsFinishedProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1210,6 +1235,7 @@
 		7B5BFAD617D6928400F82F0B /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				7BA9C2E3183694D7003C2DD5 /* Obj */,
 				7B5BFAE117D6945600F82F0B /* NotificationsViewController.h */,
 				7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */,
 				7B5BFAE317D6945600F82F0B /* NotificationsViewController.xib */,
@@ -1506,6 +1532,7 @@
 				7B376EC817C7A33300F4D5D8 /* Profile */,
 				7B7A7F7B17D64AA100247A26 /* Search */,
 				7BE958F3175548A100A7E0AB /* Sell */,
+				690134451836B47D005CE173 /* Settings */,
 				7BD5C1FB179596B3006F311A /* SizeQuantity */,
 				7B5A56E617D3D742007AABDA /* SuggestedStores */,
 				69FC1E9518341FE400A52A90 /* WebViews */,
@@ -1637,6 +1664,18 @@
 				7B79AE8217E221FE0058E774 /* ProductImages */,
 			);
 			name = Cells;
+			sourceTree = "<group>";
+		};
+		7BA9C2E3183694D7003C2DD5 /* Obj */ = {
+			isa = PBXGroup;
+			children = (
+				7BA9C2EC18369513003C2DD5 /* NotificationsObject.h */,
+				7BA9C2ED18369513003C2DD5 /* NotificationsObject.m */,
+				7BA9C2E918369505003C2DD5 /* NotificationsTableViewCell.h */,
+				7BA9C2EA18369505003C2DD5 /* NotificationsTableViewCell.m */,
+				7BA9C2F018369A36003C2DD5 /* NotificationsTableViewCell.xib */,
+			);
+			name = Obj;
 			sourceTree = "<group>";
 		};
 		7BC6E7D71822997100288B68 /* Amber */ = {
@@ -2010,6 +2049,7 @@
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
 				7B0D253D17CBA36300E43FA6 /* PLCameraSheetDoneButton.png in Resources */,
 				7B5BFAE517D6945600F82F0B /* NotificationsViewController.xib in Resources */,
+				6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */,
 				7B79AE8117E21A900058E774 /* SellerSelectTableViewController.xib in Resources */,
 				2E0EAE24176F6E6700B65FC3 /* leftMenuButton@2x.png in Resources */,
 				2E628CAF17C6A19900CB7BE4 /* AppIcon60x60@2x.png in Resources */,
@@ -2022,6 +2062,7 @@
 				2E0EAE27176F6E6700B65FC3 /* backbutton@2x.png in Resources */,
 				7BE29B9A177A21000093BB25 /* attributes.csv in Resources */,
 				7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */,
+				7BA9C2F118369A36003C2DD5 /* NotificationsTableViewCell.xib in Resources */,
 				7B5D62AA17C5AF9F00D6C8B1 /* discover@2x.png in Resources */,
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
 				7B8CCFBC181ABDA3006E01A9 /* FBPostViewController.xib in Resources */,
@@ -2071,6 +2112,7 @@
 				193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */,
 				7B61EE53174D2162002A483D /* main.m in Sources */,
 				7B5D628017C5AF7100D6C8B1 /* PKCard.m in Sources */,
+				7BA9C2EB18369505003C2DD5 /* NotificationsTableViewCell.m in Sources */,
 				7B61EE57174D2162002A483D /* AppDelegate.m in Sources */,
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				69FC1E9B183424E700A52A90 /* WebViewController.m in Sources */,
@@ -2082,6 +2124,7 @@
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,
 				7B7A7F8417D64B5500247A26 /* SearchAPIHandler.m in Sources */,
+				6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */,
 				038FCD051835BAA800EC50D5 /* NotificationsAPIHandler.m in Sources */,
 				7B7A744D174D4ED9005E90B9 /* InstagramUserObject.m in Sources */,
 				7B7A7452174D505D005E90B9 /* GroupDiskManager.m in Sources */,
@@ -2124,6 +2167,7 @@
 				7B5D626817C5AF3700D6C8B1 /* STPToken.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
+				7BA9C2EE18369513003C2DD5 /* NotificationsObject.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
 				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */,

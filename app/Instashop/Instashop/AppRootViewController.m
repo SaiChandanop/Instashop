@@ -23,6 +23,7 @@
 #import "FirstTimeUserViewController.h"
 #import "AmberAPIHandler.h"
 #import "WebViewController.h"
+#import "SettingsViewController.h"
 
 @implementation AppRootViewController
 
@@ -34,6 +35,8 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize feedCoverButton;
 @synthesize theSearchViewController;
 @synthesize firstRun;
+@synthesize notificationsViewController;
+@synthesize notificationsNavigationViewController;
 
 float transitionTime = .456;
 
@@ -59,6 +62,9 @@ float transitionTime = .456;
     [super viewDidLoad];
     
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
+    
     
     [AttributesManager getSharedAttributesManager];
     
@@ -150,19 +156,20 @@ float transitionTime = .456;
     {
         self.areViewsTransitioning = YES;
         
-        NotificationsViewController *notificationViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
-
+        [self.notificationsViewController loadNotifications];
         
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:notificationViewController];
-        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:navigationController .view];
-        
+        if (self.notificationsNavigationViewController == nil)
+        {
+            self.notificationsNavigationViewController = [[UINavigationController alloc] initWithRootViewController:self.notificationsViewController];
+            self.notificationsNavigationViewController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+            [self.view addSubview:self.notificationsNavigationViewController.view];
+        }
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+        self.notificationsNavigationViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
         [UIView commitAnimations];
         
     }
@@ -385,6 +392,32 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
+- (void) settingsButtonHit {
+    SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+    settingsViewController.parentController = self;
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    
+    [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [navigationController setTitle:@"SETTINGS"];
+    navigationController.navigationBar.translucent = NO;
+    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    
+    [self.view addSubview:navigationController.view];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+}
+
+- (void) settingsBackButtonHit:(UINavigationController *) navigationController {
+    
+}
+
 - (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title {
     
     // Might want to pretty it up by making background color the same color.  
@@ -410,12 +443,21 @@ float transitionTime = .456;
 
 - (void) webViewExitButtonHit:(UINavigationController *)navigationController
 {
-    NSLog(@"searchExitButtonHit: %@", navigationController);
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+}
+
+-(void)popupViewControllerShouldExit:(UINavigationController *)theNavigationController
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    theNavigationController.view.frame = CGRectMake(0, theNavigationController.view.frame.size.height, self.view.frame.size.width, theNavigationController.view.frame.size.height);
     [UIView commitAnimations];
 }
 

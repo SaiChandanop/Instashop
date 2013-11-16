@@ -24,6 +24,8 @@
     ProductSelectTableViewController *productSelectTableViewController;
 
     NSDictionary *productDictionary;
+    
+    NSDictionary *currentSelectionObject;
 }
 
 -(void) previewDoneButtonHit:(ProductCreateContainerObject *)theCreateObject;
@@ -37,4 +39,6 @@
 @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 
 @property (nonatomic, retain) NSDictionary *productDictionary;
+
+@property (nonatomic, retain) NSDictionary *currentSelectionObject;
 @end

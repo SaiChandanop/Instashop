@@ -7,7 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NotificationsFinishedProtocol.h"
 
-@interface NotificationsViewController : UIViewController
+@interface NotificationsViewController : UIViewController <NotificationsFinishedProtocol, UITableViewDataSource, UITableViewDelegate>
+{
+    UITableView *theTableView;
+    NSMutableArray *contentArray;
+    
+}
 
+-(void)loadNotifications;
+
+@property (nonatomic, retain) IBOutlet UITableView *theTableView;
+@property (nonatomic, retain) NSMutableArray *contentArray;
 @end

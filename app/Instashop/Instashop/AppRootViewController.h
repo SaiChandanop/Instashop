@@ -11,7 +11,7 @@
 #import "FeedViewController.h"
 #import "HomeViewController.h"
 #import "FirstTimeUserViewController.h"
-
+#import "NotificationsViewController.h"
 @class SearchViewController;
 
 @interface AppRootViewController : UIViewController
@@ -20,7 +20,9 @@
     FeedViewController *feedViewController;
     HomeViewController *homeViewController;
     SearchViewController *theSearchViewController;
-
+    
+    NotificationsViewController *notificationsViewController;
+    UINavigationController *notificationsNavigationViewController;
     
     BOOL areViewsTransitioning;
     
@@ -28,6 +30,7 @@
 }
 
 
+-(void)popupViewControllerShouldExit:(UINavigationController *)theNavigationController;
 
 +(AppRootViewController *)sharedRootViewController;
 
@@ -46,12 +49,13 @@
 
 -(void) profileExitButtonHit:(UINavigationController *)navigationController;
 - (void) runTutorial;
-
 -(void) suggestedShopButtonHit;
 -(void) suggestedShopExitButtonHit:(UINavigationController *)navigationController;
 
 -(void) searchButtonHit;
 -(void) searchExitButtonHit:(UINavigationController *)navigationController;
+- (void) settingsButtonHit;
+- (void) settingsBackButtonHit:(UINavigationController *) navigationController;
 - (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title;
 - (void) webViewExitButtonHit:(UINavigationController *)navigationController;
 
@@ -61,6 +65,8 @@
 @property (strong, nonatomic) HomeViewController *homeViewController;
 @property (strong, nonatomic) SearchViewController *theSearchViewController;
 @property (strong, nonatomic) FirstTimeUserViewController *firstTimeUserViewController;
+@property (strong, nonatomic) NotificationsViewController *notificationsViewController;
+@property (strong, nonatomic) UINavigationController *notificationsNavigationViewController;
 
 @property (strong, nonatomic) UIButton *feedCoverButton;
 

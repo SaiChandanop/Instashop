@@ -42,7 +42,6 @@
     [productAPIHandler.theWebRequest start];
 
     
-    
 }
 
 
@@ -330,14 +329,36 @@
     
     
     
-    
-    
-    
-    
 }
 
 
++(void)makeCheckForExistingProductURLWithDelegate:(id)delegate withProductURL:(NSString *)productURL
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?check_for_existing_product_url=", [productURL stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSLog(@"urlRequestString: %@", urlRequestString);
+    
+    
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"GET";
+    
+    
+    ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
+    productAPIHandler.delegate = delegate;
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(makeCheckForExistingProductURLFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+}
 
+-(void)makeCheckForExistingProductURLFinished:(id)object
+{
+    NSString* newStr = [[[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding] autorelease];
+    
+    NSLog(@"makeCheckForExistingProductURLFinished: %@", newStr);
+    
+    [self.delegate checkFinishedWithBoolValue:[newStr boolValue]];
+    
+}
 
 
 
