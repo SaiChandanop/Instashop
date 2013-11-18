@@ -134,7 +134,7 @@
                 
             case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER:
                 NSLog(@"case is: PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER");
-                [ProductAPIHandler getSavedProductsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
+                [ProductAPIHandler getSavedProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
             default:
                 break;
         }
