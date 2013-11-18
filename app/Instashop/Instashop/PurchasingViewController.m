@@ -307,6 +307,17 @@
     //    NSLog(@"self.requestedProductObject: %@", self.requestedProductObject);
     
     
+    NSLog(@"self.navigationController: %@", self.navigationController);
+    NSLog(@"self.navigationController.navigationItem: %@", self.navigationController.navigationItem);
+    NSLog(@"self.navigationController.navigationBar.topItem: %@", self.navigationController.navigationBar.topItem);
+    NSLog(@"self.navigationController.navigationBar.topItem.backbarButtonItem: %@", self.navigationController.navigationBar.topItem.backBarButtonItem);
+    
+    
+    for (int i = 0; i < [self.navigationController.navigationBar.items count]; i++)
+    {
+        UINavigationItem *theItem = [self.navigationController.navigationBar.items objectAtIndex:i];
+        NSLog(@"theItem[%d].back button: %@", i, theItem.backBarButtonItem);
+    }
     
 }
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -805,7 +816,7 @@
 
     if (self.isEditable)
     {
-        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit", @"Delete", nil];
+        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit", @"Delete", @"Facebook", @"Twitter",nil];
         shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
     }

@@ -124,8 +124,28 @@
     
     self.addSizeButton.alpha = 0;
     [self.addSizeButton removeFromSuperview];
+    
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@"Custom Title"
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+    
+    
+    UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+                                                                         style:UIBarButtonItemStylePlain
+                                                                        target:self
+                                                                        action:@selector(goBack)];
+    self.navigationItem.leftBarButtonItem = customBackButton;
+    [customBackButton release];
+    
+    
 }
 
+-(void)goBack
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID
 {
@@ -185,6 +205,12 @@
     NSLog(@"cellSizeQuantityValueDictionary: %@", self.sizeQuantityTableViewController.cellSizeQuantityValueDictionary);
     [self.sizeQuantityTableViewController.tableView reloadData];
     
+    if ([productObject objectForKey:@"products_external_url"] != nil)
+    {
+        self.urlLabel.text = [productObject objectForKey:@"products_external_url"];
+        [self.nextButton setTitle:@"UPDATE PRODUCT" forState:UIControlStateNormal];
+        
+    }
     //    [self updateLayout];
     
     
@@ -203,6 +229,10 @@
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    
+
+}
 
 -(void)deleteButtonHit
 {
