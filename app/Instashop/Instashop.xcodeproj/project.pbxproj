@@ -133,6 +133,7 @@
 		7B2C59E017B95B4D00CEDD5A /* SizePickerViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B2C59DE17B95B4D00CEDD5A /* SizePickerViewViewController.xib */; };
 		7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */; };
 		7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */; };
+		7B337F04183A589B00E1BC0C /* SavedItemsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B337F03183A589B00E1BC0C /* SavedItemsAPIHandler.m */; };
 		7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */; };
 		7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */; };
 		7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECE17C7AB4400F4D5D8 /* badcamera.png */; };
@@ -470,6 +471,8 @@
 		7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImagesTableViewItem.m; sourceTree = "<group>"; };
 		7B31BD6917C6D0FF00D24F55 /* NavBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NavBarTitleView.h; sourceTree = "<group>"; };
 		7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavBarTitleView.m; sourceTree = "<group>"; };
+		7B337F02183A589B00E1BC0C /* SavedItemsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedItemsAPIHandler.h; sourceTree = "<group>"; };
+		7B337F03183A589B00E1BC0C /* SavedItemsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedItemsAPIHandler.m; sourceTree = "<group>"; };
 		7B376EC917C7A35000F4D5D8 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -1133,6 +1136,15 @@
 			name = NavBarTitleView;
 			sourceTree = "<group>";
 		};
+		7B337F01183A587100E1BC0C /* SavedItems */ = {
+			isa = PBXGroup;
+			children = (
+				7B337F02183A589B00E1BC0C /* SavedItemsAPIHandler.h */,
+				7B337F03183A589B00E1BC0C /* SavedItemsAPIHandler.m */,
+			);
+			name = SavedItems;
+			sourceTree = "<group>";
+		};
 		7B376EC817C7A33300F4D5D8 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -1580,6 +1592,7 @@
 				038FCD021835BA8800EC50D5 /* Notifications */,
 				7B6C5011178B5BB900CDF0A7 /* Postmaster */,
 				7BE958EF1755470000A7E0AB /* Products */,
+				7B337F01183A587100E1BC0C /* SavedItems */,
 				7B7A7F8117D64B4500247A26 /* Search */,
 				7B6C500C178B566A00CDF0A7 /* Sellers */,
 				7B5A56F117D3DC79007AABDA /* Shops */,
@@ -2168,6 +2181,7 @@
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BC890B317668B6B00D4756D /* StripeAuthenticationHandler.m in Sources */,
 				7BA9C2EE18369513003C2DD5 /* NotificationsObject.m in Sources */,
+				7B337F04183A589B00E1BC0C /* SavedItemsAPIHandler.m in Sources */,
 				7B5F53F41767829F0066D529 /* STPCard.m in Sources */,
 				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */,

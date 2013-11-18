@@ -21,6 +21,7 @@
                 <outlet property="numberAvailableLabel" destination="104" id="304"/>
                 <outlet property="purchaseButton" destination="269" id="336"/>
                 <outlet property="retailPriceLabel" destination="115" id="p9W-Ve-8I3"/>
+                <outlet property="saveButton" destination="eCG-Zp-39Q" id="GFd-BD-Gap"/>
                 <outlet property="sellerLabel" destination="49" id="262"/>
                 <outlet property="sellerProfileImageView" destination="298" id="302"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -145,6 +146,16 @@
                             <rect key="frame" x="-1" y="0.0" width="321" height="270"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eCG-Zp-39Q">
+                            <rect key="frame" x="79" y="277" width="155" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Save">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="saveButtonHit" destination="-1" eventType="touchUpInside" id="DbV-4D-NKK"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </scrollView>
                 <view contentMode="scaleToFill" id="B12-y8-tzH">
@@ -239,7 +250,10 @@
     </objects>
     <resources>
         <image name="cell_separator.png" width="320" height="5"/>
+        <image name="cell_separator.png" width="320" height="5"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="top_shadow.png" width="320" height="50"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>

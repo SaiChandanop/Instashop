@@ -30,6 +30,7 @@
 #import "AmberViewController.h"
 #import "AmberAPIHandler.h"
 #import "NotificationsAPIHandler.h"
+#import "SavedItemsAPIHandler.h"
 
 @interface PurchasingViewController ()
 
@@ -64,7 +65,7 @@
 @synthesize commentExitButton;
 @synthesize cialBrowserViewController;
 @synthesize isEditable;
-
+@synthesize saveButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -107,7 +108,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     NSLog(@"requestingProductID: %@", self.requestingProductID);
-    [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self];
+    [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self withInstagramID:[InstagramUserObject getStoredUserObject].userID];
     
     self.sizeSelectedIndex = 0;
     self.descriptionTextView.text = @"";
@@ -270,7 +271,11 @@
     
     
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
-    
+ 
+    if ([[self.requestedProductObject objectForKey:@"is_saved"] boolValue])
+        self.saveButton.titleLabel.text = @"Saved";
+    else
+        self.saveButton.titleLabel.text = @"Save";
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -391,6 +396,21 @@
 {
     
 }
+
+
+- (IBAction) saveButtonHit
+{
+    [SavedItemsAPIHandler makeSavedItemRequestWithDelegate:self withInstagramID:[InstagramUserObject getStoredUserObject].userID withProductID:[self.requestedProductObject objectForKey:@"product_id"]];
+    
+    
+}
+
+-(void)savedItemsCompleted
+{
+    [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self withInstagramID:[InstagramUserObject getStoredUserObject].userID];
+}
+
+
 -(IBAction)buyButtonHit
 {
     

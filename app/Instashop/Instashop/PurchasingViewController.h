@@ -41,7 +41,7 @@
     UIButton *sizeButton;
     UIButton *quantityButton;
     UIButton *purchaseButton;
-    
+    UIButton *saveButton;
     int sizeSelectedIndex;
     
     NSArray *likesArray;
@@ -68,7 +68,7 @@
 - (IBAction) buyButtonHit;
 - (IBAction) sizeButtonHit;
 - (IBAction) quantityButtonHit;
-
+- (IBAction) saveButtonHit;
 - (void) loadContentViews;
 
 - (void)webControllerBackButtonHit;
@@ -96,7 +96,7 @@
 @property (nonatomic, retain) IBOutlet ISAsynchImageView *sellerProfileImageView;
 @property (nonatomic, retain) IBOutlet UIButton *sizeButton;
 @property (nonatomic, retain) IBOutlet UIButton *quantityButton;
-
+@property (nonatomic, retain) IBOutlet UIButton *saveButton;
 @property (nonatomic, retain) IBOutlet UIButton *purchaseButton;
 @property (nonatomic, retain) IBOutlet UIView *bottomView;
 

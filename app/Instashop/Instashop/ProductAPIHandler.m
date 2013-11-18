@@ -65,10 +65,10 @@
     
 }
 
-+(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate
++(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate withInstagramID:(NSString *)instagramID
 {
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?requesting_product_id=", productID];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, [NSString stringWithFormat:@"get_products.php?requesting_product_id=%@&instagram_id=%@", productID, instagramID]];
     
     NSLog(@"urlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -106,7 +106,6 @@
     NSString* newStr = [[[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-//    NSLog(@"newStr: %@", newStr);
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
 //    NSLog(@"responseArray: %@", responseArray);

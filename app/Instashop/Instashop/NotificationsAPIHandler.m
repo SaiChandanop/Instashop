@@ -38,7 +38,7 @@
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
-    NSLog(@"responseArray: %@", responseArray);
+//    NSLog(@"responseArray: %@", responseArray);
     
     NSMutableArray *ar = [NSMutableArray arrayWithCapacity:0];
     for (int i = 0; i < [responseArray count]; i++)
