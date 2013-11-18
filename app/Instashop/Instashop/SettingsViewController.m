@@ -62,24 +62,135 @@
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
     [self.view insertSubview:bgImageView atIndex:0];
-
+    
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
-{    
+{
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 - (IBAction)sendFeedbackButtonHit
 {
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
     [controller setToRecipients:[NSArray arrayWithObject:@"appfeedback@shopsy.com"]];
     [controller setSubject:@"Feedback"];
-    if (controller)
-        [self presentViewController:controller animated:YES completion:nil];
-
-
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController presentViewController:controller animated:YES completion:nil];
+    
+    
+    
 }
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    switch (result) {
+        case MessageComposeResultCancelled:
+            NSLog(@"MFMessageComposeViewController: MessageComposeResultCancelled");
+            break;
+        case MessageComposeResultSent:
+            NSLog(@"MFMessageComposeViewController: MessageComposeResultSent");
+            break;
+        case MessageComposeResultFailed:
+            NSLog(@"MFMessageComposeViewController: MessageComposeResultFailed");
+            break;
+            
+        default:
+            break;
+    }
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+    
+}
+
+- (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+}
+
+// Called after a person has been selected by the user.
+// Return YES if you want the person to be displayed.
+// Return NO  to do nothing (the delegate is responsible for dismissing the peoplePicker).
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person
+{
+    NSLog(@"peoplePickerNavigationController, person: %@", person);
+    
+    return YES;
+}
+
+
+// Called after a value has been selected by the user.
+// Return YES if you want default action to be performed.
+// Return NO to do nothing (the delegate is responsible for dismissing the peoplePicker).
+- (BOOL)peoplePickerNavigationController:(ABPeoplePickerNavigationController *)peoplePicker shouldContinueAfterSelectingPerson:(ABRecordRef)person property:(ABPropertyID)property identifier:(ABMultiValueIdentifier)identifier
+{
+    NSLog(@"peoplePickerNavigationController, !shouldContinueAfterSelectingPerson: %@", person); // ABPropertyID: %@ identifier: %@", person, property, identifier);
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    
+    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:^{
+        switch (property) {
+            case kABRealPropertyType:
+                NSLog(@"kABRealPropertyType"); //phone
+                NSString *phoneNumber = nil;
+                ABMultiValueRef multiPhones = ABRecordCopyValue(person, kABPersonPhoneProperty);
+                for(CFIndex i = 0; i < ABMultiValueGetCount(multiPhones); i++) {
+                    if(identifier == ABMultiValueGetIdentifierAtIndex (multiPhones, i)) {
+                        CFStringRef phoneNumberRef = ABMultiValueCopyValueAtIndex(multiPhones, i);
+                        CFRelease(multiPhones);
+                        phoneNumber = (NSString *) phoneNumberRef;
+                    }
+                }
+                
+                if (phoneNumber != nil)
+                {
+                    NSLog(@"phoneNumber: %@", phoneNumber);
+                    MFMessageComposeViewController *phonePicker = [[MFMessageComposeViewController alloc] init];
+                    phonePicker.recipients = [NSArray arrayWithObject:phoneNumber];
+                    phonePicker.messageComposeDelegate = self;
+                    phonePicker.body = @"yo download my app: http://google.com";
+                    [delegate.appRootViewController presentViewController:phonePicker animated:YES completion:nil];
+                }
+                
+                break;
+            case kABDateTimePropertyType:
+                NSLog(@"kABDateTimePropertyType"); //email
+                
+                ABMultiValueRef emailMultiValue = ABRecordCopyValue(person, kABPersonEmailProperty);
+                NSArray *emailAddresses = (NSArray *)ABMultiValueCopyArrayOfAllValues(emailMultiValue);
+                NSLog(@"emailAddresses: %@", emailAddresses);
+                if (emailAddresses != nil)
+                {
+                    NSLog(@"present!!!");
+                    MFMailComposeViewController* mailComposerController = [[MFMailComposeViewController alloc] init];
+                    mailComposerController.mailComposeDelegate = self;
+                    [mailComposerController setToRecipients:[NSArray arrayWithArray:emailAddresses]];
+                    [mailComposerController setSubject:@"Check it out"];
+                    [mailComposerController setMessageBody:@"<html><B>yo download my app: http://google.com" isHTML:YES];
+                    [delegate.appRootViewController presentViewController:mailComposerController animated:YES completion:nil];
+                }
+                break;
+                
+        }
+    }];
+    return NO;
+}
+
+
+- (IBAction)inviteButtonHit
+{
+    NSLog(@"inviteButtonHit");
+    
+    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
+    picker.peoplePickerDelegate = self;
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController presentViewController:picker animated:YES completion:nil];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

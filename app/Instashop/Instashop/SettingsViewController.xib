@@ -53,7 +53,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="X07-xg-ccs">
-                            <rect key="frame" x="2" y="-23" width="320" height="44"/>
+                            <rect key="frame" x="2" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal">
@@ -63,6 +63,9 @@
                             <state key="highlighted">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
+                            <connections>
+                                <action selector="inviteButtonHit" destination="-1" eventType="touchUpInside" id="YKH-Jt-YC5"/>
+                            </connections>
                         </button>
                     </subviews>
                 </view>

@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <MessageUI/MessageUI.h>
-
+#import <AddressBookUI/AddressBookUI.h>
 
 @class AppRootViewController;
 
-@interface SettingsViewController : UIViewController <MFMailComposeViewControllerDelegate>
+@interface SettingsViewController : UIViewController <MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, ABPeoplePickerNavigationControllerDelegate>
 
 {
     AppRootViewController *parentController;
@@ -23,7 +23,7 @@
     
 }
 
-
+- (IBAction)inviteButtonHit;
 -(IBAction) tempSellerButtonHit;
 -(void)createSellerCancelButtonHit:(UINavigationController *)theNavigationController;
 -(void)createSellerDone:(UINavigationController *)theNavigationController;

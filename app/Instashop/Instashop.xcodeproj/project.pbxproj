@@ -134,6 +134,8 @@
 		7B31BD6717C6C74E00D24F55 /* ImagesTableViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6617C6C74E00D24F55 /* ImagesTableViewItem.m */; };
 		7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */; };
 		7B337F04183A589B00E1BC0C /* SavedItemsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B337F03183A589B00E1BC0C /* SavedItemsAPIHandler.m */; };
+		7B337F08183AA92800E1BC0C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B337F06183AA92800E1BC0C /* AddressBook.framework */; };
+		7B337F09183AA92800E1BC0C /* AddressBookUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B337F07183AA92800E1BC0C /* AddressBookUI.framework */; };
 		7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */; };
 		7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */; };
 		7B376ECF17C7AB4400F4D5D8 /* badcamera.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B376ECE17C7AB4400F4D5D8 /* badcamera.png */; };
@@ -473,6 +475,8 @@
 		7B31BD6A17C6D0FF00D24F55 /* NavBarTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NavBarTitleView.m; sourceTree = "<group>"; };
 		7B337F02183A589B00E1BC0C /* SavedItemsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SavedItemsAPIHandler.h; sourceTree = "<group>"; };
 		7B337F03183A589B00E1BC0C /* SavedItemsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SavedItemsAPIHandler.m; sourceTree = "<group>"; };
+		7B337F06183AA92800E1BC0C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		7B337F07183AA92800E1BC0C /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		7B376EC917C7A35000F4D5D8 /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		7B376ECA17C7A35000F4D5D8 /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		7B376ECB17C7A35000F4D5D8 /* ProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
@@ -758,6 +762,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7B337F08183AA92800E1BC0C /* AddressBook.framework in Frameworks */,
+				7B337F09183AA92800E1BC0C /* AddressBookUI.framework in Frameworks */,
 				7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */,
 				7B7FEF1F18199C2F00C58944 /* Accounts.framework in Frameworks */,
 				7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */,
@@ -1386,6 +1392,8 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7B337F06183AA92800E1BC0C /* AddressBook.framework */,
+				7B337F07183AA92800E1BC0C /* AddressBookUI.framework */,
 				7B7FEF2018199D1E00C58944 /* Social.framework */,
 				7B7FEF1E18199C2F00C58944 /* Accounts.framework */,
 				7BDED69B180C7A48001FF165 /* MessageUI.framework */,
