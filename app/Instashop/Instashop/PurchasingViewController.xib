@@ -250,10 +250,7 @@
     </objects>
     <resources>
         <image name="cell_separator.png" width="320" height="5"/>
-        <image name="cell_separator.png" width="320" height="5"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="top_shadow.png" width="320" height="50"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>

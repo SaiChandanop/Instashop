@@ -224,7 +224,6 @@
     
     self.favoritesSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
     self.favoritesSelectTableViewController.tableView.frame = self.productSelectTableViewController.tableView.frame;
-    self.favoritesSelectTableViewController.contentRequestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/liked", @"method", @"-1", @"count", nil];
     self.favoritesSelectTableViewController.cellDelegate = self;
     self.favoritesSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
     self.favoritesSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;

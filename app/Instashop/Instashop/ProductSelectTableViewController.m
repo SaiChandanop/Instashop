@@ -46,48 +46,22 @@
     NSLog(@"request did load!!: %@", request.url);
     
     
+    NSDictionary *metaDictionary = [result objectForKey:@"meta"];
+    int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
     
-    if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER)
+    
+    if (responseCode == 200)
     {
-        NSDictionary *metaDictionary = [result objectForKey:@"meta"];
-        int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
+        NSArray *dataArray = [result objectForKey:@"data"];
         
-     
-        NSLog(@"here @ PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER");
-        NSMutableArray *likedInstagramIDs = [NSMutableArray arrayWithCapacity:0];
-        if (responseCode == 200)
-        {
-            NSArray *dataArray = [result objectForKey:@"data"];
-         
-            for (int i = 0; i < [dataArray count]; i++)
-            {
-                NSDictionary *dict = [dataArray objectAtIndex:i];
-                [likedInstagramIDs addObject:[dict objectForKey:@"id"]];
-            }
-
-            [ProductAPIHandler getLikedProductsByInstagramIDs:likedInstagramIDs withDelegate:self];
-            
-        }
+        [self.contentArray removeAllObjects];
+        [self.contentArray addObjectsFromArray:dataArray];
+        if (self.referenceTableView != nil)
+            [self.referenceTableView reloadData];
+        else
+            [self.tableView reloadData];
     }
     
-    else
-    {
-        NSDictionary *metaDictionary = [result objectForKey:@"meta"];
-        int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
-        
-        
-        if (responseCode == 200)
-        {
-            NSArray *dataArray = [result objectForKey:@"data"];
-            
-            [self.contentArray removeAllObjects];
-            [self.contentArray addObjectsFromArray:dataArray];
-            if (self.referenceTableView != nil)
-                [self.referenceTableView reloadData];
-            else
-                [self.tableView reloadData];
-        }
-    }
 }
 
 
@@ -156,6 +130,11 @@
                 break;
             case PRODUCT_REQUESTOR_TYPE_SEARCH:
                 [SearchAPIHandler makeProductSearchRequestWithDelegate:self withSearchCategoriesArray:self.searchRequestObject.searchCategoriesArray withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
+                break;
+                
+            case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER:
+                NSLog(@"case is: PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER");
+                [ProductAPIHandler getSavedProductsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
             default:
                 break;
         }
@@ -189,7 +168,7 @@
     
     [self.contentArray addObjectsFromArray:sorted];
     
-//    NSLog(@"contentArray: %@", contentArray);
+    //    NSLog(@"contentArray: %@", contentArray);
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }
