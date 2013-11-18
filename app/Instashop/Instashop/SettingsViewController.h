@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
+
 
 @class AppRootViewController;
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : UIViewController <MFMailComposeViewControllerDelegate>
 
 {
     AppRootViewController *parentController;
@@ -36,7 +38,7 @@
 - (IBAction) reportBug;
 - (IBAction) termsOfServiceButtonHit;
 - (IBAction) settingsButtonHit;
-
+- (IBAction)sendFeedbackButtonHit;
 @property (nonatomic, retain) AppRootViewController *parentController;
 
 @property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;

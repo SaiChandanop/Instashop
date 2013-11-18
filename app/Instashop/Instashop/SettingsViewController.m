@@ -65,6 +65,21 @@
 
 }
 
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
+{    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)sendFeedbackButtonHit
+{
+    MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+    controller.mailComposeDelegate = self;
+    [controller setToRecipients:[NSArray arrayWithObject:@"appfeedback@shopsy.com"]];
+    [controller setSubject:@"Feedback"];
+    if (controller)
+        [self presentViewController:controller animated:YES completion:nil];
+
+
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
