@@ -67,7 +67,8 @@
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 {
-    [self dismissViewControllerAnimated:YES completion:nil];
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)sendFeedbackButtonHit
@@ -107,8 +108,16 @@
 
 - (void)peoplePickerNavigationControllerDidCancel:(ABPeoplePickerNavigationController *)peoplePicker
 {
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+//    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//    [peoplePicker.appRootViewController dismissViewControllerAnimated:YES completion:nil];
+    
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.456];
+    [UIView setAnimationDelegate:self];
+    peoplePicker.view.frame = CGRectMake(0,peoplePicker.view.frame.size.height, peoplePicker.view.frame.size.width, peoplePicker.view.frame.size.height);
+    [UIView commitAnimations];
+    
 }
 
 // Called after a person has been selected by the user.
@@ -132,7 +141,7 @@
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     
-    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:^{
+//    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:^{
         switch (property) {
             case kABRealPropertyType:
                 NSLog(@"kABRealPropertyType"); //phone
@@ -176,7 +185,7 @@
                 break;
                 
         }
-    }];
+//    }];
     return NO;
 }
 
@@ -187,8 +196,21 @@
     
     ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
     picker.peoplePickerDelegate = self;
+    
+    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.appRootViewController presentViewController:picker animated:YES completion:nil];
+//    [delegate.appRootViewController presentViewController:picker animated:YES completion:nil];
+    
+    picker.view.frame = CGRectMake(0,picker.view.frame.size.height, picker.view.frame.size.width, picker.view.frame.size.height);
+    [delegate.appRootViewController.view addSubview:picker.view];
+    
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.456];
+    [UIView setAnimationDelegate:self];
+    picker.view.frame = CGRectMake(0, 0, picker.view.frame.size.width, picker.view.frame.size.height);
+    [UIView commitAnimations];
+    
 }
 
 - (void)didReceiveMemoryWarning
