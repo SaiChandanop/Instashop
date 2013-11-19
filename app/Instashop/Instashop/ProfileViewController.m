@@ -91,7 +91,7 @@
     UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
     self.navigationItem.rightBarButtonItem = shareButton;
-
+    
     
 }
 
@@ -131,7 +131,7 @@
                     NSLog(@"SLComposeViewControllerResultDone");
                     break;
             }};
-
+        
         NSString *postText = [NSString stringWithFormat:@"promo!"];
         [facebookController setInitialText:postText];
         [facebookController addImage:self.profileImageView.image];
@@ -175,9 +175,32 @@
         [[AppRootViewController sharedRootViewController] presentViewController:tweetController animated:YES completion:nil];
         
     }
-
     
-    
+    else if ([buttonTitle compare:@"Instagram"] == NSOrderedSame)
+    {
+        NSLog(@"here1");
+        NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
+        if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
+        {
+            NSLog(@"here2");
+            CGRect rect = CGRectMake(0,0,0,0);
+            CGRect cropRect=CGRectMake(0,0,612,612);
+            NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
+            CGImageRef imageRef = CGImageCreateWithImageInRect([self.profileImageView.image CGImage], cropRect);
+            UIImage *img = [[UIImage alloc] initWithCGImage:imageRef];
+            CGImageRelease(imageRef);
+            
+            BOOL writeSuccess = [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
+            NSLog(@"writeSuccess: %d", writeSuccess);
+            
+            NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
+            UIDocumentInteractionController *dicot = [[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile] retain];
+            dicot.UTI = @"com.instagram.photo";
+            dicot.annotation = [NSDictionary dictionaryWithObject:@"Caption" forKey:@"InstagramCaption"];
+            [dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
+            
+        }
+    }
     
 }
 - (void)viewDidAppear:(BOOL)animated
@@ -462,7 +485,7 @@
 {
     if (self.favoritesSelectTableViewController != nil)
         [self.favoritesSelectTableViewController.tableView removeFromSuperview];
-
+    
     
     if ([self.theTableView superview] == nil)
         [self.view addSubview:self.theTableView];
@@ -482,10 +505,10 @@
     
     if (self.productSelectTableViewController != nil)
         [self.productSelectTableViewController.tableView removeFromSuperview];
-
+    
     if (self.favoritesSelectTableViewController != nil)
         [self.favoritesSelectTableViewController.tableView removeFromSuperview];
-
+    
     
     if ([self.theTableView superview] != nil)
         [self.theTableView removeFromSuperview];

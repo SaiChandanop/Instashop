@@ -83,9 +83,7 @@ float transitionTime = .456;
 	// Do any additional setup after loading the view.
     
     [self setNeedsStatusBarAppearanceUpdate];
-    
-    [self runTutorial]; // remove this line to rest to normal state
-    
+        
     
 }
 

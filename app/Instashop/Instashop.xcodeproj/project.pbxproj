@@ -153,6 +153,7 @@
 		7B51EB1917C30F03009FBE91 /* cell_disclosure_new@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1817C30F03009FBE91 /* cell_disclosure_new@2x.png */; };
 		7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */; };
 		7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */; };
+		7B58C3F4183C1C610080E569 /* test.igo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B58C3F3183C1C610080E569 /* test.igo.png */; };
 		7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56E817D3D757007AABDA /* SuggestedStoresViewController.m */; };
 		7B5A56EB17D3D757007AABDA /* SuggestedStoresViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A56E917D3D757007AABDA /* SuggestedStoresViewController.xib */; };
 		7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */; };
@@ -500,6 +501,7 @@
 		7B51EB1817C30F03009FBE91 /* cell_disclosure_new@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell_disclosure_new@2x.png"; sourceTree = "<group>"; };
 		7B51EB1A17C30FDF009FBE91 /* drop_button_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop_button_dark@2x.png"; sourceTree = "<group>"; };
 		7B51EB1B17C30FDF009FBE91 /* drop_button_light@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "drop_button_light@2x.png"; sourceTree = "<group>"; };
+		7B58C3F3183C1C610080E569 /* test.igo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = test.igo.png; sourceTree = "<group>"; };
 		7B5A56E717D3D757007AABDA /* SuggestedStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestedStoresViewController.h; sourceTree = "<group>"; };
 		7B5A56E817D3D757007AABDA /* SuggestedStoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SuggestedStoresViewController.m; sourceTree = "<group>"; };
 		7B5A56E917D3D757007AABDA /* SuggestedStoresViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SuggestedStoresViewController.xib; sourceTree = "<group>"; };
@@ -1422,6 +1424,7 @@
 		7B61EE4D174D2162002A483D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				7B58C3F3183C1C610080E569 /* test.igo.png */,
 				2E628C9517C6A17000CB7BE4 /* Icon */,
 				7BF9DD74178C5459005148A8 /* SBJSon */,
 				7BE29B99177A21000093BB25 /* attributes.csv */,
@@ -2029,6 +2032,7 @@
 				1903FF7217DA6D0800CD65F8 /* manage-graphic@2x.png in Resources */,
 				2E628CAE17C6A19900CB7BE4 /* AppIcon60x60.png in Resources */,
 				1903FF7317DA6D0800CD65F8 /* manage-title@2x.png in Resources */,
+				7B58C3F4183C1C610080E569 /* test.igo.png in Resources */,
 				7B5D62A617C5AF9F00D6C8B1 /* cvc@2x.png in Resources */,
 				7B376ECD17C7A35000F4D5D8 /* ProfileViewController.xib in Resources */,
 				2E0EAE0F176F6E6700B65FC3 /* setPersonalIcon@2x.png.png in Resources */,
@@ -2348,7 +2352,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
