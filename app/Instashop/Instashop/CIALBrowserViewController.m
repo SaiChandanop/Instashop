@@ -280,6 +280,11 @@
     [locationField resignFirstResponder];
     
     self.view.backgroundColor = [ISConstants getISGreenColor];
+    
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarShopsyLogo.png"]];
+    self.navigationItem.titleView = theImageView;
+
+    
 }
 
 - (void)dealloc {

@@ -31,7 +31,10 @@
     NSLog(@"[Utils getEscapedStringFromUnescapedString:self.referenceURLString];: %@", [Utils getEscapedStringFromUnescapedString:self.referenceURLString]);
     NSLog(@"[Utils urlencode:self.referenceURLString]: %@", [Utils urlencode:self.referenceURLString]);
     
-        
+    UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarShopsyLogo.png"]];
+    self.navigationItem.titleView = theImageView;
+
+    
     self.referenceURLString = [self.referenceURLString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
     NSString *customCSSURLString = @"http://instashop.com/test_custom.css";
