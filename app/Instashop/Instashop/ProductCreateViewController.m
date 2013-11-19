@@ -93,8 +93,8 @@
     
     if (exists)
     {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"You've used this image already"
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"NO DICE"
+                                                            message:@"This photo is being used already in an active product."
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
