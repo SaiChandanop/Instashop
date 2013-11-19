@@ -484,8 +484,10 @@
     else
     {
         self.cialBrowserViewController = [[CIALBrowserViewController alloc] init];
+        self.cialBrowserViewController.purchasingViewController = self;
         [self.navigationController pushViewController:cialBrowserViewController animated:YES];
         [self.cialBrowserViewController openThisURL:[NSURL URLWithString:self.viglinkString]];
+        
     }
     
 }
@@ -798,20 +800,31 @@
     
 }
 
-
 - (void) openActionSheet {
+    self.actionSheetHandlingViewController = self;
+    [self beginActionSheet];
+}
+-(void)openActionSheetFromCallerController:(UIViewController *)callerController
+{
+    self.actionSheetHandlingViewController = callerController;
+    [self beginActionSheet];
+}
+
+- (void) beginActionSheet {
+    
+    
 
     if (self.isEditable)
     {
         UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit", @"Delete", @"Facebook", @"Twitter",nil];
         shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+        [shareActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
     }
     else
     {
     UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", nil];
     shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+    [shareActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
     }
 }
 
@@ -844,7 +857,7 @@
         [actionSheet dismissWithClickedButtonIndex:2 animated:YES];
         UIActionSheet *flagActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Inappropriate", @"Incorrect Link", @"Other", nil];
         flagActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-        [flagActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+        [flagActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
     }
     
     else if ([buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Other"]) {

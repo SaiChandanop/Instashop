@@ -59,6 +59,8 @@
     CIALBrowserViewController *cialBrowserViewController;
     
     BOOL isEditable;
+    
+    UIViewController *actionSheetHandlingViewController;
 }
 
 - (IBAction) likeButtonHit;
@@ -118,6 +120,7 @@
 
 @property (nonatomic, assign) BOOL isEditable;
 
+@property (nonatomic, retain) UIViewController *actionSheetHandlingViewController;
 
 
 @end

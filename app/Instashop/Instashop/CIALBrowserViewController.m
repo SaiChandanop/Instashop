@@ -32,6 +32,7 @@
 @synthesize actionActionSheet = _actionActionSheet;
 @synthesize modal = _modal;
 @synthesize enabledSafari = _enabledSafari;
+@synthesize purchasingViewController;
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url
 {
@@ -285,6 +286,15 @@
     self.navigationItem.titleView = theImageView;
 
     
+    UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(openActionSheet)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+
+}
+
+-(void)openActionSheet
+{
+    [self.purchasingViewController openActionSheetFromCallerController:self];
 }
 
 - (void)dealloc {
@@ -883,5 +893,17 @@
         [viewController dismissModalViewControllerAnimated:YES];
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 @end

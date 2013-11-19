@@ -11,6 +11,8 @@
 #import "ViewBookmarkViewController.h"
 #import "AddBookmarkViewController.h"
 
+@class PurchasingViewController;
+
 @interface CIALBrowserViewController : UIViewController <UIWebViewDelegate, UITextFieldDelegate, UIActionSheetDelegate, ViewBookmarkDelegate, AddBookmarkDelegate, MFMailComposeViewControllerDelegate, UIPrintInteractionControllerDelegate> {
     UIToolbar *toolBar;
     UIBarButtonItem *backButtonItem;
@@ -46,6 +48,8 @@
     
     NSMutableURLRequest* req;
     
+    PurchasingViewController *purchasingViewController;
+    
 }
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url;
@@ -64,5 +68,8 @@
 
 - (void)dismissViewBookmMarkViewController:(ViewBookmarkViewController *)viewController;
 - (void)dismissAddBookmMarkViewController:(AddBookmarkViewController *)viewController;
+
+
+@property (nonatomic, retain) PurchasingViewController *purchasingViewController;
 
 @end
