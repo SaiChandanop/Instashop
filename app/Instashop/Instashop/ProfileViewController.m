@@ -186,7 +186,7 @@
             CGRect rect = CGRectMake(0,0,0,0);
             CGRect cropRect=CGRectMake(0,0,612,612);
             NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
-            CGImageRef imageRef = CGImageCreateWithImageInRect([self.profileImageView.image CGImage], cropRect);
+            CGImageRef imageRef = CGImageCreateWithImageInRect([self.backgroundImageView.image CGImage], cropRect);
             UIImage *img = [[UIImage alloc] initWithCGImage:imageRef];
             CGImageRelease(imageRef);
             
@@ -199,6 +199,9 @@
             dicot.annotation = [NSDictionary dictionaryWithObject:@"Caption" forKey:@"InstagramCaption"];
             [dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
             
+            UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(50,50,100,100)];
+            theImageView.image = img;
+            [self.view addSubview:theImageView];
         }
     }
     
