@@ -42,6 +42,8 @@
 
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
 
+@property (nonatomic, retain) IBOutlet UIButton *postProductButton;
+
 @property (nonatomic, retain) IBOutlet UIView *termsView;
 
 @property (nonatomic, retain) IBOutlet UIView *logoutView;

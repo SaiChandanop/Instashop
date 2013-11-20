@@ -86,8 +86,7 @@
     [self.appRootViewController suggestedShopExitButtonHit:self.navigationController];
 }
 
--(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray
-{
+-(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray {
     
     [self.containerViewsDictionary removeAllObjects];
     
@@ -135,7 +134,10 @@
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
-
+        
+/*      NSLog(@"This is the request URL: %@", request.url);
+        NSLog(@"This is the params: %@", params);
+*/
     }
     else if ([request.url rangeOfString:@"follows"].length > 0)
     {
@@ -146,6 +148,8 @@
             [likedIDsArray addObject:[[dataArray objectAtIndex:i] objectForKey:@"id"]];
         
         self.likedArrayCount = likedIDsArray.count;
+        NSLog(@"This is array count: %i", likedIDsArray.count);
+        
         [self updateButton];
         
         for (id key in self.containerViewsDictionary)
@@ -157,6 +161,7 @@
             else
                 shopView.followButton.selected = NO;
         }
+   
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
     {
@@ -177,7 +182,6 @@
                 [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:shopView.theBackgroundImageView withInstagramID:shopView.shopViewInstagramID];
                 
                 [shopView bringSubviewToFront:shopView.profileImageView];
-                
             }
     }
 }
@@ -244,4 +248,6 @@
         [self.navigationController pushViewController:profileViewController animated:YES];
     }
 }
+
+
 @end
