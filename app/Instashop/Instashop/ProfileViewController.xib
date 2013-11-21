@@ -249,9 +249,7 @@
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
-        <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bottom_shadow.png" width="320" height="50"/>
-        <image name="cell_separator.png" width="320" height="5"/>
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="edit_photo.png" width="50" height="50"/>
         <image name="feedImageShadow.png" width="106" height="106"/>
@@ -260,8 +258,6 @@
         <image name="instagram_gray_icon.png" width="44" height="44"/>
         <image name="lightMenuBG.png" width="320" height="548"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="menuDarkBG.png" width="320" height="44"/>
-        <image name="menuLightBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>

@@ -82,11 +82,44 @@ static void *finishedContext            = @"finishedContext";
         [params setValue:self.accessToken forKey:@"access_token"];
     }
     
-    IGRequest* _request = [IGRequest getRequestWithParams:params
-                                               httpMethod:httpMethod
-                                                 delegate:delegate
-                                               requestURL:url];
-    [_requests addObject:_request];
+    IGRequest* _request;
+    
+    _request = [IGRequest getRequestWithParams:params
+                                    httpMethod:httpMethod
+                                      delegate:delegate
+                                    requestURL:url];
+    
+    //
+    /*
+    IGRequest *_appendRequest = _request;
+    
+    NSArray *dataArray = _request.responseText;
+    BOOL paginationExists = NO;
+    NSString *nextURL = NULL;
+    for (int i =0; i < [dataArray count]; i++) {
+        if ([[dataArray objectAtIndex:i] isEqualToString:@"next_url"]) {
+            nextURL = [dataArray objectAtIndex:i+1]; // probably completely wrong.
+            paginationExists = YES;
+            break;
+        }
+    }
+    
+    while (paginationExists) {
+         _appendRequest = [IGRequest getRequestWithParams:params
+                                        httpMethod:httpMethod
+                                          delegate:delegate
+                                        requestURL:nextURL];
+        [_request.responseText appendData:_appendRequest.responseText];
+        for (int i =0; i < [dataArray count]; i++) {
+            if ([[dataArray objectAtIndex:i] isEqualToString:@"next_url"]) {
+                nextURL = [dataArray objectAtIndex:i+1]; // probably completely wrong.
+                continue;
+            }
+        }
+        paginationExists = NO;
+    }*/
+    // // These are my changes.  
+    
     [_request addObserver:self forKeyPath:requestFinishedKeyPath options:0 context:finishedContext];
     [_request connect];
     return _request;

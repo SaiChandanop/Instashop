@@ -31,6 +31,7 @@
 @synthesize logoutView;
 @synthesize topBarView;
 @synthesize sellerLabel;
+@synthesize postProductButton;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -56,6 +57,9 @@
     self.theScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     self.theScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height);
     [self.view insertSubview:self.theScrollView belowSubview:self.topBarView];
+    /*
+    self.postProductButton.frame = CGRectMake(0.0, self.view.frame.size.height - self.postProductButton.frame.size.height, 0.0,self.postProductButton.frame.size.height);
+    [self.view insertSubview:self.postProductButton aboveSubview:self.theScrollView];*/
     
     /* joel use these for reference
     NSLog(@"scroll view size: %@", NSStringFromCGRect(self.theScrollView.frame));

@@ -50,23 +50,24 @@
     //    CGFloat whiteSpace = 11.0f;
     //CGFloat topSpace = 64.0f;
     
-    // Scroll View
-    self.tutorialScrollView = [[UIScrollView alloc] initWithFrame:screenBound];
-    self.tutorialScrollView.pagingEnabled = YES;
-    self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
-    self.tutorialScrollView.backgroundColor = [UIColor blackColor];\
-    self.tutorialScrollView.bounces = NO;  // Empty side view
-
-    // Next Button
-    float buttonPosition = 515.0; // Change this number to change the button position.
     UIColor *textColor = [UIColor colorWithRed:70.0 green:70.0 blue:70.0 alpha:1.0];
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, buttonPosition, screenWidth, screenHeight - buttonPosition)];
+    
+    // Next Button
+    float buttonSize = 50.0; // Change this number to change the button position.
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, screenHeight - buttonSize, screenWidth, buttonSize)];
     [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
     self.nextButton.titleLabel.textColor = textColor;
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
     [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
     [self.nextButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
+    
+    // Scroll View
+    self.tutorialScrollView = [[UIScrollView alloc] initWithFrame:screenBound];
+    self.tutorialScrollView.pagingEnabled = YES;
+    self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
+    self.tutorialScrollView.backgroundColor = [UIColor blackColor];\
+    self.tutorialScrollView.bounces = NO;  // Empty side view
     
     // Needs to be less than bound height to disable vertical scrolling.
     self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, 33.3);
@@ -103,9 +104,11 @@
     }
     
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight);
+    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 2, 0.0, screenWidth, screenHeight - buttonSize);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
     [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
+    
+    NSLog(@"This is the screenHeight: %f", screenHeight);
     
     self.tutorialScrollView.delegate = self;
     [self.view addSubview:self.tutorialScrollView];
