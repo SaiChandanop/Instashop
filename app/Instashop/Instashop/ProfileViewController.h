@@ -53,6 +53,7 @@
     BOOL isSelfProfile;
     NSDictionary *requestedInstagramProfileObject;
     
+    UIButton *imagePickButton;
 }
 
 -(void)loadNavigationControlls;
@@ -106,6 +107,8 @@
 @property (nonatomic, retain) IBOutlet UIImageView *bioContainerImageView;
 @property (nonatomic, retain) IBOutlet UILabel *bioLabel;
 @property (nonatomic, retain) IBOutlet UILabel *descriptionLabel;
+
+@property (nonatomic, retain) IBOutlet UIButton *imagePickButton;
 
 
 

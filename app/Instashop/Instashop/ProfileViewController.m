@@ -56,6 +56,7 @@
 @synthesize bioLabel;
 @synthesize descriptionLabel;
 @synthesize favoritesSelectTableViewController;
+@synthesize imagePickButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -92,7 +93,17 @@
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
+    NSLog(@"profileInstagramID: %@", profileInstagramID);
+    NSLog(@"[InstagramUserObject getStoredUserObject].userID: %@",[InstagramUserObject getStoredUserObject].userID);
+    NSLog(@"self.imagePickButton: %@", self.imagePickButton);
     
+    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+    {
+        NSLog(@"remove");
+        [self.imagePickButton removeFromSuperview];
+    }
+    
+        
 }
 
 
