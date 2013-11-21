@@ -178,34 +178,37 @@
     
     else if ([buttonTitle compare:@"Instagram"] == NSOrderedSame)
     {
-        NSLog(@"here1");
+                    AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
         NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
         if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
         {
-            NSLog(@"here2");
             CGRect rect = CGRectMake(0,0,0,0);
             CGRect cropRect=CGRectMake(0,0,612,612);
             NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
             CGImageRef imageRef = CGImageCreateWithImageInRect([self.backgroundImageView.image CGImage], cropRect);
-            UIImage *img = [[UIImage alloc] initWithCGImage:imageRef];
+            UIImage *img = [UIImage imageNamed:@"AppIcon76x76.png"];//[[UIImage alloc] initWithCGImage:imageRef];
             CGImageRelease(imageRef);
             
             BOOL writeSuccess = [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
-            NSLog(@"writeSuccess: %d", writeSuccess);
+
             
             NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
             UIDocumentInteractionController *dicot = [[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile] retain];
+            dicot.delegate = del;
             dicot.UTI = @"com.instagram.photo";
             dicot.annotation = [NSDictionary dictionaryWithObject:@"Caption" forKey:@"InstagramCaption"];
             [dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
             
-            UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(50,50,100,100)];
-            theImageView.image = img;
-            [self.view addSubview:theImageView];
+
+            [del loadShareCoverViewWithImage:img];
         }
     }
     
 }
+
+
+
 - (void)viewDidAppear:(BOOL)animated
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

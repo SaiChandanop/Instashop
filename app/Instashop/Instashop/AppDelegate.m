@@ -24,7 +24,7 @@
 @implementation AppDelegate
 
 @synthesize instagram, authenticationViewController, appRootViewController;
-@synthesize pushDeviceTokenString;
+@synthesize pushDeviceTokenString, socialCoverImageView;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -147,6 +147,31 @@
     
 }
 
+- (void)loadShareCoverViewWithImage:(UIImage *)theImage
+{
+    self.socialCoverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(320 / 2 - 278 / 2,0, 278,278)];
+    self.socialCoverImageView.image = [UIImage imageNamed:@"AppIcon76x76.png"];
+    [self.window addSubview:self.socialCoverImageView];
+    
+}
+- (void) documentInteractionController: (UIDocumentInteractionController *) controller willBeginSendingToApplication: (NSString *) application
+{
+    NSLog(@"willBeginSendingToApplication");
+}
+
+- (void) documentInteractionControllerDidDismissOpenInMenu: (UIDocumentInteractionController *) controller
+{
+    NSLog(@"documentInteractionControllerDidDismissOpenInMenu");
+    [self.socialCoverImageView removeFromSuperview];
+    [self.socialCoverImageView release];
+    self.socialCoverImageView = nil;
+}
+
+- (void) documentInteractionControllerDidDismissOptionsMenu: (UIDocumentInteractionController *) controller
+{
+    NSLog(@"documentInteractionControllerDidDismissOptionsMenu");
+}
+
 - (void)applicationWillResignActive:(UIApplication *)application
 {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
@@ -165,6 +190,8 @@
     [CategoriesAPIHandler makeCategoriesRequest];
     // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
+
+
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {

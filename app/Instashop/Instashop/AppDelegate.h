@@ -14,7 +14,7 @@
 #define INSTASHOP_INSTAGRAM_ID @"280421250"
 
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, UIDocumentInteractionControllerDelegate>
 {
     Instagram *instagram;
     
@@ -22,13 +22,18 @@
     AppRootViewController *appRootViewController;
     
     NSString *pushDeviceTokenString;
-    
+
+    UIImageView *socialCoverImageView;
 }
 
 - (void) tutorialShown;
 -(void)userDidLogin;
 -(void)userDidLogout;
 -(void)makeSafariCallWithURL:(NSURL *)theURL;
+
+
+- (void)loadShareCoverViewWithImage:(UIImage *)theImage;
+
 
 @property (strong, nonatomic) UIWindow *window;
 
@@ -38,6 +43,8 @@
 @property (strong, nonatomic) AppRootViewController *appRootViewController;
 
 @property (strong, nonatomic) NSString *pushDeviceTokenString;
+
+@property (strong, nonatomic) UIImageView *socialCoverImageView;
 
 
 @end
