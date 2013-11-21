@@ -487,6 +487,7 @@
         self.cialBrowserViewController.purchasingViewController = self;
         [self.navigationController pushViewController:cialBrowserViewController animated:YES];
         [self.cialBrowserViewController openThisURL:[NSURL URLWithString:self.viglinkString]];
+        [self.cialBrowserViewController loadRightBarItem];
         
     }
     

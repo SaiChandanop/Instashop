@@ -540,7 +540,8 @@
     self.browserViewController = [[CIALBrowserViewController alloc] init];
     [self.navigationController pushViewController:browserViewController animated:YES];
     
-    browserViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ] autorelease];
+    self.browserViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ] autorelease];
+//    [self.browserViewController loadRightBarItem];
     
     
     

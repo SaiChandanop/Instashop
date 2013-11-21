@@ -54,6 +54,7 @@
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url;
 
+-(void)loadRightBarItem;
 @property (nonatomic, retain, setter=loadURL:) NSURL *url;
 @property (nonatomic, retain) UIPopoverController *bookmarkPopoverController;
 @property (nonatomic, retain) UIPopoverController *addBookmarkPopoverController;
