@@ -85,9 +85,6 @@ static void *finishedContext            = @"finishedContext";
     
     IGRequest* _request;
     
-    NSLog(@"This is the request URL in Instagram.m: %@", url);
-    NSLog(@"This is the params in the Instagram.m : %@", params);
-    
     _request = [IGRequest getRequestWithParams:params
                                     httpMethod:httpMethod
                                       delegate:delegate
@@ -260,7 +257,6 @@ static void *finishedContext            = @"finishedContext";
                         httpMethod:(NSString*)httpMethod
                           delegate:(id<IGRequestDelegate>)delegate {
     NSString * fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
-    NSLog(@"This is the full URL: %@", fullURL);
     return [self openUrl:fullURL
                   params:params
               httpMethod:httpMethod

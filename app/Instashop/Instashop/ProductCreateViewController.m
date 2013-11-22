@@ -186,12 +186,7 @@
     }
     
     
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Created!"
-                                                        message:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"Smashing"
-                                              otherButtonTitles:nil];
-    [alertView show];
+    [self backButtonHit];
     
 }
 

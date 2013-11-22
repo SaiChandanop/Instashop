@@ -37,7 +37,6 @@ static DiscoverDataManager *theSharedMan;
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
-    NSLog(@"feedRequestFinishedWithArrray");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     self.likedArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -48,9 +47,6 @@ static DiscoverDataManager *theSharedMan;
         NSDictionary *dict = [theArray objectAtIndex:i];
         [self.unsortedDictionary setObject:dict forKey:[dict objectForKey:@"products_instagram_id"]];
     }
-    
-    
-    NSLog(@"theArray: %@", theArray);
     
     for (int i = 0; i < [theArray count]; i++)
     {
@@ -85,7 +81,6 @@ static DiscoverDataManager *theSharedMan;
 -(void)sortAndPresent
 {
     self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
-    NSLog(@"sortAndPresent");
     
     [self.likedArray sortUsingComparator:
      ^NSComparisonResult(id obj1, id obj2){
@@ -109,7 +104,6 @@ static DiscoverDataManager *theSharedMan;
         [self.contentArray addObject:[self.unsortedDictionary objectForKey:obj.mediaID]];
     }
     
-    NSLog(@"done!: %@", self.referenceTableViewController);
     if (self.referenceTableViewController != nil)
     {
         [self.referenceTableViewController.contentArray removeAllObjects];

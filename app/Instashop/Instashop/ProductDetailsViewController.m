@@ -139,8 +139,18 @@
     self.navigationItem.leftBarButtonItem = customBackButton;
     [customBackButton release];
     
+    [self setDoneButtonState];
+}
+
+-(void)setDoneButtonState
+{
+    if ([self validateContentWithDoAlert:NO])
+        [self.nextButton setTitle:@"do go" forState:UIControlStateNormal];
+    else
+        [self.nextButton setTitle:@"dont go" forState:UIControlStateNormal];
     
 }
+
 
 -(void)goBack
 {
@@ -318,6 +328,7 @@
     
     [self addSizeButtonHit];
     
+    [self setDoneButtonState];
     
 }
 
@@ -365,15 +376,12 @@
     }
 }
 
-
-
--(IBAction)previewButtonHit
+-(BOOL)validateContentWithDoAlert:(BOOL)doAlert
 {
+    BOOL retVal = NO;
     
-    
-    ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
-    
-    int totalQuantity = 0;
+    NSLog(@"urlLabel.text: %@", self.urlLabel.text);
+    NSLog(@"attributesArray: %@", self.attributesArray);
     
     if ([self.urlLabel.text length] == 0)
     {
@@ -382,9 +390,37 @@
                                                            delegate:self
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
-        [alertView show];
+        if (doAlert)
+            [alertView show];
     }
     else if (self.attributesArray.count > 0)
+    {
+        retVal = YES;
+    }
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"Please Select a category"
+                                                           delegate:self
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        if (doAlert)
+            [alertView show];
+    }
+    
+    [self resignResponders];
+    
+    return retVal;
+}
+
+
+-(IBAction)previewButtonHit
+{
+    ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
+    
+    int totalQuantity = 0;
+    
+    if ([self validateContentWithDoAlert:YES])
     {
         productCreateContainerObject.mainObject = [[ProductCreateObject alloc] init];
         productCreateContainerObject.mainObject.instagramPictureURLString = self.instagramPictureURLString;
@@ -407,16 +443,6 @@
         
         
     }
-    else
-    {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"Please Select a category"
-                                                           delegate:self
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-    
     [self resignResponders];
 }
 
@@ -553,6 +579,8 @@
     
     self.urlLabel.text = [self.browserViewController.url absoluteString];
     [self linkSelectedWithURLString:[self.browserViewController.url absoluteString]];
+    
+    [self setDoneButtonState];
 }
 -(void) linkSelectedWithURLString:(NSString *)theURLString
 {
