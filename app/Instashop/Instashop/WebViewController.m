@@ -33,8 +33,8 @@
         NSURL *urlToLoad = [NSURL URLWithString:websiteName];
         
         self.titleName = titleName;
-        
-        InstashopWebView *webview = [[InstashopWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
+        int topBarHeight = 64.0; // this is the sum of the heights of the status bar and the navigation controller navBar.
+        InstashopWebView *webview = [[InstashopWebView alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight - topBarHeight)];
         [webview loadRequest:[NSURLRequest requestWithURL:urlToLoad]];
         [self.view addSubview:webview];
     }
