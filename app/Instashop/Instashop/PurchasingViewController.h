@@ -16,9 +16,10 @@
 #import "FlagManagerAPIHandler.h"
 #import "CIALBrowserViewController.h"
 #import "CommentsTableViewController.h"
+#import "BitlyResponseHandler.h"
 @class FeedViewController;
 
-@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol, FlagManagerProtocol>
+@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol, BitlyResponseHandler, FlagManagerProtocol>
 {
     SizePickerViewViewController *sizePickerViewViewController;
     CommentsTableViewController *commentsTableViewController;
@@ -61,6 +62,8 @@
     BOOL isEditable;
     
     UIViewController *actionSheetHandlingViewController;
+    
+    BOOL isBuying;
 }
 
 - (IBAction) likeButtonHit;
@@ -122,5 +125,6 @@
 
 @property (nonatomic, retain) UIViewController *actionSheetHandlingViewController;
 
+@property (nonatomic, assign) BOOL isBuying;
 
 @end

@@ -96,6 +96,7 @@
 		7B0320DF17E0E1340045D7AC /* SearchSiloViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320DD17E0E1340045D7AC /* SearchSiloViewController.xib */; };
 		7B0320EB17E0F9FD0045D7AC /* DiscoverTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */; };
 		7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */; };
+		7B05032D183FD6C3004EF2C2 /* BitlyAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B05032C183FD6C3004EF2C2 /* BitlyAPIHandler.m */; };
 		7B0691D118201D140083B1D9 /* CommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0691D018201D140083B1D9 /* CommentsTableViewController.m */; };
 		7B0691D418201D270083B1D9 /* CommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0691D318201D270083B1D9 /* CommentsTableViewCell.m */; };
 		7B0691D618201F9A0083B1D9 /* CommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B0691D518201F9A0083B1D9 /* CommentsTableViewCell.xib */; };
@@ -413,6 +414,9 @@
 		7B0320E817E0F9FD0045D7AC /* DiscoverTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewController.h; sourceTree = "<group>"; };
 		7B0320E917E0F9FD0045D7AC /* DiscoverTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewController.m; sourceTree = "<group>"; };
 		7B0320EA17E0F9FD0045D7AC /* DiscoverTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverTableViewController.xib; sourceTree = "<group>"; };
+		7B05032B183FD6C3004EF2C2 /* BitlyAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitlyAPIHandler.h; sourceTree = "<group>"; };
+		7B05032C183FD6C3004EF2C2 /* BitlyAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BitlyAPIHandler.m; sourceTree = "<group>"; };
+		7B05032E183FDD2D004EF2C2 /* BitlyResponseHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BitlyResponseHandler.h; sourceTree = "<group>"; };
 		7B0691CF18201D140083B1D9 /* CommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewController.h; sourceTree = "<group>"; };
 		7B0691D018201D140083B1D9 /* CommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentsTableViewController.m; sourceTree = "<group>"; };
 		7B0691D218201D270083B1D9 /* CommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentsTableViewCell.h; sourceTree = "<group>"; };
@@ -989,6 +993,15 @@
 			name = Table;
 			sourceTree = "<group>";
 		};
+		7B05032A183FD6B4004EF2C2 /* Bitly */ = {
+			isa = PBXGroup;
+			children = (
+				7B05032B183FD6C3004EF2C2 /* BitlyAPIHandler.h */,
+				7B05032C183FD6C3004EF2C2 /* BitlyAPIHandler.m */,
+			);
+			name = Bitly;
+			sourceTree = "<group>";
+		};
 		7B0680CA17664BC2009154BF /* Buy */ = {
 			isa = PBXGroup;
 			children = (
@@ -1131,6 +1144,7 @@
 				7B5A56F517D3DD9D007AABDA /* SuggestedShopReturnProtocol.h */,
 				7B7A7F8517D651C800247A26 /* SearchReturnedReceiverProtocol.h */,
 				7BA9C2EF183695BB003C2DD5 /* NotificationsFinishedProtocol.h */,
+				7B05032E183FDD2D004EF2C2 /* BitlyResponseHandler.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1228,6 +1242,15 @@
 				7B4D2E18175CFFD2005DE4B6 /* feedtopbar.png */,
 			);
 			name = shittyimages;
+			sourceTree = "<group>";
+		};
+		7B53D17C183EAA95006046DB /* Purchasing */ = {
+			isa = PBXGroup;
+			children = (
+				7BC6E7DB18229C2C00288B68 /* Amber */,
+				7BDED680180C7A1A001FF165 /* CIALBrowser */,
+			);
+			name = Purchasing;
 			sourceTree = "<group>";
 		};
 		7B5A56E617D3D742007AABDA /* SuggestedStores */ = {
@@ -1540,19 +1563,19 @@
 		7B7A7448174D4EAE005E90B9 /* VCs */ = {
 			isa = PBXGroup;
 			children = (
-				7BC6E7DB18229C2C00288B68 /* Amber */,
-				7B0691CE18201CFE0083B1D9 /* Comments */,
-				193433D317E0FCEE007744E6 /* Login */,
 				7B7A743F174D49F9005E90B9 /* Authentication */,
 				7B0680CA17664BC2009154BF /* Buy */,
 				7B15B2F817B2A9E700173752 /* Categories */,
+				7B0691CE18201CFE0083B1D9 /* Comments */,
 				7B74C3CD179716670006289C /* CreateSeller */,
 				7B0320D517E0DA7D0045D7AC /* Discover */,
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
+				193433D317E0FCEE007744E6 /* Login */,
 				7B5BFAD617D6928400F82F0B /* Notifications */,
 				7B1072AF175E6C6800D9DC5D /* ObjectSelectTableVC */,
 				7B376EC817C7A33300F4D5D8 /* Profile */,
+				7B53D17C183EAA95006046DB /* Purchasing */,
 				7B7A7F7B17D64AA100247A26 /* Search */,
 				7BE958F3175548A100A7E0AB /* Sell */,
 				690134451836B47D005CE173 /* Settings */,
@@ -1596,6 +1619,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7B05032A183FD6B4004EF2C2 /* Bitly */,
 				7BC6E7D71822997100288B68 /* Amber */,
 				7BE66D9F17E3520F00BE3B64 /* Categories */,
 				19EE23181811DA670007E475 /* FlagManager */,
@@ -1810,7 +1834,6 @@
 			children = (
 				7B08B9B7182036020037B033 /* TimeFormatter */,
 				7B8CCFB4181AB1FB006E01A9 /* Social */,
-				7BDED680180C7A1A001FF165 /* CIALBrowser */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
 				7B3F520E175FAAB900ABF49B /* ProductObject */,
 				7B2C4B8C17C418490080F3F5 /* Protocols */,
@@ -2178,6 +2201,7 @@
 				7B0D254B17CBA36F00E43FA6 /* GKImagePicker.m in Sources */,
 				7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */,
 				7BDED698180C7A28001FF165 /* UIWebViewAdditions.m in Sources */,
+				7B05032D183FD6C3004EF2C2 /* BitlyAPIHandler.m in Sources */,
 				7B7A7F7F17D64ACE00247A26 /* SearchViewController.m in Sources */,
 				7B0D255017CBA36F00E43FA6 /* GKResizeableCropOverlayView.m in Sources */,
 				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
@@ -2335,15 +2359,15 @@
 		7B61EE75174D2162002A483D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "954DE460-6817-46C8-B1E5-F8EA2984B934";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "954DE460-6817-46C8-B1E5-F8EA2984B934";
+				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2351,15 +2375,15 @@
 		7B61EE76174D2162002A483D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

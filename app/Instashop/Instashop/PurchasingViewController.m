@@ -31,6 +31,7 @@
 #import "AmberAPIHandler.h"
 #import "NotificationsAPIHandler.h"
 #import "SavedItemsAPIHandler.h"
+#import "BitlyAPIHandler.h"
 
 @interface PurchasingViewController ()
 
@@ -66,6 +67,7 @@
 @synthesize cialBrowserViewController;
 @synthesize isEditable;
 @synthesize saveButton;
+@synthesize isBuying;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -140,6 +142,7 @@
     self.commentsTableViewController.parentController = self;
     //    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSNull null], nil];
     [self.commentsTableViewController.tableView reloadData];
+    
     
     
 }
@@ -385,6 +388,8 @@
     //   NSLog(@"theArray: %@", theArray);
     if ([theArray count] > 0)
         self.requestedProductObject = [theArray objectAtIndex:0];
+ 
+    [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
     
     [self loadContentViews];
 }
@@ -412,6 +417,7 @@
 -(IBAction)buyButtonHit
 {
     
+    self.isBuying = YES;
     if (self.viglinkString == nil)
         [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
     else
@@ -493,54 +499,27 @@
     
 }
 
+
+-(void)bitlyCallDidRespondWIthShortURLString:(NSString *)shortURLString
+{
+    NSLog(@"bitlyCallDidRespondWIthShortURLString: %@", shortURLString);
+    if (shortURLString != nil)
+        self.viglinkString = shortURLString;
+    
+    if (self.isBuying)
+        [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
+    
+    NSLog(@"self.viglinkstring: %@", self.viglinkString);
+
+}
+
 -(void)viglinkCallReturned:(NSString *)urlString
 {
-    if (self.viglinkString == nil)
-    {
-        self.viglinkString = urlString;
-        NSLog(@"viglinkCallReturned: %@", self.viglinkString);
-        [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
-    }
+    self.viglinkString = urlString;
+    NSLog(@"viglinkCallReturned: %@", self.viglinkString);
+    [BitlyAPIHandler makeBitlyRequestWithDelegate:self withReferenceURL:self.viglinkString];
     
 }
-
-
--(IBAction)buyButtonHitBAK
-{
-    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
-    
-    BOOL isSingleSize = NO;
-    if ([sizeQuantityArray count] == 1)
-        if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
-            isSingleSize = YES;
-    
-    
-    if (!isSingleSize &&  [[self.sizeButton titleForState:UIControlStateNormal] compare:@"Size"] == NSOrderedSame)
-    {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Please select a size and or quantity"
-                                                            message:nil
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-    else
-    {
-        NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
-        NSDictionary *productCategoryObject = [sizeQuantityArray objectAtIndex:self.sizeSelectedIndex];
-        
-        PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
-        purchasingAddressViewController.view.frame = CGRectMake(purchasingAddressViewController.view.frame.origin.x, purchasingAddressViewController.view.frame.origin.y, purchasingAddressViewController.view.frame.size.width, purchasingAddressViewController.view.frame.size.height);
-        purchasingAddressViewController.productCategoryDictionary = productCategoryObject;
-        purchasingAddressViewController.shippingCompleteDelegate = self;
-        [self.navigationController pushViewController:purchasingAddressViewController animated:YES];
-        [purchasingAddressViewController loadWithSizeSelection:[self.sizeButton titleForState:UIControlStateNormal] withQuantitySelection:[self.quantityButton titleForState:UIControlStateNormal] withProductImage:self.imageView.image];
-        [purchasingAddressViewController loadWithRequestedProductObject:self.requestedProductObject];
-        
-    }
-    
-}
-
 
 
 
@@ -898,7 +877,7 @@
         NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsy"];
         [facebookController setInitialText:postText];
         //[facebookController addImage:photoImage];
-        [facebookController addURL:[NSURL URLWithString:viglinkString]];
+        [facebookController addURL:[NSURL URLWithString:self.viglinkString]];
         [facebookController setCompletionHandler:completionHandler];
         
         
@@ -938,7 +917,7 @@
         NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsy"];
         [tweetController setInitialText:postText];
         [tweetController addImage:photoImage];
-        [tweetController addURL:[NSURL URLWithString:viglinkString]];
+        [tweetController addURL:[NSURL URLWithString:self.viglinkString]];
         [tweetController setCompletionHandler:completionHandler];
         
         
@@ -989,6 +968,49 @@
 {
     
 }
+
+
+
+
+
+
+-(IBAction)buyButtonHitBAK
+{
+    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+    
+    BOOL isSingleSize = NO;
+    if ([sizeQuantityArray count] == 1)
+        if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
+            isSingleSize = YES;
+    
+    
+    if (!isSingleSize &&  [[self.sizeButton titleForState:UIControlStateNormal] compare:@"Size"] == NSOrderedSame)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Please select a size and or quantity"
+                                                            message:nil
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    else
+    {
+        NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
+        NSDictionary *productCategoryObject = [sizeQuantityArray objectAtIndex:self.sizeSelectedIndex];
+        
+        PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
+        purchasingAddressViewController.view.frame = CGRectMake(purchasingAddressViewController.view.frame.origin.x, purchasingAddressViewController.view.frame.origin.y, purchasingAddressViewController.view.frame.size.width, purchasingAddressViewController.view.frame.size.height);
+        purchasingAddressViewController.productCategoryDictionary = productCategoryObject;
+        purchasingAddressViewController.shippingCompleteDelegate = self;
+        [self.navigationController pushViewController:purchasingAddressViewController animated:YES];
+        [purchasingAddressViewController loadWithSizeSelection:[self.sizeButton titleForState:UIControlStateNormal] withQuantitySelection:[self.quantityButton titleForState:UIControlStateNormal] withProductImage:self.imageView.image];
+        [purchasingAddressViewController loadWithRequestedProductObject:self.requestedProductObject];
+        
+    }
+    
+}
+
+
 
 
 @end
