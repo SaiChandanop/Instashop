@@ -298,6 +298,7 @@
 		7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F11755473400A7E0AB /* ProductAPIHandler.m */; };
 		7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */; };
 		7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */; };
+		7BF6AFE618400ADC008F6D03 /* DiscoverDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */; };
 		7BF9DD8A178C546F005148A8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD77178C546F005148A8 /* SBJsonParser.m */; };
 		7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD79178C546F005148A8 /* SBJsonStreamParser.m */; };
 		7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD7B178C546F005148A8 /* SBJsonStreamParserAccumulator.m */; };
@@ -740,6 +741,8 @@
 		7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateViewController.m; sourceTree = "<group>"; };
 		7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCreateViewController.xib; sourceTree = "<group>"; };
 		7BF02E5817D1301600981F28 /* SellerDetailResponseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerDetailResponseProtocol.h; sourceTree = "<group>"; };
+		7BF6AFE418400ADC008F6D03 /* DiscoverDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverDataManager.h; sourceTree = "<group>"; };
+		7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverDataManager.m; sourceTree = "<group>"; };
 		7BF9DD75178C546F005148A8 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
 		7BF9DD76178C546F005148A8 /* SBJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonParser.h; sourceTree = "<group>"; };
 		7BF9DD77178C546F005148A8 /* SBJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonParser.m; sourceTree = "<group>"; };
@@ -954,6 +957,8 @@
 				7B0320D617E0DB700045D7AC /* DiscoverViewController.h */,
 				7B0320D717E0DB700045D7AC /* DiscoverViewController.m */,
 				7B0320D817E0DB700045D7AC /* DiscoverViewController.xib */,
+				7BF6AFE418400ADC008F6D03 /* DiscoverDataManager.h */,
+				7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */,
 			);
 			name = Discover;
 			sourceTree = "<group>";
@@ -2258,6 +2263,7 @@
 				7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */,
 				7B0D254D17CBA36F00E43FA6 /* GKImageCropView.m in Sources */,
 				7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */,
+				7BF6AFE618400ADC008F6D03 /* DiscoverDataManager.m in Sources */,
 				7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */,
 				7B5D628217C5AF7100D6C8B1 /* PKCardExpiry.m in Sources */,
 				7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */,
