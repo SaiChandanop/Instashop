@@ -296,6 +296,38 @@
     
 }
 
++(void)updateSellerDescriptionWithDelegate:(id)theDelegate InstagramID:(NSString *)instagramID withDescription:(NSString *)theDescription
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/sellerManager.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    
+    NSLog(@"urlRequestString: %@", urlRequestString);
+    
+    URLRequest.HTTPMethod = @"POST";
+    NSMutableString *thePostString  = [NSMutableString stringWithCapacity:0];
+    [thePostString appendString:[NSString stringWithFormat:@"action=%@", @"updateSellerDescription"]];
+    [thePostString appendString:[NSString stringWithFormat:@"&instagramID=%@", instagramID]];
+    [thePostString appendString:[NSString stringWithFormat:@"&description=%@", theDescription]];
+    
+    [URLRequest setHTTPBody:[thePostString dataUsingEncoding:NSUTF8StringEncoding]];
+
+    NSLog(@"thePostString: %@", thePostString);
+    
+    SellersAPIHandler *apiHandler = [[SellersAPIHandler alloc] init];
+    apiHandler.delegate = theDelegate;
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(updateSellerDescriptionFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+}
+
+-(void)updateSellerDescriptionFinished:(id)object
+{
+    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    //    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    
+    NSLog(@"getSellerDetailsFinished: %@", responseString);
+
+}
 
 
 @end

@@ -26,8 +26,15 @@
 
 @end
 
+
+
 @implementation ProfileViewController
 
+
+#define EDIT_TEXT @"edit your description"
+
+
+@synthesize enclosingScrollView;
 @synthesize profileInstagramID;
 
 @synthesize backgroundImageView;
@@ -54,7 +61,7 @@
 @synthesize emailLabel;
 @synthesize categoryLabel;
 @synthesize bioLabel;
-@synthesize descriptionLabel;
+@synthesize descriptionTextView;
 @synthesize favoritesSelectTableViewController;
 @synthesize imagePickButton;
 
@@ -72,9 +79,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     [super viewDidLoad];
-    self.profileBackgroundPhotoButton.alpha = 0;
-    // Do any additional setup after loading the view from its nib.
-    
+        
     self.buttonHighlightView.backgroundColor = [ISConstants getISGreenColor];
     
     self.productsButton.selected = YES;
@@ -103,7 +108,12 @@
         [self.imagePickButton removeFromSuperview];
     }
     
-        
+    
+    self.descriptionTextView.editable = NO;
+    self.descriptionTextView.backgroundColor = [UIColor clearColor];
+    self.descriptionTextView.textColor = self.bioLabel.textColor;
+    self.descriptionTextView.font = self.bioLabel.font;
+    
 }
 
 
@@ -291,6 +301,11 @@
         self.addressLabel.text = addressString;
         self.emailLabel.text = [responseDictionary objectForKey:@"seller_email"];
         self.categoryLabel.text = [responseDictionary objectForKey:@"seller_category"];
+        
+        if (![[responseDictionary objectForKey:@"seller_description"] isKindOfClass:[NSNull class]])
+            self.descriptionTextView.text = [responseDictionary objectForKey:@"seller_description"];
+        else if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+            self.descriptionTextView.text = EDIT_TEXT;
     }
     
 }
@@ -339,12 +354,11 @@
     self.bioLabel.text = [InstagramUserObject getStoredUserObject].bio;
     [self handleBioLayout];
     
-    
-    
 }
 
 -(void) backButtonHit
 {
+    [self.descriptionTextView resignFirstResponder];
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController profileExitButtonHit:self.navigationController];
 }
@@ -359,17 +373,17 @@
 
 -(void)handleBioLayout
 {
-    float descSpacer = self.descriptionLabel.frame.origin.y - self.bioContainerImageView.frame.origin.y - self.bioContainerImageView.frame.size.height;
+    float descSpacer = self.descriptionTextView.frame.origin.y - self.bioContainerImageView.frame.origin.y - self.bioContainerImageView.frame.size.height;
     self.bioLabel.numberOfLines = 0;
     CGSize bioLabelSize = [self.bioLabel.text sizeWithFont:self.bioLabel.font constrainedToSize:CGSizeMake(self.bioLabel.frame.size.width, 10000) lineBreakMode:NSLineBreakByWordWrapping];
     
     self.bioLabel.frame = CGRectMake(self.bioLabel.frame.origin.x, self.bioLabel.frame.origin.y, self.bioLabel.frame.size.width, bioLabelSize.height + 1);
     self.bioContainerImageView.frame = CGRectMake(self.bioContainerImageView.frame.origin.x, self.bioContainerImageView.frame.origin.y, self.bioContainerImageView.frame.size.width, self.bioLabel.frame.size.height + 21);
-    self.descriptionLabel.frame = CGRectMake(self.descriptionLabel.frame.origin.x, self.bioContainerImageView.frame.origin.y + bioContainerImageView.frame.size.height + descSpacer, self.descriptionLabel.frame.size.width, self.descriptionLabel.frame.size.height);
+    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.bioContainerImageView.frame.origin.y + bioContainerImageView.frame.size.height + descSpacer, self.descriptionTextView.frame.size.width, self.descriptionTextView.frame.size.height);
     
     
     self.infoContainerScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"lightMenuBG.png"]];
-    self.infoContainerScrollView.contentSize = CGSizeMake(0, self.descriptionLabel.frame.origin.y + self.descriptionLabel.frame.size.height + 4);
+    self.infoContainerScrollView.contentSize = CGSizeMake(0, self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 4);
     
 }
 
@@ -500,12 +514,16 @@
 
 -(IBAction) productsButtonHit
 {
+    UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+    
     if (self.favoritesSelectTableViewController != nil)
         [self.favoritesSelectTableViewController.tableView removeFromSuperview];
     
     
     if ([self.theTableView superview] == nil)
-        [self.view addSubview:self.theTableView];
+        [self.enclosingScrollView addSubview:self.theTableView];
     
     if ([self.infoContainerScrollView superview] != nil)
         [self.infoContainerScrollView removeFromSuperview];
@@ -517,9 +535,45 @@
     [self animateSellerButton:self.productsButton];
 }
 
+
+-(void)editButtonHit
+{
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonHit)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+    
+    if ([self.descriptionTextView.text compare:EDIT_TEXT] == NSOrderedSame)
+        self.descriptionTextView.text = @"";
+    self.descriptionTextView.editable = YES;
+    [self.descriptionTextView becomeFirstResponder];
+    self.enclosingScrollView.contentSize = CGSizeMake(0, self.enclosingScrollView.frame.size.height * 1.5);
+    [self.enclosingScrollView setContentOffset:CGPointMake(0, 200) animated:YES];
+    
+}
+
+-(void)saveButtonHit
+{
+    [SellersAPIHandler updateSellerDescriptionWithDelegate:self InstagramID:[InstagramUserObject getStoredUserObject].userID withDescription:self.descriptionTextView.text];
+    [self.descriptionTextView resignFirstResponder];
+    [self.enclosingScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    self.enclosingScrollView.contentSize = CGSizeMake(0,0);
+    self.descriptionTextView.editable = NO;
+    
+}
+
+
 -(IBAction) infoButtonHit
 {
-    
+    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+    {
+        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editButtonHit)];
+        self.navigationItem.rightBarButtonItem = shareButton;
+    }
+    else
+    {
+        UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
+        self.navigationItem.rightBarButtonItem = shareButton;
+    }
     if (self.productSelectTableViewController != nil)
         [self.productSelectTableViewController.tableView removeFromSuperview];
     
@@ -531,13 +585,16 @@
         [self.theTableView removeFromSuperview];
     
     if ([self.infoContainerScrollView superview] == nil)
-        [self.view addSubview:self.infoContainerScrollView];
+        [self.enclosingScrollView addSubview:self.infoContainerScrollView];
     
     self.productsButton.selected = NO;
     self.infoButton.selected = YES;
     self.favoritesButton.selected = NO;
     
     [self animateSellerButton:self.infoButton];
+    
+    
+    
 }
 
 -(IBAction)favoritesButtonHit
@@ -546,10 +603,10 @@
         [self.productSelectTableViewController.tableView removeFromSuperview];
     
     if ([self.theTableView superview] == nil)
-        [self.view addSubview:self.theTableView];
+        [self.enclosingScrollView addSubview:self.theTableView];
     
     if ([self.favoritesSelectTableViewController.tableView superview] == nil)
-        [self.view addSubview:self.favoritesSelectTableViewController.tableView];
+        [self.enclosingScrollView addSubview:self.favoritesSelectTableViewController.tableView];
     
     
     if ([self.infoContainerScrollView superview] != nil)
@@ -562,6 +619,9 @@
     
     [self animateSellerButton:self.favoritesButton];
     
+    UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
+    self.navigationItem.rightBarButtonItem = shareButton;
 }
 
 

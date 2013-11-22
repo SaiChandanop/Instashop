@@ -17,6 +17,8 @@
 
 @interface ProfileViewController : UIViewController <UIActionSheetDelegate, IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate, SellerDetailResponseProtocol>
 {
+    UIScrollView *enclosingScrollView;
+    
     NSString *profileInstagramID;
     
     UIButton *addBackgroundImageButton;
@@ -48,7 +50,7 @@
     UILabel *categoryLabel;
     UIImageView *bioContainerImageView;
     UILabel *bioLabel;
-    UILabel *descriptionLabel;
+    UITextView *descriptionTextView;
     
     BOOL isSelfProfile;
     NSDictionary *requestedInstagramProfileObject;
@@ -64,6 +66,8 @@
 -(IBAction) reviewsButtonHit;
 
 -(IBAction)followOnInstagramButtonHit;
+
+@property (nonatomic, retain) IBOutlet UIScrollView *enclosingScrollView;
 
 @property (nonatomic, retain) NSString *profileInstagramID;
 
@@ -106,7 +110,7 @@
 @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
 @property (nonatomic, retain) IBOutlet UIImageView *bioContainerImageView;
 @property (nonatomic, retain) IBOutlet UILabel *bioLabel;
-@property (nonatomic, retain) IBOutlet UILabel *descriptionLabel;
+@property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 
 @property (nonatomic, retain) IBOutlet UIButton *imagePickButton;
 

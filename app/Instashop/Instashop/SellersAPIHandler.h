@@ -20,4 +20,7 @@
 +(void)uploadProfileImage:(UIImage *)image withDelegate:(id)theDelegate;
 
 +(void)getSellerDetailsWithInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate;
+
++(void)updateSellerDescriptionWithDelegate:(id)theDelegate InstagramID:(NSString *)instagramID withDescription:(NSString *)theDescription;
+
 @end
