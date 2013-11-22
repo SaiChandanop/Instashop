@@ -183,9 +183,6 @@
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
-        <image name="Menu_BG.png" width="320" height="548"/>
-        <image name="Menu_BG.png" width="320" height="548"/>
-        <image name="Menu_BG.png" width="320" height="548"/>
         <image name="facebook_off.png" width="44" height="44"/>
         <image name="facebook_on.png" width="44" height="44"/>
         <image name="top_shadow.png" width="320" height="50"/>

@@ -54,13 +54,44 @@
     categoriesTableViewController.navigationController.navigationBar.topItem.title = @"Categories";
     
     self.initialTableReference = categoriesTableViewController.tableView;
+    
+    if (categoriesTableViewController.navigationController.navigationBar.topItem.title == nil)
+    {
+        [self setTheTitleWithString:@"Categories" withVC:self];
+    }
+    
+   
+    
+
 }
 
-
+-(void)setTheTitleWithString:(NSString *)theString withVC:(UIViewController *)theVC
+{
+    UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.textAlignment = NSTextAlignmentCenter;
+    // ^-Use UITextAlignmentCenter for older SDKs.
+    label.textColor = [UIColor whiteColor]; // change this color
+    theVC.navigationItem.titleView = label;
+    label.text = theString;
+    [label sizeToFit];
+    
+    NSLog(@"theVC.navigationItem.titleView: %@", theVC.navigationItem.titleView);
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@"Back"
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+    
+}
 
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {
+ 
+    
+    
     if ([self.selectedCategoriesArray count] > callingController.positionIndex)
         [self.selectedCategoriesArray removeObjectsInRange:NSMakeRange(callingController.positionIndex, [self.selectedCategoriesArray count] - callingController.positionIndex)];
     
@@ -103,6 +134,7 @@
                 [titleString appendString:@" >"];
             
         }
+        [self setTheTitleWithString:titleString withVC:self.navigationController];
         
         categoriesTableViewController.navigationController.navigationBar.topItem.title = titleString;
     }
