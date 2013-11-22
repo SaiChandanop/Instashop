@@ -36,7 +36,6 @@
 @synthesize likedArrayCount;
 @synthesize isLaunchedFromMenu;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -45,7 +44,6 @@
         self.likedArrayCount = 0;
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.containerViewsDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
-        
     }
     return self;
 }
@@ -123,11 +121,14 @@
     }
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
+    NSLog(@"this is params: %@", params);
     [appDelegate.instagram requestWithParams:params delegate:self];
 }
 
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
+
+    NSLog(@"This is the request URL: %@", request.url);
     
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
@@ -135,12 +136,14 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
         
-/*      NSLog(@"This is the request URL: %@", request.url);
+      NSLog(@"This is the request URL: %@", request.url);
         NSLog(@"This is the params: %@", params);
-*/
+
     }
     else if ([request.url rangeOfString:@"follows"].length > 0)
     {
+        NSLog(@"This is the request URL: %@", request.url);
+
         NSArray *dataArray = [result objectForKey:@"data"];
         NSMutableArray *likedIDsArray = [NSMutableArray arrayWithCapacity:0];
         

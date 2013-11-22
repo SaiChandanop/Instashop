@@ -80,45 +80,18 @@ static void *finishedContext            = @"finishedContext";
              delegate:(id<IGRequestDelegate>)delegate {
     if ([self isSessionValid]) {
         [params setValue:self.accessToken forKey:@"access_token"];
+        [params setValue:@"500" forKey:@"count"];
     }
     
     IGRequest* _request;
+    
+    NSLog(@"This is the request URL in Instagram.m: %@", url);
+    NSLog(@"This is the params in the Instagram.m : %@", params);
     
     _request = [IGRequest getRequestWithParams:params
                                     httpMethod:httpMethod
                                       delegate:delegate
                                     requestURL:url];
-    
-    //
-    /*
-    IGRequest *_appendRequest = _request;
-    
-    NSArray *dataArray = _request.responseText;
-    BOOL paginationExists = NO;
-    NSString *nextURL = NULL;
-    for (int i =0; i < [dataArray count]; i++) {
-        if ([[dataArray objectAtIndex:i] isEqualToString:@"next_url"]) {
-            nextURL = [dataArray objectAtIndex:i+1]; // probably completely wrong.
-            paginationExists = YES;
-            break;
-        }
-    }
-    
-    while (paginationExists) {
-         _appendRequest = [IGRequest getRequestWithParams:params
-                                        httpMethod:httpMethod
-                                          delegate:delegate
-                                        requestURL:nextURL];
-        [_request.responseText appendData:_appendRequest.responseText];
-        for (int i =0; i < [dataArray count]; i++) {
-            if ([[dataArray objectAtIndex:i] isEqualToString:@"next_url"]) {
-                nextURL = [dataArray objectAtIndex:i+1]; // probably completely wrong.
-                continue;
-            }
-        }
-        paginationExists = NO;
-    }*/
-    // // These are my changes.  
     
     [_request addObserver:self forKeyPath:requestFinishedKeyPath options:0 context:finishedContext];
     [_request connect];
@@ -287,7 +260,7 @@ static void *finishedContext            = @"finishedContext";
                         httpMethod:(NSString*)httpMethod
                           delegate:(id<IGRequestDelegate>)delegate {
     NSString * fullURL = [kRestserverBaseURL stringByAppendingString:methodName];
-    
+    NSLog(@"This is the full URL: %@", fullURL);
     return [self openUrl:fullURL
                   params:params
               httpMethod:httpMethod
