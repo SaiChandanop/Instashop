@@ -416,6 +416,7 @@
 
 -(IBAction)buyButtonHit
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
     
     self.isBuying = YES;
     if (self.viglinkString == nil)
@@ -425,7 +426,7 @@
     
     
     
-    
+
     
     /*
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Which?"
@@ -479,6 +480,7 @@
 {
     NSLog(@"amberSupportedSiteCallFinishedWithIsSupported, isSupported: %d", isSupported);
     
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     if (isSupported)
     {
         AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
