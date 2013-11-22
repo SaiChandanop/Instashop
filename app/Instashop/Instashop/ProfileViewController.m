@@ -218,7 +218,7 @@
             UIDocumentInteractionController *dicot = [[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile] retain];
             dicot.delegate = del;
             dicot.UTI = @"com.instagram.photo";
-            dicot.annotation = [NSDictionary dictionaryWithObject:@"Caption" forKey:@"InstagramCaption"];
+            dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];
             [dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
             
 

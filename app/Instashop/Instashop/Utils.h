@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+#define PROMOTE_TEXT @"This is the promote text"
+
 @interface Utils : NSObject
 
 +(NSString *)getEscapedStringFromUnescapedString:(NSString *)unescaped;
