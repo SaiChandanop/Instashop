@@ -150,7 +150,13 @@
 -(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton
 {
     NSLog(@"searchButtonContainerHit: %@", theButton);
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController searchButtonHit:theButton.searchLabel.text];
+    
+    
 }
+
+
 -(void)loadCategoryButtonsWithString:(NSString *)theCategoriesString
 {
     float xOffset = 15;

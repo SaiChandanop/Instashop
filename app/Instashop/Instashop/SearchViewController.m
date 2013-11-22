@@ -30,6 +30,8 @@
 @synthesize shopsButton;
 @synthesize productsButton;
 @synthesize nibHighlightView;
+@synthesize directSearchTerm;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -90,6 +92,9 @@
     
     
     self.productsButton.selected = YES;
+        
+    if (self.directSearchTerm != nil)
+        [self.productSearchViewController doDirectSearch:self.directSearchTerm];
 }
 
 -(void)backButtonHit

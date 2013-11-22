@@ -34,6 +34,7 @@
 }
 
 -(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton;
+-(void)doDirectSearch:(NSString *)directSearchTerm;
 
 @property (nonatomic, retain) SearchViewController *parentController;
 

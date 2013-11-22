@@ -27,7 +27,7 @@
     UIButton *productsButton;
     UIView *nibHighlightView;
     UIView *theHighlightView;
-    
+    NSString *directSearchTerm;
     
 }
 
@@ -43,6 +43,7 @@
 @property (nonatomic, retain) IBOutlet UIButton *productsButton;
 @property (nonatomic, retain) IBOutlet UIView *nibHighlightView;
 @property (nonatomic, retain) UIView *theHighlightView;
+@property (nonatomic, retain) NSString *directSearchTerm;
 
 
 

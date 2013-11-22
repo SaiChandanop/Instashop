@@ -99,7 +99,7 @@
 
 -(IBAction)discoverButtonHit
 {
-    [self.parentController searchButtonHit];
+    [self.parentController searchButtonHit:nil];
 }
 
 

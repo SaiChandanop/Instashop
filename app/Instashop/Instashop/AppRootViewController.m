@@ -106,6 +106,11 @@ float transitionTime = .456;
 
 -(void)ceaseTransition
 {
+    if (self.theSearchViewController != nil)
+    {
+        [self.theSearchViewController release];
+        self.theSearchViewController = nil;
+    }
     self.areViewsTransitioning = NO;
 }
 
@@ -357,13 +362,15 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
--(void)searchButtonHit
+-(void) searchButtonHit:(NSString *)searchTerm
 {
     if (self.theSearchViewController == nil)
     {
         self.theSearchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+        self.theSearchViewController.directSearchTerm = searchTerm;
         self.theSearchViewController.appRootViewController = self;
     }
+    
     
     UINavigationController *navigationController = self.theSearchViewController.navigationController;
     

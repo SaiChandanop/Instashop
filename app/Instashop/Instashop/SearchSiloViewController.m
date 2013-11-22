@@ -111,6 +111,15 @@
 }
 
 
+-(void)doDirectSearch:(NSString *)directSearchTerm
+{
+    [self.selectedCategoriesArray removeAllObjects];
+    [self.selectedCategoriesArray addObject:directSearchTerm];
+    [self layoutSearchBarContainers];
+    [self runSearch];
+
+}
+
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {

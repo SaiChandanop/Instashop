@@ -52,7 +52,8 @@
 -(void) suggestedShopButtonHit;
 -(void) suggestedShopExitButtonHit:(UINavigationController *)navigationController;
 
--(void) searchButtonHit;
+-(void) searchButtonHit:(NSString *)searchTerm;
+
 -(void) searchExitButtonHit:(UINavigationController *)navigationController;
 - (void) settingsButtonHit;
 - (void) settingsBackButtonHit:(UINavigationController *) navigationController;
