@@ -43,11 +43,12 @@
     NSString *returnString = nil;
     
     NSDictionary *dataDictionary = [responseDictionary objectForKey:@"data"];
-    if (dataDictionary != nil)
-        returnString = [dataDictionary objectForKey:@"url"];
+    if ([dataDictionary isKindOfClass:[NSDictionary class]])
+        if (dataDictionary != nil)
+            returnString = [dataDictionary objectForKey:@"url"];
 
-    if ([self.delegate conformsToProtocol:@protocol(BitlyResponseHandler)])
-        [(id<BitlyResponseHandler>)self.delegate bitlyCallDidRespondWIthShortURLString:returnString];
+        if ([self.delegate conformsToProtocol:@protocol(BitlyResponseHandler)])
+            [(id<BitlyResponseHandler>)self.delegate bitlyCallDidRespondWIthShortURLString:returnString];
     
 }
 

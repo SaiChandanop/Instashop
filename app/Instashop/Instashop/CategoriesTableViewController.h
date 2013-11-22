@@ -17,6 +17,8 @@
     NSArray *categoriesArray;
     NSArray *basePriorCategoriesArray;
     int positionIndex;
+    
+    NSString *titleString;
 }
 
 @property (nonatomic, retain) CategoriesViewController *parentController;
@@ -24,5 +26,5 @@
 @property (nonatomic, retain) NSArray *categoriesArray;
 @property (nonatomic, retain) NSArray *basePriorCategoriesArray;
 @property (nonatomic, assign) int positionIndex;
-
+@property (nonatomic, retain) NSString *titleString;
 @end

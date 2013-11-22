@@ -21,6 +21,8 @@
 @synthesize categoriesArray;
 @synthesize positionIndex;
 @synthesize basePriorCategoriesArray;
+@synthesize titleString;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -33,8 +35,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
-
     
 }
 #pragma mark - Table view data source

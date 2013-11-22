@@ -105,7 +105,14 @@
     }
     else
     {
-        
+        NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
+        for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
+        {
+            [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
+            if (i != [self.selectedCategoriesArray count] -1)
+                [titleString appendString:@" >"];
+            
+        }
         
         CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
         categoriesTableViewController.categoriesType = self.categoriesType;
@@ -115,28 +122,17 @@
         categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
         categoriesTableViewController.parentController = self;
         categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
-        
+        categoriesTableViewController.titleString = titleString;
         
         UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
         containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
         [containerViewController.view addSubview:categoriesTableViewController.tableView];
-        
         categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
-        
-        
         [self.navigationController pushViewController:containerViewController animated:YES];
         
-        NSMutableString *titleString = [NSMutableString stringWithCapacity:0];
-        for (int i = 0; i < [self.selectedCategoriesArray count]; i++)
-        {
-            [titleString appendString:[NSString stringWithFormat:@" %@", [self.selectedCategoriesArray objectAtIndex:i]]];
-            if (i != [self.selectedCategoriesArray count] -1)
-                [titleString appendString:@" >"];
-            
-        }
-        [self setTheTitleWithString:titleString withVC:self.navigationController];
+        [self setTheTitleWithString:titleString withVC:containerViewController];
         
-        categoriesTableViewController.navigationController.navigationBar.topItem.title = titleString;
+//        categoriesTableViewController.navigationController.navigationBar.topItem.title = titleString;
     }
     
 }
