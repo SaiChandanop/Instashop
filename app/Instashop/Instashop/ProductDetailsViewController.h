@@ -63,6 +63,7 @@
     UIButton *nextButton;
     
     CIALBrowserViewController *browserViewController;
+    BOOL isEdit;
 }
 
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID;
@@ -127,4 +128,5 @@
 @property (nonatomic, retain) IBOutlet UIButton *nextButton;
 
 @property (nonatomic, retain) CIALBrowserViewController *browserViewController;
+@property (nonatomic, assign) BOOL isEdit;
 @end

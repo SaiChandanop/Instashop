@@ -57,6 +57,8 @@
 @synthesize twitterButton;
 @synthesize browserViewController;
 @synthesize nextButton;
+@synthesize isEdit;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -130,14 +132,15 @@
                                      target:nil
                                      action:nil] autorelease];
     
-    
-    UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
+    if (self.isEdit)
+    {
+        UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                                          style:UIBarButtonItemStylePlain
                                                                         target:self
                                                                         action:@selector(goBack)];
-    self.navigationItem.leftBarButtonItem = customBackButton;
-    [customBackButton release];
-    
+        self.navigationItem.leftBarButtonItem = customBackButton;
+        [customBackButton release];
+    }
     [self setDoneButtonState];
     
     

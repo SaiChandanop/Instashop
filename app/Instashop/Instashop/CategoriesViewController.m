@@ -69,7 +69,7 @@
 {
     UILabel *label = [[[UILabel alloc] initWithFrame:CGRectZero] autorelease];
     label.backgroundColor = [UIColor clearColor];
-    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.font = [UIFont systemFontOfSize:20.0];
     label.textAlignment = NSTextAlignmentCenter;
     // ^-Use UITextAlignmentCenter for older SDKs.
     label.textColor = [UIColor whiteColor]; // change this color

@@ -335,6 +335,7 @@
     NSLog(@"editButtonHit");
     
     ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
+    productDetailsViewController.isEdit = YES;
     productDetailsViewController.parentController = self;
     productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
     [self.navigationController pushViewController:productDetailsViewController animated:YES];
