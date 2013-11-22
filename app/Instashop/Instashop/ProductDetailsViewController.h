@@ -59,7 +59,7 @@
     ISLightRowContainerView *socialButtonContainerView;
     UIButton *facebookButton;
     UIButton *twitterButton;
-    
+    UIButton *urlButton;
     UIButton *nextButton;
     
     CIALBrowserViewController *browserViewController;
@@ -123,8 +123,7 @@
 @property (nonatomic, retain) IBOutlet ISLightRowContainerView *socialButtonContainerView;
 @property (nonatomic, retain) IBOutlet UIButton *facebookButton;
 @property (nonatomic, retain) IBOutlet UIButton *twitterButton;
-
-
+@property (nonatomic, retain) IBOutlet UIButton *urlButton;
 @property (nonatomic, retain) IBOutlet UIButton *nextButton;
 
 @property (nonatomic, retain) CIALBrowserViewController *browserViewController;

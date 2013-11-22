@@ -50,9 +50,8 @@
 @synthesize originalPriceViewRect;
 @synthesize editingProductObject;
 @synthesize urlLabel;
-
+@synthesize urlButton;
 @synthesize urlContainerView;
-
 @synthesize socialButtonContainerView;
 @synthesize facebookButton;
 @synthesize twitterButton;
@@ -126,7 +125,7 @@
     [self.addSizeButton removeFromSuperview];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@"Custom Title"
+    [[[UIBarButtonItem alloc] initWithTitle:@"Back"
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil] autorelease];
@@ -301,6 +300,7 @@
     
     [self resignResponders];
     
+    [self.descriptionTextView resignFirstResponder];
     
     
 }
@@ -553,6 +553,7 @@
         
         self.urlContainerView.frame = CGRectMake(self.urlContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height, self.urlContainerView.frame.size.width, self.urlContainerView.frame.size.height);
         
+        self.urlButton.frame = CGRectMake(self.urlButton.frame.origin.x, self.urlContainerView.frame.origin.y, self.urlButton.frame.size.width, self.urlButton.frame.size.height);
         
         self.socialButtonContainerView.frame = CGRectMake(self.socialButtonContainerView.frame.origin.x, self.urlContainerView.frame.origin.y + self.urlContainerView.frame.size.height + 40, self.socialButtonContainerView.frame.size.width, self.socialButtonContainerView.frame.size.height);
         
@@ -580,7 +581,7 @@
     self.browserViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ] autorelease];
 //    [self.browserViewController loadRightBarItem];
     
-    
+    [self.descriptionTextView resignFirstResponder];
     
 }
 
@@ -642,18 +643,8 @@
 - (IBAction) facebookButtonHit
 {
     NSLog(@"facebookButtonHit");
-
     self.facebookButton.selected = !self.facebookButton.selected;
-    
     [SocialManager requestInitialFacebookAccess];
-
-    
-    
-
-    
-    
-    
-    
 }
 
 - (IBAction) twitterButtonHit
@@ -661,10 +652,6 @@
     NSLog(@"twitterButtonHit");
     self.twitterButton.selected = !self.twitterButton.selected;
 }
-
-
-
-
 
 
 -(void)resignResponders
