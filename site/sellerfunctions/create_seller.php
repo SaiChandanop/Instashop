@@ -71,7 +71,11 @@ if ($_POST["action"] == "checkSeller")
 	$json = json_encode($retAr);
 	echo $json;
 }
-
+else if ($_POST["action"] == "update_push_id")
+{
+	$query = "update sellers set push_id = ' ". $_POST["push_id"] ."' where instagram_id = '" . $_POST["instagram_id"] . "'";
+	$result = mysql_query($query);
+}
 else
 {
 	$zencartID = checkInshashopForInstagramID($_POST["userID"]);
@@ -83,9 +87,10 @@ else
 	{	
 		$zencartID = createZencartSeller($_POST["username"]);
 		createInstashopSeller($zencartID, $_POST["userID"], $_POST["push_id"]);
+		createInstashopSellerAddress($_POST["userID"], $_POST);
 	}
 
-	createInstashopSellerAddress($_POST["userID"], $_POST);
+	
 
 
 	$retAr = array();

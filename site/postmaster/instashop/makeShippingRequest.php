@@ -27,7 +27,7 @@ $post_data = json_decode($http_raw_post_data,true);
 $fromArray =  array();
 $fromArray["company"] = "test_seller_company";
 $fromArray["contact"] = $post_data["seller_name"];
-$fromArray["line1"] = "20 Jay St Ste 934";//$post_data["seller_address"];
+$fromArray["line1"] = $post_data["seller_address"];
 $fromArray["city"] = $post_data["seller_city"];
 $fromArray["state"] = $post_data["seller_state"];
 $fromArray["zip_code"] = $post_data["seller_zip"];
@@ -39,7 +39,7 @@ $fromArray["phone_no"] = "212-221-1212";
 $toArray = array();
 $toArray["company"] = "test buyer company";
 $toArray["contact"] = $post_data["buyer_name"];
-$toArray["line1"] = "20 Jay St Ste 934";//$post_data["buyer_address"];
+$toArray["line1"] = $post_data["buyer_address"];
 $toArray["city"] = $post_data["buyer_city"];
 $toArray["state"] = $post_data["buyer_state"];
 $toArray["zip_code"] = $post_data["buyer_zip"];
@@ -62,6 +62,7 @@ $shipmentArray = array(
     "height" => $post_data["package_height"],
   ),
 );
+
 
 $result = Postmaster_Shipment::create($shipmentArray);
 $shipment_id = $result->id;

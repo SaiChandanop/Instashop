@@ -3,11 +3,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Instashop is the marketplace for products discovered on Instagram" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<title>Instashop</title>
 	<link rel="stylesheet" media="all" href="css/all.css" type="text/css"/>
 	<link rel="stylesheet" media="all" href="css/responsive.css" type="text/css"/>
-	<link rel="stylesheet" type="text/css" href="fonts/fontawesome.css" />
+	<link rel="stylesheet" media="all" href="css/font-awesome.css" type="text/css"/>
 	<link rel="image_src" href="http://www.instashop.com/images/icon.jpg" / >
 	
 	<meta property="og:image" content="http://www.instashop.com/images/icon.jpg"/>
@@ -38,7 +38,6 @@
 				<ul class="socials smartphone-hide">
 					<li><a class="facebook" href="https://www.facebook.com/Instashopapp" target=_blank>facebook</a></li>
 					<li><a class="twitter" href="https://twitter.com/Instashop" target=_blank>twitter</a></li>
-					<li><a class="pinterest" href="http://pinterest.com/instashop/" target=_blank>pinterest</a></li>
 					<li><a class="instagram" href="http://instagram.com/instashop" target=_blank>instagram</a></li>
 				</ul>
 			</header>
@@ -135,7 +134,8 @@
 										<h3 class="bodycopy mobilesubhead">Please tell us a bit more about your store or brand:</h3>
 
 										<div class="validate-row"><input type="text" value="Name of Store/Brand" class="required-text storename" name="name" /></div>
-										<div class="validate-row"><input type="text" value="Email" name="email" class="required-email email" /></div>
+										<input type="text" value="Website" name="web" class="required-text website" />
+
 										<div class="validate-row">
 											<select class="required-select" name="category" value="Select a category">
 												<option selected value="">Select a Category</option>
@@ -148,8 +148,10 @@
 											</select>
 										</div>
 
+										<div class="validate-row"><input type="text" value="Email" name="email" class="required-email email" /></div>
+
 										<div class="validate-row">
-											<input type="text" value="Website (Optional)" name="web" class="optional-text website" />
+
 											<input type="text" value="Phone (Optional)" name="phone" class="optional-number phone" />
 										</div>
 
@@ -163,8 +165,8 @@
 								<h3 class="bodycopy success">We'll be in touch soon.</h3>
 								<h3 class="bodycopy success gap">Help spread the word about Instashop!</h3>
 								<ul class="socials-btn">
-											<li><a href="#" class="facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;">													<i class="icon-facebook"></i>Share</a></li>
-										<li><a class="twitter" href="http://twitter.com/share?url=http%3A%2F%2Finstashop.com&text=I%20just%20signed%20up%20for%20%40Instashop%2C%20the%20marketplace%20for%20products%20discovered%20on%20Instagram%2E" target="_blank"><i class="icon-twitter"></i>Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
+											<li><a href="#" class="facebook" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 'facebook-share-dialog', 'width=626,height=436'); return false;">													<i class="icon-facebook icon-large"></i>Share</a></li>
+										<li><a class="twitter" href="http://twitter.com/share?url=http%3A%2F%2Finstashop.com&text=I%20just%20signed%20up%20for%20%40Instashop%2C%20the%20marketplace%20for%20products%20discovered%20on%20Instagram%2E" target="_blank"><i class="icon-twitter icon-large"></i>Tweet</a><script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></li>
 
 										</ul>
 							</div>
@@ -259,7 +261,6 @@
 					<ul class="socials">
 						<li><a class="facebook" href="https://www.facebook.com/Instashopapp" target=_blank>facebook</a></li>
 						<li><a class="twitter" href="https://twitter.com/Instashop" target=_blank>twitter</a></li>
-						<li><a class="pinterest" href="http://pinterest.com/instashop/" target=_blank>pinterest</a></li>
 						<li><a class="instagram" href="http://instagram.com/instashop" target=_blank>instagram</a></li>
 					</ul>			
 				</div>

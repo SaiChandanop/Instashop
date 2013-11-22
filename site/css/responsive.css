@@ -30,6 +30,10 @@ and (max-width : 568px) {
 	margin:0;
 	}
 	
+	.sellbtn {display: none;}
+	
+	.icon-large{padding-right: 10px;}
+	
 	.start-high{margin-top: -20px;}
 	
 	.st-title{
@@ -42,11 +46,12 @@ and (max-width : 568px) {
 	
 	.socials-btn li:first-child {
 	margin-bottom: 10px;
+	margin-top: 10px;
 	}
 	
 	.socials-btn a {
 	display: inline-block;
-	padding: 4px 20px 8px 0px;
+	padding: 6px 20px 8px 0px;
 	}
 	
 	.seller{
@@ -98,6 +103,7 @@ and (max-width : 568px) {
 	.slideshow {
 		height: auto;
 		margin: 0px;
+		overflow-x: hidden !important;
 	}
 	
 	.sellform {margin-left: 0px; }
@@ -126,13 +132,13 @@ and (max-width : 568px) {
 		background: url(../images/logo-mobile.png) center 50% no-repeat;
 		background-size: 140px 75px;
 		width: 100%;
-		margin-top: 7px;
 		}
 	
 	.phone-holder{
 		background: url(../images/appstore-mobile.png) center 50% no-repeat;
 		background-size: 90px 35px;
 		width: 100%;
+		height: auto;
 		text-indent: -9999px;
 	}
 	
@@ -142,11 +148,6 @@ and (max-width : 568px) {
 		
 	.smartphone-hide{
 		display:none;
-	}
-	
-	.headertitle{
-		display: block;
-		margin-left: 5%;
 	}
 	
 	.bodycopy{
@@ -159,14 +160,30 @@ and (max-width : 568px) {
 		margin-bottom: 19px;
 	}
 	
+	.headertitle{
+		display: inline-block;
+		margin-left: 5%;
+		margin-top: 8px;
+		margin-bottom:10px;
+	}
+
 	.mobilesubhead{ font-size: 12px; line-height: 12px; margin-top: 0px;}
 	
 	.subtitle{font-size: 18px; margin-top: 5px; margin-bottom: 5px;}
 	
 	.connect-form .btn {
-		background: #476b90 url("../images/bg-connect.png") no-repeat 10px 9px;
-		padding: 14px 56px 12px;
+		background: #476b90;
+		padding: 12px 0px 12px 0px;
+		width: 304px;
+		margin-left: auto;
+		margin-right: auto;
 		}
+	
+	.instagram_username{
+		font-weight: normal;
+		font-size: 24px;
+		margin-top: 20px;
+	}
 		
 	.steps{
 		font-size: 14px;
@@ -209,7 +226,7 @@ and (max-width : 568px) {
 		background: url(../images/mobile-screenshot.png) center 50% no-repeat;
 		background-size: 320px 245px;
 		text-indent: -9999px;
-		height: 246px;
+		height: 245px;
 		width: 100%;
 	}
 	
@@ -243,7 +260,7 @@ and (max-width : 568px) {
 	.socials li{
 		margin-left: auto;
 		margin-right: auto;
-		width: 25%;
+		width: 33.333333%;
 		padding: 0;
 	}
 	
@@ -274,8 +291,6 @@ and (max-width : 568px) {
 /** CONNECT FORM  **/
 
 	.connect-form{margin-top: 0px;}
-	
-	.connect-form .btn{width: auto;}
 	
 	.connectinput{width: 89%;}
 

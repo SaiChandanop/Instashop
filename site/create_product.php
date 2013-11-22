@@ -45,9 +45,9 @@ function updateProductsToCategories($product_id, $product_owner_id)
 
 }
 
-function updateProductsDescription($product_id, $product_title, $product_description, $product_url, $instagram_object_id, $product_list_price)
+function updateProductsDescription($product_id, $product_title, $product_description, $product_url, $instagram_object_id, $product_list_price, $product_external_url)
 {
-	$query = "insert into products_description values ('". $product_id ."', '1', '".$product_title ."', '".$product_description ."', '". $product_url ."', '0', '$instagram_object_id', '$product_list_price')";
+	$query = "insert into products_description values ('". $product_id ."', '1', '".$product_title ."', '".$product_description ."', '". $product_url ."', '0', '$instagram_object_id', '$product_list_price', '$product_external_url')";
 //	echo "\n updateProductsDescription: ". $query;
 	$result = mysql_query($query);
 	
@@ -64,21 +64,21 @@ function updateSellersProducts($instagram_user_id, $zencart_id, $product_id)
 }
 
 
-function updateProductsAttributes($postObject)
+function updateProductsAttributes($product_ID, $postObject)
 {
 
-	$productID = $postObject["zencart_product_id"];
 	$quantity = $postObject["object_quantity"];
 	$size = $postObject["object_size"];
 
-	$categories = explode("|", $postObject["categories"]);
+	$categories = explode("!!", $postObject["object_categories"]);
 
-	$query = "insert into products_categories_and_sizes values ('','$productID','$quantity','$size','$categories[0]','$categories[1]','$categories[2]','$categories[3]','$categories[4]','$categories[5]','$categories[6]')";	
+
+	$query = "insert into products_categories_and_sizes values ('','$product_ID','$quantity','$size','$categories[0]','$categories[1]','$categories[2]','$categories[3]','$categories[4]','$categories[5]','$categories[6]')";	
 	$result = mysql_query($query);
 
 
 	echo "\n updateProductsAttributes: ". $query;
-	
+		
 
 }
 
@@ -94,10 +94,13 @@ if ($_POST["create_type"] == "product_object")
 	$product_id = createNewProduct($_POST["object_quantity"], $_POST["object_model"], $_POST["product_image"], $_POST["object_price"], $_POST["product_date"], $_POST["product_weight"], $user_id);
 	//echo "\ncreateNewProduct product_id: ". $product_id;
 
+
+	updateProductsAttributes($product_id, $_POST);
+
 	updateProductsToCategories($product_id, $user_id);
 	//echo "\nupdateProductsToCategories";
 
-	updateProductsDescription($product_id, $_POST["object_title"], $_POST["object_description"], $_POST["object_image_urlstring"], $_POST["object_instagram_id"], $_POST["object_list_price"] );
+	updateProductsDescription($product_id, $_POST["object_title"], $_POST["object_description"], $_POST["object_image_urlstring"], $_POST["object_instagram_id"], $_POST["object_list_price"], $_POST["object_external_url"] );
 	//echo "\n updateProductsDescription";
 
 	updateSellersProducts($_POST["instagramUserId"], $user_id, $product_id);

@@ -16,7 +16,7 @@ $apns_port = 2195;
  
 
 $apns_url = 'gateway.sandbox.push.apple.com';
-$apns_cert = './cert-dev.pem';
+$apns_cert = './ck.pem';
 
  
 $stream_context = stream_context_create();
@@ -26,7 +26,7 @@ $apns = stream_socket_client('ssl://' . $apns_url . ':' . $apns_port, $error, $e
  
 //	You will need to put your device tokens into the $device_tokens array yourself
 $device_tokens = array();
-array_push($device_tokens, "89e84f0161ee45f3f3d993034a38c0470691b143e08559ea14900f15981ecf5c");
+array_push($device_tokens, "260675532cab6914f203d23d55d386e5235d1777b01f221f41d89a1077bfd192");
 
 print_r($device_tokens); 
 foreach($device_tokens as $device_token)

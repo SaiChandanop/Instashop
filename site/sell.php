@@ -3,10 +3,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="description" content="Instashop is the marketplace for products discovered on Instagram" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
 	<title>Instashop</title>
 	<link rel="stylesheet" media="all" href="css/all.css" type="text/css"/>
 	<link rel="stylesheet" media="all" href="css/responsive.css" type="text/css"/>
+	<link rel="stylesheet" media="all" href="css/font-awesome.css" type="text/css"/>
 	<link rel="image_src" href="http://www.instashop.com/images/icon.jpg" / >
 	<link rel="icon" type="image/png" href="images/favicon.ico" />
 	
@@ -39,7 +40,6 @@
 				<ul class="socials smartphone-hide">
 					<li><a class="facebook" href="https://www.facebook.com/Instashopapp" target=_blank>facebook</a></li>
 					<li><a class="twitter" href="https://twitter.com/Instashop" target=_blank>twitter</a></li>
-					<li><a class="pinterest" href="http://pinterest.com/instashop/" target=_blank>pinterest</a></li>
 					<li><a class="instagram" href="http://instagram.com/instashop" target=_blank>instagram</a></li>
 				</ul>
 			</header>
@@ -128,7 +128,7 @@
 											if ($showInstagramButton)
 											{
 											?>
-												<a class="btn" href="instagram_signup.php">Connect with Instagram </a>
+												<a class="btn" href="instagram_signup.php"><i class="icon-instagram icon-2x"></i>&nbsp&nbsp Connect with Instagram</a>
 											<?
 											}
 											?>
@@ -201,7 +201,7 @@
 								if ($showInstagramButton)
 								{
 								?>
-									<a class="btn" href="instagram_signup.php">Connect with Instagram </a>
+									<a class="btn" href="instagram_signup.php"><i class="icon-instagram icon-large"></i>Connect with Instagram </a>
 								<?
 								}
 								?>
@@ -220,7 +220,6 @@
 					<ul class="socials">
 						<li><a class="facebook" href="https://www.facebook.com/Instashopapp" target=_blank>facebook</a></li>
 						<li><a class="twitter" href="https://twitter.com/Instashop" target=_blank>twitter</a></li>
-						<li><a class="pinterest" href="http://pinterest.com/instashop/" target=_blank>pinterest</a></li>
 						<li><a class="instagram" href="http://instagram.com/instashop" target=_blank>instagram</a></li>
 					</ul>			
 				</div>

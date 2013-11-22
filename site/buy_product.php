@@ -1,7 +1,7 @@
 <?
 
 include_once("./push_notification.php");
-include_once("../db.php");
+include_once("./db.php");
 
 
 function decrementProductQuantity($product_id, $product_category_id)
@@ -21,7 +21,7 @@ function decrementProductQuantity($product_id, $product_category_id)
 
 
 	$query = "select * from products_categories_and_sizes where id = '". $product_category_id ."'";
-	echo "\n\nquery!!!: $query \n\n\n";
+	echo "\n\decrementProductQuantity!!!: $query \n\n\n";
 
 	$result = mysql_query($query);
 
@@ -30,7 +30,7 @@ function decrementProductQuantity($product_id, $product_category_id)
 		$quantity--;
 		$query = "update products_categories_and_sizes set quantity = '".$quantity ."' where id = '". $product_category_id ."'";
 
-		echo "\n\nquery2!!!: $query \n\n\n";
+		echo "\n\decrementProductQuantity2!!!: $query \n\n\n";
 		$result = mysql_query($query);
     }
 
