@@ -140,6 +140,11 @@
     [customBackButton release];
     
     [self setDoneButtonState];
+    
+    
+    [self.descriptionTextView setReturnKeyType:UIReturnKeyDone];
+    
+    
 }
 
 -(void)setDoneButtonState
@@ -506,6 +511,11 @@
     
     self.descriptionTextView.textColor = [UIColor whiteColor];
     self.descriptionTextView.scrollEnabled = YES;
+    
+    
+
+    
+    
 }
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
@@ -524,7 +534,8 @@
     float verticaloffset = 6;
     if (textView == self.descriptionTextView)
     {
-        
+            if ([text compare:@"\n"] == NSOrderedSame)
+                [textView resignFirstResponder];
         //        [UIView beginAnimations:nil context:nil];
         //       [UIView setAnimationDuration:.2];
         
