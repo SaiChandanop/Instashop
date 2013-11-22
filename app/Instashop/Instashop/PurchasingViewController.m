@@ -32,7 +32,7 @@
 #import "NotificationsAPIHandler.h"
 #import "SavedItemsAPIHandler.h"
 #import "BitlyAPIHandler.h"
-
+#import "SearchButtonContainerView.h"
 @interface PurchasingViewController ()
 
 @property (nonatomic, retain) NSDictionary *requestedProductObject;
@@ -47,7 +47,6 @@
 @synthesize requestingProductID;
 @synthesize requestedPostmasterDictionary;
 @synthesize contentScrollView;
-@synthesize categoryLabel;
 @synthesize descriptionContainerView;
 @synthesize requestedProductObject;
 @synthesize imageView, sellerLabel, likesLabel, descriptionTextView, listPriceLabel, retailPriceLabel, numberAvailableLabel, sellerProfileImageView;
@@ -68,6 +67,7 @@
 @synthesize isEditable;
 @synthesize saveButton;
 @synthesize isBuying;
+@synthesize categoryContainerImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -147,6 +147,32 @@
     
 }
 
+-(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton
+{
+    NSLog(@"searchButtonContainerHit: %@", theButton);
+}
+-(void)loadCategoryButtonsWithString:(NSString *)theCategoriesString
+{
+    float xOffset = 15;
+    
+    NSArray *categoriesArray = [theCategoriesString componentsSeparatedByString:@">"];
+    
+    for (int i = 0; i < [categoriesArray count]; i++)
+    {
+        NSString *categoriesString = [[categoriesArray objectAtIndex:i] stringByReplacingOccurrencesOfString:@" " withString:@""];
+        
+        SearchButtonContainerView *buttonContainerView = [[SearchButtonContainerView alloc] init];
+        [buttonContainerView loadWithSearchTerm:categoriesString withClickDelegate:self];
+        buttonContainerView.frame = CGRectMake(xOffset, self.categoryContainerImageView.frame.origin.y + self.categoryContainerImageView.frame.size.height / 8, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 28, self.categoryContainerImageView.frame.size.height - self.categoryContainerImageView.frame.size.height / 4);
+        
+        [self.contentScrollView addSubview:buttonContainerView];
+        [buttonContainerView sizeViewWithFrame];
+        buttonContainerView.frame = CGRectMake(buttonContainerView.frame.origin.x, buttonContainerView.frame.origin.y, buttonContainerView.frame.size.width * .85, buttonContainerView.frame.size.height);
+        buttonContainerView.exitImageView.alpha = 0;
+        xOffset = buttonContainerView.frame.origin.x + buttonContainerView.frame.size.width + 15;
+    }
+    
+}
 -(void)commentAddTextShouldBeginEditingWithTextField:(UITextField *)theTextField
 {
     self.commentTextField = theTextField;
@@ -256,7 +282,9 @@
         
     }
     
-    self.categoryLabel.text = categoryString;
+    [self loadCategoryButtonsWithString:categoryString];
+    
+    //self.categoryLabel.text = categoryString;
     
     NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     if ([sizeQuantityArray count] == 1)
@@ -804,11 +832,21 @@
     }
     else
     {
-    UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", nil];
-    shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [shareActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
+        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", nil];
+        shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        [shareActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
     }
 }
+
+
+-(void)willPresentActionSheet:(UIActionSheet *)theActionSheet
+{
+    for (UIButton *button in theActionSheet.subviews)
+        if ([button isKindOfClass:[UIButton class]])
+            if ([[button titleForState:UIControlStateNormal] compare:@"Flag"] == NSOrderedSame)
+                button.titleLabel.textColor = [UIColor redColor];
+}
+
 
 - (void) actionSheet:(UIActionSheet *)theActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     

@@ -29,12 +29,12 @@
     UIImageView *heartImageView;
     UIScrollView *contentScrollView;
     UIImageView *imageView;
+    UIImageView *categoryContainerImageView;
     UIView *doubleTapView;
     UILabel *sellerLabel;
     UILabel *likesLabel;
     UILabel *listPriceLabel;
     UILabel *retailPriceLabel;
-    UILabel *categoryLabel;
     UIView *descriptionContainerView;
     UITextView *descriptionTextView;
     UILabel *numberAvailableLabel;
@@ -89,10 +89,10 @@
 @property (nonatomic, retain) IBOutlet UIImageView *heartImageView;
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, retain) IBOutlet UIImageView *categoryContainerImageView;
 @property (nonatomic, retain) IBOutlet UIView *doubleTapView;
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
 @property (nonatomic, retain) IBOutlet UILabel *likesLabel;
-@property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
 @property (nonatomic, retain) IBOutlet UIView *descriptionContainerView;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
 @property (nonatomic, retain) IBOutlet UILabel *listPriceLabel;

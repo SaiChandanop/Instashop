@@ -8,7 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PurchasingViewController">
             <connections>
                 <outlet property="bottomView" destination="B12-y8-tzH" id="Z4J-8z-vTz"/>
-                <outlet property="categoryLabel" destination="327" id="328"/>
+                <outlet property="categoryContainerImageView" destination="qJe-ss-inr" id="193-m9-65T"/>
                 <outlet property="commentsTableViewController" destination="ybj-UC-cNR" id="IDc-KP-N49"/>
                 <outlet property="contentScrollView" destination="eOa-Xa-eSQ" id="hgj-be-G18"/>
                 <outlet property="descriptionContainerView" destination="323" id="334"/>
@@ -121,13 +121,6 @@
                             <rect key="frame" x="0.0" y="362" width="320" height="5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="327">
-                            <rect key="frame" x="16" y="327" width="291" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cell_separator.png" id="M0q-yO-dzh">
                             <rect key="frame" x="-1" y="318" width="320" height="5"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
