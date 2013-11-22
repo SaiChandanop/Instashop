@@ -24,6 +24,7 @@
 #import "AmberAPIHandler.h"
 #import "WebViewController.h"
 #import "SettingsViewController.h"
+#import "DiscoverDataManager.h"
 
 @implementation AppRootViewController
 
@@ -46,6 +47,7 @@ float transitionTime = .456;
     if (theSharedRootViewController) {
 
         self.view.backgroundColor = [ISConstants getISGreenColor];
+        
     }
     return theSharedRootViewController;
 }
@@ -84,6 +86,7 @@ float transitionTime = .456;
     
     [self setNeedsStatusBarAppearanceUpdate];
 
+    [DiscoverDataManager getSharedDiscoverDataManager];
     
 }
 

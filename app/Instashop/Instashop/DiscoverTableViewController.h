@@ -15,17 +15,10 @@
 @interface DiscoverTableViewController : UITableViewController <FeedRequestFinishedProtocol, IGRequestDelegate>
 {
     DiscoverViewController *parentController;
-    NSArray *sellersObjectsArray;
     
-    NSMutableDictionary *unsortedDictionary;
-    NSMutableArray *likedArray;
     NSMutableArray *contentArray;
     
 }
 @property (nonatomic, retain) DiscoverViewController *parentController;
-@property (nonatomic, retain) NSArray *sellersObjectsArray;
-
-@property (nonatomic, retain) NSMutableDictionary *unsortedDictionary;
-@property (nonatomic, retain) NSMutableArray *likedArray;
 @property (nonatomic, retain) NSMutableArray *contentArray;
 @end

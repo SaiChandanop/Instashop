@@ -92,7 +92,7 @@
     
     
     self.productsButton.selected = YES;
-        
+    
     if (self.directSearchTerm != nil)
         [self.productSearchViewController doDirectSearch:self.directSearchTerm];
 }
