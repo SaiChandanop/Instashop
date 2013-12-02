@@ -24,6 +24,6 @@
 -(NSArray *)getSizesWithArray:(NSArray *)theArray;
 
 @property (nonatomic, retain) NSMutableDictionary *attributesDictionary;
-
+@property (nonatomic, retain) NSMutableArray *sortedAttributesArray;
 
 @end

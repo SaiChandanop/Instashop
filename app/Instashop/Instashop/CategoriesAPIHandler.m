@@ -13,7 +13,7 @@
 
 +(void)makeCategoriesRequest
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"categories.plist"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"categories2.plist"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -23,7 +23,8 @@
     [categoriesAPIHandler.theWebRequest addTarget:categoriesAPIHandler action:@selector(categoriesRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
     [categoriesAPIHandler.theWebRequest start];
    
-    
+
+    NSLog(@"CategoriesAPIHandler urlRequestString: %@", urlRequestString);
 }
 
 -(void)categoriesRequestFinished:(id)obj
@@ -31,7 +32,8 @@
     NSString* newStr = [[[NSString alloc] initWithData:self.responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-//    NSLog(@"categoreisRequestFinished: %@", newStr);
     [[AttributesManager getSharedAttributesManager] processAttributesString:newStr];
+    
+    
 }
 @end

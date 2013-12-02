@@ -8,7 +8,7 @@
 
 #import "AttributesManager.h"
 #import "GroupDiskManager.h"
-
+#import "AttributeRankObject.h"
 
 @implementation NSArray (indexKeyedDictionaryExtension)
 
@@ -40,6 +40,7 @@ static AttributesManager *theManager;
     {
         theManager = [[AttributesManager alloc] init];
         theManager.attributesDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
+        theManager.sortedAttributesArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return theManager;
 }
@@ -59,10 +60,39 @@ static AttributesManager *theManager;
         [error release];
     }
 
-    self.attributesDictionary = [[NSMutableDictionary alloc] initWithDictionary:plist];   
+    self.attributesDictionary = [[NSMutableDictionary alloc] initWithDictionary:plist];
+    
+    //NSLog(@"self.attributesDictionary: %@", self.attributesDictionary);
+    
+    [self processOrderWithString:myText];
+    
 }
 
 
+-(void)processOrderWithString:(NSString *)theText
+{
+    theText = [theText stringByReplacingOccurrencesOfString:@"<?xml version=\"1.0\" encoding=\"UTF-8\"?>" withString:@""];
+    theText = [theText stringByReplacingOccurrencesOfString:@"<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">" withString:@""];
+    theText = [theText stringByReplacingOccurrencesOfString:@"<plist version=\"1.0\">" withString:@""];
+    theText = [theText stringByReplacingOccurrencesOfString:@"<dict>" withString:@""];
+    theText = [theText stringByReplacingOccurrencesOfString:@"<dict/>" withString:@""];
+    theText = [theText stringByReplacingOccurrencesOfString:@"</dict>" withString:@""];
+    theText = [theText stringByReplacingOccurrencesOfString:@"</key>" withString:@""];
+    
+    NSArray *componentsArray = [theText componentsSeparatedByString:@"<key>"];
+    
+    for (int i = 0; i < [componentsArray count]; i++)
+    {
+        NSString *theComponent = [componentsArray objectAtIndex:i];
+        theComponent = [theComponent stringByReplacingOccurrencesOfString:@"\t" withString:@""];
+        theComponent = [theComponent stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        theComponent = [theComponent stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+        
+        [self.sortedAttributesArray addObject:theComponent];
+    }
+    
+    NSLog(@"sortedAttributesArray: %@", self.sortedAttributesArray);
+}
 
 
 
@@ -80,8 +110,64 @@ static AttributesManager *theManager;
 
 -(NSArray *)getShopsCategories
 {
-    return [NSArray arrayWithObjects:@"Art", @"Books & Media", @"Fashion", @"Health & Beauty", @"Home", @"Music", @"Sports", @"Technology", nil];
+    return [NSArray arrayWithObjects:@"Art", @"Books & Media", @"Fashion", @"Health & Beauty", @"Home", @"Music", @"Sports", @"Technology", @"AAAA", nil];
 }
+
+
+-(NSMutableArray *)sortCategoriesWithArray:(NSArray *)unsortedArray
+{
+    
+    
+    NSLog(@"sortCategoriesWithArray: %@", unsortedArray);
+    
+    NSMutableArray *rankObjectsArray = [NSMutableArray arrayWithCapacity:0];
+    
+    for (int i = 0;  i < [unsortedArray count]; i++)
+    {
+        NSString *theString = [unsortedArray objectAtIndex:i];
+        theString = [theString stringByReplacingOccurrencesOfString:@"&" withString:@"&amp;"];
+        
+        AttributeRankObject *rankObject = [[AttributeRankObject alloc] init];
+        rankObject.attributeString = [unsortedArray objectAtIndex:i];
+        rankObject.rank = [self.sortedAttributesArray indexOfObject:theString];
+        [rankObjectsArray addObject:rankObject];
+    }
+    NSLog(@"rankObjectsArray: %@", rankObjectsArray);
+    
+    
+    
+    NSArray *sortedArray;
+    sortedArray = [rankObjectsArray sortedArrayUsingComparator:^NSComparisonResult(id a, id b) {
+        
+        int first = ((AttributeRankObject*)a).rank;
+        int second = ((AttributeRankObject*)b).rank;
+        
+        
+        return (first > second);
+    }];
+    
+    NSLog(@"sortedArray: %@", sortedArray);
+    
+    
+    NSMutableArray *returnArray = [NSMutableArray arrayWithCapacity:0];
+    
+    for (int i = 0; i < [sortedArray count]; i++)
+    {
+        AttributeRankObject *rankObject = [sortedArray objectAtIndex:i];
+        [returnArray addObject:rankObject.attributeString];
+        
+    }
+    
+    NSLog(@"returnArray: %@", returnArray);
+    
+    NSLog(@" ");
+    NSLog(@" ");
+
+    
+    
+    return returnArray;
+}
+
 
 -(NSArray *)getCategoriesWithArray:(NSArray *)theArray
 {
@@ -89,7 +175,7 @@ static AttributesManager *theManager;
     NSDictionary *dict = nil;
     
     if ([theArray count] == 0)
-        return [self.attributesDictionary allKeys];
+        return [self sortCategoriesWithArray:[self.attributesDictionary allKeys]];
     
     else
     {
@@ -107,13 +193,15 @@ static AttributesManager *theManager;
 //    NSLog(@"dict: %@", dict);
     
     NSArray *retAR = [dict allKeys];
-                      
+    
     if ([[dict allKeys] count] == 0)
         return nil;
     if ([[dict allKeys] count] == 1)
         if ([[[dict allKeys] objectAtIndex:0] rangeOfString:@"|||"].length > 0)
             retAR = nil;
-        
+    
+    retAR = [self sortCategoriesWithArray:retAR];
+ 
     return retAR;
 }
 
