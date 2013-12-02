@@ -54,9 +54,6 @@
     NSString* newStr = [[[NSString alloc] initWithData:self.responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
-//    NSLog(@"supportedSiteHandlerFinished: %@", newStr);
-    
-    
     NSMutableArray *supportedSitesArray = [NSMutableArray arrayWithCapacity:0];
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
     
@@ -65,9 +62,6 @@
         NSDictionary *dict = [responseArray objectAtIndex:i];
         [supportedSitesArray addObject:[dict objectForKey:@"url"]];
     }
-
-    NSLog(@"supportedSitesArray: %@", supportedSitesArray);
-    NSLog(@"contextObject: %@", self.contextObject);
     
     NSString *domainString = self.contextObject;
     domainString = [domainString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
@@ -77,8 +71,18 @@
     domainString = [domainString stringByReplacingOccurrencesOfString:@"m." withString:@""];
     domainString = [domainString stringByReplacingOccurrencesOfString:@"ww." withString:@""];
     
-    NSLog(@"domainString: %@", domainString);
+    componentsArray = [domainString componentsSeparatedByString:@"."];
     
+    if ([componentsArray count] > 0)
+    {
+        if ([componentsArray count] > 1)
+        {
+            NSString *theDomainString = [componentsArray objectAtIndex:[componentsArray count] -2];
+            NSString *extensionString = [componentsArray objectAtIndex:[componentsArray count] -1];
+            domainString = [NSString stringWithFormat:@"%@.%@", theDomainString, extensionString];
+        }
+    }
+        
     [self.delegate amberSupportedSiteCallFinishedWithIsSupported:[supportedSitesArray containsObject:domainString]];
     
 }

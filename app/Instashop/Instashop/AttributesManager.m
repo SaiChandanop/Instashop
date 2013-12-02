@@ -116,10 +116,6 @@ static AttributesManager *theManager;
 
 -(NSMutableArray *)sortCategoriesWithArray:(NSArray *)unsortedArray
 {
-    
-    
-    NSLog(@"sortCategoriesWithArray: %@", unsortedArray);
-    
     NSMutableArray *rankObjectsArray = [NSMutableArray arrayWithCapacity:0];
     
     for (int i = 0;  i < [unsortedArray count]; i++)
@@ -132,8 +128,6 @@ static AttributesManager *theManager;
         rankObject.rank = [self.sortedAttributesArray indexOfObject:theString];
         [rankObjectsArray addObject:rankObject];
     }
-    NSLog(@"rankObjectsArray: %@", rankObjectsArray);
-    
     
     
     NSArray *sortedArray;
@@ -146,9 +140,6 @@ static AttributesManager *theManager;
         return (first > second);
     }];
     
-    NSLog(@"sortedArray: %@", sortedArray);
-    
-    
     NSMutableArray *returnArray = [NSMutableArray arrayWithCapacity:0];
     
     for (int i = 0; i < [sortedArray count]; i++)
@@ -157,13 +148,6 @@ static AttributesManager *theManager;
         [returnArray addObject:rankObject.attributeString];
         
     }
-    
-    NSLog(@"returnArray: %@", returnArray);
-    
-    NSLog(@" ");
-    NSLog(@" ");
-
-    
     
     return returnArray;
 }
