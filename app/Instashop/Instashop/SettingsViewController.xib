@@ -29,7 +29,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="561"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" id="KDX-FV-Aaq" userLabel="Home">
+                <view contentMode="scaleToFill" id="KDX-FV-Aaq" userLabel="Invite a Friend">
                     <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -37,15 +37,15 @@
                             <rect key="frame" x="0.0" y="-19" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lmHomeIcon.png" id="6Wa-U9-nGr">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="invite_friend_icon.png" id="6Wa-U9-nGr">
                             <rect key="frame" x="0.0" y="-19" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Invite Friends" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CXM-iY-WuE">
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Invite a Friend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CXM-iY-WuE">
                             <rect key="frame" x="52" y="-8" width="220" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_separator.png" id="E09-pV-FMp">
@@ -69,7 +69,7 @@
                         </button>
                     </subviews>
                 </view>
-                <view contentMode="scaleToFill" id="Tq4-dq-k8h" userLabel="Discover">
+                <view contentMode="scaleToFill" id="Tq4-dq-k8h" userLabel="FAQ">
                     <rect key="frame" x="0.0" y="64" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -77,7 +77,7 @@
                             <rect key="frame" x="0.0" y="-13" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lmDiscoverIcon.png" id="dtp-tC-kdc">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="faq_icon.png" id="dtp-tC-kdc">
                             <rect key="frame" x="0.0" y="-13" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -85,7 +85,7 @@
                             <rect key="frame" x="52" y="-2" width="220" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Au3-lA-yGC">
@@ -102,7 +102,7 @@
                         </button>
                     </subviews>
                 </view>
-                <view contentMode="scaleToFill" id="gd1-w2-IWN" userLabel="Suggested Stores">
+                <view contentMode="scaleToFill" id="gd1-w2-IWN" userLabel="Send Feedback">
                     <rect key="frame" x="0.0" y="95" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -110,7 +110,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lmSuggestedStoresIcon.png" id="O8B-sf-69Y">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="feedback_icon.png" id="O8B-sf-69Y">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -118,7 +118,7 @@
                             <rect key="frame" x="52" y="10" width="220" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Xat-bc-Lln">
@@ -145,7 +145,7 @@
                         </button>
                     </subviews>
                 </view>
-                <view contentMode="scaleToFill" id="9tK-Yy-oHN" userLabel="Notification">
+                <view contentMode="scaleToFill" id="9tK-Yy-oHN" userLabel="Bug Report">
                     <rect key="frame" x="0.0" y="139" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -153,7 +153,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lmNotificationsIcon.png" id="jAy-Ci-0BD">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bug_icon.png" id="jAy-Ci-0BD">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -161,12 +161,12 @@
                             <rect key="frame" x="52" y="11" width="177" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </view>
-                <view contentMode="scaleToFill" id="5No-cW-xRU" userLabel="Profile">
+                <view contentMode="scaleToFill" id="5No-cW-xRU" userLabel="Privacy">
                     <rect key="frame" x="0.0" y="183" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
@@ -174,7 +174,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lmProfileIcon.png" id="s4L-6s-0xi">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="privacy_icon.png" id="s4L-6s-0xi">
                             <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -182,7 +182,7 @@
                             <rect key="frame" x="52" y="11" width="220" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="pBH-bz-og3">
@@ -210,10 +210,10 @@
                             <rect key="frame" x="52" y="11" width="177" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="lmVerifiedRetailerIcon.png" id="yfU-M8-I6H">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="terms_icon.png" id="yfU-M8-I6H">
                             <rect key="frame" x="0.0" y="1" width="44" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
@@ -238,11 +238,15 @@
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Log Out" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d0f-s3-U2W" userLabel="Label - Log Out">
-                            <rect key="frame" x="0.0" y="11" width="320" height="23"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="log_out_icon.png" id="6jW-8Z-ybN">
+                            <rect key="frame" x="0.0" y="0.0" width="44" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Log Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="d0f-s3-U2W" userLabel="Label - Log Out">
+                            <rect key="frame" x="52" y="11" width="177" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
-                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G1o-Hp-4IU">
@@ -272,14 +276,15 @@
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
+        <image name="bug_icon.png" width="44" height="44"/>
         <image name="cell_separator.png" width="320" height="5"/>
-        <image name="lmDiscoverIcon.png" width="44" height="44"/>
-        <image name="lmHomeIcon.png" width="44" height="44"/>
-        <image name="lmNotificationsIcon.png" width="44" height="44"/>
-        <image name="lmProfileIcon.png" width="44" height="44"/>
-        <image name="lmSuggestedStoresIcon.png" width="44" height="44"/>
-        <image name="lmVerifiedRetailerIcon.png" width="44" height="44"/>
+        <image name="faq_icon.png" width="44" height="44"/>
+        <image name="feedback_icon.png" width="44" height="44"/>
+        <image name="invite_friend_icon.png" width="44" height="44"/>
+        <image name="log_out_icon.png" width="44" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
+        <image name="privacy_icon.png" width="44" height="44"/>
+        <image name="terms_icon.png" width="44" height="44"/>
     </resources>
 </document>
