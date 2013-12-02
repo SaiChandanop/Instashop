@@ -367,6 +367,7 @@
 #pragma mark -
 
 - (void)loadURL:(NSURL *)url {
+    
     if (!webView) {
         [self setURL:url];
         return;
@@ -374,6 +375,7 @@
     
     if (!url) return;
     
+    NSLog(@"%@ loadURL: %@", self, url);
     locationField.text = url.absoluteString;
     
     [webView loadRequest:[NSURLRequest requestWithURL:url]];
@@ -403,6 +405,8 @@
 
 - (NSURL *)url {
     NSURL *url = [NSURL URLWithString:locationField.text];
+    
+    
     if (!url.scheme.length && locationField.text.length) url = [NSURL URLWithString:[@"http://" stringByAppendingString:locationField.text]];
     return url;
 }
@@ -412,6 +416,7 @@
 
 - (void)setURL:(NSURL *)url
 {
+    NSLog(@"setURL: %@", url);
     NSString *urlString = url.absoluteString;
     if ([urlString length]) {
         if (!url.scheme.length) {
@@ -494,6 +499,8 @@
 }
 
 - (void) webView:(UIWebView *)sender didFailLoadWithError:(NSError *) error {
+    
+    NSLog(@"%@ error: %@", self, error);
     switch ([error code]) {
         case kCFURLErrorCancelled :
         {
@@ -502,7 +509,7 @@
         }
         default:
         {
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:CIALBrowserLocalizedString(@"Error",@"") 
+/*            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:CIALBrowserLocalizedString(@"Error",@"")
                                                             message:[error localizedDescription]
                                                            delegate:nil
                                                   cancelButtonTitle:CIALBrowserLocalizedString(@"OK",@"")
@@ -510,6 +517,7 @@
             [alert show];    
             [alert release];
             break;
+ */
         }
     }
     
