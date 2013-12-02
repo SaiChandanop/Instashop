@@ -287,6 +287,7 @@
 		7BD5C20117959811006F311A /* SizeQuantityTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20017959811006F311A /* SizeQuantityTableViewCell.m */; };
 		7BD5C20A1795B882006F311A /* CreateProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */; };
 		7BD5C20D1795BDCA006F311A /* ProductCreateContainerObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */; };
+		7BD9523D184D422B007E7E05 /* AttributeRankObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD9523C184D422B007E7E05 /* AttributeRankObject.m */; };
 		7BDED692180C7A28001FF165 /* CIALBrowser.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7BDED681180C7A28001FF165 /* CIALBrowser.bundle */; };
 		7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED683180C7A28001FF165 /* CIALBrowser.m */; };
 		7BDED694180C7A28001FF165 /* AddBookmarkViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BDED685180C7A28001FF165 /* AddBookmarkViewController.m */; };
@@ -723,6 +724,8 @@
 		7BD5C2091795B882006F311A /* CreateProductAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CreateProductAPIHandler.m; sourceTree = "<group>"; };
 		7BD5C20B1795BDC9006F311A /* ProductCreateContainerObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProductCreateContainerObject.h; sourceTree = "<group>"; };
 		7BD5C20C1795BDC9006F311A /* ProductCreateContainerObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateContainerObject.m; sourceTree = "<group>"; };
+		7BD9523B184D422B007E7E05 /* AttributeRankObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AttributeRankObject.h; sourceTree = "<group>"; };
+		7BD9523C184D422B007E7E05 /* AttributeRankObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AttributeRankObject.m; sourceTree = "<group>"; };
 		7BDED681180C7A28001FF165 /* CIALBrowser.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CIALBrowser.bundle; sourceTree = "<group>"; };
 		7BDED682180C7A28001FF165 /* CIALBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CIALBrowser.h; sourceTree = "<group>"; };
 		7BDED683180C7A28001FF165 /* CIALBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CIALBrowser.m; sourceTree = "<group>"; };
@@ -1846,6 +1849,8 @@
 		7BE29B95177A20710093BB25 /* Attributes */ = {
 			isa = PBXGroup;
 			children = (
+				7BD9523B184D422B007E7E05 /* AttributeRankObject.h */,
+				7BD9523C184D422B007E7E05 /* AttributeRankObject.m */,
 				7BE29B96177A20870093BB25 /* AttributesManager.h */,
 				7BE29B97177A20870093BB25 /* AttributesManager.m */,
 			);
@@ -2206,6 +2211,7 @@
 				7B5D625417C517A000D6C8B1 /* ISRowContainerView.m in Sources */,
 				69FC1E9B183424E700A52A90 /* WebViewController.m in Sources */,
 				7B5A56EA17D3D757007AABDA /* SuggestedStoresViewController.m in Sources */,
+				7BD9523D184D422B007E7E05 /* AttributeRankObject.m in Sources */,
 				7B8CCFBB181ABDA3006E01A9 /* FBPostViewController.m in Sources */,
 				7B7A743D174D42F2005E90B9 /* IGRequest.m in Sources */,
 				7BDED697180C7A28001FF165 /* EditBookmarkViewController.m in Sources */,
