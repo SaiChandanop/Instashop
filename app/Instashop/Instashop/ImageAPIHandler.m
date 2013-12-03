@@ -112,7 +112,8 @@ static ImageAPIHandler *sharedImageAPIHandler;
  //   NSLog(@"receivedData.length: %d", [self.receivedData length]);
     UIImage *responseImage = [UIImage imageWithData:self.receivedData];
     
-    NSString *key =[[[connection originalRequest] URL] absoluteString];
+    NSLog(@"connectionDidFinishLoading, responseImage: %@", responseImage);
+//    NSString *key =[[[connection originalRequest] URL] absoluteString];
     if (responseImage != nil)
     {
 //        [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:key];

@@ -64,6 +64,8 @@
 @synthesize descriptionTextView;
 @synthesize favoritesSelectTableViewController;
 @synthesize imagePickButton;
+@synthesize hasAppeared;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -98,15 +100,9 @@
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
-    NSLog(@"profileInstagramID: %@", profileInstagramID);
-    NSLog(@"[InstagramUserObject getStoredUserObject].userID: %@",[InstagramUserObject getStoredUserObject].userID);
-    NSLog(@"self.imagePickButton: %@", self.imagePickButton);
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
-    {
-        NSLog(@"remove");
         [self.imagePickButton removeFromSuperview];
-    }
     
     
     self.descriptionTextView.editable = NO;
@@ -232,6 +228,12 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    
+    if (!self.hasAppeared)
+    {
+        self.hasAppeared = YES;
+    
+        
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.profileInstagramID], @"method", nil];
@@ -288,7 +290,7 @@
      */
     
     
-    
+    }
     
 }
 
@@ -324,6 +326,7 @@
 
 -(void)loadNavigationControlls
 {
+    NSLog(@"loadNavigationControlls");
     
     self.isSelfProfile = YES;
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
@@ -348,7 +351,7 @@
     [self setTitleViewText:[InstagramUserObject getStoredUserObject].username];
     self.usernameLabel.text = [InstagramUserObject getStoredUserObject].fullName;
     
-    [self loadTheProfileImageViewWithID:[InstagramUserObject getStoredUserObject].userID];
+    [self updateProfileView:[InstagramUserObject getStoredUserObject].userID];
     
     
     self.bioLabel.text = [InstagramUserObject getStoredUserObject].bio;
@@ -390,13 +393,14 @@
 
 -(void)loadViewsWithRequestedProfileObject:(NSDictionary *)theReqeustedProfileObject
 {
+    NSLog(@"loadViewsWithRequestedProfileObject");
     
     self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
     
     self.usernameLabel.text = [self.requestedInstagramProfileObject objectForKey:@"full_name"];
     [self setTitleViewText:[self.requestedInstagramProfileObject objectForKey:@"username"]];
     
-    [self loadTheProfileImageViewWithID:[self.requestedInstagramProfileObject objectForKey:@"id"]];
+    [self updateProfileView:[self.requestedInstagramProfileObject objectForKey:@"id"]];
     
     
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedInstagramProfileObject objectForKey:@"profile_picture"] withImageView:self.profileImageView];
@@ -439,7 +443,7 @@
 }
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
-    
+    NSLog(@"request did load");
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     
@@ -633,7 +637,8 @@
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
     {
         GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
-        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
+//        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
+        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height*2);
         imagePicker.delegate = self;
         imagePicker.resizeableCropArea = NO;
         
@@ -646,10 +651,13 @@
 
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image
 {
+    NSLog(@"imagePicker did pick image");
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
     
-    [SellersAPIHandler uploadProfileImage:image withDelegate:self];
+    [SellersAPIHandler uploadProfileImage:image withDelegate:nil];
+    
+    self.backgroundImageView.image = image;
 }
 
 - (void)imagePickerDidCancel:(GKImagePicker *)imagePicker
@@ -669,13 +677,30 @@
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
     
-    [SellersAPIHandler uploadProfileImage:image withDelegate:self];
+    [SellersAPIHandler uploadProfileImage:image withDelegate:nil];
+    
+    self.backgroundImageView.image = image;
 }
 
 - (void) loadTheProfileImageViewWithID:(NSString *)theID
 {
-    [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:theID];
+    NSLog(@"loadTheProfileImageViewWithID");
+    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateProfileView:) userInfo:theID repeats:NO];
+    
+    
 }
 
-
+-(void)updateProfileView:(id)object
+{
+    
+    NSLog(@"makeProfileImageRequestWithReferenceImageView");
+    
+    
+    if ([object isKindOfClass:[NSTimer class]])
+        [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:[((NSTimer *)object) userInfo]];
+    else
+        [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:object];
+    
+    
+}
 @end

@@ -114,6 +114,7 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *imagePickButton;
 
+@property (nonatomic, assign) BOOL hasAppeared;
 
 
 @end

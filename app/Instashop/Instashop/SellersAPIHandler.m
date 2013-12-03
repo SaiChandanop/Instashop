@@ -240,11 +240,11 @@
 
 -(void)uploadImageRequestFinished:(id)object
 {
-    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+//    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"uploadImageRequestFinished, responseString: %@", responseString);
+    NSLog(@"uploadImageRequestFinished");
     
-    [self.delegate loadTheProfileImageViewWithID:[InstagramUserObject getStoredUserObject].userID];
+//    [self.delegate loadTheProfileImageViewWithID:[InstagramUserObject getStoredUserObject].userID];
     
 }
 
