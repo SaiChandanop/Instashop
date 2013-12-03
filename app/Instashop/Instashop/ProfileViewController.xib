@@ -87,16 +87,6 @@
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="hYm-h6-Qu6">
-                                    <rect key="frame" x="115" y="3" width="35" height="30"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <state key="normal">
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="imagePickButtonHit" destination="-1" eventType="touchUpInside" id="7xQ-zo-Bc9"/>
-                                    </connections>
-                                </button>
                             </subviews>
                         </view>
                         <view contentMode="scaleToFill" id="Mg9-br-9gn" userLabel="View - Seller Content Buttons">
@@ -266,7 +256,9 @@
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
+        <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bottom_shadow.png" width="320" height="50"/>
+        <image name="cell_separator.png" width="320" height="5"/>
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="edit_photo.png" width="50" height="50"/>
         <image name="feedImageShadow.png" width="106" height="106"/>
@@ -275,6 +267,8 @@
         <image name="instagram_gray_icon.png" width="44" height="44"/>
         <image name="lightMenuBG.png" width="320" height="548"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuLightBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>
