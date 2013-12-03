@@ -137,8 +137,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     }
     else
     {
-      //  NSLog(@"image request fail at key: %@", key);
-        
+        self.theImageView.image = [UIImage imageNamed:@"iTunesArtwork.png"];        
     }
 }
 

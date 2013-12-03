@@ -43,5 +43,5 @@
 @property (nonatomic) int likedArrayCount;
 @property (nonatomic, assign) BOOL initiated;
 @property (nonatomic, assign) BOOL isLaunchedFromMenu;
-
+@property (nonatomic, assign) int loadedCount;
 @end

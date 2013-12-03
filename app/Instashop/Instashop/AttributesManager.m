@@ -90,8 +90,6 @@ static AttributesManager *theManager;
         
         [self.sortedAttributesArray addObject:theComponent];
     }
-    
-    NSLog(@"sortedAttributesArray: %@", self.sortedAttributesArray);
 }
 
 

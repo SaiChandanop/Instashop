@@ -35,6 +35,8 @@
 @synthesize closeTutorialButton;
 @synthesize likedArrayCount;
 @synthesize isLaunchedFromMenu;
+@synthesize loadedCount;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -91,7 +93,6 @@
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
     
     NSArray *subviewsArray = [self.contentScrollView subviews];
-    NSLog(@"This is the subviewArray count: %i", subviewsArray.count);
     
     for (int i = 0; i < [subviewsArray count]; i++)
     {
@@ -100,19 +101,21 @@
     }
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSLog(@"This is the selectedShopsIDSArray count: %i", self.selectedShopsIDSArray.count);
+    
     for (int i = 0; i < [self.selectedShopsIDSArray count]; i++)
     {
-        SuggestedShopView *suggestedShopView = [[[NSBundle mainBundle] loadNibNamed:@"SuggestedShopView" owner:self options:nil] objectAtIndex:0];
+        SuggestedShopView *suggestedShopView = [[[NSBundle mainBundle] loadNibNamed:@"SuggestedShopView" owner:self options:nil] objectAtIndex:0];        
         suggestedShopView.parentController = self;
         suggestedShopView.shopViewInstagramID = [self.selectedShopsIDSArray objectAtIndex:i];
-//        suggestedShopView.titleLabel.text = suggestedShopView.shopViewInstagramID;
+        //        suggestedShopView.titleLabel.text = suggestedShopView.shopViewInstagramID;
         suggestedShopView.frame = CGRectMake(0, i * suggestedShopView.frame.size.height, self.view.frame.size.width, suggestedShopView.frame.size.height);
-        [self.contentScrollView addSubview:suggestedShopView];
+//        [self.contentScrollView addSubview:suggestedShopView];
         
         self.contentScrollView.contentSize = CGSizeMake(0, suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height + 60);
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.selectedShopsIDSArray objectAtIndex:i]], @"method", nil];
+        
+        NSLog(@"params[%d]: %@", i, params);
         [appDelegate.instagram requestWithParams:params delegate:self];;
         
         [self.containerViewsDictionary setObject:suggestedShopView forKey:suggestedShopView.shopViewInstagramID];
@@ -121,14 +124,12 @@
     }
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
-    NSLog(@"this is params: %@", params);
+    //    NSLog(@"this is params: %@", params);
     [appDelegate.instagram requestWithParams:params delegate:self];
 }
 
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
-
-    NSLog(@"This is the request URL: %@", request.url);
     
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
@@ -136,14 +137,11 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
         
-      NSLog(@"This is the request URL: %@", request.url);
-        NSLog(@"This is the params: %@", params);
-
     }
     else if ([request.url rangeOfString:@"follows"].length > 0)
     {
         NSLog(@"This is the request URL: %@", request.url);
-
+        
         NSArray *dataArray = [result objectForKey:@"data"];
         NSMutableArray *likedIDsArray = [NSMutableArray arrayWithCapacity:0];
         
@@ -164,11 +162,13 @@
             else
                 shopView.followButton.selected = NO;
         }
-   
+        
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        
+        NSLog(@"response, dataDictionary: %@", dataDictionary);
         NSString *dataInstagramID = [dataDictionary objectForKey:@"id"];
         
         SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:dataInstagramID];
@@ -176,16 +176,54 @@
         if (shopView != nil)
             if ([shopView.shopViewInstagramID compare:dataInstagramID] == NSOrderedSame)
             {
-                shopView.bioLabel.text = [dataDictionary objectForKey:@"bio"];
-                shopView.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
-                //shopView.bioLabel.numberOfLines = 0;
-                //shopView.bioLabel.font = [UIFont systemFontOfSize:8];
-                
-                [ImageAPIHandler makeImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:shopView.profileImageView];
-                [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:shopView.theBackgroundImageView withInstagramID:shopView.shopViewInstagramID];
-                
-                [shopView bringSubviewToFront:shopView.profileImageView];
+
+                if ([[dataDictionary objectForKey:@"full_name"] length] != 0 && [[dataDictionary objectForKey:@"bio"] length] != 0)
+                {
+                    
+/*                    shopView.frame = CGRectMake(0, [self.selectedShopsIDSArray indexOfObject:shopView.shopViewInstagramID] * shopView.frame.size.height, self.view.frame.size.width, shopView.frame.size.height);
+                    [self.contentScrollView addSubview:shopView];
+  */
+                    
+                    shopView.alpha = 1;
+                    NSLog(@"show");
+                    shopView.bioLabel.text = [dataDictionary objectForKey:@"bio"];
+                    shopView.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
+                    //shopView.bioLabel.numberOfLines = 0;
+                    //shopView.bioLabel.font = [UIFont systemFontOfSize:8];
+                    
+                    [ImageAPIHandler makeImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:shopView.profileImageView];
+                    [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:shopView.theBackgroundImageView withInstagramID:shopView.shopViewInstagramID];
+                    
+                    [shopView bringSubviewToFront:shopView.profileImageView];
+                }
             }
+        
+        
+    }
+    self.loadedCount++;
+    NSLog(@"total: %d, done: %d", [self.selectedShopsIDSArray count],  self.loadedCount);
+
+    float offsetPoint = 0;
+    if ([self.selectedShopsIDSArray count] -1 == self.loadedCount)
+        for (int i = 0; i < [self.selectedShopsIDSArray count]; i++)
+        {
+            SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:[self.selectedShopsIDSArray objectAtIndex:i]];
+            if ([shopView.bioLabel.text length] > 0)
+            {
+                shopView.frame = CGRectMake(0, offsetPoint, self.view.frame.size.width, shopView.frame.size.height);
+                offsetPoint = shopView.frame.origin.y + shopView.frame.size.height;
+                [self.contentScrollView addSubview:shopView];
+            }
+                
+        }
+        
+        
+
+//    [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateProfileView:) userInfo:theID repeats:NO];
+    if ([[self.contentScrollView subviews] count] > 0)
+    {
+        UIView *suggestedShopView = [[self.contentScrollView subviews] objectAtIndex:[[self.contentScrollView subviews] count] -1];
+        self.contentScrollView.contentSize = CGSizeMake(0, suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height + 60);
     }
 }
 
