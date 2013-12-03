@@ -33,7 +33,6 @@
 @synthesize objectSelectTableViewController;
 @synthesize searchButtonsArray;
 
-
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -104,8 +103,7 @@
             self.searchPromptLabel.alpha = 0;
             [self.contentContainerView addSubview:self.objectSelectTableViewController.tableView];
         }
-        
-        self.objectSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:self.freeSearchTextArray];
+        self.objectSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:self.freeSearchTextArray];        
         [self.objectSelectTableViewController refreshContent];
     }
 }
@@ -114,7 +112,7 @@
 -(void)doDirectSearch:(NSString *)directSearchTerm
 {
     [self.selectedCategoriesArray removeAllObjects];
-    [self.selectedCategoriesArray addObject:directSearchTerm];
+    [self.freeSearchTextArray addObject:directSearchTerm];
     [self layoutSearchBarContainers];
     [self runSearch];
 

@@ -31,6 +31,7 @@
 
     NSMutableArray *searchButtonsArray;
     int searchType;
+    
 }
 
 -(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton;
