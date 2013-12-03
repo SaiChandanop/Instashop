@@ -103,7 +103,7 @@
             self.searchPromptLabel.alpha = 0;
             [self.contentContainerView addSubview:self.objectSelectTableViewController.tableView];
         }
-        self.objectSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:self.freeSearchTextArray];        
+        self.objectSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:self.freeSearchTextArray];
         [self.objectSelectTableViewController refreshContent];
     }
 }
