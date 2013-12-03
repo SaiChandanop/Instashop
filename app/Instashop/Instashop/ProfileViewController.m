@@ -638,7 +638,7 @@
     {
         GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
 //        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
-        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height*2);
+        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
         imagePicker.delegate = self;
         imagePicker.resizeableCropArea = NO;
         
