@@ -31,7 +31,7 @@
 @implementation ProfileViewController
 
 
-#define EDIT_TEXT @"edit your description"
+#define EDIT_TEXT @"This user has not added a Description."
 
 
 @synthesize enclosingScrollView;
