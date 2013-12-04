@@ -832,7 +832,7 @@
 
     if (self.isEditable)
     {
-        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Edit", @"Delete", @"Facebook", @"Twitter",nil];
+        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Edit", @"Delete", nil];
         shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [shareActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
     }
@@ -849,8 +849,12 @@
 {
     for (UIButton *button in theActionSheet.subviews)
         if ([button isKindOfClass:[UIButton class]])
+        {
             if ([[button titleForState:UIControlStateNormal] compare:@"Flag"] == NSOrderedSame)
                 button.titleLabel.textColor = [UIColor redColor];
+            else if ([[button titleForState:UIControlStateNormal] compare:@"Delete"] == NSOrderedSame)
+                button.titleLabel.textColor = [UIColor redColor];
+        }
 }
 
 
