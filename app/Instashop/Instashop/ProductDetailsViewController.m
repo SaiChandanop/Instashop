@@ -372,7 +372,7 @@
 {
     if (self.twitterButton.selected)
     {
-        NSString *twitterString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
+        NSString *twitterString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsyapp", self.urlLabel.text];
         [SocialManager postToTwitterWithString:twitterString];
         
         [NotificationsAPIHandler createUserSocialNotificationWithProductID:[self.editingProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID withSocialType:@"twitter"];
@@ -380,7 +380,7 @@
     
     if (self.facebookButton.selected)
     {
-        NSString *facebookString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsy", self.urlLabel.text];
+        NSString *facebookString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsyapp", self.urlLabel.text];
         [SocialManager postToFacebookWithString:facebookString withImage:nil];
         
         [NotificationsAPIHandler createUserSocialNotificationWithProductID:[self.editingProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID withSocialType:@"facebook"];
