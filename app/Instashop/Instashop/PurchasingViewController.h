@@ -29,7 +29,9 @@
     UIImageView *heartImageView;
     UIScrollView *contentScrollView;
     UIImageView *imageView;
+    UIView *categoryContainerView;    
     UIImageView *categoryContainerImageView;
+    UIImageView *categoryContainerBottomSeparatorImageView;
     UIView *doubleTapView;
     UILabel *sellerLabel;
     UILabel *likesLabel;
@@ -89,6 +91,9 @@
 @property (nonatomic, retain) IBOutlet UIImageView *heartImageView;
 @property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
 @property (nonatomic, retain) IBOutlet UIImageView *imageView;
+
+@property (nonatomic, retain) IBOutlet UIView *categoryContainerView;
+@property (nonatomic, retain) IBOutlet UIImageView *categoryContainerBottomSeparatorImageView;
 @property (nonatomic, retain) IBOutlet UIImageView *categoryContainerImageView;
 @property (nonatomic, retain) IBOutlet UIView *doubleTapView;
 @property (nonatomic, retain) IBOutlet UILabel *sellerLabel;

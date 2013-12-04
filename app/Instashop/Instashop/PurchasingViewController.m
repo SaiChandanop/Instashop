@@ -67,7 +67,10 @@
 @synthesize isEditable;
 @synthesize saveButton;
 @synthesize isBuying;
+@synthesize categoryContainerView;
 @synthesize categoryContainerImageView;
+@synthesize categoryContainerBottomSeparatorImageView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -159,7 +162,7 @@
 -(void)loadCategoryButtonsWithString:(NSString *)theCategoriesString
 {
     float xOffset = 15;
-    
+    float yOffset = self.categoryContainerImageView.frame.origin.y + self.categoryContainerImageView.frame.size.height / 8;
     NSArray *categoriesArray = [theCategoriesString componentsSeparatedByString:@">"];
     
     for (int i = 0; i < [categoriesArray count]; i++)
@@ -168,14 +171,29 @@
         
         SearchButtonContainerView *buttonContainerView = [[SearchButtonContainerView alloc] init];
         [buttonContainerView loadWithSearchTerm:categoriesString withClickDelegate:self];
-        buttonContainerView.frame = CGRectMake(xOffset, self.categoryContainerImageView.frame.origin.y + self.categoryContainerImageView.frame.size.height / 8, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 28, self.categoryContainerImageView.frame.size.height - self.categoryContainerImageView.frame.size.height / 4);
+        buttonContainerView.frame = CGRectMake(xOffset, yOffset, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 28, self.categoryContainerImageView.frame.size.height - self.categoryContainerImageView.frame.size.height / 4);
         
-        [self.contentScrollView addSubview:buttonContainerView];
+        
         [buttonContainerView sizeViewWithFrame];
         buttonContainerView.frame = CGRectMake(buttonContainerView.frame.origin.x, buttonContainerView.frame.origin.y, buttonContainerView.frame.size.width * .85, buttonContainerView.frame.size.height);
         buttonContainerView.exitImageView.alpha = 0;
         xOffset = buttonContainerView.frame.origin.x + buttonContainerView.frame.size.width + 15;
+        
+        if (xOffset > 290)
+        {
+            self.categoryContainerView.frame = CGRectMake(self.categoryContainerView.frame.origin.x, self.categoryContainerView.frame.origin.y, self.categoryContainerView.frame.size.width, self.categoryContainerView.frame.size.height * 2);
+            self.categoryContainerBottomSeparatorImageView.frame = CGRectMake(self.categoryContainerBottomSeparatorImageView.frame.origin.x, self.categoryContainerBottomSeparatorImageView.frame.origin.y * 2, self.categoryContainerBottomSeparatorImageView.frame.size.width, self.categoryContainerBottomSeparatorImageView.frame.size.height);
+            self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.categoryContainerView.frame.origin.y + self.categoryContainerView.frame.size.height, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height - yOffset);
+            
+            xOffset = 15;
+            yOffset = self.categoryContainerView.frame.size.height / 2;
+            buttonContainerView.frame = CGRectMake(xOffset, yOffset, [buttonContainerView.searchTerm sizeWithFont:buttonContainerView.searchLabel.font].width + 28, self.categoryContainerImageView.frame.size.height - self.categoryContainerImageView.frame.size.height / 4);
+            [self.categoryContainerView addSubview:buttonContainerView];
+        }
+        else
+            [self.categoryContainerView addSubview:buttonContainerView];
     }
+    
     
 }
 -(void)commentAddTextShouldBeginEditingWithTextField:(UITextField *)theTextField
@@ -266,8 +284,9 @@
     
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
     
-    self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width,  self.descriptionTextView.contentSize.height);
+    self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
+    
     
     
     
