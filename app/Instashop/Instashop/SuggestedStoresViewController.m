@@ -30,6 +30,7 @@
 @synthesize appRootViewController;
 @synthesize contentScrollView;
 @synthesize selectedShopsIDSArray;
+@synthesize followersArray;
 @synthesize firstTimeUserViewController;
 @synthesize initiated;
 @synthesize closeTutorialButton;
@@ -37,6 +38,8 @@
 @synthesize isLaunchedFromMenu;
 @synthesize loadedCount;
 
+
+// So in order to have only followed users on the list, it would mean that when it's loaded, it updates differently from when these are followed thereafter.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -52,6 +55,12 @@
 
 - (void)viewDidLoad
 {
+    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
+    //    NSLog(@"this is params: %@", params);
+    [appDelegate.instagram requestWithParams:params delegate:self];
+    
     [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
     
     [super viewDidLoad];
@@ -92,6 +101,8 @@
     
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
     
+    NSLog(@"This is the selectedShopsIDSArray : %@", self.selectedShopsIDSArray);
+    
     NSArray *subviewsArray = [self.contentScrollView subviews];
     
     for (int i = 0; i < [subviewsArray count]; i++)
@@ -122,10 +133,6 @@
         
         suggestedShopView.followButton.alpha = 0;
     }
-    
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
-    //    NSLog(@"this is params: %@", params);
-    [appDelegate.instagram requestWithParams:params delegate:self];
 }
 
 
@@ -151,6 +158,12 @@
         self.likedArrayCount = likedIDsArray.count;
         NSLog(@"This is array count: %i", likedIDsArray.count);
         
+        if (self.initiated == FALSE) {
+            self.followersArray = [[NSMutableArray alloc] initWithArray:likedIDsArray];
+            [self.followersArray addObject:[InstagramUserObject getStoredUserObject].userID];
+            self.initiated = TRUE;
+        }
+        
         [self updateButton];
         
         for (id key in self.containerViewsDictionary)
@@ -167,14 +180,14 @@
     else if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
-        
+                
         NSLog(@"response, dataDictionary: %@", dataDictionary);
         NSString *dataInstagramID = [dataDictionary objectForKey:@"id"];
         
         SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:dataInstagramID];
         
         if (shopView != nil)
-            if ([shopView.shopViewInstagramID compare:dataInstagramID] == NSOrderedSame)
+            if ([shopView.shopViewInstagramID compare:dataInstagramID] == NSOrderedSame && ![self.followersArray containsObject:shopView.shopViewInstagramID])
             {
 
                 if ([[dataDictionary objectForKey:@"full_name"] length] != 0 && [[dataDictionary objectForKey:@"bio"] length] != 0)
