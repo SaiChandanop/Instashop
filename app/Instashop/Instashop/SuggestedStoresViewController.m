@@ -61,6 +61,8 @@
     //    NSLog(@"this is params: %@", params);
     [appDelegate.instagram requestWithParams:params delegate:self];
     
+    [self performSelectorOnMainThread:@selector(getSuggestedShops) withObject:self.followersArray waitUntilDone:YES];
+    
     [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
     
     [super viewDidLoad];
@@ -74,7 +76,11 @@
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
     [self.view insertSubview:bgImageView atIndex:0];
 }
-
+    
+- (void) getSuggestedShops {
+    [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
+}
+ 
 -(void)backButtonHit
 {
     [self.appRootViewController suggestedShopExitButtonHit:self.navigationController];
@@ -120,6 +126,12 @@
     }
 }
 
+// Response is not coming back...but I don't think this is my responsibility.  Code looks okay.
+// Another things is regarding the first time tutorial.  If the user just stops the app without following some many users and then logs in again later, may skip that part of the tutorial.
+
+// The question is how to manage in which order requests come through.
+
+// Only works correctly when lucky enough to get followers list first then the users lists.
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     

@@ -169,7 +169,6 @@ float transitionTime = .456;
         suggestedStoresViewController.isLaunchedFromMenu = YES;
         suggestedStoresViewController.appRootViewController = self;
         
-
         [self.notificationsViewController loadNotifications];        
         [self.feedNavigationController pushViewController:notificationsViewController animated:YES];
     }
