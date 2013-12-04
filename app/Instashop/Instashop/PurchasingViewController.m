@@ -309,9 +309,9 @@
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
  
     if ([[self.requestedProductObject objectForKey:@"is_saved"] boolValue])
-        self.saveButton.titleLabel.text = @"Saved";
+        self.saveButton.selected = YES;
     else
-        self.saveButton.titleLabel.text = @"Save";
+        self.saveButton.selected = NO;
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
