@@ -38,6 +38,7 @@
 @property (nonatomic, retain) UIButton *closeTutorialButton;
 
 @property (nonatomic, retain) NSMutableArray *selectedShopsIDSArray;
+@property (nonatomic, retain) NSMutableArray *followersArray;
 @property (nonatomic, retain) NSMutableDictionary *containerViewsDictionary;
 @property (nonatomic) int followingCount;
 @property (nonatomic) int likedArrayCount;

@@ -80,7 +80,7 @@ static void *finishedContext            = @"finishedContext";
              delegate:(id<IGRequestDelegate>)delegate {
     if ([self isSessionValid]) {
         [params setValue:self.accessToken forKey:@"access_token"];
-        [params setValue:@"500" forKey:@"count"];
+        [params setValue:@"500" forKey:@"count"];                   // NOT GOOD TO HAVE A HARD LIMIT
     }
     
     IGRequest* _request;
