@@ -19,7 +19,8 @@ static DiscoverDataManager *theSharedMan;
 @synthesize unsortedDictionary;
 @synthesize likedArray;
 @synthesize referenceTableViewController;
-
+@synthesize catchoutTimer;
+@synthesize countup;
 
 
 +(DiscoverDataManager *)getSharedDiscoverDataManager
@@ -59,6 +60,10 @@ static DiscoverDataManager *theSharedMan;
 
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
+    self.countup = 0;
+    if (self.catchoutTimer == nil)
+        self.catchoutTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(catchoutTimerTicked) userInfo:nil repeats:YES];
+    
     NSDictionary *dataDict = [result objectForKey:@"data"];
     
     MediaLikedObject *likedObject = [[MediaLikedObject alloc] init];
@@ -69,13 +74,27 @@ static DiscoverDataManager *theSharedMan;
     
     [self.likedArray addObject:likedObject];
     
-    if ([self.likedArray count] == [[self.unsortedDictionary allKeys] count] - 1)
-        [self sortAndPresent];
+    NSLog(@"[self.likedArray count]: %d", [self.likedArray count]);
+    NSLog(@"[self.unsortedDictionary allKeys] count]: %d", [[self.unsortedDictionary allKeys] count]);
+    
+//    if ([self.likedArray count] == [[self.unsortedDictionary allKeys] count] - 1)
+  //      [self sortAndPresent];
     //    NSLog(@"likedObject.mediaID: %@", likedObject.mediaID);
     //    NSLog(@"likedCount: %d", likedObject.likedCount);
     //    NSLog(@"result: %@", result);
 }
 
+-(void)catchoutTimerTicked
+{
+    self.countup++;
+    NSLog(@"self.countup: %d", self.countup);
+    if (self.countup > 2)
+    {
+        self.countup = 0;
+        [self.catchoutTimer invalidate];
+        [self sortAndPresent];
+    }
+}
 
 
 -(void)sortAndPresent

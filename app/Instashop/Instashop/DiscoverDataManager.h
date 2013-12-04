@@ -23,6 +23,8 @@
     
     DiscoverTableViewController *referenceTableViewController;
 
+    NSTimer *catchoutTimer;
+    int countup;
 }
 
 +(DiscoverDataManager *)getSharedDiscoverDataManager;
@@ -33,5 +35,8 @@
 @property (nonatomic, retain) NSMutableArray *contentArray;
 
 @property (nonatomic, retain) DiscoverTableViewController *referenceTableViewController;
+
+@property (nonatomic, retain) NSTimer *catchoutTimer;
+@property (nonatomic, assign) int countup;
 
 @end
