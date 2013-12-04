@@ -52,7 +52,7 @@
     
     self.sellerImageView.image = nil;
     
-    self.sellerTextLabel.text = [theDictionary objectForKey:@"instagram_username"];
+//    self.sellerTextLabel.text = [theDictionary objectForKey:@"instagram_username"];
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [theDictionary objectForKey:@"instagram_id"]], @"method", nil];
@@ -66,6 +66,9 @@
     if ([request.url rangeOfString:@"users"].length > 0)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        
+        self.sellerTextLabel.text = [dataDictionary objectForKey:@"username"];
+        NSLog(@"dataDictionary: %@", dataDictionary);
         [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerImageView];
     }
     

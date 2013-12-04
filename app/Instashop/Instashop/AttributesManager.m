@@ -108,7 +108,7 @@ static AttributesManager *theManager;
 
 -(NSArray *)getShopsCategories
 {
-    return [NSArray arrayWithObjects:@"Women's", @"Men's", @"Health & Beauty", @"Tech & Gadgets", @"Home", nil];
+    return [self getCategoriesWithArray:nil];
 }
 
 
