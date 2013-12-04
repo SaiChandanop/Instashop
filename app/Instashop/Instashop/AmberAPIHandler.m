@@ -7,8 +7,12 @@
 //
 
 #import "AmberAPIHandler.h"
+#import "BitlyAPIHandler.h"
 
 @implementation AmberAPIHandler
+
+
+@synthesize supportedSitesArray;
 
 
 +(void)makeAmberCall
@@ -31,13 +35,13 @@
     NSString* newStr = [[[NSString alloc] initWithData:self.responseData
                                               encoding:NSUTF8StringEncoding] autorelease];
     
- //   NSLog(@"amber call finished: %@", newStr);
+    //   NSLog(@"amber call finished: %@", newStr);
     
 }
 
 +(void)makeAmberSupportedSiteCallWithReference:(NSString *)referenceURLString withResponseDelegate:(id)delegate
 {
-
+    
     NSString *urlRequestString = @"http://api.amber.io/v1.0/supported_sites";
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     AmberAPIHandler *apiHandler = [[AmberAPIHandler alloc] init];
@@ -51,16 +55,25 @@
 
 -(void)supportedSiteHandlerFinished:(id)obj
 {
-    NSString* newStr = [[[NSString alloc] initWithData:self.responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
-    
-    NSMutableArray *supportedSitesArray = [NSMutableArray arrayWithCapacity:0];
-    NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
-    
-    for (int i = 0; i < [responseArray count]; i++)
+    if (self.supportedSitesArray == nil)
     {
-        NSDictionary *dict = [responseArray objectAtIndex:i];
-        [supportedSitesArray addObject:[dict objectForKey:@"url"]];
+/*        NSString* newStr = [[[NSString alloc] initWithData:self.responseData
+                                                  encoding:NSUTF8StringEncoding] autorelease];
+  */
+        self.supportedSitesArray = [NSMutableArray arrayWithCapacity:0];
+        NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:self.responseData options:0 error:nil];
+        
+        for (int i = 0; i < [responseArray count]; i++)
+        {
+            NSDictionary *dict = [responseArray objectAtIndex:i];
+            [self.supportedSitesArray addObject:[dict objectForKey:@"url"]];
+        }
+    }
+    
+    if ([self.contextObject rangeOfString:@"bit.ly"].length > 0)
+    {
+        [BitlyAPIHandler makeExpandBitlyRequestWithDelegate:self withReferenceURL:self.contextObject];
+        return;
     }
     
     NSString *domainString = self.contextObject;
@@ -68,11 +81,11 @@
     domainString = [domainString stringByReplacingOccurrencesOfString:@"https://" withString:@""];
     NSArray *componentsArray = [domainString componentsSeparatedByString:@"/"];
     domainString = [componentsArray objectAtIndex:0];
-    domainString = [domainString stringByReplacingOccurrencesOfString:@"m." withString:@""];
-    domainString = [domainString stringByReplacingOccurrencesOfString:@"ww." withString:@""];
+    
+    NSLog(@"1domainString: %@", domainString);
     
     componentsArray = [domainString componentsSeparatedByString:@"."];
-    
+    NSLog(@"componentsArray: %@", componentsArray);
     if ([componentsArray count] > 0)
     {
         if ([componentsArray count] > 1)
@@ -82,8 +95,17 @@
             domainString = [NSString stringWithFormat:@"%@.%@", theDomainString, extensionString];
         }
     }
-        
-    [self.delegate amberSupportedSiteCallFinishedWithIsSupported:[supportedSitesArray containsObject:domainString]];
+    
+    NSLog(@"domainString: %@", domainString);
+    [self.delegate amberSupportedSiteCallFinishedWithIsSupported:[supportedSitesArray containsObject:domainString] withExpandedURLString:self.contextObject];
     
 }
+
+-(void)bitlyExpandCallDidRespondWithURLString:(NSString *)urlString
+{
+    NSLog(@"%@ bitlyExpandCallDidRespondWithURLString: %@", self, urlString);
+    self.contextObject = urlString;
+    [self supportedSiteHandlerFinished:nil];
+}
+
 @end

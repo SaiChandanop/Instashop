@@ -11,4 +11,5 @@
 @interface BitlyAPIHandler : RootAPIHandler
 
 +(void)makeBitlyRequestWithDelegate:(id)theDelegate withReferenceURL:(NSString *)referenceURL;
++(void)makeExpandBitlyRequestWithDelegate:(id)theDelegate withReferenceURL:(NSString *)referenceURL;
 @end

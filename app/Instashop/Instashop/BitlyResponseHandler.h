@@ -11,4 +11,6 @@
 @protocol BitlyResponseHandler <NSObject>
 
 -(void)bitlyCallDidRespondWIthShortURLString:(NSString *)shortURLString;
+-(void)bitlyExpandCallDidRespondWithURLString:(NSString *)urlString;
+
 @end

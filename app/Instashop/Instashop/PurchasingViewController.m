@@ -510,7 +510,7 @@
       //  [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
--(void)amberSupportedSiteCallFinishedWithIsSupported:(BOOL)isSupported
+-(void)amberSupportedSiteCallFinishedWithIsSupported:(BOOL)isSupported withExpandedURLString:(NSString *)expandedURLString
 {
     NSLog(@"amberSupportedSiteCallFinishedWithIsSupported, isSupported: %d", isSupported);
     
@@ -518,7 +518,7 @@
     if (isSupported)
     {
         AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
-        amberViewController.referenceURLString = [self.requestedProductObject objectForKey:@"products_external_url"];
+        amberViewController.referenceURLString = expandedURLString;//[self.requestedProductObject objectForKey:@"products_external_url"];
         [self.navigationController pushViewController:amberViewController animated:YES];
         [amberViewController loadView];
         [amberViewController run];

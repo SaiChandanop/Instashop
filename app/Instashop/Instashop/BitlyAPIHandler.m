@@ -52,4 +52,49 @@
     
 }
 
++(void)makeExpandBitlyRequestWithDelegate:(id)theDelegate withReferenceURL:(NSString *)referenceURL
+{
+ 
+    
+    NSString *requestString = [NSString stringWithFormat:@"https://api-ssl.bitly.com/v3/expand?access_token=%@&shortURL=%@",ACCESS_TOKEN, [Utils getEscapedStringFromUnescapedString:referenceURL]];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+
+   
+    BitlyAPIHandler *apiHandler = [[BitlyAPIHandler alloc] init];
+    apiHandler.delegate = theDelegate;
+    apiHandler.contextObject = referenceURL;
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(bitlyExpandRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+    
+}
+
+-(void)bitlyExpandRequestFinished:(id)obj
+{
+ 
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    
+    NSLog(@"bitlyExpandRequestFinished: %@", responseDictionary);
+    NSLog(@"bitlyExpandRequestFinished.class: %@", [responseDictionary class]);
+    
+    if ([self.delegate conformsToProtocol:@protocol(BitlyResponseHandler)])
+    {
+        NSString *returnString = self.contextObject;
+        if ([[responseDictionary objectForKey:@"status_code"] integerValue] == 200)
+        {
+            NSDictionary *dataDictionary = [responseDictionary objectForKey:@"data"];
+            NSArray *expandArray = [dataDictionary objectForKey:@"expand"];
+            if ([expandArray count] > 0)
+            {
+                NSDictionary *expandDictionary = [expandArray objectAtIndex:0];
+                returnString = [expandDictionary objectForKey:@"long_url"];
+            }
+        }
+        NSLog(@"bitlyExpandRequestFinished, returnString: %@", returnString);
+        
+        [(id<BitlyResponseHandler>)self.delegate bitlyExpandCallDidRespondWithURLString:returnString];
+        
+    }
+    //-(void)bitlyExpandCallDidRespondWithURLString:(NSString *)urlString;
+}
 @end

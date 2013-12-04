@@ -75,7 +75,10 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.contentArray count] / 3 + 1;
+    if (([self.contentArray count] % 3) == 0)
+        return [self.contentArray count] / 3;
+    else
+        return [self.contentArray count] / 3 + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

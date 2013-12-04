@@ -7,11 +7,14 @@
 //
 
 #import "RootAPIHandler.h"
+#import "BitlyResponseHandler.h"
 
-@interface AmberAPIHandler : RootAPIHandler
-
+@interface AmberAPIHandler : RootAPIHandler <BitlyResponseHandler>
+{
+    NSMutableArray *supportedSitesArray;
+}
 +(void)makeAmberCall;
-
 +(void)makeAmberSupportedSiteCallWithReference:(NSString *)referenceURLString withResponseDelegate:(id)delegate;
 
+@property (nonatomic, retain) NSMutableArray *supportedSitesArray;
 @end
