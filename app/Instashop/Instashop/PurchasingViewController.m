@@ -518,7 +518,9 @@
     if (isSupported)
     {
         AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
+        amberViewController.referenceImage = self.imageView.image;
         amberViewController.referenceURLString = expandedURLString;//[self.requestedProductObject objectForKey:@"products_external_url"];
+        amberViewController.viglinkString = self.viglinkString;
         [self.navigationController pushViewController:amberViewController animated:YES];
         [amberViewController loadView];
         [amberViewController run];
@@ -538,6 +540,7 @@
 
 -(void)bitlyCallDidRespondWIthShortURLString:(NSString *)shortURLString
 {
+    
     NSLog(@"bitlyCallDidRespondWIthShortURLString: %@", shortURLString);
     if (shortURLString != nil)
         self.viglinkString = shortURLString;
