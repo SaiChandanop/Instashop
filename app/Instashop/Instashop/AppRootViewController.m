@@ -37,7 +37,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize theSearchViewController;
 @synthesize firstRun;
 @synthesize notificationsViewController;
-@synthesize notificationsNavigationViewController;
+
 
 float transitionTime = .456;
 
@@ -163,24 +163,15 @@ float transitionTime = .456;
 {    
     if (!self.areViewsTransitioning)
     {
-        self.areViewsTransitioning = YES;
         
-        [self.notificationsViewController loadNotifications];
+        [self homeButtonHit];
+        SuggestedStoresViewController *suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
+        suggestedStoresViewController.isLaunchedFromMenu = YES;
+        suggestedStoresViewController.appRootViewController = self;
         
-        if (self.notificationsNavigationViewController == nil)
-        {
-            self.notificationsNavigationViewController = [[UINavigationController alloc] initWithRootViewController:self.notificationsViewController];
-            self.notificationsNavigationViewController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-            [self.view addSubview:self.notificationsNavigationViewController.view];
-        }
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:transitionTime];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        self.notificationsNavigationViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [UIView commitAnimations];
-        
+
+        [self.notificationsViewController loadNotifications];        
+        [self.feedNavigationController pushViewController:notificationsViewController animated:YES];
     }
 }
 
@@ -190,34 +181,14 @@ float transitionTime = .456;
     
     if (!self.areViewsTransitioning)
     {
+        [self homeButtonHit];
+        
         DiscoverViewController *discoverViewController = [[DiscoverViewController alloc] initWithNibName:@"DiscoverViewController" bundle:nil];
         discoverViewController.parentController = self;
-        
-        UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:discoverViewController];
-        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:navigationController .view];
-        
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:transitionTime];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-        [UIView commitAnimations];
-        
-        
+        [self.feedNavigationController pushViewController:discoverViewController animated:YES];
     }
 }
 
--(void)discoverBackButtonHit:(UINavigationController *)navigationController
-{
-        NSLog(@"discoverBackButtonHit: %@", navigationController);
-        [UIView beginAnimations:nil context:nil];
-        [UIView setAnimationDuration:transitionTime];
-        [UIView setAnimationDelegate:self];
-        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [UIView commitAnimations];
-}
 
 -(void)createProductButtonHit
 {
@@ -304,66 +275,26 @@ float transitionTime = .456;
 
 - (IBAction) profileButtonHit
 {
+    [self homeButtonHit];
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
     profileViewController.profileInstagramID = [InstagramUserObject getStoredUserObject].userID;
-    
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:profileViewController];
-    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:navigationController .view];
-
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [UIView commitAnimations];
-    
+    [self.feedNavigationController pushViewController:profileViewController animated:YES];
     [profileViewController loadNavigationControlls];
-}
-
-- (void) profileExitButtonHit:(UINavigationController *)navigationController
-{
-    NSLog(@"profileExitButtonHit: %@", navigationController);
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [UIView commitAnimations];
 }
 
 
 -(void)suggestedShopButtonHit
 {
     NSLog(@"root suggestedShopButtonHit");
+    
+    [self homeButtonHit];
     SuggestedStoresViewController *suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     suggestedStoresViewController.isLaunchedFromMenu = YES;
     suggestedStoresViewController.appRootViewController = self;
+    [self.feedNavigationController pushViewController:suggestedStoresViewController animated:YES];
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:suggestedStoresViewController];
-    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:navigationController .view];
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    [UIView commitAnimations];
 }
 
--(void)suggestedShopExitButtonHit:(UINavigationController *)navigationController
-{
-    
-    NSLog(@"profileExitButtonHit: %@", navigationController);
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [UIView commitAnimations];
-}
 
 -(void) searchButtonHit:(NSString *)searchTerm
 {

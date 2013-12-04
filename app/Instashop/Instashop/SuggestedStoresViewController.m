@@ -59,21 +59,6 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
     
-    UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
-    
-    UIImageView *homeImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton_white.png"]];
-    homeImageView.frame = CGRectMake(0,0,44,44);
-    [homeCustomView addSubview:homeImageView];
-    
-    UIButton *homeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    homeButton.frame = CGRectMake(0,0,homeCustomView.frame.size.width, homeCustomView.frame.size.height);
-    homeButton.backgroundColor = [UIColor clearColor];
-    [homeButton addTarget:self action:@selector(backButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [homeCustomView addSubview:homeButton];
-    
-    UIBarButtonItem *homBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:homeCustomView];
-    self.navigationItem.leftBarButtonItem = homBarButtonItem;
-    
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SUGGESTED SHOPS"]];
     
     UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];

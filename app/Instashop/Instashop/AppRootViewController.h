@@ -22,7 +22,6 @@
     SearchViewController *theSearchViewController;
     
     NotificationsViewController *notificationsViewController;
-    UINavigationController *notificationsNavigationViewController;
     
     BOOL areViewsTransitioning;
     
@@ -67,7 +66,7 @@
 @property (strong, nonatomic) SearchViewController *theSearchViewController;
 @property (strong, nonatomic) FirstTimeUserViewController *firstTimeUserViewController;
 @property (strong, nonatomic) NotificationsViewController *notificationsViewController;
-@property (strong, nonatomic) UINavigationController *notificationsNavigationViewController;
+
 
 @property (strong, nonatomic) UIButton *feedCoverButton;
 
