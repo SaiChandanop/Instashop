@@ -787,8 +787,8 @@
     
     if (theCreateObject.mainObject.editingReferenceID != nil)
     {
-        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
-        [ProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
+//        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
+  //      [ProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
     }
     else
     {

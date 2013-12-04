@@ -227,9 +227,25 @@
 }
 
 
-+(void)editProductCreateObject:(id)delegate withProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
++(void)editProductCreateObjectWithDelegate:(id)delegate withProductID:(NSString *)productID withProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
+    NSLog(@"editProductCreateObject!");
+    
+    
     ProductCreateObject *theProductCreateObject = productCreateContainerObject.mainObject;
+    
+    
+    NSMutableString *productCategoriesString = [NSMutableString stringWithCapacity:0];
+    
+    for (int i = 0; i < [productCreateContainerObject.mainObject.categoriesArray count]; i++)
+    {
+        [productCategoriesString appendString:[productCreateContainerObject.mainObject.categoriesArray objectAtIndex:i]];
+        if (i != [productCreateContainerObject.mainObject.categoriesArray count] - 1)
+            [productCategoriesString appendString:@"!!"];
+        
+    }
+    
+    
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"product_functions/productManager.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -242,15 +258,16 @@
     [postString appendString:@"action=edit&"];
     [postString appendString:[NSString stringWithFormat:@"instagramUserId=%@&", userInstagramObject.userID]];
     [postString appendString:[NSString stringWithFormat:@"object_instagram_id=%@&", [theProductCreateObject.instragramMediaInfoDictionary objectForKey:@"id"]]];
+    [postString appendString:[NSString stringWithFormat:@"edit_product_id=%@&", productID]];
     [postString appendString:[NSString stringWithFormat:@"object_title=%@&", theProductCreateObject.title]];
-    [postString appendString:[NSString stringWithFormat:@"object_description=%@&", theProductCreateObject.description]];
+    [postString appendString:[NSString stringWithFormat:@"object_description=%@&", [theProductCreateObject.description stringByReplacingOccurrencesOfString:@"&" withString:@"%26"]]];
     [postString appendString:[NSString stringWithFormat:@"object_quantity=%@&", theProductCreateObject.quantity]];
-    [postString appendString:[NSString stringWithFormat:@"object_price=%@&", [theProductCreateObject.retailPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
-    [postString appendString:[NSString stringWithFormat:@"object_list_price=%@&", [theProductCreateObject.listPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
+    [postString appendString:[NSString stringWithFormat:@"object_categories=%@&", [productCategoriesString stringByReplacingOccurrencesOfString:@"&" withString:@"%26"]]];    
+    [postString appendString:[NSString stringWithFormat:@"object_price=%@&", [theProductCreateObject.listPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
+    [postString appendString:[NSString stringWithFormat:@"object_list_price=%@&", [theProductCreateObject.retailPrice stringByReplacingOccurrencesOfString:@"$" withString:@""]]];
     [postString appendString:[NSString stringWithFormat:@"object_weight=%@&", theProductCreateObject.shippingWeight]];
     [postString appendString:[NSString stringWithFormat:@"object_image_urlstring=%@&", theProductCreateObject.instagramPictureURLString]];
-    [postString appendString:[NSString stringWithFormat:@"edit_product_id=%@&", theProductCreateObject.editingReferenceID]];
-    
+    [postString appendString:[NSString stringWithFormat:@"object_external_url=%@&", theProductCreateObject.referenceURLString]];
     
     
     

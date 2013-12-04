@@ -20,7 +20,9 @@
 #import "SocialManager.h"
 #import "NotificationsAPIHandler.h"
 #import "InstagramUserObject.h"
-
+#import "MBProgressHUD.h"
+#import "CreateProductAPIHandler.h"
+#import "SellersAPIHandler.h"
 @interface ProductDetailsViewController ()
 
 @end
@@ -336,7 +338,8 @@
     
     [self addSizeButtonHit];
     
-    [self setDoneButtonState];
+    if (!self.isEdit)
+        [self setDoneButtonState];
     
 }
 
@@ -427,8 +430,40 @@
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
+    if (self.isEdit)
+    {
+    /*    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"is edit"
+                                                            message:@""
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+      */
+        NSLog(@"edit, self.urlLabel.text: %@", self.urlLabel.text);
+        NSLog(@"attributesArray, %@", self.attributesArray);
+        
+        productCreateContainerObject.mainObject = [[ProductCreateObject alloc] init];
+        productCreateContainerObject.mainObject.instagramPictureURLString = self.instagramPictureURLString;
+        productCreateContainerObject.mainObject.instragramMediaInfoDictionary = self.instragramMediaInfoDictionary;
+        productCreateContainerObject.mainObject.title = self.titleTextView.text;
+        productCreateContainerObject.mainObject.description = self.descriptionTextView.text;
+        productCreateContainerObject.mainObject.retailValue = self.retailPriceTextField.text;
+        productCreateContainerObject.mainObject.retailPrice = self.retailPriceTextField.text;
+        productCreateContainerObject.mainObject.listPrice = self.instashopPriceTextField.text;
+        productCreateContainerObject.mainObject.quantity = [NSString stringWithFormat:@"%d", totalQuantity];
+        productCreateContainerObject.mainObject.categoriesArray = [[NSArray alloc] initWithArray:self.attributesArray];
+        productCreateContainerObject.mainObject.editingReferenceID = self.editingProductID;
+        productCreateContainerObject.mainObject.referenceURLString = self.urlLabel.text;
+
+        
+        
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Editing Product";
+        [ProductAPIHandler editProductCreateObjectWithDelegate:self withProductID:[self.editingProductObject objectForKey:@"product_id"] withProductCreateObject:productCreateContainerObject];
+        
+    }
     
-    if ([self validateContentWithDoAlert:YES])
+    else if ([self validateContentWithDoAlert:YES])
     {
         productCreateContainerObject.mainObject = [[ProductCreateObject alloc] init];
         productCreateContainerObject.mainObject.instagramPictureURLString = self.instagramPictureURLString;
@@ -446,14 +481,45 @@
         
         [self runSocialCalls];
         
-        [self.parentController previewButtonHitWithProductCreateObject:productCreateContainerObject];
+        //[self.parentController previewButtonHitWithProductCreateObject:productCreateContainerObject];
+        
+        
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Creating Product";
+        [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:productCreateContainerObject];
+        
+        NSMutableString *categoriesString = [NSMutableString stringWithCapacity:0];
+        
+        for (int i = 0; i < [productCreateContainerObject.mainObject.categoriesArray count]; i++)
+        {
+            [categoriesString appendString:[productCreateContainerObject.mainObject.categoriesArray objectAtIndex:i]];
+            if (i != [productCreateContainerObject.mainObject.categoriesArray count] - 1)
+                [categoriesString appendString:@" > "];
+        }
+        
+        
+        NSLog(@"make seller");
+        [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] withSellerAddressDictionary:[NSMutableDictionary dictionaryWithObject:categoriesString forKey:@"seller_category"]];
+        
         
         
         
     }
     [self resignResponders];
+    
+    
 }
 
+-(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+-(void)editProductComplete
+{
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 
 #pragma mark table view data source delegate methods
 
@@ -595,7 +661,9 @@
     self.urlLabel.text = [self.browserViewController.url absoluteString];
     [self linkSelectedWithURLString:[self.browserViewController.url absoluteString]];
     
-    [self setDoneButtonState];
+    if (!self.isEdit)
+        [self setDoneButtonState];
+    
 }
 -(void) linkSelectedWithURLString:(NSString *)theURLString
 {

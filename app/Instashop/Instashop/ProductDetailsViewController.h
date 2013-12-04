@@ -15,10 +15,12 @@
 #import "ISDarkRowContainerView.h"
 #import "ISLightRowContainerView.h"
 #import "CIALBrowserViewController.h"
+#import "EditProductCompleteProtocol.h"
+#import "ProductCreateContainerProtocol.h"
 
 @class ProductCreateViewController;
 
-@interface ProductDetailsViewController : UIViewController <IGRequestDelegate, UITextFieldDelegate, UITextViewDelegate>
+@interface ProductDetailsViewController : UIViewController <IGRequestDelegate, UITextFieldDelegate, UITextViewDelegate, EditProductCompleteProtocol, ProductCreateContainerProtocol>
 {
     ProductCreateViewController *parentController;
     SizeQuantityTableViewController *sizeQuantityTableViewController;
