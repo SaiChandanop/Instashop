@@ -126,7 +126,7 @@
     
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-//    NSLog(@"responseArray: %@", responseArray);
+//    NSLog(@"getProductsRequestFinished, responseArray: %@", responseArray);
 
     if (responseArray == nil)
     {
@@ -349,11 +349,11 @@
 }
 
 
-+(void)makeCheckForExistingProductURLWithDelegate:(id)delegate withProductURL:(NSString *)productURL
++(void)makeCheckForExistingProductURLWithDelegate:(id)delegate withProductURL:(NSString *)productURL withDictionary:(NSDictionary *)referenceDictionary
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?check_for_existing_product_url=", [productURL stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
-    NSLog(@"urlRequestString: %@", urlRequestString);
+//    NSLog(@"urlRequestString: %@", urlRequestString);
     
     
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -362,6 +362,7 @@
     
     ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
     productAPIHandler.delegate = delegate;
+    productAPIHandler.contextObject = referenceDictionary;
     productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(makeCheckForExistingProductURLFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
@@ -371,9 +372,9 @@
 {
     NSString* newStr = [[[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding] autorelease];
     
-    NSLog(@"makeCheckForExistingProductURLFinished: %@", newStr);
+//    NSLog(@"makeCheckForExistingProductURLFinished: %@", newStr);
     
-    [self.delegate checkFinishedWithBoolValue:[newStr boolValue]];
+    [self.delegate checkFinishedWithBoolValue:[newStr boolValue] withDictionary:self.contextObject];
     
 }
 

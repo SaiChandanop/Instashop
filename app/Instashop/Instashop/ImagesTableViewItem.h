@@ -21,6 +21,7 @@
     NSString *imageProductURL;
     id delegate;
     
+    BOOL alreadyExists;
 }
 
 
@@ -37,4 +38,6 @@
 
 @property (nonatomic, retain) NSString *imageProductURL;
 @property (nonatomic, retain) id delegate;
+
+@property (nonatomic, assign) BOOL alreadyExists;
 @end

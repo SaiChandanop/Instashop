@@ -25,5 +25,5 @@
 +(void)deleteProductWithProductID:(NSString *)productID;
 +(void)editProductCreateObject:(id)delegate withProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject;
 +(void)editProductSizeQuantityWithDelegate:(id)delegate withProductObject:(ProductCreateObject *)theProductCreateObject withProductID:(NSString *)productID;
-+(void)makeCheckForExistingProductURLWithDelegate:(id)delegate withProductURL:(NSString *)productURL;
++(void)makeCheckForExistingProductURLWithDelegate:(id)delegate withProductURL:(NSString *)productURL withDictionary:(NSDictionary *)referenceDictionary;
 @end

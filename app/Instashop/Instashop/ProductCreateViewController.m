@@ -77,39 +77,16 @@
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
     NSLog(@"theSelectionObject: %@", theSelectionObject);
-    
-    [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"]];
-    
-    
     self.currentSelectionObject = [[NSDictionary alloc] initWithDictionary:theSelectionObject];
+    ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
+    productDetailsViewController.parentController = self;
+    productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
+    [self.navigationController pushViewController:productDetailsViewController animated:YES];
+    [productDetailsViewController loadViewsWithInstagramInfoDictionary:self.currentSelectionObject];
     
     
 }
 
--(void)checkFinishedWithBoolValue:(BOOL)exists
-{
-    
-    NSLog(@"exists: %d", exists);
-    
-    if (exists)
-    {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"NO DICE"
-                                                            message:@"This photo is being used already in an active product."
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-    else
-    {
-    
-        ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
-        productDetailsViewController.parentController = self;
-        productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
-        [self.navigationController pushViewController:productDetailsViewController animated:YES];
-        [productDetailsViewController loadViewsWithInstagramInfoDictionary:self.currentSelectionObject];
-    }
-}
 
 
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateContainerObject

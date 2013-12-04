@@ -23,6 +23,7 @@
 @implementation ProductSelectTableViewController
 
 
+@synthesize checkCountup;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -54,17 +55,49 @@
     {
         NSArray *dataArray = [result objectForKey:@"data"];
         
+        NSMutableArray *mutableDataArray = [NSMutableArray arrayWithCapacity:0];
+        for (int i = 0; i < [dataArray count]; i++)
+        {
+            NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[dataArray objectAtIndex:i]];
+            [mutableDataArray addObject:dict];
+        }
+        
         [self.contentArray removeAllObjects];
-        [self.contentArray addObjectsFromArray:dataArray];
+        [self.contentArray addObjectsFromArray:mutableDataArray];
+        
+        for (int i = 0; i < [self.contentArray count]; i++)
+        {
+            NSMutableDictionary *theSelectionObject = [self.contentArray objectAtIndex:i];
+            [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:theSelectionObject];
+        }
+    }
+    
+}
+
+-(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary
+{
+    if (exists)
+    {
+        int theIndex = [self.contentArray indexOfObject:referenceDictionary];
+        NSMutableDictionary *dict = [self.contentArray objectAtIndex:theIndex];
+        [dict setObject:@"1" forKey:@"exists"];
+        [self.contentArray replaceObjectAtIndex:theIndex withObject:dict];
+    }
+    
+    
+    
+    self.checkCountup++;
+    if (self.checkCountup == [self.contentArray count])
+    {
         if (self.referenceTableView != nil)
             [self.referenceTableView reloadData];
         else
             [self.tableView reloadData];
     }
     
+//    NSLog(@"exists: %d, %@", exists, referenceDictionary);
+    
 }
-
-
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

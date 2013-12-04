@@ -21,6 +21,7 @@
 @synthesize imageProductURL;
 @synthesize objectDictionary;
 @synthesize instagramObjectDictionary;
+@synthesize alreadyExists;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -62,31 +63,43 @@
     }
     else
     {
-        [self.coverButton setTitle:@"" forState:UIControlStateNormal];
+        [self.coverButton setImage:nil forState:UIControlStateNormal];
         [self.coverButton setImage:nil forState:UIControlStateNormal];
         
-    self.backgroundImageView.alpha = 1;
-    
-    if (self.objectDictionary != nil)
-        [self.objectDictionary release];
-    
-    self.objectDictionary = [[NSDictionary alloc] initWithDictionary:theDictionary];
-    
-        
-    self.imageProductURL = [self.objectDictionary objectForKey:@"products_url"];
-    if (self.imageProductURL == nil)
-    {
-        NSDictionary *imagesDictionary = [self.objectDictionary objectForKey:@"images"];
-        if (imagesDictionary != nil)
+        if ([theDictionary objectForKey:@"exists"] != nil)
         {
-            NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
-            self.imageProductURL = [standardResolutionDictionary objectForKey:@"url"];
+            self.alreadyExists = YES;
+            [self.coverButton setTitle:@"EXISTS" forState:UIControlStateNormal];
+            self.coverButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5];
         }
+        else
+        {
+            [self.coverButton setTitle:@"" forState:UIControlStateNormal];
+        }
+        self.backgroundImageView.alpha = 1;
+        
+        if (self.objectDictionary != nil)
+            [self.objectDictionary release];
+        
+        self.objectDictionary = [[NSDictionary alloc] initWithDictionary:theDictionary];
+        
+        
+        self.imageProductURL = [self.objectDictionary objectForKey:@"products_url"];
+        if (self.imageProductURL == nil)
+        {
+            NSDictionary *imagesDictionary = [self.objectDictionary objectForKey:@"images"];
+            if (imagesDictionary != nil)
+            {
+                NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+                self.imageProductURL = [standardResolutionDictionary objectForKey:@"url"];
+            }
+        }
+        
+        if (self.imageProductURL != nil)
+            [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
     }
     
-    if (self.imageProductURL != nil)
-        [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
-    }
+    
 }
 
 -(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
@@ -99,31 +112,45 @@
 
 - (void) coverButtonHit
 {
-    
-    NSLog(@"coverbuttonhit, self.delegate: %@", self.delegate);
-    if (self.objectDictionary != nil)    {
-        if ([self.objectDictionary isKindOfClass:[TableCellAddClass class]])
-        {
-            AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [del.appRootViewController createProductButtonHit];
-
-        }
-        else if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
-            [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
-    }
-    else if (self.instagramObjectDictionary != nil)
+    if (self.alreadyExists)
     {
-        if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
-            [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.instagramObjectDictionary];
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"NO DICE"
+                                                            message:@"This photo is being used already in an active product."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        
     }
-
+    
+    else
+    {
+        
+        NSLog(@"coverbuttonhit, self.delegate: %@", self.delegate);
+        if (self.objectDictionary != nil)    {
+            if ([self.objectDictionary isKindOfClass:[TableCellAddClass class]])
+            {
+                AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                [del.appRootViewController createProductButtonHit];
+                
+            }
+            else if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
+                [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.objectDictionary];
+        }
+        else if (self.instagramObjectDictionary != nil)
+        {
+            if ([self.delegate conformsToProtocol:@protocol(CellSelectionOccuredProtocol)])
+                [(id<CellSelectionOccuredProtocol>)self.delegate cellSelectionOccured:self.instagramObjectDictionary];
+        }
+    }
+    
 }
 
 
 - (void) loadContentWithInstagramDictionaryObject:(NSDictionary *)theDictionary
 {
     self.instagramObjectDictionary = [[NSDictionary alloc] initWithDictionary:theDictionary];
- //   NSLog(@"theDictionary: %@", theDictionary);
+    //   NSLog(@"theDictionary: %@", theDictionary);
     
     [self.coverButton setTitle:@"" forState:UIControlStateNormal];
     [self.coverButton setImage:nil forState:UIControlStateNormal];
@@ -149,7 +176,7 @@
         [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.contentImageView];
         
     }
-
+    
     
 }
 

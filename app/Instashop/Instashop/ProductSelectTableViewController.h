@@ -11,6 +11,7 @@
 
 @interface ProductSelectTableViewController : ObjectSelectTableViewController
 {
-
+    int checkCountup;
 }
+@property (nonatomic, assign) int checkCountup;
 @end

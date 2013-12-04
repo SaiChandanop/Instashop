@@ -74,8 +74,8 @@ static DiscoverDataManager *theSharedMan;
     
     [self.likedArray addObject:likedObject];
     
-    NSLog(@"[self.likedArray count]: %d", [self.likedArray count]);
-    NSLog(@"[self.unsortedDictionary allKeys] count]: %d", [[self.unsortedDictionary allKeys] count]);
+//    NSLog(@"[self.likedArray count]: %d", [self.likedArray count]);
+//    NSLog(@"[self.unsortedDictionary allKeys] count]: %d", [[self.unsortedDictionary allKeys] count]);
     
 //    if ([self.likedArray count] == [[self.unsortedDictionary allKeys] count] - 1)
   //      [self sortAndPresent];
@@ -87,7 +87,7 @@ static DiscoverDataManager *theSharedMan;
 -(void)catchoutTimerTicked
 {
     self.countup++;
-    NSLog(@"self.countup: %d", self.countup);
+//    NSLog(@"self.countup: %d", self.countup);
     if (self.countup > 2)
     {
         self.countup = 0;
