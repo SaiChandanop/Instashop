@@ -13,10 +13,14 @@
     UIWebView *amberWebView;
     UIView *loadingView;
     NSString *referenceURLString;
+    NSString *viglinkString;
+    UIImage *referenceImage;
 }
 -(void)run;
 
 @property (nonatomic, retain) IBOutlet UIWebView *amberWebView;
 @property (nonatomic, retain) IBOutlet UIView *loadingView;
 @property (nonatomic, retain) NSString *referenceURLString;
+@property (nonatomic, retain) NSString *viglinkString;
+@property (nonatomic, retain) UIImage *referenceImage;
 @end

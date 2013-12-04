@@ -28,11 +28,17 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
 }
 
 
 -(void)refreshContent
 {
+    self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
     NSString *categoryString = @"";
     if ([self.searchRequestObject.searchCategoriesArray count] > 0)
         categoryString = [self.searchRequestObject.searchCategoriesArray objectAtIndex:0];
@@ -54,6 +60,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     static NSString *CellIdentifier = @"Cell";
     SellersTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -90,6 +97,7 @@
     [self.tableView reloadData];
     [self.refreshControl endRefreshing];
 //    [self feedRequestFinishedWithArrray:searchResultsArray];
+    
 }
 
 
