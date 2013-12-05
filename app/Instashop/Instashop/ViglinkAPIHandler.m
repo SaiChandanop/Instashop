@@ -15,7 +15,7 @@
  
     NSMutableString *urlRequestString = [NSMutableString stringWithCapacity:0];
     [urlRequestString appendString:[NSString stringWithFormat:@"http://api.viglink.com/api/click?"]];
-    [urlRequestString appendString:[NSString stringWithFormat:@"key=%@", @"8d1fb10debee711bdaf5209ce4a7f72d"]];
+    [urlRequestString appendString:[NSString stringWithFormat:@"key=%@", @"d5f8c8f691f4d1f3bb2d2911a327c41a"]];
     [urlRequestString appendString:[NSString stringWithFormat:@"&loc=%@", @"http://shopsy.com/"]];
     [urlRequestString appendString:[NSString stringWithFormat:@"&out=%@", [theURLString stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding]]];
     [urlRequestString appendString:[NSString stringWithFormat:@"&format=%@", @"txt"]];
