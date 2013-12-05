@@ -297,6 +297,8 @@
 
 -(void)sellerDetailsResopnseDidOccurWithDictionary:(NSDictionary *)responseDictionary
 {
+    NSLog(@"sellerDetailsResopnseDidOccurWithDictionary: %@", responseDictionary);
+    
     if ([responseDictionary isKindOfClass:[NSDictionary class]])
     {
         NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", [responseDictionary objectForKey:@"seller_address"], [responseDictionary objectForKey:@"seller_city"], [responseDictionary objectForKey:@"seller_state"]];
@@ -319,7 +321,6 @@
 {
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
-    purchasingViewController.view.frame = CGRectMake(0, 0, purchasingViewController.view.frame.size.width, purchasingViewController.view.frame.size.height);
     [self.navigationController pushViewController:purchasingViewController animated:YES];
     
 }
@@ -442,10 +443,7 @@
         else if ([request.url rangeOfString:@"follows"].length > 0)
         {
             NSArray *dataArray = [result objectForKey:@"data"];
-            
-            
-            
-            
+                        
             if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
                 self.followButton.alpha = 1;
             
@@ -534,7 +532,7 @@
     else
     {
         [self.editButton setTitle:@"SAVE" forState:UIControlStateNormal];
-
+        
         
         if ([self.descriptionTextView.text compare:EDIT_TEXT] == NSOrderedSame)
             self.descriptionTextView.text = @"";
@@ -552,7 +550,7 @@
     [self.editButton setTitle:@"EDIT" forState:UIControlStateNormal];
     [SellersAPIHandler updateSellerDescriptionWithDelegate:self InstagramID:[InstagramUserObject getStoredUserObject].userID withDescription:self.descriptionTextView.text];
     [self.descriptionTextView resignFirstResponder];
-//    [self.enclosingScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    //    [self.enclosingScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     self.enclosingScrollView.contentSize = CGSizeMake(0,0);
     self.descriptionTextView.editable = NO;
     

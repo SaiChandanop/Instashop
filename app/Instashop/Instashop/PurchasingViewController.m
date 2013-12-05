@@ -70,7 +70,7 @@
 @synthesize categoryContainerView;
 @synthesize categoryContainerImageView;
 @synthesize categoryContainerBottomSeparatorImageView;
-
+@synthesize isSearched;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -101,6 +101,8 @@
      NSDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
      [appDelegate.instagram requestWithParams:params delegate:self];
      */
+    
+
     
     
 }
@@ -287,8 +289,10 @@
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
     [self loadCategoryButtonsWithString:categoryString];
     
-    
-    self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
+    if (self.isSearched)
+        self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height - 15, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
+    else
+        self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
     [self.view bringSubviewToFront:self.bottomView];
     
     

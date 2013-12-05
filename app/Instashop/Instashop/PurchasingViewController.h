@@ -66,6 +66,7 @@
     UIViewController *actionSheetHandlingViewController;
     
     BOOL isBuying;
+    BOOL isSearched;
 }
 
 - (IBAction) likeButtonHit;
@@ -131,5 +132,6 @@
 @property (nonatomic, retain) UIViewController *actionSheetHandlingViewController;
 
 @property (nonatomic, assign) BOOL isBuying;
+@property (nonatomic, assign) BOOL isSearched;
 
 @end
