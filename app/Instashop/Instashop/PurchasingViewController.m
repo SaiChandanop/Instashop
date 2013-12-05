@@ -183,7 +183,7 @@
         {
             self.categoryContainerView.frame = CGRectMake(self.categoryContainerView.frame.origin.x, self.categoryContainerView.frame.origin.y, self.categoryContainerView.frame.size.width, self.categoryContainerView.frame.size.height * 2);
             self.categoryContainerBottomSeparatorImageView.frame = CGRectMake(self.categoryContainerBottomSeparatorImageView.frame.origin.x, self.categoryContainerBottomSeparatorImageView.frame.origin.y * 2, self.categoryContainerBottomSeparatorImageView.frame.size.width, self.categoryContainerBottomSeparatorImageView.frame.size.height);
-            self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.categoryContainerView.frame.origin.y + self.categoryContainerView.frame.size.height, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height - yOffset);
+            self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y + 38, self.descriptionTextView.frame.size.width, self.descriptionTextView.frame.size.height);
             
             xOffset = 15;
             yOffset = self.categoryContainerView.frame.size.height / 2;
@@ -283,50 +283,15 @@
     }
     
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedProductObject objectForKey:@"products_url"] withImageView:self.imageView];
-    
-    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width,  self.descriptionTextView.contentSize.height);
+  
     self.descriptionTextView.text = [self.requestedProductObject objectForKey:@"products_description"];
-    
-    
-    
-    
-    
-    
-    self.numberAvailableLabel.text = [NSString stringWithFormat:@"%d left", [[self.requestedProductObject objectForKey:@"products_quantity"] intValue]];
-    
-    self.retailPriceLabel.text = [numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_price"] floatValue]]];
-    if (![[self.requestedProductObject objectForKey:@"products_list_price"] isKindOfClass:[NSNull class]])
-    {
-        NSString *listPriceString =[numberFormatter stringFromNumber:[NSNumber numberWithFloat:[[self.requestedProductObject objectForKey:@"products_list_price"] floatValue]]];
-        NSAttributedString *strikethroughString = [[NSAttributedString alloc] initWithString:listPriceString
-                                                                                  attributes:@{NSStrikethroughStyleAttributeName:[NSNumber numberWithInteger:NSUnderlineStyleSingle]}];
-        
-        
-        self.listPriceLabel.attributedText = strikethroughString;
-        
-    }
-    
     [self loadCategoryButtonsWithString:categoryString];
     
-    //self.categoryLabel.text = categoryString;
-    
-    NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
-    if ([sizeQuantityArray count] == 1)
-        if ([(NSString *)[[sizeQuantityArray objectAtIndex:0] objectForKey:@"size"] compare:@"(null)"] == NSOrderedSame)
-        {
-            //Joel set your button style here
-            self.sizeButton.enabled = NO;
-        }
     
     self.bottomView.frame = CGRectMake(0, self.view.frame.size.height - self.bottomView.frame.size.height, self.bottomView.frame.size.width, self.bottomView.frame.size.height);
     [self.view bringSubviewToFront:self.bottomView];
     
     
-    [self.quantityButton setTitle:@"1" forState:UIControlStateNormal];
-    
-    
-    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
- 
     if ([[self.requestedProductObject objectForKey:@"is_saved"] boolValue])
         self.saveButton.selected = YES;
     else
@@ -372,15 +337,15 @@
     {
         NSMutableArray *dataArray = [NSMutableArray arrayWithArray:[result objectForKey:@"data"]];
         [dataArray addObject:[NSNull null]];
-        
-        self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height + ([dataArray count] * 44));
+/*
+        self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height + ([dataArray count] * 47));
         self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * ([dataArray count]) );
         self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height - 15);
         
         
         self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithArray:dataArray];
         [self.commentsTableViewController.tableView reloadData];
-        
+  */
         
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
