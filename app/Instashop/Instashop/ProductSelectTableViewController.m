@@ -62,6 +62,7 @@
             [mutableDataArray addObject:dict];
         }
         
+        self.checkCountup = 0;
         [self.contentArray removeAllObjects];
         [self.contentArray addObjectsFromArray:mutableDataArray];
         
@@ -71,6 +72,7 @@
             [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:theSelectionObject];
         }
     }
+    
     
 }
 
@@ -93,9 +95,9 @@
             [self.referenceTableView reloadData];
         else
             [self.tableView reloadData];
+        
+        [self.refreshControl endRefreshing];
     }
-    
-//    NSLog(@"exists: %d, %@", exists, referenceDictionary);
     
 }
 #pragma mark - Table view data source
@@ -150,10 +152,12 @@
 
 -(void)refreshContent
 {
+    NSLog(@"refreshContent called");
+    NSLog(@"self.contentRequestParameters: %@", self.contentRequestParameters);
     if (self.contentRequestParameters != nil)
     {
         AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [theAppDelegate.instagram requestWithParams:contentRequestParameters delegate:self];
+        [theAppDelegate.instagram requestWithParams:[NSMutableDictionary dictionaryWithDictionary:self.contentRequestParameters] delegate:self];
     }
     else if (self.productRequestorType > 0)
     {
