@@ -65,7 +65,7 @@
 @synthesize favoritesSelectTableViewController;
 @synthesize imagePickButton;
 @synthesize hasAppeared;
-
+@synthesize editButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -81,7 +81,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     [super viewDidLoad];
-        
+    
     self.buttonHighlightView.backgroundColor = [ISConstants getISGreenColor];
     
     self.productsButton.selected = YES;
@@ -195,8 +195,8 @@
     
     else if ([buttonTitle compare:@"Instagram"] == NSOrderedSame)
     {
-                    AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
+        AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        
         NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
         if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
         {
@@ -208,7 +208,7 @@
             CGImageRelease(imageRef);
             
             BOOL writeSuccess = [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
-
+            
             
             NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
             UIDocumentInteractionController *dicot = [[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile] retain];
@@ -217,7 +217,7 @@
             dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];
             [dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
             
-
+            
             [del loadShareCoverViewWithImage:img];
         }
     }
@@ -232,64 +232,64 @@
     if (!self.hasAppeared)
     {
         self.hasAppeared = YES;
-    
         
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.profileInstagramID], @"method", nil];
-    [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    
-    self.infoContainerScrollView.frame = self.theTableView.frame;
-    
-    
-    /*
-     if (self.isSelfProfile && [InstagramUserObject getStoredUserObject].zencartID == nil)
-     {
-     
-     NSLog(@"show buyer");
-     self.buyerButtonsView.frame = self.sellerButtonsView.frame;
-     [self.sellerButtonsView removeFromSuperview];
-     [self.view addSubview:self.buyerButtonsView];
-     
-     
-     self.productSelectTableViewController.contentRequestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/liked", @"method", @"-1", @"count", nil];
-     self.productSelectTableViewController.cellDelegate = self;
-     self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
-     self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
-     [self.productSelectTableViewController refreshContent];
-     
-     
-     }
-     else
-     {
-     */
-    params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
-    [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    self.productSelectTableViewController.cellDelegate = self;
-    self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
-    self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
-    [self.productSelectTableViewController refreshContent];
-    
-    
-    
-    self.favoritesSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
-    self.favoritesSelectTableViewController.tableView.frame = self.productSelectTableViewController.tableView.frame;
-    self.favoritesSelectTableViewController.cellDelegate = self;
-    self.favoritesSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
-    self.favoritesSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
-    [self.favoritesSelectTableViewController refreshContent];
-    
-    
-    /*
-     }
-     
-     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
-     self.profileBackgroundPhotoButton.alpha = .5;
-     */
-    
-    
+        
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.profileInstagramID], @"method", nil];
+        [appDelegate.instagram requestWithParams:params delegate:self];
+        
+        
+        self.infoContainerScrollView.frame = self.theTableView.frame;
+        
+        
+        /*
+         if (self.isSelfProfile && [InstagramUserObject getStoredUserObject].zencartID == nil)
+         {
+         
+         NSLog(@"show buyer");
+         self.buyerButtonsView.frame = self.sellerButtonsView.frame;
+         [self.sellerButtonsView removeFromSuperview];
+         [self.view addSubview:self.buyerButtonsView];
+         
+         
+         self.productSelectTableViewController.contentRequestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/liked", @"method", @"-1", @"count", nil];
+         self.productSelectTableViewController.cellDelegate = self;
+         self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
+         self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
+         [self.productSelectTableViewController refreshContent];
+         
+         
+         }
+         else
+         {
+         */
+        params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
+        [appDelegate.instagram requestWithParams:params delegate:self];
+        
+        self.productSelectTableViewController.cellDelegate = self;
+        self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
+        self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
+        [self.productSelectTableViewController refreshContent];
+        
+        
+        
+        self.favoritesSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
+        self.favoritesSelectTableViewController.tableView.frame = self.productSelectTableViewController.tableView.frame;
+        self.favoritesSelectTableViewController.cellDelegate = self;
+        self.favoritesSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
+        self.favoritesSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
+        [self.favoritesSelectTableViewController refreshContent];
+        
+        
+        /*
+         }
+         
+         if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+         self.profileBackgroundPhotoButton.alpha = .5;
+         */
+        
+        
     }
     
 }
@@ -332,7 +332,7 @@
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
-        
+    
     [self setTitleViewText:[InstagramUserObject getStoredUserObject].username];
     self.usernameLabel.text = [InstagramUserObject getStoredUserObject].fullName;
     
@@ -371,7 +371,7 @@
     
     
     self.infoContainerScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"lightMenuBG.png"]];
-    self.infoContainerScrollView.contentSize = CGSizeMake(0, self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 4);
+    //    self.infoContainerScrollView.contentSize = CGSizeMake(0, self.descriptionTextView.frame.origin.y + self.descriptionTextView.frame.size.height + 4);
     
 }
 
@@ -525,25 +525,34 @@
 }
 
 
--(void)editButtonHit
+-(IBAction)editButtonHit
 {
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Save" style:UIBarButtonItemStylePlain target:self action:@selector(saveButtonHit)];
-    self.navigationItem.rightBarButtonItem = shareButton;
-    
-    if ([self.descriptionTextView.text compare:EDIT_TEXT] == NSOrderedSame)
-        self.descriptionTextView.text = @"";
-    self.descriptionTextView.editable = YES;
-    [self.descriptionTextView becomeFirstResponder];
-    self.enclosingScrollView.contentSize = CGSizeMake(0, self.enclosingScrollView.frame.size.height * 1.5);
-    [self.enclosingScrollView setContentOffset:CGPointMake(0, 200) animated:YES];
+    if ([self.descriptionTextView isFirstResponder])
+    {
+        [self saveButtonHit];
+    }
+    else
+    {
+        [self.editButton setTitle:@"SAVE" forState:UIControlStateNormal];
+
+        
+        if ([self.descriptionTextView.text compare:EDIT_TEXT] == NSOrderedSame)
+            self.descriptionTextView.text = @"";
+        
+        self.descriptionTextView.editable = YES;
+        [self.descriptionTextView becomeFirstResponder];
+        self.enclosingScrollView.contentSize = CGSizeMake(0, self.enclosingScrollView.frame.size.height);
+        [self.enclosingScrollView setContentOffset:CGPointMake(0, 217) animated:YES];
+    }
     
 }
 
 -(void)saveButtonHit
 {
+    [self.editButton setTitle:@"EDIT" forState:UIControlStateNormal];
     [SellersAPIHandler updateSellerDescriptionWithDelegate:self InstagramID:[InstagramUserObject getStoredUserObject].userID withDescription:self.descriptionTextView.text];
     [self.descriptionTextView resignFirstResponder];
-    [self.enclosingScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+//    [self.enclosingScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     self.enclosingScrollView.contentSize = CGSizeMake(0,0);
     self.descriptionTextView.editable = NO;
     
@@ -554,11 +563,13 @@
 {
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
     {
-        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editButtonHit)];
-        self.navigationItem.rightBarButtonItem = shareButton;
+        self.editButton.alpha = 1;
+        //        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editButtonHit)];
+        //        self.navigationItem.rightBarButtonItem = shareButton;
     }
     else
     {
+        self.editButton.alpha = 0;
         UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;
@@ -622,7 +633,7 @@
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
     {
         GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
-//        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
+        //        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
         imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
         imagePicker.delegate = self;
         imagePicker.resizeableCropArea = NO;

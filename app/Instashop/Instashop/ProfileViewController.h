@@ -14,6 +14,7 @@
 #import "GKImagePicker.h"
 #import "SellerDetailResponseProtocol.h"
 #import "ISDarkRowContainerView.h"
+#import "TPKeyboardAvoidingScrollView.h"
 
 @interface ProfileViewController : UIViewController <UIActionSheetDelegate, IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate, SellerDetailResponseProtocol>
 {
@@ -60,7 +61,7 @@
 
 -(void)loadNavigationControlls;
 -(IBAction) imagePickButtonHit;
-
+-(IBAction) editButtonHit;
 -(IBAction) productsButtonHit;
 -(IBAction) infoButtonHit;
 -(IBAction) reviewsButtonHit;
@@ -111,7 +112,7 @@
 @property (nonatomic, retain) IBOutlet UIImageView *bioContainerImageView;
 @property (nonatomic, retain) IBOutlet UILabel *bioLabel;
 @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
-
+@property (nonatomic, retain) IBOutlet UIButton *editButton;
 @property (nonatomic, retain) IBOutlet UIButton *imagePickButton;
 
 @property (nonatomic, assign) BOOL hasAppeared;
