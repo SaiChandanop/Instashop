@@ -69,8 +69,11 @@
         if ([theDictionary objectForKey:@"exists"] != nil)
         {
             self.alreadyExists = YES;
-            [self.coverButton setTitle:@"EXISTS" forState:UIControlStateNormal];
-            self.coverButton.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5];
+            //[self.coverButton setTitle:@"EXISTS" forState:UIControlStateNormal];
+            UIView *greyCoverView = [[UIView alloc] initWithFrame:self.contentImageView.frame];
+            greyCoverView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5];
+            [self addSubview:greyCoverView];
+            
         }
         else
         {
