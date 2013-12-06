@@ -50,7 +50,7 @@
     //    CGFloat whiteSpace = 11.0f;
     //CGFloat topSpace = 64.0f;
     
-    UIColor *textColor = [UIColor colorWithRed:70.0 green:70.0 blue:70.0 alpha:1.0];
+    UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
     
     // Next Button
     float buttonSize = 50.0; // Change this number to change the button position.
