@@ -110,6 +110,12 @@
     self.descriptionTextView.textColor = self.bioLabel.textColor;
     self.descriptionTextView.font = self.bioLabel.font;
     
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height /2;
+    self.profileImageView.layer.masksToBounds = YES;
+    self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.profileImageView.layer.borderWidth = 1;
+    
+    
 }
 
 
@@ -204,7 +210,7 @@
             CGRect cropRect=CGRectMake(0,0,612,612);
             NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
             CGImageRef imageRef = CGImageCreateWithImageInRect([self.backgroundImageView.image CGImage], cropRect);
-            UIImage *img = [UIImage imageNamed:@"AppIcon76x76.png"];//[[UIImage alloc] initWithCGImage:imageRef];
+            UIImage *img = [UIImage imageNamed:@"cover-Default"];//[[UIImage alloc] initWithCGImage:imageRef];
             CGImageRelease(imageRef);
             
             BOOL writeSuccess = [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];

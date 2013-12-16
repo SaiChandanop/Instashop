@@ -75,7 +75,7 @@
 {
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
-    [controller setToRecipients:[NSArray arrayWithObject:@"appfeedback@shopsy.com"]];
+    [controller setToRecipients:[NSArray arrayWithObject:@"hello@shopsy.com"]];
     [controller setSubject:@"Feedback"];
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

@@ -137,7 +137,7 @@
         [self _setupUseButton];
         
         UILabel *info = [[UILabel alloc] initWithFrame:CGRectZero];
-        info.text = NSLocalizedString(@"GKImoveAndScale", @"");
+        info.text = NSLocalizedString(@"Move & Scale", @"");
         info.textColor = [UIColor colorWithRed:0.173 green:0.173 blue:0.173 alpha:1];
         info.backgroundColor = [UIColor clearColor];
         info.shadowColor = [UIColor colorWithRed:0.827 green:0.831 blue:0.839 alpha:1];
