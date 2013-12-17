@@ -136,6 +136,7 @@
 		7B15B2FB17B2AA1800173752 /* CategoriesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15B2FA17B2AA1800173752 /* CategoriesViewController.m */; };
 		7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */; };
 		7B15B30317B2AB5A00173752 /* CategoriesTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */; };
+		7B18DA5718609F3A003FEFFC /* PaginationAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B18DA5618609F3A003FEFFC /* PaginationAPIHandler.m */; };
 		7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */; };
 		7B1B302E17BE8ED100BB6420 /* BSKeyboardControls.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */; };
 		7B260E9017F0BA7700F8F873 /* ViglinkAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B260E8F17F0BA7700F8F873 /* ViglinkAPIHandler.m */; };
@@ -482,6 +483,8 @@
 		7B15B2FF17B2AB5A00173752 /* CategoriesTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoriesTableViewController.h; sourceTree = "<group>"; };
 		7B15B30017B2AB5A00173752 /* CategoriesTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CategoriesTableViewController.m; sourceTree = "<group>"; };
 		7B15B30117B2AB5A00173752 /* CategoriesTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesTableViewController.xib; sourceTree = "<group>"; };
+		7B18DA5518609F3A003FEFFC /* PaginationAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PaginationAPIHandler.h; sourceTree = "<group>"; };
+		7B18DA5618609F3A003FEFFC /* PaginationAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PaginationAPIHandler.m; sourceTree = "<group>"; };
 		7B1B302A17BE8ED000BB6420 /* BSKeyboardControls.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSKeyboardControls.h; sourceTree = "<group>"; };
 		7B1B302B17BE8ED100BB6420 /* BSKeyboardControls.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSKeyboardControls.m; sourceTree = "<group>"; };
 		7B1B302C17BE8ED100BB6420 /* BSKeyboardControls.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = BSKeyboardControls.strings; sourceTree = "<group>"; };
@@ -1143,6 +1146,15 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
+		7B18DA5418609F24003FEFFC /* Pagination */ = {
+			isa = PBXGroup;
+			children = (
+				7B18DA5518609F3A003FEFFC /* PaginationAPIHandler.h */,
+				7B18DA5618609F3A003FEFFC /* PaginationAPIHandler.m */,
+			);
+			name = Pagination;
+			sourceTree = "<group>";
+		};
 		7B1B302917BE8E9400BB6420 /* BSKeyboardControls */ = {
 			isa = PBXGroup;
 			children = (
@@ -1657,6 +1669,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7B18DA5418609F24003FEFFC /* Pagination */,
 				7B05032A183FD6B4004EF2C2 /* Bitly */,
 				7BC6E7D71822997100288B68 /* Amber */,
 				7BE66D9F17E3520F00BE3B64 /* Categories */,
@@ -2287,6 +2300,7 @@
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
 				7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */,
 				7BDED699180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m in Sources */,
+				7B18DA5718609F3A003FEFFC /* PaginationAPIHandler.m in Sources */,
 				7B0D255317CBADCB00E43FA6 /* TableCellAddClass.m in Sources */,
 				7BF9DD8D178C546F005148A8 /* SBJsonStreamParserAdapter.m in Sources */,
 				7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */,

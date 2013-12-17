@@ -60,7 +60,12 @@
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SELECT A PHOTO"]];
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", nil];
+    
+    NSDate *start = [[NSDate alloc] initWithTimeIntervalSince1970:0];
+    NSTimeInterval timeInterval = [start timeIntervalSince1970];
+    NSString *timeIntervalString = [NSString stringWithFormat:@"%f", timeInterval];
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", timeIntervalString, @"MIN_TIMESTAMP", nil];
     self.productSelectTableViewController.parentController = self;
     self.productSelectTableViewController.cellDelegate = self;
     self.productSelectTableViewController.contentRequestParameters = [[NSMutableDictionary alloc] initWithDictionary:params];

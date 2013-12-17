@@ -15,6 +15,8 @@
 #import "TableCellAddClass.h"
 #import "InstagramUserObject.h"
 #import "SearchAPIHandler.h"
+#import "PaginationAPIHandler.h"
+
 
 @interface ProductSelectTableViewController ()
 
@@ -44,8 +46,12 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSLog(@"request did load!!: %@", request.url);
+    if (request != nil)
+        NSLog(@"request did load!!: %@", request.url);
+    else
+        NSLog(@"request did load!!!");
     
+//    NSLog(@"result: %@", result);
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
@@ -62,14 +68,30 @@
             [mutableDataArray addObject:dict];
         }
         
-        self.checkCountup = 0;
-        [self.contentArray removeAllObjects];
+        
+        
         [self.contentArray addObjectsFromArray:mutableDataArray];
         
-        for (int i = 0; i < [self.contentArray count]; i++)
+        NSString *nextURLString = nil;
+        NSDictionary *paginationDictionary = [result objectForKey:@"pagination"];
+        if (paginationDictionary != nil)
+            if ([paginationDictionary objectForKey:@"next_url"] != nil)
+                nextURLString = [paginationDictionary objectForKey:@"next_url"];
+        
+        
+        if (nextURLString != nil)
         {
-            NSMutableDictionary *theSelectionObject = [self.contentArray objectAtIndex:i];
-            [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:theSelectionObject];
+//            NSLog(@"paginationDictionary: %@", paginationDictionary);
+            [PaginationAPIHandler makePaginationRequestWithDelegate:self withRequestURLString:nextURLString];
+        }
+        else
+        {
+//            NSLog(@"paginationComplete");
+            for (int i = 0; i < [self.contentArray count]; i++)
+            {
+                NSMutableDictionary *theSelectionObject = [self.contentArray objectAtIndex:i];
+                [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:theSelectionObject];
+            }
         }
     }
     
@@ -152,6 +174,8 @@
 
 -(void)refreshContent
 {
+    self.checkCountup = 0;
+    [self.contentArray removeAllObjects];
     NSLog(@"refreshContent called");
     NSLog(@"self.contentRequestParameters: %@", self.contentRequestParameters);
     if (self.contentRequestParameters != nil)
