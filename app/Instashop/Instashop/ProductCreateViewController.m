@@ -73,6 +73,12 @@
     
 }
 
+-(void)forceRefreshContent
+{
+    NSLog(@"forceRefreshContent");
+    [self.productSelectTableViewController refreshContent];
+}
+
 -(void)backButtonHit
 {
     [self.parentController productCreateNavigationControllerExitButtonHit:self.navigationController];

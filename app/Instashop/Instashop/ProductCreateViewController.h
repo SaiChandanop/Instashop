@@ -28,6 +28,7 @@
     NSDictionary *currentSelectionObject;
 }
 
+-(void)forceRefreshContent;
 -(void) previewDoneButtonHit:(ProductCreateContainerObject *)theCreateObject;
 -(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary;
 -(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateObject;

@@ -518,8 +518,16 @@
 
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
-    NSLog(@"self.navigationController.viewControllers: %@", [self.navigationController viewControllers]);
+
+    NSArray *ar = [self.navigationController viewControllers];
     
+    for (int i = 0; i < [ar count]; i++)
+    {
+        id vc = [ar objectAtIndex:i];
+        if ([vc isKindOfClass:[ProductCreateViewController class]])
+            [((ProductCreateViewController *)vc) forceRefreshContent];
+            
+    }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
