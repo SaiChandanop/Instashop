@@ -50,6 +50,9 @@
     
     PurchasingViewController *purchasingViewController;
     
+    NSString *preloadedContent;
+    UITextView *preloadedContentView;
+    
 }
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url;
@@ -72,5 +75,8 @@
 
 
 @property (nonatomic, retain) PurchasingViewController *purchasingViewController;
+
+@property (nonatomic, retain) NSString *preloadedContent;
+@property (nonatomic, retain) UITextView *preloadedContentView;
 
 @end

@@ -518,6 +518,8 @@
 
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
+    NSLog(@"self.navigationController.viewControllers: %@", [self.navigationController viewControllers]);
+    
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
@@ -652,12 +654,16 @@
 {
     
     self.browserViewController = [[CIALBrowserViewController alloc] init];
-    [self.navigationController pushViewController:browserViewController animated:YES];
+    self.browserViewController.preloadedContent = @"<HTML>HI</HTML>";
+    [self.navigationController pushViewController:self.browserViewController animated:YES];
     
     self.browserViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ] autorelease];
 //    [self.browserViewController loadRightBarItem];
     
     [self.descriptionTextView resignFirstResponder];
+    
+//    NSLog(@"browserViewController.webView: %@", self.browserViewController.webView);
+    
     
 }
 

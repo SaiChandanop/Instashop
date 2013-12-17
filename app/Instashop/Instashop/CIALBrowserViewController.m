@@ -33,6 +33,9 @@
 @synthesize modal = _modal;
 @synthesize enabledSafari = _enabledSafari;
 @synthesize purchasingViewController;
+@synthesize preloadedContent;
+@synthesize preloadedContentView;
+
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url
 {
@@ -154,6 +157,7 @@
         webView.multipleTouchEnabled = YES;
         webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.view addSubview:webView];
+        
         [webView release];
     } else {
         navigationItem = [[UINavigationItem alloc] initWithTitle:nil];
@@ -284,6 +288,23 @@
     
     UIImageView *theImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"toolbarShopsyLogo.png"]];
     self.navigationItem.titleView = theImageView;
+    
+    
+    if (self.preloadedContent != nil)
+    {
+        [webView loadHTMLString:self.preloadedContent baseURL:nil];
+        
+        float inset = 30;
+        
+        if (self.preloadedContentView == nil)
+        {
+            self.preloadedContentView = [[UITextView alloc] initWithFrame:CGRectMake(inset, locationField.frame.origin.y + locationField.frame.size.height + 10, self.view.frame.size.width - 2 * inset, 110)];
+            self.preloadedContentView.text = @"Tell us where to buy the product in the Instagram photo. Go to the website product page and tap \"Save\" in the top right corner of the screen.";
+            [self.view addSubview:self.preloadedContentView];
+        }
+        
+    }
+
 
 }
 
@@ -375,6 +396,8 @@
     
     if (!url) return;
     
+    NSLog(@"preloadedContentView: %@", preloadedContentView);
+    [self.preloadedContentView removeFromSuperview];
     NSLog(@"%@ loadURL: %@", self, url);
     locationField.text = url.absoluteString;
     
@@ -475,6 +498,9 @@
 - (BOOL)webView:(UIWebView *) sender shouldStartLoadWithRequest:(NSURLRequest *) request navigationType:(UIWebViewNavigationType) navigationType {
     if ([request.URL.absoluteString isEqual:@"about:blank"])
         return NO;
+    
+    NSLog(@"shouldStartLoadWithRequest!");
+    [self.preloadedContentView removeFromSuperview];
     [req release];
     req = (NSMutableURLRequest *)[request retain];
     [locationField resignFirstResponder];
