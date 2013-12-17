@@ -181,6 +181,10 @@
     
     //    self.titleTextView.text = [productObject objectForKey:@"products_name"];
     self.descriptionTextView.text = [productObject objectForKey:@"products_description"];
+    
+    if ([self.descriptionTextView.text compare:@"Description"] != NSOrderedSame)
+        self.descriptionTextView.textColor = [UIColor whiteColor];
+    
     self.retailPriceTextField.text = [productObject objectForKey:@"products_price"];
     self.instashopPriceTextField.text = [productObject objectForKey:@"products_list_price"];
     self.editingProductID = [productObject objectForKey:@"product_id"];
@@ -361,6 +365,9 @@
         if (![captionDictionary isKindOfClass:[NSNull class]])
             self.descriptionTextView.text = [captionDictionary objectForKey:@"text"];
     //self.titleTextView.text = [captionDictionary objectForKey:@"text"];
+    
+    if ([self.descriptionTextView.text compare:@"Description"] != NSOrderedSame)
+        self.descriptionTextView.textColor = [UIColor whiteColor];
     
     
     self.instragramMediaInfoDictionary = theDictionary;
