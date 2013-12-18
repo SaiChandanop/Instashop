@@ -356,9 +356,6 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
-- (void) settingsBackButtonHit:(UINavigationController *) navigationController {
-    
-}
 
 - (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title {
     

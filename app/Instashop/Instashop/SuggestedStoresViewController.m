@@ -22,6 +22,8 @@
 
 @end
 
+// THERE ARE ALOT OF SYNCHRONIZATION PROBLEMS WITH THE CODE IN THE FILE, EVEN BEFORE I HAD STARTED WORKING ON IT - Susan
+
 #define kLoginTutorialDone 3
 #define kButtonPosition 515.0 // Change this number to change the button position.
 
@@ -38,13 +40,17 @@
 @synthesize isLaunchedFromMenu;
 @synthesize loadedCount;
 
-
 // So in order to have only followed users on the list, it would mean that when it's loaded, it updates differently from when these are followed thereafter.
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
+        //    NSLog(@"this is params: %@", params);
+        [appDelegate.instagram requestWithParams:params delegate:self];
         // Custom initialization
         self.likedArrayCount = 0;
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -57,13 +63,39 @@
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
-    //    NSLog(@"this is params: %@", params);
-    [appDelegate.instagram requestWithParams:params delegate:self];
     
-    [self performSelectorOnMainThread:@selector(getSuggestedShops) withObject:self.followersArray waitUntilDone:YES];
+
+//    [self performSelectorOnMainThread:@selector(getSuggestedShops) withObject:self.followersArray waitUntilDone:YES];
     
     [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
+    
+    NSOperationQueue *queue = [[NSOperationQueue alloc] init];
+    
+    queue.maxConcurrentOperationCount = 1;
+    
+    [queue addOperationWithBlock:^{
+        
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
+        //    NSLog(@"this is params: %@", params);
+        [appDelegate.instagram requestWithParams:params delegate:self];
+        
+        // The problem is that this method will have already run by the time it's executed.  Need to check if the array is full or not.  That's the problem.
+        // I could add a while loop which would probably be really terrible practice.
+        while (self.initiated == FALSE ) {
+            // REALLY REALLY AWFUL PRACTICE.
+            // YES VERY
+        }
+        // If I wasn't using the while loop, I'd probably have to recode the entire thing.
+        
+    }];
+    
+    [queue addOperationWithBlock:^{
+        
+        [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
+
+        
+    }];
+    //[self getFollowers];
     
     [super viewDidLoad];
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
@@ -76,8 +108,16 @@
     bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
     [self.view insertSubview:bgImageView atIndex:0];
 }
+
+- (void) getFollowers {
     
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(getSuggestedShops) name:@"followersUpdated" object:self.followersArray];
+    
+}
+
 - (void) getSuggestedShops {
+    
     [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
 }
  
@@ -100,6 +140,14 @@
     {
         UIView *subview = [subviewsArray objectAtIndex:i];
         [subview removeFromSuperview];
+    }
+    
+    for (int x = 0; x < [self.followersArray count]; x++) {
+        
+        if ([self.selectedShopsIDSArray containsObject:[self.followersArray objectAtIndex:x]]) {
+            
+            [self.selectedShopsIDSArray removeObject:[self.followersArray objectAtIndex:x]];
+        }
     }
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -127,7 +175,7 @@
 }
 
 // Response is not coming back...but I don't think this is my responsibility.  Code looks okay.
-// Another things is regarding the first time tutorial.  If the user just stops the app without following some many users and then logs in again later, may skip that part of the tutorial.
+// Another thing is regarding the first time tutorial.  If the user just stops the app without following some many users and then logs in again later, may skip that part of the tutorial.
 
 // The question is how to manage in which order requests come through.
 
@@ -183,6 +231,14 @@
         
         SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:dataInstagramID];
         
+        for (int x = 0; x < [self.followersArray count]; x++) {
+            
+            if ([self.selectedShopsIDSArray containsObject:[self.followersArray objectAtIndex:x]]) {
+                
+                [self.selectedShopsIDSArray removeObject:[self.followersArray objectAtIndex:x]];
+            }
+        }
+        
         if (shopView != nil)
             if ([shopView.shopViewInstagramID compare:dataInstagramID] == NSOrderedSame && ![self.followersArray containsObject:shopView.shopViewInstagramID])
             {
@@ -190,9 +246,10 @@
                 if ([[dataDictionary objectForKey:@"full_name"] length] != 0 && [[dataDictionary objectForKey:@"bio"] length] != 0)
                 {
                     
-/*                    shopView.frame = CGRectMake(0, [self.selectedShopsIDSArray indexOfObject:shopView.shopViewInstagramID] * shopView.frame.size.height, self.view.frame.size.width, shopView.frame.size.height);
+                    // Can't use indexOfObject:shopView.shopViewInstagramID because some of the objects in this array won't be used.
+                    shopView.frame = CGRectMake(0, [self.selectedShopsIDSArray indexOfObject:shopView.shopViewInstagramID] * shopView.frame.size.height, self.view.frame.size.width, shopView.frame.size.height);
                     [self.contentScrollView addSubview:shopView];
-  */
+ 
                     
                     shopView.alpha = 1;
                     NSLog(@"show");

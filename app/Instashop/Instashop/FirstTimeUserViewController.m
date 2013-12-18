@@ -78,7 +78,7 @@
     
     NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:firstString, secondString, nil];\
     
-    NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"Tutorial-Post-Products-Phone.png", @"Tutorial-Notifications-Phone.png", nil];
+    NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"FirstTTutorialOne.png", @"FirstTTutorialTwo.png", @"FirstTTutorialThree.png", @"FirstTTutorialFour.png", nil];
     
     for (int p = 0; p < arrayOfImages.count; p++) {
         

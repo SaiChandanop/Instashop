@@ -98,6 +98,10 @@
 		6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6901344B1836B4E9005CE173 /* SettingsViewController.xib */; };
 		696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */; };
 		696DE14A182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */; };
+		69D812761862429D00EA34CE /* FirstTTutorialOne@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69D812721862429D00EA34CE /* FirstTTutorialOne@2x.png */; };
+		69D812771862429D00EA34CE /* FirstTTutorialTwo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69D812731862429D00EA34CE /* FirstTTutorialTwo@2x.png */; };
+		69D812781862429D00EA34CE /* FirstTTutorialThree@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69D812741862429D00EA34CE /* FirstTTutorialThree@2x.png */; };
+		69D812791862429D00EA34CE /* FirstTTutorialFour@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69D812751862429D00EA34CE /* FirstTTutorialFour@2x.png */; };
 		69FC1E981834204200A52A90 /* InstashopWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FC1E971834204200A52A90 /* InstashopWebView.m */; };
 		69FC1E9B183424E700A52A90 /* WebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69FC1E9A183424E700A52A90 /* WebViewController.m */; };
 		7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0320D717E0DB700045D7AC /* DiscoverViewController.m */; };
@@ -424,6 +428,10 @@
 		6901344B1836B4E9005CE173 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
 		696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Post-Products-Phone.png"; sourceTree = "<group>"; };
 		696DE149182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tutorial-Notifications-Phone.png"; sourceTree = "<group>"; };
+		69D812721862429D00EA34CE /* FirstTTutorialOne@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FirstTTutorialOne@2x.png"; sourceTree = "<group>"; };
+		69D812731862429D00EA34CE /* FirstTTutorialTwo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FirstTTutorialTwo@2x.png"; sourceTree = "<group>"; };
+		69D812741862429D00EA34CE /* FirstTTutorialThree@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FirstTTutorialThree@2x.png"; sourceTree = "<group>"; };
+		69D812751862429D00EA34CE /* FirstTTutorialFour@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FirstTTutorialFour@2x.png"; sourceTree = "<group>"; };
 		69FC1E961834204200A52A90 /* InstashopWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstashopWebView.h; sourceTree = "<group>"; };
 		69FC1E971834204200A52A90 /* InstashopWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstashopWebView.m; sourceTree = "<group>"; };
 		69FC1E99183424E700A52A90 /* WebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WebViewController.h; sourceTree = "<group>"; };
@@ -908,6 +916,10 @@
 				2E1B437A17CFECEA00B28603 /* follow_btn_background@2x.png */,
 				2E41683C17CE7403002850BD /* add_product@2x.png */,
 				2E6BF27817CE502E008DF460 /* edit_photo@2x.png */,
+				69D812721862429D00EA34CE /* FirstTTutorialOne@2x.png */,
+				69D812731862429D00EA34CE /* FirstTTutorialTwo@2x.png */,
+				69D812741862429D00EA34CE /* FirstTTutorialThree@2x.png */,
+				69D812751862429D00EA34CE /* FirstTTutorialFour@2x.png */,
 				2E38E6B017CBDB6300A8BD54 /* lightMenuBG@2x.png */,
 				2E38E6AE17CBD28C00A8BD54 /* closebutton_white@2x.png */,
 				2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */,
@@ -2041,6 +2053,7 @@
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BDED692180C7A28001FF165 /* CIALBrowser.bundle in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
+				69D812781862429D00EA34CE /* FirstTTutorialThree@2x.png in Resources */,
 				7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */,
 				2E9378ED184D200500476540 /* privacy_icon@2x.png in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
@@ -2059,7 +2072,9 @@
 				7B1072C3175E84E400D9DC5D /* additemdetails.png in Resources */,
 				2E41D2221815A9F60032844A /* more_button@2x.png in Resources */,
 				7B5D62A217C5AF9F00D6C8B1 /* amex@2x.png in Resources */,
+				69D812761862429D00EA34CE /* FirstTTutorialOne@2x.png in Resources */,
 				696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */,
+				69D812771862429D00EA34CE /* FirstTTutorialTwo@2x.png in Resources */,
 				7B0D253E17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed.png in Resources */,
 				7B0D253A17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png in Resources */,
 				7B3F5217175FB3A000ABF49B /* ProductPreviewViewController.xib in Resources */,
@@ -2175,6 +2190,7 @@
 				7BA4270C1794681500A9732E /* cpbackimage.png in Resources */,
 				7B8CCFBC181ABDA3006E01A9 /* FBPostViewController.xib in Resources */,
 				7B5A56F017D3D80C007AABDA /* SuggestedShopView.xib in Resources */,
+				69D812791862429D00EA34CE /* FirstTTutorialFour@2x.png in Resources */,
 				7BA4270E17946F5F00A9732E /* attributes1.csv in Resources */,
 				7B9EAB3E1796E98600D2868D /* product_buy_bakcground_image_a.png in Resources */,
 				2E38E6B117CBDB6300A8BD54 /* lightMenuBG@2x.png in Resources */,
