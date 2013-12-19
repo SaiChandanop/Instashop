@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4510" systemVersion="13A603" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1552" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3746"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
@@ -150,7 +150,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="xFw-be-STT">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="-4" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="bug_icon.png" id="jAy-Ci-0BD">
@@ -164,6 +164,16 @@
                             <color key="textColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="h3L-qG-Cbd">
+                            <rect key="frame" x="8" y="4" width="307" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal">
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="reportBugButtonHit" destination="-1" eventType="touchUpInside" id="RqL-wi-t4h"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </view>
                 <view contentMode="scaleToFill" id="5No-cW-xRU" userLabel="Privacy">
@@ -278,11 +288,17 @@
         <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bug_icon.png" width="44" height="44"/>
         <image name="cell_separator.png" width="320" height="5"/>
+        <image name="cell_separator.png" width="320" height="5"/>
         <image name="faq_icon.png" width="44" height="44"/>
         <image name="feedback_icon.png" width="44" height="44"/>
         <image name="invite_friend_icon.png" width="44" height="44"/>
         <image name="log_out_icon.png" width="44" height="44"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuLightBG.png" width="320" height="44"/>
+        <image name="menuLightBG.png" width="320" height="44"/>
+        <image name="menuLightBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
         <image name="privacy_icon.png" width="44" height="44"/>
         <image name="terms_icon.png" width="44" height="44"/>

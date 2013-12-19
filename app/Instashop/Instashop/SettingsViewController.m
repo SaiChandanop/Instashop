@@ -246,8 +246,16 @@
     [self.parentController homeButtonHit];
 }
 
-- (IBAction) reportBug {
+- (IBAction) reportBugButtonHit {
+ 
+    MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
+    controller.mailComposeDelegate = self;
+    [controller setToRecipients:[NSArray arrayWithObject:@"support@shopsy.com"]];
+    [controller setSubject:@"Support"];
     
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    [delegate.appRootViewController presentViewController:controller animated:YES completion:nil];
+
 }
 
 
