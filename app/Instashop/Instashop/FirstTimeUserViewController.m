@@ -76,11 +76,11 @@
     NSString * firstString = [NSString stringWithFormat:@"Upload products from Instagram and make it easy for your followers to shop"];
     NSString * secondString = [NSString stringWithFormat:@"Receive Notifications after you like a product on Instagram and Shopsy will \n tell you where to buy!"];
     
-    NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:firstString, secondString, nil];\
+    NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:firstString, secondString, nil];
     
     NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"FirstTTutorialOne.png", @"FirstTTutorialTwo.png", @"FirstTTutorialThree.png", @"FirstTTutorialFour.png", nil];
     
-    for (int p = 0; p < arrayOfImages.count; p++) {
+    for (int p = 0; p < [arrayOfImages count]; p++) {
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, 150.0)];
         label.text = [arrayOfStringLabels objectAtIndex:p];

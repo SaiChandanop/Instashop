@@ -69,6 +69,13 @@
                                      target:nil
                                      action:nil] autorelease];
     
+    
+    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonHit)];
+    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swipeGestureRecognizer];
+
+    
+    
 }
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
@@ -225,12 +232,10 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction) privatePolicyButtonHit {
-    [self.parentController webViewButtonHit:@"http://instashop.com/privacy" titleName:@"PRIVACY"];
-}
 
 -(IBAction)logOutButtonHit
 {
+    [self backButtonHit];
     AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [del.instagram logout];
     
@@ -245,6 +250,11 @@
     
 }
 
+
+-(IBAction)privatePolicyButtonHit
+{
+    NSLog(@"privatePolicyButtonHit");
+}
 - (IBAction) termsOfServiceButtonHit {
     
     [self.parentController webViewButtonHit:@"http://instashop.com/terms" titleName:@"TERMS"];
