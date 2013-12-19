@@ -39,9 +39,11 @@
 {
     [super viewDidLoad];
     
-    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-    
-    // Do any additional setup after loading the view from its nib.
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
 }
 
 

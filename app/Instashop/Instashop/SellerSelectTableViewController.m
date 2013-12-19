@@ -31,6 +31,12 @@
     
     self.tableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
 }
 
 

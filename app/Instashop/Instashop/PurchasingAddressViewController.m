@@ -129,6 +129,12 @@
     self.cityStateView.separatorImageView.alpha = 0;
     self.zipView.separatorImageView.alpha = 0;
     
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+    
 }
 
 

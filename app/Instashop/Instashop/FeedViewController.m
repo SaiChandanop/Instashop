@@ -81,7 +81,13 @@
     self.productSelectTableViewController.cellDelegate = self;
     self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS;
     [self.productSelectTableViewController refreshContent];
-    
+
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+
 }
 
 

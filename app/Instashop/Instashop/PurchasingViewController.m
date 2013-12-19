@@ -144,7 +144,11 @@
     //    self.commentsTableViewController.commentsDataArray = [[NSArray alloc] initWithObjects:[NSNull null], nil];
     [self.commentsTableViewController.tableView reloadData];
     
-    
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
     
 }
 

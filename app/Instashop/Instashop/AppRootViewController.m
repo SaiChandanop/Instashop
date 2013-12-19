@@ -87,6 +87,15 @@ float transitionTime = .456;
 
     [DiscoverDataManager getSharedDiscoverDataManager];
     
+    
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+    
+    
+    
 }
 
 - (void) runTutorial {

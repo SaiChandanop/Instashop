@@ -114,6 +114,13 @@
     [self.view addSubview:self.tutorialScrollView];
     [self.view addSubview:self.nextButton];
     
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+    
+    
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {

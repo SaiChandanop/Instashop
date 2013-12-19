@@ -65,6 +65,12 @@
 
     self.contentScrollView.contentSize = CGSizeMake(0, self.bottomContentView.frame.origin.y + self.bottomContentView.frame.size.height);
     
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+    
 }
 
 - (IBAction) postButtonHit

@@ -44,6 +44,14 @@ float cellHeight = 151;
     
     if ([[DiscoverDataManager getSharedDiscoverDataManager].contentArray count] == 0)
         [DiscoverDataManager getSharedDiscoverDataManager].referenceTableViewController = self;
+    
+    
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+
 }
 
 

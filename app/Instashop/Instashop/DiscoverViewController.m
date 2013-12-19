@@ -42,7 +42,6 @@
     self.navigationController.navigationBar.translucent = NO;
 
     
-//<<<<<<< HEAD
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"DISCOVER"]];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
@@ -50,8 +49,14 @@
     self.discoverTableViewController = [[DiscoverTableViewController alloc] initWithNibName:@"DiscoverTableViewController" bundle:nil];
     self.discoverTableViewController.parentController = self;
     [self.view addSubview:self.discoverTableViewController.tableView];
-    
+
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
 }
+
 
 
 

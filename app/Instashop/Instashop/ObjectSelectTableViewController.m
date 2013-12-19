@@ -46,6 +46,12 @@
              forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
 
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+    
 }
 
 

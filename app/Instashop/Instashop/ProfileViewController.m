@@ -115,7 +115,11 @@
     self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.profileImageView.layer.borderWidth = 1;
     
-    
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
 }
 
 

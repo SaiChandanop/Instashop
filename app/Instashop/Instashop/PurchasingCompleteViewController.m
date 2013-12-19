@@ -52,6 +52,13 @@
     [someButton addTarget:vc action:@selector(xButtonHit:) forControlEvents:UIControlEventTouchUpInside];
     someButton.frame = CGRectMake(0, 0, rootVC.view.frame.size.width, rootVC.view.frame.size.height);
     [rootVC.view addSubview:someButton];
+    
+    rootVC.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
+    
 }
 
 -(IBAction)xButtonHit

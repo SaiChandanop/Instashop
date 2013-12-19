@@ -91,7 +91,11 @@
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
     }
 
-    
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
 }
 
 -(void)runSearch

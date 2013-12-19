@@ -95,6 +95,13 @@
     
     if (self.directSearchTerm != nil)
         [self.productSearchViewController doDirectSearch:self.directSearchTerm];
+    
+    
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
 }
 
 -(void)backButtonHit

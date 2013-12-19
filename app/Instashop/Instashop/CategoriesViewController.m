@@ -60,6 +60,11 @@
         [self setTheTitleWithString:@"Categories" withVC:self];
     }
     
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
    
     
 

@@ -48,7 +48,12 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
 
-    // Do any additional setup after loading the view from its nib.
+
+    self.navigationItem.backBarButtonItem =
+    [[[UIBarButtonItem alloc] initWithTitle:@""
+                                      style:UIBarButtonItemStyleBordered
+                                     target:nil
+                                     action:nil] autorelease];
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
