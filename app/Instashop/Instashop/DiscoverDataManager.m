@@ -10,6 +10,8 @@
 #import "DiscoverDataManager.h"
 #import "AppDelegate.h"
 #import "MediaLikedObject.h"
+#import "InstagramUserObject.h"
+
 @implementation DiscoverDataManager
 
 static DiscoverDataManager *theSharedMan;
@@ -29,6 +31,7 @@ static DiscoverDataManager *theSharedMan;
     {
         theSharedMan = [[DiscoverDataManager alloc] init];
         NSLog(@"getSharedDiscoverDataManager!");
+        
         [ProductAPIHandler getAllProductsWithDelegate:theSharedMan];
     }
     

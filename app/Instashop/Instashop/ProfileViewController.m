@@ -247,29 +247,6 @@
         
         
         self.infoContainerScrollView.frame = self.theTableView.frame;
-        
-        
-        /*
-         if (self.isSelfProfile && [InstagramUserObject getStoredUserObject].zencartID == nil)
-         {
-         
-         NSLog(@"show buyer");
-         self.buyerButtonsView.frame = self.sellerButtonsView.frame;
-         [self.sellerButtonsView removeFromSuperview];
-         [self.view addSubview:self.buyerButtonsView];
-         
-         
-         self.productSelectTableViewController.contentRequestParameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/liked", @"method", @"-1", @"count", nil];
-         self.productSelectTableViewController.cellDelegate = self;
-         self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
-         self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
-         [self.productSelectTableViewController refreshContent];
-         
-         
-         }
-         else
-         {
-         */
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
         
@@ -286,16 +263,6 @@
         self.favoritesSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
         self.favoritesSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
         [self.favoritesSelectTableViewController refreshContent];
-        
-        
-        /*
-         }
-         
-         if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
-         self.profileBackgroundPhotoButton.alpha = .5;
-         */
-        
-        
     }
     
 }
@@ -695,6 +662,7 @@
     
     NSLog(@"makeProfileImageRequestWithReferenceImageView");
     
+    NSLog(@"object: %@", object);
     
     if ([object isKindOfClass:[NSTimer class]])
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:[((NSTimer *)object) userInfo]];

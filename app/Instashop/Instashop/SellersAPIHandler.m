@@ -240,7 +240,6 @@
 
 -(void)uploadImageRequestFinished:(id)object
 {
-//    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
     
     NSLog(@"uploadImageRequestFinished");
     

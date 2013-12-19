@@ -71,11 +71,6 @@
 
 -(void)loadStates
 {
-/*    if ([InstagramUserObject getStoredUserObject].zencartID == nil)
-        self.sellerLabel.text = @"Become a Seller";
-    else
-     self.sellerLabel.text = @"Post Product +";
- */
     
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -84,10 +79,8 @@
 }
 
 
-
 -(IBAction) sellerButtonHit
 {
-
     [self.parentController createProductButtonHit];
 }
 

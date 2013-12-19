@@ -137,7 +137,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     }
     else
     {
-        self.theImageView.image = [UIImage imageNamed:@"iTunesArtwork.png"];        
+//        self.theImageView.image = [UIImage imageNamed:@"iTunesArtwork.png"];
     }
 }
 
