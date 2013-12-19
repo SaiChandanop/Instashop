@@ -11,7 +11,6 @@
 #import "UserAPIHandler.h"
 #import "PurchasingAddressViewController.h"
 #import "SellersAPIHandler.h"
-#import "CreateSellerViewController.h"
 #import "GroupDiskManager.h"
 #import "InstagramUserObject.h"
 #import "InstashopWebView.h"
@@ -85,20 +84,10 @@
 }
 
 
--(IBAction) tempSellerButtonHit
-{
-    [self.parentController createSellerButtonHit];
-}
 
 -(IBAction) sellerButtonHit
 {
-/*
-    if ([InstagramUserObject getStoredUserObject].zencartID == nil)
-    {
-        [self.parentController createSellerButtonHit];
-    }
-    else
-  */
+
     [self.parentController createProductButtonHit];
 }
 

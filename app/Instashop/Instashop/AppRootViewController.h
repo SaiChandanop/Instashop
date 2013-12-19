@@ -20,44 +20,33 @@
     FeedViewController *feedViewController;
     HomeViewController *homeViewController;
     SearchViewController *theSearchViewController;
-    
     NotificationsViewController *notificationsViewController;
     
     BOOL areViewsTransitioning;
-    
     UIButton *feedCoverButton;
 }
 
 
--(void)popupViewControllerShouldExit:(UINavigationController *)theNavigationController;
 
 +(AppRootViewController *)sharedRootViewController;
 
--(void)homeButtonHit;
--(void)notificationsButtonHit;
--(void)discoverButtonHit;
-
-
--(void) createSellerButtonHit;
--(void) createSellerShouldExit:(UINavigationController *)theNavigationController;
-
--(void)createProductButtonHit;
-- (void) firstTimeTutorialExit;
+-(void) homeButtonHit;
+-(void) notificationsButtonHit;
+-(void) discoverButtonHit;
+-(void) createProductButtonHit;
+-(void) firstTimeTutorialExit;
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
-
-
 -(void) profileExitButtonHit:(UINavigationController *)navigationController;
-- (void) runTutorial;
+-(void) popupViewControllerShouldExit:(UINavigationController *)theNavigationController;
+-(void) runTutorial;
 -(void) suggestedShopButtonHit;
 -(void) suggestedShopExitButtonHit:(UINavigationController *)navigationController;
-
 -(void) searchButtonHit:(NSString *)searchTerm;
-
 -(void) searchExitButtonHit:(UINavigationController *)navigationController;
-- (void) settingsButtonHit;
-- (void) settingsBackButtonHit:(UINavigationController *) navigationController;
-- (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title;
-- (void) webViewExitButtonHit:(UINavigationController *)navigationController;
+-(void) settingsButtonHit;
+-(void) settingsBackButtonHit:(UINavigationController *) navigationController;
+-(void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title;
+-(void) webViewExitButtonHit:(UINavigationController *)navigationController;
 
 
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
@@ -68,9 +57,9 @@
 @property (strong, nonatomic) NotificationsViewController *notificationsViewController;
 
 
+@property (nonatomic, assign) BOOL areViewsTransitioning;
 @property (strong, nonatomic) UIButton *feedCoverButton;
 
-@property (nonatomic, assign) BOOL areViewsTransitioning;
 @property (nonatomic, assign) BOOL firstRun;
 
 @end

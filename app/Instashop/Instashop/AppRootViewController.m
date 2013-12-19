@@ -12,7 +12,6 @@
 #import "StripeAuthenticationHandler.h"
 #import "AttributesManager.h"
 #import "ISConstants.h"
-#import "CreateSellerViewController.h"
 #import "ProfileViewController.h"
 #import "InstagramUserObject.h"
 #import "SuggestedStoresViewController.h"
@@ -218,34 +217,7 @@ float transitionTime = .456;
     }
 }
 
--(void)createSellerButtonHit
-{
-    
-    CreateSellerViewController *createSellerViewController = [[CreateSellerViewController alloc] initWithNibName:@"CreateSellerViewController" bundle:nil];
-    createSellerViewController.delegate = self.homeViewController;
-    
-    UINavigationController *createNavigationController = [[UINavigationController alloc] initWithRootViewController:createSellerViewController];
-    createNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:createNavigationController .view];
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    createNavigationController.view.frame = CGRectMake(0, 0, createNavigationController .view.frame.size.width, createNavigationController.view.frame.size.height);
-    [UIView commitAnimations];
-}
 
--(void)createSellerShouldExit:(UINavigationController *)theNavigationController
-{
-
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
-    [UIView commitAnimations];
-}
 
 - (void) firstTimeTutorialExit {
     
