@@ -210,9 +210,9 @@
         NSString *defaultFirstUserKey = [userString stringByAppendingString:@"firstRun"];
         NSLog(@"This is the key: %@", defaultFirstUserKey);
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-        if (NO)
-        {
-        //if (![defaults objectForKey:defaultFirstUserKey]) {
+        //if (NO)
+        //{
+        if (![defaults objectForKey:defaultFirstUserKey]) {
             [defaults setObject:[NSDate date] forKey:defaultFirstUserKey];
             [defaults synchronize];
             [del.appRootViewController runTutorial];
