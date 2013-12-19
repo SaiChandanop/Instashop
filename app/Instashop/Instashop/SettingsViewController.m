@@ -167,7 +167,7 @@
                     MFMessageComposeViewController *phonePicker = [[MFMessageComposeViewController alloc] init];
                     phonePicker.recipients = [NSArray arrayWithObject:phoneNumber];
                     phonePicker.messageComposeDelegate = self;
-                    phonePicker.body = @"yo download my app: http://google.com";
+                    phonePicker.body = @"Join Shopsy, the place to shop for products discovered on Instagram. shopsy.com/download";
                     [delegate.appRootViewController presentViewController:phonePicker animated:YES completion:nil];
                 }
                 
@@ -185,7 +185,7 @@
                     mailComposerController.mailComposeDelegate = self;
                     [mailComposerController setToRecipients:[NSArray arrayWithArray:emailAddresses]];
                     [mailComposerController setSubject:@"Check it out"];
-                    [mailComposerController setMessageBody:@"<html><B>yo download my app: http://google.com" isHTML:YES];
+                    [mailComposerController setMessageBody:@"Join Shopsy, the place to shop for products discovered on Instagram. shopsy.com/download" isHTML:YES];
                     [delegate.appRootViewController presentViewController:mailComposerController animated:YES completion:nil];
                 }
                 break;
