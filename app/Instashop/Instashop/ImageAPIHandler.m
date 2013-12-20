@@ -100,7 +100,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
     }
      else
-         [self.delegate imageReturnedWithURL:self.contextObject withImage:responseImage];
+         [self.delegate imageReturnedWithURL:self.contextObject withData:self.responseData];
 }
 
 
@@ -109,36 +109,25 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
- //   NSLog(@"receivedData.length: %d", [self.receivedData length]);
-    UIImage *responseImage = [UIImage imageWithData:self.receivedData];
+
+
+        if (self.theImageView != nil)
+            self.theImageView.image = [UIImage imageWithData:self.receivedData];
     
-//    NSLog(@"connectionDidFinishLoading, responseImage: %@", responseImage);
-//    NSString *key =[[[connection originalRequest] URL] absoluteString];
-    if (responseImage != nil)
-    {
-//        [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:key];
-        self.theImageView.image = responseImage;
         self.theImageView.alpha = 1;
         
         if ([self.delegate respondsToSelector:@selector(imageRequestFinished:)])
-        {
             [self.delegate imageRequestFinished:self.theImageView];
-        }
         else if ([self.theImageView isKindOfClass:[ISAsynchImageView class]])
-        {
             [(ISAsynchImageView *)self.theImageView ceaseAnimations];
-        }
         else
-        {
-            [self.delegate imageReturnedWithURL:self.contextObject withImage:responseImage];
-        }
-        
-        
-    }
-    else
-    {
-//        self.theImageView.image = [UIImage imageNamed:@"iTunesArtwork.png"];
-    }
+            [self.delegate imageReturnedWithURL:self.contextObject withData:self.receivedData];
+    
+    [self.contextObject release];
+//    [self.theImageView release];
+    [self.receivedData setLength:0];
+    [self.receivedData release];
+    [self release];
 }
 
 

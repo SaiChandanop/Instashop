@@ -49,6 +49,7 @@
 - (void) cleanContent;
 {
     self.backgroundImageView.alpha = 0;
+    [self.contentImageView.image release];
     self.contentImageView.image = nil;
     self.objectDictionary = nil;
 }
@@ -105,10 +106,12 @@
     
 }
 
--(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
+-(void)imageReturnedWithURL:(NSString *)url withData:(NSData *)theData
 {
     if ([url compare:self.imageProductURL] == NSOrderedSame)
-        self.contentImageView.image = theImage;
+        self.contentImageView.image = [UIImage imageWithData:theData];
+    
+    [theData release];
 }
 
 
