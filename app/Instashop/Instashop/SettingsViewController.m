@@ -261,6 +261,7 @@
 
 -(IBAction)privatePolicyButtonHit
 {
+    [self.parentController webViewButtonHit:@"http://instashop.com/privacy" titleName:@"PRIVACY"];
     NSLog(@"privatePolicyButtonHit");
 }
 - (IBAction) termsOfServiceButtonHit {
