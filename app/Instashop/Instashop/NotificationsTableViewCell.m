@@ -42,6 +42,11 @@
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.instagram requestWithParams:params delegate:self];
     
+    self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height /2;
+    self.profileImageView.layer.masksToBounds = YES;
+    self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
+    self.profileImageView.layer.borderWidth = 1;
+    
 }
 
 
