@@ -49,7 +49,6 @@
 - (void) cleanContent;
 {
     self.backgroundImageView.alpha = 0;
-    [self.contentImageView.image release];
     self.contentImageView.image = nil;
     self.objectDictionary = nil;
 }
@@ -100,7 +99,8 @@
         }
         
         if (self.imageProductURL != nil)
-            [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
+//            [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
+            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:self.contentImageView];
     }
     
     
@@ -111,7 +111,7 @@
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = [UIImage imageWithData:theData];
     
-    [theData release];
+
 }
 
 

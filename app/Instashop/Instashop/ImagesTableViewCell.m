@@ -19,6 +19,7 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight
 {
+    NSLog(@"create images table view cell");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
     }
@@ -28,7 +29,7 @@
 -(void) handleLayoutWithDelegate:(id)theDelegate
 {
     float imageWidth = 106;
-    
+ /*
     if (self.itemOne != nil)
     {
         [self.itemOne removeFromSuperview];
@@ -49,7 +50,7 @@
         [self.itemThree release];
         self.itemThree = nil;
     }
-    
+ */   
     if (self.itemOne == nil)
     {
         self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(1, 0, imageWidth, imageWidth + 2)];
