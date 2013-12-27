@@ -262,7 +262,14 @@ float transitionTime = .456;
 
 -(void)productDidCreateWithNavigationControllerDidFinish
 {
-    [self homeButtonHit];
+    if (self.feedNavigationController.view.frame.origin.x == 0)
+    {
+        [self.feedNavigationController popToRootViewControllerAnimated:YES];
+    }
+    else
+    {
+        [self homeButtonHit];
+    }
     [self.feedViewController.productSelectTableViewController refreshContent];
 }
 
