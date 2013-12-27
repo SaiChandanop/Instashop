@@ -16,7 +16,7 @@
 #import "InstagramUserObject.h"
 #import "SearchAPIHandler.h"
 #import "PaginationAPIHandler.h"
-
+#import "MBProgressHUD.h"
 
 @interface ProductSelectTableViewController ()
 
@@ -179,6 +179,8 @@
 
 -(void)refreshContent
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
+    
     self.checkCountup = 0;
     [self.contentArray removeAllObjects];
     NSLog(@"refreshContent called");
@@ -198,6 +200,7 @@
                 [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
                 break;
             case PRODUCT_REQUESTOR_TYPE_SEARCH:
+                
                 [SearchAPIHandler makeProductSearchRequestWithDelegate:self withSearchCategoriesArray:self.searchRequestObject.searchCategoriesArray withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
                 break;
                 
@@ -213,11 +216,13 @@
 
 -(void)searchReturnedWithArray:(NSArray *)searchResultsArray
 {
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self feedRequestFinishedWithArrray:searchResultsArray];
 }
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self.contentArray removeAllObjects];
     
     
