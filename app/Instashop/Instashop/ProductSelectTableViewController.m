@@ -17,7 +17,7 @@
 #import "SearchAPIHandler.h"
 #import "PaginationAPIHandler.h"
 #import "MBProgressHUD.h"
-
+#import "CacheManager.h"
 @interface ProductSelectTableViewController ()
 
 @end
@@ -156,6 +156,10 @@
     
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray withDelegate:self.cellDelegate];
     
+    if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS)
+    {
+        [[CacheManager getSharedCacheManager] precacheWithDataSet:self.contentArray withIndexPath:indexPath];
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

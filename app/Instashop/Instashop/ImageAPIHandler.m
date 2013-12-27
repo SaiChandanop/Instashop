@@ -55,11 +55,14 @@ static ImageAPIHandler *sharedImageAPIHandler;
     UIImage *theImage = [[CacheManager getSharedCacheManager] getImageWithURL:instagramMediaURLString];
     if (theImage != nil)
     {
-        referenceImageView.image = theImage;
-        referenceImageView.alpha = 1;
+        if (referenceImageView != nil)
+        {
+            referenceImageView.image = theImage;
+            referenceImageView.alpha = 1;
         
-        if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
-            [(ISAsynchImageView *)referenceImageView ceaseAnimations];
+            if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
+                [(ISAsynchImageView *)referenceImageView ceaseAnimations];
+        }
         
     }
     else
@@ -85,8 +88,10 @@ static ImageAPIHandler *sharedImageAPIHandler;
     {
         [[CacheManager getSharedCacheManager] setCacheObject:responseImage withKey:self.contextObject];
     }
+    if ([self.delegate isKindOfClass:[CacheManager class]])
+        return;
     
-    if ([self.delegate isKindOfClass:[ImagesTableViewCell class]])
+    else if ([self.delegate isKindOfClass:[ImagesTableViewCell class]])
     {
        [self.delegate imageReturnedWithURL:self.contextObject withData:self.responseData];
     }
