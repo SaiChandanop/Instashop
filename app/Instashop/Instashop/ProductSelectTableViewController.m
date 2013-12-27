@@ -16,8 +16,8 @@
 #import "InstagramUserObject.h"
 #import "SearchAPIHandler.h"
 #import "PaginationAPIHandler.h"
-
-
+#import "MBProgressHUD.h"
+#import "CacheManager.h"
 @interface ProductSelectTableViewController ()
 
 @end
@@ -51,10 +51,14 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    /*
     if (request != nil)
         NSLog(@"request did load!!: %@", request.url);
     else
         NSLog(@"request did load!!!");
+    */
     
 //    NSLog(@"result: %@", result);
     
@@ -156,6 +160,10 @@
     
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray withDelegate:self.cellDelegate];
     
+    if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS)
+    {
+        [[CacheManager getSharedCacheManager] precacheWithDataSet:self.contentArray withIndexPath:indexPath];
+    }
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -179,6 +187,8 @@
 
 -(void)refreshContent
 {
+    [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
+    
     self.checkCountup = 0;
     [self.contentArray removeAllObjects];
     NSLog(@"refreshContent called");
@@ -198,6 +208,7 @@
                 [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
                 break;
             case PRODUCT_REQUESTOR_TYPE_SEARCH:
+                
                 [SearchAPIHandler makeProductSearchRequestWithDelegate:self withSearchCategoriesArray:self.searchRequestObject.searchCategoriesArray withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
                 break;
                 
@@ -213,11 +224,13 @@
 
 -(void)searchReturnedWithArray:(NSArray *)searchResultsArray
 {
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self feedRequestFinishedWithArrray:searchResultsArray];
 }
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self.contentArray removeAllObjects];
     
     

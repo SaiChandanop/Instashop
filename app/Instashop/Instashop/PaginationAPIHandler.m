@@ -30,7 +30,7 @@
 //    NSString* newStr = [[[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding] autorelease];
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingAllowFragments error:nil];
     
-    NSLog(@"makePaginationRequestWithDelegate, responseDictionary: %@", responseDictionary);
+//    NSLog(@"makePaginationRequestWithDelegate, responseDictionary: %@", responseDictionary);
     
     [self.delegate request:nil didLoad:responseDictionary];
 }

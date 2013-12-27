@@ -202,6 +202,11 @@
     return NO;
 }
 
+-(IBAction) faqButtonHit
+{
+    [self.parentController webViewButtonHit:@"http://www.shopsy.com/faq" titleName:@"FAQ"];
+}
+
 
 - (IBAction)inviteButtonHit
 {

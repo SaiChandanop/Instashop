@@ -46,7 +46,23 @@
     self.profileImageView.layer.masksToBounds = YES;
     self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
     self.profileImageView.layer.borderWidth = 1;
+    self.profileImageView.alpha = 1;
     
+}
+
+-(IBAction)profileButtonHit
+{
+    NSLog(@"profileButtonHit");
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController *rootViewController = delegate.appRootViewController;
+    [rootViewController notificationSelectedWithProfile:[self.notificationsObject.dataDictionary objectForKey:@"creator_id"]];
+}
+
+-(IBAction)notificationsButtonHit
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController *rootViewController = delegate.appRootViewController;
+    [rootViewController notificationSelectedWithObject:self.notificationsObject];
 }
 
 

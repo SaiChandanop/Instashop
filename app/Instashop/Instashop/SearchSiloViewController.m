@@ -13,6 +13,7 @@
 #import "ProductSelectTableViewController.h"
 #import "SellerSelectTableViewController.h"
 #import "SearchButtonContainerView.h"
+#import "MBProgressHUD.h"
 @interface SearchSiloViewController ()
 
 @end
@@ -50,7 +51,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
-    NSLog(@"separatorImageView: %@", separatorImageView);
+    
     self.contentContainerView = [[UIView alloc] initWithFrame:CGRectMake(0,self.separatorImageView.frame.origin.y + self.separatorImageView.frame.size.height,320, self.view.frame.size.height - (self.separatorImageView.frame.origin.x + self.separatorImageView.frame.size.height) - 47)];
     self.contentContainerView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.contentContainerView];
@@ -76,8 +77,8 @@
     {
         self.objectSelectTableViewController = [[SellerSelectTableViewController alloc] initWithNibName:@"SellerSelectTableViewController" bundle:nil];
         self.objectSelectTableViewController.rowSelectedDelegate = self.parentController;
-        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
-        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
+        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.view.frame.size.height - self.separatorImageView.frame.origin.y - 100);
+        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.view.frame.size.height - self.separatorImageView.frame.origin.y - 100);
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
         
     }
@@ -86,8 +87,8 @@
         self.objectSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
         self.objectSelectTableViewController.cellDelegate = self.parentController;
         self.objectSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_SEARCH;
-        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
-        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.contentContainerView.frame.size.height);
+        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.view.frame.size.height - self.separatorImageView.frame.origin.y - 100);
+        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.view.frame.size.height - self.separatorImageView.frame.origin.y - 100);
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
     }
 
@@ -101,7 +102,7 @@
 -(void)runSearch
 {
     if ([self.freeSearchTextArray count] > 0 || [self.selectedCategoriesArray count] > 0)
-    {
+    {        
         if ([self.objectSelectTableViewController.tableView superview] == nil)
         {
             self.searchPromptLabel.alpha = 0;

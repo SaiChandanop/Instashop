@@ -59,11 +59,11 @@
     NSURLRequest *amberRequestObj = [NSURLRequest requestWithURL:amberURL];
     [self.amberWebView loadRequest:amberRequestObj];
     
-    UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+/*    UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(openActionSheet)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
-    
+  */
    
 }
 

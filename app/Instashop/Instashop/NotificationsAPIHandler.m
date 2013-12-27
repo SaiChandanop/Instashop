@@ -79,6 +79,46 @@
     [apiHandler.theWebRequest start];
 }
 
+
++(void)makeUserJoinedNotificationWithNotificationArray:(NSArray *)theNotificationArray
+{
+    NSMutableString *notificationString = [NSMutableString stringWithCapacity:0];
+    
+    for (int i = 0; i < [theNotificationArray count]; i++)
+    {
+        [notificationString appendString:[theNotificationArray objectAtIndex:i]];
+        if (i != [theNotificationArray count] -1)
+            [notificationString appendString:@"___"];
+    }
+    
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:[NSString stringWithFormat:@"instagram_push_ids=%@", notificationString]];
+
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/mass_push_receiver.php", ROOT_URI];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"POST";
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSLog(@"postString: %@", postString);
+    
+    NotificationsAPIHandler *apiHandler = [[NotificationsAPIHandler alloc] init];
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(makeUserJoinedNotificationWithNotificationArrayFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+}
+
+-(void)makeUserJoinedNotificationWithNotificationArrayFinished:(id)obj
+{
+    NSString* responseString = [[[NSString alloc] initWithData:self.responseData  encoding:NSUTF8StringEncoding] autorelease];
+    NSLog(@"makeUserJoinedNotificationWithNotificationArrayFinished: %@", responseString);
+}
+
+
+
+
+
+
+
 +(void)createUserSocialNotificationWithProductID:(NSString *)productID withInstagramID:(NSString *)instagramID withSocialType:(NSString *)socialType
 {
     [NotificationsAPIHandler makeSocialPostNotificationWithProductID:productID withInstagramID:instagramID withSocialType:[NSString stringWithFormat:@"social_%@", socialType]];
@@ -87,6 +127,11 @@
 +(void)createUserLikedNotificationWithProductID:(NSString *)productID withInstagramID:(NSString *)instagramID
 {
     [NotificationsAPIHandler makeSocialPostNotificationWithProductID:productID withInstagramID:instagramID withSocialType:@"user_liked_product"];
+}
+
++(void)createUserSavedNotificationWithProductID:(NSString *)productID withInstagramID:(NSString *)instagramID
+{
+    [NotificationsAPIHandler makeSocialPostNotificationWithProductID:productID withInstagramID:instagramID withSocialType:@"user_saved_product"];
 }
 
 -(void)createUserLikedNotificationWithProductIDFinished:(id)obj

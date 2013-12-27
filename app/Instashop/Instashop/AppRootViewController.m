@@ -24,6 +24,8 @@
 #import "WebViewController.h"
 #import "SettingsViewController.h"
 #import "DiscoverDataManager.h"
+#import "PurchasingViewController.h"
+#import "NotificationManager.h"
 
 @implementation AppRootViewController
 
@@ -96,12 +98,15 @@ float transitionTime = .456;
     
     
 //    [self runTutorial];
-    
-    
+  
     
 }
 
+
+
 - (void) runTutorial {
+    
+    [[NotificationManager getSharedManager] handleNewUserPushNotifications];
     
     self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
     self.firstTimeUserViewController.parentViewController = self;
@@ -245,6 +250,34 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
+-(void)productDidCreateWithNavigationController:(UINavigationController *)theNavigationController
+{
+    NSLog(@"productDidCreateWithNavigationController, theNavigationController: %@", theNavigationController);
+
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(productDidCreateWithNavigationControllerDidFinish)];
+    theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
+    [UIView commitAnimations];
+
+    
+    
+}
+
+-(void)productDidCreateWithNavigationControllerDidFinish
+{
+    if (self.feedNavigationController.view.frame.origin.x == 0)
+    {
+        [self.feedNavigationController popToRootViewControllerAnimated:YES];
+    }
+    else
+    {
+        [self homeButtonHit];
+    }
+    [self.feedViewController.productSelectTableViewController refreshContent];
+}
+
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController
 {
     [UIView beginAnimations:nil context:nil];
@@ -383,5 +416,26 @@ float transitionTime = .456;
     theNavigationController.view.frame = CGRectMake(0, theNavigationController.view.frame.size.height, self.view.frame.size.width, theNavigationController.view.frame.size.height);
     [UIView commitAnimations];
 }
+
+
+-(void) notificationSelectedWithProfile:(NSString *)profileInstagramID
+{
+    ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+    profileViewController.profileInstagramID = profileInstagramID;
+    
+    [profileViewController loadNavigationControlls];
+
+}
+
+-(void) notificationSelectedWithObject:(NotificationsObject *)notificationsObject
+{
+ 
+    PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+    purchasingViewController.requestingProductID = [notificationsObject.dataDictionary objectForKey:@"product_id"];
+    [self.feedNavigationController pushViewController:purchasingViewController animated:YES];
+
+}
+
+
 
 @end

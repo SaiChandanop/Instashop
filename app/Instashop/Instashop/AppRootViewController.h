@@ -12,6 +12,8 @@
 #import "HomeViewController.h"
 #import "FirstTimeUserViewController.h"
 #import "NotificationsViewController.h"
+#import "NotificationsObject.h"
+
 @class SearchViewController;
 
 @interface AppRootViewController : UIViewController
@@ -35,6 +37,7 @@
 -(void) discoverButtonHit;
 -(void) createProductButtonHit;
 -(void) firstTimeTutorialExit;
+-(void) productDidCreateWithNavigationController:(UINavigationController *)theNavigationController;
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 -(void) profileExitButtonHit:(UINavigationController *)navigationController;
 -(void) popupViewControllerShouldExit:(UINavigationController *)theNavigationController;
@@ -47,7 +50,8 @@
 -(void) settingsBackButtonHit:(UINavigationController *) navigationController;
 -(void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title;
 -(void) webViewExitButtonHit:(UINavigationController *)navigationController;
-
+-(void) notificationSelectedWithProfile:(NSString *)profileInstagramID;
+-(void) notificationSelectedWithObject:(NotificationsObject *)notificationsObject;
 
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;

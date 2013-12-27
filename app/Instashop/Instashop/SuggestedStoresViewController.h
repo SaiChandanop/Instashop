@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "SuggestedShopReturnProtocol.h"
 #import "Instagram.h"
+#import "SuggestedShopView.h"
+
 @class AppRootViewController;
 
 @class FirstTimeUserViewController;
@@ -16,20 +18,23 @@
 @interface SuggestedStoresViewController : UIViewController <SuggestedShopReturnProtocol, IGRequestDelegate>
 {
     AppRootViewController *appRootViewController;
+    FirstTimeUserViewController *firstTimeUserViewController;
     
     UIScrollView *contentScrollView;
+    UIButton *closeTutorialButton;
     
     NSMutableArray *selectedShopsIDSArray;
-
     NSMutableDictionary *containerViewsDictionary;
+    NSMutableArray *followedIDsArray;
     
     BOOL isLaunchedFromMenu;
     
 }
 
-- (void) updateButton;
--(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected;
--(void)shopViewButtonHitWithID:(NSString *)instagramID;
+-(void) selectedShopViewDidCompleteRequestWithView:(SuggestedShopView *)theShopView;
+-(void) updateButton;
+-(void) shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected;
+-(void) shopViewButtonHitWithID:(NSString *)instagramID;
 
 @property (nonatomic, retain) AppRootViewController *appRootViewController;
 @property (nonatomic, retain) FirstTimeUserViewController *firstTimeUserViewController;
@@ -38,11 +43,9 @@
 @property (nonatomic, retain) UIButton *closeTutorialButton;
 
 @property (nonatomic, retain) NSMutableArray *selectedShopsIDSArray;
-@property (nonatomic, retain) NSMutableArray *followersArray;
 @property (nonatomic, retain) NSMutableDictionary *containerViewsDictionary;
-@property (nonatomic) int followingCount;
-@property (nonatomic) int likedArrayCount;
-@property (nonatomic, assign) BOOL initiated;
+@property (nonatomic, retain) NSMutableArray *followedIDsArray;
+
 @property (nonatomic, assign) BOOL isLaunchedFromMenu;
-@property (nonatomic, assign) int loadedCount;
+
 @end

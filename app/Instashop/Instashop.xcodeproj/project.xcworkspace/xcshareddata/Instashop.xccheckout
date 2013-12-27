@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>FFDC25E0-CC59-4C99-907A-CC9A4A7E10B7</string>
+	<string>66CB37FA-3669-4E2D-B07A-BAC7517489CC</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Instashop</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>

@@ -10,7 +10,7 @@
 
 @interface ImageAPIHandler : RootAPIHandler
 {
-    NSMutableDictionary *mediaCache;
+    
     UIImageView *theImageView;
     
     NSMutableData *receivedData;
@@ -21,7 +21,7 @@
 +(void)makeProfileImageRequestWithReferenceImageView:(UIImageView *)referenceImageView withInstagramID:(NSString *)instagramID;
 
 
-@property (nonatomic, retain) NSMutableDictionary *mediaCache;
+
 @property (nonatomic, retain) UIImageView *theImageView;
 
 @property (nonatomic, retain) NSMutableData *receivedData;

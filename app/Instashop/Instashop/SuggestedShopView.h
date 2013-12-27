@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "IGRequest.h"
 
 @class SuggestedStoresViewController;
 
-@interface SuggestedShopView : UIView
+@interface SuggestedShopView : UIView <IGRequestDelegate>
 {
     
     SuggestedStoresViewController *parentController;
@@ -21,10 +22,13 @@
     UIImageView *theBackgroundImageView;
     UIImageView *profileImageView;
     UIButton *followButton;
+    
+    
 }
 
 -(IBAction)followButtonHit;
 -(IBAction)viewButtonHit;
+-(void) makeIGContentRequest;
 
 @property (nonatomic, retain) SuggestedStoresViewController *parentController;
 @property (nonatomic, retain) NSString *shopViewInstagramID;

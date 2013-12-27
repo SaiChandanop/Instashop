@@ -426,7 +426,7 @@
 {
     [SavedItemsAPIHandler makeSavedItemRequestWithDelegate:self withInstagramID:[InstagramUserObject getStoredUserObject].userID withProductID:[self.requestedProductObject objectForKey:@"product_id"]];
     
-    
+    [NotificationsAPIHandler createUserSavedNotificationWithProductID:[self.requestedProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID];
 }
 
 -(void)savedItemsCompleted
@@ -954,7 +954,7 @@
         UIImage *photoImage = self.imageView.image;
         
         
-        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsy"];
+        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsyapp"];
         [tweetController setInitialText:postText];
         [tweetController addImage:photoImage];
         [tweetController addURL:[NSURL URLWithString:self.viglinkString]];
