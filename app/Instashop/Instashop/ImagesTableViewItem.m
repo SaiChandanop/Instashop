@@ -22,6 +22,7 @@
 @synthesize objectDictionary;
 @synthesize instagramObjectDictionary;
 @synthesize alreadyExists;
+@synthesize greyCoverView;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -70,9 +71,13 @@
         {
             self.alreadyExists = YES;
             //[self.coverButton setTitle:@"EXISTS" forState:UIControlStateNormal];
-            UIView *greyCoverView = [[UIView alloc] initWithFrame:self.contentImageView.frame];
-            greyCoverView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5];
-            [self addSubview:greyCoverView];
+            
+            if (self.greyCoverView == nil)
+            {
+                self.greyCoverView = [[UIView alloc] initWithFrame:self.contentImageView.frame];
+                self.greyCoverView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.5];
+                [self addSubview:self.greyCoverView];
+            }
             
         }
         else

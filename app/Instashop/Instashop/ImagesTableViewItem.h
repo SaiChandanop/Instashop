@@ -14,6 +14,7 @@
     UIImageView *backgroundImageView;
     UIImageView *contentImageView;
     UIButton *coverButton;
+    UIView *greyCoverView;
     
     NSDictionary *objectDictionary;
     NSDictionary *instagramObjectDictionary;
@@ -32,7 +33,7 @@
 @property (nonatomic, retain) UIImageView *backgroundImageView;
 @property (nonatomic, retain) UIImageView *contentImageView;
 @property (nonatomic, retain) UIButton *coverButton;
-
+@property (nonatomic, retain) UIView *greyCoverView;
 @property (nonatomic, retain) NSDictionary *objectDictionary;
 @property (nonatomic, retain) NSDictionary *instagramObjectDictionary;
 

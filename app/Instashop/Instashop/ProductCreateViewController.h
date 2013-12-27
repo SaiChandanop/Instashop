@@ -28,11 +28,11 @@
     NSDictionary *currentSelectionObject;
 }
 
--(void)forceRefreshContent;
+-(void) forceRefreshContent;
 -(void) previewDoneButtonHit:(ProductCreateContainerObject *)theCreateObject;
--(void)tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary;
--(void)previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateObject;
--(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject;
+-(void) tableViewProductSelectedWithDataDictionary:(NSDictionary *)theInstagramInfoDictionary;
+-(void) previewButtonHitWithProductCreateObject:(ProductCreateContainerObject *)productCreateObject;
+-(void) productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject;
 
 
 @property (nonatomic, retain) AppRootViewController *parentController;

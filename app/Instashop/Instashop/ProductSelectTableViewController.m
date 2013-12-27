@@ -51,10 +51,14 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
+    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    
+    /*
     if (request != nil)
         NSLog(@"request did load!!: %@", request.url);
     else
         NSLog(@"request did load!!!");
+    */
     
 //    NSLog(@"result: %@", result);
     
