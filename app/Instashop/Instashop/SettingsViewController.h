@@ -34,7 +34,7 @@
 -(IBAction) notificationsButtonHit;
 -(IBAction) discoverButtonHit;
 -(IBAction) privatePolicyButtonHit;
-
+-(IBAction) faqButtonHit;
 -(IBAction) termsOfServiceButtonHit;
 -(IBAction) settingsButtonHit;
 -(IBAction) sendFeedbackButtonHit;
