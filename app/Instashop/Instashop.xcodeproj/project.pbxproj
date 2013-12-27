@@ -228,6 +228,7 @@
 		7B6C500B178B46FC00CDF0A7 /* PurchasingAddressViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B6C5009178B46FC00CDF0A7 /* PurchasingAddressViewController.xib */; };
 		7B6C5010178B568B00CDF0A7 /* SellersAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C500F178B568B00CDF0A7 /* SellersAPIHandler.m */; };
 		7B6C5014178B5BC600CDF0A7 /* PostmasterAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6C5013178B5BC600CDF0A7 /* PostmasterAPIHandler.m */; };
+		7B727C2B186DD42B00FB9C5E /* CacheManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B727C2A186DD42B00FB9C5E /* CacheManager.m */; };
 		7B74C3C617970AE50006289C /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C3C517970AE50006289C /* MBProgressHUD.m */; };
 		7B74C3CB179712A20006289C /* PurchasingCompleteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74C3C9179712A20006289C /* PurchasingCompleteViewController.m */; };
 		7B74C3CC179712A20006289C /* PurchasingCompleteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B74C3CA179712A20006289C /* PurchasingCompleteViewController.xib */; };
@@ -617,6 +618,8 @@
 		7B6C500F178B568B00CDF0A7 /* SellersAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SellersAPIHandler.m; sourceTree = "<group>"; };
 		7B6C5012178B5BC600CDF0A7 /* PostmasterAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostmasterAPIHandler.h; sourceTree = "<group>"; };
 		7B6C5013178B5BC600CDF0A7 /* PostmasterAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostmasterAPIHandler.m; sourceTree = "<group>"; };
+		7B727C29186DD42B00FB9C5E /* CacheManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CacheManager.h; sourceTree = "<group>"; };
+		7B727C2A186DD42B00FB9C5E /* CacheManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CacheManager.m; sourceTree = "<group>"; };
 		7B74C3C417970AE50006289C /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7B74C3C517970AE50006289C /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		7B74C3C8179712A20006289C /* PurchasingCompleteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchasingCompleteViewController.h; sourceTree = "<group>"; };
@@ -1506,6 +1509,15 @@
 			name = Postmaster;
 			sourceTree = "<group>";
 		};
+		7B727C28186DD38600FB9C5E /* CacheManager */ = {
+			isa = PBXGroup;
+			children = (
+				7B727C29186DD42B00FB9C5E /* CacheManager.h */,
+				7B727C2A186DD42B00FB9C5E /* CacheManager.m */,
+			);
+			name = CacheManager;
+			sourceTree = "<group>";
+		};
 		7B79AE7817E217E70058E774 /* Product */ = {
 			isa = PBXGroup;
 			children = (
@@ -1626,6 +1638,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7B727C28186DD38600FB9C5E /* CacheManager */,
 				7B18DA5418609F24003FEFFC /* Pagination */,
 				7B05032A183FD6B4004EF2C2 /* Bitly */,
 				7BC6E7D71822997100288B68 /* Amber */,
@@ -2210,6 +2223,7 @@
 				7B79AE7C17E2186E0058E774 /* ObjectSelectTableViewController.m in Sources */,
 				7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */,
 				7B1B302D17BE8ED100BB6420 /* BSKeyboardControls.m in Sources */,
+				7B727C2B186DD42B00FB9C5E /* CacheManager.m in Sources */,
 				7B2C59DF17B95B4D00CEDD5A /* SizePickerViewViewController.m in Sources */,
 				7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */,
 				7BDED694180C7A28001FF165 /* AddBookmarkViewController.m in Sources */,
