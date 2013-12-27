@@ -245,6 +245,27 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
+-(void)productDidCreateWithNavigationController:(UINavigationController *)theNavigationController
+{
+    NSLog(@"productDidCreateWithNavigationController, theNavigationController: %@", theNavigationController);
+
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(productDidCreateWithNavigationControllerDidFinish)];
+    theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
+    [UIView commitAnimations];
+
+    
+    
+}
+
+-(void)productDidCreateWithNavigationControllerDidFinish
+{
+    [self homeButtonHit];
+    [self.feedViewController.productSelectTableViewController refreshContent];
+}
+
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController
 {
     [UIView beginAnimations:nil context:nil];

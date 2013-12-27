@@ -164,7 +164,6 @@
 
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
-    NSLog(@"productContainerCreateFinishedWithProductID");
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
@@ -183,6 +182,7 @@
     
     
     [self backButtonHit];
+    
     
 }
 

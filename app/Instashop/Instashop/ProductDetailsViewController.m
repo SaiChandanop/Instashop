@@ -523,6 +523,7 @@
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
 
+    /*
     NSArray *ar = [self.navigationController viewControllers];
     
     for (int i = 0; i < [ar count]; i++)
@@ -534,6 +535,17 @@
     }
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     [self.navigationController popToRootViewControllerAnimated:YES];
+    
+    
+//    [self.parentController productCreateNavigationControllerExitButtonHit:self.navigationController];
+    
+  */
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController  *rootVC = delegate.appRootViewController;
+    [rootVC productDidCreateWithNavigationController:self.navigationController];
+    
+    
 }
 
 -(void)editProductComplete

@@ -35,6 +35,7 @@
 -(void) discoverButtonHit;
 -(void) createProductButtonHit;
 -(void) firstTimeTutorialExit;
+-(void) productDidCreateWithNavigationController:(UINavigationController *)theNavigationController;
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 -(void) profileExitButtonHit:(UINavigationController *)navigationController;
 -(void) popupViewControllerShouldExit:(UINavigationController *)theNavigationController;
