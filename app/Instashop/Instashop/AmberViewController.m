@@ -63,7 +63,7 @@
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(openActionSheet)];
     self.navigationItem.rightBarButtonItem = shareButton;
     
-  */  
+  */
    
 }
 
