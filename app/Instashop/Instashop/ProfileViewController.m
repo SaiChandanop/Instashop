@@ -664,7 +664,7 @@
 -(void)updateProfileView:(id)object
 {
     
-    NSLog(@"makeProfileImageRequestWithReferenceImageView");
+
     
     NSLog(@"object: %@", object);
     

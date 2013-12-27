@@ -99,7 +99,7 @@ float transitionTime = .456;
     
 //    [self runTutorial];
   
-    [[NotificationManager getSharedManager] handleNewUserPushNotifications];
+    
     
     
 }
@@ -108,7 +108,7 @@ float transitionTime = .456;
 
 - (void) runTutorial {
     
-    
+    [[NotificationManager getSharedManager] handleNewUserPushNotifications];
     
     self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
     self.firstTimeUserViewController.parentViewController = self;
@@ -240,7 +240,7 @@ float transitionTime = .456;
 
 - (void) firstTimeTutorialExit {
     
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
+/*    CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenHeight = screenSize.height;
     
@@ -250,6 +250,7 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     self.firstTimeUserViewController.view.frame = CGRectMake(0.0, screenHeight, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
     [UIView commitAnimations];
+ */
 }
 
 -(void)productDidCreateWithNavigationController:(UINavigationController *)theNavigationController
