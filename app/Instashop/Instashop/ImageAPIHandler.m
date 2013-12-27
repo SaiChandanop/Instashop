@@ -8,6 +8,7 @@
 
 #import "ImageAPIHandler.h"
 #import "ISAsynchImageView.h"
+#import "ImagesTableViewCell.h"
 
 @implementation ImageAPIHandler
 
@@ -64,6 +65,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
         
     }
 */
+//    if
     
     ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
     handler.delegate = theDelegate;
@@ -83,7 +85,11 @@ static ImageAPIHandler *sharedImageAPIHandler;
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
     [sharedImageAPIHandler.mediaCache setObject:responseImage forKey:self.contextObject];
     
-    if (self.theImageView != nil)
+    if ([self.delegate isKindOfClass:[ImagesTableViewCell class]])
+    {
+       [self.delegate imageReturnedWithURL:self.contextObject withData:self.responseData];
+    }
+    else if (self.theImageView != nil)
     {
         self.theImageView.image = responseImage;
         self.theImageView.alpha = 1;
