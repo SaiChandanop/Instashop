@@ -24,7 +24,7 @@
 
 // THERE ARE ALOT OF SYNCHRONIZATION PROBLEMS WITH THE CODE IN THE FILE, EVEN BEFORE I HAD STARTED WORKING ON IT - Susan
 
-#define kLoginTutorialDone 3
+#define kLoginTutorialDone 5
 #define kButtonPosition 515.0 // Change this number to change the button position.
 
 @implementation SuggestedStoresViewController
@@ -38,6 +38,10 @@
 @synthesize followedIDsArray;
 
 // So in order to have only followed users on the list, it would mean that when it's loaded, it updates differently from when these are followed thereafter.
+
+// So what needs to happen here basically is that the array needs to be filled first and check that it's filled.
+// And then the getSuggestedShops method should be called.
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

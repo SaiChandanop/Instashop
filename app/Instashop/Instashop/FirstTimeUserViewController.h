@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "EnterEmailViewController.h"
 
 @class AppRootViewController;
 
@@ -21,6 +22,7 @@
 @property (nonatomic, retain) UIPageControl *pageControl;
 @property (nonatomic, retain) AppRootViewController *parentViewController;
 @property (nonatomic, retain) SuggestedStoresViewController *suggestedStoresViewController;
+@property (nonatomic, retain) EnterEmailViewController *enterEmailViewController;
 @property (nonatomic, retain) UIButton *nextButton;
 @property (nonatomic, retain) UIButton *loginTutorialDone;
 

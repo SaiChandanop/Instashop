@@ -10,7 +10,9 @@
 		0369D26B183338C400AA1C9F /* MediaLikedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369D26A183338C400AA1C9F /* MediaLikedObject.m */; };
 		038FCD051835BAA800EC50D5 /* NotificationsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 038FCD041835BAA800EC50D5 /* NotificationsAPIHandler.m */; };
 		193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */; };
+		19D8329B186D45E200F062DD /* EnterEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D8329A186D45E200F062DD /* EnterEmailViewController.m */; };
 		19EE231B1811E5CB0007E475 /* FlagManagerAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EE231A1811DA9B0007E475 /* FlagManagerAPIHandler.m */; };
+		19FF03EC186E360F00BC20B3 /* EnterEmailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 19FF03EB186E360F00BC20B3 /* EnterEmailViewController.xib */; };
 		2E0EAE05176F6E6700B65FC3 /* Menu_BG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */; };
 		2E0EAE06176F6E6700B65FC3 /* welcome5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */; };
 		2E0EAE07176F6E6700B65FC3 /* welcome4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */; };
@@ -325,8 +327,11 @@
 		038FCD041835BAA800EC50D5 /* NotificationsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsAPIHandler.m; sourceTree = "<group>"; };
 		193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTimeUserViewController.h; sourceTree = "<group>"; };
 		193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTimeUserViewController.m; sourceTree = "<group>"; };
+		19D83299186D45E200F062DD /* EnterEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterEmailViewController.h; sourceTree = "<group>"; };
+		19D8329A186D45E200F062DD /* EnterEmailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnterEmailViewController.m; sourceTree = "<group>"; };
 		19EE23191811DA9B0007E475 /* FlagManagerAPIHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlagManagerAPIHandler.h; sourceTree = "<group>"; };
 		19EE231A1811DA9B0007E475 /* FlagManagerAPIHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlagManagerAPIHandler.m; sourceTree = "<group>"; };
+		19FF03EB186E360F00BC20B3 /* EnterEmailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EnterEmailViewController.xib; sourceTree = "<group>"; };
 		2E0EADE1176F6E6700B65FC3 /* Menu_BG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Menu_BG@2x.png"; sourceTree = "<group>"; };
 		2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome5@2x.png"; sourceTree = "<group>"; };
 		2E0EADE3176F6E6700B65FC3 /* welcome4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "welcome4@2x.png"; sourceTree = "<group>"; };
@@ -812,13 +817,16 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
-		193433D317E0FCEE007744E6 /* Login */ = {
+		193433D317E0FCEE007744E6 /* FirstTimeUser */ = {
 			isa = PBXGroup;
 			children = (
+				19D83299186D45E200F062DD /* EnterEmailViewController.h */,
+				19D8329A186D45E200F062DD /* EnterEmailViewController.m */,
+				19FF03EB186E360F00BC20B3 /* EnterEmailViewController.xib */,
 				193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */,
 				193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */,
 			);
-			name = Login;
+			name = FirstTimeUser;
 			sourceTree = "<group>";
 		};
 		19EE23181811DA670007E475 /* FlagManager */ = {
@@ -1595,7 +1603,7 @@
 				7B0320D517E0DA7D0045D7AC /* Discover */,
 				7B4908521758FDF50047ED3B /* Feed */,
 				7B4D2E0D175CFCAA005DE4B6 /* Home */,
-				193433D317E0FCEE007744E6 /* Login */,
+				193433D317E0FCEE007744E6 /* FirstTimeUser */,
 				7B5BFAD617D6928400F82F0B /* Notifications */,
 				7B1072AF175E6C6800D9DC5D /* ObjectSelectTableVC */,
 				7B376EC817C7A33300F4D5D8 /* Profile */,
@@ -2130,6 +2138,7 @@
 				2E9378F0184D200500476540 /* faq_icon@2x.png in Resources */,
 				6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */,
 				7B79AE8117E21A900058E774 /* SellerSelectTableViewController.xib in Resources */,
+				19FF03EC186E360F00BC20B3 /* EnterEmailViewController.xib in Resources */,
 				2E0EAE24176F6E6700B65FC3 /* leftMenuButton@2x.png in Resources */,
 				2E628CAF17C6A19900CB7BE4 /* AppIcon60x60@2x.png in Resources */,
 				2E0EAE25176F6E6700B65FC3 /* lmDiscoverIcon@2x.png in Resources */,
@@ -2268,6 +2277,7 @@
 				7BF9DD8A178C546F005148A8 /* SBJsonParser.m in Sources */,
 				7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */,
 				7BF9DD8C178C546F005148A8 /* SBJsonStreamParserAccumulator.m in Sources */,
+				19D8329B186D45E200F062DD /* EnterEmailViewController.m in Sources */,
 				7B0320D917E0DB700045D7AC /* DiscoverViewController.m in Sources */,
 				7B727C2E186E28B200FB9C5E /* NotificationManager.m in Sources */,
 				7BDED699180C7A28001FF165 /* UnpreventableUILongPressGestureRecognizer.m in Sources */,

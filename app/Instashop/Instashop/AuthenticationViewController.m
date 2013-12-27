@@ -217,12 +217,12 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
 
-/*        if (![defaults objectForKey:defaultFirstUserKey]) {
+       if (![defaults objectForKey:defaultFirstUserKey]) {
             [defaults setObject:[NSDate date] forKey:defaultFirstUserKey];
             [defaults synchronize];
             [del.appRootViewController runTutorial];
         }
- */
+
         [del userDidLogin];
         
         [SellersAPIHandler makeCheckIfSellerExistsCallWithDelegate:self];
