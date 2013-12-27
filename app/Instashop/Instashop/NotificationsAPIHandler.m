@@ -89,6 +89,11 @@
     [NotificationsAPIHandler makeSocialPostNotificationWithProductID:productID withInstagramID:instagramID withSocialType:@"user_liked_product"];
 }
 
++(void)createUserSavedNotificationWithProductID:(NSString *)productID withInstagramID:(NSString *)instagramID
+{
+    [NotificationsAPIHandler makeSocialPostNotificationWithProductID:productID withInstagramID:instagramID withSocialType:@"user_saved_product"];
+}
+
 -(void)createUserLikedNotificationWithProductIDFinished:(id)obj
 {
     NSString* responseString = [[[NSString alloc] initWithData:self.responseData  encoding:NSUTF8StringEncoding] autorelease];

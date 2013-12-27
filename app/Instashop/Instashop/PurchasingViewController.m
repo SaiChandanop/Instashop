@@ -426,7 +426,7 @@
 {
     [SavedItemsAPIHandler makeSavedItemRequestWithDelegate:self withInstagramID:[InstagramUserObject getStoredUserObject].userID withProductID:[self.requestedProductObject objectForKey:@"product_id"]];
     
-    
+    [NotificationsAPIHandler createUserSavedNotificationWithProductID:[self.requestedProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID];
 }
 
 -(void)savedItemsCompleted
