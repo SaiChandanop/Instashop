@@ -25,6 +25,8 @@
 #import "SettingsViewController.h"
 #import "DiscoverDataManager.h"
 #import "PurchasingViewController.h"
+#import "NotificationManager.h"
+
 @implementation AppRootViewController
 
 static AppRootViewController *theSharedRootViewController;
@@ -96,10 +98,11 @@ float transitionTime = .456;
     
     
 //    [self runTutorial];
-    
-    
-    
+  
+    [[NotificationManager getSharedManager] handleNewUserPushNotifications];
 }
+
+
 
 - (void) runTutorial {
     
@@ -430,5 +433,7 @@ float transitionTime = .456;
     [self.feedNavigationController pushViewController:purchasingViewController animated:YES];
 
 }
+
+
 
 @end

@@ -19,7 +19,6 @@
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight
 {
-    NSLog(@"create images table view cell");
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
     }
