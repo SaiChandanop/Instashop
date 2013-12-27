@@ -58,6 +58,14 @@
     [rootViewController notificationSelectedWithProfile:[self.notificationsObject.dataDictionary objectForKey:@"creator_id"]];
 }
 
+-(IBAction)notificationsButtonHit
+{
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController *rootViewController = delegate.appRootViewController;
+    [rootViewController notificationSelectedWithObject:self.notificationsObject];
+}
+
+
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
     NSLog(@"result: %@", result);

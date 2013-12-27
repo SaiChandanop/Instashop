@@ -24,7 +24,7 @@
 #import "WebViewController.h"
 #import "SettingsViewController.h"
 #import "DiscoverDataManager.h"
-
+#import "PurchasingViewController.h"
 @implementation AppRootViewController
 
 static AppRootViewController *theSharedRootViewController;
@@ -417,14 +417,18 @@ float transitionTime = .456;
 {
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
     profileViewController.profileInstagramID = profileInstagramID;
-    [self.feedNavigationController pushViewController:profileViewController animated:YES];
+    
     [profileViewController loadNavigationControlls];
 
 }
 
 -(void) notificationSelectedWithObject:(NotificationsObject *)notificationsObject
 {
-    
+ 
+    PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+    purchasingViewController.requestingProductID = [notificationsObject.dataDictionary objectForKey:@"product_id"];
+    [self.feedNavigationController pushViewController:purchasingViewController animated:YES];
+
 }
 
 @end

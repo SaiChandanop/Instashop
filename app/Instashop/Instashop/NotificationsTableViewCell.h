@@ -20,7 +20,9 @@
     UILabel *timeLabel;
     UIImageView *profileImageView;
 }
+
 -(IBAction)profileButtonHit;
+-(IBAction)notificationsButtonHit;
 
 -(void)loadWithNotificationsObject:(NotificationsObject *)theObject;
 -(void)clearSubviews;

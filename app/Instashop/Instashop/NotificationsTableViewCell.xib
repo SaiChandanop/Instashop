@@ -49,6 +49,16 @@
                             <action selector="profileButtonHit" destination="d6L-P8-JR6" eventType="touchUpInside" id="Q3D-f7-hBm"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="0C6-3E-ldr">
+                        <rect key="frame" x="20" y="5" width="233" height="67"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <state key="normal">
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="notificationsButtonHit" destination="d6L-P8-JR6" eventType="touchUpInside" id="9TL-Ew-bGf"/>
+                        </connections>
+                    </button>
                 </subviews>
             </tableViewCellContentView>
         </tableViewCell>
