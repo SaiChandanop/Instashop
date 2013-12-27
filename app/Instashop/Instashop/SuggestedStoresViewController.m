@@ -24,7 +24,7 @@
 
 // THERE ARE ALOT OF SYNCHRONIZATION PROBLEMS WITH THE CODE IN THE FILE, EVEN BEFORE I HAD STARTED WORKING ON IT - Susan
 
-#define kLoginTutorialDone 3
+#define kLoginTutorialDone 5
 #define kButtonPosition 515.0 // Change this number to change the button position.
 
 @implementation SuggestedStoresViewController
@@ -42,15 +42,15 @@
 
 // So in order to have only followed users on the list, it would mean that when it's loaded, it updates differently from when these are followed thereafter.
 
+// So what needs to happen here basically is that the array needs to be filled first and check that it's filled.
+// And then the getSuggestedShops method should be called.
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-
-        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
-        //    NSLog(@"this is params: %@", params);
-        [appDelegate.instagram requestWithParams:params delegate:self];
+        
         // Custom initialization
         self.likedArrayCount = 0;
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -62,12 +62,6 @@
 - (void)viewDidLoad
 {
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    
-
-//    [self performSelectorOnMainThread:@selector(getSuggestedShops) withObject:self.followersArray waitUntilDone:YES];
-    
-    [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
     
     NSOperationQueue *queue = [[NSOperationQueue alloc] init];
     
@@ -81,10 +75,7 @@
         
         // The problem is that this method will have already run by the time it's executed.  Need to check if the array is full or not.  That's the problem.
         // I could add a while loop which would probably be really terrible practice.
-        while (self.initiated == FALSE ) {
-            // REALLY REALLY AWFUL PRACTICE.
-            // YES VERY
-        }
+    
         // If I wasn't using the while loop, I'd probably have to recode the entire thing.
         
     }];
@@ -92,7 +83,6 @@
     [queue addOperationWithBlock:^{
         
         [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
-
         
     }];
     //[self getFollowers];
@@ -238,13 +228,14 @@
         
         SuggestedShopView *shopView = [self.containerViewsDictionary objectForKey:dataInstagramID];
         
+        /*
         for (int x = 0; x < [self.followersArray count]; x++) {
             
             if ([self.selectedShopsIDSArray containsObject:[self.followersArray objectAtIndex:x]]) {
                 
                 [self.selectedShopsIDSArray removeObject:[self.followersArray objectAtIndex:x]];
             }
-        }
+        }*/
         
         if (shopView != nil)
             if ([shopView.shopViewInstagramID compare:dataInstagramID] == NSOrderedSame && ![self.followersArray containsObject:shopView.shopViewInstagramID])
@@ -333,7 +324,7 @@
     NSInteger page = lround(fractionalPage);
     // this gets updated only if I follow or unfollow someone.
     // Code could probably be rearranged to be more efficient.
-    if ((offset == (screenWidth * 2)) && self.firstTimeUserViewController != NULL) {
+    if ((offset == (screenWidth * 4)) && self.firstTimeUserViewController != NULL) {
         if (self.likedArrayCount == kLoginTutorialDone) {
             self.firstTimeUserViewController.nextButton.enabled = YES;
             [self.firstTimeUserViewController.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
