@@ -412,4 +412,19 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
+
+-(void) notificationSelectedWithProfile:(NSString *)profileInstagramID
+{
+    ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+    profileViewController.profileInstagramID = profileInstagramID;
+    [self.feedNavigationController pushViewController:profileViewController animated:YES];
+    [profileViewController loadNavigationControlls];
+
+}
+
+-(void) notificationSelectedWithObject:(NotificationsObject *)notificationsObject
+{
+    
+}
+
 @end

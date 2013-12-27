@@ -64,9 +64,8 @@
         [ImageAPIHandler makeImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.theBackgroundImageView withInstagramID:self.shopViewInstagramID];
         
-        [self.parentController selectedShopViewDidCompleteRequestWithView:self];
-        
         self.followButton.alpha = 1;
+        [self.parentController performSelectorOnMainThread:@selector(selectedShopViewDidCompleteRequestWithView:) withObject:self waitUntilDone:NO];
     }
     
 }
