@@ -137,6 +137,45 @@
         
         [self setTheTitleWithString:titleString withVC:containerViewController];
         
+        /*
+        containerViewController.navigationItem.backBarButtonItem =
+        [[[UIBarButtonItem alloc] initWithTitle:@""
+                                          style:UIBarButtonItemStyleBordered
+                                         target:nil
+                                         action:nil] autorelease];
+        
+        self.navigationController.navigationItem.backBarButtonItem =
+        [[[UIBarButtonItem alloc] initWithTitle:@""
+                                          style:UIBarButtonItemStyleBordered
+                                         target:nil
+                                         action:nil] autorelease];
+
+        
+        self.navigationController.backBarButtonItem =
+        [[[UIBarButtonItem alloc] initWithTitle:@""
+                                          style:UIBarButtonItemStyleBordered
+                                         target:nil
+                                         action:nil] autorelease];
+
+        
+        categoriesTableViewController.navigationItem.backBarButtonItem =
+        [[[UIBarButtonItem alloc] initWithTitle:@""
+                                          style:UIBarButtonItemStyleBordered
+                                         target:nil
+                                         action:nil] autorelease];
+        
+        categoriesTableViewController.navigationController.navigationItem.backBarButtonItem =
+        [[[UIBarButtonItem alloc] initWithTitle:@""
+                                          style:UIBarButtonItemStyleBordered
+                                         target:nil
+                                         action:nil] autorelease];
+        
+        
+        */
+        
+        
+        
+        
 //        categoriesTableViewController.navigationController.navigationBar.topItem.title = titleString;
     }
     

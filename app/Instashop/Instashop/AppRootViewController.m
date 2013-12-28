@@ -100,6 +100,8 @@ float transitionTime = .456;
 //    [self runTutorial];
   
     
+    
+    
 }
 
 
@@ -238,7 +240,7 @@ float transitionTime = .456;
 
 - (void) firstTimeTutorialExit {
     
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
+/*    CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenHeight = screenSize.height;
     
@@ -248,6 +250,7 @@ float transitionTime = .456;
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
     self.firstTimeUserViewController.view.frame = CGRectMake(0.0, screenHeight, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
     [UIView commitAnimations];
+ */
 }
 
 -(void)productDidCreateWithNavigationController:(UINavigationController *)theNavigationController
@@ -422,7 +425,7 @@ float transitionTime = .456;
 {
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
     profileViewController.profileInstagramID = profileInstagramID;
-    
+    [self.feedNavigationController pushViewController:profileViewController animated:YES];
     [profileViewController loadNavigationControlls];
 
 }

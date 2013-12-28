@@ -9,6 +9,8 @@
 #import "NotificationsAPIHandler.h"
 #import "NotificationsObject.h"
 #import "NotificationsFinishedProtocol.h"
+#import "InstagramUserObject.h"
+
 @implementation NotificationsAPIHandler
 
 +(void)getAllNotificationsWithInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate
@@ -93,6 +95,7 @@
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"instagram_push_ids=%@", notificationString]];
+    [postString appendString:[NSString stringWithFormat:@"&user_ID=%@", [InstagramUserObject getStoredUserObject].userID]];
 
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/mass_push_receiver.php", ROOT_URI];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
