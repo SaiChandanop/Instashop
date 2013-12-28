@@ -31,7 +31,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
             endingLineNumber = "110"
-            landmarkName = "-getFollowers"
+            landmarkName = "-request:didLoad:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -47,7 +47,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "117"
             endingLineNumber = "117"
-            landmarkName = "-getSuggestedShops"
+            landmarkName = "-request:didLoad:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -63,7 +63,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
-            landmarkName = "-backButtonHit"
+            landmarkName = "-request:didLoad:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -79,8 +79,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "127"
             endingLineNumber = "127"
-            landmarkName = "-suggestedShopsDidReturn:"
-            landmarkType = "5">
+            landmarkName = "@implementation SuggestedStoresViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -95,7 +95,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "182"
             endingLineNumber = "182"
-            landmarkName = "-request:didLoad:"
+            landmarkName = "-selectedShopViewDidCompleteRequestWithView:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -110,9 +110,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "295"
-            endingLineNumber = "295"
-            landmarkName = "-shopFollowButtonHitWithID:withIsSelected:"
-            landmarkType = "5">
+            endingLineNumber = "295">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -126,9 +124,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "314"
-            endingLineNumber = "314"
-            landmarkName = "-updateButton"
-            landmarkType = "5">
+            endingLineNumber = "314">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -142,9 +138,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "343"
-            endingLineNumber = "343"
-            landmarkName = "-imageReturnedWithURL:withImage:"
-            landmarkType = "5">
+            endingLineNumber = "343">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,9 +152,7 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "348"
-            endingLineNumber = "348"
-            landmarkName = "-shopViewButtonHitWithID:"
-            landmarkType = "5">
+            endingLineNumber = "348">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -175,8 +167,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "85"
             endingLineNumber = "85"
-            landmarkName = "-viewDidLoad"
-            landmarkType = "5">
+            landmarkName = "@implementation SuggestedStoresViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -186,11 +178,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Instashop/FirstTimeUserViewController.m"
-            timestampString = "409848758.807608"
+            timestampString = "409896557.807311"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "41"
-            endingLineNumber = "41"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "-viewDidLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -207,7 +199,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "282"
             endingLineNumber = "282"
-            landmarkName = "-searchButtonHit:"
+            landmarkName = "-productCreateNavigationControllerExitButtonHit:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

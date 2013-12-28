@@ -16,10 +16,12 @@
 
 @end
 
-#define kHowToPageNumber 5
+#define kHowToPageNumber 6
 #define kButtonHeight 100.0
 
 @implementation FirstTimeUserViewController
+
+// So the FirstTimeViewController may lag a little bit because it is trying to add the SuggestedViewController into it which takes a little bit of time.  Think this can better be fixed by concurrent programming than anything else.
 
 @synthesize tutorialScrollView;
 @synthesize pageControl;
@@ -53,20 +55,6 @@
     
     UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
     
-    // Next Button
-    
-    /*
-    float buttonSize = 50.0; // Change this number to change the button position.
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, screenHeight - buttonSize, screenWidth, buttonSize)];
-    [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-    self.nextButton.titleLabel.textColor = textColor;
-    self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-    [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
-    [self.nextButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
-     
-     */
-    
     // Scroll View
     self.tutorialScrollView = [[UIScrollView alloc] initWithFrame:screenBound];
     self.tutorialScrollView.pagingEnabled = YES;
@@ -89,7 +77,7 @@
     
     for (int p = 0; p < [arrayOfImages count]; p++) {
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight + 44.0)];
         UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
         [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
         [view addSubview:backgroundImage];
@@ -117,26 +105,35 @@
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
     self.enterEmailViewController.view.frame = CGRectMake(0.0, 0.0, screenWidth, screenHeight);
     self.enterEmailViewController.firstTimeUserViewController = self;
-    // [self.tutorialScrollView addSubview:self.enterEmailViewController.view];
+    [self.enterEmailViewController setTitle:@"Enter Email"];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.enterEmailViewController];
     
-    [navigationController setTitle:@"Enter Email"];
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     navigationController.navigationBar.translucent = NO;
     navigationController.view.frame = CGRectMake(screenWidth * 4, 0.0, self.view.frame.size.width, self.view.frame.size.height);
     [self.tutorialScrollView addSubview:navigationController.view];
-
+    
+    // Next Button for SuggestedViewController
+    
+    float buttonSize = 50.0; // Change this number to change the button position.
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, screenHeight - buttonSize, screenWidth, buttonSize)];
+    [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+    self.nextButton.titleLabel.textColor = textColor;
+    self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
+    [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
+    [self.nextButton addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
+    
     // SuggestViewController
-    
-    /*
+
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-    //  self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5, 0.0, screenWidth, screenHeight - buttonSize);
+    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5, 0.0, screenWidth, screenHeight - buttonSize);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
-   // [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
-     */
-    
+    [self.suggestedStoresViewController.view addSubview:self.nextButton];
+    [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
+
     // Page Control
     
     self.pageControl = [[UIPageControl alloc] init];
@@ -168,13 +165,16 @@
     NSInteger page = lround(fractionalPage);
     pageControl.currentPage = page;
     
-    // this coding is really ugly.  
+    // this coding is really ugly.
+    
+    /*
     if (page != 4) {
         [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
         self.nextButton.enabled = YES;
         [self.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
         [self.nextButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
-    }
+    }                                           THIS WAS FOR OLD FIRSTTIMEVIEWCONTROLLER
+     */
     
     if (page < 4) {
         self.pageControl.hidden = NO;
@@ -184,6 +184,14 @@
     }
     
     [self.suggestedStoresViewController updateButton];
+}
+
+- (void) enableNextButton {
+    self.nextButton.enabled = YES;
+}
+
+- (void) disableNextButton {
+    self.nextButton.enabled = NO;
 }
 
 - (void) moveScrollView {
