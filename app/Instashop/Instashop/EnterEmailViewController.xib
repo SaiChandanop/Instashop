@@ -8,6 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EnterEmailViewController">
             <connections>
                 <outlet property="enterEmailTextField" destination="dbo-Co-phG" id="oeI-EL-Hw2"/>
+                <outlet property="enterEmailView" destination="Wav-bq-GnA" id="T1g-D8-eIL"/>
+                <outlet property="nextButton" destination="ZeC-OK-1UK" id="xdN-6b-q8a"/>
                 <outlet property="view" destination="1" id="1Xa-S9-8Kn"/>
             </connections>
         </placeholder>
@@ -57,10 +59,21 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeC-OK-1UK">
+                    <rect key="frame" x="0.0" y="495" width="320" height="50"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <accessibility key="accessibilityConfiguration">
+                        <bool key="isElement" value="NO"/>
+                    </accessibility>
+                    <state key="normal" title="Next">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="nextButtonHit:" destination="-2" eventType="touchUpInside" id="owh-DR-3dW"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>

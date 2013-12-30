@@ -11,6 +11,10 @@
 
 @interface EnterEmailViewController ()
 
+@property (nonatomic, assign) int correctEmail;
+@property (nonatomic, assign) int categoryChosen;
+@property (nonatomic, assign) int agreement;
+
 @end
 
 #define ALPHA                   @"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
@@ -19,9 +23,13 @@
 
 @implementation EnterEmailViewController
 
+@synthesize enterEmailView;
 @synthesize firstTimeUserViewController;
 @synthesize enterEmailTextField;
 @synthesize nextButton;
+@synthesize correctEmail;
+@synthesize categoryChosen;
+@synthesize agreement;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +37,10 @@
     if (self) {
         // Custom initialization
         
+        /* Testing - For now can just test by putting in a valid email.  
+        self.correctEmail = 1;
+        self.categoryChosen = 3;
+        self.agreement = 5; */
     }
     return self;
 }
@@ -38,27 +50,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
-    
     self.enterEmailTextField.delegate = self;
-    
-    UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
-    
-    // Next Button for EnterEmailViewController
-    
-    float buttonSize = 50.0; // Change this number to change the button position.
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, screenHeight - buttonSize, screenWidth, buttonSize)];
-    [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-    self.nextButton.titleLabel.textColor = textColor;
-    self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-    self.nextButton.enabled = NO;
-    [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
-    [self.nextButton addTarget:self.firstTimeUserViewController action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:self.nextButton];
 }
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -70,6 +62,9 @@
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
+    if ([textField.text length] == 0) {
+        [self.enterEmailTextField setPlaceholder:@"Email"];
+    }
     [self.enterEmailTextField endEditing:YES];
 }
 
@@ -77,8 +72,12 @@
     NSCharacterSet *unacceptedInput = nil;
     if ([[textField.text componentsSeparatedByString:@"@"] count] > 1) {
         unacceptedInput = [[NSCharacterSet characterSetWithCharactersInString:[ALPHA_NUMERIC stringByAppendingString:@".-"]] invertedSet];
+        // Method that checks whether or not button should be green now.
+        [self enableNextButton:1];
+        
     } else {
         unacceptedInput = [[NSCharacterSet characterSetWithCharactersInString:[ALPHA_NUMERIC stringByAppendingString:@".!#$%&'*+-/=?^_`{|}~@"]] invertedSet];
+        [self enableNextButton:2];
     }
     return ([[string componentsSeparatedByCharactersInSet:unacceptedInput] count] <= 1);
 }
@@ -87,6 +86,37 @@
     
     // Some method for handling the text input.
     return YES;
+}
+
+- (void) enableNextButton: (int) callNumber {
+    
+    if (callNumber < 3) {
+        self.correctEmail = callNumber;
+    }
+    else if (callNumber > 2 && callNumber < 5) {
+        self.categoryChosen = callNumber;
+    }
+    else if (callNumber > 4 && callNumber < 7) {
+        self.agreement = callNumber;
+    }
+    
+    // Only when there is an email, category and agreement to the service put in.  Booleans.  
+    if ((self.correctEmail == 1) && (self.categoryChosen == 3) && (self.agreement == 5)) {
+        
+        UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
+        self.nextButton.titleLabel.textColor = textColor;
+        self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
+        [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
+        [self.nextButton setEnabled:YES];
+    }
+    else {
+        // Set everything back to the grey color.
+        [self.nextButton setEnabled:NO];
+    }
+}
+
+- (IBAction) nextButtonHit:(id)sender {
+    [self.firstTimeUserViewController moveScrollView];
 }
 
 - (void)didReceiveMemoryWarning

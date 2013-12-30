@@ -187,6 +187,8 @@
     
 }
 
+// Need to find which method uploads the views and where to start filtering.  
+
 
 
 - (void) updateButton {

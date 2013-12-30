@@ -51,7 +51,7 @@
     CGFloat screenHeight = screenSize.height;
     
     //    CGFloat whiteSpace = 11.0f;
-    //CGFloat topSpace = 64.0f;
+    //    CGFloat topSpace = 64.0f;
     
     UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
     
@@ -79,6 +79,7 @@
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight + 44.0)];
         UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
+        [backgroundImage setFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
         [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
         [view addSubview:backgroundImage];
         UIImage *image = [UIImage imageNamed:[arrayOfImages objectAtIndex:p]];
@@ -119,10 +120,11 @@
     
     float buttonSize = 50.0; // Change this number to change the button position.
     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, screenHeight - buttonSize, screenWidth, buttonSize)];
-    [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+    [self.nextButton setTitle:@"Follow 5 Stores" forState:UIControlStateNormal];
     self.nextButton.titleLabel.textColor = textColor;
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
+    self.nextButton.enabled = NO;
     [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
     [self.nextButton addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
     
@@ -178,9 +180,11 @@
     
     if (page < 4) {
         self.pageControl.hidden = NO;
+        [self.tutorialScrollView setScrollEnabled:YES];
     }
     else {
         self.pageControl.hidden = YES;
+        [self.tutorialScrollView setScrollEnabled:NO];
     }
     
     [self.suggestedStoresViewController updateButton];
@@ -201,9 +205,9 @@
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-    if (self.tutorialScrollView.contentOffset.x < screenWidth * 4) {
+   // if (self.tutorialScrollView.contentOffset.x < screenWidth * 4) {
         [self.tutorialScrollView setContentOffset:CGPointMake(self.tutorialScrollView.contentOffset.x + screenWidth, 0) animated:YES];
-    }
+   //  }
 }
 
 - (void) closeTutorial {
