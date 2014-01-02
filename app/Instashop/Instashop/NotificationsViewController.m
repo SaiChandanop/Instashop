@@ -41,8 +41,7 @@
 
 -(void)loadNotifications
 {
-    [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
-    
+    [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];    
 }
 
 - (void)viewDidLoad

@@ -68,7 +68,7 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
-    NSLog(@"result: %@", result);
+//    NSLog(@"result: %@", result);
  
     [ImageAPIHandler makeSynchImageRequestWithDelegate:nil withInstagramMediaURLString:[[result objectForKey:@"data"] objectForKey:@"profile_picture"] withImageView:self.profileImageView];
 
