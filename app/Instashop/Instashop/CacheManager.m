@@ -42,7 +42,7 @@ static CacheManager *theCacheManager;
     
     NSMutableArray *precacheArray = [NSMutableArray arrayWithCapacity:0];
     
-    for (int i = theIndexPath.row * 3; i < theIndexPath.row * 3 + 27 && i < [dataSetArray count]; i++)
+    for (int i = theIndexPath.row * 3; i < theIndexPath.row * 3 + 9 && i < [dataSetArray count]; i++)
     {
         [precacheArray addObject:[dataSetArray objectAtIndex:i]];
     }
