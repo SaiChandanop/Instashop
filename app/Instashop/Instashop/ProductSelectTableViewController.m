@@ -187,7 +187,8 @@
 
 -(void)refreshContent
 {
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
+    if ([self.contentArray count] == 0)
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
     
     self.checkCountup = 0;
     [self.contentArray removeAllObjects];

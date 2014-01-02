@@ -101,8 +101,6 @@ float transitionTime = .456;
   
     
     
-    [[NotificationManager getSharedManager] handleNewUserPushNotifications];
-    
 }
 
 
@@ -110,7 +108,7 @@ float transitionTime = .456;
 - (void) runTutorial {
     
     
-    
+        [[NotificationManager getSharedManager] handleNewUserPushNotifications];
     self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
     self.firstTimeUserViewController.parentViewController = self;
     self.firstTimeUserViewController.view.frame = CGRectMake(0, 0.0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
