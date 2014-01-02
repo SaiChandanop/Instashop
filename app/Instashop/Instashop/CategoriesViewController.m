@@ -84,7 +84,7 @@
     
     NSLog(@"theVC.navigationItem.titleView: %@", theVC.navigationItem.titleView);
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@"Back"
+    [[[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil] autorelease];
