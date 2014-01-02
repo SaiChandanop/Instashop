@@ -97,7 +97,7 @@
     NSString *defaultFirstUserKey = [userString stringByAppendingString:@"firstRun"];
     NSArray *keys = [[defaults dictionaryRepresentation] allKeys];
     for (int i = 0; i < [keys count]; i++) {
-        if (![[keys objectAtIndex:i] isEqualToString:defaultFirstUserKey])
+       // if (![[keys objectAtIndex:i] isEqualToString:defaultFirstUserKey])
             [defaults removeObjectForKey:[keys objectAtIndex:i]];
     }
 }

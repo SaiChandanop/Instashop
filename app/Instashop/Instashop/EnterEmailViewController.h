@@ -13,7 +13,8 @@
 @interface EnterEmailViewController : UIViewController <UITextFieldDelegate>
 
 @property (nonatomic, retain) FirstTimeUserViewController *firstTimeUserViewController;
-@property (nonatomic, strong) IBOutlet UIView *view;
+@property (nonatomic, strong) IBOutlet UIView *enterEmailView;
 @property (nonatomic, strong) IBOutlet UITextField *enterEmailTextField;
+@property (nonatomic, strong) IBOutlet UIButton *nextButton;
 
 @end
