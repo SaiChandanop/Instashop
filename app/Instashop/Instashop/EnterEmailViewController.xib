@@ -10,6 +10,7 @@
                 <outlet property="categoriesLabel" destination="rFJ-QM-kfp" id="qTj-cI-FUI"/>
                 <outlet property="enterEmailTextField" destination="dbo-Co-phG" id="oeI-EL-Hw2"/>
                 <outlet property="enterEmailView" destination="Wav-bq-GnA" id="T1g-D8-eIL"/>
+                <outlet property="tosButton" destination="YZI-3t-wHN" id="xwy-H7-ZDr"/>
                 <outlet property="view" destination="1" id="1Xa-S9-8Kn"/>
             </connections>
         </placeholder>
@@ -58,6 +59,9 @@
                     <rect key="frame" x="254" y="95" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="tosButtonHit" destination="-1" eventType="touchUpInside" id="zC8-xy-OiT"/>
+                    </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcf-kq-kmv">
                     <rect key="frame" x="12" y="51" width="296" height="30"/>
@@ -76,6 +80,7 @@
     <resources>
         <image name="lightMenuBG.png" width="320" height="548"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
+        <image name="menuLightBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>
     </resources>
 </document>

@@ -27,6 +27,8 @@
 @synthesize nextButton;
 @synthesize categoriesViewController;
 @synthesize categoriesLabel;
+@synthesize tosButton;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,18 +58,28 @@
     self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 110, self.view.frame.size.width, 44);
     [self.view addSubview:self.nextButton];
     
-    NSLog(@"self.view: %@", self.view);
-    NSLog(@"nextButton: %@", self.nextButton);
-    
     self.navigationItem.backBarButtonItem =
     [[[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil] autorelease];
     
+    [self.tosButton setTitle:@"off" forState:UIControlStateNormal];
+    self.tosButton.selected = NO;
+    
     
 }
 
+-(IBAction)tosButtonHit
+{
+    self.tosButton.selected = !self.tosButton.selected;
+    
+    if (self.tosButton.selected)
+        [self.tosButton setTitle:@"on" forState:UIControlStateNormal];
+    else
+        [self.tosButton setTitle:@"off" forState:UIControlStateNormal];
+    
+}
 -(void)categorySelectionCompleteWithArray:(NSArray *)theArray
 {
     NSLog(@"categorySelectionCompleteWithArray: %@", theArray);
@@ -100,7 +112,28 @@
 }
 
 - (IBAction) nextButtonHit:(id)sender {
-    [self.firstTimeUserViewController moveScrollView];
+    
+    NSString *errorString = nil;
+    
+    if ([self.enterEmailTextField.text length] == 0)
+        errorString = @"Please enter an email";
+    else if ([self.categoriesLabel.text compare:@"Categories"] == NSOrderedSame)
+        errorString = @"Please enter a category";
+    else if (self.tosButton.selected == NO)
+        errorString = @"Please validate the terms of service";
+    
+    
+    if (errorString != nil)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                        message:errorString
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Ok"
+                                              otherButtonTitles:nil];
+        [alertView show];
+    }
+    else
+        [self.firstTimeUserViewController moveScrollView];
 }
 
 
