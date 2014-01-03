@@ -55,7 +55,7 @@
     self.nextButton.backgroundColor = [UIColor clearColor];
     [self.nextButton addTarget:self action:@selector(nextButtonHit:) forControlEvents:UIControlEventTouchUpInside];
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 110, self.view.frame.size.width, 44);
+    self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 107, self.view.frame.size.width, 44);
     [self.view addSubview:self.nextButton];
     
     self.navigationItem.backBarButtonItem =
@@ -79,6 +79,7 @@
     else
         [self.tosButton setTitle:@"off" forState:UIControlStateNormal];
     
+    [self validateContent];
 }
 -(void)categorySelectionCompleteWithArray:(NSArray *)theArray
 {
@@ -90,7 +91,7 @@
     self.categoriesViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.categoriesViewController.view.frame.size.width, self.categoriesViewController.view.frame.size.height);
     [UIView commitAnimations];
 
-    
+    [self validateContent];
 }
 
 -(IBAction)categoriesButtonHit
@@ -111,8 +112,8 @@
 //    [self.navigationController pushViewController:categoriesViewController animated:YES];
 }
 
-- (IBAction) nextButtonHit:(id)sender {
-    
+-(NSString *)validateContent
+{
     NSString *errorString = nil;
     
     if ([self.enterEmailTextField.text length] == 0)
@@ -122,6 +123,15 @@
     else if (self.tosButton.selected == NO)
         errorString = @"Please validate the terms of service";
     
+    if (errorString == nil)
+    {
+        self.nextButton.backgroundColor = [UIColor colorWithRed:83.0f/255.0f green:162.0f/255.0f blue:135.0f/255.0f alpha:1];
+    }
+    return errorString;
+}
+- (IBAction) nextButtonHit:(id)sender {
+    
+    NSString *errorString =[self validateContent];
     
     if (errorString != nil)
     {
@@ -144,6 +154,7 @@
     NSLog(@"textFieldShouldReturn");
     [textField resignFirstResponder];
     // Some method for handling the text input.
+    [self validateContent];
     return YES;
 }
 
