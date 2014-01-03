@@ -10,6 +10,7 @@
 #import "CategoriesTableViewController.h"
 #import "AttributesManager.h"
 #import "ProductDetailsViewController.h"
+#import "EnterEmailViewController.h"
 
 @interface CategoriesViewController ()
 
@@ -101,6 +102,12 @@
         [self.selectedCategoriesArray removeObjectsInRange:NSMakeRange(callingController.positionIndex, [self.selectedCategoriesArray count] - callingController.positionIndex)];
     
     [self.selectedCategoriesArray addObject:theCategory];
+    
+    
+    if ([self.parentController isKindOfClass:[EnterEmailViewController class]])
+         {
+             [self.parentController categorySelectionCompleteWithArray:self.selectedCategoriesArray];
+         }
     
     
     if ([[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray] == nil || self.categoriesType == CATEGORIES_TYPE_SELLER)

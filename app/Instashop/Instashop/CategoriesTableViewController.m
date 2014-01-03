@@ -10,6 +10,7 @@
 #import "CategoriesViewController.h"
 #import "AttributesManager.h"
 #import "CategorySelectCell.h"
+#import "EnterEmailViewController.h"
 @interface CategoriesTableViewController ()
 
 @end
@@ -69,7 +70,8 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     
-    NSMutableArray *searchCategoriesArray = [NSMutableArray arrayWithCapacity:0];    
+    
+    NSMutableArray *searchCategoriesArray = [NSMutableArray arrayWithCapacity:0];
     if (self.basePriorCategoriesArray != nil)
         [searchCategoriesArray addObjectsFromArray:self.basePriorCategoriesArray];
     
@@ -88,6 +90,14 @@
         cell.bgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menuDarkBG.png"]];
     else
         cell.bgView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menuLightBG.png"]];
+
+    
+    if (self.parentController.parentController != nil)
+    {
+        if ([self.parentController.parentController isKindOfClass:[EnterEmailViewController class]])
+            cell.disclosureImageView.alpha = 0;
+    }
+
     
     return cell;
 }
