@@ -129,6 +129,9 @@
 }
 - (IBAction) nextButtonHit:(id)sender {
     
+    [self.firstTimeUserViewController moveScrollView];
+    return;
+    
     NSString *errorString =[self validateContent];
     
     if (errorString != nil)

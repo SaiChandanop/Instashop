@@ -35,6 +35,9 @@
 -(IBAction)followButtonHit
 {
     [self shopFollowButtonHitWithID:self.shopViewInstagramID withIsSelected:self.followButton.selected];
+    if (self.parentController.firstTimeUserViewController != nil)
+        [self.parentController.firstTimeUserViewController shopWasFollowed];
+    
 }
 
 -(IBAction)viewButtonHit
@@ -55,8 +58,13 @@
     
      NSDictionary *dataDictionary = [result objectForKey:@"data"];
     
-    if ([request.url rangeOfString:@"users"].length > 0)
+    if ([request.url rangeOfString:@"relationship"].length > 0)
     {
+        
+    }
+    else if ([request.url rangeOfString:@"users"].length > 0)
+    {
+        
         self.bioLabel.text = [dataDictionary objectForKey:@"bio"];
         self.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
         //shopView.bioLabel.numberOfLines = 0;
@@ -77,6 +85,8 @@
     
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
+    self.followButton.selected = !isSelected;
+    
     if (isSelected)
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"unfollow", @"action", nil];
@@ -84,7 +94,6 @@
     }
     else
     {
-        
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
     }

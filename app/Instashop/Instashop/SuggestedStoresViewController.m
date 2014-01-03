@@ -93,7 +93,7 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSLog(@"%@ request did load");
+    NSLog(@"%@ request did load", self);
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
         /*        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

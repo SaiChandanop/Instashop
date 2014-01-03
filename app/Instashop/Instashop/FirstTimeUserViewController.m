@@ -30,6 +30,8 @@
 @synthesize suggestedStoresViewController;
 @synthesize enterEmailViewController;
 @synthesize nextButton;
+@synthesize suggestedFollowCount;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -120,7 +122,7 @@
     
     float buttonSize = 50.0; // Change this number to change the button position.
     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, screenHeight - buttonSize, screenWidth, buttonSize)];
-    [self.nextButton setTitle:@"Follow 5 Stores" forState:UIControlStateNormal];
+    [self.nextButton setTitle:@"Follow 5 Stores!" forState:UIControlStateNormal];
     self.nextButton.titleLabel.textColor = textColor;
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
@@ -129,13 +131,13 @@
     [self.nextButton addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
     
     // SuggestViewController
-
+    
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5, 0.0, screenWidth, screenHeight - buttonSize);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
     [self.suggestedStoresViewController.view addSubview:self.nextButton];
     [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
-
+    
     // Page Control
     
     self.pageControl = [[UIPageControl alloc] init];
@@ -150,14 +152,19 @@
     [self.view addSubview:self.pageControl];
     
     /*
-    self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
-                                      style:UIBarButtonItemStyleBordered
-                                     target:nil
-                                     action:nil] autorelease];
+     self.navigationItem.backBarButtonItem =
+     [[[UIBarButtonItem alloc] initWithTitle:@""
+     style:UIBarButtonItemStyleBordered
+     target:nil
+     action:nil] autorelease];
      
      Feature of past FirstTimeUserViewController version */
+    
+}
 
+- (void) shopWasFollowed
+{
+    self.suggestedFollowCount++;
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
@@ -170,12 +177,12 @@
     // this coding is really ugly.
     
     /*
-    if (page != 4) {
-        [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-        self.nextButton.enabled = YES;
-        [self.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-        [self.nextButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
-    }                                           THIS WAS FOR OLD FIRSTTIMEVIEWCONTROLLER
+     if (page != 4) {
+     [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
+     self.nextButton.enabled = YES;
+     [self.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+     [self.nextButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
+     }                                           THIS WAS FOR OLD FIRSTTIMEVIEWCONTROLLER
      */
     
     if (page < 4) {
@@ -205,13 +212,24 @@
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-   // if (self.tutorialScrollView.contentOffset.x < screenWidth * 4) {
-        [self.tutorialScrollView setContentOffset:CGPointMake(self.tutorialScrollView.contentOffset.x + screenWidth, 0) animated:YES];
-   //  }
+    // if (self.tutorialScrollView.contentOffset.x < screenWidth * 4) {
+    [self.tutorialScrollView setContentOffset:CGPointMake(self.tutorialScrollView.contentOffset.x + screenWidth, 0) animated:YES];
+    //  }
 }
 
 - (void) closeTutorial {
-    [self.parentViewController firstTimeTutorialExit];
+    NSLog(@"closeTutorial");
+    if (self.suggestedFollowCount < 5)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Hey"
+                                                            message:@"Do please follow 5 shops"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    }
+    else
+        [self.parentViewController firstTimeTutorialExit];
 }
 
 - (void)didReceiveMemoryWarning
