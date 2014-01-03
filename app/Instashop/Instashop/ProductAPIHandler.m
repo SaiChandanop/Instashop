@@ -103,7 +103,6 @@
 +(void)getAllProductsWithDelegate:(id)delegate
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"get_products.php?requesting_seller_id=ALL"];
-    NSLog(@"urlRequestStringurlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"GET";
         

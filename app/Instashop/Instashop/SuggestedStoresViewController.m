@@ -60,8 +60,11 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"%@ view did load", self);
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
+    NSLog(@"appDelegate: %@", appDelegate);
+    NSLog(@"appDelegate.instagram: %@", appDelegate.instagram);
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
     
@@ -90,6 +93,7 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
+    NSLog(@"%@ request did load");
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
         /*        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

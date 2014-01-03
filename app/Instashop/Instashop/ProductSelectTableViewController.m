@@ -192,8 +192,7 @@
     
     self.checkCountup = 0;
     [self.contentArray removeAllObjects];
-    NSLog(@"refreshContent called");
-    NSLog(@"self.contentRequestParameters: %@", self.contentRequestParameters);
+
     if (self.contentRequestParameters != nil)
     {
         AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

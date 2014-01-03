@@ -83,8 +83,6 @@
 }
 -(void)categorySelectionCompleteWithArray:(NSArray *)theArray
 {
-    NSLog(@"categorySelectionCompleteWithArray: %@", theArray);
-    
     self.categoriesLabel.text = [theArray objectAtIndex:0];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:.30];
@@ -151,7 +149,6 @@
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     
-    NSLog(@"textFieldShouldReturn");
     [textField resignFirstResponder];
     // Some method for handling the text input.
     [self validateContent];

@@ -820,9 +820,7 @@
 		193433D317E0FCEE007744E6 /* FirstTimeUser */ = {
 			isa = PBXGroup;
 			children = (
-				19D83299186D45E200F062DD /* EnterEmailViewController.h */,
-				19D8329A186D45E200F062DD /* EnterEmailViewController.m */,
-				19FF03EB186E360F00BC20B3 /* EnterEmailViewController.xib */,
+				7B0436AB18777ECD00C67282 /* EnterEmail */,
 				193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */,
 				193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */,
 			);
@@ -1019,6 +1017,16 @@
 				0369D26A183338C400AA1C9F /* MediaLikedObject.m */,
 			);
 			name = Table;
+			sourceTree = "<group>";
+		};
+		7B0436AB18777ECD00C67282 /* EnterEmail */ = {
+			isa = PBXGroup;
+			children = (
+				19D83299186D45E200F062DD /* EnterEmailViewController.h */,
+				19D8329A186D45E200F062DD /* EnterEmailViewController.m */,
+				19FF03EB186E360F00BC20B3 /* EnterEmailViewController.xib */,
+			);
+			name = EnterEmail;
 			sourceTree = "<group>";
 		};
 		7B05032A183FD6B4004EF2C2 /* Bitly */ = {

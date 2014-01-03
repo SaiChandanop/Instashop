@@ -83,7 +83,7 @@
     label.text = theString;
     [label sizeToFit];
     
-    NSLog(@"theVC.navigationItem.titleView: %@", theVC.navigationItem.titleView);
+
     self.navigationItem.backBarButtonItem =
     [[[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
