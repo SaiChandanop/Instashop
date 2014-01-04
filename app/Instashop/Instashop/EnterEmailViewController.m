@@ -123,12 +123,13 @@
     
     if (errorString == nil)
     {
-        self.nextButton.backgroundColor = [UIColor colorWithRed:83.0f/255.0f green:162.0f/255.0f blue:135.0f/255.0f alpha:1];
+        self.nextButton.backgroundColor = [ISConstants getISGreenColor];
+        
     }
     return errorString;
 }
 - (IBAction) nextButtonHit:(id)sender {
-        
+    
     NSString *errorString =[self validateContent];
     
     if (errorString != nil)
@@ -150,26 +151,9 @@
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
     
     [textField resignFirstResponder];
-    // Some method for handling the text input.
     [self validateContent];
     return YES;
 }
-
-- (void) enableNextButton: (int) callNumber {
-    
-    /*
-     UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
-     self.nextButton.titleLabel.textColor = textColor;
-     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-     [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
-     [self.nextButton setEnabled:YES];
-     }
-     else {
-     
-     */
-    [self.nextButton setEnabled:NO];
-}
-
 
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
