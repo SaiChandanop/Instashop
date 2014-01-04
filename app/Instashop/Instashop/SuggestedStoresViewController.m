@@ -196,35 +196,7 @@
 
 
 - (void) updateButton {
-    /*
-     CGRect screenBound = [[UIScreen mainScreen] bounds];
-     CGSize screenSize = screenBound.size;
-     CGFloat screenWidth = screenSize.width;
-     CGFloat screenHeight = screenSize.height;
-     
-     CGFloat pageWidth = self.firstTimeUserViewController.tutorialScrollView.frame.size.width;
-     float offset = self.firstTimeUserViewController.tutorialScrollView.contentOffset.x;
-     float fractionalPage = offset/pageWidth;
-     NSInteger page = lround(fractionalPage);
-     // this gets updated only if I follow or unfollow someone.
-     // Code could probably be rearranged to be more efficient.
-     if ((offset == (screenWidth * 2)) && self.firstTimeUserViewController != NULL) {
-     if (self.likedArrayCount == kLoginTutorialDone) {
-     self.firstTimeUserViewController.nextButton.enabled = YES;
-     [self.firstTimeUserViewController.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-     [self.firstTimeUserViewController.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-     [self.firstTimeUserViewController.nextButton addTarget:self.firstTimeUserViewController action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
-     }
-     else if (self.likedArrayCount < kLoginTutorialDone) {
-     [self.firstTimeUserViewController.nextButton setTitle:@"Follow 5 Stores" forState:UIControlStateNormal];
-     self.firstTimeUserViewController.nextButton.enabled = NO;
-     [self.firstTimeUserViewController.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-     [self.firstTimeUserViewController.nextButton addTarget:self.firstTimeUserViewController action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
-     }
-     }
-     
-     */
-}
+   }
 
 -(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
 {

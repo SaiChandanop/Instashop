@@ -55,6 +55,8 @@
     //    CGFloat whiteSpace = 11.0f;
     //    CGFloat topSpace = 64.0f;
     
+    NSLog(@"screenBound: %@", NSStringFromCGRect(screenBound));
+    
     UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
     
     // Scroll View
@@ -121,12 +123,11 @@
     // Next Button for SuggestedViewController
     
     float buttonSize = 50.0; // Change this number to change the button position.
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0.0, screenHeight - buttonSize, screenWidth, buttonSize)];
-    [self.nextButton setTitle:@"Follow 5 Stores!" forState:UIControlStateNormal];
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, screenHeight - buttonSize, screenWidth, buttonSize)];
+    [self.nextButton setTitle:@"Follow 5 St!ores!" forState:UIControlStateNormal];
     self.nextButton.titleLabel.textColor = textColor;
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-    self.nextButton.enabled = NO;
     [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
     [self.nextButton addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
     
@@ -135,8 +136,9 @@
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5, 0.0, screenWidth, screenHeight - buttonSize);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
-    [self.suggestedStoresViewController.view addSubview:self.nextButton];
+//    [self.suggestedStoresViewController.view addSubview:self.nextButton];
     [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
+  
     
     // Page Control
     
@@ -151,6 +153,8 @@
     [self.view addSubview:self.tutorialScrollView];
     [self.view addSubview:self.pageControl];
     
+    
+    [self.tutorialScrollView addSubview:self.nextButton];
     /*
      self.navigationItem.backBarButtonItem =
      [[[UIBarButtonItem alloc] initWithTitle:@""
@@ -175,16 +179,6 @@
     pageControl.currentPage = page;
     
     // this coding is really ugly.
-    
-    /*
-     if (page != 4) {
-     [self.nextButton setTitle:@"NEXT" forState:UIControlStateNormal];
-     self.nextButton.enabled = YES;
-     [self.nextButton removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
-     [self.nextButton addTarget:self action:@selector(moveScrollView) forControlEvents:UIControlEventTouchUpInside];
-     }                                           THIS WAS FOR OLD FIRSTTIMEVIEWCONTROLLER
-     */
-    
     if (page < 4) {
         self.pageControl.hidden = NO;
         [self.tutorialScrollView setScrollEnabled:YES];
@@ -197,13 +191,6 @@
     [self.suggestedStoresViewController updateButton];
 }
 
-- (void) enableNextButton {
-    self.nextButton.enabled = YES;
-}
-
-- (void) disableNextButton {
-    self.nextButton.enabled = NO;
-}
 
 - (void) moveScrollView {
     
