@@ -83,6 +83,8 @@
 		2EB259B11767B50D0054618D /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AF1767B50D0054618D /* magnify@2x.png */; };
 		2ED088C317CAD54500439A7D /* bottom_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */; };
 		2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */; };
+		2ED0CA8A187E12ED00DE6042 /* InstagramShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED0CA88187E12ED00DE6042 /* InstagramShareViewController.m */; };
+		2ED0CA8B187E12ED00DE6042 /* InstagramShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA89187E12ED00DE6042 /* InstagramShareViewController.xib */; };
 		2EFD0A3817FBBB2C00E701B0 /* twitter_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */; };
 		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
@@ -370,6 +372,9 @@
 		2EB259AF1767B50D0054618D /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "magnify@2x.png"; path = "Assets/magnify@2x.png"; sourceTree = "<group>"; };
 		2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_shadow@2x.png"; sourceTree = "<group>"; };
 		2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram_gray_icon@2x.png"; sourceTree = "<group>"; };
+		2ED0CA87187E12ED00DE6042 /* InstagramShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramShareViewController.h; sourceTree = "<group>"; };
+		2ED0CA88187E12ED00DE6042 /* InstagramShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramShareViewController.m; sourceTree = "<group>"; };
+		2ED0CA89187E12ED00DE6042 /* InstagramShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstagramShareViewController.xib; sourceTree = "<group>"; };
 		2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
@@ -1610,6 +1615,9 @@
 			children = (
 				7BAC5BC6187DE0670077EF50 /* InstagramShareView.h */,
 				7BAC5BC7187DE0670077EF50 /* InstagramShareView.m */,
+				2ED0CA87187E12ED00DE6042 /* InstagramShareViewController.h */,
+				2ED0CA88187E12ED00DE6042 /* InstagramShareViewController.m */,
+				2ED0CA89187E12ED00DE6042 /* InstagramShareViewController.xib */,
 			);
 			name = instagram_share;
 			sourceTree = "<group>";
@@ -1939,6 +1947,7 @@
 				2E0EAE18176F6E6700B65FC3 /* menuBottomShadow@2x.png in Resources */,
 				7B0D253C17CBA36300E43FA6 /* PLCameraSheetButtonPressed.png in Resources */,
 				2E0EAE19176F6E6700B65FC3 /* menuDarkBG@2x.png in Resources */,
+				2ED0CA8B187E12ED00DE6042 /* InstagramShareViewController.xib in Resources */,
 				2E714CD017E28CCE00014413 /* search_cancel@2x.png in Resources */,
 				2E0EAE1A176F6E6700B65FC3 /* lmVerifiedRetailerIcon@2x.png in Resources */,
 				2E0EAE1B176F6E6700B65FC3 /* lmSuggestedStoresIcon@2x.png in Resources */,
@@ -2060,6 +2069,7 @@
 				7B7A7F7F17D64ACE00247A26 /* SearchViewController.m in Sources */,
 				7B0D255017CBA36F00E43FA6 /* GKResizeableCropOverlayView.m in Sources */,
 				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
+				2ED0CA8A187E12ED00DE6042 /* InstagramShareViewController.m in Sources */,
 				7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */,
 				7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */,
 				7B5BFAE417D6945600F82F0B /* NotificationsViewController.m in Sources */,
