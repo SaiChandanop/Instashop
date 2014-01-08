@@ -68,6 +68,7 @@
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
     [appDelegate.instagram requestWithParams:params delegate:self];
     
+    NSLog(@"appDelegate.instagram: %@", appDelegate.instagram);
     [super viewDidLoad];
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
