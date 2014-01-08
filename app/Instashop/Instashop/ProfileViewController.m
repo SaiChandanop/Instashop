@@ -233,7 +233,6 @@
             dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];
             [dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
             
-            
             [del loadShareCoverViewWithImage:img];
         }
     }

@@ -150,6 +150,9 @@
 {
     self.socialCoverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(320 / 2 - 278 / 2,0, 278,278)];
     self.socialCoverImageView.image = [UIImage imageNamed:@"AppIcon76x76.png"];
+    
+//    UIScrollView *socialCoverImagesScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.window.
+                                                  
     [self.window addSubview:self.socialCoverImageView];
     
 }
