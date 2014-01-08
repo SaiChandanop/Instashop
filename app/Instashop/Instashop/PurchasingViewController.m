@@ -80,12 +80,15 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionTextView.contentSize.height + 30);
+    //self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionTextView.contentSize.height + 30);
     self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
-    //   self.contentScrollView.contentSize = CGSizeMake(0, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height);
+
+    self.contentScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.bottomView.frame.size.height);
+
+    self.contentScrollView.contentSize = CGSizeMake(0, self.categoryContainerView.frame.origin.y + self.categoryContainerView.frame.size.height + self.descriptionTextView.frame.size.height);
     
-    
+    NSLog(@"content scroll size %@", NSStringFromCGSize(contentScrollView.contentSize));
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeButtonHit)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
