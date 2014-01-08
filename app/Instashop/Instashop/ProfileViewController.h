@@ -57,6 +57,7 @@
     NSDictionary *requestedInstagramProfileObject;
     
     UIButton *imagePickButton;
+    
 }
 
 -(void)loadNavigationControlls;
@@ -116,6 +117,8 @@
 @property (nonatomic, strong) IBOutlet UIButton *imagePickButton;
 
 @property (nonatomic, assign) BOOL hasAppeared;
+
+
 
 
 @end

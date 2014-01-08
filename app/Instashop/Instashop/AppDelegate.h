@@ -10,6 +10,8 @@
 #import "Instagram.h"
 #import "AuthenticationViewController.h"
 #import "AppRootViewController.h"
+#import "InstagramShareView.h"
+#import "ProfileViewController.h"
 
 #define INSTASHOP_INSTAGRAM_ID @"280421250"
 
@@ -23,16 +25,16 @@
     
     NSString *pushDeviceTokenString;
 
-    UIImageView *socialCoverImageView;
+    InstagramShareView *instagramShareView;
+    UIDocumentInteractionController *dicot;
 }
 
 - (void) tutorialShown;
--(void)userDidLogin;
--(void)userDidLogout;
--(void)makeSafariCallWithURL:(NSURL *)theURL;
-
-
-- (void)loadShareCoverViewWithImage:(UIImage *)theImage;
+- (void) userDidLogin;
+- (void) userDidLogout;
+- (void) makeSafariCallWithURL:(NSURL *)theURL;
+- (void) loadShareCoverViewProfileViewController:(ProfileViewController *)theProfileViewController;
+- (void) socialImageSelected:(UIImage *)theImage;
 
 
 @property (strong, nonatomic) UIWindow *window;
@@ -44,7 +46,7 @@
 
 @property (strong, nonatomic) NSString *pushDeviceTokenString;
 
-@property (strong, nonatomic) UIImageView *socialCoverImageView;
-
+@property (strong, nonatomic) InstagramShareView *instagramShareView;
+@property (strong, nonatomic) UIDocumentInteractionController *dicot;
 
 @end

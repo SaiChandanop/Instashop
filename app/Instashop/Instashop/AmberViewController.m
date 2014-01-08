@@ -204,7 +204,7 @@
             [dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
             
             
-            [del loadShareCoverViewWithImage:img];
+//            [del loadShareCoverViewWithImage:img];
         }
     }
     

@@ -215,25 +215,8 @@
         
         NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
         if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
-        {
-            CGRect rect = CGRectMake(0,0,0,0);
-            CGRect cropRect=CGRectMake(0,0,612,612);
-            NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
-            CGImageRef imageRef = CGImageCreateWithImageInRect([self.backgroundImageView.image CGImage], cropRect);
-            UIImage *img = [UIImage imageNamed:@"cover-Default"];//[[UIImage alloc] initWithCGImage:imageRef];
-            CGImageRelease(imageRef);
-            
-       //     BOOL writeSuccess = [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
-            
-            
-            NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
-            UIDocumentInteractionController *dicot = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
-            dicot.delegate = del;
-            dicot.UTI = @"com.instagram.photo";
-            dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];
-            [dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
-            
-            [del loadShareCoverViewWithImage:img];
+        {                        
+            [del loadShareCoverViewProfileViewController:self];
         }
     }
     

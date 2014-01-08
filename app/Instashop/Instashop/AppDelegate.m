@@ -13,6 +13,7 @@
 #import "SellersAPIHandler.h"
 #import "UserAPIHandler.h"
 #import "CategoriesAPIHandler.h"
+#import "ProfileViewController.h"
 
 #define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
 #define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
@@ -24,7 +25,7 @@
 @implementation AppDelegate
 
 @synthesize instagram, authenticationViewController, appRootViewController;
-@synthesize pushDeviceTokenString, socialCoverImageView;
+@synthesize pushDeviceTokenString, instagramShareView;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -146,29 +147,58 @@
     
 }
 
-- (void)loadShareCoverViewWithImage:(UIImage *)theImage
+- (void)loadShareCoverViewProfileViewController:(ProfileViewController *)theProfileViewController
 {
-    self.socialCoverImageView = [[UIImageView alloc] initWithFrame:CGRectMake(320 / 2 - 278 / 2,0, 278,278)];
-    self.socialCoverImageView.image = [UIImage imageNamed:@"AppIcon76x76.png"];
     
-//    UIScrollView *socialCoverImagesScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.window.
-                                                  
-    [self.window addSubview:self.socialCoverImageView];
+    CGRect rect = CGRectMake(0,0,0,0);
+    CGRect cropRect=CGRectMake(0,0,612,612);
+//    NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
+    CGImageRef imageRef = CGImageCreateWithImageInRect([theProfileViewController.backgroundImageView.image CGImage], cropRect);
+    UIImage *img = [UIImage imageNamed:@"cover-Default"];//[[UIImage alloc] initWithCGImage:imageRef];
+    CGImageRelease(imageRef);
     
-}
-- (void) documentInteractionController: (UIDocumentInteractionController *) controller willBeginSendingToApplication: (NSString *) application
-{
-    NSLog(@"willBeginSendingToApplication");
+    NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
+    
+    BOOL writeSuccess = [UIImageJPEGRepresentation([UIImage imageNamed:@"Instagram-Promo-1.png"], 1.0) writeToFile:jpgPath atomically:YES];
+    NSLog(@"writeSuccess: %d", writeSuccess);
+    
+    
+    
+    NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
+    self.dicot = [[UIDocumentInteractionController alloc] init];
+    self.dicot.URL = igImageHookFile;
+    self.dicot.delegate = self;
+    self.dicot.UTI = @"com.instagram.photo";
+    self.dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];
+    [self.dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
+    
+    
+    self.instagramShareView = [[InstagramShareView alloc] initWithFrame:CGRectMake(0, 0, 320, 278)];
+    [self.window addSubview:self.instagramShareView];
+    
 }
 
-- (void) documentInteractionControllerDidDismissOpenInMenu: (UIDocumentInteractionController *) controller
+- (void) socialImageSelected:(UIImage *)theImage
 {
-    NSLog(@"documentInteractionControllerDidDismissOpenInMenu");
-    [self.socialCoverImageView removeFromSuperview];
-    self.socialCoverImageView;
-    self.socialCoverImageView = nil;
+    NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
+    
+    BOOL writeSuccess = [UIImageJPEGRepresentation(theImage, 1.0) writeToFile:jpgPath atomically:YES];
+    NSLog(@"writeSuccess: %d", writeSuccess);
+    
+    NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
+    self.dicot.URL = igImageHookFile;
+    self.dicot.delegate = self;
+    self.dicot.UTI = @"com.instagram.photo";
+    self.dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];
+    
+    NSLog(@"socialImageSelected, theImage: %@", theImage);
 }
 
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application{
+    [self.instagramShareView removeFromSuperview];
+    NSLog(@"documentInteractionController will begin sending");
+    
+}
 - (void) documentInteractionControllerDidDismissOptionsMenu: (UIDocumentInteractionController *) controller
 {
     NSLog(@"documentInteractionControllerDidDismissOptionsMenu");
@@ -204,20 +234,5 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
-
-/*
-// Optional UITabBarControllerDelegate method.
-- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
-{
-}
-*/
-
-/*
-// Optional UITabBarControllerDelegate method.
-- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
-{
-}
-*/
 
 @end

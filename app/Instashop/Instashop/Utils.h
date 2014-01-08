@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define PROMOTE_TEXT @"This is the promote text"
+#define PROMOTE_TEXT @"Download Shopsy now"
 
 @interface Utils : NSObject
 
