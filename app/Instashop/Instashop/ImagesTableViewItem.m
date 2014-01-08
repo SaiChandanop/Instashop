@@ -56,6 +56,7 @@
 
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary
 {
+    self.contentImageView.image = nil;
     if ([theDictionary isKindOfClass:[TableCellAddClass class]])
     {
         self.objectDictionary = theDictionary;
@@ -110,13 +111,16 @@
     
     
 }
+-(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
+{
+    if ([url compare:self.imageProductURL] == NSOrderedSame)
+        self.contentImageView.image = theImage;
+}
 
 -(void)imageReturnedWithURL:(NSString *)url withData:(NSData *)theData
 {
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = [UIImage imageWithData:theData];
-    
-
 }
 
 

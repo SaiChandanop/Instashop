@@ -29,7 +29,8 @@
 - (void) cleanContent;
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary;
 - (void) loadContentWithInstagramDictionaryObject:(NSDictionary *)theDictionary;
--(void)imageReturnedWithURL:(NSString *)url withData:(NSData *)theData;
+- (void) imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage;
+- (void) imageReturnedWithURL:(NSString *)url withData:(NSData *)theData;
 @property (nonatomic, strong) UIImageView *backgroundImageView;
 @property (nonatomic, strong) UIImageView *contentImageView;
 @property (nonatomic, strong) UIButton *coverButton;

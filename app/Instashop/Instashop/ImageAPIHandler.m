@@ -11,6 +11,7 @@
 #import "ImagesTableViewCell.h"
 #import "CacheManager.h"
 #import "PurchasingViewController.h"
+#import "ImagesTableViewItem.h"
 @implementation ImageAPIHandler
 
 @synthesize theImageView;
@@ -56,6 +57,9 @@ static ImageAPIHandler *sharedImageAPIHandler;
     UIImage *theImage = [[CacheManager getSharedCacheManager] getImageWithURL:instagramMediaURLString];
     if (theImage != nil)
     {
+        if ([theDelegate isKindOfClass:[ImagesTableViewItem class]])
+             [theDelegate imageReturnedWithURL:instagramMediaURLString withImage:theImage];
+        /*
         if (referenceImageView != nil)
         {
             referenceImageView.image = theImage;
@@ -64,7 +68,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
             if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
                 [(ISAsynchImageView *)referenceImageView ceaseAnimations];
         }
-        
+        */
     }
     else
     {
@@ -98,8 +102,15 @@ static ImageAPIHandler *sharedImageAPIHandler;
         if ([self.delegate isKindOfClass:[ImagesTableViewItem class]])
             [((ImagesTableViewItem *)self.delegate) imageReturnedWithURL:self.contextObject withData:self.responseData];
     }
+    else if ([self.delegate isKindOfClass:[ImagesTableViewItem class]])
+    {
+//        NSLog(@"no, here");
+        [((ImagesTableViewItem *)self.delegate) imageReturnedWithURL:self.contextObject withImage:responseImage];
+    }
     else if (self.theImageView != nil)
     {
+//        NSLog(@"self.self.delegate: %@", self.delegate);
+//        NSLog(@"here");
         self.theImageView.image = responseImage;
         self.theImageView.alpha = 1;
         
