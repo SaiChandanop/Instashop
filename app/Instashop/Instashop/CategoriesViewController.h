@@ -20,6 +20,9 @@
     NSMutableArray *selectedCategoriesArray;
     
     UITableView *initialTableReference;
+    
+    CategoriesTableViewController *initialCategoriesTableViewController;
+    CategoriesTableViewController *categoriesTableViewController;
 }
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController;
@@ -30,4 +33,7 @@
 @property (nonatomic, strong) NSMutableArray *selectedCategoriesArray;
 
 @property (nonatomic, strong) UITableView *initialTableReference;
+
+@property (nonatomic, strong) CategoriesTableViewController *initialCategoriesTableViewController;
+@property (nonatomic, strong) CategoriesTableViewController *categoriesTableViewController;
 @end

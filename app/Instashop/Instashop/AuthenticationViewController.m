@@ -133,58 +133,6 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)igDidLogin
-{
-    [self.loginWebView removeFromSuperview];
-    // here i can store accessToken
-    AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    [[NSUserDefaults standardUserDefaults] setObject:appDelegate.instagram.accessToken forKey:@"accessToken"];
-    [[NSUserDefaults standardUserDefaults] synchronize];
-
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self", @"method", nil];
-    [appDelegate.instagram requestWithParams:params
-                                    delegate:self];
-    [appDelegate userDidLogin];
-    
-    [self.loginWebView removeFromSuperview];
- 
-    UIButton *buyerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    buyerButton.frame = CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height / 2 - 40, 100, 40);
-    [buyerButton setTitle:@"buyer" forState:UIControlStateNormal];
-    [buyerButton addTarget:self action:@selector(buyerButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:buyerButton];
-    
-    UIButton *sellerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    sellerButton.frame = CGRectMake(buyerButton.frame.origin.x, buyerButton.frame.origin.y + buyerButton.frame.size.height + 10, buyerButton.frame.size.width, buyerButton.frame.size.height);
-    [sellerButton setTitle:@"seller" forState:UIControlStateNormal];
-    [sellerButton addTarget:self action:@selector(sellerButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:sellerButton];
-}
-
--(void)buyerButtonHit
-{
-    
-}
-
--(void)sellerButtonHit
-{
-//    [SellersAPIHandler makeCreateSellerRequestWithDelegate:self withInstagramUserObject:[InstagramUserObject getStoredUserObject] ];
-}
--(void)igDidNotLogin:(BOOL)cancelled
-{
-    
-}
-
--(void)igDidLogout
-{
-    
-}
-
--(void)igSessionInvalidated
-{
-    
-}
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error {
     NSLog(@"Instagram did fail: %@", error);
@@ -217,13 +165,13 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
 
-       if (![defaults objectForKey:defaultFirstUserKey]) {
+       if ([defaults objectForKey:defaultFirstUserKey] == nil) {
             [defaults setObject:[NSDate date] forKey:defaultFirstUserKey];
             [defaults synchronize];
             [del.appRootViewController runTutorial];
         }
-
-        [del userDidLogin];
+       else
+           [del userDidLogin];
         
         [SellersAPIHandler makeCheckIfSellerExistsCallWithDelegate:self];
     }

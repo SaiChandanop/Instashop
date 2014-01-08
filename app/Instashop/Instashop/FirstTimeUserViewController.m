@@ -108,7 +108,7 @@
     // Enter email View Controller
     
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
-    self.enterEmailViewController.view.frame = CGRectMake(0.0, 0.0, screenWidth, screenHeight);
+    self.enterEmailViewController.view.frame = CGRectMake(0.0, 44, screenWidth, screenHeight);
     self.enterEmailViewController.firstTimeUserViewController = self;
     [self.enterEmailViewController setTitle:@"Enter Email"];
     
@@ -118,7 +118,10 @@
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     navigationController.navigationBar.translucent = NO;
     navigationController.view.frame = CGRectMake(screenWidth * 4, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    //navigationController.view.frame = CGRectMake(0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    [navigationController.view addSubview:self.enterEmailViewController.view];
     [self.tutorialScrollView addSubview:navigationController.view];
+
     
     // Next Button for SuggestedViewController
     

@@ -82,15 +82,26 @@
     
     [self validateContent];
 }
+
+-(void)categoriesViewControllerShouldRemove
+{
+    [self.categoriesViewController.view removeFromSuperview];
+    self.categoriesViewController = nil;
+}
+
 -(void)categorySelectionCompleteWithArray:(NSArray *)theArray
 {
     self.categoriesLabel.text = [theArray objectAtIndex:0];
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:.30];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(categoriesViewControllerShouldRemove)];
     self.categoriesViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.categoriesViewController.view.frame.size.width, self.categoriesViewController.view.frame.size.height);
     [UIView commitAnimations];
 
     [self validateContent];
+    
+    
 }
 
 -(IBAction)categoriesButtonHit
