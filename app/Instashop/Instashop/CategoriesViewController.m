@@ -23,7 +23,8 @@
 @synthesize potentialCategoriesArray;
 @synthesize selectedCategoriesArray;
 @synthesize initialTableReference;
-
+@synthesize initialCategoriesTableViewController;
+@synthesize categoriesTableViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -43,20 +44,20 @@
     
     self.selectedCategoriesArray = [[NSMutableArray alloc] initWithCapacity:0];
     
-    CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
-    categoriesTableViewController.categoriesType = self.categoriesType;
-    categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
-    categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
-    categoriesTableViewController.positionIndex = 0;
-    categoriesTableViewController.parentController = self;
-    categoriesTableViewController.categoriesArray = [NSArray arrayWithArray:self.potentialCategoriesArray];
-    [self.view addSubview:categoriesTableViewController.tableView];
+    self.initialCategoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    self.initialCategoriesTableViewController.categoriesType = self.categoriesType;
+    self.initialCategoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+    self.initialCategoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
+    self.initialCategoriesTableViewController.positionIndex = 0;
+    self.initialCategoriesTableViewController.parentController = self;
+    self.initialCategoriesTableViewController.categoriesArray = [NSArray arrayWithArray:self.potentialCategoriesArray];
+    [self.view addSubview:self.initialCategoriesTableViewController.tableView];
     
-    categoriesTableViewController.navigationController.navigationBar.topItem.title = @"Categories";
+    self.initialCategoriesTableViewController.navigationController.navigationBar.topItem.title = @"Categories";
     
-    self.initialTableReference = categoriesTableViewController.tableView;
+    self.initialTableReference = self.initialCategoriesTableViewController.tableView;
     
-    if (categoriesTableViewController.navigationController.navigationBar.topItem.title == nil)
+    if (self.initialCategoriesTableViewController.navigationController.navigationBar.topItem.title == nil)
     {
         [self setTheTitleWithString:@"Categories" withVC:self];
     }
@@ -126,20 +127,20 @@
             
         }
         
-        CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
-        categoriesTableViewController.categoriesType = self.categoriesType;
-        categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
-        categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
-        categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
-        categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
-        categoriesTableViewController.parentController = self;
-        categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
-        categoriesTableViewController.titleString = titleString;
+        self.categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+        self.categoriesTableViewController.categoriesType = self.categoriesType;
+        self.categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+        self.categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
+        self.categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
+        self.categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
+        self.categoriesTableViewController.parentController = self;
+        self.categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
+        self.categoriesTableViewController.titleString = titleString;
         
         UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
         containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-        [containerViewController.view addSubview:categoriesTableViewController.tableView];
-        categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
+        [containerViewController.view addSubview:self.categoriesTableViewController.tableView];
+        self.categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
         [self.navigationController pushViewController:containerViewController animated:YES];
         
         [self setTheTitleWithString:titleString withVC:containerViewController];

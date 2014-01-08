@@ -95,7 +95,7 @@ float transitionTime = .456;
                                      action:nil];
     
     
-//    [self runTutorial];
+    [self runTutorial];
 }
 
 
