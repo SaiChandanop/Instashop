@@ -20,13 +20,13 @@
 - (void) closeTutorial;
 - (void) moveScrollView;
 - (void) shopWasFollowed;
-@property (nonatomic, retain) UIScrollView *tutorialScrollView;
-@property (nonatomic, retain) UIPageControl *pageControl;
-@property (nonatomic, retain) AppRootViewController *parentViewController;
-@property (nonatomic, retain) SuggestedStoresViewController *suggestedStoresViewController;
-@property (nonatomic, retain) EnterEmailViewController *enterEmailViewController;
-@property (nonatomic, retain) UIButton *nextButton;
-@property (nonatomic, retain) UIButton *loginTutorialDone;
+@property (nonatomic, strong) UIScrollView *tutorialScrollView;
+@property (nonatomic, strong) UIPageControl *pageControl;
+@property (nonatomic, strong) AppRootViewController *parentViewController;
+@property (nonatomic, strong) SuggestedStoresViewController *suggestedStoresViewController;
+@property (nonatomic, strong) EnterEmailViewController *enterEmailViewController;
+@property (nonatomic, strong) UIButton *nextButton;
+@property (nonatomic, strong) UIButton *loginTutorialDone;
 @property (nonatomic, assign) int suggestedFollowCount;
 
 @end

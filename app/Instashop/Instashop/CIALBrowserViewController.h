@@ -58,11 +58,11 @@
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url;
 
 -(void)loadRightBarItem;
-@property (nonatomic, retain, setter=loadURL:) NSURL *url;
-@property (nonatomic, retain) UIPopoverController *bookmarkPopoverController;
-@property (nonatomic, retain) UIPopoverController *addBookmarkPopoverController;
-@property (nonatomic, retain) UIActionSheet *actionActionSheet;
-@property (nonatomic, retain) UIWebView *webView;
+@property (nonatomic, strong, setter=loadURL:) NSURL *url;
+@property (nonatomic, strong) UIPopoverController *bookmarkPopoverController;
+@property (nonatomic, strong) UIPopoverController *addBookmarkPopoverController;
+@property (nonatomic, strong) UIActionSheet *actionActionSheet;
+@property (nonatomic, strong) UIWebView *webView;
 @property (getter = isModal) BOOL modal;
 @property BOOL enabledSafari;
 
@@ -74,9 +74,9 @@
 - (void)dismissAddBookmMarkViewController:(AddBookmarkViewController *)viewController;
 
 
-@property (nonatomic, retain) PurchasingViewController *purchasingViewController;
+@property (nonatomic, strong) PurchasingViewController *purchasingViewController;
 
-@property (nonatomic, retain) NSString *preloadedContent;
-@property (nonatomic, retain) UITextView *preloadedContentView;
+@property (nonatomic, strong) NSString *preloadedContent;
+@property (nonatomic, strong) UITextView *preloadedContentView;
 
 @end

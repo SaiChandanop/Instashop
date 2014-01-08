@@ -65,7 +65,6 @@
                                                             options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
                                                               error:&error];
     
-    [jsonWriter release];
     
     NSMutableURLRequest *request = [ [ NSMutableURLRequest alloc ] initWithURL: [ NSURL URLWithString:urlRequestString] ];
     [ request setHTTPMethod: @"POST" ];
@@ -86,8 +85,8 @@
 
 -(void)postmasterShipCallReturned:(id)obj
 {
-    NSString* responseString = [[[NSString alloc] initWithData:responseData
-                                                      encoding:NSUTF8StringEncoding] autorelease];
+    NSString* responseString = [[NSString alloc] initWithData:responseData
+                                                      encoding:NSUTF8StringEncoding];
     
     NSLog(@"postmasterShipCallReturned responseString: %@", responseString);
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];

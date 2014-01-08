@@ -14,8 +14,8 @@
     UILabel *theLabel;
     UIImageView *disclosureImageView;
 }
-@property (nonatomic, retain) UIView *bgView;
-@property (nonatomic, retain) UILabel *theLabel;
-@property (nonatomic, retain) UIImageView *disclosureImageView;
+@property (nonatomic, strong) UIView *bgView;
+@property (nonatomic, strong) UILabel *theLabel;
+@property (nonatomic, strong) UIImageView *disclosureImageView;
 
 @end

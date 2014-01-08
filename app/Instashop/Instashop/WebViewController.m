@@ -10,7 +10,7 @@
 #import "InstashopWebView.h"
 #import "ISConstants.h"
 #import "NavBarTitleView.h"
-
+#import "AppRootViewController.h"
 @interface WebViewController ()
 
 @end

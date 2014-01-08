@@ -30,14 +30,14 @@
 -(IBAction)viewButtonHit;
 -(void) makeIGContentRequest;
 
-@property (nonatomic, retain) SuggestedStoresViewController *parentController;
-@property (nonatomic, retain) NSString *shopViewInstagramID;
+@property (nonatomic, strong) SuggestedStoresViewController *parentController;
+@property (nonatomic, strong) NSString *shopViewInstagramID;
 
-@property (nonatomic, retain) IBOutlet UILabel *titleLabel;
-@property (nonatomic, retain) IBOutlet UILabel *bioLabel;
-@property (nonatomic, retain) IBOutlet UIImageView *theBackgroundImageView;
-@property (nonatomic, retain) IBOutlet UIImageView *profileImageView;
-@property (nonatomic, retain) IBOutlet UIButton *followButton;
+@property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UILabel *bioLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *theBackgroundImageView;
+@property (nonatomic, strong) IBOutlet UIImageView *profileImageView;
+@property (nonatomic, strong) IBOutlet UIButton *followButton;
 
 
 @end

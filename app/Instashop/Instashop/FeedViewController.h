@@ -24,12 +24,12 @@
     UITableView *theTableView;
 }
 
-@property (nonatomic, retain) AppRootViewController *parentController;
+@property (nonatomic, strong) AppRootViewController *parentController;
 
-@property (nonatomic, retain) NSMutableArray *feedItemsArray;
+@property (nonatomic, strong) NSMutableArray *feedItemsArray;
 
-@property (nonatomic, retain) id selectedObject;
+@property (nonatomic, strong) id selectedObject;
 
-@property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
-@property (nonatomic, retain) IBOutlet UITableView *theTableView;
+@property (nonatomic, strong) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
+@property (nonatomic, strong) IBOutlet UITableView *theTableView;
 @end

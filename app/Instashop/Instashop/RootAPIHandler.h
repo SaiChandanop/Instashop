@@ -26,10 +26,10 @@
 
 }
 
-@property (nonatomic, retain) SMWebRequest *theWebRequest;
-@property (nonatomic, retain) id delegate;
-@property (nonatomic, retain) NSData *responseData;
-@property (nonatomic, retain) NSURLResponse *response;
+@property (nonatomic, strong) SMWebRequest *theWebRequest;
+@property (nonatomic, strong) id delegate;
+@property (nonatomic, strong) NSData *responseData;
+@property (nonatomic, strong) NSURLResponse *response;
 
-@property (nonatomic, retain) id contextObject;
+@property (nonatomic, strong) id contextObject;
 @end

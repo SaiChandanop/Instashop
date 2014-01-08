@@ -34,8 +34,8 @@
 
 -(void)suggestedShopsComplete:(id)theObj
 {
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding];
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     

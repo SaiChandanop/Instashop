@@ -10,7 +10,8 @@
 #import "ImageAPIHandler.h"
 #import "TTTTimeIntervalFormatter.h"
 #import "CommentsTableViewController.h"
-#import "PurchasingAddressViewController.h"
+#import "PurchasingViewController.h"
+#import "CommentsTableViewController.h"
 
 @implementation CommentsTableViewCell
 
@@ -51,7 +52,7 @@
         self.commentTextField.delegate = self;
         [self addSubview:self.commentTextField];
         
-        self.commentGoButton = [[UIButton buttonWithType:UIButtonTypeRoundedRect] retain];
+        self.commentGoButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [self.commentGoButton setTitle:@"go" forState:UIControlStateNormal];
         self.commentGoButton.frame = CGRectMake(self.frame.size.width - 60, self.commentTextField.frame.origin.y, 45, self.commentTextField.frame.size.height);
         [self addSubview:self.commentGoButton];

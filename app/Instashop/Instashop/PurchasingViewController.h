@@ -78,58 +78,61 @@
 - (IBAction) quantityButtonHit;
 - (IBAction) saveButtonHit;
 - (void) loadContentViews;
-
+-(void)imageRequestFinished:(UIImageView *)referenceImageView;
+-(void)savedItemsCompleted;
+-(void)openActionSheetFromCallerController:(UIViewController *)callerController;
 - (void)webControllerBackButtonHit;
 
 -(void)commentAddTextShouldBeginEditingWithTextField:(UITextField *)theTextField;
 -(void)commentAddTextShouldEndEditing;
+-(void)amberSupportedSiteCallFinishedWithIsSupported:(BOOL)isSupported withExpandedURLString:(NSString *)expandedURLString;
 
-@property (nonatomic, retain) SizePickerViewViewController *sizePickerViewViewController;
-@property (nonatomic, retain) IBOutlet CommentsTableViewController *commentsTableViewController;
-@property (nonatomic, retain) NSString *requestingProductID;
-@property (nonatomic, retain) NSDictionary *requestedPostmasterDictionary;
+@property (nonatomic, strong) SizePickerViewViewController *sizePickerViewViewController;
+@property (nonatomic, strong) IBOutlet CommentsTableViewController *commentsTableViewController;
+@property (nonatomic, strong) NSString *requestingProductID;
+@property (nonatomic, strong) NSDictionary *requestedPostmasterDictionary;
 
-@property (nonatomic, retain) IBOutlet UIImageView *heartImageView;
-@property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
-@property (nonatomic, retain) IBOutlet UIImageView *imageView;
+@property (nonatomic, strong) IBOutlet UIImageView *heartImageView;
+@property (nonatomic, strong) IBOutlet UIScrollView *contentScrollView;
+@property (nonatomic, strong) IBOutlet UIImageView *imageView;
 
-@property (nonatomic, retain) IBOutlet UIView *categoryContainerView;
-@property (nonatomic, retain) IBOutlet UIImageView *categoryContainerBottomSeparatorImageView;
-@property (nonatomic, retain) IBOutlet UIImageView *categoryContainerImageView;
-@property (nonatomic, retain) IBOutlet UIView *doubleTapView;
-@property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
-@property (nonatomic, retain) IBOutlet UILabel *likesLabel;
-@property (nonatomic, retain) IBOutlet UIView *descriptionContainerView;
-@property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
-@property (nonatomic, retain) IBOutlet UILabel *listPriceLabel;
-@property (nonatomic, retain) IBOutlet UILabel *retailPriceLabel;
-@property (nonatomic, retain) IBOutlet UILabel *numberAvailableLabel;
-@property (nonatomic, retain) IBOutlet ISAsynchImageView *sellerProfileImageView;
-@property (nonatomic, retain) IBOutlet UIButton *sizeButton;
-@property (nonatomic, retain) IBOutlet UIButton *quantityButton;
-@property (nonatomic, retain) IBOutlet UIButton *saveButton;
-@property (nonatomic, retain) IBOutlet UIButton *purchaseButton;
-@property (nonatomic, retain) IBOutlet UIView *bottomView;
+@property (nonatomic, strong) IBOutlet UIView *categoryContainerView;
+@property (nonatomic, strong) IBOutlet UIImageView *categoryContainerBottomSeparatorImageView;
+@property (nonatomic, strong) IBOutlet UIImageView *categoryContainerImageView;
+@property (nonatomic, strong) IBOutlet UIView *doubleTapView;
+@property (nonatomic, strong) IBOutlet UILabel *sellerLabel;
+@property (nonatomic, strong) IBOutlet UILabel *likesLabel;
+@property (nonatomic, strong) IBOutlet UIView *descriptionContainerView;
+@property (nonatomic, strong) IBOutlet UITextView *descriptionTextView;
+@property (nonatomic, strong) IBOutlet UILabel *listPriceLabel;
+@property (nonatomic, strong) IBOutlet UILabel *retailPriceLabel;
+@property (nonatomic, strong) IBOutlet UILabel *numberAvailableLabel;
+@property (nonatomic, strong) IBOutlet ISAsynchImageView *sellerProfileImageView;
+@property (nonatomic, strong) IBOutlet UIButton *sizeButton;
+@property (nonatomic, strong) IBOutlet UIButton *quantityButton;
+@property (nonatomic, strong) IBOutlet UIButton *saveButton;
+@property (nonatomic, strong) IBOutlet UIButton *purchaseButton;
+@property (nonatomic, strong) IBOutlet UIView *bottomView;
 
 @property (nonatomic, assign) int sizeSelectedIndex;
 
-@property (nonatomic, retain) NSArray *likesArray;
+@property (nonatomic, strong) NSArray *likesArray;
 
-@property (nonatomic, retain) UIActionSheet *actionSheet;
+@property (nonatomic, strong) UIActionSheet *actionSheet;
 
-@property (nonatomic, retain) IBOutlet UIButton *facebookButton;
-@property (nonatomic, retain) IBOutlet UIButton *twitterButton;
+@property (nonatomic, strong) IBOutlet UIButton *facebookButton;
+@property (nonatomic, strong) IBOutlet UIButton *twitterButton;
 
-@property (nonatomic, retain) NSString *viglinkString;
+@property (nonatomic, strong) NSString *viglinkString;
 
-@property (nonatomic, retain) UITextField *commentTextField;
-@property (nonatomic, retain) UIButton *commentExitButton;
+@property (nonatomic, strong) UITextField *commentTextField;
+@property (nonatomic, strong) UIButton *commentExitButton;
 
-@property (nonatomic, retain) CIALBrowserViewController *cialBrowserViewController;
+@property (nonatomic, strong) CIALBrowserViewController *cialBrowserViewController;
 
 @property (nonatomic, assign) BOOL isEditable;
 
-@property (nonatomic, retain) UIViewController *actionSheetHandlingViewController;
+@property (nonatomic, strong) UIViewController *actionSheetHandlingViewController;
 
 @property (nonatomic, assign) BOOL isBuying;
 

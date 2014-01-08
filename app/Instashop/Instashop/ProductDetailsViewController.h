@@ -85,50 +85,50 @@
 - (IBAction) twitterButtonHit;
 
 
-@property (nonatomic, retain) ProductCreateViewController *parentController;
-@property (nonatomic, retain) SizeQuantityTableViewController *sizeQuantityTableViewController;
+@property (nonatomic, strong) ProductCreateViewController *parentController;
+@property (nonatomic, strong) SizeQuantityTableViewController *sizeQuantityTableViewController;
 
-@property (nonatomic, retain) NSMutableArray *attributesArray;
-@property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;
-@property (nonatomic, retain) NSDictionary *editingProductObject;
-@property (nonatomic, retain) NSString *instagramPictureURLString;
+@property (nonatomic, strong) NSMutableArray *attributesArray;
+@property (nonatomic, strong) NSDictionary *instragramMediaInfoDictionary;
+@property (nonatomic, strong) NSDictionary *editingProductObject;
+@property (nonatomic, strong) NSString *instagramPictureURLString;
 @property (nonatomic, assign) int sizeTableExposedCount;
 @property (nonatomic, assign) CGRect originalPriceViewRect;
-@property (nonatomic, retain) NSString *editingProductID;
+@property (nonatomic, strong) NSString *editingProductID;
 
-@property (nonatomic, retain) IBOutlet UIScrollView *containerScrollView;
-
-
-@property (nonatomic, retain) IBOutlet UIImageView *theImageView;
-@property (nonatomic, retain) IBOutlet UITextView *titleTextView;
-
-@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *descriptionContainerView;
-@property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
+@property (nonatomic, strong) IBOutlet UIScrollView *containerScrollView;
 
 
-@property (nonatomic, retain) IBOutlet ISLightRowContainerView *categoriesContainerView;
-@property (nonatomic, retain) IBOutlet UITextField *selectedCategoriesLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *theImageView;
+@property (nonatomic, strong) IBOutlet UITextView *titleTextView;
 
-@property (nonatomic, retain) IBOutlet ISDarkRowContainerView *retailPriceContainerView;
-@property (nonatomic, retain) IBOutlet UITextField *retailPriceTextField;
+@property (nonatomic, strong) IBOutlet ISDarkRowContainerView *descriptionContainerView;
+@property (nonatomic, strong) IBOutlet UITextView *descriptionTextView;
 
-@property (nonatomic, retain) IBOutlet ISLightRowContainerView *instashopPriceContainerView;
-@property (nonatomic, retain) IBOutlet UITextField *instashopPriceTextField;
 
-@property (nonatomic, retain) UIView *sizeQuantityView;
-@property (nonatomic, retain) IBOutlet UIButton *addSizeButton;
-@property (nonatomic, retain) IBOutlet UILabel *urlLabel;
+@property (nonatomic, strong) IBOutlet ISLightRowContainerView *categoriesContainerView;
+@property (nonatomic, strong) IBOutlet UITextField *selectedCategoriesLabel;
 
-@property (nonatomic, retain) IBOutlet UIView *pricesView;
+@property (nonatomic, strong) IBOutlet ISDarkRowContainerView *retailPriceContainerView;
+@property (nonatomic, strong) IBOutlet UITextField *retailPriceTextField;
 
-@property (nonatomic, retain) IBOutlet ISLightRowContainerView *urlContainerView;
+@property (nonatomic, strong) IBOutlet ISLightRowContainerView *instashopPriceContainerView;
+@property (nonatomic, strong) IBOutlet UITextField *instashopPriceTextField;
 
-@property (nonatomic, retain) IBOutlet ISLightRowContainerView *socialButtonContainerView;
-@property (nonatomic, retain) IBOutlet UIButton *facebookButton;
-@property (nonatomic, retain) IBOutlet UIButton *twitterButton;
-@property (nonatomic, retain) IBOutlet UIButton *urlButton;
-@property (nonatomic, retain) IBOutlet UIButton *nextButton;
+@property (nonatomic, strong) UIView *sizeQuantityView;
+@property (nonatomic, strong) IBOutlet UIButton *addSizeButton;
+@property (nonatomic, strong) IBOutlet UILabel *urlLabel;
 
-@property (nonatomic, retain) CIALBrowserViewController *browserViewController;
+@property (nonatomic, strong) IBOutlet UIView *pricesView;
+
+@property (nonatomic, strong) IBOutlet ISLightRowContainerView *urlContainerView;
+
+@property (nonatomic, strong) IBOutlet ISLightRowContainerView *socialButtonContainerView;
+@property (nonatomic, strong) IBOutlet UIButton *facebookButton;
+@property (nonatomic, strong) IBOutlet UIButton *twitterButton;
+@property (nonatomic, strong) IBOutlet UIButton *urlButton;
+@property (nonatomic, strong) IBOutlet UIButton *nextButton;
+
+@property (nonatomic, strong) CIALBrowserViewController *browserViewController;
 @property (nonatomic, assign) BOOL isEdit;
 @end

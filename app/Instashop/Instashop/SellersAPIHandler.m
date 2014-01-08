@@ -168,7 +168,7 @@
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
     
     // set up the request
-    NSMutableURLRequest *request = [[[NSMutableURLRequest alloc] init] autorelease];
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     [request setURL:url];
     
     // create a boundary to delineate the file
@@ -300,7 +300,7 @@
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/sellerManager.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
-    NSLog(@"urlRequestString: %@", urlRequestString);
+//    NSLog(@"urlRequestString: %@", urlRequestString);
     
     URLRequest.HTTPMethod = @"POST";
     NSMutableString *thePostString  = [NSMutableString stringWithCapacity:0];
@@ -321,7 +321,7 @@
 
 -(void)updateSellerDescriptionFinished:(id)object
 {
-    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    NSString* responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     //    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
     NSLog(@"getSellerDetailsFinished: %@", responseString);

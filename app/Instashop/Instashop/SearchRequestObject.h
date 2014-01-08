@@ -16,6 +16,6 @@
 
 -(id)initWithCategoriesArray:(NSArray *)theCategoriesArray withFreeTextArray:(NSArray *)theFreeTextArray;
 
-@property (nonatomic, retain) NSArray *searchCategoriesArray;
-@property (nonatomic, retain) NSArray *searchFreeTextArray;
+@property (nonatomic, strong) NSArray *searchCategoriesArray;
+@property (nonatomic, strong) NSArray *searchFreeTextArray;
 @end

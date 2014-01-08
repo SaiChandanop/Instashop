@@ -7,6 +7,8 @@
 //
 
 #import "SavedItemsAPIHandler.h"
+#import "PurchasingViewController.h"
+
 
 @implementation SavedItemsAPIHandler
 
@@ -38,10 +40,11 @@
 
 -(void)makeSavedItemRequestWithInstagramIDDone:(id)object
 {
-    NSString* newStr = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];    
+    NSString* newStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];    
     NSLog(@"makeSavedItemRequestWithInstagramIDDone: %@", newStr);
     
-    [self.delegate savedItemsCompleted];
+    if ([self.delegate isKindOfClass:[PurchasingViewController class]])
+        [((PurchasingViewController *)self.delegate) savedItemsCompleted];
 }
 
 @end

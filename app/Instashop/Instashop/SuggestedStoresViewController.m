@@ -80,7 +80,7 @@
     [self.view insertSubview:bgImageView atIndex:0];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil] autorelease];
+    [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
     
 }
 

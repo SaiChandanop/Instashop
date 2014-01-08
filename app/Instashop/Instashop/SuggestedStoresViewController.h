@@ -36,15 +36,15 @@
 -(void) shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected;
 -(void) shopViewButtonHitWithID:(NSString *)instagramID;
 
-@property (nonatomic, retain) AppRootViewController *appRootViewController;
-@property (nonatomic, retain) FirstTimeUserViewController *firstTimeUserViewController;
+@property (nonatomic, strong) AppRootViewController *appRootViewController;
+@property (nonatomic, strong) FirstTimeUserViewController *firstTimeUserViewController;
 
-@property (nonatomic, retain) IBOutlet UIScrollView *contentScrollView;
-@property (nonatomic, retain) UIButton *closeTutorialButton;
+@property (nonatomic, strong) IBOutlet UIScrollView *contentScrollView;
+@property (nonatomic, strong) UIButton *closeTutorialButton;
 
-@property (nonatomic, retain) NSMutableArray *selectedShopsIDSArray;
-@property (nonatomic, retain) NSMutableDictionary *containerViewsDictionary;
-@property (nonatomic, retain) NSMutableArray *followedIDsArray;
+@property (nonatomic, strong) NSMutableArray *selectedShopsIDSArray;
+@property (nonatomic, strong) NSMutableDictionary *containerViewsDictionary;
+@property (nonatomic, strong) NSMutableArray *followedIDsArray;
 
 @property (nonatomic, assign) BOOL isLaunchedFromMenu;
 

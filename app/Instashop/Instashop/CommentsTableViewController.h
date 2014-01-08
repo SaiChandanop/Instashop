@@ -17,6 +17,6 @@
     NSArray *commentsDataArray;
 }
 
-@property (nonatomic, retain) PurchasingViewController *parentController;
-@property (nonatomic, retain) NSArray *commentsDataArray;
+@property (nonatomic, strong) PurchasingViewController *parentController;
+@property (nonatomic, strong) NSArray *commentsDataArray;
 @end

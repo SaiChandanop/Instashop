@@ -8,8 +8,6 @@
 
 #import "AppRootViewController.h"
 #import "ProductCreateViewController.h"
-#import "STPCard.h"
-#import "StripeAuthenticationHandler.h"
 #import "AttributesManager.h"
 #import "ISConstants.h"
 #import "ProfileViewController.h"
@@ -91,13 +89,13 @@ float transitionTime = .456;
     
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
     
     
-    [self runTutorial];
+//    [self runTutorial];
 }
 
 
@@ -125,7 +123,7 @@ float transitionTime = .456;
 {
     if (self.theSearchViewController != nil)
     {
-        [self.theSearchViewController release];
+        self.theSearchViewController;
         self.theSearchViewController = nil;
     }
     self.areViewsTransitioning = NO;
@@ -290,11 +288,13 @@ float transitionTime = .456;
 
 - (IBAction) profileButtonHit
 {
+    NSLog(@"profileButtonHit");
     [self homeButtonHit];
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
     profileViewController.profileInstagramID = [InstagramUserObject getStoredUserObject].userID;
     [self.feedNavigationController pushViewController:profileViewController animated:YES];
     [profileViewController loadNavigationControlls];
+    
 }
 
 

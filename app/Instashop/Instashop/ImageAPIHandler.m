@@ -10,6 +10,7 @@
 #import "ISAsynchImageView.h"
 #import "ImagesTableViewCell.h"
 #import "CacheManager.h"
+#import "PurchasingViewController.h"
 @implementation ImageAPIHandler
 
 @synthesize theImageView;
@@ -93,7 +94,9 @@ static ImageAPIHandler *sharedImageAPIHandler;
     
     else if ([self.delegate isKindOfClass:[ImagesTableViewCell class]])
     {
-       [self.delegate imageReturnedWithURL:self.contextObject withData:self.responseData];
+
+        if ([self.delegate isKindOfClass:[ImagesTableViewItem class]])
+            [((ImagesTableViewItem *)self.delegate) imageReturnedWithURL:self.contextObject withData:self.responseData];
     }
     else if (self.theImageView != nil)
     {
@@ -102,7 +105,8 @@ static ImageAPIHandler *sharedImageAPIHandler;
         
         if ([self.delegate respondsToSelector:@selector(imageRequestFinished:)])
         {
-            [self.delegate imageRequestFinished:self.theImageView];
+            if ([self.delegate isKindOfClass:[PurchasingViewController class]])
+                [((PurchasingViewController *)self.delegate) imageRequestFinished:self.theImageView];
         }
         
         if ([self.theImageView isKindOfClass:[ISAsynchImageView class]])
@@ -136,11 +140,10 @@ static ImageAPIHandler *sharedImageAPIHandler;
         else
             [self.delegate imageReturnedWithURL:self.contextObject withData:self.receivedData];
     
-    [self.contextObject release];
+    self.contextObject;
 //    [self.theImageView release];
     [self.receivedData setLength:0];
-    [self.receivedData release];
-    [self release];
+    self.receivedData;
 }
 
 

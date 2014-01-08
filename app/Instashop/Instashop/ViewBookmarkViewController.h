@@ -17,9 +17,9 @@
     BookmarkObject *_bookmark;
 }
 
-@property (retain,nonatomic) id delegate;
-@property (retain,nonatomic) UIBarButtonItem *doneButtonItem;
-@property (retain,nonatomic) BookmarkObject *bookmark;
+@property (strong,nonatomic) id delegate;
+@property (strong,nonatomic) UIBarButtonItem *doneButtonItem;
+@property (strong,nonatomic) BookmarkObject *bookmark;
 
 - (void)setBookmark:(NSString *)aName url:(NSURL *)aURL;
 - (void)doneButtonAction;

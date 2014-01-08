@@ -18,9 +18,9 @@
 }
 -(void)run;
 
-@property (nonatomic, retain) IBOutlet UIWebView *amberWebView;
-@property (nonatomic, retain) IBOutlet UIView *loadingView;
-@property (nonatomic, retain) NSString *referenceURLString;
-@property (nonatomic, retain) NSString *viglinkString;
-@property (nonatomic, retain) UIImage *referenceImage;
+@property (nonatomic, strong) IBOutlet UIWebView *amberWebView;
+@property (nonatomic, strong) IBOutlet UIView *loadingView;
+@property (nonatomic, strong) NSString *referenceURLString;
+@property (nonatomic, strong) NSString *viglinkString;
+@property (nonatomic, strong) UIImage *referenceImage;
 @end

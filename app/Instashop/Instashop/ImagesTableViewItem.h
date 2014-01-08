@@ -29,16 +29,16 @@
 - (void) cleanContent;
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary;
 - (void) loadContentWithInstagramDictionaryObject:(NSDictionary *)theDictionary;
+-(void)imageReturnedWithURL:(NSString *)url withData:(NSData *)theData;
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIImageView *contentImageView;
+@property (nonatomic, strong) UIButton *coverButton;
+@property (nonatomic, strong) UIView *greyCoverView;
+@property (nonatomic, strong) NSDictionary *objectDictionary;
+@property (nonatomic, strong) NSDictionary *instagramObjectDictionary;
 
-@property (nonatomic, retain) UIImageView *backgroundImageView;
-@property (nonatomic, retain) UIImageView *contentImageView;
-@property (nonatomic, retain) UIButton *coverButton;
-@property (nonatomic, retain) UIView *greyCoverView;
-@property (nonatomic, retain) NSDictionary *objectDictionary;
-@property (nonatomic, retain) NSDictionary *instagramObjectDictionary;
-
-@property (nonatomic, retain) NSString *imageProductURL;
-@property (nonatomic, retain) id delegate;
+@property (nonatomic, strong) NSString *imageProductURL;
+@property (nonatomic, strong) id delegate;
 
 @property (nonatomic, assign) BOOL alreadyExists;
 @end

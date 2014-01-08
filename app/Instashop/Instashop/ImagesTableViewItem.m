@@ -38,7 +38,7 @@
         self.contentImageView = [[UIImageView alloc] initWithFrame:CGRectMake(contentInset, contentInset, self.frame.size.width - 2 * contentInset, self.frame.size.height - 2 * contentInset)];
         [self addSubview:self.contentImageView];
         
-        self.coverButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        self.coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
         self.coverButton.backgroundColor = [UIColor clearColor];
         self.coverButton.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         [self.coverButton addTarget:self action:@selector(coverButtonHit) forControlEvents:UIControlEventTouchUpInside];
@@ -87,7 +87,7 @@
         self.backgroundImageView.alpha = 1;
         
         if (self.objectDictionary != nil)
-            [self.objectDictionary release];
+            self.objectDictionary;
         
         self.objectDictionary = [[NSDictionary alloc] initWithDictionary:theDictionary];
         
@@ -195,6 +195,5 @@
 -(void)dealloc
 {
     NSLog(@"%@ dealloc", self);
-    [super dealloc];
 }
 @end

@@ -21,10 +21,10 @@
     NSString *titleString;
 }
 
-@property (nonatomic, retain) CategoriesViewController *parentController;
+@property (nonatomic, strong) CategoriesViewController *parentController;
 @property (nonatomic, assign) int categoriesType;
-@property (nonatomic, retain) NSArray *categoriesArray;
-@property (nonatomic, retain) NSArray *basePriorCategoriesArray;
+@property (nonatomic, strong) NSArray *categoriesArray;
+@property (nonatomic, strong) NSArray *basePriorCategoriesArray;
 @property (nonatomic, assign) int positionIndex;
-@property (nonatomic, retain) NSString *titleString;
+@property (nonatomic, strong) NSString *titleString;
 @end

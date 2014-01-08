@@ -9,7 +9,6 @@
 #import "HomeViewController.h"
 #import "AppRootViewController.h"
 #import "UserAPIHandler.h"
-#import "PurchasingAddressViewController.h"
 #import "SellersAPIHandler.h"
 #import "GroupDiskManager.h"
 #import "InstagramUserObject.h"
@@ -68,10 +67,10 @@
     [self loadStates];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
 }
 
 
@@ -95,14 +94,14 @@
 {
     [self loadStates];
         
-    [self.parentController createSellerShouldExit:theNavigationController];
+//    [self.parentController createSellerShouldExit:theNavigationController];
         
 }
 
 
 -(void)createSellerCancelButtonHit:(UINavigationController *)theNavigationController
 {
-    [self.parentController createSellerShouldExit:theNavigationController];
+//    [self.parentController createSellerShouldExit:theNavigationController];
 }
 
 - (IBAction) privatePolicyButtonHit {

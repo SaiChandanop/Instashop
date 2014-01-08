@@ -33,7 +33,7 @@ NSString* CIALBrowserLocalizedString(NSString *key, ...)
 	
 	va_list args;
     va_start(args, key);
-    NSString *string = [[[NSString alloc] initWithFormat:localizedStringFormat arguments:args] autorelease];
+    NSString *string = [[NSString alloc] initWithFormat:localizedStringFormat arguments:args];
     va_end(args);
 	return string;
 }

@@ -16,5 +16,5 @@
 +(void)makeAmberCall;
 +(void)makeAmberSupportedSiteCallWithReference:(NSString *)referenceURLString withResponseDelegate:(id)delegate;
 
-@property (nonatomic, retain) NSMutableArray *supportedSitesArray;
+@property (nonatomic, strong) NSMutableArray *supportedSitesArray;
 @end

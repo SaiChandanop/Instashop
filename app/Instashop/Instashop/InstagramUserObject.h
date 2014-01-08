@@ -27,12 +27,12 @@
 +(InstagramUserObject *)getStoredUserObject;
 -(void)setAsStoredUser:(InstagramUserObject *)theObject;
 
-@property (nonatomic, retain) NSString *bio;
-@property (nonatomic, retain) NSDictionary *counts;
-@property (nonatomic, retain) NSString *fullName;
-@property (nonatomic, retain) NSString *userID;
-@property (nonatomic, retain) NSString *profilePicture;
-@property (nonatomic, retain) NSString *username;
-@property (nonatomic, retain) NSString *website;
-@property (nonatomic, retain) NSString *zencartID;
+@property (nonatomic, strong) NSString *bio;
+@property (nonatomic, strong) NSDictionary *counts;
+@property (nonatomic, strong) NSString *fullName;
+@property (nonatomic, strong) NSString *userID;
+@property (nonatomic, strong) NSString *profilePicture;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *website;
+@property (nonatomic, strong) NSString *zencartID;
 @end

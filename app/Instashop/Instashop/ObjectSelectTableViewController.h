@@ -41,18 +41,18 @@
 
 -(void)refreshContent;
 
-@property (nonatomic, retain) id parentController;
-@property (nonatomic, retain) id cellDelegate;
-@property (nonatomic, retain) id rowSelectedDelegate;
+@property (nonatomic, strong) id parentController;
+@property (nonatomic, strong) id cellDelegate;
+@property (nonatomic, strong) id rowSelectedDelegate;
 
-@property (nonatomic, retain) NSMutableArray *contentArray;
-@property (nonatomic, retain) NSMutableDictionary *contentRequestParameters;
+@property (nonatomic, strong) NSMutableArray *contentArray;
+@property (nonatomic, strong) NSMutableDictionary *contentRequestParameters;
 
-@property (nonatomic, retain) UITableView *referenceTableView;
+@property (nonatomic, strong) UITableView *referenceTableView;
 
 @property (nonatomic, assign) int productRequestorType;
-@property (nonatomic, retain) NSString *productRequestorReferenceObject;
+@property (nonatomic, strong) NSString *productRequestorReferenceObject;
 
-@property (nonatomic, retain) SearchRequestObject *searchRequestObject;
+@property (nonatomic, strong) SearchRequestObject *searchRequestObject;
 
 @end

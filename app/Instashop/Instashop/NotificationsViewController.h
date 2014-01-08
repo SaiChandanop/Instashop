@@ -18,6 +18,6 @@
 
 -(void)loadNotifications;
 
-@property (nonatomic, retain) IBOutlet UITableView *theTableView;
-@property (nonatomic, retain) NSMutableArray *contentArray;
+@property (nonatomic, strong) IBOutlet UITableView *theTableView;
+@property (nonatomic, strong) NSMutableArray *contentArray;
 @end

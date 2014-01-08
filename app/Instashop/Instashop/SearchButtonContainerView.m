@@ -48,7 +48,7 @@
     [self addSubview:self.exitImageView];
     
     
-    self.coverButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+    self.coverButton = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.coverButton addTarget:self action:@selector(coverButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:self.coverButton];
 }

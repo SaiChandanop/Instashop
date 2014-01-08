@@ -14,6 +14,6 @@
     UIImageView *separatorImageView;
     
 }
-@property (nonatomic, retain) UIImageView *backgroundImageView;
-@property (nonatomic, retain) UIImageView *separatorImageView;
+@property (nonatomic, strong) UIImageView *backgroundImageView;
+@property (nonatomic, strong) UIImageView *separatorImageView;
 @end

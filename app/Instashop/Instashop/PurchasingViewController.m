@@ -10,10 +10,7 @@
 #import "ImageAPIHandler.h"
 #import "FeedViewController.h"
 #import "AppDelegate.h"
-#import "STPCard.h"
-#import "StripeAuthenticationHandler.h"
 #import "ProductAPIHandler.h"
-#import "PurchasingAddressViewController.h"
 #import "SellersAPIHandler.h"
 #import "SizePickerViewViewController.h"
 #import "ProfileViewController.h"
@@ -24,7 +21,6 @@
 #import "EditProductCompleteProtocol.h"
 #import "CIALBrowserViewController.h"
 #import "ViglinkAPIHandler.h"
-#import "FBPostViewController.h"
 #import "SocialManager.h"
 #import <Social/Social.h>
 #import "AmberViewController.h"
@@ -35,7 +31,7 @@
 #import "SearchButtonContainerView.h"
 @interface PurchasingViewController ()
 
-@property (nonatomic, retain) NSDictionary *requestedProductObject;
+@property (nonatomic, strong) NSDictionary *requestedProductObject;
 
 @end
 
@@ -145,10 +141,10 @@
     [self.commentsTableViewController.tableView reloadData];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
     
 }
 
@@ -332,9 +328,6 @@
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
-    
-    //    NSLog(@"request did load!, request.url: %@", request.url);
-    //    NSLog(@"request did load!, result: %@", result);
     
     if ([request.url rangeOfString:@"comments"].length > 0)
     {
@@ -977,27 +970,9 @@
                                               otherButtonTitles:nil];
     
     [alertView show];
-    [alertView release];
 }
 
--(void)dismissFBShareController:(FBPostViewController *)callingController
-{
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:0.45];
-    callingController.view.frame = CGRectMake(0,self.view.frame.size.height, callingController.view.frame.size.width, callingController.view.frame.size.height);
-    [UIView commitAnimations];
-    
-    
-}
--(void)fbShareCancelButtonHit:(FBPostViewController *)callingController
-{
-    [self dismissFBShareController:callingController];
-}
 
--(void)fbShareGoButtonHit:(FBPostViewController *)callingController
-{
-    [self dismissFBShareController:callingController];
-}
 
 -(void)twitterShareCancelButtonHit
 {
@@ -1038,13 +1013,7 @@
         NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
         NSDictionary *productCategoryObject = [sizeQuantityArray objectAtIndex:self.sizeSelectedIndex];
         
-        PurchasingAddressViewController *purchasingAddressViewController = [[PurchasingAddressViewController alloc] initWithNibName:@"PurchasingAddressViewController" bundle:nil];
-        purchasingAddressViewController.view.frame = CGRectMake(purchasingAddressViewController.view.frame.origin.x, purchasingAddressViewController.view.frame.origin.y, purchasingAddressViewController.view.frame.size.width, purchasingAddressViewController.view.frame.size.height);
-        purchasingAddressViewController.productCategoryDictionary = productCategoryObject;
-        purchasingAddressViewController.shippingCompleteDelegate = self;
-        [self.navigationController pushViewController:purchasingAddressViewController animated:YES];
-        [purchasingAddressViewController loadWithSizeSelection:[self.sizeButton titleForState:UIControlStateNormal] withQuantitySelection:[self.quantityButton titleForState:UIControlStateNormal] withProductImage:self.imageView.image];
-        [purchasingAddressViewController loadWithRequestedProductObject:self.requestedProductObject];
+
         
     }
     

@@ -28,7 +28,7 @@
     }
     
     // Load tableView
-    self.tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -114,7 +114,7 @@
                     cell = [tableView dequeueReusableCellWithIdentifier:TextFieldCellIdentifier];
                     if (cell == nil)
                     {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TextFieldCellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TextFieldCellIdentifier];
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
                         
                         _nameTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 280, 30)];
@@ -134,7 +134,6 @@
                         
                         [cell addSubview:_nameTextField];
                         
-                        [_nameTextField release];
                     }
                     _nameTextField.text = _bookmark.name;
                     break;
@@ -144,7 +143,7 @@
                     cell = [tableView dequeueReusableCellWithIdentifier:UrlCellIdentifier];
                     if (cell == nil)
                     {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:UrlCellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:UrlCellIdentifier];
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
                         
                         _urlTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 10, 280, 30)];
@@ -165,7 +164,6 @@
                         
                         [cell addSubview:_urlTextField];
                         
-                        [_urlTextField release];
                     }
                     _urlTextField.text = [_bookmark.url absoluteString];
                     break;
@@ -216,10 +214,5 @@
 #pragma mark -
 #pragma mark Memory management
 
-- (void)dealloc
-{
-    self.bookmark = nil;
-    [super dealloc];
-}
 
 @end

@@ -40,13 +40,13 @@
 -(IBAction) sendFeedbackButtonHit;
 -(IBAction) reportBugButtonHit;
 
-@property (nonatomic, retain) AppRootViewController *parentController;
-@property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
-@property (nonatomic, retain) IBOutlet UIButton *logOutButton;
-@property (nonatomic, retain) IBOutlet UILabel *sellerLabel;
-@property (nonatomic, retain) IBOutlet UIView *termsView;
-@property (nonatomic, retain) IBOutlet UIView *logoutView;
-@property (nonatomic, retain) IBOutlet UIView *topBarView;
+@property (nonatomic, strong) AppRootViewController *parentController;
+@property (nonatomic, strong) IBOutlet UIScrollView *theScrollView;
+@property (nonatomic, strong) IBOutlet UIButton *logOutButton;
+@property (nonatomic, strong) IBOutlet UILabel *sellerLabel;
+@property (nonatomic, strong) IBOutlet UIView *termsView;
+@property (nonatomic, strong) IBOutlet UIView *logoutView;
+@property (nonatomic, strong) IBOutlet UIView *topBarView;
 
 @end
 

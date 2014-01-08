@@ -21,13 +21,13 @@ NSString *const kSMWebRequestComplete = @"SMWebRequestComplete", *const kSMWebRe
 NSString *const SMErrorResponseKey = @"response";
 
 @interface SMWebRequest ()
-@property (nonatomic, assign) id<SMWebRequestDelegate> delegate;
-@property (nonatomic, retain) id context;
-@property (nonatomic, retain) NSMutableArray *targetActions;
-@property (nonatomic, retain) NSMutableData *data;
-@property (nonatomic, retain) NSURLRequest *request;
-@property (nonatomic, retain) NSURLResponse *response;
-@property (nonatomic, retain) NSURLConnection *connection;
+@property (nonatomic, weak) id<SMWebRequestDelegate> delegate;
+@property (nonatomic, strong) id context;
+@property (nonatomic, strong) NSMutableArray *targetActions;
+@property (nonatomic, strong) NSMutableData *data;
+@property (nonatomic, strong) NSURLRequest *request;
+@property (nonatomic, strong) NSURLResponse *response;
+@property (nonatomic, strong) NSURLConnection *connection;
 @end
 
 @implementation SMWebRequest
@@ -48,13 +48,6 @@ NSString *const SMErrorResponseKey = @"response";
     //NSLog(@"Dealloc %@", self);
     [self cancel];
     self.delegate = nil;
-    self.context = nil;
-    self.request = nil;
-    self.response = nil;
-    self.data = nil;
-    self.connection = nil;
-    self.targetActions = nil;
-    [super dealloc];
 }
 
 + (SMWebRequest *)requestWithURL:(NSURL *)theURL {
@@ -90,7 +83,7 @@ NSString *const SMErrorResponseKey = @"response";
   */
     
     //[theRequest setValue:[PersistentCookieObject getCookieContent] forHTTPHeaderField:@"Cookie"];
-    return [[[SMWebRequest alloc] initWithURLRequest:theRequest delegate:theDelegate context:theContext] autorelease];
+    return [[SMWebRequest alloc] initWithURLRequest:theRequest delegate:theDelegate context:theContext];
 }
 
 - (NSString *)description {
@@ -139,7 +132,7 @@ NSString *const SMErrorResponseKey = @"response";
     SMTargetAction *ta = [self targetActionForTarget:target action:action];
     
     if (!ta) {
-        ta = [[[SMTargetAction alloc] init] autorelease];
+        ta = [[SMTargetAction alloc] init];
         ta->target = target;
         ta->action = action;
         [targetActions addObject:ta];
@@ -219,15 +212,15 @@ NSString *const SMErrorResponseKey = @"response";
 
 // in a background thread! don't touch our instance members!
 - (void)processDataInBackground:(NSData *)theData {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
+    @autoreleasepool {
     
-    id resultObject = theData;
-    
-    if ([delegate respondsToSelector:@selector(webRequest:resultObjectForData:context:)])
-        resultObject = [delegate webRequest:self resultObjectForData:theData context:context];
-    
-    [self performSelectorOnMainThread:@selector(backgroundProcessingComplete:) withObject:resultObject waitUntilDone:NO];
-    [pool release];
+        id resultObject = theData;
+        
+        if ([delegate respondsToSelector:@selector(webRequest:resultObjectForData:context:)])
+            resultObject = [delegate webRequest:self resultObjectForData:theData context:context];
+        
+        [self performSelectorOnMainThread:@selector(backgroundProcessingComplete:) withObject:resultObject waitUntilDone:NO];
+    }
 }
 
 // back on the main thread
@@ -235,8 +228,6 @@ NSString *const SMErrorResponseKey = @"response";
     
     if (!requestFlags.cancelled)
 		[self dispatchComplete:resultObject];
-	[delegate release];
-	[self release];
 }
 
 #pragma mark NSURLConnection delegate methods
@@ -267,25 +258,24 @@ NSString *const SMErrorResponseKey = @"response";
     
     self.connection = nil;
     self.data = nil;
-    [self retain]; // we must retain ourself before we call handlers, in case they release us!
+     // we must retain ourself before we call handlers, in case they release us!
     
     [self dispatchError:error];
     
-    [self release];
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)conn {
     
     //NSLog(@"Finished loading %@", self);
     
-    [self retain]; // we must retain ourself before we call handlers, in case they release us!
+     // we must retain ourself before we call handlers, in case they release us!
     
     NSInteger status = [response isKindOfClass:[NSHTTPURLResponse class]] ? [(NSHTTPURLResponse *)response statusCode] : 200;
     
     if (conn && response && status >= 400) {
         NSLog(@"Failed with HTTP status code %i while loading %@", (int)status, self);
         
-        SMErrorResponse *error = [[[SMErrorResponse alloc] init] autorelease];
+        SMErrorResponse *error = [[SMErrorResponse alloc] init];
         error.response = (NSHTTPURLResponse *)response;
         error.data = data;
         
@@ -302,8 +292,6 @@ NSString *const SMErrorResponseKey = @"response";
             // thread or else the background thread could try to do stuff with pointers to garbage.
             // thus we need have a mechanism for keeping ourselves alive during the background
             // processing.
-            [self retain];
-            [delegate retain];
             
             [self performSelectorInBackground:@selector(processDataInBackground:) withObject:data];
         }
@@ -313,16 +301,10 @@ NSString *const SMErrorResponseKey = @"response";
     
     self.connection = nil;
     self.data = nil; // don't keep this!
-    [self release];
 }
 
 @end
 
 @implementation SMErrorResponse
 @synthesize response, data;
-- (void)dealloc {
-    self.response = nil;
-    self.data = nil;
-    [super dealloc];
-}
 @end

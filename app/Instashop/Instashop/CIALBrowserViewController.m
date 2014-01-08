@@ -11,6 +11,7 @@
 #import "UIWebViewAdditions.h"
 #import "UnpreventableUILongPressGestureRecognizer.h"
 #import "ISConstants.h"
+#import "PurchasingViewController.h"
 
 @interface CIALBrowserViewController ()
 - (void)addBookmark;
@@ -39,7 +40,7 @@
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url
 {
-    CIALBrowserViewController *controller = [[[self alloc] initWithURL:url] autorelease];
+    CIALBrowserViewController *controller = [[self alloc] initWithURL:url];
     controller.modal = YES;
     return controller;
 }
@@ -68,7 +69,7 @@
     self.view.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         // Toolbar
-        toolBar = [[[UIToolbar alloc] initWithFrame:CGRectZero] autorelease];
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectZero];
         toolBar.barStyle = UIBarStyleDefault;
         [toolBar sizeToFit];
         toolBar.autoresizesSubviews = NO;
@@ -79,26 +80,26 @@
         toolBar.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleBottomMargin;
         
         NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:9];
-        UIBarButtonItem *flexibleSpaceButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+        UIBarButtonItem *flexibleSpaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                                   target:nil
-                                                                                                  action:nil] autorelease];
-        backButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserBack.png"]
+                                                                                                  action:nil];
+        backButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserBack.png"]
                                                            style:UIBarButtonItemStylePlain
                                                           target:self
-                                                          action:@selector(goBack:)] autorelease];
+                                                          action:@selector(goBack:)];
 
-        forwardButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserForward.png"]
+        forwardButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserForward.png"]
                                                               style:UIBarButtonItemStylePlain
                                                              target:self
-                                                             action:@selector(goForward:)] autorelease];
-        UIBarButtonItem *bookmarkButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
+                                                             action:@selector(goForward:)];
+        UIBarButtonItem *bookmarkButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
                                                                                              target:self
-                                                                                             action:@selector(viewBookmark:)] autorelease];
+                                                                                             action:@selector(viewBookmark:)];
         [bookmarkButtonItem setTintColor:[UIColor blackColor]];
         
-        actionButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+        actionButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                           target:self
-                                                                          action:@selector(actionButton:)] autorelease];
+                                                                          action:@selector(actionButton:)];
         
         locationField = [[UITextField alloc] initWithFrame:CGRectMake(37,7,246,31)];
         locationField.delegate = self;
@@ -116,7 +117,7 @@
         locationField.returnKeyType = UIReturnKeyGo;        
         locationField.clearButtonMode = UITextFieldViewModeWhileEditing;
         // reloadButton
-        stopReloadButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        stopReloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
         stopReloadButton.bounds = CGRectMake(0, 0, 26, 30);
         [stopReloadButton setImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/AddressViewReload.png"] forState:UIControlStateNormal];
         [stopReloadButton setImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/AddressViewReload.png"] forState:UIControlStateHighlighted];
@@ -125,7 +126,7 @@
         locationField.rightView = stopReloadButton;
         locationField.rightViewMode = UITextFieldViewModeUnlessEditing;
 
-        UIBarButtonItem *textFieldItem = [[[UIBarButtonItem alloc] initWithCustomView:locationField] autorelease];
+        UIBarButtonItem *textFieldItem = [[UIBarButtonItem alloc] initWithCustomView:locationField];
 
         [buttons addObject:flexibleSpaceButtonItem];
         [buttons addObject:backButtonItem];
@@ -158,7 +159,6 @@
         webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.view addSubview:webView];
         
-        [webView release];
     } else {
         navigationItem = [[UINavigationItem alloc] initWithTitle:nil];
         // titleView
@@ -181,7 +181,7 @@
         locationField.clearButtonMode = UITextFieldViewModeWhileEditing;
         
         // reloadButton
-        stopReloadButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        stopReloadButton = [UIButton buttonWithType:UIButtonTypeCustom];
         stopReloadButton.bounds = CGRectMake(0, 0, 26, 30);
         [stopReloadButton setImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/AddressViewReload.png"] forState:UIControlStateNormal];
         [stopReloadButton setImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/AddressViewReload.png"] forState:UIControlStateHighlighted];
@@ -202,10 +202,9 @@
         navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [navigationBar setItems:[NSArray arrayWithObject:navigationItem]];
         [self.view addSubview:navigationBar];
-        [navigationBar release];
         
         // Toolbar
-        toolBar = [[[UIToolbar alloc] initWithFrame:CGRectZero] autorelease];
+        toolBar = [[UIToolbar alloc] initWithFrame:CGRectZero];
         toolBar.barStyle = UIBarStyleDefault;
         [toolBar sizeToFit];
         toolBar.autoresizesSubviews = NO;
@@ -216,23 +215,23 @@
         toolBar.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
         
         NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:9];
-        UIBarButtonItem *flexibleSpaceButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+        UIBarButtonItem *flexibleSpaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                                   target:nil
-                                                                                                  action:nil] autorelease];
-        backButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserBack.png"]
+                                                                                                  action:nil];
+        backButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserBack.png"]
                                                            style:UIBarButtonItemStylePlain
                                                           target:self
-                                                          action:@selector(goBack:)] autorelease];
-        forwardButtonItem = [[[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserForward.png"]
+                                                          action:@selector(goBack:)];
+        forwardButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"CIALBrowser.bundle/images/browserForward.png"]
                                                               style:UIBarButtonItemStylePlain
                                                              target:self
-                                                             action:@selector(goForward:)] autorelease];
-        actionButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                             action:@selector(goForward:)];
+        actionButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                                                           target:self
-                                                                          action:@selector(actionButton:)] autorelease];
-        UIBarButtonItem *bookmarkButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
+                                                                          action:@selector(actionButton:)];
+        UIBarButtonItem *bookmarkButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemBookmarks
                                                                                              target:self
-                                                                                             action:@selector(viewBookmark:)] autorelease];
+                                                                                             action:@selector(viewBookmark:)];
         
         [bookmarkButtonItem setTintColor:[UIColor blackColor]];
         
@@ -256,7 +255,6 @@
         webView.multipleTouchEnabled = YES;
         webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
         [self.view addSubview:webView];
-        [webView release];
     }
     
 //    [bookmarkButtonItem setTintColor:[UIColor blackColor]];
@@ -267,7 +265,6 @@
     longPressRecognizer.allowableMovement = 20;
     longPressRecognizer.minimumPressDuration = 1.0f;
     [webView addGestureRecognizer:longPressRecognizer];
-    [longPressRecognizer release];
     
     
     /*
@@ -329,20 +326,18 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
     
     webView.delegate = nil;
-    [webView release],webView = nil;
-    [backButtonItem release],backButtonItem = nil;
-    [forwardButtonItem release],forwardButtonItem = nil;
-    [bookmarkButton release],bookmarkButton = nil;
-    [stopReloadButton release],stopReloadButton = nil;
-    [locationField release],locationField = nil;
-    [closeButtonItem release], closeButtonItem = nil;
-    [navigationBar release],navigationBar = nil;
-    [_urlToLoad release],_urlToLoad = nil;
-    [_urlToHandle release],_urlToHandle = nil;
+    webView = nil;
+    backButtonItem = nil;
+    forwardButtonItem = nil;
+    bookmarkButton = nil;
+    stopReloadButton = nil;
+    locationField = nil;
+    closeButtonItem = nil;
+    navigationBar = nil;
+    _urlToLoad = nil;
+    _urlToHandle = nil;
     
-    self.actionActionSheet = nil;
     
-    [super dealloc];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
@@ -445,7 +440,6 @@
         if (!url.scheme.length) {
             url = [NSURL URLWithString:[@"http://" stringByAppendingString:urlString]];
         }
-        [_urlToLoad release];
         _urlToLoad = [url copy];
     }
 }
@@ -501,8 +495,7 @@
     
     NSLog(@"shouldStartLoadWithRequest!");
     [self.preloadedContentView removeFromSuperview];
-    [req release];
-    req = (NSMutableURLRequest *)[request retain];
+    req = (NSMutableURLRequest *)request;
     [locationField resignFirstResponder];
     return YES;
 }
@@ -586,16 +579,16 @@
         [self.bookmarkPopoverController dismissPopoverAnimated:YES];
         self.bookmarkPopoverController = nil;
     } else {
-        ViewBookmarkViewController * viewBookmarkViewController = [[[ViewBookmarkViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
+        ViewBookmarkViewController * viewBookmarkViewController = [[ViewBookmarkViewController alloc] initWithStyle:UITableViewStyleGrouped];
         viewBookmarkViewController.delegate = self;
         [viewBookmarkViewController setBookmark:[webView stringByEvaluatingJavaScriptFromString:@"document.title"]
                                         url:self.url];
-        UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:viewBookmarkViewController] autorelease];
+        UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:viewBookmarkViewController];
         
         navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
         if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-            self.bookmarkPopoverController = [[[UIPopoverController alloc] initWithContentViewController:navController] autorelease];
+            self.bookmarkPopoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
             [self.bookmarkPopoverController presentPopoverFromBarButtonItem:button
                                                    permittedArrowDirections:UIPopoverArrowDirectionDown|UIPopoverArrowDirectionUp
                                                                    animated:YES];
@@ -607,16 +600,16 @@
 }
 
 - (void)addBookmark {
-    AddBookmarkViewController * addBookmarkViewController = [[[AddBookmarkViewController alloc] initWithStyle:UITableViewStyleGrouped] autorelease];
+    AddBookmarkViewController * addBookmarkViewController = [[AddBookmarkViewController alloc] initWithStyle:UITableViewStyleGrouped];
     [addBookmarkViewController setBookmark:[webView stringByEvaluatingJavaScriptFromString:@"document.title"]
                                        url:self.url];
     addBookmarkViewController.delegate = self;
-    UINavigationController *navController = [[[UINavigationController alloc] initWithRootViewController:addBookmarkViewController] autorelease];
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:addBookmarkViewController];
     
     navController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
-        self.addBookmarkPopoverController = [[[UIPopoverController alloc] initWithContentViewController:navController] autorelease];
+        self.addBookmarkPopoverController = [[UIPopoverController alloc] initWithContentViewController:navController];
         self.addBookmarkPopoverController.popoverContentSize = CGSizeMake(320.0, 150.0);
         [self.addBookmarkPopoverController presentPopoverFromBarButtonItem:actionButtonItem
                                                permittedArrowDirections:UIPopoverArrowDirectionDown|UIPopoverArrowDirectionUp
@@ -730,7 +723,6 @@
         }
         
         [self presentModalViewController:mailViewController animated:YES];
-        [mailViewController release];
     } else if (printButtonIndex == buttonIndex) {
         Class printInteractionController = NSClassFromString(@"UIPrintInteractionController");
         
@@ -761,7 +753,6 @@
     }
     
     if (req != nil) {
-        [req release];
         req = nil;
     }    
 }
@@ -801,7 +792,6 @@
                                               cancelButtonTitle:@"OK"
                                               otherButtonTitles:nil];
         [alert show];
-        [alert release];
     }
 }
 
@@ -873,7 +863,7 @@
         if ((url != nil) &&
             ([url length] != 0)) {
             // Release any previous request
-            [req release], req = nil;
+            req = nil;
             // Save URL for the request
             _urlToHandle = [[NSURL alloc] initWithString:url];
             
@@ -897,7 +887,6 @@
                 _longPressActionSheet.cancelButtonIndex = [_longPressActionSheet addButtonWithTitle:CIALBrowserLocalizedString(@"Cancel",@"")];
                 [_longPressActionSheet showInView:self.view];
             }
-            [_longPressActionSheet release];
         }        
     }
 }

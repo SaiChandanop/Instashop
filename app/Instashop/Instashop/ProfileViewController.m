@@ -76,12 +76,17 @@
     return self;
 }
 
+-(IBAction) reviewsButtonHit
+{
+    
+}
+
+
 - (void)viewDidLoad
 {
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     [super viewDidLoad];
-    
     self.buttonHighlightView.backgroundColor = [ISConstants getISGreenColor];
     
     self.productsButton.selected = YES;
@@ -116,10 +121,11 @@
     self.profileImageView.layer.borderWidth = 1;
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
+
 }
 
 
@@ -217,11 +223,11 @@
             UIImage *img = [UIImage imageNamed:@"cover-Default"];//[[UIImage alloc] initWithCGImage:imageRef];
             CGImageRelease(imageRef);
             
-            BOOL writeSuccess = [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
+       //     BOOL writeSuccess = [UIImageJPEGRepresentation(img, 1.0) writeToFile:jpgPath atomically:YES];
             
             
             NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
-            UIDocumentInteractionController *dicot = [[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile] retain];
+            UIDocumentInteractionController *dicot = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
             dicot.delegate = del;
             dicot.UTI = @"com.instagram.photo";
             dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];
@@ -273,9 +279,7 @@
 
 
 -(void)sellerDetailsResopnseDidOccurWithDictionary:(NSDictionary *)responseDictionary
-{
-    NSLog(@"sellerDetailsResopnseDidOccurWithDictionary: %@", responseDictionary);
-    
+{    
     if ([responseDictionary isKindOfClass:[NSDictionary class]])
     {
         NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", [responseDictionary objectForKey:@"seller_address"], [responseDictionary objectForKey:@"seller_city"], [responseDictionary objectForKey:@"seller_state"]];
@@ -304,8 +308,6 @@
 
 -(void)loadNavigationControlls
 {
-    NSLog(@"loadNavigationControlls");
-    
     self.isSelfProfile = YES;
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
@@ -324,6 +326,7 @@
 
 -(void) backButtonHit
 {
+    NSLog(@"backButtonHit");
     [self.descriptionTextView resignFirstResponder];
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController profileExitButtonHit:self.navigationController];
@@ -406,9 +409,7 @@
 }
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
-    NSLog(@"request did load");
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
@@ -673,6 +674,71 @@
     else
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:object];
     
+}
+
+
+-(void) viewWillDisappear:(BOOL)animated {
+    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+        // back button was pressed.  We know this is true because self is no longer
+        // in the navigation stack.
+        NSLog(@"viewWillDisappear: %@", self);
+        
+        /*
+         @property (nonatomic, retain) IBOutlet UIScrollView *enclosingScrollView;
+         
+         @property (nonatomic, retain) NSString *profileInstagramID;
+         
+         @property (nonatomic, retain) IBOutlet UIImageView *backgroundImageView;
+         @property (nonatomic, retain) IBOutlet UIButton *addBackgroundImageButton;
+         
+         @property (nonatomic, retain) IBOutlet UIImageView *profileImageView;
+         @property (nonatomic, retain) IBOutlet UILabel *usernameLabel;
+         
+         @property (nonatomic, retain) IBOutlet UIButton *followersButton;
+         @property (nonatomic, retain) IBOutlet UIButton *followingButton;
+         
+         @property (nonatomic, retain) IBOutlet UIButton *followButton;
+         
+         
+         
+         @property (nonatomic, retain) IBOutlet UIButton *productsButton;
+         @property (nonatomic, retain) IBOutlet UIButton *infoButton;
+         @property (nonatomic, retain) IBOutlet UIButton *favoritesButton;
+         @property (nonatomic, retain) IBOutlet UIView *buttonHighlightView;
+         
+         
+         @property (nonatomic, retain) IBOutlet UIButton *profileBackgroundPhotoButton;
+         
+         
+         
+         @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
+         @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *favoritesSelectTableViewController;
+         @property (nonatomic, retain) IBOutlet UITableView *theTableView;
+         
+         @property (nonatomic, retain) UILabel *titleViewLabel;
+         
+         @property (nonatomic, assign) BOOL isSelfProfile;
+         
+         @property (nonatomic, retain) NSDictionary *requestedInstagramProfileObject;
+         
+         @property (nonatomic, retain) IBOutlet UIScrollView *infoContainerScrollView;
+         @property (nonatomic, retain) IBOutlet UILabel *addressLabel;
+         @property (nonatomic, retain) IBOutlet UILabel *emailLabel;
+         @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
+         @property (nonatomic, retain) IBOutlet UIImageView *bioContainerImageView;
+         @property (nonatomic, retain) IBOutlet UILabel *bioLabel;
+         @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
+         @property (nonatomic, retain) IBOutlet UIButton *editButton;
+         @property (nonatomic, retain) IBOutlet UIButton *imagePickButton;
+         */
+    }
+    [super viewWillDisappear:animated];
+}
+
+
+- (void)dealloc
+{
+    NSLog(@"profile dealloc");
     
 }
 @end

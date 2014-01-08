@@ -24,10 +24,10 @@
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController;
 
-@property (nonatomic, retain) id parentController;
+@property (nonatomic, strong) id parentController;
 @property (nonatomic, assign) int categoriesType;
-@property (nonatomic, retain) NSArray *potentialCategoriesArray;
-@property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
+@property (nonatomic, strong) NSArray *potentialCategoriesArray;
+@property (nonatomic, strong) NSMutableArray *selectedCategoriesArray;
 
-@property (nonatomic, retain) UITableView *initialTableReference;
+@property (nonatomic, strong) UITableView *initialTableReference;
 @end

@@ -26,13 +26,13 @@
 
 -(void)makeLoginRequestWithURL:(NSURL *)theURL;
 
-@property (nonatomic, retain) UIWebView *loginWebView;
+@property (nonatomic, strong) UIWebView *loginWebView;
 
-@property (nonatomic, retain) UIViewController *instagramLoginWebViewController;
-@property (nonatomic, retain) UILabel *backLabel;
-@property (nonatomic, retain) UIButton *backButton;
+@property (nonatomic, strong) UIViewController *instagramLoginWebViewController;
+@property (nonatomic, strong) UILabel *backLabel;
+@property (nonatomic, strong) UIButton *backButton;
 @property (nonatomic, assign) BOOL firstTimeUser;
 
-@property (nonatomic, retain) IBOutlet UIView *iphoneShortView;
+@property (nonatomic, strong) IBOutlet UIView *iphoneShortView;
 
 @end

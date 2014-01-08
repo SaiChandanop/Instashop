@@ -68,52 +68,52 @@
 
 -(IBAction)followOnInstagramButtonHit;
 
-@property (nonatomic, retain) IBOutlet UIScrollView *enclosingScrollView;
+@property (nonatomic, strong) IBOutlet UIScrollView *enclosingScrollView;
 
-@property (nonatomic, retain) NSString *profileInstagramID;
+@property (nonatomic, strong) NSString *profileInstagramID;
 
-@property (nonatomic, retain) IBOutlet UIImageView *backgroundImageView;
-@property (nonatomic, retain) IBOutlet UIButton *addBackgroundImageButton;
+@property (nonatomic, strong) IBOutlet UIImageView *backgroundImageView;
+@property (nonatomic, strong) IBOutlet UIButton *addBackgroundImageButton;
 
-@property (nonatomic, retain) IBOutlet UIImageView *profileImageView;
-@property (nonatomic, retain) IBOutlet UILabel *usernameLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *profileImageView;
+@property (nonatomic, strong) IBOutlet UILabel *usernameLabel;
 
-@property (nonatomic, retain) IBOutlet UIButton *followersButton;
-@property (nonatomic, retain) IBOutlet UIButton *followingButton;
+@property (nonatomic, strong) IBOutlet UIButton *followersButton;
+@property (nonatomic, strong) IBOutlet UIButton *followingButton;
 
-@property (nonatomic, retain) IBOutlet UIButton *followButton;
-
-
-
-@property (nonatomic, retain) IBOutlet UIButton *productsButton;
-@property (nonatomic, retain) IBOutlet UIButton *infoButton;
-@property (nonatomic, retain) IBOutlet UIButton *favoritesButton;
-@property (nonatomic, retain) IBOutlet UIView *buttonHighlightView;
-
-
-@property (nonatomic, retain) IBOutlet UIButton *profileBackgroundPhotoButton;
+@property (nonatomic, strong) IBOutlet UIButton *followButton;
 
 
 
-@property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
-@property (nonatomic, retain) IBOutlet ProductSelectTableViewController *favoritesSelectTableViewController;
-@property (nonatomic, retain) IBOutlet UITableView *theTableView;
+@property (nonatomic, strong) IBOutlet UIButton *productsButton;
+@property (nonatomic, strong) IBOutlet UIButton *infoButton;
+@property (nonatomic, strong) IBOutlet UIButton *favoritesButton;
+@property (nonatomic, strong) IBOutlet UIView *buttonHighlightView;
 
-@property (nonatomic, retain) UILabel *titleViewLabel;
+
+@property (nonatomic, strong) IBOutlet UIButton *profileBackgroundPhotoButton;
+
+
+
+@property (nonatomic, strong) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
+@property (nonatomic, strong) IBOutlet ProductSelectTableViewController *favoritesSelectTableViewController;
+@property (nonatomic, strong) IBOutlet UITableView *theTableView;
+
+@property (nonatomic, strong) UILabel *titleViewLabel;
 
 @property (nonatomic, assign) BOOL isSelfProfile;
 
-@property (nonatomic, retain) NSDictionary *requestedInstagramProfileObject;
+@property (nonatomic, strong) NSDictionary *requestedInstagramProfileObject;
 
-@property (nonatomic, retain) IBOutlet UIScrollView *infoContainerScrollView;
-@property (nonatomic, retain) IBOutlet UILabel *addressLabel;
-@property (nonatomic, retain) IBOutlet UILabel *emailLabel;
-@property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
-@property (nonatomic, retain) IBOutlet UIImageView *bioContainerImageView;
-@property (nonatomic, retain) IBOutlet UILabel *bioLabel;
-@property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
-@property (nonatomic, retain) IBOutlet UIButton *editButton;
-@property (nonatomic, retain) IBOutlet UIButton *imagePickButton;
+@property (nonatomic, strong) IBOutlet UIScrollView *infoContainerScrollView;
+@property (nonatomic, strong) IBOutlet UILabel *addressLabel;
+@property (nonatomic, strong) IBOutlet UILabel *emailLabel;
+@property (nonatomic, strong) IBOutlet UILabel *categoryLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *bioContainerImageView;
+@property (nonatomic, strong) IBOutlet UILabel *bioLabel;
+@property (nonatomic, strong) IBOutlet UITextView *descriptionTextView;
+@property (nonatomic, strong) IBOutlet UIButton *editButton;
+@property (nonatomic, strong) IBOutlet UIButton *imagePickButton;
 
 @property (nonatomic, assign) BOOL hasAppeared;
 

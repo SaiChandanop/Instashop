@@ -27,11 +27,11 @@
 -(void)loadWithNotificationsObject:(NotificationsObject *)theObject;
 -(void)clearSubviews;
 
-@property (nonatomic, retain) NotificationsObject *notificationsObject;
+@property (nonatomic, strong) NotificationsObject *notificationsObject;
 
-@property (nonatomic, retain) UILabel *messageLabel;
-@property (nonatomic, retain) UILabel *timeLabel;
-@property (nonatomic, retain) UILabel *usernameLabel;
-@property (nonatomic, retain) UIImageView *profileImageView;
+@property (nonatomic, strong) UILabel *messageLabel;
+@property (nonatomic, strong) UILabel *timeLabel;
+@property (nonatomic, strong) UILabel *usernameLabel;
+@property (nonatomic, strong) UIImageView *profileImageView;
 @end
  

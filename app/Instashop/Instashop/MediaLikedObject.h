@@ -13,6 +13,6 @@
     NSString *mediaID;
     int likedCount;
 }
-@property (nonatomic, retain) NSString *mediaID;
+@property (nonatomic, strong) NSString *mediaID;
 @property (nonatomic, assign) int likedCount;
 @end

@@ -23,7 +23,7 @@
 -(NSArray *)getCategoriesWithArray:(NSArray *)theArray;
 -(NSArray *)getSizesWithArray:(NSArray *)theArray;
 
-@property (nonatomic, retain) NSMutableDictionary *attributesDictionary;
-@property (nonatomic, retain) NSMutableArray *sortedAttributesArray;
+@property (nonatomic, strong) NSMutableDictionary *attributesDictionary;
+@property (nonatomic, strong) NSMutableArray *sortedAttributesArray;
 
 @end

@@ -17,6 +17,6 @@
     AppRootViewController *parentController;
     DiscoverTableViewController *discoverTableViewController;
 }
-@property (nonatomic, retain) AppRootViewController *parentController;
-@property (nonatomic, retain) DiscoverTableViewController *discoverTableViewController;
+@property (nonatomic, strong) AppRootViewController *parentController;
+@property (nonatomic, strong) DiscoverTableViewController *discoverTableViewController;
 @end

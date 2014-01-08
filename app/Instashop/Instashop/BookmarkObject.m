@@ -37,10 +37,5 @@
     [coder encodeObject:_url forKey:@"url"];
 }
 
-- (void) dealloc {
-    self.name = nil;
-    self.url = nil;
-    [super dealloc];
-}
 
 @end

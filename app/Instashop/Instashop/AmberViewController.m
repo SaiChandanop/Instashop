@@ -27,10 +27,10 @@
     [super viewDidLoad];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
     
 }
 
@@ -197,7 +197,7 @@
             
             
             NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
-            UIDocumentInteractionController *dicot = [[UIDocumentInteractionController interactionControllerWithURL:igImageHookFile] retain];
+            UIDocumentInteractionController *dicot = [UIDocumentInteractionController interactionControllerWithURL:igImageHookFile];
             dicot.delegate = del;
             dicot.UTI = @"com.instagram.photo";
             dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];

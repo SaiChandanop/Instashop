@@ -157,8 +157,8 @@
                                               NSHTTPURLResponse *urlResponse, NSError *error)
                   {
                       
-                                                NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                                                                        encoding:NSUTF8StringEncoding] autorelease];
+                                                NSString* newStr = [[NSString alloc] initWithData:responseData
+                                                                                        encoding:NSUTF8StringEncoding];
                       
                       NSLog(@"facebook response string: %@", newStr);
                       NSLog(@"facebook error: %@", error);

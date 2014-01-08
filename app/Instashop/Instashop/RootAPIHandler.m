@@ -24,7 +24,7 @@
 // both of these are called on the main thread, BEFORE the target/action listeners are called
 - (void)webRequest:(SMWebRequest *)webRequest didCompleteWithResult:(id)result context:(id)context
 {    
-    self.response = [webRequest.response retain];
+    self.response = webRequest.response;
 //    NSLog(@"statusCode: %d", [webRequest.response statusCode]);
                               
 //     NSURLResponse

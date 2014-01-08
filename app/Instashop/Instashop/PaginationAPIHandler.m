@@ -7,6 +7,9 @@
 //
 
 #import "PaginationAPIHandler.h"
+#import "ProductSelectTableViewController.h"
+
+
 
 @implementation PaginationAPIHandler
 
@@ -32,7 +35,9 @@
     
 //    NSLog(@"makePaginationRequestWithDelegate, responseDictionary: %@", responseDictionary);
     
-    [self.delegate request:nil didLoad:responseDictionary];
+    if ([self.delegate isKindOfClass:[ProductSelectTableViewController class]])
+        [((ProductSelectTableViewController *)self.delegate)  request:nil didLoad:responseDictionary];
+    
 }
 
 @end

@@ -64,10 +64,10 @@
     [self.view insertSubview:bgImageView atIndex:0];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
     
     
     UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonHit)];
@@ -156,7 +156,7 @@
     
 //    [delegate.appRootViewController dismissViewControllerAnimated:YES completion:^{
         switch (property) {
-            case kABRealPropertyType:
+            case kABRealPropertyType: {
                 NSLog(@"kABRealPropertyType"); //phone
                 NSString *phoneNumber = nil;
                 ABMultiValueRef multiPhones = ABRecordCopyValue(person, kABPersonPhoneProperty);
@@ -164,7 +164,7 @@
                     if(identifier == ABMultiValueGetIdentifierAtIndex (multiPhones, i)) {
                         CFStringRef phoneNumberRef = ABMultiValueCopyValueAtIndex(multiPhones, i);
                         CFRelease(multiPhones);
-                        phoneNumber = (NSString *) phoneNumberRef;
+                        phoneNumber = (__bridge NSString *) phoneNumberRef;
                     }
                 }
                 
@@ -179,11 +179,12 @@
                 }
                 
                 break;
+            }
             case kABDateTimePropertyType:
                 NSLog(@"kABDateTimePropertyType"); //email
                 
                 ABMultiValueRef emailMultiValue = ABRecordCopyValue(person, kABPersonEmailProperty);
-                NSArray *emailAddresses = (NSArray *)ABMultiValueCopyArrayOfAllValues(emailMultiValue);
+                NSArray *emailAddresses = (NSArray *)CFBridgingRelease(ABMultiValueCopyArrayOfAllValues(emailMultiValue));
                 NSLog(@"emailAddresses: %@", emailAddresses);
                 if (emailAddresses != nil)
                 {

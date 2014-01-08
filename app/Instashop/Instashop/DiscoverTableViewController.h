@@ -19,6 +19,6 @@
     NSMutableArray *contentArray;
     
 }
-@property (nonatomic, retain) DiscoverViewController *parentController;
-@property (nonatomic, retain) NSMutableArray *contentArray;
+@property (nonatomic, strong) DiscoverViewController *parentController;
+@property (nonatomic, strong) NSMutableArray *contentArray;
 @end

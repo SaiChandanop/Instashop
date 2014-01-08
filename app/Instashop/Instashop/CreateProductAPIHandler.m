@@ -71,8 +71,8 @@
 
 -(void)productContainerCreateFinished:(id)obj
 {
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding];
 
     NSLog(@"productContainerCreateFinished: %@", newStr);
     
@@ -130,8 +130,8 @@
 
 -(void)productSizeQuantityCreateFinished:(id)object
 {
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding];
     NSLog(@"productSizeQuantityCreateFinished: %@", newStr);
 
 }

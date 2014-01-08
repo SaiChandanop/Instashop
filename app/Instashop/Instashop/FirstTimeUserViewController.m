@@ -68,7 +68,7 @@
     
     // Needs to be less than bound height to disable vertical scrolling.
     self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, 33.3);
-    float howToViewBoundsHeight = self.tutorialScrollView.bounds.size.height;
+//    float howToViewBoundsHeight = self.tutorialScrollView.bounds.size.height;
     
     NSString *firstString = [NSString stringWithFormat:@"Tell followers where to buy the products you post on Instagram"];
     NSString *secondString = [NSString stringWithFormat:@"Buy products from your favorite retailers and brands"];
@@ -197,7 +197,7 @@
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
-    CGFloat screenHeight = screenSize.height;
+//    CGFloat screenHeight = screenSize.height;
     
     // if (self.tutorialScrollView.contentOffset.x < screenWidth * 4) {
     [self.tutorialScrollView setContentOffset:CGPointMake(self.tutorialScrollView.contentOffset.x + screenWidth, 0) animated:YES];

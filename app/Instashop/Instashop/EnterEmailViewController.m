@@ -10,6 +10,7 @@
 #import "ISConstants.h"
 #import "CategoriesViewController.h"
 #import "AttributesManager.h"
+#import "FirstTimeUserViewController.h"
 @interface EnterEmailViewController ()
 
 
@@ -59,10 +60,10 @@
     [self.view addSubview:self.nextButton];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
     
     [self.tosButton setTitle:@"off" forState:UIControlStateNormal];
     self.tosButton.selected = NO;

@@ -35,7 +35,7 @@
 
 -(void)getAllNotificationsWithInstagramIDFinished:(id)obj
 {
-    NSString* responseString = [[[NSString alloc] initWithData:self.responseData  encoding:NSUTF8StringEncoding] autorelease];
+    NSString* responseString = [[NSString alloc] initWithData:self.responseData  encoding:NSUTF8StringEncoding];
 //    NSLog(@"getAllNotificationsWithInstagramIDFinished: %@", responseString);
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
@@ -111,7 +111,7 @@
 
 -(void)makeUserJoinedNotificationWithNotificationArrayFinished:(id)obj
 {
-    NSString* responseString = [[[NSString alloc] initWithData:self.responseData  encoding:NSUTF8StringEncoding] autorelease];
+    NSString* responseString = [[NSString alloc] initWithData:self.responseData  encoding:NSUTF8StringEncoding];
     NSLog(@"makeUserJoinedNotificationWithNotificationArrayFinished: %@", responseString);
 }
 
@@ -138,7 +138,7 @@
 
 -(void)createUserLikedNotificationWithProductIDFinished:(id)obj
 {
-    NSString* responseString = [[[NSString alloc] initWithData:self.responseData  encoding:NSUTF8StringEncoding] autorelease];
+    NSString* responseString = [[NSString alloc] initWithData:self.responseData  encoding:NSUTF8StringEncoding];
     NSLog(@"createUserLikedNotificationWithProductIDFinished: %@", responseString);
     
 }

@@ -8,6 +8,8 @@
 
 #import "SellerSelectTableViewController.h"
 #import "SellersTableViewCell.h"
+#import "SearchViewController.h"
+
 
 @interface SellerSelectTableViewController ()
 
@@ -33,10 +35,10 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
 }
 
 
@@ -90,7 +92,8 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    [self.rowSelectedDelegate rowSelectionOccured:[self.contentArray objectAtIndex:indexPath.row]];
+    if ([self.rowSelectedDelegate isKindOfClass:[SearchViewController class]])
+        [((SearchViewController *)self.rowSelectedDelegate) rowSelectionOccured:[self.contentArray objectAtIndex:indexPath.row]];
 }
 
 

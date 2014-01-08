@@ -29,7 +29,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {        
-    self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
 //    [ZenCartAuthenticationAPIHandler makeLoginRequest];
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
@@ -162,7 +162,7 @@
 {
     NSLog(@"documentInteractionControllerDidDismissOpenInMenu");
     [self.socialCoverImageView removeFromSuperview];
-    [self.socialCoverImageView release];
+    self.socialCoverImageView;
     self.socialCoverImageView = nil;
 }
 
@@ -202,11 +202,6 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-- (void)dealloc
-{
-    [_window release];
-    [super dealloc];
-}
 
 /*
 // Optional UITabBarControllerDelegate method.

@@ -23,12 +23,12 @@
 -(IBAction)categoriesButtonHit;
 -(IBAction)tosButtonHit;
 
-@property (nonatomic, retain) FirstTimeUserViewController *firstTimeUserViewController;
+@property (nonatomic, strong) FirstTimeUserViewController *firstTimeUserViewController;
 @property (nonatomic, strong) IBOutlet UIView *enterEmailView;
 @property (nonatomic, strong) IBOutlet UITextField *enterEmailTextField;
 @property (nonatomic, strong) UIButton *nextButton;
-@property (nonatomic, retain) IBOutlet UILabel *categoriesLabel;
-@property (nonatomic, retain) IBOutlet UIButton *tosButton;
-@property (nonatomic, retain) CategoriesViewController *categoriesViewController;
+@property (nonatomic, strong) IBOutlet UILabel *categoriesLabel;
+@property (nonatomic, strong) IBOutlet UIButton *tosButton;
+@property (nonatomic, strong) CategoriesViewController *categoriesViewController;
 
 @end

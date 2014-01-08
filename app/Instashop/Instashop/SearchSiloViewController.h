@@ -37,21 +37,21 @@
 -(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton;
 -(void)doDirectSearch:(NSString *)directSearchTerm;
 
-@property (nonatomic, retain) SearchViewController *parentController;
+@property (nonatomic, strong) SearchViewController *parentController;
 
-@property (nonatomic, retain) IBOutlet UISearchBar *theSearchBar;
-@property (nonatomic, retain) IBOutlet UIImageView *searchTermsImageView;
-@property (nonatomic, retain) IBOutlet UILabel *searchPromptLabel;
-@property (nonatomic, retain) IBOutlet UIImageView *separatorImageView;
+@property (nonatomic, strong) IBOutlet UISearchBar *theSearchBar;
+@property (nonatomic, strong) IBOutlet UIImageView *searchTermsImageView;
+@property (nonatomic, strong) IBOutlet UILabel *searchPromptLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *separatorImageView;
 
-@property (nonatomic, retain) UIView *contentContainerView;
-@property (nonatomic, retain) UINavigationController *categoriesNavigationController;
-@property (nonatomic, retain) ObjectSelectTableViewController *objectSelectTableViewController;
+@property (nonatomic, strong) UIView *contentContainerView;
+@property (nonatomic, strong) UINavigationController *categoriesNavigationController;
+@property (nonatomic, strong) ObjectSelectTableViewController *objectSelectTableViewController;
 
-@property (nonatomic, retain) NSMutableArray *selectedCategoriesArray;
-@property (nonatomic, retain) NSMutableArray *freeSearchTextArray;
+@property (nonatomic, strong) NSMutableArray *selectedCategoriesArray;
+@property (nonatomic, strong) NSMutableArray *freeSearchTextArray;
 
-@property (nonatomic, retain) NSMutableArray *searchButtonsArray;
+@property (nonatomic, strong) NSMutableArray *searchButtonsArray;
 
 @property (nonatomic, assign) int searchType;
 

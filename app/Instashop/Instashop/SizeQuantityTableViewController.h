@@ -30,9 +30,9 @@
 -(void)ownerAddRowButtonHitWithTableView:(UITableView *)theTableView;
 -(void)rowValueSelectedWithIndexPath:(NSIndexPath *)theIndexPath withKey:(NSString *)key withValue:(NSString *)value;
 
-@property (nonatomic, retain) ProductDetailsViewController *productDetailsViewController;
-@property (nonatomic, retain) NSMutableDictionary *cellSizeQuantityValueDictionary;
-@property (nonatomic, retain) NSArray *availableSizesArray;
+@property (nonatomic, strong) ProductDetailsViewController *productDetailsViewController;
+@property (nonatomic, strong) NSMutableDictionary *cellSizeQuantityValueDictionary;
+@property (nonatomic, strong) NSArray *availableSizesArray;
 
 @property (nonatomic, assign) int rowShowCount;
 @property (nonatomic, assign) BOOL isButtonsDisabled;

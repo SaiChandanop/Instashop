@@ -93,10 +93,10 @@
     }
 
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
 }
 
 -(void)runSearch
@@ -271,7 +271,7 @@
 {
 
     switch (theButton.type) {
-        case SEARCH_BUTTON_TYPE_CATEGORIES:
+        case SEARCH_BUTTON_TYPE_CATEGORIES: {
             [self.selectedCategoriesArray removeAllObjects];
             SearchButtonContainerView *existingContainerView = [self getActiveSearchButtonContainerView];
             if (existingContainerView != nil)
@@ -283,6 +283,7 @@
             [self.categoriesNavigationController popToRootViewControllerAnimated:YES];
             break;
         
+        }
         case SEARCH_BUTTON_TYPE_FREE:
             [self.freeSearchTextArray removeObject:theButton.searchTerm];
         default:

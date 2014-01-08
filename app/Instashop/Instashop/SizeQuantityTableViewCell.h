@@ -40,21 +40,21 @@
 -(void) loadWithIndexPath:(NSIndexPath *)indexPath withContentDictionary:(NSDictionary *)contentDictionary;
 
 
-@property (nonatomic, retain) SizeQuantityTableViewController *parentController;
+@property (nonatomic, strong) SizeQuantityTableViewController *parentController;
 
-@property (nonatomic, retain) SizePickerViewViewController *theController;
-@property (nonatomic, retain) UIActionSheet *actionSheet;
+@property (nonatomic, strong) SizePickerViewViewController *theController;
+@property (nonatomic, strong) UIActionSheet *actionSheet;
 
-@property (nonatomic, retain) NSIndexPath *theIndexPath;
+@property (nonatomic, strong) NSIndexPath *theIndexPath;
 
-@property (nonatomic, retain) IBOutlet UILabel *rowNumberLabel;
-@property (nonatomic, retain) IBOutlet UIButton *sizeButton;
-@property (nonatomic, retain) IBOutlet UIButton *quantityButton;
-@property (nonatomic, retain) IBOutlet UIButton *xButton;
+@property (nonatomic, strong) IBOutlet UILabel *rowNumberLabel;
+@property (nonatomic, strong) IBOutlet UIButton *sizeButton;
+@property (nonatomic, strong) IBOutlet UIButton *quantityButton;
+@property (nonatomic, strong) IBOutlet UIButton *xButton;
 
-@property (nonatomic, retain) NSArray *avaliableSizesArray;
-@property (nonatomic, retain) NSString *selectedSizeValue;
-@property (nonatomic, retain) NSString *selectedQuantityValue;
+@property (nonatomic, strong) NSArray *avaliableSizesArray;
+@property (nonatomic, strong) NSString *selectedSizeValue;
+@property (nonatomic, strong) NSString *selectedQuantityValue;
 
 
 @end

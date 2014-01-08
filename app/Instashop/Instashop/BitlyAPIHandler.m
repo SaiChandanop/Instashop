@@ -35,7 +35,7 @@
 
 -(void)bitlyRequestFinished:(id)obj
 {
-    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    NSString* responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
     NSLog(@"bitlyRequestFinished: %@", responseDictionary);

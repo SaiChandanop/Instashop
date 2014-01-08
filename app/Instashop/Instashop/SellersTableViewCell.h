@@ -17,7 +17,7 @@
 
 - (void) loadWithDictionary:(NSDictionary *)theDictionary;
 
-@property (nonatomic, retain) UIImageView *sellerImageView;
-@property (nonatomic, retain) UILabel *sellerTextLabel;
+@property (nonatomic, strong) UIImageView *sellerImageView;
+@property (nonatomic, strong) UILabel *sellerTextLabel;
 
 @end

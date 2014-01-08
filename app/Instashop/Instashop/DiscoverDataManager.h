@@ -29,14 +29,14 @@
 
 +(DiscoverDataManager *)getSharedDiscoverDataManager;
 
-@property (nonatomic, retain) NSArray *sellersObjectsArray;
-@property (nonatomic, retain) NSMutableDictionary *unsortedDictionary;
-@property (nonatomic, retain) NSMutableArray *likedArray;
-@property (nonatomic, retain) NSMutableArray *contentArray;
+@property (nonatomic, strong) NSArray *sellersObjectsArray;
+@property (nonatomic, strong) NSMutableDictionary *unsortedDictionary;
+@property (nonatomic, strong) NSMutableArray *likedArray;
+@property (nonatomic, strong) NSMutableArray *contentArray;
 
-@property (nonatomic, retain) DiscoverTableViewController *referenceTableViewController;
+@property (nonatomic, strong) DiscoverTableViewController *referenceTableViewController;
 
-@property (nonatomic, retain) NSTimer *catchoutTimer;
+@property (nonatomic, strong) NSTimer *catchoutTimer;
 @property (nonatomic, assign) int countup;
 
 @end

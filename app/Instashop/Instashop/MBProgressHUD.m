@@ -746,11 +746,4 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 }
 
--(void) dealloc
-{
-
-
-
-	[super dealloc];
-}
 @end

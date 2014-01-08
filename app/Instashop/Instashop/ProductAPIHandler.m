@@ -11,6 +11,7 @@
 #import "FeedRequestFinishedProtocol.h"
 #import "ProductPurchaseCompleteProtocol.h"
 #import "EditProductCompleteProtocol.h"
+#import "ProductSelectTableViewController.h"
 
 @implementation ProductAPIHandler
 
@@ -28,7 +29,7 @@
     likedIDsString = [likedIDsString stringByReplacingOccurrencesOfString:@"null" withString:@""];
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?liked_ids=", likedIDsString];
     
-    NSLog(@"urlRequestString: %@", urlRequestString);
+//    NSLog(@"urlRequestString: %@", urlRequestString);
     
     
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -48,8 +49,7 @@
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?saved_user_id=", instagramID];
     
-    NSLog(@"urlRequestString: %@", urlRequestString);
-    
+//    NSLog(@"urlRequestString: %@", urlRequestString);
     
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"GET";
@@ -120,8 +120,8 @@
 -(void)getProductsRequestFinished:(id)obj
 {
     
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding];
     
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
@@ -182,8 +182,8 @@
 
 -(void)productPurchasedComplete:(id)obj
 {
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding];
         
     
     if ([self.delegate conformsToProtocol:@protocol(ProductPurchaseCompleteProtocol)])
@@ -218,8 +218,8 @@
 
 -(void)productDeleteComplete:(id)obj
 {
-    NSString* newStr = [[[NSString alloc] initWithData:self.responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:self.responseData
+                                              encoding:NSUTF8StringEncoding];
  
     NSLog(@"productDeleteComplete: %@", newStr);
     
@@ -286,8 +286,8 @@
 
 -(void)editContainerFinished:(id)someObject
 {
-    NSString* newStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding];
     
     NSLog(@"productContainerCreateFinished: %@", newStr);
     
@@ -386,11 +386,11 @@
 
 -(void)makeCheckForExistingProductURLFinished:(id)object
 {
-    NSString* newStr = [[[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
     
 //    NSLog(@"makeCheckForExistingProductURLFinished: %@", newStr);
-    
-    [self.delegate checkFinishedWithBoolValue:[newStr boolValue] withDictionary:self.contextObject];
+    if ([self.delegate isKindOfClass:[ProductSelectTableViewController class]])
+        [((ProductSelectTableViewController *)self.delegate) checkFinishedWithBoolValue:[newStr boolValue] withDictionary:self.contextObject];
     
 }
 

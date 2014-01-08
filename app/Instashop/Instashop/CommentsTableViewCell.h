@@ -24,13 +24,13 @@
 
 -(void)loadWithCommentObject:(NSDictionary *)commentDictionary withIndexPath:(NSIndexPath *)theIndexpath;
 
-@property (nonatomic, retain) IBOutlet UIImageView *profilePictureImageView;
-@property (nonatomic, retain) IBOutlet UILabel *usernameLabel;
-@property (nonatomic, retain) IBOutlet UILabel *commentTextLabel;
-@property (nonatomic, retain) IBOutlet UILabel *timeLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *profilePictureImageView;
+@property (nonatomic, strong) IBOutlet UILabel *usernameLabel;
+@property (nonatomic, strong) IBOutlet UILabel *commentTextLabel;
+@property (nonatomic, strong) IBOutlet UILabel *timeLabel;
 
-@property (nonatomic, retain) IBOutlet UITextField *commentTextField;
-@property (nonatomic, retain) IBOutlet UIButton *commentGoButton;
+@property (nonatomic, strong) IBOutlet UITextField *commentTextField;
+@property (nonatomic, strong) IBOutlet UIButton *commentGoButton;
 
-@property (nonatomic, retain) CommentsTableViewController *parentController;
+@property (nonatomic, strong) CommentsTableViewController *parentController;
 @end

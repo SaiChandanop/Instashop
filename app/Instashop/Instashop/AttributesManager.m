@@ -10,7 +10,9 @@
 #import "GroupDiskManager.h"
 #import "AttributeRankObject.h"
 
+/*
 @implementation NSArray (indexKeyedDictionaryExtension)
+
 
 - (NSDictionary *)indexKeyedDictionary
 {
@@ -24,7 +26,7 @@
 }
 
 @end
-
+*/
 
 
 @implementation AttributesManager
@@ -57,7 +59,6 @@ static AttributesManager *theManager;
     NSDictionary* plist = [NSPropertyListSerialization propertyListFromData:plistData mutabilityOption:NSPropertyListImmutable format:&format errorDescription:&error];
     if(!plist){
         NSLog(@"Error: %@",error);
-        [error release];
     }
 
     self.attributesDictionary = [[NSMutableDictionary alloc] initWithDictionary:plist];

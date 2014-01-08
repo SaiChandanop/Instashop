@@ -25,7 +25,7 @@
     }
     
     // Load custom tableView
-    self.tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain] autorelease];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     self.tableView.allowsSelectionDuringEditing = YES;
@@ -37,25 +37,25 @@
     self.navigationItem.title = CIALBrowserLocalizedString(@"Bookmarks",@"");
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        UIBarButtonItem *editButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                          target:self
-                                                                                         action:@selector(editButtonAction)] autorelease];
+                                                                                         action:@selector(editButtonAction)];
         self.navigationItem.rightBarButtonItem = editButtonItem;
     }
     else
     {
         // Create "Done" button
-        self.doneButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonAction) ] autorelease];
+        self.doneButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneButtonAction) ];
         self.navigationItem.rightBarButtonItem = _doneButtonItem;
         
         // Create toolbar with edit button
         NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:9];
-        UIBarButtonItem *flexibleSpaceButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+        UIBarButtonItem *flexibleSpaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                                   target:nil
-                                                                                                  action:nil] autorelease];
-        UIBarButtonItem *editButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                                  action:nil];
+        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                          target:self
-                                                                                         action:@selector(editButtonAction)] autorelease];
+                                                                                         action:@selector(editButtonAction)];
         [buttons addObject:editButtonItem];
         [buttons addObject:flexibleSpaceButtonItem];
         
@@ -101,9 +101,9 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         // Replace the "Edit" button with a "Done" button
-        UIBarButtonItem *doneEditingButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+        UIBarButtonItem *doneEditingButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                 target:self
-                                                                                                action:@selector(doneEditingButtonAction)] autorelease];
+                                                                                                action:@selector(doneEditingButtonAction)];
         self.navigationItem.rightBarButtonItem = doneEditingButtonItem;
     }
     else
@@ -113,12 +113,12 @@
         
         // Replace the "Edit" button with a "Done" button
         NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:9];
-        UIBarButtonItem *flexibleSpaceButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+        UIBarButtonItem *flexibleSpaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                                   target:nil
-                                                                                                  action:nil] autorelease];
-        UIBarButtonItem *doneEditingButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                                  action:nil];
+        UIBarButtonItem *doneEditingButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                                 target:self
-                                                                                                action:@selector(doneEditingButtonAction)] autorelease];
+                                                                                                action:@selector(doneEditingButtonAction)];
         [buttons addObject:doneEditingButtonItem];
         [buttons addObject:flexibleSpaceButtonItem];
         
@@ -130,9 +130,9 @@
     [self.tableView setEditing:NO animated:YES];
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
-        UIBarButtonItem *editButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+        UIBarButtonItem *editButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                          target:self
-                                                                                         action:@selector(editButtonAction)] autorelease];
+                                                                                         action:@selector(editButtonAction)];
         self.navigationItem.rightBarButtonItem = editButtonItem;
     }
     else
@@ -142,12 +142,12 @@
         
         // Replace the "Done" button with an "Edit" button
         NSMutableArray *buttons = [NSMutableArray arrayWithCapacity:9];
-        UIBarButtonItem *flexibleSpaceButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+        UIBarButtonItem *flexibleSpaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                                   target:nil
-                                                                                                  action:nil] autorelease];
-        UIBarButtonItem *doneEditingButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
+                                                                                                  action:nil];
+        UIBarButtonItem *doneEditingButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemEdit
                                                                                                 target:self
-                                                                                                action:@selector(editButtonAction)] autorelease];
+                                                                                                action:@selector(editButtonAction)];
         [buttons addObject:doneEditingButtonItem];
         [buttons addObject:flexibleSpaceButtonItem];
         
@@ -177,7 +177,7 @@
     UITableViewCell *cell;
     cell = [tableView dequeueReusableCellWithIdentifier:LabelCellIdentifier];
     if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LabelCellIdentifier] autorelease];
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:LabelCellIdentifier];
     }
     
     // Set up the cell...
@@ -198,7 +198,6 @@
         EditBookmarkViewController *editBookmarkViewController = [[EditBookmarkViewController alloc] initWithStyle:UITableViewStyleGrouped];
         [editBookmarkViewController setBookmark:[_bookmarksArray objectAtIndex:indexPath.row]];
         [self.navigationController pushViewController:editBookmarkViewController animated:YES];
-        [editBookmarkViewController release];
     }
     else
     {
@@ -213,10 +212,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-	BookmarkObject *bookmarkToMove = [[_bookmarksArray objectAtIndex:sourceIndexPath.row] retain];
+	BookmarkObject *bookmarkToMove = [_bookmarksArray objectAtIndex:sourceIndexPath.row];
 	[_bookmarksArray removeObjectAtIndex:sourceIndexPath.row];
 	[_bookmarksArray insertObject:bookmarkToMove atIndex:destinationIndexPath.row];
-	[bookmarkToMove release];
     // save modifications
 	[self saveBookmarks];
 }
@@ -231,13 +229,6 @@
     _bookmark = [[BookmarkObject alloc] initWithName:aName andURL:aURL];
 }
 
-- (void)dealloc {
-    self.delegate = nil;
-    self.doneButtonItem = nil;
-    self.bookmark = nil;
-    [_bookmarksArray release];
-    [super dealloc];
-}
 
 @end
 

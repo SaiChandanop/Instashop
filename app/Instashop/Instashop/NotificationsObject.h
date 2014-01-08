@@ -14,7 +14,7 @@
     NSDictionary *dataDictionary;
 }
 
-@property (nonatomic, retain) NSString *message;
-@property (nonatomic, retain) NSDictionary *dataDictionary;
+@property (nonatomic, strong) NSString *message;
+@property (nonatomic, strong) NSDictionary *dataDictionary;
 
 @end

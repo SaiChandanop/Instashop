@@ -52,7 +52,7 @@
 -(void) webViewExitButtonHit:(UINavigationController *)navigationController;
 -(void) notificationSelectedWithProfile:(NSString *)profileInstagramID;
 -(void) notificationSelectedWithObject:(NotificationsObject *)notificationsObject;
-
+- (IBAction) profileButtonHit;
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;
 @property (strong, nonatomic) HomeViewController *homeViewController;

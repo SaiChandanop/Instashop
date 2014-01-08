@@ -59,8 +59,8 @@
     // if else statement needs to go here checking whether php file returned saying that the user already sent complaint about this product or if user had not.
     
     
-    NSString* requestDoneStr = [[[NSString alloc] initWithData:responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* requestDoneStr = [[NSString alloc] initWithData:responseData
+                                              encoding:NSUTF8StringEncoding];
     
     [self.delegate showComplaintReceivedAlert:requestDoneStr];
 }

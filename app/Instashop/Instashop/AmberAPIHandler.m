@@ -8,7 +8,7 @@
 
 #import "AmberAPIHandler.h"
 #import "BitlyAPIHandler.h"
-
+#import "PurchasingViewController.h"
 @implementation AmberAPIHandler
 
 
@@ -32,8 +32,8 @@
 
 -(void)apiHandlerFinished:(id)obj
 {
-    NSString* newStr = [[[NSString alloc] initWithData:self.responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:self.responseData
+                                              encoding:NSUTF8StringEncoding];
     
     //   NSLog(@"amber call finished: %@", newStr);
     
@@ -97,7 +97,8 @@
     }
     
     NSLog(@"domainString: %@", domainString);
-    [self.delegate amberSupportedSiteCallFinishedWithIsSupported:[supportedSitesArray containsObject:domainString] withExpandedURLString:self.contextObject];
+    if ([self.delegate isKindOfClass:[PurchasingViewController class]])
+         [((PurchasingViewController *)self.delegate) amberSupportedSiteCallFinishedWithIsSupported:[supportedSitesArray containsObject:domainString] withExpandedURLString:self.contextObject];
     
 }
 

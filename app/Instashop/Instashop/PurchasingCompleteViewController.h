@@ -13,7 +13,7 @@
     UIView *shaderView;
 }
 
-@property (nonatomic, retain) UIView *shaderView;
+@property (nonatomic, strong) UIView *shaderView;
 +(void)presentWithProductObject:(NSDictionary *)productObject;
 -(IBAction)xButtonHit;
 @end

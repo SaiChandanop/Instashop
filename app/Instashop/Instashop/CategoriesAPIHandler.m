@@ -29,8 +29,8 @@
 
 -(void)categoriesRequestFinished:(id)obj
 {
-    NSString* newStr = [[[NSString alloc] initWithData:self.responseData
-                                              encoding:NSUTF8StringEncoding] autorelease];
+    NSString* newStr = [[NSString alloc] initWithData:self.responseData
+                                              encoding:NSUTF8StringEncoding];
     
     [[AttributesManager getSharedAttributesManager] processAttributesString:newStr];
     

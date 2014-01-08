@@ -13,6 +13,6 @@
     NSString *attributeString;
     int rank;
 }
-@property (nonatomic, retain) NSString *attributeString;
+@property (nonatomic, strong) NSString *attributeString;
 @property (nonatomic, assign) int rank;
 @end

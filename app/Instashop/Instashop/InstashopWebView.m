@@ -12,8 +12,8 @@
 
 @property (nonatomic, assign) BOOL initialCall;
 
-@property (nonatomic, retain) NSString *textColor;
-@property (nonatomic, retain) NSString *linkColor;
+@property (nonatomic, strong) NSString *textColor;
+@property (nonatomic, strong) NSString *linkColor;
 
 @end
 
@@ -215,10 +215,9 @@
      break;
      }*/
     
-    [self.textColor release];
-    [self.linkColor release];
+    self.textColor;
+    self.linkColor;
     
-    [super dealloc];
 }
 
 /*

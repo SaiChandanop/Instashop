@@ -27,19 +27,19 @@
     NSString *editingReferenceID;
 }
 
-@property (nonatomic, retain) NSString *title;
-@property (nonatomic, retain) NSString *description;
-@property (nonatomic, retain) NSString *retailValue;
-@property (nonatomic, retain) NSArray *categoriesArray;
-@property (nonatomic, retain) NSString *size;
-@property (nonatomic, retain) NSString *quantity;
-@property (nonatomic, retain) NSString *retailPrice;
-@property (nonatomic, retain) NSString *listPrice;
-@property (nonatomic, retain) NSString *instashopPrice;
-@property (nonatomic, retain) NSString *shippingWeight;
-@property (nonatomic, retain) NSString *referenceURLString;
-@property (nonatomic, retain) NSString *instagramPictureURLString;
-@property (nonatomic, retain) NSDictionary *instragramMediaInfoDictionary;
+@property (nonatomic, strong) NSString *title;
+@property (nonatomic, strong) NSString *description;
+@property (nonatomic, strong) NSString *retailValue;
+@property (nonatomic, strong) NSArray *categoriesArray;
+@property (nonatomic, strong) NSString *size;
+@property (nonatomic, strong) NSString *quantity;
+@property (nonatomic, strong) NSString *retailPrice;
+@property (nonatomic, strong) NSString *listPrice;
+@property (nonatomic, strong) NSString *instashopPrice;
+@property (nonatomic, strong) NSString *shippingWeight;
+@property (nonatomic, strong) NSString *referenceURLString;
+@property (nonatomic, strong) NSString *instagramPictureURLString;
+@property (nonatomic, strong) NSDictionary *instragramMediaInfoDictionary;
 
-@property (nonatomic, retain) NSString *editingReferenceID;
+@property (nonatomic, strong) NSString *editingReferenceID;
 @end

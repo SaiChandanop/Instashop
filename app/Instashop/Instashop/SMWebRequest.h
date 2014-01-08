@@ -51,7 +51,7 @@ typedef NSUInteger SMWebRequestEvents;
 <NSURLConnectionDataDelegate>
 #endif
 {
-    id<SMWebRequestDelegate> delegate; // not retained
+    id<SMWebRequestDelegate> __weak delegate; // not retained
     id context;
     
     NSMutableArray *targetActions;
@@ -67,10 +67,10 @@ typedef NSUInteger SMWebRequestEvents;
 }
 
 @property (nonatomic, readonly) BOOL started;
-@property (nonatomic, readonly, retain) id context;
+@property (nonatomic, readonly, strong) id context;
 
-@property (nonatomic, readonly, retain) NSURLRequest *request;
-@property (nonatomic, readonly, retain) NSURLResponse *response;
+@property (nonatomic, readonly, strong) NSURLRequest *request;
+@property (nonatomic, readonly, strong) NSURLResponse *response;
 
 // Designated initializer.
 - (id)initWithURLRequest:(NSURLRequest *)request delegate:(id<SMWebRequestDelegate>)delegate context:(id)context;
@@ -123,6 +123,6 @@ extern NSString *const SMErrorResponseKey; // SMErrorResponse
     NSHTTPURLResponse *response;
     NSData *data;
 }
-@property (nonatomic, retain) NSHTTPURLResponse *response;
-@property (nonatomic, retain) NSData *data;
+@property (nonatomic, strong) NSHTTPURLResponse *response;
+@property (nonatomic, strong) NSData *data;
 @end

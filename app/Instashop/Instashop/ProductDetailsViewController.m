@@ -129,10 +129,10 @@
     [self.addSizeButton removeFromSuperview];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
     
     if (self.isEdit)
     {
@@ -141,7 +141,6 @@
                                                                         target:self
                                                                         action:@selector(goBack)];
         self.navigationItem.leftBarButtonItem = customBackButton;
-        [customBackButton release];
     }
     [self setDoneButtonState];
     
@@ -149,10 +148,10 @@
     [self.descriptionTextView setReturnKeyType:UIReturnKeyDone];
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
 }
 
 -(void)setDoneButtonState
@@ -681,7 +680,7 @@
     self.browserViewController.preloadedContent = @"<HTML>HI</HTML>";
     [self.navigationController pushViewController:self.browserViewController animated:YES];
     
-    self.browserViewController.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ] autorelease];
+    self.browserViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ];
 //    [self.browserViewController loadRightBarItem];
     
     [self.descriptionTextView resignFirstResponder];

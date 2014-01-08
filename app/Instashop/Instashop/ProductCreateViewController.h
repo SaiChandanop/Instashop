@@ -35,11 +35,11 @@
 -(void) productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject;
 
 
-@property (nonatomic, retain) AppRootViewController *parentController;
+@property (nonatomic, strong) AppRootViewController *parentController;
 
-@property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
+@property (nonatomic, strong) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
 
-@property (nonatomic, retain) NSDictionary *productDictionary;
+@property (nonatomic, strong) NSDictionary *productDictionary;
 
-@property (nonatomic, retain) NSDictionary *currentSelectionObject;
+@property (nonatomic, strong) NSDictionary *currentSelectionObject;
 @end

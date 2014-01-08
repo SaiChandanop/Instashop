@@ -13,12 +13,12 @@
 
 +(NSString *)getEscapedStringFromUnescapedString:(NSString *)unescaped
 {
-    NSString *escapedString = (NSString *)CFURLCreateStringByAddingPercentEscapes(
+    NSString *escapedString = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(
                                                                                   NULL,
                                                                                   (CFStringRef)unescaped,
                                                                                   NULL,
                                                                                   CFSTR("!*'();:@&=+$,/?%#[]"),
-                                                                                  kCFStringEncodingUTF8);
+                                                                                  kCFStringEncodingUTF8));
     
     
     return escapedString;
@@ -29,7 +29,8 @@
 + (NSString *)urlencode:(NSString *)theString {
     
     NSMutableString *output = [NSMutableString string];
-    const unsigned char *source = (const unsigned char *)theString;
+//    const unsigned char *source = (const unsigned char *)theString;
+    const char *source = [theString cStringUsingEncoding:NSASCIIStringEncoding];
     int sourceLen = strlen((const char *)source);
     for (int i = 0; i < sourceLen; ++i) {
         const unsigned char thisChar = source[i];
@@ -47,7 +48,11 @@
     return output;
 }
 
-
++(void)destroyObject:(id)theObject
+{
+ NSLog(@"destroyObject: %@", theObject);
+    
+}
 
 
 @end

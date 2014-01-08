@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
     // Load tableView
-    self.tableView = [[[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped] autorelease];
+    self.tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStyleGrouped];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -33,8 +33,8 @@
     
     // Create "Cancel" and "Save" buttons
     self.navigationItem.title = CIALBrowserLocalizedString(@"Add Bookmark",@"");
-    self.navigationItem.leftBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction) ] autorelease];
-    self.navigationItem.rightBarButtonItem = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveAction) ] autorelease];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancelAction) ];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(saveAction) ];
     
     // get bookmarks from userDefaults
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults];
@@ -137,7 +137,7 @@
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:TextFieldCellIdentifier];
                     if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TextFieldCellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:TextFieldCellIdentifier];
 
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
 
@@ -158,7 +158,6 @@
                         
                         [cell addSubview:_nameTextField];
                         
-                        [_nameTextField release];
                     }
                     break;
                 }
@@ -166,7 +165,7 @@
                 {
                     cell = [tableView dequeueReusableCellWithIdentifier:UrlCellIdentifier];
                     if (cell == nil) {
-                        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:UrlCellIdentifier] autorelease];
+                        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:UrlCellIdentifier];
                         cell.selectionStyle = UITableViewCellSelectionStyleNone;
                     }
                     cell.textLabel.adjustsFontSizeToFitWidth = YES;
@@ -217,11 +216,6 @@
     _bookmark = [[BookmarkObject alloc] initWithName:aName andURL:aURL];
 }
 
-- (void)dealloc {
-    self.bookmark = nil;
-    [_bookmarksArray release];
-    [super dealloc];
-}
 
 @end
 

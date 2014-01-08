@@ -24,15 +24,15 @@
     int selectedRow;
 }
 
-@property (nonatomic, retain) SizeQuantityTableViewCell *cellDelegate;
-@property (nonatomic, retain) NSMutableArray *itemsArray;
-@property (nonatomic, retain) IBOutlet UIPickerView *thePickerView;
+@property (nonatomic, strong) SizeQuantityTableViewCell *cellDelegate;
+@property (nonatomic, strong) NSMutableArray *itemsArray;
+@property (nonatomic, strong) IBOutlet UIPickerView *thePickerView;
 
-@property (nonatomic, retain) IBOutlet UIButton *cancelButton;
-@property (nonatomic, retain) IBOutlet UIButton *saveButton;
+@property (nonatomic, strong) IBOutlet UIButton *cancelButton;
+@property (nonatomic, strong) IBOutlet UIButton *saveButton;
 
 @property (nonatomic, assign) int type;
-@property (nonatomic, retain) NSString *typeKeyString;
+@property (nonatomic, strong) NSString *typeKeyString;
 @property (nonatomic, assign) int selectedRow;
 
 @end

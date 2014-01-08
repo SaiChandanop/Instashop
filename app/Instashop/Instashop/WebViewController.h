@@ -14,8 +14,8 @@
 
 - (id)initWithWebView:(NSString *) websiteName title:(NSString *) titleName;
 
-@property (nonatomic, retain) AppRootViewController *appRootViewController;
-@property (nonatomic, retain) NSString *titleName;
+@property (nonatomic, strong) AppRootViewController *appRootViewController;
+@property (nonatomic, strong) NSString *titleName;
 
 
 @end

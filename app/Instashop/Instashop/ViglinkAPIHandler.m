@@ -42,7 +42,7 @@
 
 -(void)viglinkCallReturned:(id)object
 {
-    NSString* responseString = [[[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding] autorelease];
+    NSString* responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     
 
     [self.delegate viglinkCallReturned:responseString];

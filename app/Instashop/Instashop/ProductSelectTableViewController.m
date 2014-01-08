@@ -42,10 +42,10 @@
     
     
     self.navigationItem.backBarButtonItem =
-    [[[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@""
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
-                                     action:nil] autorelease];
+                                     action:nil];
     
 }
 
@@ -53,14 +53,6 @@
     
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
-    /*
-    if (request != nil)
-        NSLog(@"request did load!!: %@", request.url);
-    else
-        NSLog(@"request did load!!!");
-    */
-    
-//    NSLog(@"result: %@", result);
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
@@ -268,7 +260,6 @@ NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {
     
     int ret = [date2 compare:date1];
     
-    [dateFormatter release];
     
     return ret;
     

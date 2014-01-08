@@ -16,6 +16,6 @@
 -(void)beginAnimations;
 -(void)ceaseAnimations;
 
-@property (nonatomic, retain) UIActivityIndicatorView *imageLoadingIndicatorView;
+@property (nonatomic, strong) UIActivityIndicatorView *imageLoadingIndicatorView;
 
 @end

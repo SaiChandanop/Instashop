@@ -13,5 +13,7 @@
 {
     int checkCountup;
 }
+
+-(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary;
 @property (nonatomic, assign) int checkCountup;
 @end

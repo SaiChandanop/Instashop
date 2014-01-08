@@ -13,8 +13,8 @@
     NSString *_name;
     NSURL *_url;
 }
-@property (nonatomic, retain) NSString *name;
-@property (nonatomic, retain) NSURL *url;
+@property (nonatomic, strong) NSString *name;
+@property (nonatomic, strong) NSURL *url;
 
 - (id) initWithName:(NSString *)name andURL:(NSURL *)url;
 

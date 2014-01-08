@@ -29,12 +29,12 @@
 -(void) loadWithSearchTerm:(NSString *)theSearchTerm withClickDelegate:(SearchSiloViewController *)searchSiloViewController;
 -(void) sizeViewWithFrame;
 
-@property (nonatomic, retain) NSString *searchTerm;
+@property (nonatomic, strong) NSString *searchTerm;
 @property (nonatomic, assign) int type;
 
-@property (nonatomic, retain) UILabel *searchLabel;
-@property (nonatomic, retain) UIImageView *exitImageView;
-@property (nonatomic, retain) UIButton *coverButton;
-@property (nonatomic, retain) SearchSiloViewController *referenceController;
+@property (nonatomic, strong) UILabel *searchLabel;
+@property (nonatomic, strong) UIImageView *exitImageView;
+@property (nonatomic, strong) UIButton *coverButton;
+@property (nonatomic, strong) SearchSiloViewController *referenceController;
 
 @end

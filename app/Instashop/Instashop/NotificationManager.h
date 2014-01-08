@@ -19,6 +19,6 @@
 +(NotificationManager *)getSharedManager;
 -(void)handleNewUserPushNotifications;
 
-@property (nonatomic, retain) NSMutableArray *followedIDsArray;
-@property (nonatomic, retain) NSMutableArray *allSellersArray;
+@property (nonatomic, strong) NSMutableArray *followedIDsArray;
+@property (nonatomic, strong) NSMutableArray *allSellersArray;
 @end

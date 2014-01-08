@@ -22,7 +22,7 @@
 
 
 
-@property (nonatomic, retain) UIImageView *theImageView;
+@property (nonatomic, strong) UIImageView *theImageView;
 
-@property (nonatomic, retain) NSMutableData *receivedData;
+@property (nonatomic, strong) NSMutableData *receivedData;
 @end

@@ -54,7 +54,6 @@ static void *finishedContext            = @"finishedContext";
         }
     }
     
-    [super dealloc];
 }
 
 #pragma mark - internal

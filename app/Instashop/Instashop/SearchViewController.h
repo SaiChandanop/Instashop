@@ -33,17 +33,18 @@
 
 - (IBAction) shopsButtonHit:(UIButton *)theButton;
 - (IBAction) productsButtonHit:(UIButton *)theButton;
+-(void) rowSelectionOccured:(NSDictionary *)theSelectionObject;
 
-@property (nonatomic, retain) AppRootViewController *appRootViewController;
+@property (nonatomic, strong) AppRootViewController *appRootViewController;
 
-@property (nonatomic, retain) SearchSiloViewController *productSearchViewController;
-@property (nonatomic, retain) SearchSiloViewController *shopSearchViewController;
+@property (nonatomic, strong) SearchSiloViewController *productSearchViewController;
+@property (nonatomic, strong) SearchSiloViewController *shopSearchViewController;
 
-@property (nonatomic, retain) IBOutlet UIButton *shopsButton;
-@property (nonatomic, retain) IBOutlet UIButton *productsButton;
-@property (nonatomic, retain) IBOutlet UIView *nibHighlightView;
-@property (nonatomic, retain) UIView *theHighlightView;
-@property (nonatomic, retain) NSString *directSearchTerm;
+@property (nonatomic, strong) IBOutlet UIButton *shopsButton;
+@property (nonatomic, strong) IBOutlet UIButton *productsButton;
+@property (nonatomic, strong) IBOutlet UIView *nibHighlightView;
+@property (nonatomic, strong) UIView *theHighlightView;
+@property (nonatomic, strong) NSString *directSearchTerm;
 
 
 
