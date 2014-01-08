@@ -106,6 +106,7 @@
 
 -(void)backButtonHit
 {
+    NSLog(@"self.navigationController!: %@", self.navigationController);
     [self.productSearchViewController.theSearchBar resignFirstResponder];
     [self.shopSearchViewController.theSearchBar resignFirstResponder];
     [self.appRootViewController searchExitButtonHit:self.navigationController];

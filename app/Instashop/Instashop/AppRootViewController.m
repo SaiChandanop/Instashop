@@ -36,7 +36,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize theSearchViewController;
 @synthesize firstRun;
 @synthesize notificationsViewController;
-
+@synthesize searchNavigationController;
 
 float transitionTime = .456;
 
@@ -322,20 +322,20 @@ float transitionTime = .456;
     
     
     
-    UINavigationController *navigationController = self.theSearchViewController.navigationController;
     
-    if (navigationController == nil)
+    
+    if (self.searchNavigationController == nil)
     {
-        navigationController = [[UINavigationController alloc] initWithRootViewController:self.theSearchViewController];
-        navigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:navigationController .view];
+        self.searchNavigationController = [[UINavigationController alloc] initWithRootViewController:self.theSearchViewController];
+        self.searchNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:self.searchNavigationController .view];
     }
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.searchNavigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -346,11 +346,12 @@ float transitionTime = .456;
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    self.searchNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }
 
 - (void) settingsButtonHit {
+    
     SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     settingsViewController.parentController = self;
     
