@@ -91,12 +91,7 @@
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
         
-    /*
-     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-     
-     NSDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/comments", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
-     [appDelegate.instagram requestWithParams:params delegate:self];
-     */
+
 }
 
 
@@ -438,46 +433,11 @@
     else
         [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
     
-    
-    
-
-    
-    /*
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Which?"
-                                                        message:nil
-                                                       delegate:self
-                                              cancelButtonTitle:@"Amber"
-                                              otherButtonTitles:@"Viglink", @"Full Process", nil];
-    [alertView show];
-    
-    */
-    
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-/*    if ([alertView.title compare:@"Which?"] == NSOrderedSame)
-    {
-        if (buttonIndex == 0)
-        {
-            AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
-            amberViewController.referenceURLString = self.viglinkString;
-            [self.navigationController pushViewController:amberViewController animated:YES];
-            [amberViewController loadView];            
-            [amberViewController run];
-        }
-        else if (buttonIndex == 1)
-        {
-            self.cialBrowserViewController = [[CIALBrowserViewController alloc] init];
-            [self.navigationController pushViewController:cialBrowserViewController animated:YES];
-            [self.cialBrowserViewController openThisURL:[NSURL URLWithString:self.viglinkString]];
-        }
-        else
-        {
-            [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
-        }
-    }
-    else*/ if ([alertView.title compare:@"Wait"] == NSOrderedSame)
+    if ([alertView.title compare:@"Wait"] == NSOrderedSame)
     {
         if (buttonIndex == 1)
         {
@@ -485,9 +445,6 @@
             [ProductAPIHandler deleteProductWithProductID:[self.requestedProductObject objectForKey:@"product_id"]];
         }
     }
-    
-    //else
-      //  [self.navigationController popToRootViewControllerAnimated:YES];
 }
 
 -(void)amberSupportedSiteCallFinishedWithIsSupported:(BOOL)isSupported withExpandedURLString:(NSString *)expandedURLString

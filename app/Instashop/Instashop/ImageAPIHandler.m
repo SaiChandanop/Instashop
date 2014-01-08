@@ -59,8 +59,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     {
         if ([theDelegate isKindOfClass:[ImagesTableViewItem class]])
              [theDelegate imageReturnedWithURL:instagramMediaURLString withImage:theImage];
-        /*
-        if (referenceImageView != nil)
+        else if (referenceImageView != nil)
         {
             referenceImageView.image = theImage;
             referenceImageView.alpha = 1;
@@ -68,7 +67,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
             if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
                 [(ISAsynchImageView *)referenceImageView ceaseAnimations];
         }
-        */
+
     }
     else
     {
@@ -85,6 +84,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 - (void) instagramImageReqeustFinsihed:(id)obj
 {
+    
     
     
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
