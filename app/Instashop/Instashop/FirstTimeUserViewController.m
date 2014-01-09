@@ -137,7 +137,7 @@
     // SuggestViewController
     
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5, 0.0, screenWidth, screenHeight - buttonSize);
+    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5 * 0, 0.0, screenWidth, screenHeight - buttonSize);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
 //    [self.suggestedStoresViewController.view addSubview:self.nextButton];
     [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];

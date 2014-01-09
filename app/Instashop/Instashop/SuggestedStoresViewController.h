@@ -24,7 +24,7 @@
     UIButton *closeTutorialButton;
     
     NSMutableArray *selectedShopsIDSArray;
-    NSMutableDictionary *containerViewsDictionary;
+    NSMutableArray *shopViewsArray;
     NSMutableArray *followedIDsArray;
     
     BOOL isLaunchedFromMenu;
@@ -43,7 +43,7 @@
 @property (nonatomic, strong) UIButton *closeTutorialButton;
 
 @property (nonatomic, strong) NSMutableArray *selectedShopsIDSArray;
-@property (nonatomic, strong) NSMutableDictionary *containerViewsDictionary;
+@property (nonatomic, strong) NSMutableArray *shopViewsArray;
 @property (nonatomic, strong) NSMutableArray *followedIDsArray;
 
 @property (nonatomic, assign) BOOL isLaunchedFromMenu;

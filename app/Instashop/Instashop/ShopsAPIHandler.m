@@ -37,10 +37,12 @@
     NSString* newStr = [[NSString alloc] initWithData:responseData
                                               encoding:NSUTF8StringEncoding];
     
-    NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    NSLog(@"suggestedShopsComplete: %@", newStr);
+   NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
     if ([self.delegate conformsToProtocol:@protocol(SuggestedShopReturnProtocol)])
         [(id<SuggestedShopReturnProtocol>)self.delegate suggestedShopsDidReturn:responseArray];
+
 }
 
 

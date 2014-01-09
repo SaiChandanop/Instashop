@@ -74,7 +74,7 @@ static NotificationManager *theSharedManager;
         [self.allSellersArray addObject:[[responseArray objectAtIndex:i] objectForKey:@"instagram_id"]];
 
     
-    NSLog(@"sellersRequestFinishedWithResponseObject: %@", self.allSellersArray);
+//    NSLog(@"sellersRequestFinishedWithResponseObject: %@", self.allSellersArray);
     
     NSMutableArray *matchArray = [NSMutableArray arrayWithCapacity:0];
     
@@ -87,7 +87,7 @@ static NotificationManager *theSharedManager;
     
         [NotificationsAPIHandler makeUserJoinedNotificationWithNotificationArray:matchArray];
 
-    NSLog(@"matchArray: %@", matchArray);
-    
+//    NSLog(@"matchArray: %@", matchArray);
+//
 }
 @end

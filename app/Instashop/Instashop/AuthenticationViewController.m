@@ -210,14 +210,14 @@
         NSLog(@"This is the key: %@", defaultFirstUserKey);
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
   
-/*
+
        if ([defaults objectForKey:defaultFirstUserKey] == nil) {
             [defaults setObject:[NSDate date] forKey:defaultFirstUserKey];
             [defaults synchronize];
             [del.appRootViewController runTutorial];
         }
        else
- */
+
            [del userDidLogin];
         
         [SellersAPIHandler makeCheckIfSellerExistsCallWithDelegate:self];

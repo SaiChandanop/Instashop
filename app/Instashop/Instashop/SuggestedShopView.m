@@ -47,6 +47,7 @@
 
 -(void) makeIGContentRequest
 {
+    NSLog(@"makeIGContentRequest: %@", self.shopViewInstagramID);
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.shopViewInstagramID], @"method", nil];
@@ -57,6 +58,8 @@
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
      NSDictionary *dataDictionary = [result objectForKey:@"data"];
+    
+    NSLog(@"request didLoad: %@", self.shopViewInstagramID);
     
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
@@ -73,12 +76,18 @@
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.theBackgroundImageView withInstagramID:self.shopViewInstagramID];
         
         self.followButton.alpha = 1;
-        [self.parentController performSelectorOnMainThread:@selector(selectedShopViewDidCompleteRequestWithView:) withObject:self waitUntilDone:NO];
+        [self.parentController selectedShopViewDidCompleteRequestWithView:self];
+//        [self.parentController performSelectorOnMainThread:@selector(selectedShopViewDidCompleteRequestWithView:) withObject:self waitUntilDone:NO];
     }
     
 }
 
-
+- (void)request:(IGRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"request didFailWithError: %@, %@", self.shopViewInstagramID, error);
+    
+    [self.parentController performSelectorOnMainThread:@selector(selectedShopViewDidCompleteRequestWithView:) withObject:self waitUntilDone:NO];
+}
 -(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected
 {
     NSLog(@"shopFollowButtonHitWithID: %@", instagramID);
