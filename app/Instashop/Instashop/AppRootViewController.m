@@ -37,6 +37,8 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize firstRun;
 @synthesize notificationsViewController;
 @synthesize searchNavigationController;
+@synthesize webView;
+@synthesize webViewNavigationController;
 
 float transitionTime = .456;
 
@@ -377,23 +379,23 @@ float transitionTime = .456;
 - (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title {
     
     // Might want to pretty it up by making background color the same color.  
-    WebViewController *webView = [[WebViewController alloc] initWithWebView:websiteName title:title];
-    webView.appRootViewController = self;
+    self.webView = [[WebViewController alloc] initWithWebView:websiteName title:title];
+    self.webView.appRootViewController = self;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webView];
+    self.webViewNavigationController = [[UINavigationController alloc] initWithRootViewController:webView];
     // Would be better if it's put into the webviewcontroller class but navigation bar isn't allocated by the time this code is run.  Don't know how SuggestedStoresViewController does it yet.
-    [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
-    [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    navigationController.navigationBar.translucent = NO;
-    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.webViewNavigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.webViewNavigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    self.webViewNavigationController.navigationBar.translucent = NO;
+    self.webViewNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
 
-    [self.view addSubview:navigationController.view];
+    [self.view addSubview:self.webViewNavigationController.view];
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController.view.frame = CGRectMake(0.0, 00.0, self.view.frame.size.width, self.view.frame.size.height);
+    self.webViewNavigationController.view.frame = CGRectMake(0.0, 00.0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -403,7 +405,7 @@ float transitionTime = .456;
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    self.webViewNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }
 

@@ -76,6 +76,7 @@
 }
 
 - (void) backButtonHit {
+    NSLog(@"%@ back button hit", self);
     [self.appRootViewController webViewExitButtonHit:self.navigationController];
 }
 
