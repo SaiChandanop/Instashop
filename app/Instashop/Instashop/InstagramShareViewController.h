@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface InstagramShareViewController : UIViewController
+@interface InstagramShareViewController : UIViewController <UIScrollViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
 

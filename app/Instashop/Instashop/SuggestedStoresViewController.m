@@ -66,7 +66,7 @@
     NSLog(@"appDelegate: %@", appDelegate);
     NSLog(@"appDelegate.instagram: %@", appDelegate.instagram);
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
-    [appDelegate.instagram requestWithParams:params delegate:self];
+//    [appDelegate.instagram requestWithParams:params delegate:self];
     
     NSLog(@"appDelegate.instagram: %@", appDelegate.instagram);
     [super viewDidLoad];

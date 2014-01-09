@@ -10,7 +10,6 @@
 #import "Instagram.h"
 #import "AuthenticationViewController.h"
 #import "AppRootViewController.h"
-#import "InstagramShareView.h"
 #import "ProfileViewController.h"
 #import "InstagramShareViewController.h"
 #define INSTASHOP_INSTAGRAM_ID @"280421250"

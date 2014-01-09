@@ -245,7 +245,6 @@
 		7BA9C2F118369A36003C2DD5 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA9C2F018369A36003C2DD5 /* NotificationsTableViewCell.xib */; };
 		7BAC5BB6187DC9DC0077EF50 /* TempScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC5BB5187DC9DC0077EF50 /* TempScrollView.m */; };
 		7BAC5BB9187DDCB20077EF50 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC5BB8187DDCB20077EF50 /* MBProgressHUD.m */; };
-		7BAC5BC8187DE0670077EF50 /* InstagramShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC5BC7187DE0670077EF50 /* InstagramShareView.m */; };
 		7BAD992018298E2100089D5A /* DiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */; };
 		7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */; };
 		7BC6E7DF18229C4500288B68 /* AmberViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7DD18229C4500288B68 /* AmberViewController.m */; };
@@ -627,8 +626,6 @@
 		7BAC5BB5187DC9DC0077EF50 /* TempScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempScrollView.m; sourceTree = "<group>"; };
 		7BAC5BB7187DDCB20077EF50 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7BAC5BB8187DDCB20077EF50 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		7BAC5BC6187DE0670077EF50 /* InstagramShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramShareView.h; sourceTree = "<group>"; };
-		7BAC5BC7187DE0670077EF50 /* InstagramShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramShareView.m; sourceTree = "<group>"; };
 		7BAD991E18298E2100089D5A /* DiscoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewCell.h; sourceTree = "<group>"; };
 		7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverTableViewCell.m; sourceTree = "<group>"; };
 		7BC6E7D8182299A300288B68 /* AmberAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AmberAPIHandler.h; sourceTree = "<group>"; };
@@ -1610,8 +1607,6 @@
 		7BAC5BC5187DDF4F0077EF50 /* instagram_share */ = {
 			isa = PBXGroup;
 			children = (
-				7BAC5BC6187DE0670077EF50 /* InstagramShareView.h */,
-				7BAC5BC7187DE0670077EF50 /* InstagramShareView.m */,
 				2ED0CA87187E12ED00DE6042 /* InstagramShareViewController.h */,
 				2ED0CA88187E12ED00DE6042 /* InstagramShareViewController.m */,
 				2ED0CA89187E12ED00DE6042 /* InstagramShareViewController.xib */,
@@ -2076,7 +2071,6 @@
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BA9C2EE18369513003C2DD5 /* NotificationsObject.m in Sources */,
 				7B337F04183A589B00E1BC0C /* SavedItemsAPIHandler.m in Sources */,
-				7BAC5BC8187DE0670077EF50 /* InstagramShareView.m in Sources */,
 				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */,
 				7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */,
