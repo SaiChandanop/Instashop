@@ -403,7 +403,12 @@ float transitionTime = .456;
 
 -(void)settingsExitButtonHit
 {
-    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.settingsNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
 }
 - (void) webViewExitButtonHit:(UINavigationController *)navigationController
 {

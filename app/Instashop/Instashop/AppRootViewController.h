@@ -39,7 +39,7 @@
 
 
 +(AppRootViewController *)sharedRootViewController;
-
+-(void)settingsExitButtonHit;
 -(void) homeButtonHit;
 -(void) notificationsButtonHit;
 -(void) discoverButtonHit;

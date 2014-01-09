@@ -71,13 +71,10 @@
                                      action:nil];
     
     
-    UISwipeGestureRecognizer *swipeGestureRecognizer = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(backButtonHit)];
-    swipeGestureRecognizer.direction = UISwipeGestureRecognizerDirectionRight;
-    [self.view addGestureRecognizer:swipeGestureRecognizer];
-
     
     
 }
+
 
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
@@ -280,7 +277,7 @@
 
 - (void) backButtonHit {
     NSLog(@"!! back");
-    [self.parentController webViewExitButtonHit:self.navigationController];
+    [self.parentController settingsExitButtonHit];
 }
 
 @end
