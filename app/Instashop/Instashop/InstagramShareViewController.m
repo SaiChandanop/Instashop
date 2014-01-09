@@ -35,7 +35,7 @@
     
     float xOffset = 10;
 
-    for (int i = 1; i < 6; i++)
+    for (int i = 1; i < 5; i++)
     {
         UIImage *theImage = [UIImage imageNamed:[NSString stringWithFormat:@"Instagram-Promo-%d.jpg", i]];
         
@@ -49,15 +49,12 @@
     }
     
     self.theScrollView.contentSize = CGSizeMake(xOffset, self.theScrollView.frame.size.height);
-
-    
     
     // Do any additional setup after loading the view from its nib.
 }
 
 -(void)scrollViewDidScroll:(UIScrollView *)aScrollView
 {
-    NSLog(@"scrollViewDidScroll: %@, contentOffset: %f", aScrollView, aScrollView.contentOffset.x);
     int index = -1;
     
     float maxVal = 100000;

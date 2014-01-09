@@ -174,7 +174,10 @@
     
     
     self.instagramShareViewController = [[InstagramShareViewController alloc] initWithNibName:@"InstagramShareViewController" bundle:nil];
-    self.instagramShareViewController.view.frame = CGRectMake(0, 0, 320, 278);
+    if (self.window.frame.size.height < 560)
+        self.instagramShareViewController.view.frame = CGRectMake(0, 0, 320, 309);
+    else
+        self.instagramShareViewController.view.frame = CGRectMake(0, 0, 320, 278);
     [self.window addSubview:self.instagramShareViewController.view];
     
 }
