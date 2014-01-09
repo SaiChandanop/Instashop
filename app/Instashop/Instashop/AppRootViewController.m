@@ -39,7 +39,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize searchNavigationController;
 @synthesize webView;
 @synthesize webViewNavigationController;
-
+@synthesize settingsNavigationController;
 float transitionTime = .456;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -357,21 +357,21 @@ float transitionTime = .456;
     self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     self.settingsViewController.parentController = self;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
+    self.settingsNavigationController= [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
     
-    [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
-    [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    [navigationController setTitle:@"SETTINGS"];
-    navigationController.navigationBar.translucent = NO;
-    navigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    [self.settingsNavigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [self.settingsNavigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    [self.settingsNavigationController setTitle:@"SETTINGS"];
+    self.settingsNavigationController.navigationBar.translucent = NO;
+    self.settingsNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     
-    [self.view addSubview:navigationController.view];
+    [self.view addSubview:self.settingsNavigationController.view];
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    navigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.settingsNavigationController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }
 
@@ -399,18 +399,23 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
+-(void)settingsExitButtonHit
+{
+    
+}
 - (void) webViewExitButtonHit:(UINavigationController *)navigationController
 {
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.webViewNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+    self.settingsNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }
 
 -(void)popupViewControllerShouldExit:(UINavigationController *)theNavigationController
 {
+    NSLog(@"popupViewControllerShouldExit: %@", theNavigationController);
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];

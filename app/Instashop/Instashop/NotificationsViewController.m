@@ -124,6 +124,7 @@
 
 -(void)backButtonHit
 {
+    NSLog(@"backButtonHit");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [appDelegate.appRootViewController popupViewControllerShouldExit:self.navigationController];
     

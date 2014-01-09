@@ -31,6 +31,8 @@
     UIButton *feedCoverButton;
     WebViewController *webView;
     UINavigationController *webViewNavigationController;
+    
+    UINavigationController *settingsNavigationController;
 }
 
 
@@ -68,6 +70,8 @@
 @property (strong, nonatomic) SettingsViewController *settingsViewController;
 @property (strong, nonatomic) WebViewController *webView;
 @property (strong, nonatomic) UINavigationController *webViewNavigationController;
+
+@property (strong, nonatomic) UINavigationController *settingsNavigationController;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;
 @property (strong, nonatomic) UIButton *feedCoverButton;
