@@ -117,8 +117,6 @@
     
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height /2;
     self.profileImageView.layer.masksToBounds = YES;
-    self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-    self.profileImageView.layer.borderWidth = 1;
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""

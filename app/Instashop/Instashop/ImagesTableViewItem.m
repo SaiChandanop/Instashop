@@ -29,7 +29,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        float contentInset = 4;
+        float contentInset = 0;
         
         self.backgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)];
         self.backgroundImageView.image = [UIImage imageNamed:@"feedImageShadow.png"];
