@@ -20,6 +20,7 @@
 @synthesize theScrollView;
 @synthesize parentController;
 @synthesize logoutView;
+@synthesize peoplePicker;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -214,21 +215,21 @@
 {
     NSLog(@"inviteButtonHit");
     
-    ABPeoplePickerNavigationController *picker = [[ABPeoplePickerNavigationController alloc] init];
-    picker.peoplePickerDelegate = self;
+    self.peoplePicker = [[ABPeoplePickerNavigationController alloc] init];
+    self.peoplePicker.peoplePickerDelegate = self;
     
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
 //    [delegate.appRootViewController presentViewController:picker animated:YES completion:nil];
     
-    picker.view.frame = CGRectMake(0,picker.view.frame.size.height, picker.view.frame.size.width, picker.view.frame.size.height);
-    [delegate.appRootViewController.view addSubview:picker.view];
+    self.peoplePicker.view.frame = CGRectMake(0,self.peoplePicker.view.frame.size.height, self.peoplePicker.view.frame.size.width, self.peoplePicker.view.frame.size.height);
+    [delegate.appRootViewController.view addSubview:self.peoplePicker.view];
     
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:.456];
     [UIView setAnimationDelegate:self];
-    picker.view.frame = CGRectMake(0, 0, picker.view.frame.size.width, picker.view.frame.size.height);
+    self.peoplePicker.view.frame = CGRectMake(0, 0, self.peoplePicker.view.frame.size.width, self.peoplePicker.view.frame.size.height);
     [UIView commitAnimations];
     
 }

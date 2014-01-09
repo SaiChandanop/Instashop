@@ -20,7 +20,8 @@
     UILabel *sellerLabel;
     
     UIView *termsView;
-    
+ 
+    ABPeoplePickerNavigationController *peoplePicker;
 }
 
 -(IBAction) inviteButtonHit;
@@ -47,6 +48,8 @@
 @property (nonatomic, strong) IBOutlet UIView *termsView;
 @property (nonatomic, strong) IBOutlet UIView *logoutView;
 @property (nonatomic, strong) IBOutlet UIView *topBarView;
+
+@property (nonatomic, strong) ABPeoplePickerNavigationController *peoplePicker;
 
 @end
 
