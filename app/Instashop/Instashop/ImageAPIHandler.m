@@ -139,8 +139,9 @@ static ImageAPIHandler *sharedImageAPIHandler;
 {
 
 
-        if (self.theImageView != nil)
-            self.theImageView.image = [UIImage imageWithData:self.receivedData];
+        UIImage *theImage = [UIImage imageWithData:self.receivedData];
+        if (self.theImageView != nil && theImage != nil)
+            self.theImageView.image = theImage;
     
         self.theImageView.alpha = 1;
         
