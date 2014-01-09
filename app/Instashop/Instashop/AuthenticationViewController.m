@@ -128,6 +128,21 @@
     
 }
 
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSLog(@"%@ shouldStartLoadWithRequest: %@", webView, request);
+    return YES;
+}
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    NSLog(@"webViewDidStartLoad: %@", webView);
+}
+
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+{
+    NSLog(@"webView: %@ didFailLoadWithError: %@", webView, error);
+}
+
 -(void)loginBackButtonHit
 {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -143,6 +158,37 @@
                                               otherButtonTitles:nil];
     [alertView show];
 }
+
+-(void)igDidLogin
+{
+    [self.loginWebView removeFromSuperview];
+    // here i can store accessToken
+    AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    
+    [[NSUserDefaults standardUserDefaults] setObject:appDelegate.instagram.accessToken forKey:@"accessToken"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self", @"method", nil];
+    [appDelegate.instagram requestWithParams:params
+                                    delegate:self];
+    [appDelegate userDidLogin];
+    
+    [self.loginWebView removeFromSuperview];
+    
+    UIButton *buyerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    buyerButton.frame = CGRectMake(self.view.frame.size.width / 2 - 50, self.view.frame.size.height / 2 - 40, 100, 40);
+    [buyerButton setTitle:@"buyer" forState:UIControlStateNormal];
+    [buyerButton addTarget:self action:@selector(buyerButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:buyerButton];
+    
+    UIButton *sellerButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    sellerButton.frame = CGRectMake(buyerButton.frame.origin.x, buyerButton.frame.origin.y + buyerButton.frame.size.height + 10, buyerButton.frame.size.width, buyerButton.frame.size.height);
+    [sellerButton setTitle:@"seller" forState:UIControlStateNormal];
+    [sellerButton addTarget:self action:@selector(sellerButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:sellerButton];
+}
+
+
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     

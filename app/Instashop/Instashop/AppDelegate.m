@@ -117,14 +117,14 @@
 // YOU NEED TO CAPTURE igAPPID:// schema
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
     
-//    NSLog(@"application: %@, handleOpenURL: %@", application, url);
+    NSLog(@"application: %@, handleOpenURL: %@", application, url);
     
     return [self.instagram handleOpenURL:url];
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     
-//    NSLog(@"application: %@, handleOpenURL: %@, sourceApplication %@, annotation: %@", application, url, sourceApplication, annotation);
+    NSLog(@"application: %@, handleOpenURL: %@, sourceApplication %@, annotation: %@", application, url, sourceApplication, annotation);
     return [self.instagram handleOpenURL:url];
 }
 
