@@ -318,10 +318,6 @@ float transitionTime = .456;
         self.theSearchViewController.appRootViewController = self;
     }
     
-    
-    
-    
-    
     if (self.searchNavigationController == nil)
     {
         self.searchNavigationController = [[UINavigationController alloc] initWithRootViewController:self.theSearchViewController];
@@ -341,6 +337,10 @@ float transitionTime = .456;
 {
     [self.theSearchViewController.view removeFromSuperview];
     self.theSearchViewController = nil;
+    
+    [self.searchNavigationController.view removeFromSuperview];
+    self.searchNavigationController = nil;
+    
     [self ceaseTransition];
 }
 -(void)searchExitButtonHit:(UINavigationController *)navigationController
