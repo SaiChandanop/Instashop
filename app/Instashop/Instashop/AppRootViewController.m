@@ -352,10 +352,10 @@ float transitionTime = .456;
 
 - (void) settingsButtonHit {
     
-    SettingsViewController *settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
-    settingsViewController.parentController = self;
+    self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
+    self.settingsViewController.parentController = self;
     
-    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:settingsViewController];
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.settingsViewController];
     
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
