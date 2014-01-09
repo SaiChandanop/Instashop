@@ -31,7 +31,7 @@
 
     for (int i = 1; i < 6; i++)
     {
-        UIImage *theImage = [UIImage imageNamed:[NSString stringWithFormat:@"Instagram-Promo-%d", i]];
+        UIImage *theImage = [UIImage imageNamed:[NSString stringWithFormat:@"Instagram-Promo-%d.jpg", i]];
         
         UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(xOffset, 0, self.theScrollView.frame.size.height, self.theScrollView.frame.size.height)];
         theImageView.image = theImage;
