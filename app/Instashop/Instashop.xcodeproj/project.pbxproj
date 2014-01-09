@@ -83,6 +83,12 @@
 		2EB259B11767B50D0054618D /* magnify@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EB259AF1767B50D0054618D /* magnify@2x.png */; };
 		2ED088C317CAD54500439A7D /* bottom_shadow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */; };
 		2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */; };
+		2ED0CA8A187E12ED00DE6042 /* InstagramShareViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2ED0CA88187E12ED00DE6042 /* InstagramShareViewController.m */; };
+		2ED0CA8B187E12ED00DE6042 /* InstagramShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA89187E12ED00DE6042 /* InstagramShareViewController.xib */; };
+		2ED0CA90187E1A8700DE6042 /* Instagram-Promo-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA8C187E1A8700DE6042 /* Instagram-Promo-4.jpg */; };
+		2ED0CA91187E1A8700DE6042 /* Instagram-Promo-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA8D187E1A8700DE6042 /* Instagram-Promo-3.jpg */; };
+		2ED0CA92187E1A8700DE6042 /* Instagram-Promo-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA8E187E1A8700DE6042 /* Instagram-Promo-2.jpg */; };
+		2ED0CA93187E1A8700DE6042 /* Instagram-Promo-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA8F187E1A8700DE6042 /* Instagram-Promo-1.jpg */; };
 		2EFD0A3817FBBB2C00E701B0 /* twitter_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */; };
 		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
@@ -239,11 +245,6 @@
 		7BA9C2F118369A36003C2DD5 /* NotificationsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BA9C2F018369A36003C2DD5 /* NotificationsTableViewCell.xib */; };
 		7BAC5BB6187DC9DC0077EF50 /* TempScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC5BB5187DC9DC0077EF50 /* TempScrollView.m */; };
 		7BAC5BB9187DDCB20077EF50 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC5BB8187DDCB20077EF50 /* MBProgressHUD.m */; };
-		7BAC5BC0187DDED20077EF50 /* Instagram-Promo-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC5BBB187DDED20077EF50 /* Instagram-Promo-1.png */; };
-		7BAC5BC1187DDED20077EF50 /* Instagram-Promo-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC5BBC187DDED20077EF50 /* Instagram-Promo-2.png */; };
-		7BAC5BC2187DDED20077EF50 /* Instagram-Promo-4.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC5BBD187DDED20077EF50 /* Instagram-Promo-4.png */; };
-		7BAC5BC3187DDED20077EF50 /* Instagram-Promo-5.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC5BBE187DDED20077EF50 /* Instagram-Promo-5.png */; };
-		7BAC5BC4187DDED20077EF50 /* Instagram-Promo-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BAC5BBF187DDED20077EF50 /* Instagram-Promo-3.png */; };
 		7BAC5BC8187DE0670077EF50 /* InstagramShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC5BC7187DE0670077EF50 /* InstagramShareView.m */; };
 		7BAD992018298E2100089D5A /* DiscoverTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BAD991F18298E2100089D5A /* DiscoverTableViewCell.m */; };
 		7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BC6E7D9182299A300288B68 /* AmberAPIHandler.m */; };
@@ -370,6 +371,13 @@
 		2EB259AF1767B50D0054618D /* magnify@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "magnify@2x.png"; path = "Assets/magnify@2x.png"; sourceTree = "<group>"; };
 		2ED088C217CAD54500439A7D /* bottom_shadow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bottom_shadow@2x.png"; sourceTree = "<group>"; };
 		2ED088C417CAD63300439A7D /* instagram_gray_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "instagram_gray_icon@2x.png"; sourceTree = "<group>"; };
+		2ED0CA87187E12ED00DE6042 /* InstagramShareViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramShareViewController.h; sourceTree = "<group>"; };
+		2ED0CA88187E12ED00DE6042 /* InstagramShareViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramShareViewController.m; sourceTree = "<group>"; };
+		2ED0CA89187E12ED00DE6042 /* InstagramShareViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InstagramShareViewController.xib; sourceTree = "<group>"; };
+		2ED0CA8C187E1A8700DE6042 /* Instagram-Promo-4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Instagram-Promo-4.jpg"; sourceTree = "<group>"; };
+		2ED0CA8D187E1A8700DE6042 /* Instagram-Promo-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Instagram-Promo-3.jpg"; sourceTree = "<group>"; };
+		2ED0CA8E187E1A8700DE6042 /* Instagram-Promo-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Instagram-Promo-2.jpg"; sourceTree = "<group>"; };
+		2ED0CA8F187E1A8700DE6042 /* Instagram-Promo-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Instagram-Promo-1.jpg"; sourceTree = "<group>"; };
 		2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
@@ -619,11 +627,6 @@
 		7BAC5BB5187DC9DC0077EF50 /* TempScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempScrollView.m; sourceTree = "<group>"; };
 		7BAC5BB7187DDCB20077EF50 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		7BAC5BB8187DDCB20077EF50 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		7BAC5BBB187DDED20077EF50 /* Instagram-Promo-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram-Promo-1.png"; sourceTree = "<group>"; };
-		7BAC5BBC187DDED20077EF50 /* Instagram-Promo-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram-Promo-2.png"; sourceTree = "<group>"; };
-		7BAC5BBD187DDED20077EF50 /* Instagram-Promo-4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram-Promo-4.png"; sourceTree = "<group>"; };
-		7BAC5BBE187DDED20077EF50 /* Instagram-Promo-5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram-Promo-5.png"; sourceTree = "<group>"; };
-		7BAC5BBF187DDED20077EF50 /* Instagram-Promo-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Instagram-Promo-3.png"; sourceTree = "<group>"; };
 		7BAC5BC6187DE0670077EF50 /* InstagramShareView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramShareView.h; sourceTree = "<group>"; };
 		7BAC5BC7187DE0670077EF50 /* InstagramShareView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramShareView.m; sourceTree = "<group>"; };
 		7BAD991E18298E2100089D5A /* DiscoverTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverTableViewCell.h; sourceTree = "<group>"; };
@@ -1596,11 +1599,10 @@
 		7BAC5BBA187DDEB70077EF50 /* Instagram_share_images */ = {
 			isa = PBXGroup;
 			children = (
-				7BAC5BBB187DDED20077EF50 /* Instagram-Promo-1.png */,
-				7BAC5BBC187DDED20077EF50 /* Instagram-Promo-2.png */,
-				7BAC5BBD187DDED20077EF50 /* Instagram-Promo-4.png */,
-				7BAC5BBE187DDED20077EF50 /* Instagram-Promo-5.png */,
-				7BAC5BBF187DDED20077EF50 /* Instagram-Promo-3.png */,
+				2ED0CA8C187E1A8700DE6042 /* Instagram-Promo-4.jpg */,
+				2ED0CA8D187E1A8700DE6042 /* Instagram-Promo-3.jpg */,
+				2ED0CA8E187E1A8700DE6042 /* Instagram-Promo-2.jpg */,
+				2ED0CA8F187E1A8700DE6042 /* Instagram-Promo-1.jpg */,
 			);
 			name = Instagram_share_images;
 			sourceTree = "<group>";
@@ -1610,6 +1612,9 @@
 			children = (
 				7BAC5BC6187DE0670077EF50 /* InstagramShareView.h */,
 				7BAC5BC7187DE0670077EF50 /* InstagramShareView.m */,
+				2ED0CA87187E12ED00DE6042 /* InstagramShareViewController.h */,
+				2ED0CA88187E12ED00DE6042 /* InstagramShareViewController.m */,
+				2ED0CA89187E12ED00DE6042 /* InstagramShareViewController.xib */,
 			);
 			name = instagram_share;
 			sourceTree = "<group>";
@@ -1852,16 +1857,15 @@
 				7B61EE5D174D2162002A483D /* Default-568h@2x.png in Resources */,
 				7B676F6F17BC79C7004FC53B /* previewsocialshittyimage.png in Resources */,
 				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
-				7BAC5BC3187DDED20077EF50 /* Instagram-Promo-5.png in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BDED692180C7A28001FF165 /* CIALBrowser.bundle in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
 				69D812781862429D00EA34CE /* FirstTTutorialThree@2x.png in Resources */,
-				7BAC5BC2187DDED20077EF50 /* Instagram-Promo-4.png in Resources */,
-				7BAC5BC1187DDED20077EF50 /* Instagram-Promo-2.png in Resources */,
 				7B0320EC17E0F9FD0045D7AC /* DiscoverTableViewController.xib in Resources */,
 				2E9378ED184D200500476540 /* privacy_icon@2x.png in Resources */,
+				2ED0CA93187E1A8700DE6042 /* Instagram-Promo-1.jpg in Resources */,
 				7B4D2E16175CFCD1005DE4B6 /* HomeViewController.xib in Resources */,
+				2ED0CA92187E1A8700DE6042 /* Instagram-Promo-2.jpg in Resources */,
 				7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */,
 				7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */,
 				7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */,
@@ -1901,7 +1905,6 @@
 				2EB259AB1767A1D30054618D /* heart_red@2x.png in Resources */,
 				2EB259AD1767B3280054618D /* top_shadow@2x.png in Resources */,
 				2EB259B11767B50D0054618D /* magnify@2x.png in Resources */,
-				7BAC5BC4187DDED20077EF50 /* Instagram-Promo-3.png in Resources */,
 				7BE688CA176B7801007D383B /* FeedViewController.xib in Resources */,
 				2E628CAD17C6A19900CB7BE4 /* AppIcon40x40@2x.png in Resources */,
 				696DE14A182ADC7B00F78B8E /* Tutorial-Notifications-Phone.png in Resources */,
@@ -1939,6 +1942,7 @@
 				2E0EAE18176F6E6700B65FC3 /* menuBottomShadow@2x.png in Resources */,
 				7B0D253C17CBA36300E43FA6 /* PLCameraSheetButtonPressed.png in Resources */,
 				2E0EAE19176F6E6700B65FC3 /* menuDarkBG@2x.png in Resources */,
+				2ED0CA8B187E12ED00DE6042 /* InstagramShareViewController.xib in Resources */,
 				2E714CD017E28CCE00014413 /* search_cancel@2x.png in Resources */,
 				2E0EAE1A176F6E6700B65FC3 /* lmVerifiedRetailerIcon@2x.png in Resources */,
 				2E0EAE1B176F6E6700B65FC3 /* lmSuggestedStoresIcon@2x.png in Resources */,
@@ -1949,7 +1953,6 @@
 				2E0EAE1D176F6E6700B65FC3 /* lmProfileIcon@2x.png in Resources */,
 				2E0EAE1E176F6E6700B65FC3 /* lmReportBugIcon@2x.png in Resources */,
 				7B5A56EB17D3D757007AABDA /* SuggestedStoresViewController.xib in Resources */,
-				7BAC5BC0187DDED20077EF50 /* Instagram-Promo-1.png in Resources */,
 				2ED088C517CAD63300439A7D /* instagram_gray_icon@2x.png in Resources */,
 				2E0EAE1F176F6E6700B65FC3 /* lmPrivacyPolicyIcon@2x.png in Resources */,
 				2E0EAE20176F6E6700B65FC3 /* lmHomeIcon@2x.png in Resources */,
@@ -1959,6 +1962,7 @@
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
 				2EB05556185F5BF400D55F28 /* cover-default@2x.jpg in Resources */,
 				7B0D253D17CBA36300E43FA6 /* PLCameraSheetDoneButton.png in Resources */,
+				2ED0CA90187E1A8700DE6042 /* Instagram-Promo-4.jpg in Resources */,
 				7B5BFAE517D6945600F82F0B /* NotificationsViewController.xib in Resources */,
 				2E9378F0184D200500476540 /* faq_icon@2x.png in Resources */,
 				6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */,
@@ -1981,6 +1985,7 @@
 				2E38E6B117CBDB6300A8BD54 /* lightMenuBG@2x.png in Resources */,
 				7B9EAB3F1796E98600D2868D /* product_buy_bakcground_image_b.png in Resources */,
 				7B9EAB411796EA1400D2868D /* product_buy_bakcground_image_c.png in Resources */,
+				2ED0CA91187E1A8700DE6042 /* Instagram-Promo-3.jpg in Resources */,
 				7B9EAB43179702C900D2868D /* product_buy_button_background.png in Resources */,
 				7B74C3CC179712A20006289C /* PurchasingCompleteViewController.xib in Resources */,
 				7B4A78FA17B13C07002E872A /* purchase_button_background.png in Resources */,
@@ -2060,6 +2065,7 @@
 				7B7A7F7F17D64ACE00247A26 /* SearchViewController.m in Sources */,
 				7B0D255017CBA36F00E43FA6 /* GKResizeableCropOverlayView.m in Sources */,
 				7B4D2E0C175CFC75005DE4B6 /* AppRootViewController.m in Sources */,
+				2ED0CA8A187E12ED00DE6042 /* InstagramShareViewController.m in Sources */,
 				7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */,
 				7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */,
 				7B5BFAE417D6945600F82F0B /* NotificationsViewController.m in Sources */,

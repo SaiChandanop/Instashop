@@ -64,7 +64,7 @@
     [self.view insertSubview:bgImageView atIndex:0];
     
     self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""
+    [[UIBarButtonItem alloc] initWithTitle:@"!"
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil];
@@ -77,6 +77,7 @@
     
     
 }
+
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 {
@@ -277,6 +278,7 @@
 }
 
 - (void) backButtonHit {
+    NSLog(@"!! back");
     [self.parentController webViewExitButtonHit:self.navigationController];
 }
 

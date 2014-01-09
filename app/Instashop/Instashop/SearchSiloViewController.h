@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ObjectSelectTableViewController.h"
-
+#import "CategoriesTableViewController.h"
 
 @class SearchViewController;
 @class SearchButtonContainerView;
@@ -31,6 +31,9 @@
 
     NSMutableArray *searchButtonsArray;
     int searchType;
+    
+    CategoriesTableViewController *primaryProductCategoriesTableViewController;
+    CategoriesTableViewController *secondaryProductCategoriesTableViewController;
     
 }
 
@@ -55,4 +58,6 @@
 
 @property (nonatomic, assign) int searchType;
 
+@property (nonatomic, strong) CategoriesTableViewController *primaryProductCategoriesTableViewController;
+@property (nonatomic, strong) CategoriesTableViewController *secondaryProductCategoriesTableViewController;
 @end

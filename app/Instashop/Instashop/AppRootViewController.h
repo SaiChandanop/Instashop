@@ -13,7 +13,8 @@
 #import "FirstTimeUserViewController.h"
 #import "NotificationsViewController.h"
 #import "NotificationsObject.h"
-
+#import "SettingsViewController.h"
+#import "WebViewController.h"
 @class SearchViewController;
 
 @interface AppRootViewController : UIViewController
@@ -24,9 +25,14 @@
     SearchViewController *theSearchViewController;
     UINavigationController *searchNavigationController;
     NotificationsViewController *notificationsViewController;
+    SettingsViewController *settingsViewController;
     
     BOOL areViewsTransitioning;
     UIButton *feedCoverButton;
+    WebViewController *webView;
+    UINavigationController *webViewNavigationController;
+    
+    UINavigationController *settingsNavigationController;
 }
 
 
@@ -61,7 +67,11 @@
 @property (strong, nonatomic) UINavigationController *searchNavigationController;
 @property (strong, nonatomic) FirstTimeUserViewController *firstTimeUserViewController;
 @property (strong, nonatomic) NotificationsViewController *notificationsViewController;
+@property (strong, nonatomic) SettingsViewController *settingsViewController;
+@property (strong, nonatomic) WebViewController *webView;
+@property (strong, nonatomic) UINavigationController *webViewNavigationController;
 
+@property (strong, nonatomic) UINavigationController *settingsNavigationController;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;
 @property (strong, nonatomic) UIButton *feedCoverButton;

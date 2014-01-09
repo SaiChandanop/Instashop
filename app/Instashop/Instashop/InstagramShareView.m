@@ -19,11 +19,15 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        self.theScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, frame.size.height)];
+        float xOffset = 5;
+        float yOffset = 25;
+        
+        self.theScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(25, yOffset, frame.size.width-2*xOffset, frame.size.height-yOffset)];
+        self.theScrollView.backgroundColor = [UIColor blackColor];
+        self.theScrollView.pagingEnabled = YES;
+        self.theScrollView.clipsToBounds = YES;
         [self addSubview:self.theScrollView];
-        
-        float xOffset = 0;
-        
+       
         
         for (int i = 1; i < 6; i++)
         {
@@ -34,7 +38,7 @@
             [self.theScrollView addSubview:theImageView];
             
             UIButton *aButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            aButton.frame = CGRectMake(xOffset, 0, self.theScrollView.frame.size.height, self.theScrollView.frame.size.height);
+            aButton.frame = CGRectMake(xOffset, yOffset, self.theScrollView.frame.size.height, self.theScrollView.frame.size.height);
             aButton.tag = i;
             [aButton addTarget:self action:@selector(aButtonHit:) forControlEvents:UIControlEventTouchUpInside];
             [self.theScrollView addSubview:aButton];

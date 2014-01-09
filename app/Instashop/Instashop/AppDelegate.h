@@ -12,7 +12,7 @@
 #import "AppRootViewController.h"
 #import "InstagramShareView.h"
 #import "ProfileViewController.h"
-
+#import "InstagramShareViewController.h"
 #define INSTASHOP_INSTAGRAM_ID @"280421250"
 
 
@@ -25,7 +25,8 @@
     
     NSString *pushDeviceTokenString;
 
-    InstagramShareView *instagramShareView;
+//    InstagramShareView *instagramShareView;
+    InstagramShareViewController *instagramShareViewController;
     UIDocumentInteractionController *dicot;
 }
 
@@ -46,7 +47,8 @@
 
 @property (strong, nonatomic) NSString *pushDeviceTokenString;
 
-@property (strong, nonatomic) InstagramShareView *instagramShareView;
+//@property (strong, nonatomic) InstagramShareView *instagramShareView;
+@property (strong, nonatomic) InstagramShareViewController *instagramShareViewController;
 @property (strong, nonatomic) UIDocumentInteractionController *dicot;
 
 @end

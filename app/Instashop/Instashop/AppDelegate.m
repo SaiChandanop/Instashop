@@ -25,7 +25,7 @@
 @implementation AppDelegate
 
 @synthesize instagram, authenticationViewController, appRootViewController;
-@synthesize pushDeviceTokenString, instagramShareView;
+@synthesize pushDeviceTokenString, instagramShareViewController;
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
@@ -173,8 +173,9 @@
     [self.dicot presentOpenInMenuFromRect: rect  inView: [AppRootViewController sharedRootViewController].view animated: YES ];
     
     
-    self.instagramShareView = [[InstagramShareView alloc] initWithFrame:CGRectMake(0, 0, 320, 278)];
-    [self.window addSubview:self.instagramShareView];
+    self.instagramShareViewController = [[InstagramShareViewController alloc] initWithNibName:@"InstagramShareViewController" bundle:nil];
+    self.instagramShareViewController.view.frame = CGRectMake(0, 0, 320, 278);
+    [self.window addSubview:self.instagramShareViewController.view];
     
 }
 
@@ -195,7 +196,7 @@
 }
 
 - (void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application{
-    [self.instagramShareView removeFromSuperview];
+    [self.instagramShareViewController.view removeFromSuperview];
     NSLog(@"documentInteractionController will begin sending");
     
 }
