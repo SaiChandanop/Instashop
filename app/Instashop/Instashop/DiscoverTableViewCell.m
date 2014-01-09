@@ -26,17 +26,17 @@
 
 -(void) handleLayoutWithDelegate:(id)theDelegate
 {
-    float imageWidth = self.frame.size.width / 2 - 15;
+    float imageWidth = self.frame.size.width / 2;
     
     if (self.itemOne == nil)
     {
-        self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(8, 0, imageWidth, imageWidth + 2)];
+        self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(0, 0, imageWidth, imageWidth)];
         [self addSubview:self.itemOne];
     }
     
     if (self.itemTwo == nil)
     {
-        self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(imageWidth + 17, 0, imageWidth, imageWidth + 2)];
+        self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(imageWidth, 0, imageWidth, imageWidth)];
         [self addSubview:self.itemTwo];
     }
     

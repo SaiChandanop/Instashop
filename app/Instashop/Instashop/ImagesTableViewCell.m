@@ -27,7 +27,7 @@
 
 -(void) handleLayoutWithDelegate:(id)theDelegate
 {
-    float imageWidth = 106;
+    float imageWidth = self.frame.size.width/3;
  /*
     if (self.itemOne != nil)
     {
@@ -52,19 +52,19 @@
  */   
     if (self.itemOne == nil)
     {
-        self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(1, 0, imageWidth, imageWidth + 2)];
+        self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(0, 0, imageWidth, imageWidth)];
         [self addSubview:self.itemOne];
     }
     
     if (self.itemTwo == nil)
     {
-        self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(107, 0, imageWidth, imageWidth + 2)];
+        self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(self.itemOne.frame.size.width, 0, imageWidth, imageWidth)];
         [self addSubview:self.itemTwo];
     }
     
     if (self.itemThree == nil)
     {
-        self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(213, 0, imageWidth, imageWidth + 2)];
+        self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(self.itemTwo.frame.origin.x + self.itemTwo.frame.size.width, 0, imageWidth, imageWidth)];
         [self addSubview:self.itemThree];
     }
     
