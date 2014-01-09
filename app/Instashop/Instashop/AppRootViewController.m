@@ -40,6 +40,8 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize webView;
 @synthesize webViewNavigationController;
 @synthesize settingsNavigationController;
+@synthesize productCreateNavigationController;
+
 float transitionTime = .456;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -212,22 +214,16 @@ float transitionTime = .456;
         ProductCreateViewController *productCreateViewController = [[ProductCreateViewController alloc] initWithNibName:@"ProductCreateViewController" bundle:nil];
         productCreateViewController.parentController = self;
         
-        UINavigationController *productCreateNavigationController = [[UINavigationController alloc] initWithRootViewController:productCreateViewController];
-        productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-        [self.view addSubview:productCreateNavigationController .view];
+        self.productCreateNavigationController = [[UINavigationController alloc] initWithRootViewController:productCreateViewController];
+        self.productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:self.productCreateNavigationController .view];
         
-        /*
-        UIView *bufferView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 20)];
-        bufferView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-
-        [self.view addSubview:bufferView];
-        */  
          
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-        productCreateNavigationController.view.frame = CGRectMake(0, 0, productCreateNavigationController .view.frame.size.width, productCreateNavigationController.view.frame.size.height);
+        self.productCreateNavigationController.view.frame = CGRectMake(0, 0, self.productCreateNavigationController .view.frame.size.width, self.productCreateNavigationController.view.frame.size.height);
         [UIView commitAnimations];        
     }
 }
@@ -341,13 +337,19 @@ float transitionTime = .456;
     [UIView commitAnimations];
 }
 
+-(void)searchDidComplete
+{
+    [self.theSearchViewController.view removeFromSuperview];
+    self.theSearchViewController = nil;
+    [self ceaseTransition];
+}
 -(void)searchExitButtonHit:(UINavigationController *)navigationController
 {
     NSLog(@"searchExitButtonHit: %@", navigationController);
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    [UIView setAnimationDidStopSelector:@selector(searchDidComplete)];
     self.searchNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }

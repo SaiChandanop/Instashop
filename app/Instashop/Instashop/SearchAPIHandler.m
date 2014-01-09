@@ -98,7 +98,7 @@
 -(void)searchRequestComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"searchRequestComplete: %@", newStr);
+//    NSLog(@"searchRequestComplete: %@", newStr);
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
 

@@ -24,7 +24,7 @@
 @synthesize parentController;
 @synthesize productSelectTableViewController;
 @synthesize productDictionary;
-
+@synthesize productDetailsViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,12 +95,13 @@
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
     NSLog(@"theSelectionObject: %@", theSelectionObject);
+    NSLog(@"self.navigationController: %@", self.navigationController);
     self.currentSelectionObject = [[NSDictionary alloc] initWithDictionary:theSelectionObject];
-    ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
-    productDetailsViewController.parentController = self;
-    productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
+    self.productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
+    self.productDetailsViewController.parentController = self;
+    self.productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
     [self.navigationController pushViewController:productDetailsViewController animated:YES];
-    [productDetailsViewController loadViewsWithInstagramInfoDictionary:self.currentSelectionObject];
+    [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:self.currentSelectionObject];
     
     
 }

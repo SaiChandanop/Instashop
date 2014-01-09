@@ -26,6 +26,7 @@
     UINavigationController *searchNavigationController;
     NotificationsViewController *notificationsViewController;
     SettingsViewController *settingsViewController;
+    UINavigationController *productCreateNavigationController;
     
     BOOL areViewsTransitioning;
     UIButton *feedCoverButton;
@@ -70,7 +71,7 @@
 @property (strong, nonatomic) SettingsViewController *settingsViewController;
 @property (strong, nonatomic) WebViewController *webView;
 @property (strong, nonatomic) UINavigationController *webViewNavigationController;
-
+@property (strong, nonatomic) UINavigationController *productCreateNavigationController;
 @property (strong, nonatomic) UINavigationController *settingsNavigationController;
 
 @property (nonatomic, assign) BOOL areViewsTransitioning;

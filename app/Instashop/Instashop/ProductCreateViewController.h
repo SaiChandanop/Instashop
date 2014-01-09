@@ -26,6 +26,8 @@
     NSDictionary *productDictionary;
     
     NSDictionary *currentSelectionObject;
+    
+    ProductDetailsViewController *productDetailsViewController;
 }
 
 -(void) forceRefreshContent;
@@ -42,4 +44,6 @@
 @property (nonatomic, strong) NSDictionary *productDictionary;
 
 @property (nonatomic, strong) NSDictionary *currentSelectionObject;
+
+@property (nonatomic, strong) ProductDetailsViewController *productDetailsViewController;
 @end
