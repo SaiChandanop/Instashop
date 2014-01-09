@@ -14,11 +14,15 @@
 
 @implementation InstagramShareViewController
 
+@synthesize imageViewsArray;
+@synthesize currentSelectedIndex;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        self.imageViewsArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -26,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self.imageViewsArray removeAllObjects];
     
     float xOffset = 10;
 
@@ -38,6 +44,8 @@
         [self.theScrollView addSubview:theImageView];
         
         xOffset = theImageView.frame.origin.x + theImageView.frame.size.width + 10;
+        
+        [self.imageViewsArray addObject:theImageView];
     }
     
     self.theScrollView.contentSize = CGSizeMake(xOffset, self.theScrollView.frame.size.height);
@@ -47,7 +55,34 @@
     // Do any additional setup after loading the view from its nib.
 }
 
+-(void)scrollViewDidScroll:(UIScrollView *)aScrollView
+{
+    NSLog(@"scrollViewDidScroll: %@, contentOffset: %f", aScrollView, aScrollView.contentOffset.x);
+    int index = -1;
+    
+    float maxVal = 100000;
+    for (int i = 0; i < [self.imageViewsArray count]; i++)
+    {
+        UIImageView *theImageView = [self.imageViewsArray objectAtIndex:i];
+        
+        float val = fabsf(theImageView.frame.origin.x - self.theScrollView.contentOffset.x);
+        if (val < maxVal)
+        {
+            maxVal = val;
+            index = i;
+        }
+        
+        
+        
+    }
+    
+    self.currentSelectedIndex = index;
+}
 
+-(UIImage *)getSelectedImage
+{
+    return [UIImage imageNamed:[NSString stringWithFormat:@"Instagram-Promo-%d.jpg", self.currentSelectedIndex]];
+}
 
 - (void)didReceiveMemoryWarning
 {

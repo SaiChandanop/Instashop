@@ -9,7 +9,15 @@
 #import <UIKit/UIKit.h>
 
 @interface InstagramShareViewController : UIViewController <UIScrollViewDelegate>
+{
+    NSMutableArray *imageViewsArray;
+    int currentSelectedIndex;
+}
 
+-(UIImage *)getSelectedImage;
+
+@property (nonatomic, retain) NSMutableArray *imageViewsArray;
 @property (nonatomic, retain) IBOutlet UIScrollView *theScrollView;
+@property (nonatomic, assign) int currentSelectedIndex;
 
 @end

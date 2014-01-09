@@ -179,11 +179,15 @@
     
 }
 
-- (void) socialImageSelected:(UIImage *)theImage
+
+- (void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application
 {
+    NSLog(@"documentInteractionController will begin sending");
+    
+    
     NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
     
-    BOOL writeSuccess = [UIImageJPEGRepresentation(theImage, 1.0) writeToFile:jpgPath atomically:YES];
+    BOOL writeSuccess = [UIImageJPEGRepresentation([self.instagramShareViewController getSelectedImage], 1.0) writeToFile:jpgPath atomically:YES];
     NSLog(@"writeSuccess: %d", writeSuccess);
     
     NSURL *igImageHookFile = [[NSURL alloc] initWithString:[[NSString alloc] initWithFormat:@"file://%@",jpgPath]];
@@ -192,12 +196,8 @@
     self.dicot.UTI = @"com.instagram.photo";
     self.dicot.annotation = [NSDictionary dictionaryWithObject:PROMOTE_TEXT forKey:@"InstagramCaption"];
     
-    NSLog(@"socialImageSelected, theImage: %@", theImage);
-}
-
-- (void)documentInteractionController:(UIDocumentInteractionController *)controller willBeginSendingToApplication:(NSString *)application{
     [self.instagramShareViewController.view removeFromSuperview];
-    NSLog(@"documentInteractionController will begin sending");
+    
     
 }
 - (void) documentInteractionControllerDidDismissOptionsMenu: (UIDocumentInteractionController *) controller
