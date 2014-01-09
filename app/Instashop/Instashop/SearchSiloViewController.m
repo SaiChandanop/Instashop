@@ -33,6 +33,8 @@
 @synthesize searchType;
 @synthesize objectSelectTableViewController;
 @synthesize searchButtonsArray;
+@synthesize primaryProductCategoriesTableViewController;
+@synthesize secondaryProductCategoriesTableViewController;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,19 +58,19 @@
     self.contentContainerView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.contentContainerView];
     
-    CategoriesTableViewController *productCategoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
-    productCategoriesTableViewController.categoriesType = self.searchType;
-    productCategoriesTableViewController.view.backgroundColor = [UIColor clearColor];
-    productCategoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
-    productCategoriesTableViewController.positionIndex = 0;
-    productCategoriesTableViewController.parentController = self;
+    self.primaryProductCategoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+    self.primaryProductCategoriesTableViewController.categoriesType = self.searchType;
+    self.primaryProductCategoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+    self.primaryProductCategoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
+    self.primaryProductCategoriesTableViewController.positionIndex = 0;
+    self.primaryProductCategoriesTableViewController.parentController = self;
     if (self.searchType == CATEGORIES_TYPE_SELLER)
-        productCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getShopsCategories];
+        self.primaryProductCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getShopsCategories];
     else
-        productCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
+        self.primaryProductCategoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
     
     
-    self.categoriesNavigationController = [[UINavigationController alloc] initWithRootViewController:productCategoriesTableViewController];
+    self.categoriesNavigationController = [[UINavigationController alloc] initWithRootViewController:self.primaryProductCategoriesTableViewController];
     [self.categoriesNavigationController setNavigationBarHidden:YES];
     [self.contentContainerView addSubview:categoriesNavigationController.view];
     
@@ -154,21 +156,21 @@
             [nextCategoriesArray addObjectsFromArray:[[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray]];
         
         
-            CategoriesTableViewController *categoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
-            categoriesTableViewController.categoriesType = self.searchType;
-            categoriesTableViewController.view.backgroundColor = [UIColor clearColor];
-            categoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
-            categoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
-            categoriesTableViewController.positionIndex = callingController.positionIndex + 1;
-            categoriesTableViewController.parentController = self;
-            categoriesTableViewController.categoriesArray = nextCategoriesArray;
+            self.secondaryProductCategoriesTableViewController = [[CategoriesTableViewController alloc] initWithNibName:nil bundle:nil];
+            self.secondaryProductCategoriesTableViewController.categoriesType = self.searchType;
+            self.secondaryProductCategoriesTableViewController.view.backgroundColor = [UIColor clearColor];
+            self.secondaryProductCategoriesTableViewController.tableView.backgroundColor = [UIColor clearColor];
+            self.secondaryProductCategoriesTableViewController.basePriorCategoriesArray = [[NSArray alloc] initWithArray:self.selectedCategoriesArray];
+            self.secondaryProductCategoriesTableViewController.positionIndex = callingController.positionIndex + 1;
+            self.secondaryProductCategoriesTableViewController.parentController = self;
+            self.secondaryProductCategoriesTableViewController.categoriesArray = nextCategoriesArray;
         
         
             UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
             containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
-            [containerViewController.view addSubview:categoriesTableViewController.tableView];
+            [containerViewController.view addSubview:self.secondaryProductCategoriesTableViewController.tableView];
         
-            categoriesTableViewController.tableView.frame = CGRectMake(0,2, categoriesTableViewController.tableView.frame.size.width, categoriesTableViewController.tableView.frame.size.height);
+            self.secondaryProductCategoriesTableViewController.tableView.frame = CGRectMake(0,2, self.secondaryProductCategoriesTableViewController.tableView.frame.size.width, self.secondaryProductCategoriesTableViewController.tableView.frame.size.height);
             
             [self.categoriesNavigationController pushViewController:containerViewController animated:YES];
         }
