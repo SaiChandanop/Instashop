@@ -69,7 +69,7 @@ float transitionTime = .456;
     [self setNeedsStatusBarAppearanceUpdate];
     
     self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
-    
+    self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     
     [AttributesManager getSharedAttributesManager];
     
@@ -179,12 +179,7 @@ float transitionTime = .456;
 {    
     if (!self.areViewsTransitioning)
     {
-        
         [self homeButtonHit];
-        SuggestedStoresViewController *suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-        suggestedStoresViewController.isLaunchedFromMenu = YES;
-        suggestedStoresViewController.appRootViewController = self;
-        
         [self.notificationsViewController loadNotifications];        
         [self.feedNavigationController pushViewController:notificationsViewController animated:YES];
     }
@@ -301,10 +296,10 @@ float transitionTime = .456;
     NSLog(@"root suggestedShopButtonHit");
     
     [self homeButtonHit];
-    SuggestedStoresViewController *suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-    suggestedStoresViewController.isLaunchedFromMenu = YES;
-    suggestedStoresViewController.appRootViewController = self;
-    [self.feedNavigationController pushViewController:suggestedStoresViewController animated:YES];
+    
+    self.suggestedStoresViewController.isLaunchedFromMenu = YES;
+    self.suggestedStoresViewController.appRootViewController = self;
+    [self.feedNavigationController pushViewController:self.suggestedStoresViewController animated:YES];
     
 }
 

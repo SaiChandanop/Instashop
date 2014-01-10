@@ -37,7 +37,7 @@
 @synthesize isLaunchedFromMenu;
 @synthesize followedIDsArray;
 @synthesize shopViewsArray;
-
+@synthesize begun;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -46,6 +46,12 @@
     if (self) {
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.shopViewsArray = [[NSMutableArray alloc] initWithCapacity:0];
+        
+        if ([InstagramUserObject getStoredUserObject].userID != nil)
+        {
+            self.begun = YES;
+            [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
+        }
     }
     return self;
 }
@@ -76,8 +82,13 @@
     [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
     
     
-    [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
     
+    if (!begun)
+    {
+        self.begun = YES;
+        [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
+    }
+
     
 }
 
@@ -106,6 +117,7 @@
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
     
     NSLog(@"This is the selectedShopsIDSArray : %@", self.selectedShopsIDSArray);
+    NSLog(@"self.view: %@", self.view);
     
     NSArray *subviewsArray = [self.contentScrollView subviews];
     

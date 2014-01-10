@@ -29,6 +29,7 @@
     
     BOOL isLaunchedFromMenu;
     
+    BOOL begun;
 }
 
 -(void) selectedShopViewDidCompleteRequestWithView:(SuggestedShopView *)theShopView;
@@ -48,4 +49,6 @@
 
 @property (nonatomic, assign) BOOL isLaunchedFromMenu;
 
+@property (nonatomic, assign) BOOL begun;
 @end
+

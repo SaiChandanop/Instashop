@@ -15,6 +15,7 @@
 #import "NotificationsObject.h"
 #import "SettingsViewController.h"
 #import "WebViewController.h"
+#import "SuggestedStoresViewController.h"
 @class SearchViewController;
 
 @interface AppRootViewController : UIViewController
@@ -27,6 +28,7 @@
     NotificationsViewController *notificationsViewController;
     SettingsViewController *settingsViewController;
     UINavigationController *productCreateNavigationController;
+    SuggestedStoresViewController *suggestedStoresViewController;
     
     BOOL areViewsTransitioning;
     UIButton *feedCoverButton;
@@ -69,6 +71,7 @@
 @property (strong, nonatomic) FirstTimeUserViewController *firstTimeUserViewController;
 @property (strong, nonatomic) NotificationsViewController *notificationsViewController;
 @property (strong, nonatomic) SettingsViewController *settingsViewController;
+@property (strong, nonatomic) SuggestedStoresViewController *suggestedStoresViewController;
 @property (strong, nonatomic) WebViewController *webView;
 @property (strong, nonatomic) UINavigationController *webViewNavigationController;
 @property (strong, nonatomic) UINavigationController *productCreateNavigationController;
