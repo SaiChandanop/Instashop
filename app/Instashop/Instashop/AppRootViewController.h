@@ -51,7 +51,7 @@
 -(void) productCreateNavigationControllerExitButtonHit:(UINavigationController *)theNavigationController;
 -(void) profileExitButtonHit:(UINavigationController *)navigationController;
 -(void) popupViewControllerShouldExit:(UINavigationController *)theNavigationController;
--(void) runTutorial;
+-(void) runTutorialIfAppropriate;
 -(void) suggestedShopButtonHit;
 -(void) suggestedShopExitButtonHit:(UINavigationController *)navigationController;
 -(void) searchButtonHit:(NSString *)searchTerm;
@@ -62,6 +62,8 @@
 -(void) webViewExitButtonHit:(UINavigationController *)navigationController;
 -(void) notificationSelectedWithProfile:(NSString *)profileInstagramID;
 -(void) notificationSelectedWithObject:(NotificationsObject *)notificationsObject;
+
+
 - (IBAction) profileButtonHit;
 @property (strong, nonatomic) UINavigationController *feedNavigationController;
 @property (strong, nonatomic) FeedViewController *feedViewController;

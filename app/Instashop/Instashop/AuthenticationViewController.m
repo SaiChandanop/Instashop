@@ -203,23 +203,10 @@
         
         [UserAPIHandler makeBuyerCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
         
-        AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//        AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//        NSString *userString = [InstagramUserObject getStoredUserObject].userID;
         
-        NSString *userString = [InstagramUserObject getStoredUserObject].userID;
-        NSString *defaultFirstUserKey = [userString stringByAppendingString:@"firstRun"];
-        NSLog(@"This is the key: %@", defaultFirstUserKey);
-        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-  
-
-       if ([defaults objectForKey:defaultFirstUserKey] == nil) {
-            [defaults setObject:[NSDate date] forKey:defaultFirstUserKey];
-            [defaults synchronize];
-            [del.appRootViewController runTutorial];
-        }
-       else
-
-           [del userDidLogin];
-        
+        [[AppRootViewController sharedRootViewController] runTutorialIfAppropriate];
         [SellersAPIHandler makeCheckIfSellerExistsCallWithDelegate:self];
     }
 }

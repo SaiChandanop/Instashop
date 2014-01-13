@@ -35,9 +35,6 @@
 -(IBAction)followButtonHit
 {
     [self shopFollowButtonHitWithID:self.shopViewInstagramID withIsSelected:self.followButton.selected];
-    if (self.parentController.firstTimeUserViewController != nil)
-        [self.parentController.firstTimeUserViewController shopWasFollowed];
-    
 }
 
 -(IBAction)viewButtonHit
@@ -105,6 +102,9 @@
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+        
+        if (self.parentController.firstTimeUserViewController != nil)
+            [self.parentController.firstTimeUserViewController shopWasFollowed];
     }
 }
 

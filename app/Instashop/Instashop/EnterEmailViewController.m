@@ -73,6 +73,8 @@
 
 -(IBAction)tosButtonHit
 {
+    [self.enterEmailTextField resignFirstResponder];
+    
     self.tosButton.selected = !self.tosButton.selected;
     
     if (self.tosButton.selected)
@@ -106,6 +108,8 @@
 
 -(IBAction)categoriesButtonHit
 {
+    [self.enterEmailTextField resignFirstResponder];
+    
     self.categoriesViewController = [[CategoriesViewController alloc] initWithNibName:nil bundle:nil];
     self.categoriesViewController.categoriesType = CATEGORIES_TYPE_PRODUCT;
     self.categoriesViewController.potentialCategoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
@@ -142,6 +146,7 @@
 }
 - (IBAction) nextButtonHit:(id)sender {
     
+    [self.enterEmailTextField resignFirstResponder];
     NSString *errorString =[self validateContent];
     
     if (errorString != nil)

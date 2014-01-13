@@ -24,6 +24,8 @@
 #import "DiscoverDataManager.h"
 #import "PurchasingViewController.h"
 #import "NotificationManager.h"
+#import "AuthenticationViewController.h"
+#import "AppDelegate.h"
 
 @implementation AppRootViewController
 
@@ -48,7 +50,7 @@ float transitionTime = .456;
 {
     theSharedRootViewController = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (theSharedRootViewController) {
-
+        
         self.view.backgroundColor = [ISConstants getISGreenColor];
         
     }
@@ -77,7 +79,7 @@ float transitionTime = .456;
     self.homeViewController.parentController = self;
     self.homeViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.homeViewController.view];
-   
+    
     self.feedViewController = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
     self.feedViewController.parentController = self;
     self.feedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.feedViewController];
@@ -88,37 +90,46 @@ float transitionTime = .456;
 	// Do any additional setup after loading the view.
     
     [self setNeedsStatusBarAppearanceUpdate];
-
+    
     [DiscoverDataManager getSharedDiscoverDataManager];
     
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
-                                      style:UIBarButtonItemStyleBordered
-                                     target:nil
-                                     action:nil];
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
     
     
-//    [self runTutorial];
+    //    [self runTutorial];
+
+    [self runTutorialIfAppropriate];
 }
 
 
 
-- (void) runTutorial {
+- (void) runTutorialIfAppropriate {
     
     
-//    [[NotificationManager getSharedManager] handleNewUserPushNotifications];
-    self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
-    self.firstTimeUserViewController.parentViewController = self;
-    self.firstTimeUserViewController.view.frame = CGRectMake(0, 0.0, self.firstTimeUserViewController.view.frame.size.width, self.view.frame.size.height);
-    [self.view addSubview:self.firstTimeUserViewController.view];
-    
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.firstTimeUserViewController.view.frame = CGRectMake(0, 0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
-    [UIView commitAnimations];
+    if ([InstagramUserObject getStoredUserObject].userID != nil)
+    {    
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:TUTORIAL_COMPLETE] == nil)
+    {
+        self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
+        self.firstTimeUserViewController.parentViewController = self;
+        self.firstTimeUserViewController.view.frame = CGRectMake(0, 0.0, self.firstTimeUserViewController.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:self.firstTimeUserViewController.view];
+        
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:transitionTime];
+        [UIView setAnimationDelegate:self];
+        [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+        self.firstTimeUserViewController.view.frame = CGRectMake(0, 0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
+        [UIView commitAnimations];
+    }
+    else
+        [((AppDelegate *)[UIApplication sharedApplication].delegate) userDidLogin];
+    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}
@@ -155,7 +166,7 @@ float transitionTime = .456;
         if (self.feedNavigationController.view.frame.origin.x == 0)
         {
             self.feedNavigationController.view.frame = CGRectMake(self.feedNavigationController.view.frame.origin.x + offsetPosition, self.feedNavigationController.view.frame.origin.y, self.feedNavigationController.view.frame.size.width, self.feedNavigationController.view.frame.size.height);
-//            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x + offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
+            //            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x + offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
             
             self.feedCoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
             self.feedCoverButton.backgroundColor = [UIColor clearColor];
@@ -168,19 +179,19 @@ float transitionTime = .456;
         {
             self.feedNavigationController.view.frame = CGRectMake(self.feedNavigationController.view.frame.origin.x - offsetPosition, self.feedNavigationController.view.frame.origin.y, self.feedNavigationController.view.frame.size.width, self.feedNavigationController.view.frame.size.height);
             [self.feedCoverButton removeFromSuperview];
-//            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x - offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
+            //            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x - offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
         }
         [UIView commitAnimations];
         
-    }        
+    }
 }
 
 -(void)notificationsButtonHit
-{    
+{
     if (!self.areViewsTransitioning)
     {
         [self homeButtonHit];
-        [self.notificationsViewController loadNotifications];        
+        [self.notificationsViewController loadNotifications];
         [self.feedNavigationController pushViewController:notificationsViewController animated:YES];
     }
 }
@@ -213,13 +224,13 @@ float transitionTime = .456;
         self.productCreateNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
         [self.view addSubview:self.productCreateNavigationController .view];
         
-         
+        
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:transitionTime];
         [UIView setAnimationDelegate:self];
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
         self.productCreateNavigationController.view.frame = CGRectMake(0, 0, self.productCreateNavigationController .view.frame.size.width, self.productCreateNavigationController.view.frame.size.height);
-        [UIView commitAnimations];        
+        [UIView commitAnimations];
     }
 }
 
@@ -227,30 +238,37 @@ float transitionTime = .456;
 
 - (void) firstTimeTutorialExit {
     
-/*    CGRect screenBound = [[UIScreen mainScreen] bounds];
-    CGSize screenSize = screenBound.size;
-    CGFloat screenHeight = screenSize.height;
+    CGRect screenBound = [[UIScreen mainScreen] bounds];
+     CGSize screenSize = screenBound.size;
+     CGFloat screenHeight = screenSize.height;
+     
+     [UIView beginAnimations:nil context:nil];
+     [UIView setAnimationDuration:transitionTime];
+     [UIView setAnimationDelegate:self];
+     [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+     self.firstTimeUserViewController.view.frame = CGRectMake(0.0, screenHeight, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
+     [UIView commitAnimations];
     
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:transitionTime];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
-    self.firstTimeUserViewController.view.frame = CGRectMake(0.0, screenHeight, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
-    [UIView commitAnimations];
- */
+    NSLog(@"firstTimeTutorialExit!");
+    
+    [[NSUserDefaults standardUserDefaults] setObject:[NSDate date] forKey:TUTORIAL_COMPLETE];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    
+    
 }
 
 -(void)productDidCreateWithNavigationController:(UINavigationController *)theNavigationController
 {
     NSLog(@"productDidCreateWithNavigationController, theNavigationController: %@", theNavigationController);
-
+    
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:transitionTime];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(productDidCreateWithNavigationControllerDidFinish)];
     theNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.height, theNavigationController.view.frame.size.height);
     [UIView commitAnimations];
-
+    
     
     
 }
@@ -375,7 +393,7 @@ float transitionTime = .456;
 
 - (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title {
     
-    // Might want to pretty it up by making background color the same color.  
+    // Might want to pretty it up by making background color the same color.
     self.webView = [[WebViewController alloc] initWithWebView:websiteName title:title];
     self.webView.appRootViewController = self;
     
@@ -385,7 +403,7 @@ float transitionTime = .456;
     [self.webViewNavigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.webViewNavigationController.navigationBar.translucent = NO;
     self.webViewNavigationController.view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
-
+    
     [self.view addSubview:self.webViewNavigationController.view];
     
     [UIView beginAnimations:nil context:nil];
@@ -433,16 +451,16 @@ float transitionTime = .456;
     profileViewController.profileInstagramID = profileInstagramID;
     [self.feedNavigationController pushViewController:profileViewController animated:YES];
     [profileViewController loadNavigationControlls];
-
+    
 }
 
 -(void) notificationSelectedWithObject:(NotificationsObject *)notificationsObject
 {
- 
+    
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.requestingProductID = [notificationsObject.dataDictionary objectForKey:@"product_id"];
     [self.feedNavigationController pushViewController:purchasingViewController animated:YES];
-
+    
 }
 
 

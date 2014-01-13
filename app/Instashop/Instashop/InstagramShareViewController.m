@@ -68,9 +68,7 @@
             maxVal = val;
             index = i;
         }
-        
-        
-        
+
     }
     
     self.currentSelectedIndex = index;

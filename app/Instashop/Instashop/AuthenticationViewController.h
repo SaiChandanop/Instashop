@@ -9,6 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "Instagram.h"
 #import "SellerExistsResponderProtocol.h"
+
+#define  TUTORIAL_COMPLETE  @"TUTORIAL_COMPLETE"
+
+
 @interface AuthenticationViewController : UIViewController <IGSessionDelegate, IGRequestDelegate, UIWebViewDelegate, SellerExistsResponderProtocol>
 {
     UIWebView *loginWebView;

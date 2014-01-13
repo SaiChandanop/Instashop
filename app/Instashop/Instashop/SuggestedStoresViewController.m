@@ -47,11 +47,12 @@
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.shopViewsArray = [[NSMutableArray alloc] initWithCapacity:0];
         
-        if ([InstagramUserObject getStoredUserObject].userID != nil)
+/*        if ([InstagramUserObject getStoredUserObject].userID != nil)
         {
             self.begun = YES;
             [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
         }
+ */
     }
     return self;
 }
@@ -82,13 +83,12 @@
     [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
     
     
-    
-    if (!begun)
+
+    if (!self.begun)
     {
         self.begun = YES;
         [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
     }
-
     
 }
 

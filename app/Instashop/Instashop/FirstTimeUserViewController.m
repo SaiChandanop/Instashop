@@ -110,16 +110,32 @@
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
     self.enterEmailViewController.view.frame = CGRectMake(0.0, 44, screenWidth, screenHeight);
     self.enterEmailViewController.firstTimeUserViewController = self;
-    [self.enterEmailViewController setTitle:@"Enter Email"];
+    //[self.enterEmailViewController setTitle:@"Enter Email"];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.enterEmailViewController];
     
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    
     navigationController.navigationBar.translucent = NO;
     navigationController.view.frame = CGRectMake(screenWidth * 4, 0.0, self.view.frame.size.width, self.view.frame.size.height);
-    //navigationController.view.frame = CGRectMake(0, 0.0, self.view.frame.size.width, self.view.frame.size.height);
     [navigationController.view addSubview:self.enterEmailViewController.view];
+
+    
+    
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:20.0];
+    label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    label.textAlignment = NSTextAlignmentCenter;
+    // ^-Use UITextAlignmentCenter for older SDKs.
+    label.textColor = [UIColor yellowColor]; // change this color
+    self.navigationItem.titleView = label;
+    label.text = @"Enter Email?";
+    [label sizeToFit];
+    
+    
     [self.tutorialScrollView addSubview:navigationController.view];
 
     
@@ -127,7 +143,7 @@
     
     float buttonSize = 50.0; // Change this number to change the button position.
     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, screenHeight - buttonSize, screenWidth, buttonSize)];
-    [self.nextButton setTitle:@"Follow 5 St!ores!" forState:UIControlStateNormal];
+    [self.nextButton setTitle:@"Follow 5 Stores!" forState:UIControlStateNormal];
     self.nextButton.titleLabel.textColor = textColor;
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
@@ -137,7 +153,7 @@
     // SuggestViewController
     
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5 * 0, 0.0, screenWidth, screenHeight - buttonSize);
+    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5, 0.0, screenWidth, screenHeight - buttonSize);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
 //    [self.suggestedStoresViewController.view addSubview:self.nextButton];
     [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
@@ -172,6 +188,8 @@
 - (void) shopWasFollowed
 {
     self.suggestedFollowCount++;
+    
+    NSLog(@"shopWasFollowed: %d", self.suggestedFollowCount);
 }
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
