@@ -141,11 +141,11 @@
     
     float buttonSize = 50.0; // Change this number to change the button position.
     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, screenHeight - buttonSize, screenWidth, buttonSize)];
-    [self.nextButton setTitle:@"Follow 5 Stores!" forState:UIControlStateNormal];
-    self.nextButton.titleLabel.textColor = textColor;
+    [self.nextButton setTitle:@"Follow five stores to get started!" forState:UIControlStateNormal];
+    self.nextButton.titleLabel.textColor = [UIColor whiteColor];
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-    [self.nextButton setBackgroundColor:[ISConstants getISGreenColor]];
+    [self.nextButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
     [self.nextButton addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
     
     // SuggestViewController
