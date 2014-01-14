@@ -59,7 +59,7 @@
     self.nextButton.backgroundColor = [UIColor clearColor];
     [self.nextButton addTarget:self action:@selector(nextButtonHit:) forControlEvents:UIControlEventTouchUpInside];
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50);
+    self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 70, self.view.frame.size.width, 50);
     [self.view addSubview:self.nextButton];
     
     self.navigationItem.backBarButtonItem =

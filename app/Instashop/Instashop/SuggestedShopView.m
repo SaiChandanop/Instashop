@@ -27,6 +27,7 @@
     if (self) {
                 
         // Initialization code
+        
     }
     return self;
 }
@@ -67,6 +68,8 @@
         
         self.bioLabel.text = [dataDictionary objectForKey:@"bio"];
         self.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height /2;
+        self.profileImageView.layer.masksToBounds = YES;
         //shopView.bioLabel.numberOfLines = 0;
         //shopView.bioLabel.font = [UIFont systemFontOfSize:8];
         [ImageAPIHandler makeImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
