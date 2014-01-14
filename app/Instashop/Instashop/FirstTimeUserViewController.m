@@ -88,13 +88,13 @@
         [view addSubview:backgroundImage];
         UIImage *image = [UIImage imageNamed:[arrayOfImages objectAtIndex:p]];
         int yPosition = 120.0; // change yPosition to position the iPhone image.
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, yPosition, screenWidth, screenHeight)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, yPosition, screenWidth, screenHeight - yPosition)];
         [imageView setContentMode:UIViewContentModeScaleAspectFit];
         
         [imageView setImage:image];
         [view addSubview:imageView];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 0.0, screenWidth, 150.0)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, screenWidth - 60.0, 150.0)];
         label.text = [arrayOfStringLabels objectAtIndex:p];
         label.font = [UIFont fontWithName:@"Helvetica Neue Light" size:1.0];
         label.textColor = textColor;
@@ -111,7 +111,7 @@
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
     self.enterEmailViewController.view.frame = CGRectMake(0.0, 44, screenWidth, screenHeight);
     self.enterEmailViewController.firstTimeUserViewController = self;
-    //[self.enterEmailViewController setTitle:@"Enter Email"];
+    [self.enterEmailViewController setTitle:@"Enter Email"];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.enterEmailViewController];
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
@@ -160,7 +160,7 @@
     // Page Control
     
     self.pageControl = [[UIPageControl alloc] init];
-    float pageControlHeight = 50.0;
+    float pageControlHeight = 40.0;
     self.pageControl.frame = CGRectMake(0.0, screenHeight - pageControlHeight, screenWidth, pageControlHeight);
     self.pageControl.enabled = YES;
     self.pageControl.numberOfPages = [arrayOfImages count];
