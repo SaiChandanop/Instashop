@@ -101,6 +101,8 @@
     
     self.followButton.alpha = 0;
     
+    NSLog(@"self.profileInstagramID: %@", self.profileInstagramID);
+    NSLog(@"[InstagramUserObject getStoredUserObject].userID: %@", [InstagramUserObject getStoredUserObject].userID);
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [self.imagePickButton removeFromSuperview];
@@ -108,7 +110,7 @@
     {
         UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
-        self.navigationItem.rightBarButtonItem = shareButton;    
+        self.navigationItem.rightBarButtonItem = shareButton;
     }
     
     

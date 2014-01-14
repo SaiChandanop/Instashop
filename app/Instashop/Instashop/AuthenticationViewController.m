@@ -130,12 +130,10 @@
 
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    NSLog(@"%@ shouldStartLoadWithRequest: %@", webView, request);
     return YES;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    NSLog(@"webViewDidStartLoad: %@", webView);
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
