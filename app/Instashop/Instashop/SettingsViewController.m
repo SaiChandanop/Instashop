@@ -10,7 +10,7 @@
 #import "SettingsViewController.h"
 #import "AppDelegate.h"
 #import "InstagramUserObject.h"
-
+#import "SellersAPIHandler.h"
 @interface SettingsViewController ()
 
 @end
@@ -241,6 +241,11 @@
 -(IBAction)logOutButtonHit
 {
     [self backButtonHit];
+    
+    NSLog(@"!!updateSellerPushIDWithPushID updateSellerPushIDWithPushID !!");
+    [SellersAPIHandler updateSellerPushIDWithPushID:@"" withInstagramID:[InstagramUserObject getStoredUserObject].userID];
+    
+    
     AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [del.instagram logout];
     
