@@ -11,6 +11,9 @@
 #import "CategoriesViewController.h"
 #import "AttributesManager.h"
 #import "FirstTimeUserViewController.h"
+#import "AppRootViewController.h"
+#import "NavBarTitleView.h"
+
 @interface EnterEmailViewController ()
 
 
@@ -68,7 +71,46 @@
     [self.tosButton setTitle:@"off" forState:UIControlStateNormal];
     self.tosButton.selected = NO;
     
+}
+
+-(IBAction)tosLinkButtonHit
+{
+    UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    webView.scalesPageToFit = YES;
+    webView.contentMode = UIViewContentModeScaleToFill;
+    webView.multipleTouchEnabled = YES;
+    webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://instashop.com/terms"]]];
     
+    UIViewController *webViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+    webViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [webViewController.view addSubview:webView];
+    
+    UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:webViewController];
+    
+    [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
+    [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+    navigationController.navigationBar.translucent = NO;
+    
+    [webViewController.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"TOS"]];
+
+
+    
+    webViewController.navigationItem.leftBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@"Close"
+                                     style:UIBarButtonItemStyleBordered
+                                    target:self
+                                    action:@selector(dismissVC)];
+    
+    
+    
+    
+    [[AppRootViewController sharedRootViewController] presentViewController:navigationController animated:YES completion:nil];
+}
+
+-(void)dismissVC
+{
+    [[AppRootViewController sharedRootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(IBAction)tosButtonHit

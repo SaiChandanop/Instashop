@@ -23,6 +23,8 @@
     
     CategoriesTableViewController *initialCategoriesTableViewController;
     CategoriesTableViewController *categoriesTableViewController;
+    
+    NSMutableArray *subtableContainerViewsArray;
 }
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController;
@@ -36,4 +38,6 @@
 
 @property (nonatomic, strong) CategoriesTableViewController *initialCategoriesTableViewController;
 @property (nonatomic, strong) CategoriesTableViewController *categoriesTableViewController;
+
+@property (nonatomic, strong) NSMutableArray *subtableContainerViewsArray;
 @end

@@ -25,6 +25,7 @@
 @synthesize initialTableReference;
 @synthesize initialCategoriesTableViewController;
 @synthesize categoriesTableViewController;
+@synthesize subtableContainerViewsArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +40,7 @@
 {
     [super viewDidLoad];
     
+    self.subtableContainerViewsArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
@@ -136,6 +138,14 @@
         self.categoriesTableViewController.parentController = self;
         self.categoriesTableViewController.categoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:self.selectedCategoriesArray];
         self.categoriesTableViewController.titleString = titleString;
+        [self.subtableContainerViewsArray addObject:self.categoriesTableViewController];
+        
+        self.categoriesTableViewController.navigationItem.backBarButtonItem =
+        [[UIBarButtonItem alloc] initWithTitle:@""
+                                         style:UIBarButtonItemStyleBordered
+                                        target:nil
+                                        action:nil];
+        
         
         UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
         containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
@@ -145,41 +155,20 @@
         
         [self setTheTitleWithString:titleString withVC:containerViewController];
         
-        /*
+
         containerViewController.navigationItem.backBarButtonItem =
-        [[[UIBarButtonItem alloc] initWithTitle:@""
+        [[UIBarButtonItem alloc] initWithTitle:@""
                                           style:UIBarButtonItemStyleBordered
                                          target:nil
-                                         action:nil] autorelease];
+                                         action:nil];
         
         self.navigationController.navigationItem.backBarButtonItem =
-        [[[UIBarButtonItem alloc] initWithTitle:@""
+        [[UIBarButtonItem alloc] initWithTitle:@""
                                           style:UIBarButtonItemStyleBordered
                                          target:nil
-                                         action:nil] autorelease];
+                                        action:nil];
 
         
-        self.navigationController.backBarButtonItem =
-        [[[UIBarButtonItem alloc] initWithTitle:@""
-                                          style:UIBarButtonItemStyleBordered
-                                         target:nil
-                                         action:nil] autorelease];
-
-        
-        categoriesTableViewController.navigationItem.backBarButtonItem =
-        [[[UIBarButtonItem alloc] initWithTitle:@""
-                                          style:UIBarButtonItemStyleBordered
-                                         target:nil
-                                         action:nil] autorelease];
-        
-        categoriesTableViewController.navigationController.navigationItem.backBarButtonItem =
-        [[[UIBarButtonItem alloc] initWithTitle:@""
-                                          style:UIBarButtonItemStyleBordered
-                                         target:nil
-                                         action:nil] autorelease];
-        
-        
-        */
         
         
         

@@ -16,7 +16,7 @@
 
 @end
 
-#define kHowToPageNumber 6
+#define kHowToPageNumber 5
 #define kButtonHeight 100.0
 
 @implementation FirstTimeUserViewController
@@ -102,6 +102,7 @@
         label.numberOfLines = 3;
         [view addSubview:label];
         
+        NSLog(@"label: %@", label);
         [self.tutorialScrollView addSubview:view];
     }
     
@@ -113,16 +114,12 @@
     //[self.enterEmailViewController setTitle:@"Enter Email"];
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.enterEmailViewController];
-    
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
-    
     navigationController.navigationBar.translucent = NO;
     navigationController.view.frame = CGRectMake(screenWidth * 4, 0.0, self.view.frame.size.width, self.view.frame.size.height);
     [navigationController.view addSubview:self.enterEmailViewController.view];
 
-    
-    
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
     label.backgroundColor = [UIColor clearColor];
@@ -135,11 +132,12 @@
     label.text = @"Enter Email?";
     [label sizeToFit];
     
-    
+    navigationController.navigationItem.titleView = label;
+    navigationController.navigationItem.titleView.backgroundColor = [UIColor redColor];
     [self.tutorialScrollView addSubview:navigationController.view];
 
     
-    // Next Button for SuggestedViewController
+
     
     float buttonSize = 50.0; // Change this number to change the button position.
     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, screenHeight - buttonSize, screenWidth, buttonSize)];
@@ -185,6 +183,11 @@
     
 }
 
+-(void)emailPageDidSwipe
+{
+    NSLog(@"emailPageDidSwipe");
+}
+
 - (void) shopWasFollowed
 {
     self.suggestedFollowCount++;
@@ -200,14 +203,10 @@
     pageControl.currentPage = page;
     
     // this coding is really ugly.
-    if (page < 4) {
+    if (page < 4)
         self.pageControl.hidden = NO;
-        [self.tutorialScrollView setScrollEnabled:YES];
-    }
-    else {
+    else
         self.pageControl.hidden = YES;
-        [self.tutorialScrollView setScrollEnabled:NO];
-    }
     
     [self.suggestedStoresViewController updateButton];
 }

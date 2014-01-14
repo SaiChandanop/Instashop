@@ -19,7 +19,7 @@
     UIButton *tosButton;
 }
 
-
+-(IBAction)tosLinkButtonHit;
 -(IBAction)categoriesButtonHit;
 -(IBAction)tosButtonHit;
 
