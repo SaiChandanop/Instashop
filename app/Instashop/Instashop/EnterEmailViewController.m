@@ -59,7 +59,7 @@
     self.nextButton.backgroundColor = [UIColor clearColor];
     [self.nextButton addTarget:self action:@selector(nextButtonHit:) forControlEvents:UIControlEventTouchUpInside];
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 107, self.view.frame.size.width, 44);
+    self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 50, self.view.frame.size.width, 50);
     [self.view addSubview:self.nextButton];
     
     self.navigationItem.backBarButtonItem =
@@ -92,7 +92,7 @@
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     navigationController.navigationBar.translucent = NO;
     
-    [webViewController.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"TOS"]];
+    [webViewController.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"Terms of Service"]];
 
 
     
