@@ -89,6 +89,8 @@
 		2ED0CA91187E1A8700DE6042 /* Instagram-Promo-3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA8D187E1A8700DE6042 /* Instagram-Promo-3.jpg */; };
 		2ED0CA92187E1A8700DE6042 /* Instagram-Promo-2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA8E187E1A8700DE6042 /* Instagram-Promo-2.jpg */; };
 		2ED0CA93187E1A8700DE6042 /* Instagram-Promo-1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CA8F187E1A8700DE6042 /* Instagram-Promo-1.jpg */; };
+		2ED0CAA71885C6CC00DE6042 /* radio-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CAA51885C6CC00DE6042 /* radio-off@2x.png */; };
+		2ED0CAA81885C6CC00DE6042 /* radio-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2ED0CAA61885C6CC00DE6042 /* radio-on@2x.png */; };
 		2EFD0A3817FBBB2C00E701B0 /* twitter_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */; };
 		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
@@ -377,6 +379,8 @@
 		2ED0CA8D187E1A8700DE6042 /* Instagram-Promo-3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Instagram-Promo-3.jpg"; sourceTree = "<group>"; };
 		2ED0CA8E187E1A8700DE6042 /* Instagram-Promo-2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Instagram-Promo-2.jpg"; sourceTree = "<group>"; };
 		2ED0CA8F187E1A8700DE6042 /* Instagram-Promo-1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Instagram-Promo-1.jpg"; sourceTree = "<group>"; };
+		2ED0CAA51885C6CC00DE6042 /* radio-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio-off@2x.png"; sourceTree = "<group>"; };
+		2ED0CAA61885C6CC00DE6042 /* radio-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "radio-on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3417FBBB2C00E701B0 /* twitter_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
@@ -784,6 +788,8 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2ED0CAA51885C6CC00DE6042 /* radio-off@2x.png */,
+				2ED0CAA61885C6CC00DE6042 /* radio-on@2x.png */,
 				2EB05555185F5BF400D55F28 /* cover-default@2x.jpg */,
 				2E9378F4184D231700476540 /* post_product_icon_small@2x.png */,
 				2E9378F2184D224B00476540 /* settings_icon@2x.png */,
@@ -1952,6 +1958,7 @@
 				2E0EAE1F176F6E6700B65FC3 /* lmPrivacyPolicyIcon@2x.png in Resources */,
 				2E0EAE20176F6E6700B65FC3 /* lmHomeIcon@2x.png in Resources */,
 				7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */,
+				2ED0CAA71885C6CC00DE6042 /* radio-off@2x.png in Resources */,
 				2E0EAE21176F6E6700B65FC3 /* lmNotificationsIcon@2x.png in Resources */,
 				2E0EAE22176F6E6700B65FC3 /* lmFAQIcon@2x.png in Resources */,
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
@@ -1963,6 +1970,7 @@
 				6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */,
 				7B79AE8117E21A900058E774 /* SellerSelectTableViewController.xib in Resources */,
 				19FF03EC186E360F00BC20B3 /* EnterEmailViewController.xib in Resources */,
+				2ED0CAA81885C6CC00DE6042 /* radio-on@2x.png in Resources */,
 				2E0EAE24176F6E6700B65FC3 /* leftMenuButton@2x.png in Resources */,
 				2E628CAF17C6A19900CB7BE4 /* AppIcon60x60@2x.png in Resources */,
 				2E0EAE25176F6E6700B65FC3 /* lmDiscoverIcon@2x.png in Resources */,
@@ -2206,15 +2214,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "81F6B1F5-FFCC-499A-B876-8D1FE87BF0A5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "81F6B1F5-FFCC-499A-B876-8D1FE87BF0A5";
+				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2223,15 +2231,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "81F6B1F5-FFCC-499A-B876-8D1FE87BF0A5";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "81F6B1F5-FFCC-499A-B876-8D1FE87BF0A5";
+				PROVISIONING_PROFILE = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
