@@ -192,6 +192,9 @@
 {
     self.suggestedFollowCount++;
     
+    if (suggestedFollowCount >= 5)
+        self.nextButton.backgroundColor = [ISConstants getISGreenColor];
+    
     NSLog(@"shopWasFollowed: %d", self.suggestedFollowCount);
 }
 
