@@ -59,7 +59,7 @@
     
 
         [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
-        UIView *theView = [MBProgressHUD HUDForView:self.view];    
+        UIView *theView = [MBProgressHUD HUDForView:self.view];
 }
 
 

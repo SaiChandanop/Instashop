@@ -101,13 +101,15 @@
     
     self.followButton.alpha = 0;
     
-    UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
-    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
-    self.navigationItem.rightBarButtonItem = shareButton;
-    
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [self.imagePickButton removeFromSuperview];
+    else
+    {
+        UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
+        self.navigationItem.rightBarButtonItem = shareButton;    
+    }
     
     
     self.descriptionTextView.editable = NO;
@@ -131,11 +133,7 @@
 {
     NSLog(@"moreButtonHit");
     
-    
-    UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", nil];
-    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
-        shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Instagram", nil];
-    
+    UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Instagram", nil];
     shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
     
