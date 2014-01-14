@@ -39,6 +39,8 @@
 {
     [super viewDidLoad];
 
+    [Utils conformViewControllerToMaxSize:self];
+    
     
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];

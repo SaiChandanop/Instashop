@@ -57,14 +57,27 @@
     
      NSDictionary *dataDictionary = [result objectForKey:@"data"];
     
-    NSLog(@"request didLoad: %@", self.shopViewInstagramID);
+//    NSLog(@"request didLoad: %@", self.shopViewInstagramID);
     
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
+        NSLog(@"relationship!!!: %@", dataDictionary);
+        
+        NSString *outgoingStatus = [dataDictionary objectForKey:@"outgoing_status"];
+  //      NSLog(@"outgoingStatus: %@", outgoingStatus);
+//        NSLog(@"outgoingStatus.class: %@", [outgoingStatus class]);
+        if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
+            self.followButton.selected = YES;
+        else
+            self.followButton.selected = NO;
+        
+        self.followButton.alpha = 1;
+            
         
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
     {
+//        NSLog(@"dataDictionary: %@", dataDictionary);
         
         self.bioLabel.text = [dataDictionary objectForKey:@"bio"];
         self.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
@@ -75,9 +88,14 @@
         [ImageAPIHandler makeImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.theBackgroundImageView withInstagramID:self.shopViewInstagramID];
         
-        self.followButton.alpha = 1;
+        self.followButton.alpha = 0;
         [self.parentController selectedShopViewDidCompleteRequestWithView:self];
 //        [self.parentController performSelectorOnMainThread:@selector(selectedShopViewDidCompleteRequestWithView:) withObject:self waitUntilDone:NO];
+        
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/relationship", [dataDictionary objectForKey:@"id"]], @"method", nil];
+        [delegate.instagram requestWithParams:params delegate:self];
+        
     }
     
 }
@@ -90,7 +108,7 @@
 }
 -(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected
 {
-    NSLog(@"shopFollowButtonHitWithID: %@", instagramID);
+//    NSLog(@"shopFollowButtonHitWithID: %@", instagramID);
     
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     

@@ -47,7 +47,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+
+    [Utils conformViewControllerToMaxSize:self];
     
     NSLog(@"This is the navigation item: %@", self.navigationController);
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];

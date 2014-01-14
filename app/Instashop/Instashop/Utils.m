@@ -55,4 +55,12 @@
 }
 
 
++(void)conformViewControllerToMaxSize:(UIViewController *)theViewController
+{
+    if (theViewController.view.frame.size.height > [UIScreen mainScreen].bounds.size.height)
+        theViewController.view.frame = CGRectMake(theViewController.view.frame.origin.x, theViewController.view.frame.origin.y, theViewController.view.frame.size.width,[UIScreen mainScreen].bounds.size.height);
+    
+}
+
+
 @end

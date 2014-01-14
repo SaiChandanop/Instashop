@@ -15,6 +15,7 @@
 #import "InstashopWebView.h"
 #import "AppDelegate.h"
 #import "ISConstants.h"
+#import "Utils.h"
 
 @interface HomeViewController ()
 
@@ -49,6 +50,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+//    [Utils conformViewControllerToMaxSize:self];
+    
 
     self.topBarView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
@@ -56,8 +60,7 @@
     self.theScrollView.contentSize = CGSizeMake(0, self.view.frame.size.height);
     [self.view insertSubview:self.theScrollView belowSubview:self.topBarView];
     
-    if (self.theScrollView.frame.size.height > [UIScreen mainScreen].bounds.size.height)
-        self.theScrollView.frame = CGRectMake(self.theScrollView.frame.origin.x, self.theScrollView.frame.origin.y, self.theScrollView.frame.size.width, [UIScreen mainScreen].bounds.size.height);
+    
     
     /*
     self.postProductButton.frame = CGRectMake(0.0, self.view.frame.size.height - self.postProductButton.frame.size.height, 0.0,self.postProductButton.frame.size.height);

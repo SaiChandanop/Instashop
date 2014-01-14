@@ -68,6 +68,10 @@ float transitionTime = .456;
 {
     [super viewDidLoad];
     
+    NSLog(@"%@ view did load, frame: %@", self, NSStringFromCGRect(self.view.frame));
+    
+    
+    
     [self setNeedsStatusBarAppearanceUpdate];
     
     self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
@@ -79,6 +83,8 @@ float transitionTime = .456;
     self.homeViewController.parentController = self;
     self.homeViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [self.view addSubview:self.homeViewController.view];
+    self.homeViewController.view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    
     
     self.feedViewController = [[FeedViewController alloc] initWithNibName:@"FeedViewController" bundle:nil];
     self.feedViewController.parentController = self;
@@ -86,6 +92,7 @@ float transitionTime = .456;
     self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
     self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
     [self.view addSubview:self.feedNavigationController.view];
+    self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
     
 	// Do any additional setup after loading the view.
     

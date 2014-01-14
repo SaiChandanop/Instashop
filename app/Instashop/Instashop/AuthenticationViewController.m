@@ -62,7 +62,8 @@
 
 -(IBAction) loginButtonHit
 {
-    
+ 
+    NSLog(@"loginButtonHit");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.instagram.sessionDelegate = self;
     
