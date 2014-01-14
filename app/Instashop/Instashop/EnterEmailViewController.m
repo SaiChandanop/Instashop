@@ -56,7 +56,7 @@
     self.enterEmailTextField.delegate = self;
     
     self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    self.nextButton.backgroundColor = [UIColor clearColor];
+    self.nextButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.15];
     [self.nextButton addTarget:self action:@selector(nextButtonHit:) forControlEvents:UIControlEventTouchUpInside];
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
     self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 70, self.view.frame.size.width, 50);
