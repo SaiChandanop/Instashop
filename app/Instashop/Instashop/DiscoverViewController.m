@@ -14,6 +14,7 @@
 #import "AppRootViewController.h"
 #import "ProfileViewController.h"
 #import "PurchasingViewController.h"
+#import "MBProgressHUD.h"
 
 @interface DiscoverViewController ()
 
@@ -55,6 +56,10 @@
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil];
+    
+
+        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
+        UIView *theView = [MBProgressHUD HUDForView:self.view];    
 }
 
 
