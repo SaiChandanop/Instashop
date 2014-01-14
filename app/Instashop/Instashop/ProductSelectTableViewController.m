@@ -180,7 +180,14 @@
 -(void)refreshContent
 {
     if ([self.contentArray count] == 0)
+    {
         [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
+        UIView *theView = [MBProgressHUD HUDForView:self.view];
+        NSLog(@"theView!!: %@", theView);
+        NSLog(@"self.view.frame.size.height: %f", self.view.frame.size.height);
+        theView.frame = CGRectMake(0, 0, theView.frame.size.width, self.view.frame.size.height * .8);
+        NSLog(@"theView2!!: %@", theView);
+    }
     
     self.checkCountup = 0;
     [self.contentArray removeAllObjects];
