@@ -26,7 +26,7 @@
 @property (nonatomic, strong) FirstTimeUserViewController *firstTimeUserViewController;
 @property (nonatomic, strong) IBOutlet UIView *enterEmailView;
 @property (nonatomic, strong) IBOutlet UITextField *enterEmailTextField;
-@property (nonatomic, strong) UIButton *nextButton;
+@property (nonatomic, strong) IBOutlet UIButton *nextButton;
 @property (nonatomic, strong) IBOutlet UILabel *categoriesLabel;
 @property (nonatomic, strong) IBOutlet UIButton *tosButton;
 @property (nonatomic, strong) CategoriesViewController *categoriesViewController;
