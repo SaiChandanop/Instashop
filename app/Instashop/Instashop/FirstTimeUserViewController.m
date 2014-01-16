@@ -141,7 +141,9 @@
     
     float buttonSize = 50.0; // Change this number to change the button position.
     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, screenHeight - buttonSize, screenWidth, buttonSize)];
-    [self.nextButton setTitle:@"Follow five stores to get started!" forState:UIControlStateNormal];
+    self.nextButton.enabled = NO;
+    
+    [self.nextButton setTitle:@"Follow five stores to get started!" forState:UIControlStateDisabled];
     self.nextButton.titleLabel.textColor = [UIColor whiteColor];
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
@@ -193,7 +195,7 @@
     self.suggestedFollowCount++;
     
     if (suggestedFollowCount >= 5)
-        self.nextButton.backgroundColor = [ISConstants getISGreenColor];
+        self.nextButton.enabled = YES;
     
     NSLog(@"shopWasFollowed: %d", self.suggestedFollowCount);
 }
