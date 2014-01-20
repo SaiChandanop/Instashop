@@ -2214,8 +2214,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
@@ -2231,15 +2231,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
+				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

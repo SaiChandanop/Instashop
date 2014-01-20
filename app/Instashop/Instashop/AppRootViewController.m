@@ -117,9 +117,6 @@ float transitionTime = .456;
 
 - (void) runTutorialIfAppropriate {
     
-    
-    if ([InstagramUserObject getStoredUserObject].userID != nil)
-    {    
     if ([[NSUserDefaults standardUserDefaults] objectForKey:TUTORIAL_COMPLETE] == nil)
     {
         self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
@@ -134,9 +131,7 @@ float transitionTime = .456;
         self.firstTimeUserViewController.view.frame = CGRectMake(0, 0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
         [UIView commitAnimations];
     }
-    else
-        [((AppDelegate *)[UIApplication sharedApplication].delegate) userDidLogin];
-    }
+
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{return UIStatusBarStyleLightContent;}

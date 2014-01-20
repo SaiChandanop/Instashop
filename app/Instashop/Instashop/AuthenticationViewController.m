@@ -202,10 +202,6 @@
         
         [UserAPIHandler makeBuyerCreateRequestWithDelegate:self withInstagramUserObject:instagramUserObject];
         
-//        AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
-//        NSString *userString = [InstagramUserObject getStoredUserObject].userID;
-        
-        [[AppRootViewController sharedRootViewController] runTutorialIfAppropriate];
         [SellersAPIHandler makeCheckIfSellerExistsCallWithDelegate:self];
     }
 }

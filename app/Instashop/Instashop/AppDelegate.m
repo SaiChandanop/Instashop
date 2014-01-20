@@ -84,6 +84,9 @@
 {
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeAlert)];
     self.window.rootViewController = self.appRootViewController;
+    [self.appRootViewController runTutorialIfAppropriate];
+
+    
 }
 
 -(void)userDidLogout

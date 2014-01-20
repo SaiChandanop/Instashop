@@ -169,7 +169,7 @@
         
         NSString *postText = [NSString stringWithFormat:@"promo!"];
         [facebookController setInitialText:postText];
-        [facebookController addImage:self.profileImageView.image];
+        [facebookController addImage:[UIImage imageNamed:@"Instagram-Promo-1.png"]];
         [facebookController addURL:[NSURL URLWithString:@"http://shopsy.com"]];
         [facebookController setCompletionHandler:completionHandler];
         
@@ -202,7 +202,7 @@
         
         NSString *postText = [NSString stringWithFormat:@"promo!"];
         [tweetController setInitialText:postText];
-        [tweetController addImage:self.profileImageView.image];
+        [tweetController addImage:[UIImage imageNamed:@"Instagram-Promo-1.png"]];
         [tweetController addURL:[NSURL URLWithString:@"http://shopsy.com"]];
         [tweetController setCompletionHandler:completionHandler];
         

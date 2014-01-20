@@ -39,7 +39,7 @@
 }
 
 
-
+- (void) runTutorialIfAppropriate;
 +(AppRootViewController *)sharedRootViewController;
 -(void)settingsExitButtonHit;
 -(void) homeButtonHit;

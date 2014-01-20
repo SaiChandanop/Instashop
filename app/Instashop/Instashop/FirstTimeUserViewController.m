@@ -192,7 +192,7 @@
 {
     self.suggestedFollowCount++;
     
-    if (suggestedFollowCount >= 5)
+    if (self.suggestedFollowCount >= 5)
         self.nextButton.backgroundColor = [ISConstants getISGreenColor];
     
     NSLog(@"shopWasFollowed: %d", self.suggestedFollowCount);
@@ -210,6 +210,7 @@
         self.pageControl.hidden = NO;
     else
         self.pageControl.hidden = YES;
+    
     
     [self.suggestedStoresViewController updateButton];
 }

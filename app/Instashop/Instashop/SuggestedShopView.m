@@ -64,10 +64,12 @@
         NSLog(@"relationship!!!: %@", dataDictionary);
         
         NSString *outgoingStatus = [dataDictionary objectForKey:@"outgoing_status"];
-  //      NSLog(@"outgoingStatus: %@", outgoingStatus);
-//        NSLog(@"outgoingStatus.class: %@", [outgoingStatus class]);
         if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
+        {
             self.followButton.selected = YES;
+            NSLog(@"go!");
+            [self.parentController.firstTimeUserViewController performSelectorOnMainThread:@selector(shopWasFollowed) withObject:nil waitUntilDone:NO];
+        }
         else
             self.followButton.selected = NO;
         
@@ -77,14 +79,10 @@
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
     {
-//        NSLog(@"dataDictionary: %@", dataDictionary);
-        
         self.bioLabel.text = [dataDictionary objectForKey:@"bio"];
         self.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height /2;
         self.profileImageView.layer.masksToBounds = YES;
-        //shopView.bioLabel.numberOfLines = 0;
-        //shopView.bioLabel.font = [UIFont systemFontOfSize:8];
         [ImageAPIHandler makeImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.theBackgroundImageView withInstagramID:self.shopViewInstagramID];
         
@@ -124,8 +122,8 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
         
-        if (self.parentController.firstTimeUserViewController != nil)
-            [self.parentController.firstTimeUserViewController shopWasFollowed];
+//        if (self.parentController.firstTimeUserViewController != nil)
+//            [self.parentController.firstTimeUserViewController shopWasFollowed];
     }
 }
 
