@@ -196,6 +196,8 @@
     
     if (suggestedFollowCount >= 5)
         self.nextButton.enabled = YES;
+        self.nextButton.backgroundColor = [ISConstants getISGreenColor];
+        self.nextButton.titleLabel.text = @"Next";
     
     NSLog(@"shopWasFollowed: %d", self.suggestedFollowCount);
 }
