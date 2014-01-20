@@ -14,7 +14,7 @@
 #import "AppRootViewController.h"
 #import "ProfileViewController.h"
 #import "PurchasingViewController.h"
-#import "MBProgressHUD.h"
+#import "JKProgressView.h"
 
 @interface DiscoverViewController ()
 
@@ -57,9 +57,7 @@
                                      target:nil
                                      action:nil];
     
-
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
-        UIView *theView = [MBProgressHUD HUDForView:self.view];
+    [JKProgressView presentProgressViewInView:self.view withText:@"Loading Instagram"];     
 }
 
 

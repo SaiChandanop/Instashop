@@ -20,7 +20,6 @@
 #import "SocialManager.h"
 #import "NotificationsAPIHandler.h"
 #import "InstagramUserObject.h"
-#import "MBProgressHUD.h"
 #import "CreateProductAPIHandler.h"
 #import "SellersAPIHandler.h"
 
@@ -66,7 +65,7 @@
 @synthesize nextButton;
 @synthesize isEdit;
 @synthesize twitterAccountsArray;
-
+@synthesize jkProgressView;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -473,7 +472,9 @@
         
         
         
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Editing Product";
+        self.jkProgressView = [JKProgressView presentProgressViewInView:[AppRootViewController sharedRootViewController].view withText:@"Editing Product"];
+        
+
         [ProductAPIHandler editProductCreateObjectWithDelegate:self withProductID:[self.editingProductObject objectForKey:@"product_id"] withProductCreateObject:productCreateContainerObject];
         
     }
@@ -499,7 +500,7 @@
         //[self.parentController previewButtonHitWithProductCreateObject:productCreateContainerObject];
         
         
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Creating Product";
+        self.jkProgressView = [JKProgressView presentProgressViewInView:[AppRootViewController sharedRootViewController].view withText:@"Editing Product"];
         [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:productCreateContainerObject];
         
         NSMutableString *categoriesString = [NSMutableString stringWithCapacity:0];
@@ -526,35 +527,14 @@
 
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
-
-    /*
-    NSArray *ar = [self.navigationController viewControllers];
-    
-    for (int i = 0; i < [ar count]; i++)
-    {
-        id vc = [ar objectAtIndex:i];
-        if ([vc isKindOfClass:[ProductCreateViewController class]])
-            [((ProductCreateViewController *)vc) forceRefreshContent];
-            
-    }
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-    [self.navigationController popToRootViewControllerAnimated:YES];
-    
-    
-//    [self.parentController productCreateNavigationControllerExitButtonHit:self.navigationController];
-    
-  */
-    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
-    [rootVC productDidCreateWithNavigationController:self.navigationController];
-    
-    
+    [rootVC productDidCreateWithNavigationController:self.navigationController];    
 }
 
 -(void)editProductComplete
 {
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.jkProgressView hideProgressView];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 

@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "ObjectSelectTableViewController.h"
+#import "JKProgressView.h"
 
 @interface ProductSelectTableViewController : ObjectSelectTableViewController
 {
     int checkCountup;
     NSMutableArray *cacheArray;
     BOOL loaded;
+    JKProgressView *jkProgressView;
 }
 
 -(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary;
@@ -21,4 +23,5 @@
 @property (nonatomic, assign) int checkCountup;
 @property (nonatomic, strong) NSMutableArray *cacheArray;
 @property (nonatomic, assign) BOOL loaded;
+@property (nonatomic, strong) JKProgressView *jkProgressView;
 @end

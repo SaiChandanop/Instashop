@@ -14,6 +14,8 @@
 #import "ProductCreateContainerObject.h"
 #import "ProductCreateContainerProtocol.h"
 #import "CellSelectionOccuredProtocol.h"
+#import "JKProgressView.h"
+
 
 @class AppRootViewController;
 
@@ -28,6 +30,8 @@
     NSDictionary *currentSelectionObject;
     
     ProductDetailsViewController *productDetailsViewController;
+    
+    JKProgressView *jkProgressView;
 }
 
 -(void) forceRefreshContent;
@@ -46,4 +50,6 @@
 @property (nonatomic, strong) NSDictionary *currentSelectionObject;
 
 @property (nonatomic, strong) ProductDetailsViewController *productDetailsViewController;
+
+@property (nonatomic, strong) JKProgressView *jkProgressView;
 @end

@@ -17,6 +17,7 @@
 #import "CIALBrowserViewController.h"
 #import "CommentsTableViewController.h"
 #import "BitlyResponseHandler.h"
+#import "JKProgressView.h"
 @class FeedViewController;
 
 @interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol, BitlyResponseHandler, FlagManagerProtocol>
@@ -66,6 +67,8 @@
     UIViewController *actionSheetHandlingViewController;
     
     BOOL isBuying;
+    
+    JKProgressView *JKProgressView;
     
 }
 
@@ -136,5 +139,6 @@
 
 @property (nonatomic, assign) BOOL isBuying;
 
+@property (nonatomic, strong) JKProgressView *JKProgressView;
 
 @end

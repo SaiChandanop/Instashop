@@ -16,7 +16,6 @@
 #import "ProfileViewController.h"
 #import "ProductDetailsViewController.h"
 #import "ProductPreviewViewController.h"
-#import "MBProgressHUD.h"
 #import "CreateProductAPIHandler.h"
 #import "EditProductCompleteProtocol.h"
 #import "CIALBrowserViewController.h"
@@ -66,6 +65,7 @@
 @synthesize categoryContainerView;
 @synthesize categoryContainerImageView;
 @synthesize categoryContainerBottomSeparatorImageView;
+@synthesize JKProgressView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -427,8 +427,9 @@
 
 
 -(IBAction)buyButtonHit
-{
-    [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
+{    
+    self.JKProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading..."];
+
     
     self.isBuying = YES;
     if (self.viglinkString == nil)
@@ -454,7 +455,8 @@
 {
     NSLog(@"amberSupportedSiteCallFinishedWithIsSupported, isSupported: %d", isSupported);
     
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.JKProgressView hideProgressView];
+    
     if (isSupported)
     {
         AmberViewController *amberViewController = [[AmberViewController alloc] initWithNibName:@"AmberViewController" bundle:nil];
@@ -730,12 +732,10 @@
     
     if (theCreateObject.mainObject.editingReferenceID != nil)
     {
-//        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
-  //      [ProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
     }
     else
     {
-        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Creating Product";
+        self.JKProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Creating Product..."];
         [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
     }
     
@@ -746,9 +746,9 @@
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
+        
+    [self.JKProgressView hideProgressView];
     
-    
-    [MBProgressHUD hideAllHUDsForView:rootVC.view animated:NO];
     UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Product Edited!"
                                                         message:nil
                                                        delegate:self

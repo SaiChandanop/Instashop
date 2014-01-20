@@ -17,7 +17,7 @@
 #import "CIALBrowserViewController.h"
 #import "EditProductCompleteProtocol.h"
 #import "ProductCreateContainerProtocol.h"
-
+#import "JKProgressView.h"
 @class ProductCreateViewController;
 
 @interface ProductDetailsViewController : UIViewController <IGRequestDelegate, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate,  EditProductCompleteProtocol, ProductCreateContainerProtocol>
@@ -67,6 +67,8 @@
     CIALBrowserViewController *browserViewController;
     BOOL isEdit;
     NSArray *twitterAccountsArray;
+    
+    JKProgressView *jkProgressView;
     
 }
 
@@ -129,4 +131,6 @@
 @property (nonatomic, strong) NSArray *twitterAccountsArray;
 @property (nonatomic, strong) CIALBrowserViewController *browserViewController;
 @property (nonatomic, assign) BOOL isEdit;
+
+@property (nonatomic, strong) JKProgressView *jkProgressView;
 @end

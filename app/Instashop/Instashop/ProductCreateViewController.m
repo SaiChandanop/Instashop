@@ -10,7 +10,7 @@
 #import "CreateProductAPIHandler.h"
 #import "AppRootViewController.h"
 #import "ISConstants.h"
-#import "MBProgressHUD.h"
+#import "JKProgressView.h"
 #import "AppDelegate.h"
 #import "NavBarTitleView.h"
 #import "ProductAPIHandler.h"
@@ -25,6 +25,8 @@
 @synthesize productSelectTableViewController;
 @synthesize productDictionary;
 @synthesize productDetailsViewController;
+@synthesize jkProgressView;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -135,14 +137,12 @@
     
     if (theCreateObject.mainObject.editingReferenceID != nil)
     {
-//        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Editing Product";
-  //      [ProductAPIHandler editProductCreateObject:self withProductCreateObject:theCreateObject];
-        
         
     }
     else
     {
-        [MBProgressHUD showHUDAddedTo:rootVC.view animated:YES].detailsLabelText = @"Creating Product";
+        self.jkProgressView = [JKProgressView presentProgressViewInView:rootVC.view withText:@"Creating Product"];
+        
         [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:theCreateObject];
         
         NSMutableString *categoriesString = [NSMutableString stringWithCapacity:0];
@@ -167,10 +167,7 @@
 
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
-    
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    AppRootViewController  *rootVC = delegate.appRootViewController;
-    [MBProgressHUD hideAllHUDsForView:rootVC.view animated:NO];
+    [self.jkProgressView hideProgressView];
     
     NSMutableArray *ar = [NSMutableArray arrayWithArray:productCreateContainerObject.objectSizePermutationsArray];
     

@@ -16,7 +16,7 @@
 #import "InstagramUserObject.h"
 #import "SearchAPIHandler.h"
 #import "PaginationAPIHandler.h"
-#import "MBProgressHUD.h"
+
 #import "CacheManager.h"
 
 @interface ProductSelectTableViewController ()
@@ -29,6 +29,7 @@
 @synthesize checkCountup;
 @synthesize cacheArray;
 @synthesize loaded;
+@synthesize jkProgressView;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -54,7 +55,7 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.jkProgressView hideProgressView];
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
@@ -198,12 +199,7 @@
 {
     if ([self.contentArray count] == 0)
     {
-        [MBProgressHUD showHUDAddedTo:self.view animated:YES].detailsLabelText = @"Loading...";
-        UIView *theView = [MBProgressHUD HUDForView:self.view];
-        theView.frame = CGRectMake(0, 0, theView.frame.size.width, self.view.frame.size.height * .8);
-
-        
-        
+        self.jkProgressView = [JKProgressView presentProgressViewInView:[AppRootViewController sharedRootViewController].view withText:@"Loading...."];
     }
     
     self.checkCountup = 0;
@@ -220,7 +216,7 @@
         
         if (cachedDataArray != nil)
         {
-            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            [self.jkProgressView hideProgressView];
             
             for (int i = 0; i < [cachedDataArray count]; i++)
             {
@@ -264,13 +260,13 @@
 
 -(void)searchReturnedWithArray:(NSArray *)searchResultsArray
 {
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.jkProgressView hideProgressView];
     [self feedRequestFinishedWithArrray:searchResultsArray];
 }
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
-    [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+    [self.jkProgressView hideProgressView];
     [self.contentArray removeAllObjects];
     
     
