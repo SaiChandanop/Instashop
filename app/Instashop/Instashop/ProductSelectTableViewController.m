@@ -18,6 +18,7 @@
 #import "PaginationAPIHandler.h"
 #import "MBProgressHUD.h"
 #import "CacheManager.h"
+
 @interface ProductSelectTableViewController ()
 
 @end
@@ -26,7 +27,8 @@
 
 
 @synthesize checkCountup;
-
+@synthesize cacheArray;
+@synthesize loaded;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -40,6 +42,7 @@
 {
     [super viewDidLoad];
     
+    self.cacheArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
@@ -53,11 +56,8 @@
     
     [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
     
-    
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
-    
-    NSLog(@"request did load with response: %@", result);
     
     if (responseCode == 200)
     {
@@ -68,8 +68,16 @@
         {
             NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[dataArray objectAtIndex:i]];
             [mutableDataArray addObject:dict];
+            NSData *theData = [NSKeyedArchiver archivedDataWithRootObject:dict];
+            
+            [self.cacheArray addObject:theData];
         }
         
+        
+        if (!self.loaded)
+            [self.contentArray removeAllObjects];
+        
+        self.loaded = YES;
         
         
         [self.contentArray addObjectsFromArray:mutableDataArray];
@@ -85,10 +93,18 @@
         {
 //            NSLog(@"paginationDictionary: %@", paginationDictionary);
             [PaginationAPIHandler makePaginationRequestWithDelegate:self withRequestURLString:nextURLString];
+            
         }
         else
         {
 //            NSLog(@"paginationComplete");
+//            NSLog(@"self.contentArray: %@", self.contentArray);
+            
+            [[NSUserDefaults standardUserDefaults] setObject:self.cacheArray forKey:@"user_photo_data"];
+            
+            
+//            NSLog(@"[[NSUserDefaults standardUserDefaults.user_photo_data: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"user_photo_data"]);
+            
             for (int i = 0; i < [self.contentArray count]; i++)
             {
                 NSMutableDictionary *theSelectionObject = [self.contentArray objectAtIndex:i];
@@ -186,6 +202,8 @@
         UIView *theView = [MBProgressHUD HUDForView:self.view];
         theView.frame = CGRectMake(0, 0, theView.frame.size.width, self.view.frame.size.height * .8);
 
+        
+        
     }
     
     self.checkCountup = 0;
@@ -196,6 +214,29 @@
         NSLog(@"requestWithParams: %@", self.contentRequestParameters);
         AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [theAppDelegate.instagram requestWithParams:[NSMutableDictionary dictionaryWithDictionary:self.contentRequestParameters] delegate:self];
+        
+        
+        NSArray *cachedDataArray = [[NSUserDefaults standardUserDefaults] objectForKey:@"user_photo_data"];
+        
+        if (cachedDataArray != nil)
+        {
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+            
+            for (int i = 0; i < [cachedDataArray count]; i++)
+            {
+                NSData *myData = [cachedDataArray objectAtIndex:i];
+                NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData:myData];
+                [self.contentArray addObject:myDictionary];
+                
+                [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[myDictionary objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:myDictionary];
+             
+                [self.tableView reloadData];
+//                [self.contentArray removeAllObjects];
+                
+            }
+        }
+        
+        
     }
     else if (self.productRequestorType > 0)
     {
