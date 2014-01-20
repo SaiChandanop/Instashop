@@ -31,6 +31,7 @@
 {
     [super viewDidLoad];
     
+    self.view.backgroundColor = [UIColor blackColor];
     [self.imageViewsArray removeAllObjects];
     
     float xOffset = 10;

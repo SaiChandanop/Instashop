@@ -183,9 +183,6 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSLog(@"value: %f", self.view.frame.size.width/3);
-    
-    
     return  106.666664;
 }
 
