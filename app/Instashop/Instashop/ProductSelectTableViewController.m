@@ -57,6 +57,7 @@
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     int responseCode = [[metaDictionary objectForKey:@"code"] intValue];
     
+    NSLog(@"request did load with response: %@", result);
     
     if (responseCode == 200)
     {
@@ -192,6 +193,7 @@
 
     if (self.contentRequestParameters != nil)
     {
+        NSLog(@"requestWithParams: %@", self.contentRequestParameters);
         AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         [theAppDelegate.instagram requestWithParams:[NSMutableDictionary dictionaryWithDictionary:self.contentRequestParameters] delegate:self];
     }
@@ -246,7 +248,7 @@
     
     [self.contentArray addObjectsFromArray:sorted];
     
-    //    NSLog(@"contentArray: %@", contentArray);
+//    NSLog(@"contentArray: %@", contentArray);
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
 }

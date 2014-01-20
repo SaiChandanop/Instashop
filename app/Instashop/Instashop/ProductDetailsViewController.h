@@ -20,7 +20,7 @@
 
 @class ProductCreateViewController;
 
-@interface ProductDetailsViewController : UIViewController <IGRequestDelegate, UITextFieldDelegate, UITextViewDelegate, EditProductCompleteProtocol, ProductCreateContainerProtocol>
+@interface ProductDetailsViewController : UIViewController <IGRequestDelegate, UITextFieldDelegate, UITextViewDelegate, UIActionSheetDelegate,  EditProductCompleteProtocol, ProductCreateContainerProtocol>
 {
     ProductCreateViewController *parentController;
     SizeQuantityTableViewController *sizeQuantityTableViewController;
@@ -66,21 +66,19 @@
     
     CIALBrowserViewController *browserViewController;
     BOOL isEdit;
+    NSArray *twitterAccountsArray;
+    
 }
 
 - (void) loadWithProductObject:(NSDictionary *)productObject withMediaInstagramID:(NSString *)mediaInstagramID;
-
 - (void) loadViewsWithInstagramInfoDictionary:(NSDictionary *)theDictionary;
 - (void) categorySelectionCompleteWithArray:(NSArray *)theArray;
-
+- (void) twitterAccountsLookupDidCompleteWithArray:(NSArray *)theAccountsArray;
 - (IBAction) previewButtonHit;
 - (IBAction) categoryButtonHit;
-
 - (IBAction) addSizeButtonHit;
 - (void) updateLayout;
-
 - (IBAction) urlButtonHit;
-
 - (IBAction) facebookButtonHit;
 - (IBAction) twitterButtonHit;
 
@@ -128,7 +126,7 @@
 @property (nonatomic, strong) IBOutlet UIButton *twitterButton;
 @property (nonatomic, strong) IBOutlet UIButton *urlButton;
 @property (nonatomic, strong) IBOutlet UIButton *nextButton;
-
+@property (nonatomic, strong) NSArray *twitterAccountsArray;
 @property (nonatomic, strong) CIALBrowserViewController *browserViewController;
 @property (nonatomic, assign) BOOL isEdit;
 @end

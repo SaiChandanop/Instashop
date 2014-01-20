@@ -9,7 +9,7 @@
 #import "SocialManager.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
-
+#import "ProductDetailsViewController.h"
 
 @implementation SocialManager
 
@@ -48,8 +48,32 @@
     
 }
 
++(NSArray *)getAllTwitterAccountsWithResponseDelegate:(id)theDelegate
+{    
+    NSMutableArray *retAR = [NSMutableArray arrayWithCapacity:0];
+    ACAccountStore *account = [[ACAccountStore alloc] init];
+    ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:
+                                  ACAccountTypeIdentifierTwitter];
+    
+    [account requestAccessToAccountsWithType:accountType
+                                     options:nil
+                                  completion:^(BOOL granted, NSError *error)
+     {
+         if (granted == YES)
+         {
+             if ([theDelegate respondsToSelector:@selector(twitterAccountsLookupDidCompleteWithArray:)])
+                 [(ProductDetailsViewController *)theDelegate performSelectorOnMainThread:@selector(twitterAccountsLookupDidCompleteWithArray:) withObject:[account accountsWithAccountType:accountType] waitUntilDone:NO];
+             
+         }
+     }];
+     
+    
+     return retAR;
+}
+
 +(void)postToTwitterWithString:(NSString *)contentString
 {
+
     ACAccountStore *account = [[ACAccountStore alloc] init];
     
     ACAccountType *accountType = [account accountTypeWithAccountTypeIdentifier:
@@ -65,10 +89,25 @@
              NSArray *arrayOfAccounts = [account
                                          accountsWithAccountType:accountType];
              
+
+
              if ([arrayOfAccounts count] > 0)
              {
                  ACAccount *twitterAccount =
                  [arrayOfAccounts lastObject];
+                 
+                 NSString *preferredTwitterAccount = [[NSUserDefaults standardUserDefaults] objectForKey:SELECTED_TWITTER_ACCOUNT_ID_KEY];
+                 if (preferredTwitterAccount != nil)
+                 {
+                     for (int i = 0; i < [arrayOfAccounts count]; i++)
+                     {
+                         ACAccount *theAccount = [arrayOfAccounts objectAtIndex:i];
+                         if ([theAccount.username compare:[[NSUserDefaults standardUserDefaults] objectForKey:SELECTED_TWITTER_ACCOUNT_ID_KEY]] == NSOrderedSame)
+                         {
+                             twitterAccount = theAccount;
+                         }
+                     }
+                 }
                  
                  NSDictionary *message = @{@"status": contentString};
                  

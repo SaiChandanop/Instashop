@@ -23,6 +23,11 @@
 #import "MBProgressHUD.h"
 #import "CreateProductAPIHandler.h"
 #import "SellersAPIHandler.h"
+
+#import <Accounts/Accounts.h>
+#import <Social/Social.h>
+
+
 @interface ProductDetailsViewController ()
 
 @end
@@ -60,7 +65,7 @@
 @synthesize browserViewController;
 @synthesize nextButton;
 @synthesize isEdit;
-
+@synthesize twitterAccountsArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -758,6 +763,54 @@
 {
     NSLog(@"twitterButtonHit");
     self.twitterButton.selected = !self.twitterButton.selected;
+    
+    if (self.twitterButton.selected)
+    {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:SELECTED_TWITTER_ACCOUNT_ID_KEY] == nil)
+            [SocialManager getAllTwitterAccountsWithResponseDelegate:self];
+        else
+            NSLog(@"[[NSUserDefaults standardUserDefaults] objectForKey:SELECTED_TWITTER_ACCOUNT_ID_KEY]: %@", [[NSUserDefaults standardUserDefaults] objectForKey:SELECTED_TWITTER_ACCOUNT_ID_KEY]);
+        
+    }
+    
+}
+
+-(void)twitterAccountsLookupDidCompleteWithArray:(NSArray *)theAccountsArray
+{
+
+    UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    self.twitterAccountsArray = [[NSArray alloc] initWithArray:theAccountsArray];
+    
+    NSLog(@"self.twitterAccountsArray: %@", self.twitterAccountsArray);
+    for (int i = 0; i < [self.twitterAccountsArray count]; i++)
+    {
+        ACAccount *theAccount = [self.twitterAccountsArray objectAtIndex:i];
+        [shareActionSheet addButtonWithTitle:theAccount.username];
+        NSLog(@"theAccount.username[%d]: %@", i, theAccount.username);
+    }
+    [shareActionSheet addButtonWithTitle:@"Cancel"];
+    
+    shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+    
+}
+
+- (void) actionSheet:(UIActionSheet *)theActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    NSString *buttonTitle = [theActionSheet buttonTitleAtIndex:buttonIndex];
+    NSLog(@"buttonTitle: %@", buttonTitle);
+
+    
+    if ([buttonTitle compare:@"Cancel"] != NSOrderedSame)
+    for (int i = 0; i < [self.twitterAccountsArray count]; i++)
+    {
+        ACAccount *theAccount = [self.twitterAccountsArray objectAtIndex:i];
+        if ([theAccount.username compare:buttonTitle] == NSOrderedSame)
+        {
+            [[NSUserDefaults standardUserDefaults] setObject:theAccount.username forKey:SELECTED_TWITTER_ACCOUNT_ID_KEY];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }
+    }
 }
 
 
