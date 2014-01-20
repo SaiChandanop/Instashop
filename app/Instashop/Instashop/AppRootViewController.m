@@ -109,8 +109,6 @@ float transitionTime = .456;
     
     
     //    [self runTutorial];
-
-    [self runTutorialIfAppropriate];
 }
 
 
@@ -119,6 +117,8 @@ float transitionTime = .456;
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:TUTORIAL_COMPLETE] == nil)
     {
+        if (self.firstTimeUserViewController == nil)
+        {
         self.firstTimeUserViewController = [[FirstTimeUserViewController alloc] init];
         self.firstTimeUserViewController.parentViewController = self;
         self.firstTimeUserViewController.view.frame = CGRectMake(0, 0.0, self.firstTimeUserViewController.view.frame.size.width, self.view.frame.size.height);
@@ -130,6 +130,7 @@ float transitionTime = .456;
         [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
         self.firstTimeUserViewController.view.frame = CGRectMake(0, 0, self.firstTimeUserViewController.view.frame.size.width, self.firstTimeUserViewController.view.frame.size.height);
         [UIView commitAnimations];
+        }
     }
 
 }
