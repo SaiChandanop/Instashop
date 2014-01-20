@@ -109,6 +109,8 @@ float transitionTime = .456;
     
     
     //    [self runTutorial];
+
+    [self runTutorialIfAppropriate];
 }
 
 

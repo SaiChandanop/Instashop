@@ -144,6 +144,7 @@
     self.nextButton.enabled = NO;
     
     [self.nextButton setTitle:@"Follow five stores to get started!" forState:UIControlStateDisabled];
+    [self.nextButton setTitle:@"Next!" forState:UIControlStateNormal];
     self.nextButton.titleLabel.textColor = [UIColor whiteColor];
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
@@ -194,10 +195,12 @@
 {
     self.suggestedFollowCount++;
     
-    if (suggestedFollowCount >= 5)
+    if (self.suggestedFollowCount >= 5 && self.nextButton.enabled == NO)
+    {
         self.nextButton.enabled = YES;
         self.nextButton.backgroundColor = [ISConstants getISGreenColor];
         self.nextButton.titleLabel.text = @"Next";
+    }
     
     NSLog(@"shopWasFollowed: %d", self.suggestedFollowCount);
 }
