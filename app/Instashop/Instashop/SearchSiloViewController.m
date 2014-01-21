@@ -100,6 +100,12 @@
             self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
             self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
         }
+        else
+        {
+            self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 380);
+            self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 380);
+        }
+            
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
         
 
