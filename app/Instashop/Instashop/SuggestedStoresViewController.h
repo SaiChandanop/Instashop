@@ -28,8 +28,8 @@
     NSMutableArray *followedIDsArray;
     
     BOOL isLaunchedFromMenu;
-    
     BOOL begun;
+    BOOL holdBegin;
 }
 
 -(void) selectedShopViewDidCompleteRequestWithView:(SuggestedShopView *)theShopView;
@@ -50,5 +50,7 @@
 @property (nonatomic, assign) BOOL isLaunchedFromMenu;
 
 @property (nonatomic, assign) BOOL begun;
+@property (nonatomic, assign) BOOL holdBegin;
+
 @end
 

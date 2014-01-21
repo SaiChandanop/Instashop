@@ -43,7 +43,7 @@
 {
     [super viewDidLoad];
     
-    self.cacheArray = [[NSMutableArray alloc] initWithCapacity:0];
+//    self.cacheArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""

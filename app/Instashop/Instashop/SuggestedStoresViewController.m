@@ -37,8 +37,8 @@
 @synthesize isLaunchedFromMenu;
 @synthesize followedIDsArray;
 @synthesize shopViewsArray;
+@synthesize holdBegin;
 @synthesize begun;
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -47,12 +47,6 @@
         self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.shopViewsArray = [[NSMutableArray alloc] initWithCapacity:0];
         
-/*        if ([InstagramUserObject getStoredUserObject].userID != nil)
-        {
-            self.begun = YES;
-            [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
-        }
- */
     }
     return self;
 }
@@ -83,7 +77,7 @@
     
     
 
-    if (!self.begun)
+    if (!self.holdBegin)
     {
         self.begun = YES;
         [ShopsAPIHandler getSuggestedShopsWithDelegate:self];

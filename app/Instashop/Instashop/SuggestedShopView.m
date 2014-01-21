@@ -71,7 +71,9 @@
             [self.parentController.firstTimeUserViewController performSelectorOnMainThread:@selector(shopWasFollowed) withObject:nil waitUntilDone:NO];
         }
         else
+        {
             self.followButton.selected = NO;
+        }
         
         self.followButton.alpha = 1;
             
@@ -116,14 +118,15 @@
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"unfollow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+        
+        [self.parentController.firstTimeUserViewController performSelectorOnMainThread:@selector(shopWasUnFollowed) withObject:nil waitUntilDone:NO];
+        
     }
     else
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
-        
-//        if (self.parentController.firstTimeUserViewController != nil)
-//            [self.parentController.firstTimeUserViewController shopWasFollowed];
+
     }
 }
 

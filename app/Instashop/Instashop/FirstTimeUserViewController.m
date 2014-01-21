@@ -11,7 +11,7 @@
 #import "DiscoverViewController.h"
 #import "SuggestedStoresViewController.h"
 #import "ISConstants.h"
-
+#import "ShopsAPIHandler.h"
 @interface FirstTimeUserViewController ()
 
 @end
@@ -154,6 +154,7 @@
     // SuggestViewController
     
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
+    self.suggestedStoresViewController.holdBegin = YES;
     self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5, 0.0, screenWidth, screenHeight - buttonSize);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
 //    [self.suggestedStoresViewController.view addSubview:self.nextButton];
@@ -199,13 +200,34 @@
     {
         self.nextButton.enabled = YES;
         self.nextButton.backgroundColor = [ISConstants getISGreenColor];
-        self.nextButton.titleLabel.text = @"Next";
     }
     
     NSLog(@"shopWasFollowed: %d", self.suggestedFollowCount);
 }
 
+- (void) shopWasUnFollowed
+{
+    self.suggestedFollowCount--;
+    
+    if (self.suggestedFollowCount < 5 && self.nextButton.enabled == YES)
+    {
+        self.nextButton.enabled = NO;
+        self.nextButton.backgroundColor = [UIColor clearColor];
+
+    }
+    if (self.suggestedFollowCount < 0)
+        self.suggestedFollowCount = 0;
+    
+    
+    NSLog(@"shopWasUnFollowed: %d", self.suggestedFollowCount);
+}
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
+    
+    if (!self.suggestedStoresViewController.begun)
+    {
+        self.suggestedStoresViewController.begun = YES;
+        [ShopsAPIHandler getSuggestedShopsWithDelegate:self.suggestedStoresViewController];
+    }
     
     CGFloat pageWidth = self.tutorialScrollView.frame.size.width;
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
