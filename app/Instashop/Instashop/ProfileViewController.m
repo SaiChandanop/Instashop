@@ -127,7 +127,18 @@
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil];
+    
+    NSLog(@"begin profile view controller");
 
+    
+    if ([UIScreen mainScreen].bounds.size.height == 480)
+    {
+        [self.editButton removeFromSuperview];
+        self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 64, self.editButton.frame.size.width, self.editButton.frame.size.height);
+        [self.view addSubview:self.editButton];
+        self.editButton.alpha = 0;
+    }
+    NSLog(@"self.editButton: %@", self.editButton);
 }
 
 
@@ -226,17 +237,14 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    
     if (!self.hasAppeared)
     {
         self.hasAppeared = YES;
-        
         
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.profileInstagramID], @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
-        
         
         self.infoContainerScrollView.frame = self.theTableView.frame;
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
@@ -246,8 +254,6 @@
         self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
         self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
         [self.productSelectTableViewController refreshContent];
-        
-        
         
         self.favoritesSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
         self.favoritesSelectTableViewController.tableView.frame = self.productSelectTableViewController.tableView.frame;
@@ -461,6 +467,7 @@
 
 -(IBAction) productsButtonHit
 {
+    self.editButton.alpha = 0;
     UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
     self.navigationItem.rightBarButtonItem = shareButton;
@@ -485,6 +492,7 @@
 
 -(IBAction)editButtonHit
 {
+    NSLog(@"editButtonHit");
     if ([self.descriptionTextView isFirstResponder])
     {
         [self saveButtonHit];
@@ -501,6 +509,9 @@
         [self.descriptionTextView becomeFirstResponder];
         self.enclosingScrollView.contentSize = CGSizeMake(0, self.enclosingScrollView.frame.size.height);
         [self.enclosingScrollView setContentOffset:CGPointMake(0, 217) animated:YES];
+        
+        if ([self.editButton superview] == self.view)
+            self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 276, self.editButton.frame.size.width, self.editButton.frame.size.height);
     }
     
 }
@@ -514,6 +525,8 @@
     self.enclosingScrollView.contentSize = CGSizeMake(0,0);
     self.descriptionTextView.editable = NO;
     
+    if ([self.editButton superview] == self.view)
+        self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 64, self.editButton.frame.size.width, self.editButton.frame.size.height);
 }
 
 
@@ -551,6 +564,8 @@
     
     [self animateSellerButton:self.infoButton];
     
+
+    [self.view bringSubviewToFront:self.editButton];
     
     
 }
