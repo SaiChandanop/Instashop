@@ -75,8 +75,8 @@
     [self.categoriesNavigationController setNavigationBarHidden:YES];
     [self.contentContainerView addSubview:categoriesNavigationController.view];
     
-    CGPoint origin = [self.view convertPoint:CGPointMake(0,0) toView:nil];
-    
+    CGPoint origin = [self.view convertPoint:self.view.frame.origin toView:nil];
+    NSLog(@"origin: %@", origin);
     if (self.searchType == CATEGORIES_TYPE_SELLER)
     {
         self.objectSelectTableViewController = [[SellerSelectTableViewController alloc] initWithNibName:@"SellerSelectTableViewController" bundle:nil];
@@ -89,10 +89,17 @@
     else
     {
         self.objectSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
+        ((ProductSelectTableViewController *)self.objectSelectTableViewController).offsetJKProgressView = 40;
         self.objectSelectTableViewController.cellDelegate = self.parentController;
         self.objectSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_SEARCH;
         self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y );
         self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y);
+        
+        if ([UIScreen mainScreen].bounds.size.height == 480)
+        {
+            self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
+            self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
+        }
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
         
 

@@ -201,6 +201,7 @@
     {
         self.jkProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading...."];
     }
+    self.jkProgressView.frame = CGRectMake(0, self.jkProgressView.frame.origin.y + self.offsetJKProgressView, self.jkProgressView.frame.size.width, self.jkProgressView.frame.size.height);
     
     self.checkCountup = 0;
     [self.contentArray removeAllObjects];
