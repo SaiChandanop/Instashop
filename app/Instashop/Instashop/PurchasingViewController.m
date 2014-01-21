@@ -848,7 +848,6 @@
         
         SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
             
-            NSLog(@"here here");
             [facebookController dismissViewControllerAnimated:YES completion:nil];
             
             switch(result){
@@ -887,7 +886,6 @@
         
         SLComposeViewControllerCompletionHandler __block completionHandler=^(SLComposeViewControllerResult result){
             
-            NSLog(@"here here");
             [tweetController dismissViewControllerAnimated:YES completion:nil];
             
             switch(result){

@@ -109,8 +109,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     }
     else if (self.theImageView != nil)
     {
-//        NSLog(@"self.self.delegate: %@", self.delegate);
-//        NSLog(@"here");
+
         self.theImageView.image = responseImage;
         self.theImageView.alpha = 1;
         

@@ -61,17 +61,17 @@
     [self.view insertSubview:self.theScrollView belowSubview:self.topBarView];
     
     
-    
     /*
     self.postProductButton.frame = CGRectMake(0.0, self.view.frame.size.height - self.postProductButton.frame.size.height, 0.0,self.postProductButton.frame.size.height);
     [self.view insertSubview:self.postProductButton aboveSubview:self.theScrollView];*/
     
     // joel use these for reference
-    NSLog(@"view size: %@", NSStringFromCGRect(self.view.frame));
     
+    /*
+    NSLog(@"view size: %@", NSStringFromCGRect(self.view.frame));
     NSLog(@"scroll view size: %@", NSStringFromCGRect(self.theScrollView.frame));
     NSLog(@"scroll view contentSize: %@", NSStringFromCGSize(self.theScrollView.contentSize));
-    
+    */
      
     [self loadStates];
     

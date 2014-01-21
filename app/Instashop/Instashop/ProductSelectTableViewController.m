@@ -199,7 +199,7 @@
 {
     if ([self.contentArray count] == 0)
     {
-        self.jkProgressView = [JKProgressView presentProgressViewInView:[AppRootViewController sharedRootViewController].view withText:@"Loading...."];
+        self.jkProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading...."];
     }
     
     self.checkCountup = 0;

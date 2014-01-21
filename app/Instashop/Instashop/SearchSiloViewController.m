@@ -13,7 +13,7 @@
 #import "ProductSelectTableViewController.h"
 #import "SellerSelectTableViewController.h"
 #import "SearchButtonContainerView.h"
-
+#import "SearchViewController.h"
 
 @interface SearchSiloViewController ()
 
@@ -75,13 +75,14 @@
     [self.categoriesNavigationController setNavigationBarHidden:YES];
     [self.contentContainerView addSubview:categoriesNavigationController.view];
     
+    CGPoint origin = [self.view convertPoint:CGPointMake(0,0) toView:nil];
     
     if (self.searchType == CATEGORIES_TYPE_SELLER)
     {
         self.objectSelectTableViewController = [[SellerSelectTableViewController alloc] initWithNibName:@"SellerSelectTableViewController" bundle:nil];
         self.objectSelectTableViewController.rowSelectedDelegate = self.parentController;
-        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.view.frame.size.height - self.separatorImageView.frame.origin.y - 100);
-        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.view.frame.size.height - self.separatorImageView.frame.origin.y - 100);
+        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y);
+        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y);
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
         
     }
@@ -90,9 +91,11 @@
         self.objectSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
         self.objectSelectTableViewController.cellDelegate = self.parentController;
         self.objectSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_SEARCH;
-        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.view.frame.size.height - self.separatorImageView.frame.origin.y - 100);
-        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, self.view.frame.size.height - self.separatorImageView.frame.origin.y - 100);
+        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y );
+        self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y);
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
+        
+
     }
 
     self.navigationItem.backBarButtonItem =
