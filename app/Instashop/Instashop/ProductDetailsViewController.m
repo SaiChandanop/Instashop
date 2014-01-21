@@ -134,16 +134,16 @@
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
-                                      style:UIBarButtonItemStyleBordered
-                                     target:nil
-                                     action:nil];
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
     
     if (self.isEdit)
     {
         UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
-                                                                         style:UIBarButtonItemStylePlain
-                                                                        target:self
-                                                                        action:@selector(goBack)];
+                                                                             style:UIBarButtonItemStylePlain
+                                                                            target:self
+                                                                            action:@selector(goBack)];
         self.navigationItem.leftBarButtonItem = customBackButton;
     }
     [self setDoneButtonState];
@@ -153,9 +153,9 @@
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
-                                      style:UIBarButtonItemStyleBordered
-                                     target:nil
-                                     action:nil];
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
 }
 
 -(void)setDoneButtonState
@@ -245,23 +245,23 @@
     
     
     /*
-    UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    deleteButton.frame = CGRectMake(0,0,80, 44);
-    [deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
-    deleteButton.backgroundColor = [UIColor clearColor];
-    [deleteButton addTarget:self action:@selector(deleteButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    UIBarButtonItem *deletBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
-    self.navigationItem.rightBarButtonItem = deletBarButtonItem;
-    */
+     UIButton *deleteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+     deleteButton.frame = CGRectMake(0,0,80, 44);
+     [deleteButton setTitle:@"Delete" forState:UIControlStateNormal];
+     deleteButton.backgroundColor = [UIColor clearColor];
+     [deleteButton addTarget:self action:@selector(deleteButtonHit) forControlEvents:UIControlEventTouchUpInside];
+     
+     
+     UIBarButtonItem *deletBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
+     self.navigationItem.rightBarButtonItem = deletBarButtonItem;
+     */
     
     
 }
 
 - (void)viewDidAppear:(BOOL)animated {
     
-
+    
 }
 
 -(void)deleteButtonHit
@@ -446,13 +446,13 @@
     int totalQuantity = 0;
     if (self.isEdit)
     {
-    /*    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"is edit"
-                                                            message:@""
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-      */
+        /*    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"is edit"
+         message:@""
+         delegate:nil
+         cancelButtonTitle:@"Ok"
+         otherButtonTitles:nil];
+         [alertView show];
+         */
         NSLog(@"edit, self.urlLabel.text: %@", self.urlLabel.text);
         NSLog(@"attributesArray, %@", self.attributesArray);
         
@@ -468,13 +468,13 @@
         productCreateContainerObject.mainObject.categoriesArray = [[NSArray alloc] initWithArray:self.attributesArray];
         productCreateContainerObject.mainObject.editingReferenceID = self.editingProductID;
         productCreateContainerObject.mainObject.referenceURLString = self.urlLabel.text;
-
         
         
         
-        self.jkProgressView = [JKProgressView presentProgressViewInView:[AppRootViewController sharedRootViewController].view withText:@"Editing Product"];
         
-
+//        self.jkProgressView = [JKProgressView presentProgressViewInView:[AppRootViewController sharedRootViewController].view withText:@"Editing Product"];
+        
+        
         [ProductAPIHandler editProductCreateObjectWithDelegate:self withProductID:[self.editingProductObject objectForKey:@"product_id"] withProductCreateObject:productCreateContainerObject];
         
     }
@@ -500,7 +500,7 @@
         //[self.parentController previewButtonHitWithProductCreateObject:productCreateContainerObject];
         
         
-        self.jkProgressView = [JKProgressView presentProgressViewInView:[AppRootViewController sharedRootViewController].view withText:@"Editing Product"];
+//        self.jkProgressView = [JKProgressView presentProgressViewInView:[AppRootViewController sharedRootViewController].view withText:@"Editing Product"];
         [CreateProductAPIHandler createProductContainerObject:self withProductCreateObject:productCreateContainerObject];
         
         NSMutableString *categoriesString = [NSMutableString stringWithCapacity:0];
@@ -529,7 +529,7 @@
 {
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
-    [rootVC productDidCreateWithNavigationController:self.navigationController];    
+    [rootVC productDidCreateWithNavigationController:self.navigationController];
 }
 
 -(void)editProductComplete
@@ -599,7 +599,7 @@
     self.descriptionTextView.scrollEnabled = YES;
     
     
-
+    
     
     
 }
@@ -620,8 +620,8 @@
     float verticaloffset = 6;
     if (textView == self.descriptionTextView)
     {
-            if ([text compare:@"\n"] == NSOrderedSame)
-                [textView resignFirstResponder];
+        if ([text compare:@"\n"] == NSOrderedSame)
+            [textView resignFirstResponder];
         //        [UIView beginAnimations:nil context:nil];
         //       [UIView setAnimationDuration:.2];
         
@@ -666,11 +666,11 @@
     [self.navigationController pushViewController:self.browserViewController animated:YES];
     
     self.browserViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(browserSaveHit) ];
-//    [self.browserViewController loadRightBarItem];
+    //    [self.browserViewController loadRightBarItem];
     
     [self.descriptionTextView resignFirstResponder];
     
-//    NSLog(@"browserViewController.webView: %@", self.browserViewController.webView);
+    //    NSLog(@"browserViewController.webView: %@", self.browserViewController.webView);
     
     
 }
@@ -757,21 +757,36 @@
 
 -(void)twitterAccountsLookupDidCompleteWithArray:(NSArray *)theAccountsArray
 {
-
-    UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-    self.twitterAccountsArray = [[NSArray alloc] initWithArray:theAccountsArray];
     
-    NSLog(@"self.twitterAccountsArray: %@", self.twitterAccountsArray);
-    for (int i = 0; i < [self.twitterAccountsArray count]; i++)
+    if ([theAccountsArray count] > 1)
     {
-        ACAccount *theAccount = [self.twitterAccountsArray objectAtIndex:i];
-        [shareActionSheet addButtonWithTitle:theAccount.username];
-        NSLog(@"theAccount.username[%d]: %@", i, theAccount.username);
+        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+        self.twitterAccountsArray = [[NSArray alloc] initWithArray:theAccountsArray];
+        
+        NSLog(@"self.twitterAccountsArray: %@", self.twitterAccountsArray);
+        for (int i = 0; i < [self.twitterAccountsArray count]; i++)
+        {
+            ACAccount *theAccount = [self.twitterAccountsArray objectAtIndex:i];
+            [shareActionSheet addButtonWithTitle:theAccount.username];
+            NSLog(@"theAccount.username[%d]: %@", i, theAccount.username);
+        }
+        [shareActionSheet addButtonWithTitle:@"Cancel"];
+        
+        shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+        [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
     }
-    [shareActionSheet addButtonWithTitle:@"Cancel"];
-    
-    shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
+    else
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"Please add a twitter account in settings if you wish to post"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        
+        self.twitterButton.selected = NO;
+        
+    }
     
 }
 
@@ -779,18 +794,18 @@
     
     NSString *buttonTitle = [theActionSheet buttonTitleAtIndex:buttonIndex];
     NSLog(@"buttonTitle: %@", buttonTitle);
-
+    
     
     if ([buttonTitle compare:@"Cancel"] != NSOrderedSame)
-    for (int i = 0; i < [self.twitterAccountsArray count]; i++)
-    {
-        ACAccount *theAccount = [self.twitterAccountsArray objectAtIndex:i];
-        if ([theAccount.username compare:buttonTitle] == NSOrderedSame)
+        for (int i = 0; i < [self.twitterAccountsArray count]; i++)
         {
-            [[NSUserDefaults standardUserDefaults] setObject:theAccount.username forKey:SELECTED_TWITTER_ACCOUNT_ID_KEY];
-            [[NSUserDefaults standardUserDefaults] synchronize];
+            ACAccount *theAccount = [self.twitterAccountsArray objectAtIndex:i];
+            if ([theAccount.username compare:buttonTitle] == NSOrderedSame)
+            {
+                [[NSUserDefaults standardUserDefaults] setObject:theAccount.username forKey:SELECTED_TWITTER_ACCOUNT_ID_KEY];
+                [[NSUserDefaults standardUserDefaults] synchronize];
+            }
         }
-    }
 }
 
 
