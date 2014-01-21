@@ -73,11 +73,12 @@
     }
     
     self.currentSelectedIndex = index;
+    NSLog(@"self.currentSelectedIndex: %d", self.currentSelectedIndex);
 }
 
 -(UIImage *)getSelectedImage
 {
-    return [UIImage imageNamed:[NSString stringWithFormat:@"Instagram-Promo-%d.jpg", self.currentSelectedIndex]];
+    return [UIImage imageNamed:[NSString stringWithFormat:@"Instagram-Promo-%d.jpg", self.currentSelectedIndex+1]];
 }
 
 - (void)didReceiveMemoryWarning
