@@ -26,6 +26,7 @@
 @synthesize instagramLoginWebViewController, backLabel, backButton;
 @synthesize iphoneShortView;
 @synthesize firstTimeUser;
+@synthesize progressView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -99,11 +100,12 @@
     [self.backButton addTarget:self action:@selector(loginBackButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.loginWebView addSubview:self.backButton];
     
-    [JKProgressView presentProgressViewInView:self.loginWebView withText:@"loading"];
+    //self.progressView = [JKProgressView presentProgressViewInView:self.loginWebView withText:@"loading"];
 }
 
 
 -(void)makeLoginRequestWithURL:(NSURL *)theURL {
+    
     
     self.loginWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height)];
     self.loginWebView.delegate = self;
@@ -126,7 +128,7 @@
     
     [self presentViewController:self.instagramLoginWebViewController animated:YES completion:nil];
     
-    [JKProgressView presentProgressViewInView:self.loginWebView withText:@"Loading Instagram"];
+//    self.progressView = [JKProgressView presentProgressViewInView:self.loginWebView withText:@"Loading Instagram"];
     
 }
 
@@ -157,10 +159,16 @@
                                               cancelButtonTitle:@"Ok"
                                               otherButtonTitles:nil];
     [alertView show];
+    
+    [self.progressView hideProgressView];
 }
 
 -(void)igDidLogin
 {
+    
+    [self.progressView hideProgressView];
+    
+    
     [self.loginWebView removeFromSuperview];
     // here i can store accessToken
     AppDelegate* appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -191,6 +199,8 @@
 
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
+    
+    [self.progressView hideProgressView];
     
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
 

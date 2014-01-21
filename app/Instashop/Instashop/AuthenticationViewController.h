@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Instagram.h"
 #import "SellerExistsResponderProtocol.h"
+#import "JKProgressView.h"
 
 #define  TUTORIAL_COMPLETE  @"TUTORIAL_COMPLETE"
 
@@ -22,6 +23,8 @@
     UIButton *backButton;
     
     UIView *iphoneShortView;
+    
+    JKProgressView *progressView;
 }
 
 
@@ -39,4 +42,5 @@
 
 @property (nonatomic, strong) IBOutlet UIView *iphoneShortView;
 
+@property (nonatomic, strong) JKProgressView *progressView;
 @end
