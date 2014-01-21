@@ -70,13 +70,13 @@
             NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithDictionary:[dataArray objectAtIndex:i]];
             [mutableDataArray addObject:dict];
             NSData *theData = [NSKeyedArchiver archivedDataWithRootObject:dict];
-            
-            [self.cacheArray addObject:theData];
+    
+    //        [self.cacheArray addObject:theData];
         }
         
         
-        if (!self.loaded)
-            [self.contentArray removeAllObjects];
+//        if (!self.loaded)
+  //          [self.contentArray removeAllObjects];
         
         self.loaded = YES;
         
@@ -101,7 +101,7 @@
 //            NSLog(@"paginationComplete");
 //            NSLog(@"self.contentArray: %@", self.contentArray);
             
-            [[NSUserDefaults standardUserDefaults] setObject:self.cacheArray forKey:@"user_photo_data"];
+//            [[NSUserDefaults standardUserDefaults] setObject:self.cacheArray forKey:@"user_photo_data"];
             
             
 //            NSLog(@"[[NSUserDefaults standardUserDefaults.user_photo_data: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"user_photo_data"]);
