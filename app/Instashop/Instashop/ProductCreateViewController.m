@@ -60,7 +60,7 @@
     UIBarButtonItem *cancelBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:cancelCustomView];
     self.navigationItem.leftBarButtonItem = cancelBarButtonItem;
     
-    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SELECT A PHOTO"]];
+    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SELECT INSTAGRAM"]];
     
     
     NSDate *start = [[NSDate alloc] initWithTimeIntervalSince1970:0];
