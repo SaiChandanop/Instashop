@@ -140,6 +140,11 @@
     }
     NSLog(@"self.editButton: %@", self.editButton);
      */
+  
+    
+    [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:self.profileInstagramID];
+    
+    [self.view bringSubviewToFront:self.profileImageView];
 }
 
 

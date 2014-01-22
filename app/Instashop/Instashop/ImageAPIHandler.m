@@ -191,13 +191,66 @@ static ImageAPIHandler *sharedImageAPIHandler;
     
 }
 
-
-
-
-
-
-
 +(void)makeProfileImageRequestWithReferenceImageView:(UIImageView *)referenceImageView withInstagramID:(NSString *)instagramID
+{
+    
+    NSString *urlString = [NSString stringWithFormat:@"http://instashop.com/upload/%@.jpeg", instagramID];
+    
+    NSLog(@"makeProfileImageRequestWithReferenceImageView: %@", urlString);
+    
+    if (sharedImageAPIHandler == nil)
+    {
+        sharedImageAPIHandler = [[ImageAPIHandler alloc] init];
+    }
+    
+    UIImage *theImage = [[CacheManager getSharedCacheManager] getImageWithURL:urlString];
+    if (theImage != nil)
+    {
+
+        referenceImageView.image = theImage;
+            referenceImageView.alpha = 1;
+            
+            if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
+                [(ISAsynchImageView *)referenceImageView ceaseAnimations];
+        
+    }
+    else
+    {
+        ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
+        handler.contextObject = urlString;
+        handler.receivedData = [[NSMutableData alloc] init];
+        handler.theImageView = referenceImageView;
+        handler.theWebRequest = [SMWebRequest requestWithURLRequest:[NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlString]] delegate:handler context:NULL];
+        [handler.theWebRequest addTarget:handler action:@selector(makeProfileImageRequestWithReferenceImageViewFinished:) forRequestEvents:SMWebRequestEventComplete];
+        [handler.theWebRequest start];
+    }
+    
+}
+
+- (void) makeProfileImageRequestWithReferenceImageViewFinished:(id)obj
+{
+ 
+    
+    UIImage *responseImage = [UIImage imageWithData:self.responseData];
+    NSLog(@"makeProfileImageRequestWithReferenceImageViewFinished");
+    
+    
+    if (responseImage != nil && self.contextObject != nil)
+    {
+        [[CacheManager getSharedCacheManager] setCacheObject:responseImage withKey:self.contextObject];
+    }
+    
+    if (responseImage != nil)
+        self.theImageView.image = responseImage;
+    
+    
+    
+}
+
+
+
+
++(void)makePbrofileImageRequestWithReferenceImageView:(UIImageView *)referenceImageView withInstagramID:(NSString *)instagramID
 {
     NSString *urlString = [NSString stringWithFormat:@"http://instashop.com/upload/%@.jpeg", instagramID];
     
