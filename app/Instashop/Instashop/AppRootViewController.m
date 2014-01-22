@@ -44,7 +44,7 @@ static AppRootViewController *theSharedRootViewController;
 @synthesize settingsNavigationController;
 @synthesize productCreateNavigationController;
 
-float transitionTime = .456;
+float transitionTime = .256;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
