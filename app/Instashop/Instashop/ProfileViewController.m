@@ -130,7 +130,7 @@
     
     NSLog(@"begin profile view controller");
 
-    
+    /*
     if ([UIScreen mainScreen].bounds.size.height == 480)
     {
         [self.editButton removeFromSuperview];
@@ -139,6 +139,7 @@
         self.editButton.alpha = 0;
     }
     NSLog(@"self.editButton: %@", self.editButton);
+     */
 }
 
 
@@ -510,8 +511,8 @@
         self.enclosingScrollView.contentSize = CGSizeMake(0, self.enclosingScrollView.frame.size.height);
         [self.enclosingScrollView setContentOffset:CGPointMake(0, 217) animated:YES];
         
-        if ([self.editButton superview] == self.view)
-            self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 276, self.editButton.frame.size.width, self.editButton.frame.size.height);
+        //if ([self.editButton superview] == self.view)
+            //self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 276, self.editButton.frame.size.width, self.editButton.frame.size.height);
     }
     
 }
@@ -557,6 +558,8 @@
     
     if ([self.infoContainerScrollView superview] == nil)
         [self.enclosingScrollView addSubview:self.infoContainerScrollView];
+    
+    
     
     self.productsButton.selected = NO;
     self.infoButton.selected = YES;
