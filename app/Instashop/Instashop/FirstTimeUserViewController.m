@@ -144,7 +144,7 @@
     self.nextButton.enabled = NO;
     
     [self.nextButton setTitle:@"Follow five stores to get started!" forState:UIControlStateDisabled];
-    [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG"] forState:UIControlStateDisabled];
+    [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
     [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
     self.nextButton.titleLabel.textColor = [UIColor whiteColor];
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
