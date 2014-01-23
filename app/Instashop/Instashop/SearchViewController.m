@@ -200,24 +200,17 @@
     while (!done && iter < [searchCategoriesArray count])
     {
         NSString *arrayItem = [[searchCategoriesArray objectAtIndex:iter] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-        
-        NSLog(@"selectedCategory[%d]: %@", iter, selectedCategory);
-        NSLog(@"arrayItem[%d]: %@", iter, arrayItem);
-        NSLog(@"[arrayItem compare:selectedCategory]: %d", [arrayItem compare:selectedCategory]);
-        NSLog(@" ");
         [ar addObject:arrayItem];
         if ([arrayItem compare:selectedCategory] == NSOrderedSame)
             done = YES;
-        
         iter++;
     }
     
-    NSLog(@"purchasingViewControllerSearchFiredWithString: %@, %@", selectedCategory, ar);
     [self.productSearchViewController.freeSearchTextArray removeAllObjects];
     [self.productSearchViewController.selectedCategoriesArray removeAllObjects];
     [self.productSearchViewController.selectedCategoriesArray addObjectsFromArray:ar];
     [self.productSearchViewController runSearch];
-    
+    [self.productSearchViewController layoutSearchBarContainers];    
 }
 
 

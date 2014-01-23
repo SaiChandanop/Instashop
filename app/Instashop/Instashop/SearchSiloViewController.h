@@ -40,6 +40,7 @@
 -(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton;
 -(void)doDirectSearch:(NSString *)directSearchTerm;
 -(void)runSearch;
+-(void)layoutSearchBarContainers;
 @property (nonatomic, strong) SearchViewController *parentController;
 
 @property (nonatomic, strong) IBOutlet UISearchBar *theSearchBar;
