@@ -31,8 +31,9 @@
 @synthesize enterEmailViewController;
 @synthesize nextButton;
 @synthesize suggestedFollowCount;
-
-
+@synthesize emailComplete;
+@synthesize hasPresentedSuggestedStores;
+@synthesize suggestedButton;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -52,10 +53,6 @@
     CGFloat screenWidth = screenSize.width;
     CGFloat screenHeight = screenSize.height;
     
-    //    CGFloat whiteSpace = 11.0f;
-    //    CGFloat topSpace = 64.0f;
-    
-    NSLog(@"screenBound: %@", NSStringFromCGRect(screenBound));
     
     UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
     
@@ -65,7 +62,8 @@
     self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];
     self.tutorialScrollView.bounces = NO;  // Empty side view
-    
+    self.tutorialScrollView.delegate = self;
+    [self.view addSubview:self.tutorialScrollView];
     
     
     NSString *zeroString = [NSString stringWithFormat:@"THIS IS ZERO STRING"];
@@ -75,8 +73,8 @@
     NSString *fourthString = [NSString stringWithFormat:@"Experience a simple and seamless checkout process"];
     
     NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:zeroString, firstString, secondString, thirdString, fourthString, nil];
-    
     NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"FirstTTutorialZero.png", @"FirstTTutorialOne.png", @"FirstTTutorialTwo.png", @"FirstTTutorialThree.png", @"FirstTTutorialFour.png", nil];
+    
     
     for (int p = 0; p < [arrayOfImages count]; p++) {
         
@@ -100,8 +98,7 @@
         label.textAlignment = NSTextAlignmentCenter;
         label.numberOfLines = 3;
         [view addSubview:label];
-        
-        NSLog(@"label: %@", label);
+    
         [self.tutorialScrollView addSubview:view];
     }
     
@@ -110,7 +107,7 @@
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
     self.enterEmailViewController.view.frame = CGRectMake(0.0, 20.0, screenWidth, screenHeight);
     self.enterEmailViewController.firstTimeUserViewController = self;
-    //[self.enterEmailViewController setTitle:@"Enter Email"];
+
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.enterEmailViewController];
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
@@ -125,8 +122,6 @@
     label.font = [UIFont boldSystemFontOfSize:20.0];
     label.shadowColor = [UIColor colorWithWhite:0.0 alpha:0.5];
     label.textAlignment = NSTextAlignmentCenter;
-    // ^-Use UITextAlignmentCenter for older SDKs.
-    label.textColor = [UIColor yellowColor]; // change this color
     self.navigationItem.titleView = label;
     label.text = @"Enter Email?";
     [label sizeToFit];
@@ -136,30 +131,48 @@
     [self.tutorialScrollView addSubview:navigationController.view];
 
     
-
-    
     float buttonSize = 50.0; // Change this number to change the button position.
     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, screenHeight - buttonSize, screenWidth, buttonSize)];
     self.nextButton.enabled = NO;
     
-    [self.nextButton setTitle:@"Follow five stores to get started!" forState:UIControlStateDisabled];
     [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
-    [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+    [self.nextButton setTitle:@"Next" forState:UIControlStateDisabled];
     self.nextButton.titleLabel.textColor = [UIColor whiteColor];
     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
     [self.nextButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
-    [self.nextButton addTarget:self action:@selector(closeTutorial) forControlEvents:UIControlEventTouchUpInside];
+    [self.nextButton addTarget:self action:@selector(nextButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.tutorialScrollView addSubview:self.nextButton];
+    
     
     // SuggestViewController
     
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     self.suggestedStoresViewController.holdBegin = YES;
-    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 6, 0.0, screenWidth, screenHeight - buttonSize);
+    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 6, 0.0, screenWidth, screenHeight);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
 //    [self.suggestedStoresViewController.view addSubview:self.nextButton];
     [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
   
+    
+    self.suggestedButton = [[UIButton alloc] initWithFrame:CGRectMake(0, screenHeight - buttonSize, screenWidth, buttonSize)];
+    self.suggestedButton.enabled = NO;
+    
+    [self.suggestedButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
+    [self.suggestedButton setTitle:@"Please Follow 5 Stores" forState:UIControlStateDisabled];
+    [self.suggestedButton setTitle:@"Go!" forState:UIControlStateNormal];
+    self.suggestedButton.titleLabel.textColor = [UIColor whiteColor];
+    self.suggestedButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.suggestedButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
+    [self.suggestedButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
+    [self.suggestedButton addTarget:self action:@selector(suggestedButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.suggestedStoresViewController.view addSubview:self.suggestedButton];
+
+    
+    NSLog(@"self.view: %@", NSStringFromCGRect(self.view.frame));
+    NSLog(@"self.tutorialScrollView: %@", NSStringFromCGRect(self.tutorialScrollView.frame));
+    NSLog(@"self.suggestedStoresViewController.view: %@", NSStringFromCGRect(self.suggestedStoresViewController.view.frame));
+    
     
     // Page Control
     
@@ -169,60 +182,81 @@
     self.pageControl.enabled = YES;
     self.pageControl.numberOfPages = [arrayOfImages count];
     self.pageControl.currentPage = 0;
-    
-    self.tutorialScrollView.delegate = self;
-    [self.view addSubview:self.tutorialScrollView];
     [self.view addSubview:self.pageControl];
     
     
-    [self.tutorialScrollView addSubview:self.nextButton];
     
-    self.tutorialScrollView.contentSize = CGSizeMake(self.suggestedStoresViewController.view.frame.origin.x + self.suggestedStoresViewController.view.frame.size.width, 33.3);
-    
-    /*
-     self.navigationItem.backBarButtonItem =
-     [[[UIBarButtonItem alloc] initWithTitle:@""
-     style:UIBarButtonItemStyleBordered
-     target:nil
-     action:nil] autorelease];
-     
-     Feature of past FirstTimeUserViewController version */
+    self.tutorialScrollView.contentSize = CGSizeMake(navigationController.view.frame.origin.x + navigationController.view.frame.size.width, 33.3);
     
 }
 
--(void)emailPageDidSwipe
+-(void)suggestedButtonHit
 {
-    NSLog(@"emailPageDidSwipe");
+    NSLog(@"suggestedButtonHit");
+    if (self.suggestedFollowCount >= 5)
+    {
+        [self closeTutorial];
+    }
 }
 
+-(void)nextButtonHit
+{
+    if (self.emailComplete && !self.hasPresentedSuggestedStores)
+    {
+        
+        self.hasPresentedSuggestedStores = YES;
+        [self.nextButton setTitle:@"Please Follow 5 Stores" forState:UIControlStateDisabled];
+        
+        self.tutorialScrollView.contentSize = CGSizeMake(self.suggestedStoresViewController.view.frame.origin.x + self.suggestedStoresViewController.view.frame.size.width, 33.3);
+        [self.tutorialScrollView setContentOffset:CGPointMake(self.suggestedStoresViewController.view.frame.origin.x, 0) animated:YES];
+        [self handleButtonState];
+    }
+    
+    
+    
+}
+
+-(void)emailPageComplete
+{
+    self.emailComplete = YES;
+    self.nextButton.enabled = YES;
+    self.nextButton.backgroundColor = [ISConstants getISGreenColor];
+    [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+}
+
+
+-(void)handleButtonState
+{
+    NSLog(@"handleButtonState: %d", self.suggestedFollowCount);
+        if (self.suggestedFollowCount >= 5)
+        {
+            self.suggestedButton.enabled = YES;
+            self.suggestedButton.backgroundColor = [ISConstants getISGreenColor];
+        }
+        else if (self.suggestedFollowCount < 5)
+        {
+            self.suggestedButton.enabled = NO;
+          //  self.suggestedButton.backgroundColor = [UIColor clearColor];
+            
+        }
+    
+    
+}
 - (void) shopWasFollowed
 {
     self.suggestedFollowCount++;
     
-    if (self.suggestedFollowCount >= 5 && self.nextButton.enabled == NO)
-    {
-        self.nextButton.enabled = YES;
-        self.nextButton.backgroundColor = [ISConstants getISGreenColor];
-    }
-    
-    NSLog(@"shopWasFollowed: %d", self.suggestedFollowCount);
+    [self handleButtonState];
 }
 
 - (void) shopWasUnFollowed
 {
     self.suggestedFollowCount--;
     
-    if (self.suggestedFollowCount < 5 && self.nextButton.enabled == YES)
-    {
-        self.nextButton.enabled = NO;
-        self.nextButton.backgroundColor = [UIColor clearColor];
-
-    }
     if (self.suggestedFollowCount < 0)
         self.suggestedFollowCount = 0;
     
-    
-    NSLog(@"shopWasUnFollowed: %d", self.suggestedFollowCount);
+    [self handleButtonState];
 }
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
     
@@ -236,15 +270,11 @@
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
     NSInteger page = lround(fractionalPage);
     pageControl.currentPage = page;
-    
-    // this coding is really ugly.
     if (page < 4)
         self.pageControl.hidden = NO;
     else
         self.pageControl.hidden = YES;
     
-    
-    [self.suggestedStoresViewController updateButton];
 }
 
 
@@ -253,11 +283,8 @@
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
-//    CGFloat screenHeight = screenSize.height;
-    
-    // if (self.tutorialScrollView.contentOffset.x < screenWidth * 4) {
+
     [self.tutorialScrollView setContentOffset:CGPointMake(self.tutorialScrollView.contentOffset.x + screenWidth, 0) animated:YES];
-    //  }
 }
 
 - (void) closeTutorial {
@@ -275,10 +302,5 @@
         [self.parentViewController firstTimeTutorialExit];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 @end

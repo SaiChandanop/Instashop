@@ -109,9 +109,6 @@
         
     [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
     
-    NSLog(@"This is the selectedShopsIDSArray : %@", self.selectedShopsIDSArray);
-    NSLog(@"self.view: %@", self.view);
-    
     NSArray *subviewsArray = [self.contentScrollView subviews];
     
     for (int i = 0; i < [subviewsArray count]; i++)

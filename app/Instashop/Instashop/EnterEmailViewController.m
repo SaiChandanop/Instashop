@@ -181,9 +181,11 @@
     else if (self.tosButton.selected == NO)
         errorString = @"Please validate the terms of service";
     
+    
+    
     if (errorString == nil)
     {
-        self.nextButton.enabled = YES;
+        [self.firstTimeUserViewController emailPageComplete];
         
     }
     return errorString;

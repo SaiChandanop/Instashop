@@ -68,8 +68,6 @@ float transitionTime = .256;
 {
     [super viewDidLoad];
     
-    NSLog(@"%@ view did load, frame: %@", self, NSStringFromCGRect(self.view.frame));
-    
     
     
     [self setNeedsStatusBarAppearanceUpdate];

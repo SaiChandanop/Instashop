@@ -45,7 +45,7 @@
 
 -(void) makeIGContentRequest
 {
-    NSLog(@"makeIGContentRequest: %@", self.shopViewInstagramID);
+//    NSLog(@"makeIGContentRequest: %@", self.shopViewInstagramID);
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.shopViewInstagramID], @"method", nil];
@@ -61,13 +61,11 @@
     
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
-        NSLog(@"relationship!!!: %@", dataDictionary);
         
         NSString *outgoingStatus = [dataDictionary objectForKey:@"outgoing_status"];
         if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
         {
             self.followButton.selected = YES;
-            NSLog(@"go!");
             [self.parentController.firstTimeUserViewController performSelectorOnMainThread:@selector(shopWasFollowed) withObject:nil waitUntilDone:NO];
         }
         else
