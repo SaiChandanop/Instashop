@@ -89,8 +89,13 @@
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil];
+    
+    
+    UISwipeGestureRecognizer *swipeLeftRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(homeButtonHit)];
+    [swipeLeftRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:swipeLeftRight];
+    
 }
-
 
 
 -(IBAction)homeButtonHit

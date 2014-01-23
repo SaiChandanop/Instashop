@@ -169,10 +169,6 @@
     [self.suggestedStoresViewController.view addSubview:self.suggestedButton];
 
     
-    NSLog(@"self.view: %@", NSStringFromCGRect(self.view.frame));
-    NSLog(@"self.tutorialScrollView: %@", NSStringFromCGRect(self.tutorialScrollView.frame));
-    NSLog(@"self.suggestedStoresViewController.view: %@", NSStringFromCGRect(self.suggestedStoresViewController.view.frame));
-    
     
     // Page Control
     
