@@ -183,7 +183,7 @@
                     break;
             }};
         
-        NSString *postText = [NSString stringWithFormat:@"promo!"];
+        NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
         [facebookController setInitialText:postText];
         [facebookController addImage:[UIImage imageNamed:@"Instagram-Promo-1.jpg"]];
         [facebookController addURL:[NSURL URLWithString:@"http://shopsy.com"]];
@@ -215,7 +215,7 @@
                     break;
             }};
         
-        NSString *postText = [NSString stringWithFormat:@"promo!"];
+        NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
         [tweetController setInitialText:postText];
         [tweetController addImage:[UIImage imageNamed:@"Instagram-Promo-1.png"]];
         [tweetController addURL:[NSURL URLWithString:@"http://shopsy.com"]];

@@ -411,7 +411,7 @@
     if ([self.urlLabel.text length] == 0)
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"Please Select a Reference URL"
+                                                            message:@"Please add a Purchase Link where this product is for sale."
                                                            delegate:self
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];
