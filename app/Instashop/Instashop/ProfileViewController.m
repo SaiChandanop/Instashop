@@ -185,7 +185,7 @@
         
         NSString *postText = [NSString stringWithFormat:@"promo!"];
         [facebookController setInitialText:postText];
-        [facebookController addImage:[UIImage imageNamed:@"Instagram-Promo-1.png"]];
+        [facebookController addImage:[UIImage imageNamed:@"Instagram-Promo-1.jpg"]];
         [facebookController addURL:[NSURL URLWithString:@"http://shopsy.com"]];
         [facebookController setCompletionHandler:completionHandler];
         
