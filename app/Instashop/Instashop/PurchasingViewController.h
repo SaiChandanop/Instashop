@@ -18,6 +18,7 @@
 #import "CommentsTableViewController.h"
 #import "BitlyResponseHandler.h"
 #import "JKProgressView.h"
+#import "SearchViewController.h"
 @class FeedViewController;
 
 @interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol, BitlyResponseHandler, FlagManagerProtocol>
@@ -69,6 +70,9 @@
     BOOL isBuying;
     
     JKProgressView *JKProgressView;
+    
+    SearchViewController *searchViewControllerDelegate;
+    NSArray *searchCategoriesArray;
     
 }
 
@@ -140,5 +144,8 @@
 @property (nonatomic, assign) BOOL isBuying;
 
 @property (nonatomic, strong) JKProgressView *JKProgressView;
+
+@property (nonatomic, strong) SearchViewController *searchViewControllerDelegate;
+@property (nonatomic, strong) NSArray *searchCategoriesArray;
 
 @end

@@ -31,6 +31,7 @@
 @synthesize productsButton;
 @synthesize nibHighlightView;
 @synthesize directSearchTerm;
+@synthesize theHighlightView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -157,6 +158,7 @@
 {
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
     purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
+    purchasingViewController.searchViewControllerDelegate = self;
     [self.navigationController pushViewController:purchasingViewController animated:YES];        
 }
 
@@ -182,6 +184,41 @@
     return retVal;
 }
 
+
+-(void) purchasingViewControllerSearchFiredWithString:(NSString *)selectedCategory withCategoriesArray:(NSArray *)searchCategoriesArray
+{
+//    NSLog(@"purchasingViewControllerSearchFiredWithString: %@, %@", selectedCategory, searchCategoriesArray);
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    NSMutableArray *ar = [NSMutableArray arrayWithCapacity:0];
+    
+    selectedCategory = [selectedCategory stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+    
+    int iter = 0;
+    BOOL done = NO;
+    while (!done && iter < [searchCategoriesArray count])
+    {
+        NSString *arrayItem = [[searchCategoriesArray objectAtIndex:iter] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        NSLog(@"selectedCategory[%d]: %@", iter, selectedCategory);
+        NSLog(@"arrayItem[%d]: %@", iter, arrayItem);
+        NSLog(@"[arrayItem compare:selectedCategory]: %d", [arrayItem compare:selectedCategory]);
+        NSLog(@" ");
+        [ar addObject:arrayItem];
+        if ([arrayItem compare:selectedCategory] == NSOrderedSame)
+            done = YES;
+        
+        iter++;
+    }
+    
+    NSLog(@"purchasingViewControllerSearchFiredWithString: %@, %@", selectedCategory, ar);
+    [self.productSearchViewController.freeSearchTextArray removeAllObjects];
+    [self.productSearchViewController.selectedCategoriesArray removeAllObjects];
+    [self.productSearchViewController.selectedCategoriesArray addObjectsFromArray:ar];
+    [self.productSearchViewController runSearch];
+    
+}
 
 
 @end

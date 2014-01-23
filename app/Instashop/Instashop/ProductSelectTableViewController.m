@@ -260,15 +260,27 @@
     
 }
 
--(void)searchReturnedWithArray:(NSArray *)searchResultsArray
+-(void)hideProgress
 {
     [self.jkProgressView hideProgressView];
+    
+    for (int i = 0; i < [[self.view subviews] count]; i++)
+    {
+        UIView *theView = [[self.view subviews] objectAtIndex:i];
+        if ([theView isKindOfClass:[JKProgressView class]])
+            [theView removeFromSuperview];
+    }
+}
+
+-(void)searchReturnedWithArray:(NSArray *)searchResultsArray
+{
+    [self hideProgress];
     [self feedRequestFinishedWithArrray:searchResultsArray];
 }
 
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
-    [self.jkProgressView hideProgressView];
+    [self hideProgress];
     [self.contentArray removeAllObjects];
     
     

@@ -34,7 +34,7 @@
 - (IBAction) shopsButtonHit:(UIButton *)theButton;
 - (IBAction) productsButtonHit:(UIButton *)theButton;
 -(void) rowSelectionOccured:(NSDictionary *)theSelectionObject;
-
+-(void) purchasingViewControllerSearchFiredWithString:(NSString *)selectedCategory withCategoriesArray:(NSArray *)searchCategoriesArray;
 @property (nonatomic, strong) AppRootViewController *appRootViewController;
 
 @property (nonatomic, strong) SearchSiloViewController *productSearchViewController;

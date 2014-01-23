@@ -66,7 +66,8 @@
 @synthesize categoryContainerImageView;
 @synthesize categoryContainerBottomSeparatorImageView;
 @synthesize JKProgressView;
-
+@synthesize searchViewControllerDelegate;
+@synthesize searchCategoriesArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -148,10 +149,16 @@
 
 -(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton
 {
-    NSLog(@"searchButtonContainerHit: %@", theButton);
-    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [delegate.appRootViewController searchButtonHit:theButton.searchLabel.text];
-    
+    if (self.searchViewControllerDelegate != nil)
+    {
+        [self.searchViewControllerDelegate purchasingViewControllerSearchFiredWithString:theButton.searchLabel.text withCategoriesArray:self.searchCategoriesArray];
+    }
+    else
+    {
+        NSLog(@"searchButtonContainerHit: %@", theButton);
+        AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [delegate.appRootViewController searchButtonHit:theButton.searchLabel.text];
+    }
     
 }
 
@@ -161,6 +168,7 @@
     float xOffset = 15;
     float yOffset = self.categoryContainerImageView.frame.origin.y + self.categoryContainerImageView.frame.size.height / 8;
     NSArray *categoriesArray = [theCategoriesString componentsSeparatedByString:@">"];
+    self.searchCategoriesArray = [[NSArray alloc] initWithArray:categoriesArray];
     
     for (int i = 0; i < [categoriesArray count]; i++)
     {
