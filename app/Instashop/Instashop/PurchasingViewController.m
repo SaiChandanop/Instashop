@@ -157,7 +157,9 @@
     {
         NSLog(@"searchButtonContainerHit: %@", theButton);
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [delegate.appRootViewController searchButtonHit:theButton.searchLabel.text];
+        [delegate.appRootViewController searchButtonHitWithString:theButton.searchLabel.text withCategoriesArray:self.searchCategoriesArray];
+        
+        
     }
     
 }

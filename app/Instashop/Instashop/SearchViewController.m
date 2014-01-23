@@ -32,7 +32,7 @@
 @synthesize nibHighlightView;
 @synthesize directSearchTerm;
 @synthesize theHighlightView;
-
+@synthesize directArray;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -106,6 +106,15 @@
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil];
+    
+    if (self.directArray != nil)
+    {
+        [self.productSearchViewController.freeSearchTextArray removeAllObjects];
+        [self.productSearchViewController.selectedCategoriesArray removeAllObjects];
+        [self.productSearchViewController.selectedCategoriesArray addObjectsFromArray:self.directArray];
+        [self.productSearchViewController runSearch];
+        [self.productSearchViewController layoutSearchBarContainers];
+    }
 }
 
 -(void)backButtonHit

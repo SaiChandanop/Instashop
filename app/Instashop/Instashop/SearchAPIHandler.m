@@ -85,11 +85,9 @@
 
 -(void)searchRequestComplete:(id)obj
 {
-    NSString* newStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-//    NSLog(@"searchRequestComplete: %@", newStr);
+//    NSString* newStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
-
     if ([self.delegate conformsToProtocol:@protocol(SearchReturnedReceiverProtocol)])
         [(id<SearchReturnedReceiverProtocol>)self.delegate searchReturnedWithArray:responseArray];
     

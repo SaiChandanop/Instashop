@@ -28,6 +28,7 @@
     UIView *nibHighlightView;
     UIView *theHighlightView;
     NSString *directSearchTerm;
+    NSArray *directArray;
     
 }
 
@@ -45,7 +46,7 @@
 @property (nonatomic, strong) IBOutlet UIView *nibHighlightView;
 @property (nonatomic, strong) UIView *theHighlightView;
 @property (nonatomic, strong) NSString *directSearchTerm;
-
+@property (nonatomic, strong) NSArray *directArray;
 
 
 

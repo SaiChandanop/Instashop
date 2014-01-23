@@ -76,7 +76,8 @@
     [self.contentContainerView addSubview:categoriesNavigationController.view];
     
     CGPoint origin = [self.view convertPoint:self.view.frame.origin toView:nil];
-    NSLog(@"origin: %@", origin);
+
+    
     if (self.searchType == CATEGORIES_TYPE_SELLER)
     {
         self.objectSelectTableViewController = [[SellerSelectTableViewController alloc] initWithNibName:@"SellerSelectTableViewController" bundle:nil];
@@ -120,8 +121,10 @@
 
 -(void)runSearch
 {
+    NSLog(@"runSearch!");
     if ([self.freeSearchTextArray count] > 0 || [self.selectedCategoriesArray count] > 0)
     {
+        NSLog(@"self.selectedCategoriesArray: %@", self.selectedCategoriesArray);
         
         
         if ([self.objectSelectTableViewController.tableView superview] == nil)

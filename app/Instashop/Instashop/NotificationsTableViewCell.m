@@ -44,9 +44,20 @@
     
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height /2;
     self.profileImageView.layer.masksToBounds = YES;
-//    self.profileImageView.layer.borderColor = [UIColor whiteColor].CGColor;
-//    self.profileImageView.layer.borderWidth = 1;
     self.profileImageView.alpha = 1;
+    
+    NSLog(@"load with message: %@", theObject.message);
+    NSLog(@"load with dataDictionary: %@", theObject.dataDictionary);
+    NSLog(@" ");
+    NSLog(@" ");
+    
+    TTTTimeIntervalFormatter *intervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
+    intervalFormatter.usesAbbreviatedCalendarUnits = YES;
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    NSDate *startDate = [dateFormatter dateFromString:[self.notificationsObject.dataDictionary objectForKey:@"notification_date"]];
+    self.timeLabel.text = [intervalFormatter stringForTimeIntervalFromDate:[NSDate date] toDate:startDate];
+    
     
 }
 
@@ -68,7 +79,7 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
-//    NSLog(@"result: %@", result);
+    NSLog(@"result: %@", result);
  
     [ImageAPIHandler makeSynchImageRequestWithDelegate:nil withInstagramMediaURLString:[[result objectForKey:@"data"] objectForKey:@"profile_picture"] withImageView:self.profileImageView];
 
@@ -76,12 +87,7 @@
     self.messageLabel.text = [self.notificationsObject.message stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@ ",self.usernameLabel.text] withString:@""];
     
     
-    TTTTimeIntervalFormatter *intervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
-    intervalFormatter.usesAbbreviatedCalendarUnits = YES;
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    NSDate *startDate = [dateFormatter dateFromString:[self.notificationsObject.dataDictionary objectForKey:@"notification_date"]];
-    self.timeLabel.text = [intervalFormatter stringForTimeIntervalFromDate:[NSDate date] toDate:startDate];
+    
     
 }
 

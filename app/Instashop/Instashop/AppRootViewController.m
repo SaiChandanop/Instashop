@@ -324,13 +324,11 @@ float transitionTime = .256;
     
 }
 
-
--(void) searchButtonHit:(NSString *)searchTerm
+-(void)searchButtonHit
 {
     if (self.theSearchViewController == nil)
     {
         self.theSearchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
-        self.theSearchViewController.directSearchTerm = searchTerm;
         self.theSearchViewController.appRootViewController = self;
     }
     
@@ -348,6 +346,65 @@ float transitionTime = .256;
     self.searchNavigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     [UIView commitAnimations];
 }
+
+-(void) searchButtonHitWithString:(NSString *)selectedCategory withCategoriesArray:(NSArray *)searchCategoriesArray
+{
+    NSLog(@"searchButtonHitWithString");
+    
+    NSMutableArray *ar = [NSMutableArray arrayWithCapacity:0];
+    
+    selectedCategory = [selectedCategory stringByTrimmingCharactersInSet: [NSCharacterSet whitespaceCharacterSet]];
+    
+    int iter = 0;
+    BOOL done = NO;
+    while (!done && iter < [searchCategoriesArray count])
+    {
+        NSString *arrayItem = [[searchCategoriesArray objectAtIndex:iter] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        [ar addObject:arrayItem];
+        if ([arrayItem compare:selectedCategory] == NSOrderedSame)
+            done = YES;
+        iter++;
+    }
+    
+    
+    if (self.theSearchViewController == nil)
+    {
+        self.theSearchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
+        self.theSearchViewController.appRootViewController = self;
+        self.theSearchViewController.directArray = [[NSArray alloc] initWithArray:ar];
+    }
+    else
+    {
+        [self.theSearchViewController.productSearchViewController.freeSearchTextArray removeAllObjects];
+        [self.theSearchViewController.productSearchViewController.selectedCategoriesArray removeAllObjects];
+        [self.theSearchViewController.productSearchViewController.selectedCategoriesArray addObjectsFromArray:ar];
+        [self.theSearchViewController.productSearchViewController runSearch];
+        [self.theSearchViewController.productSearchViewController layoutSearchBarContainers];
+    }
+    
+    if (self.searchNavigationController == nil)
+    {
+        self.searchNavigationController = [[UINavigationController alloc] initWithRootViewController:self.theSearchViewController];
+        self.searchNavigationController .view.frame = CGRectMake(0, self.view.frame.size.height, self.view.frame.size.width, self.view.frame.size.height);
+        [self.view addSubview:self.searchNavigationController .view];
+    }
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:transitionTime];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(ceaseTransition)];
+    self.searchNavigationController .view.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    [UIView commitAnimations];
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
 
 -(void)searchDidComplete
 {
