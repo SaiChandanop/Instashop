@@ -16,7 +16,7 @@
 
 @end
 
-#define kHowToPageNumber 5
+
 #define kButtonHeight 100.0
 
 @implementation FirstTimeUserViewController
@@ -66,18 +66,17 @@
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];
     self.tutorialScrollView.bounces = NO;  // Empty side view
     
-    // Needs to be less than bound height to disable vertical scrolling.
-    self.tutorialScrollView.contentSize = CGSizeMake(screenWidth * kHowToPageNumber, 33.3);
-//    float howToViewBoundsHeight = self.tutorialScrollView.bounds.size.height;
     
+    
+    NSString *zeroString = [NSString stringWithFormat:@"THIS IS ZERO STRING"];
     NSString *firstString = [NSString stringWithFormat:@"Tell followers where to buy the products you post on Instagram"];
     NSString *secondString = [NSString stringWithFormat:@"Buy products from your favorite retailers and brands"];
     NSString *thirdString = [NSString stringWithFormat:@"Save products for later purchase or gift ideas"];
     NSString *fourthString = [NSString stringWithFormat:@"Experience a simple and seamless checkout process"];
     
-    NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:firstString, secondString, thirdString, fourthString, nil];
+    NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:zeroString, firstString, secondString, thirdString, fourthString, nil];
     
-    NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"FirstTTutorialOne.png", @"FirstTTutorialTwo.png", @"FirstTTutorialThree.png", @"FirstTTutorialFour.png", nil];
+    NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"FirstTTutorialZero.png", @"FirstTTutorialOne.png", @"FirstTTutorialTwo.png", @"FirstTTutorialThree.png", @"FirstTTutorialFour.png", nil];
     
     for (int p = 0; p < [arrayOfImages count]; p++) {
         
@@ -117,7 +116,7 @@
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     navigationController.navigationBar.translucent = NO;
-    navigationController.view.frame = CGRectMake(screenWidth * 4, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    navigationController.view.frame = CGRectMake(screenWidth * 5, 0.0, self.view.frame.size.width, self.view.frame.size.height);
     [navigationController.view addSubview:self.enterEmailViewController.view];
 
     
@@ -156,7 +155,7 @@
     
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     self.suggestedStoresViewController.holdBegin = YES;
-    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 5, 0.0, screenWidth, screenHeight - buttonSize);
+    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 6, 0.0, screenWidth, screenHeight - buttonSize);
     self.suggestedStoresViewController.firstTimeUserViewController = self;
 //    [self.suggestedStoresViewController.view addSubview:self.nextButton];
     [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
@@ -177,6 +176,9 @@
     
     
     [self.tutorialScrollView addSubview:self.nextButton];
+    
+    self.tutorialScrollView.contentSize = CGSizeMake(self.suggestedStoresViewController.view.frame.origin.x + self.suggestedStoresViewController.view.frame.size.width, 33.3);
+    
     /*
      self.navigationItem.backBarButtonItem =
      [[[UIBarButtonItem alloc] initWithTitle:@""
