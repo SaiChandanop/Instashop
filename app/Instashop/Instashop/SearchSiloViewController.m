@@ -121,12 +121,24 @@
 -(void)runSearch
 {
     if ([self.freeSearchTextArray count] > 0 || [self.selectedCategoriesArray count] > 0)
-    {        
+    {
+        
+        
         if ([self.objectSelectTableViewController.tableView superview] == nil)
         {
             self.searchPromptLabel.alpha = 0;
             [self.contentContainerView addSubview:self.objectSelectTableViewController.tableView];
         }
+        
+        
+        if ([self.objectSelectTableViewController.contentArray count] > 0)
+        {
+            [self.objectSelectTableViewController.contentArray removeAllObjects];
+            [self.objectSelectTableViewController.tableView reloadData];
+        }
+
+        
+        
         self.objectSelectTableViewController.searchRequestObject = [[SearchRequestObject alloc] initWithCategoriesArray:self.selectedCategoriesArray withFreeTextArray:self.freeSearchTextArray];
         [self.objectSelectTableViewController refreshContent];
     }

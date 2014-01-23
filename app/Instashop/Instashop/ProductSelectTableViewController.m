@@ -197,6 +197,7 @@
 
 -(void)refreshContent
 {
+    
     if ([self.contentArray count] == 0)
     {
         self.jkProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading...."];
