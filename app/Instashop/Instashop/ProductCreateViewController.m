@@ -92,6 +92,7 @@
 
 -(void)backButtonHit
 {
+    [self.navigationItem setTitleView:nil];
     [self.parentController productCreateNavigationControllerExitButtonHit:self.navigationController];
 }
 
