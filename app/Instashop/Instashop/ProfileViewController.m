@@ -580,6 +580,7 @@
 
 -(IBAction)favoritesButtonHit
 {
+    NSLog(@"favoritesButtonHit");
     if (self.productSelectTableViewController != nil)
         [self.productSelectTableViewController.tableView removeFromSuperview];
     
@@ -593,6 +594,7 @@
     if ([self.infoContainerScrollView superview] != nil)
         [self.infoContainerScrollView removeFromSuperview];
     
+    self.favoritesSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
     
     self.favoritesButton.selected = YES;
     self.infoButton.selected = NO;
