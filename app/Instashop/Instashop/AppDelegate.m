@@ -162,7 +162,7 @@
     
     NSString *jpgPath=[NSHomeDirectory() stringByAppendingPathComponent:@"Documents/test.ig"];
     
-    BOOL writeSuccess = [UIImageJPEGRepresentation([UIImage imageNamed:@"Instagram-Promo-1.png"], 1.0) writeToFile:jpgPath atomically:YES];
+    BOOL writeSuccess = [UIImageJPEGRepresentation([UIImage imageNamed:@"Instagram-Promo-1.jpg"], 1.0) writeToFile:jpgPath atomically:YES];
     NSLog(@"writeSuccess: %d", writeSuccess);
     
     
