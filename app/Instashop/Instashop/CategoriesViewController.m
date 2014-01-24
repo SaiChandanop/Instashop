@@ -98,7 +98,6 @@
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {
- 
     
     
     if ([self.selectedCategoriesArray count] > callingController.positionIndex)

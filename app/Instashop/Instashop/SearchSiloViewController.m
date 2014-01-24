@@ -207,7 +207,11 @@
             containerViewController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
             [containerViewController.view addSubview:self.secondaryProductCategoriesTableViewController.tableView];
         
-            self.secondaryProductCategoriesTableViewController.tableView.frame = CGRectMake(0,2, self.secondaryProductCategoriesTableViewController.tableView.frame.size.width, self.secondaryProductCategoriesTableViewController.tableView.frame.size.height);
+            if ([UIScreen mainScreen].bounds.size.height == 480)
+            {
+                containerViewController.view.frame = CGRectMake(0, 0, 320, 288);
+                self.secondaryProductCategoriesTableViewController.view.frame = CGRectMake(0, 0, 320, 288);
+            }
             
             [self.categoriesNavigationController pushViewController:containerViewController animated:YES];
         }
