@@ -81,8 +81,8 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
-    //self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, self.descriptionTextView.contentSize.height + 30);
-    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
+
+//    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
     self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
 
     self.contentScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.bottomView.frame.size.height);
@@ -95,7 +95,6 @@
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
         
-
 }
 
 
@@ -106,6 +105,7 @@
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     NSLog(@"requestingProductID: %@", self.requestingProductID);
+    
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self withInstagramID:[InstagramUserObject getStoredUserObject].userID];
     
     self.sizeSelectedIndex = 0;

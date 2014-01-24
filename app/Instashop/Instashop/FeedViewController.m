@@ -133,12 +133,14 @@
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
-    self.selectedObject = theSelectionObject;
+    if (self.navigationController.view.frame.origin.x == 0)
+    {
+        self.selectedObject = theSelectionObject;
 
-    PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
-    purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
-    [self.navigationController pushViewController:purchasingViewController animated:YES];
-
+        PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+        purchasingViewController.requestingProductID = [theSelectionObject objectForKey:@"product_id"];
+        [self.navigationController pushViewController:purchasingViewController animated:YES];
+    }
     
 }
 
