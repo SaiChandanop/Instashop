@@ -94,7 +94,7 @@
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeButtonHit)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
-        
+    
 }
 
 

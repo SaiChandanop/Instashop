@@ -613,22 +613,36 @@
         textView.text = @"Description";
         textView.textColor = [UIColor lightGrayColor];
     }
+    
+    
     self.descriptionTextView.scrollEnabled = NO;
+    CGSize otherSize = [textView.text sizeWithFont:textView.font constrainedToSize:CGSizeMake(textView.frame.size.width, 10000)];
+    textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, textView.frame.size.width, otherSize.height + 9);
+    textView.contentSize = CGSizeMake(textView.contentSize.width, otherSize.height+ 9);
+
+    
 }
+
+- (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
+{
+    UITextView *textView = [[UITextView alloc] init];
+    [textView setAttributedText:text];
+    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    return size.height;
+}
+
+
 
 -(void)resizeWithTextView:(UITextView *)textView
 {
     
+    CGSize otherSize = [textView.text sizeWithFont:textView.font constrainedToSize:CGSizeMake(textView.frame.size.width, 10000)];
     float verticaloffset = 6;
     
-    CGRect textFrame = textView.frame;
-    textView.contentSize = CGSizeMake(textView.contentSize.width, textView.contentSize.height + 10);
-    textFrame.size.height = textView.contentSize.height;
-    textView.frame = textFrame;
+    textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, textView.frame.size.width, otherSize.height + 9);
+    textView.contentSize = CGSizeMake(textView.contentSize.width, otherSize.height+ 9);
     
-    textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height);
-    
-    self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textFrame.size.height + 13);
+    self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textView.frame.size.height + 13);
     
     self.descriptionContainerView.backgroundImageView.frame = CGRectMake(0, 0, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height);
     
