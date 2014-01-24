@@ -276,6 +276,8 @@
 		7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F11755473400A7E0AB /* ProductAPIHandler.m */; };
 		7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */; };
 		7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */; };
+		7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF69035189311850073C691 /* SystemConfiguration.framework */; };
+		7BF6903B189311E60073C691 /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */; };
 		7BF6AFE618400ADC008F6D03 /* DiscoverDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */; };
 		7BF9DD8A178C546F005148A8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD77178C546F005148A8 /* SBJsonParser.m */; };
 		7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD79178C546F005148A8 /* SBJsonStreamParser.m */; };
@@ -683,6 +685,9 @@
 		7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProductCreateViewController.m; sourceTree = "<group>"; };
 		7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCreateViewController.xib; sourceTree = "<group>"; };
 		7BF02E5817D1301600981F28 /* SellerDetailResponseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerDetailResponseProtocol.h; sourceTree = "<group>"; };
+		7BF69035189311850073C691 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		7BF69039189311E60073C691 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
 		7BF6AFE418400ADC008F6D03 /* DiscoverDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverDataManager.h; sourceTree = "<group>"; };
 		7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverDataManager.m; sourceTree = "<group>"; };
 		7BF9DD75178C546F005148A8 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -713,11 +718,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */,
 				7B337F08183AA92800E1BC0C /* AddressBook.framework in Frameworks */,
 				7B337F09183AA92800E1BC0C /* AddressBookUI.framework in Frameworks */,
 				7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */,
 				7B7FEF1F18199C2F00C58944 /* Accounts.framework in Frameworks */,
 				7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */,
+				7BF6903B189311E60073C691 /* libFlurry_4.3.1.a in Frameworks */,
 				7B5D62B517C5AFEB00D6C8B1 /* QuartzCore.framework in Frameworks */,
 				7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */,
 				7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */,
@@ -1300,6 +1307,7 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BF69035189311850073C691 /* SystemConfiguration.framework */,
 				7B337F06183AA92800E1BC0C /* AddressBook.framework */,
 				7B337F07183AA92800E1BC0C /* AddressBookUI.framework */,
 				7B7FEF2018199D1E00C58944 /* Social.framework */,
@@ -1721,6 +1729,8 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7BF69039189311E60073C691 /* Flurry.h */,
+				7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */,
 				7B08B9B7182036020037B033 /* TimeFormatter */,
 				7B8CCFB4181AB1FB006E01A9 /* Social */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
@@ -2232,6 +2242,10 @@
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jklobe/Desktop/Instashop/app/Instashop/Instashop,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
@@ -2249,6 +2263,10 @@
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/jklobe/Desktop/Instashop/app/Instashop/Instashop,
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
