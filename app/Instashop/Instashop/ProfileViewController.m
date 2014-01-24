@@ -217,7 +217,7 @@
         
         NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
         [tweetController setInitialText:postText];
-        [tweetController addImage:[UIImage imageNamed:@"Instagram-Promo-1.png"]];
+        [tweetController addImage:[UIImage imageNamed:@"Instagram-Promo-1.jpg"]];
         [tweetController addURL:[NSURL URLWithString:@"http://shopsy.com"]];
         [tweetController setCompletionHandler:completionHandler];
         
