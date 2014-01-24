@@ -379,6 +379,8 @@
     
     self.instragramMediaInfoDictionary = theDictionary;
     self.instagramPictureURLString = instagramProductImageURLString;
+    
+    [self resizeWithTextView:self.descriptionTextView];
 }
 
 
@@ -605,6 +607,7 @@
 }
 - (void)textViewDidEndEditing:(UITextView *)textView
 {
+    
     if ([textView.text compare:@""] == NSOrderedSame)
     {
         textView.text = @"Description";
@@ -613,43 +616,48 @@
     self.descriptionTextView.scrollEnabled = NO;
 }
 
+-(void)resizeWithTextView:(UITextView *)textView
+{
+    
+    float verticaloffset = 6;
+    
+    CGRect textFrame = textView.frame;
+    textView.contentSize = CGSizeMake(textView.contentSize.width, textView.contentSize.height + 10);
+    textFrame.size.height = textView.contentSize.height;
+    textView.frame = textFrame;
+    
+    textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height);
+    
+    self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textFrame.size.height + 13);
+    
+    self.descriptionContainerView.backgroundImageView.frame = CGRectMake(0, 0, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height);
+    
+    self.urlContainerView.frame = CGRectMake(self.urlContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height, self.urlContainerView.frame.size.width, self.urlContainerView.frame.size.height);
+    
+    self.urlButton.frame = CGRectMake(self.urlButton.frame.origin.x, self.urlContainerView.frame.origin.y, self.urlButton.frame.size.width, self.urlButton.frame.size.height);
+    
+    self.socialButtonContainerView.frame = CGRectMake(self.socialButtonContainerView.frame.origin.x, self.urlContainerView.frame.origin.y + self.urlContainerView.frame.size.height + 40, self.socialButtonContainerView.frame.size.width, self.socialButtonContainerView.frame.size.height);
+    
+    self.categoriesContainerView.frame = CGRectMake(self.categoriesContainerView.frame.origin.x, self.socialButtonContainerView.frame.origin.y + self.socialButtonContainerView.frame.size.height + verticaloffset, self.categoriesContainerView.frame.size.width, self.categoriesContainerView.frame.size.height);
+    
+    self.nextButton.frame = CGRectMake(self.nextButton.frame.origin.x, self.categoriesContainerView.frame.origin.y + self.categoriesContainerView.frame.size.height + verticaloffset, self.nextButton.frame.size.width, self.nextButton.frame.size.height);
+    
+    self.containerScrollView.contentSize = CGSizeMake(0, self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 1);
+
+}
+
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
     NSLog(@"shouldChangeTextInRange");
-    float verticaloffset = 6;
+    
     if (textView == self.descriptionTextView)
     {
         if ([text compare:@"\n"] == NSOrderedSame)
             [textView resignFirstResponder];
-        //        [UIView beginAnimations:nil context:nil];
-        //       [UIView setAnimationDuration:.2];
-        
-        
-        
-        CGRect textFrame = textView.frame;
-        textFrame.size.height = textView.contentSize.height;
-        textView.frame = textFrame;
-        
-        textFrame = CGRectMake(textFrame.origin.x, textFrame.origin.y, textFrame.size.width, textFrame.size.height);
-        
-        self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textFrame.size.height + 13);
-        
-        self.descriptionContainerView.backgroundImageView.frame = CGRectMake(0, 0, self.descriptionContainerView.frame.size.width, self.descriptionContainerView.frame.size.height);
-        
-        self.urlContainerView.frame = CGRectMake(self.urlContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y + self.descriptionContainerView.frame.size.height, self.urlContainerView.frame.size.width, self.urlContainerView.frame.size.height);
-        
-        self.urlButton.frame = CGRectMake(self.urlButton.frame.origin.x, self.urlContainerView.frame.origin.y, self.urlButton.frame.size.width, self.urlButton.frame.size.height);
-        
-        self.socialButtonContainerView.frame = CGRectMake(self.socialButtonContainerView.frame.origin.x, self.urlContainerView.frame.origin.y + self.urlContainerView.frame.size.height + 40, self.socialButtonContainerView.frame.size.width, self.socialButtonContainerView.frame.size.height);
-        
-        self.categoriesContainerView.frame = CGRectMake(self.categoriesContainerView.frame.origin.x, self.socialButtonContainerView.frame.origin.y + self.socialButtonContainerView.frame.size.height + verticaloffset, self.categoriesContainerView.frame.size.width, self.categoriesContainerView.frame.size.height);
-        
-        self.nextButton.frame = CGRectMake(self.nextButton.frame.origin.x, self.categoriesContainerView.frame.origin.y + self.categoriesContainerView.frame.size.height + verticaloffset, self.nextButton.frame.size.width, self.nextButton.frame.size.height);
-        
-        self.containerScrollView.contentSize = CGSizeMake(0, self.nextButton.frame.origin.y + self.nextButton.frame.size.height + 1);
-        //        [UIView commitAnimations];
-        
+
+        NSLog(@"descriptionTextView == textView: %d", descriptionTextView == textView);
+        [self resizeWithTextView:textView];
     }
     
     
