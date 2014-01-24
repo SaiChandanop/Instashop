@@ -89,25 +89,25 @@
             if ([paginationDictionary objectForKey:@"next_url"] != nil)
                 nextURLString = [paginationDictionary objectForKey:@"next_url"];
         
+        NSLog(@"nextURLString");
         
         if (nextURLString != nil)
         {
+            NSLog(@"make pagination request");
 //            NSLog(@"paginationDictionary: %@", paginationDictionary);
             [PaginationAPIHandler makePaginationRequestWithDelegate:self withRequestURLString:nextURLString];
+            
+            if (self.referenceTableView != nil)
+                [self.referenceTableView reloadData];
+            else
+                [self.tableView reloadData];
+            
+            [self.refreshControl endRefreshing];
             
         }
         else
         {
-//            NSLog(@"paginationComplete");
-
-            /*
-            for (int i = 0; i < [self.contentArray count]; i++)
-            {
-                NSLog(@"HERE");
-                NSMutableDictionary *theSelectionObject = [self.contentArray objectAtIndex:i];
-                [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:theSelectionObject];
-            }
-             */
+            NSLog(@"Done");
             
             NSLog(@"DONE");
             

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
-        <deployment defaultVersion="1552" identifier="iOS"/>
+        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <objects>
@@ -11,7 +11,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="182"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="KxM-yF-CZf">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover-default.jpg" id="KxM-yF-CZf">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="135"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
@@ -101,6 +101,7 @@
         <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bottom_shadow.png" width="320" height="50"/>
         <image name="cell_separator.png" width="320" height="5"/>
+        <image name="cover-default.jpg" width="320" height="135"/>
         <image name="follow_btn_background.png" width="98" height="20"/>
         <image name="following_btn_background.png" width="98" height="20"/>
         <image name="top_shadow.png" width="320" height="50"/>
