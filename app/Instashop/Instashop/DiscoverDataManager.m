@@ -130,7 +130,7 @@ static DiscoverDataManager *theSharedMan;
     {
         [self.referenceTableViewController.contentArray removeAllObjects];
         [self.referenceTableViewController.contentArray addObjectsFromArray:self.contentArray];
-        [self.referenceTableViewController.tableView reloadData];
+        [self.referenceTableViewController doPresentData];
     }
 }
 

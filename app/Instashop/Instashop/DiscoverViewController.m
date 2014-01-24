@@ -57,7 +57,7 @@
                                      target:nil
                                      action:nil];
     
-    [JKProgressView presentProgressViewInView:self.view withText:@"Loading Instagram"];     
+    
 }
 
 

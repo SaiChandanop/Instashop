@@ -6,6 +6,7 @@
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
 
+#import "DiscoverViewController.h"
 #import "DiscoverTableViewController.h"
 #import "DiscoverTableViewCell.h"
 #import "ProductAPIHandler.h"
@@ -34,6 +35,12 @@ float cellHeight = 151;
     return self;
 }
 
+-(void)doPresentData
+{
+    [self.tableView reloadData];
+    
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -41,6 +48,8 @@ float cellHeight = 151;
     self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
     [self.contentArray addObjectsFromArray:[DiscoverDataManager getSharedDiscoverDataManager].contentArray];
     [self.tableView reloadData];
+    
+  
     
     if ([[DiscoverDataManager getSharedDiscoverDataManager].contentArray count] == 0)
         [DiscoverDataManager getSharedDiscoverDataManager].referenceTableViewController = self;
@@ -52,13 +61,21 @@ float cellHeight = 151;
                                      target:nil
                                      action:nil];
 
+    self.jkProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading..."];
+    
 }
 
 
 
 -(int)getCount
 {
-    return [self.contentArray count] / 2;
+    int count = [self.contentArray count] / 2;
+    
+    if (count > 0)
+        [self.jkProgressView hideProgressView];
+    
+    return count;
+    
 }
 
 #pragma mark - Table view data source
