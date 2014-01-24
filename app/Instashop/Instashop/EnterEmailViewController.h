@@ -13,7 +13,6 @@
 
 @interface EnterEmailViewController : UIViewController <UITextFieldDelegate>
 {
-    UIButton *nextButton;
     CategoriesViewController *categoriesViewController;
     UILabel *categoriesLabel;
     UIButton *tosButton;
@@ -26,7 +25,6 @@
 @property (nonatomic, strong) FirstTimeUserViewController *firstTimeUserViewController;
 @property (nonatomic, strong) IBOutlet UIView *enterEmailView;
 @property (nonatomic, strong) IBOutlet UITextField *enterEmailTextField;
-@property (nonatomic, strong) IBOutlet UIButton *nextButton;
 @property (nonatomic, strong) IBOutlet UILabel *categoriesLabel;
 @property (nonatomic, strong) IBOutlet UIButton *tosButton;
 @property (nonatomic, strong) CategoriesViewController *categoriesViewController;

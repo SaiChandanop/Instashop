@@ -28,7 +28,6 @@
 @synthesize enterEmailView;
 @synthesize firstTimeUserViewController;
 @synthesize enterEmailTextField;
-@synthesize nextButton;
 @synthesize categoriesViewController;
 @synthesize categoriesLabel;
 @synthesize tosButton;
@@ -54,15 +53,6 @@
 	// Do any additional setup after loading the view.
     
     self.enterEmailTextField.delegate = self;
-    
-    self.nextButton.enabled = NO;
-    
-    //self.nextButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    //self.nextButton.backgroundColor = [UIColor colorWithWhite:0 alpha:0.15];
-    //[self.nextButton addTarget:self action:@selector(nextButtonHit:) forControlEvents:UIControlEventTouchUpInside];
-    //[self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
-    //self.nextButton.frame = CGRectMake(0, self.view.frame.size.height - 70, self.view.frame.size.width, 50);
-    //[self.view addSubview:self.nextButton];
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""

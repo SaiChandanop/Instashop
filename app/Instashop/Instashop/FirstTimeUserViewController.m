@@ -48,6 +48,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    self.view.backgroundColor = [ISConstants getISGreenColor];
     CGRect screenBound = [[UIScreen mainScreen] bounds];
     CGSize screenSize = screenBound.size;
     CGFloat screenWidth = screenSize.width;
@@ -57,7 +58,7 @@
     UIColor *textColor = [UIColor colorWithRed:70.0/255.0 green:70.0/255.0 blue:70.0/255.0 alpha:1.0];
     
     // Scroll View
-    self.tutorialScrollView = [[UIScrollView alloc] initWithFrame:screenBound];
+    self.tutorialScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height - 20)];
     self.tutorialScrollView.pagingEnabled = YES;
     self.tutorialScrollView.showsHorizontalScrollIndicator = NO;
     self.tutorialScrollView.backgroundColor = [UIColor blackColor];
@@ -78,20 +79,20 @@
     
     for (int p = 0; p < [arrayOfImages count]; p++) {
         
-        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, screenHeight + 44.0)];
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, self.tutorialScrollView.frame.size.height)];
         UIImageView *backgroundImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
         [backgroundImage setFrame:CGRectMake(0.0, 0.0, screenWidth, screenHeight)];
         [backgroundImage setContentMode:UIViewContentModeScaleAspectFill];
         [view addSubview:backgroundImage];
         UIImage *image = [UIImage imageNamed:[arrayOfImages objectAtIndex:p]];
-        int yPosition = 120.0; // change yPosition to position the iPhone image.
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, yPosition, screenWidth, screenHeight - yPosition)];
+        int yPosition = 100.0; // change yPosition to position the iPhone image.
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0.0, yPosition, screenWidth, self.tutorialScrollView.frame.size.height - yPosition)];
         [imageView setContentMode:UIViewContentModeScaleAspectFit];
         
         [imageView setImage:image];
         [view addSubview:imageView];
         
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, screenWidth - 60.0, 150.0)];
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(30.0, 0.0, screenWidth - 60.0, 80.0)];
         label.text = [arrayOfStringLabels objectAtIndex:p];
         label.font = [UIFont fontWithName:@"Helvetica Neue Light" size:1.0];
         label.textColor = textColor;
@@ -105,7 +106,7 @@
     // Enter email View Controller
     
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
-    self.enterEmailViewController.view.frame = CGRectMake(0.0, 20.0, screenWidth, screenHeight);
+    self.enterEmailViewController.view.frame = CGRectMake(0.0, 0, screenWidth, self.tutorialScrollView.frame.size.height);
     self.enterEmailViewController.firstTimeUserViewController = self;
 
     
@@ -113,7 +114,7 @@
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     navigationController.navigationBar.translucent = NO;
-    navigationController.view.frame = CGRectMake(screenWidth * 5, 0.0, self.view.frame.size.width, self.view.frame.size.height);
+    navigationController.view.frame = CGRectMake(screenWidth * 5, 0.0, self.view.frame.size.width, self.tutorialScrollView.frame.size.height);
     [navigationController.view addSubview:self.enterEmailViewController.view];
 
     
@@ -132,7 +133,7 @@
 
     
     float buttonSize = 50.0; // Change this number to change the button position.
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, screenHeight - buttonSize, screenWidth, buttonSize)];
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, self.tutorialScrollView.frame.size.height - buttonSize, screenWidth, buttonSize)];
     self.nextButton.enabled = NO;
     
     [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
@@ -155,7 +156,7 @@
     [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
   
     
-    self.suggestedButton = [[UIButton alloc] initWithFrame:CGRectMake(0, screenHeight - buttonSize, screenWidth, buttonSize)];
+    self.suggestedButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.tutorialScrollView.frame.size.height - buttonSize, screenWidth, buttonSize)];
     self.suggestedButton.enabled = NO;
     
     [self.suggestedButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
