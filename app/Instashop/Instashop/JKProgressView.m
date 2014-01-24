@@ -29,7 +29,7 @@
     //theProgressView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.2];
     theProgressView.backgroundColor = [UIColor clearColor];
     
-    theProgressView.theIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    theProgressView.theIndicatorView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     theProgressView.theIndicatorView.frame = CGRectMake(referenceView.frame.size.width / 2 - theProgressView.theIndicatorView.frame.size.width / 2, referenceView.frame.size.height / 2 - theProgressView.theIndicatorView.frame.size.height / 2 - 64, theProgressView.theIndicatorView.frame.size.width, theProgressView.theIndicatorView.frame.size.height);
     [theProgressView addSubview:theProgressView.theIndicatorView];
     [theProgressView.theIndicatorView startAnimating];
@@ -41,11 +41,17 @@
     theProgressView.theLabel.textAlignment = NSTextAlignmentCenter;
     theProgressView.theLabel.backgroundColor = [UIColor clearColor];
     theProgressView.theLabel.text = theText;
-    theProgressView.theLabel.font = [UIFont  systemFontOfSize:theProgressView.theLabel.frame.size.height - 3];
+    theProgressView.theLabel.font = [UIFont  systemFontOfSize:theProgressView.theLabel.frame.size.height - 7];
     [theProgressView addSubview:theProgressView.theLabel];
     
     
     [referenceView addSubview:theProgressView];
+    
+    float boxRadius = 34;
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(theProgressView.theIndicatorView.frame.origin.x + theProgressView.theIndicatorView.frame.size.width / 2 - boxRadius, theProgressView.theIndicatorView.frame.origin.y + theProgressView.theIndicatorView.frame.size.height / 2 - boxRadius, boxRadius  * 2, boxRadius *2.45)];
+    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.4];
+    [theProgressView insertSubview:bgView atIndex:0];
     
     return theProgressView;
 }
