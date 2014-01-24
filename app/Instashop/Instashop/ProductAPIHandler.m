@@ -12,6 +12,8 @@
 #import "ProductPurchaseCompleteProtocol.h"
 #import "EditProductCompleteProtocol.h"
 #import "ProductSelectTableViewController.h"
+#import "ProductCreateViewController.h"
+
 
 @implementation ProductAPIHandler
 
@@ -389,7 +391,7 @@
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
     
 //    NSLog(@"makeCheckForExistingProductURLFinished: %@", newStr);
-    if ([self.delegate isKindOfClass:[ProductSelectTableViewController class]])
+    if ([self.delegate isKindOfClass:[ProductSelectTableViewController class]] || [self.delegate isKindOfClass:[ProductCreateViewController class]])
         [((ProductSelectTableViewController *)self.delegate) checkFinishedWithBoolValue:[newStr boolValue] withDictionary:self.contextObject];
     
 }

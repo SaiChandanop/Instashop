@@ -101,14 +101,42 @@
 {
     NSLog(@"theSelectionObject: %@", theSelectionObject);
     NSLog(@"self.navigationController: %@", self.navigationController);
+
     self.currentSelectionObject = [[NSDictionary alloc] initWithDictionary:theSelectionObject];
-    self.productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
-    self.productDetailsViewController.parentController = self;
-    self.productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
-    [self.navigationController pushViewController:productDetailsViewController animated:YES];
-    [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:self.currentSelectionObject];
     
+    [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:theSelectionObject];
+
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    AppRootViewController  *rootVC = delegate.appRootViewController;
+    self.jkProgressView = [JKProgressView presentProgressViewInView:rootVC.view withText:@"Searching"];
+}
+
+
+-(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary
+{
+    [self.jkProgressView hideProgressView];
+    NSLog(@"exists!: %d", exists);
     
+    if (exists)
+    {
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"Product already posted"
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+        
+    }
+    else
+    {
+        self.productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
+        self.productDetailsViewController.parentController = self;
+        self.productDetailsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, 320,520);
+        [self.navigationController pushViewController:productDetailsViewController animated:YES];
+        [self.productDetailsViewController loadViewsWithInstagramInfoDictionary:self.currentSelectionObject];
+    }
+    
+
 }
 
 
