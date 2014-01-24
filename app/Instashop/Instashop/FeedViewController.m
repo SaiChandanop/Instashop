@@ -91,12 +91,25 @@
                                      action:nil];
     
     
-    UISwipeGestureRecognizer *swipeLeftRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(homeButtonHit)];
-    [swipeLeftRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
-    [self.view addGestureRecognizer:swipeLeftRight];
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(homeButtonHit)];
+    [swipeRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
+    [self.view addGestureRecognizer:swipeRight];
+
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftOccured)];
+    [swipeLeft setDirection:(UISwipeGestureRecognizerDirectionLeft)];
+    [self.view addGestureRecognizer:swipeLeft];
+
     
 }
 
+-(void)swipeLeftOccured
+{
+    NSLog(@"self.navigationController.view.frame: %@", NSStringFromCGRect(self.navigationController.view.frame));
+    if (self.navigationController.view.frame.origin.x > 0)
+        [self homeButtonHit];
+/*
+   */
+}
 
 -(IBAction)homeButtonHit
 {
