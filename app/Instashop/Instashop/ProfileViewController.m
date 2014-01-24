@@ -21,6 +21,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <Social/Social.h>
 #import "SocialManager.h"
+#import "Flurry.h"
 
 @interface ProfileViewController ()
 
@@ -389,12 +390,18 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
         
+        NSString *flurryString = [NSString stringWithFormat:@"User followed: %@", [self.requestedInstagramProfileObject objectForKey:@"id"]];
+        [Flurry logEvent:flurryString];
+        
     }
     else
     {
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"unfollow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
+        
+        NSString *flurryString = [NSString stringWithFormat:@"User unfollowed: %@", [self.requestedInstagramProfileObject objectForKey:@"id"]];
+        [Flurry logEvent:flurryString];
         
     }
     

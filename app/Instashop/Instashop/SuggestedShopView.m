@@ -10,7 +10,7 @@
 #import "AppDelegate.h"
 #import "SuggestedStoresViewController.h"
 #import "ImageAPIHandler.h"
-
+#import "Flurry.h"
 @implementation SuggestedShopView
 
 @synthesize parentController;
@@ -36,6 +36,19 @@
 -(IBAction)followButtonHit
 {
     [self shopFollowButtonHitWithID:self.shopViewInstagramID withIsSelected:self.followButton.selected];
+    
+    if (self.followButton.selected)
+    {
+        NSString *flurryString = [NSString stringWithFormat:@"User unfollowed: %@", self.shopViewInstagramID];
+        [Flurry logEvent:flurryString];
+    }
+    else
+    {
+        NSString *flurryString = [NSString stringWithFormat:@"User followed: %@", self.shopViewInstagramID];
+        [Flurry logEvent:flurryString];
+
+    }
+    
 }
 
 -(IBAction)viewButtonHit

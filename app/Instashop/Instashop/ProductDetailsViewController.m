@@ -22,7 +22,7 @@
 #import "InstagramUserObject.h"
 #import "CreateProductAPIHandler.h"
 #import "SellersAPIHandler.h"
-
+#import "Flurry.h"
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
@@ -529,6 +529,9 @@
 
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
+    NSString *flurryString = [NSString stringWithFormat:@"Product created by: %@", [InstagramUserObject getStoredUserObject].userID];
+    [Flurry logEvent:flurryString];
+    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
     [rootVC productDidCreateWithNavigationController:self.navigationController];
