@@ -165,6 +165,10 @@
     
     if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
     {
+        
+        NSString *flurryString = [NSString stringWithFormat:@"Prmoted on Facebook"];
+        [Flurry logEvent:flurryString];
+        
         [SocialManager requestInitialFacebookAccess];
         
         SLComposeViewController *facebookController = [SLComposeViewController
@@ -199,6 +203,8 @@
     
     else if ([buttonTitle compare:@"Twitter"] == NSOrderedSame)
     {
+        NSString *flurryString = [NSString stringWithFormat:@"Prmoted on Twitter"];
+        [Flurry logEvent:flurryString];
         SLComposeViewController *tweetController = [SLComposeViewController
                                                     composeViewControllerForServiceType:SLServiceTypeTwitter];
         
@@ -229,6 +235,9 @@
     
     else if ([buttonTitle compare:@"Instagram"] == NSOrderedSame)
     {
+        
+        NSString *flurryString = [NSString stringWithFormat:@"Prmoted on Instagram"];
+        [Flurry logEvent:flurryString];
         AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
         
         NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
