@@ -13,6 +13,7 @@
 #import "ProfileViewController.h"
 #import "InstagramShareViewController.h"
 #define INSTASHOP_INSTAGRAM_ID @"280421250"
+#define FLURRY_PRIVATE_KEY @"BRM9HPVXJ62Q45HRX9ZP"
 
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate, UIDocumentInteractionControllerDelegate>

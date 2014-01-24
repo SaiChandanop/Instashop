@@ -278,6 +278,7 @@
 		7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */; };
 		7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF69035189311850073C691 /* SystemConfiguration.framework */; };
 		7BF6903B189311E60073C691 /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */; };
+		7BF6903D189314DB0073C691 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF6903C189314DB0073C691 /* Security.framework */; };
 		7BF6AFE618400ADC008F6D03 /* DiscoverDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */; };
 		7BF9DD8A178C546F005148A8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD77178C546F005148A8 /* SBJsonParser.m */; };
 		7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD79178C546F005148A8 /* SBJsonStreamParser.m */; };
@@ -688,6 +689,7 @@
 		7BF69035189311850073C691 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		7BF69039189311E60073C691 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
+		7BF6903C189314DB0073C691 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7BF6AFE418400ADC008F6D03 /* DiscoverDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverDataManager.h; sourceTree = "<group>"; };
 		7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverDataManager.m; sourceTree = "<group>"; };
 		7BF9DD75178C546F005148A8 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -718,6 +720,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7BF6903D189314DB0073C691 /* Security.framework in Frameworks */,
 				7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */,
 				7B337F08183AA92800E1BC0C /* AddressBook.framework in Frameworks */,
 				7B337F09183AA92800E1BC0C /* AddressBookUI.framework in Frameworks */,
@@ -1307,6 +1310,7 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BF6903C189314DB0073C691 /* Security.framework */,
 				7BF69035189311850073C691 /* SystemConfiguration.framework */,
 				7B337F06183AA92800E1BC0C /* AddressBook.framework */,
 				7B337F07183AA92800E1BC0C /* AddressBookUI.framework */,
