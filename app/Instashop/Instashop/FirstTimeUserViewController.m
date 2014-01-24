@@ -27,12 +27,9 @@
 @synthesize pageControl;
 @synthesize loginTutorialDone;
 @synthesize parentViewController;
-@synthesize suggestedStoresViewController;
 @synthesize enterEmailViewController;
 @synthesize nextButton;
-@synthesize suggestedFollowCount;
 @synthesize emailComplete;
-@synthesize hasPresentedSuggestedStores;
 @synthesize suggestedButton;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -145,33 +142,7 @@
     [self.nextButton addTarget:self action:@selector(nextButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.tutorialScrollView addSubview:self.nextButton];
     
-    
-    // SuggestViewController
-    
-    self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
-    self.suggestedStoresViewController.holdBegin = YES;
-    self.suggestedStoresViewController.view.frame = CGRectMake(screenWidth * 6, 0.0, screenWidth, screenHeight);
-    self.suggestedStoresViewController.firstTimeUserViewController = self;
-//    [self.suggestedStoresViewController.view addSubview:self.nextButton];
-    [self.tutorialScrollView addSubview:self.suggestedStoresViewController.view];
   
-    
-    self.suggestedButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.tutorialScrollView.frame.size.height - buttonSize, screenWidth, buttonSize)];
-    self.suggestedButton.enabled = NO;
-    
-    [self.suggestedButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
-    [self.suggestedButton setTitle:@"Please Follow 5 Stores" forState:UIControlStateDisabled];
-    [self.suggestedButton setTitle:@"Go!" forState:UIControlStateNormal];
-    self.suggestedButton.titleLabel.textColor = [UIColor whiteColor];
-    self.suggestedButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.suggestedButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-    [self.suggestedButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
-    [self.suggestedButton addTarget:self action:@selector(suggestedButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [self.suggestedStoresViewController.view addSubview:self.suggestedButton];
-
-    
-    
-    // Page Control
     
     self.pageControl = [[UIPageControl alloc] init];
     float pageControlHeight = 40.0;
@@ -187,26 +158,12 @@
     
 }
 
--(void)suggestedButtonHit
-{
-    NSLog(@"suggestedButtonHit");
-    if (self.suggestedFollowCount >= 5)
-    {
-        [self closeTutorial];
-    }
-}
 
 -(void)nextButtonHit
 {
-    if (self.emailComplete && !self.hasPresentedSuggestedStores)
+    if (self.emailComplete)
     {
-        
-        self.hasPresentedSuggestedStores = YES;
-        [self.nextButton setTitle:@"Please Follow 5 Stores" forState:UIControlStateDisabled];
-        
-        self.tutorialScrollView.contentSize = CGSizeMake(self.suggestedStoresViewController.view.frame.origin.x + self.suggestedStoresViewController.view.frame.size.width, 33.3);
-        [self.tutorialScrollView setContentOffset:CGPointMake(self.suggestedStoresViewController.view.frame.origin.x, 0) animated:YES];
-        [self handleButtonState];
+        [self closeTutorial];
     }
     
     
@@ -222,46 +179,8 @@
 }
 
 
--(void)handleButtonState
-{
-    NSLog(@"handleButtonState: %d", self.suggestedFollowCount);
-        if (self.suggestedFollowCount >= 5)
-        {
-            self.suggestedButton.enabled = YES;
-            self.suggestedButton.backgroundColor = [ISConstants getISGreenColor];
-        }
-        else if (self.suggestedFollowCount < 5)
-        {
-            self.suggestedButton.enabled = NO;
-          //  self.suggestedButton.backgroundColor = [UIColor clearColor];
-            
-        }
-    
-    
-}
-- (void) shopWasFollowed
-{
-    self.suggestedFollowCount++;
-    
-    [self handleButtonState];
-}
 
-- (void) shopWasUnFollowed
-{
-    self.suggestedFollowCount--;
-    
-    if (self.suggestedFollowCount < 0)
-        self.suggestedFollowCount = 0;
-    
-    [self handleButtonState];
-}
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
-    
-    if (!self.suggestedStoresViewController.begun)
-    {
-        self.suggestedStoresViewController.begun = YES;
-        [ShopsAPIHandler getSuggestedShopsWithDelegate:self.suggestedStoresViewController];
-    }
     
     CGFloat pageWidth = self.tutorialScrollView.frame.size.width;
     float fractionalPage = self.tutorialScrollView.contentOffset.x/pageWidth;
@@ -285,17 +204,7 @@
 }
 
 - (void) closeTutorial {
-    NSLog(@"closeTutorial");
-    if (self.suggestedFollowCount < 5)
-    {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Hey"
-                                                            message:@"Do please follow 5 shops"
-                                                           delegate:nil
-                                                  cancelButtonTitle:@"Ok"
-                                                  otherButtonTitles:nil];
-        [alertView show];
-    }
-    else
+
         [self.parentViewController firstTimeTutorialExit];
 }
 
