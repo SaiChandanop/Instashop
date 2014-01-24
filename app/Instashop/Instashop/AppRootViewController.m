@@ -175,10 +175,10 @@ float transitionTime = .256;
             //            self.homeViewController.view.frame =CGRectMake(self.homeViewController.view.frame.origin.x + offsetPosition, self.homeViewController.view.frame.origin.y, self.homeViewController.view.frame.size.width, self.homeViewController.view.frame.size.height);
             
             self.feedCoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
-            self.feedCoverButton.backgroundColor = [UIColor redColor];
+            self.feedCoverButton.backgroundColor = [UIColor clearColor];
             self.feedCoverButton.frame = CGRectMake(0,0, self.feedViewController.view.frame.size.width, self.feedViewController.view.frame.size.height);
             [self.feedCoverButton addTarget:self action:@selector(feedCoverButtonHit:) forControlEvents:UIControlEventTouchUpInside];
-//            [self.feedNavigationController.view addSubview:self.feedCoverButton];
+            [self.feedNavigationController.view addSubview:self.feedCoverButton];
             
         }
         else

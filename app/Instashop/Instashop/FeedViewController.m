@@ -89,19 +89,19 @@
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil];
-    
-    
+        
     UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(homeButtonHit)];
     [swipeRight setDirection:(UISwipeGestureRecognizerDirectionRight)];
     [self.view addGestureRecognizer:swipeRight];
 
-    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeLeftOccured)];
-    [swipeLeft setDirection:(UISwipeGestureRecognizerDirectionLeft)];
-    [self.view addGestureRecognizer:swipeLeft];
 
     
+    
 }
-
+-(void)tapGesture
+{
+    NSLog(@"tapGesture");
+}
 -(void)swipeLeftOccured
 {
     NSLog(@"self.navigationController.view.frame: %@", NSStringFromCGRect(self.navigationController.view.frame));
