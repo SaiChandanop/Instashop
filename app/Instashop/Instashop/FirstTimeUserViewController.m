@@ -12,6 +12,7 @@
 #import "SuggestedStoresViewController.h"
 #import "ISConstants.h"
 #import "ShopsAPIHandler.h"
+#import "MailchimpAPIHandler.h"
 @interface FirstTimeUserViewController ()
 
 @end
@@ -158,12 +159,34 @@
     
 }
 
+- (BOOL) validateEmail: (NSString *) candidate {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    
+    return [emailTest evaluateWithObject:candidate];
+}
 
 -(void)nextButtonHit
 {
     if (self.emailComplete)
     {
-        [self closeTutorial];
+        if ([self validateEmail:self.enterEmailViewController.enterEmailTextField.text])
+        {
+            [self closeTutorial];
+            [MailchimpAPIHandler makeMailchimpCallWithEmail:self.enterEmailViewController.enterEmailTextField.text];
+        }
+        else
+        {
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                                message:@"Please enter a valid email address"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"Ok"
+                                                      otherButtonTitles:nil];
+            [alertView show];
+
+        }
+            
+        
     }
     
     

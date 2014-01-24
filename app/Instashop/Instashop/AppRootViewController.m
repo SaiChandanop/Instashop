@@ -26,6 +26,7 @@
 #import "NotificationManager.h"
 #import "AuthenticationViewController.h"
 #import "AppDelegate.h"
+#import "MailchimpAPIHandler.h"
 
 @implementation AppRootViewController
 
@@ -109,6 +110,8 @@ float transitionTime = .256;
     //    [self runTutorial];
 
     [self runTutorialIfAppropriate];
+    
+    [MailchimpAPIHandler makeMailchimpCallWithEmail:@"josh@alchemy50.com"];
 }
 
 

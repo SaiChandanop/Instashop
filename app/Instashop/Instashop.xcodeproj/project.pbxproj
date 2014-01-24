@@ -279,6 +279,7 @@
 		7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF69035189311850073C691 /* SystemConfiguration.framework */; };
 		7BF6903B189311E60073C691 /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */; };
 		7BF6903D189314DB0073C691 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF6903C189314DB0073C691 /* Security.framework */; };
+		7BF69041189327CE0073C691 /* MailchimpAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF69040189327CE0073C691 /* MailchimpAPIHandler.m */; };
 		7BF6AFE618400ADC008F6D03 /* DiscoverDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */; };
 		7BF9DD8A178C546F005148A8 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD77178C546F005148A8 /* SBJsonParser.m */; };
 		7BF9DD8B178C546F005148A8 /* SBJsonStreamParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD79178C546F005148A8 /* SBJsonStreamParser.m */; };
@@ -690,6 +691,8 @@
 		7BF69039189311E60073C691 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
 		7BF6903C189314DB0073C691 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		7BF6903F189327CE0073C691 /* MailchimpAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailchimpAPIHandler.h; sourceTree = "<group>"; };
+		7BF69040189327CE0073C691 /* MailchimpAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailchimpAPIHandler.m; sourceTree = "<group>"; };
 		7BF6AFE418400ADC008F6D03 /* DiscoverDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DiscoverDataManager.h; sourceTree = "<group>"; };
 		7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DiscoverDataManager.m; sourceTree = "<group>"; };
 		7BF9DD75178C546F005148A8 /* SBJson.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJson.h; sourceTree = "<group>"; };
@@ -1510,6 +1513,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				7BF6903E189327BC0073C691 /* Mailchimp */,
 				7B727C28186DD38600FB9C5E /* CacheManager */,
 				7B18DA5418609F24003FEFFC /* Pagination */,
 				7B05032A183FD6B4004EF2C2 /* Bitly */,
@@ -1779,6 +1783,15 @@
 				7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */,
 			);
 			name = Sell;
+			sourceTree = "<group>";
+		};
+		7BF6903E189327BC0073C691 /* Mailchimp */ = {
+			isa = PBXGroup;
+			children = (
+				7BF6903F189327CE0073C691 /* MailchimpAPIHandler.h */,
+				7BF69040189327CE0073C691 /* MailchimpAPIHandler.m */,
+			);
+			name = Mailchimp;
 			sourceTree = "<group>";
 		};
 		7BF9DD74178C5459005148A8 /* SBJSon */ = {
@@ -2060,6 +2073,7 @@
 				7B9EE92217E2735400D723BD /* SearchButtonContainerView.m in Sources */,
 				7B7A743E174D42F2005E90B9 /* Instagram.m in Sources */,
 				7B7A7446174D4AA1005E90B9 /* AuthenticationViewController.m in Sources */,
+				7BF69041189327CE0073C691 /* MailchimpAPIHandler.m in Sources */,
 				7B7A7F8417D64B5500247A26 /* SearchAPIHandler.m in Sources */,
 				6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */,
 				038FCD051835BAA800EC50D5 /* NotificationsAPIHandler.m in Sources */,
