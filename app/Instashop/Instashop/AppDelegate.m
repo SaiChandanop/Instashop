@@ -39,6 +39,10 @@
     [Flurry startSession:FLURRY_PRIVATE_KEY];
     
     
+    NSString *flurryString = [NSString stringWithFormat:@"Session started"];
+    [Flurry logEvent:flurryString];
+    
+    
 //    [ZenCartAuthenticationAPIHandler makeLoginRequest];
     self.instagram = [[Instagram alloc] initWithClientId:INSTAGRAM_CLIENT_ID delegate:nil];
     self.instagram.accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"accessToken"];
