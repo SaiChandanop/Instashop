@@ -99,18 +99,25 @@
         else
         {
 //            NSLog(@"paginationComplete");
-//            NSLog(@"self.contentArray: %@", self.contentArray);
-            
-//            [[NSUserDefaults standardUserDefaults] setObject:self.cacheArray forKey:@"user_photo_data"];
-            
-            
-//            NSLog(@"[[NSUserDefaults standardUserDefaults.user_photo_data: %@", [[NSUserDefaults standardUserDefaults] objectForKey:@"user_photo_data"]);
-            
+
+            /*
             for (int i = 0; i < [self.contentArray count]; i++)
             {
+                NSLog(@"HERE");
                 NSMutableDictionary *theSelectionObject = [self.contentArray objectAtIndex:i];
                 [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[theSelectionObject objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:theSelectionObject];
             }
+             */
+            
+            NSLog(@"DONE");
+            
+            if (self.referenceTableView != nil)
+                [self.referenceTableView reloadData];
+            else
+                [self.tableView reloadData];
+            
+            [self.refreshControl endRefreshing];
+            
         }
     }
     
@@ -119,6 +126,7 @@
 
 -(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary
 {
+    NSLog(@"checkFinishedWithBoolValue");
     if (exists)
     {
         int theIndex = [self.contentArray indexOfObject:referenceDictionary];
