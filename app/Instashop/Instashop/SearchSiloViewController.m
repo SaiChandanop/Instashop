@@ -73,7 +73,10 @@
     
     self.categoriesNavigationController = [[UINavigationController alloc] initWithRootViewController:self.primaryProductCategoriesTableViewController];
     [self.categoriesNavigationController setNavigationBarHidden:YES];
-    [self.contentContainerView addSubview:categoriesNavigationController.view];
+    [self.contentContainerView addSubview:self.categoriesNavigationController.view];
+    
+    
+    
     
     CGPoint origin = [self.view convertPoint:self.view.frame.origin toView:nil];
 
@@ -100,11 +103,13 @@
         {
             self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
             self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
+            self.categoriesNavigationController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
         }
         else
         {
             self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 380);
             self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 380);
+            self.categoriesNavigationController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 380);
         }
             
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
