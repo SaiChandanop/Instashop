@@ -8,6 +8,7 @@
 
 #import "JKProgressView.h"
 
+
 @implementation JKProgressView
 
 
@@ -37,11 +38,11 @@
     
     
     theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, theProgressView.theIndicatorView.frame.origin.y + theProgressView.theIndicatorView.frame.size.height + 4, referenceView.frame.size.width, 20)];
-    theProgressView.theLabel.textColor = [UIColor darkGrayColor];
+    theProgressView.theLabel.textColor = [UIColor whiteColor];
     theProgressView.theLabel.textAlignment = NSTextAlignmentCenter;
     theProgressView.theLabel.backgroundColor = [UIColor clearColor];
     theProgressView.theLabel.text = theText;
-    theProgressView.theLabel.font = [UIFont  systemFontOfSize:theProgressView.theLabel.frame.size.height - 7];
+    theProgressView.theLabel.font = [UIFont systemFontOfSize:theProgressView.theLabel.frame.size.height - 7];
     [theProgressView addSubview:theProgressView.theLabel];
     
     
@@ -49,8 +50,10 @@
     
     float boxRadius = 34;
     
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(theProgressView.theIndicatorView.frame.origin.x + theProgressView.theIndicatorView.frame.size.width / 2 - boxRadius, theProgressView.theIndicatorView.frame.origin.y + theProgressView.theIndicatorView.frame.size.height / 2 - boxRadius, boxRadius  * 2, boxRadius *2.45)];
-    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.4];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(theProgressView.theIndicatorView.frame.origin.x + theProgressView.theIndicatorView.frame.size.width / 2 - boxRadius*1.5, theProgressView.theIndicatorView.frame.origin.y + theProgressView.theIndicatorView.frame.size.height / 2 - boxRadius, boxRadius  * 3, boxRadius *2.5)];
+    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
+    bgView.layer.cornerRadius = 8.0;
+    bgView.layer.masksToBounds = YES;
     [theProgressView insertSubview:bgView atIndex:0];
     
     return theProgressView;
