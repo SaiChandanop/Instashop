@@ -685,7 +685,7 @@
     NSLog(@"likeButtonHit");
     
 //    NSLog(@"requestedProductObject: %@", requestedProductObject);
-    [NotificationsAPIHandler createUserLikedNotificationWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID];
+//    [NotificationsAPIHandler createUserLikedNotificationWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID];
     
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
