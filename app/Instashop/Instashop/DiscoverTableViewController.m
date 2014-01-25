@@ -72,8 +72,17 @@ float cellHeight = 151;
     int count = [self.contentArray count] / 2;
     
     if (count > 0)
+    {
         [self.jkProgressView hideProgressView];
-    
+        
+        for (int i = 0; i < [[self.view subviews] count]; i++)
+        {
+            UIView *theView = [[self.view subviews] objectAtIndex:i];
+            if ([theView isKindOfClass:[JKProgressView class]])
+                [theView removeFromSuperview];
+            
+        }
+    }
     return count;
     
 }
