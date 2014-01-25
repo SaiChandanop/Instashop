@@ -65,7 +65,7 @@
     [self.view addSubview:self.tutorialScrollView];
     
     
-    NSString *zeroString = [NSString stringWithFormat:@"Welcome To Shopsy!"];
+    NSString *zeroString = [NSString stringWithFormat:@"Welcome to Shopsy!"];
     NSString *firstString = [NSString stringWithFormat:@"Tell followers where to buy the products you post on Instagram"];
     NSString *secondString = [NSString stringWithFormat:@"Buy products from your favorite retailers and brands"];
     NSString *thirdString = [NSString stringWithFormat:@"Save products for later purchase or gift ideas"];
