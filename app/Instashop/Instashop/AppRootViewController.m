@@ -109,9 +109,7 @@ float transitionTime = .256;
     
     //    [self runTutorial];
 
-    [self runTutorialIfAppropriate];
-    
-    [MailchimpAPIHandler makeMailchimpCallWithEmail:@"josh@alchemy50.com"];
+    [self runTutorialIfAppropriate];    
 }
 
 
