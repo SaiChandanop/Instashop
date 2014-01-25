@@ -61,7 +61,8 @@ float cellHeight = 151;
                                      target:nil
                                      action:nil];
 
-    self.jkProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading..."];
+    if ([[DiscoverDataManager getSharedDiscoverDataManager].contentArray count] == 0)
+        self.jkProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading..."];
     
 }
 
