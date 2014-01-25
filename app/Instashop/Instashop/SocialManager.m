@@ -112,7 +112,7 @@
                  NSDictionary *message = @{@"status": contentString};
                  
                  NSURL *requestURL = [NSURL
-                                      URLWithString:@"http://api.twitter.com/1/statuses/update.json"];
+                                      URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"];
                  
                  SLRequest *postRequest = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter
