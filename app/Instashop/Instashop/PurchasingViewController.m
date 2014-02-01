@@ -94,14 +94,13 @@
     else if (self.descriptionTextView.contentSize.height > self.descriptionContentSize.height)
     {
         NSLog(@"setViewSpacing, do resize");
-        /*
+ 
         self.descriptionContentSize = self.descriptionTextView.contentSize;
-//      self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
+        self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
         self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
-    
         self.contentScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.bottomView.frame.size.height);
         self.contentScrollView.contentSize = CGSizeMake(0, self.categoryContainerView.frame.origin.y + self.categoryContainerView.frame.size.height + self.descriptionTextView.frame.size.height);
-         */
+
     }
     else
     {
