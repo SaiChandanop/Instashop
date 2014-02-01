@@ -70,11 +70,13 @@
     
      NSDictionary *dataDictionary = [result objectForKey:@"data"];
     
+
 //    NSLog(@"request didLoad: %@", self.shopViewInstagramID);
     
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
-        
+        if (![dataDictionary isKindOfClass:[NSNull class]])
+        {
         NSString *outgoingStatus = [dataDictionary objectForKey:@"outgoing_status"];
         if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
         {
@@ -87,7 +89,7 @@
         }
         
         self.followButton.alpha = 1;
-            
+        }
         
     }
     else if ([request.url rangeOfString:@"users"].length > 0)
