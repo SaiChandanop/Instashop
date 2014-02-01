@@ -27,8 +27,8 @@
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSLog(@"search, urlRequestString: %@", urlRequestString);
-    NSLog(@"post string: %@", postString);
+//    NSLog(@"search, urlRequestString: %@", urlRequestString);
+//    NSLog(@"post string: %@", postString);
     
     SavedItemsAPIHandler *apiHandler = [[SavedItemsAPIHandler alloc] init];
     apiHandler.delegate = theDelegate;
@@ -41,7 +41,7 @@
 -(void)makeSavedItemRequestWithInstagramIDDone:(id)object
 {
     NSString* newStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];    
-    NSLog(@"makeSavedItemRequestWithInstagramIDDone: %@", newStr);
+//    NSLog(@"makeSavedItemRequestWithInstagramIDDone: %@", newStr);
     
     if ([self.delegate isKindOfClass:[PurchasingViewController class]])
         [((PurchasingViewController *)self.delegate) savedItemsCompleted];

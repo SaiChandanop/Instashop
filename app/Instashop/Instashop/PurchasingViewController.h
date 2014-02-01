@@ -74,6 +74,9 @@
     SearchViewController *searchViewControllerDelegate;
     NSArray *searchCategoriesArray;
     
+    BOOL descriptionContentSizeSet;
+    CGSize descriptionContentSize;
+    
 }
 
 - (IBAction) likeButtonHit;
@@ -147,5 +150,9 @@
 
 @property (nonatomic, strong) SearchViewController *searchViewControllerDelegate;
 @property (nonatomic, strong) NSArray *searchCategoriesArray;
+
+
+@property (nonatomic, assign) BOOL descriptionContentSizeSet;
+@property (nonatomic, assign) CGSize descriptionContentSize;
 
 @end

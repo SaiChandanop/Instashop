@@ -24,7 +24,7 @@
     [categoriesAPIHandler.theWebRequest start];
    
 
-    NSLog(@"CategoriesAPIHandler urlRequestString: %@", urlRequestString);
+//    NSLog(@"CategoriesAPIHandler urlRequestString: %@", urlRequestString);
 }
 
 -(void)categoriesRequestFinished:(id)obj

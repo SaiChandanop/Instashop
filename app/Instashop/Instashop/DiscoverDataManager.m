@@ -30,7 +30,7 @@ static DiscoverDataManager *theSharedMan;
     if (theSharedMan == nil)
     {
         theSharedMan = [[DiscoverDataManager alloc] init];
-        NSLog(@"getSharedDiscoverDataManager!");
+//        NSLog(@"getSharedDiscoverDataManager!");
         
         [ProductAPIHandler getAllProductsWithDelegate:theSharedMan];
     }

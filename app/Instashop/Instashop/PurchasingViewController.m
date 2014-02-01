@@ -70,6 +70,9 @@
 @synthesize JKProgressView;
 @synthesize searchViewControllerDelegate;
 @synthesize searchCategoriesArray;
+@synthesize descriptionContentSizeSet;
+@synthesize descriptionContentSize;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,23 +83,41 @@
     return self;
 }
 
+-(void)setViewSpacing
+{
+    if (!self.descriptionContentSizeSet)
+    {
+        NSLog(@"setViewSpacing, initial");
+        self.descriptionContentSizeSet = YES;
+        self.descriptionContentSize = self.descriptionTextView.contentSize;
+    }
+    else if (self.descriptionTextView.contentSize.height > self.descriptionContentSize.height)
+    {
+        NSLog(@"setViewSpacing, do resize");
+        /*
+        self.descriptionContentSize = self.descriptionTextView.contentSize;
+//      self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
+        self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
+    
+        self.contentScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.bottomView.frame.size.height);
+        self.contentScrollView.contentSize = CGSizeMake(0, self.categoryContainerView.frame.origin.y + self.categoryContainerView.frame.size.height + self.descriptionTextView.frame.size.height);
+         */
+    }
+    else
+    {
+        NSLog(@"setViewSpacing, ignore");
+    }
+}
 
 - (void)viewDidAppear:(BOOL)animated
 {
-
-//    self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
-    self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
-
-    self.contentScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.bottomView.frame.size.height);
-
-    self.contentScrollView.contentSize = CGSizeMake(0, self.categoryContainerView.frame.origin.y + self.categoryContainerView.frame.size.height + self.descriptionTextView.frame.size.height);
-    
-    NSLog(@"content scroll size %@", NSStringFromCGSize(contentScrollView.contentSize));
-    
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeButtonHit)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
     
+//    NSLog(@"viewDidAppear, self.descriptionTextView.contentSize: %@", NSStringFromCGSize(self.descriptionTextView.contentSize));
+    
+    [self setViewSpacing];
 }
 
 
@@ -106,7 +127,7 @@
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
-    NSLog(@"requestingProductID: %@", self.requestingProductID);
+//    NSLog(@"requestingProductID: %@", self.requestingProductID);
     
     [ProductAPIHandler getProductWithID:requestingProductID withDelegate:self withInstagramID:[InstagramUserObject getStoredUserObject].userID];
     
@@ -151,7 +172,7 @@
     NSString *flurryString = [NSString stringWithFormat:@"User viewed: %@", self.requestingProductID];
     [Flurry logEvent:flurryString];
     
-    
+    [self setViewSpacing];
 }
 
 -(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton
@@ -310,6 +331,8 @@
         self.saveButton.selected = YES;
     else
         self.saveButton.selected = NO;
+    
+    [self setViewSpacing];
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -506,21 +529,21 @@
 -(void)bitlyCallDidRespondWIthShortURLString:(NSString *)shortURLString
 {
     
-    NSLog(@"bitlyCallDidRespondWIthShortURLString: %@", shortURLString);
+//    NSLog(@"bitlyCallDidRespondWIthShortURLString: %@", shortURLString);
     if (shortURLString != nil)
         self.viglinkString = shortURLString;
     
     if (self.isBuying)
         [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
     
-    NSLog(@"self.viglinkstring: %@", self.viglinkString);
+//    NSLog(@"self.viglinkstring: %@", self.viglinkString);
 
 }
 
 -(void)viglinkCallReturned:(NSString *)urlString
 {
     self.viglinkString = urlString;
-    NSLog(@"viglinkCallReturned: %@", self.viglinkString);
+//    NSLog(@"viglinkCallReturned: %@", self.viglinkString);
     [BitlyAPIHandler makeBitlyRequestWithDelegate:self withReferenceURL:self.viglinkString];
     
 }

@@ -43,8 +43,8 @@
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSLog(@"search, urlRequestString: %@", urlRequestString);
-    NSLog(@"post string: %@", postString);
+//    NSLog(@"search, urlRequestString: %@", urlRequestString);
+//    NSLog(@"post string: %@", postString);
     
     SearchAPIHandler *apiHandler = [[SearchAPIHandler alloc] init];
     apiHandler.delegate = delegate;

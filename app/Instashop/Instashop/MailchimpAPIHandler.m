@@ -25,8 +25,8 @@
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
-    NSLog(@"search, urlRequestString: %@", urlRequestString);
-    NSLog(@"post string: %@", postString);
+//    NSLog(@"search, urlRequestString: %@", urlRequestString);
+//    NSLog(@"post string: %@", postString);
     
     MailchimpAPIHandler *apiHandler = [[MailchimpAPIHandler alloc] init];
     apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
@@ -37,6 +37,6 @@
 
 -(void)makeMailchimpCallWithEmailDone:(id)obj
 {
-    NSLog(@"makeMailchimpCallWithEmailDone: %@", obj);
+//    NSLog(@"makeMailchimpCallWithEmailDone: %@", obj);
 }
 @end

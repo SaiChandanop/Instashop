@@ -141,7 +141,7 @@
     else
     {
         
-        NSLog(@"coverbuttonhit, self.delegate: %@", self.delegate);
+//        NSLog(@"coverbuttonhit, self.delegate: %@", self.delegate);
         if (self.objectDictionary != nil)    {
             if ([self.objectDictionary isKindOfClass:[TableCellAddClass class]])
             {

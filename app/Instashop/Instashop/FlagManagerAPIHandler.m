@@ -13,7 +13,7 @@
 + (void) makeFlagDeclarationRequestComplaint:(NSString*) buttonTitle andProductID:(NSString*) product_ID userID: (NSString *) user_ID delegate:(id) delegate {
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"flag_manager.php"];
-    NSLog(@"urlRequestString: %@", urlRequestString);
+//    NSLog(@"urlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     

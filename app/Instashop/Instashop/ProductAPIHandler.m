@@ -90,7 +90,7 @@
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, [NSString stringWithFormat:@"get_products.php?requesting_product_id=%@&instagram_id=%@", productID, instagramID]];
     
-    NSLog(@"urlRequestString: %@", urlRequestString);
+//    NSLog(@"urlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"GET";
     

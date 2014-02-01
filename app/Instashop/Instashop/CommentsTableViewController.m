@@ -55,7 +55,7 @@
 {
     // Return the number of rows in the section.
     
-    NSLog(@"numberOfRowsInSection, count: %d", [self.commentsDataArray count]);
+//    NSLog(@"numberOfRowsInSection, count: %d", [self.commentsDataArray count]);
     return [self.commentsDataArray count];
 }
 
