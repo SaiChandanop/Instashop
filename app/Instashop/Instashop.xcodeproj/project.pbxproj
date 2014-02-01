@@ -291,6 +291,7 @@
 		7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD85178C546F005148A8 /* SBJsonStreamWriterAccumulator.m */; };
 		7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD87178C546F005148A8 /* SBJsonStreamWriterState.m */; };
 		7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD89178C546F005148A8 /* SBJsonWriter.m */; };
+		7BFAB83C189D6B2F00951C65 /* LocalNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFAB83B189D6B2F00951C65 /* LocalNotificationView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -716,6 +717,8 @@
 		7BF9DD87178C546F005148A8 /* SBJsonStreamWriterState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonStreamWriterState.m; sourceTree = "<group>"; };
 		7BF9DD88178C546F005148A8 /* SBJsonWriter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SBJsonWriter.h; sourceTree = "<group>"; };
 		7BF9DD89178C546F005148A8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
+		7BFAB83A189D6B2F00951C65 /* LocalNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNotificationView.h; sourceTree = "<group>"; };
+		7BFAB83B189D6B2F00951C65 /* LocalNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNotificationView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1260,6 +1263,7 @@
 		7B5BFAD617D6928400F82F0B /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
+				7BFAB839189D6B1D00951C65 /* LocalNotification */,
 				7BA9C2E3183694D7003C2DD5 /* Obj */,
 				7B5BFAE117D6945600F82F0B /* NotificationsViewController.h */,
 				7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */,
@@ -1822,6 +1826,15 @@
 			name = SBJSon;
 			sourceTree = "<group>";
 		};
+		7BFAB839189D6B1D00951C65 /* LocalNotification */ = {
+			isa = PBXGroup;
+			children = (
+				7BFAB83A189D6B2F00951C65 /* LocalNotificationView.h */,
+				7BFAB83B189D6B2F00951C65 /* LocalNotificationView.m */,
+			);
+			name = LocalNotification;
+			sourceTree = "<group>";
+		};
 		7BFE4D2A17C3BB7E00D50C21 /* RowContainerView */ = {
 			isa = PBXGroup;
 			children = (
@@ -2089,6 +2102,7 @@
 				7B96C03B174FED3700E4EDAD /* ImagesTableViewCell.m in Sources */,
 				7B7B9DF71753E280000F4A3E /* ZenCartAuthenticationAPIHandler.m in Sources */,
 				7BDED69A180C7A28001FF165 /* ViewBookmarkViewController.m in Sources */,
+				7BFAB83C189D6B2F00951C65 /* LocalNotificationView.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
 				7B0691D118201D140083B1D9 /* CommentsTableViewController.m in Sources */,
 				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,

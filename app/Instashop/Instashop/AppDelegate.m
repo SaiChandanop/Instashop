@@ -15,6 +15,7 @@
 #import "CategoriesAPIHandler.h"
 #import "ProfileViewController.h"
 #import "Flurry.h"
+#import "LocalNotificationView.h"
 
 #define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
 #define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
@@ -150,16 +151,15 @@
         [self.appRootViewController.notificationsViewController loadNotifications];
     
     NSLog(@"didReceiveRemoteNotification: %@", userInfo);
-    
-    UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Alert"
-                                                        message:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
-    [alertView show];
 
+
+    if (application.applicationState == UIApplicationStateActive )
+    {
+        [LocalNotificationView presentWithMessage:[[userInfo objectForKey:@"aps"] objectForKey:@"alert"]];
+    }
     
 }
+
 
 - (void)loadShareCoverViewProfileViewController:(ProfileViewController *)theProfileViewController
 {
