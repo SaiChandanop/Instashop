@@ -188,10 +188,10 @@
                     break;
             }};
         
-        NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
+        NSString *postText = [NSString stringWithFormat:@"Checkout Shopsy, the place to shop for products discovered on Instagram"];
         [facebookController setInitialText:postText];
         [facebookController addImage:[UIImage imageNamed:@"Instagram-Promo-1.jpg"]];
-        [facebookController addURL:[NSURL URLWithString:@"http://shopsy.com"]];
+        [facebookController addURL:[NSURL URLWithString:@"http://shopsy.com/download"]];
         [facebookController setCompletionHandler:completionHandler];
         
         
@@ -222,10 +222,10 @@
                     break;
             }};
         
-        NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
+        NSString *postText = [NSString stringWithFormat:@"Checkout @shopsyapp, the place to shop for products discovered on Instagram"];
         [tweetController setInitialText:postText];
         [tweetController addImage:[UIImage imageNamed:@"Instagram-Promo-1.jpg"]];
-        [tweetController addURL:[NSURL URLWithString:@"http://shopsy.com"]];
+        [tweetController addURL:[NSURL URLWithString:@"http://shopsy.com/download"]];
         [tweetController setCompletionHandler:completionHandler];
         
         

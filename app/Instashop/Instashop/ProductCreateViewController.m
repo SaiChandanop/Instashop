@@ -119,8 +119,8 @@
     
     if (exists)
     {
-        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"Product already posted"
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Attention"
+                                                            message:@"You may only post products from Instagram once!"
                                                            delegate:nil
                                                   cancelButtonTitle:@"Ok"
                                                   otherButtonTitles:nil];

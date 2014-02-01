@@ -191,8 +191,8 @@
                     MFMailComposeViewController* mailComposerController = [[MFMailComposeViewController alloc] init];
                     mailComposerController.mailComposeDelegate = self;
                     [mailComposerController setToRecipients:[NSArray arrayWithArray:emailAddresses]];
-                    [mailComposerController setSubject:@"Check it out"];
-                    [mailComposerController setMessageBody:@"Join Shopsy, the place to shop for products discovered on Instagram. shopsy.com/download" isHTML:YES];
+                    [mailComposerController setSubject:@"Download Shopsy"];
+                    [mailComposerController setMessageBody:@"I'm using Shopsy to shop for products discovered on Instagram and you should too! http://shopsy.com/download" isHTML:YES];
                     [delegate.appRootViewController presentViewController:mailComposerController animated:YES completion:nil];
                 }
                 break;
@@ -271,12 +271,12 @@
 
 -(IBAction)privatePolicyButtonHit
 {
-    [self.parentController webViewButtonHit:@"http://instashop.com/privacy" titleName:@"PRIVACY"];
+    [self.parentController webViewButtonHit:@"http://shopsy.com/privacy" titleName:@"PRIVACY"];
     NSLog(@"privatePolicyButtonHit");
 }
 - (IBAction) termsOfServiceButtonHit {
     
-    [self.parentController webViewButtonHit:@"http://instashop.com/terms" titleName:@"TERMS"];
+    [self.parentController webViewButtonHit:@"http://shopsy.com/terms" titleName:@"TERMS"];
     NSLog(@"Yes, the terms of Service Button was hit");
 }
 

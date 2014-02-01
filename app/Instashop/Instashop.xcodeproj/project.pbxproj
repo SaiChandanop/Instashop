@@ -64,6 +64,7 @@
 		2E6BF27917CE502E008DF460 /* edit_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E6BF27817CE502E008DF460 /* edit_photo@2x.png */; };
 		2E714CD017E28CCE00014413 /* search_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E714CCF17E28CCE00014413 /* search_cancel@2x.png */; };
 		2E7CFF9717C3A98500657CFC /* gray_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7CFF9617C3A98500657CFC /* gray_x@2x.png */; };
+		2E7D71031893381A00EA648B /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */; };
 		2E8007C217D1631400489639 /* following_btn_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E8007C117D1631400489639 /* following_btn_background@2x.png */; };
 		2E9378EB184D200500476540 /* log_out_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9378E4184D200400476540 /* log_out_icon@2x.png */; };
 		2E9378EC184D200500476540 /* bug_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9378E5184D200400476540 /* bug_icon@2x.png */; };
@@ -277,7 +278,6 @@
 		7BE958F7175548B800A7E0AB /* ProductCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE958F5175548B800A7E0AB /* ProductCreateViewController.m */; };
 		7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */; };
 		7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF69035189311850073C691 /* SystemConfiguration.framework */; };
-		7BF6903B189311E60073C691 /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */; };
 		7BF6903D189314DB0073C691 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF6903C189314DB0073C691 /* Security.framework */; };
 		7BF69041189327CE0073C691 /* MailchimpAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF69040189327CE0073C691 /* MailchimpAPIHandler.m */; };
 		7BF6AFE618400ADC008F6D03 /* DiscoverDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF6AFE518400ADC008F6D03 /* DiscoverDataManager.m */; };
@@ -356,6 +356,8 @@
 		2E6BF27817CE502E008DF460 /* edit_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_photo@2x.png"; sourceTree = "<group>"; };
 		2E714CCF17E28CCE00014413 /* search_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_cancel@2x.png"; sourceTree = "<group>"; };
 		2E7CFF9617C3A98500657CFC /* gray_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray_x@2x.png"; sourceTree = "<group>"; };
+		2E7D71011893381A00EA648B /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
 		2E8007C117D1631400489639 /* following_btn_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "following_btn_background@2x.png"; sourceTree = "<group>"; };
 		2E9378E4184D200400476540 /* log_out_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "log_out_icon@2x.png"; sourceTree = "<group>"; };
 		2E9378E5184D200400476540 /* bug_icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bug_icon@2x.png"; sourceTree = "<group>"; };
@@ -688,8 +690,6 @@
 		7BE958F6175548B800A7E0AB /* ProductCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProductCreateViewController.xib; sourceTree = "<group>"; };
 		7BF02E5817D1301600981F28 /* SellerDetailResponseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SellerDetailResponseProtocol.h; sourceTree = "<group>"; };
 		7BF69035189311850073C691 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		7BF69039189311E60073C691 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
-		7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
 		7BF6903C189314DB0073C691 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		7BF6903F189327CE0073C691 /* MailchimpAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MailchimpAPIHandler.h; sourceTree = "<group>"; };
 		7BF69040189327CE0073C691 /* MailchimpAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MailchimpAPIHandler.m; sourceTree = "<group>"; };
@@ -725,12 +725,12 @@
 			files = (
 				7BF6903D189314DB0073C691 /* Security.framework in Frameworks */,
 				7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */,
+				2E7D71031893381A00EA648B /* libFlurry_4.3.1.a in Frameworks */,
 				7B337F08183AA92800E1BC0C /* AddressBook.framework in Frameworks */,
 				7B337F09183AA92800E1BC0C /* AddressBookUI.framework in Frameworks */,
 				7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */,
 				7B7FEF1F18199C2F00C58944 /* Accounts.framework in Frameworks */,
 				7BDED69C180C7A48001FF165 /* MessageUI.framework in Frameworks */,
-				7BF6903B189311E60073C691 /* libFlurry_4.3.1.a in Frameworks */,
 				7B5D62B517C5AFEB00D6C8B1 /* QuartzCore.framework in Frameworks */,
 				7B61EE47174D2162002A483D /* UIKit.framework in Frameworks */,
 				7B61EE49174D2162002A483D /* Foundation.framework in Frameworks */,
@@ -1737,8 +1737,8 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				7BF69039189311E60073C691 /* Flurry.h */,
-				7BF6903A189311E60073C691 /* libFlurry_4.3.1.a */,
+				2E7D71011893381A00EA648B /* Flurry.h */,
+				2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */,
 				7B08B9B7182036020037B033 /* TimeFormatter */,
 				7B8CCFB4181AB1FB006E01A9 /* Social */,
 				7B0D252D17CBA33E00E43FA6 /* GKImagePicker */,
@@ -2217,8 +2217,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				PROVISIONING_PROFILE = "8DA743C9-88D0-4493-ACFA-3C3DEB13739B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8DA743C9-88D0-4493-ACFA-3C3DEB13739B";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -2243,8 +2243,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
+				PROVISIONING_PROFILE = "9F11340E-D181-4302-B7E1-D0B4E37907A7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F11340E-D181-4302-B7E1-D0B4E37907A7";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2263,6 +2263,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jklobe/Desktop/Instashop/app/Instashop/Instashop,
+					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
@@ -2284,6 +2285,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/jklobe/Desktop/Instashop/app/Instashop/Instashop,
+					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";

@@ -783,7 +783,7 @@
 -(void)twitterAccountsLookupDidCompleteWithArray:(NSArray *)theAccountsArray
 {
     
-    if ([theAccountsArray count] > 1)
+    if ([theAccountsArray count] > 0)
     {
         UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
         self.twitterAccountsArray = [[NSArray alloc] initWithArray:theAccountsArray];
