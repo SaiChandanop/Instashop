@@ -7,6 +7,7 @@
 //
 
 #import "MailchimpAPIHandler.h"
+#import "InstagramUserObject.h"
 
 @implementation MailchimpAPIHandler
 
@@ -21,12 +22,13 @@
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"action=%@", @"submit_email"]];
     [postString appendString:[NSString stringWithFormat:@"&email=%@&", theEmail]];
+    [postString appendString:[NSString stringWithFormat:@"&instagram_username=%@&", [InstagramUserObject getStoredUserObject].username]];
 
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
-//    NSLog(@"search, urlRequestString: %@", urlRequestString);
-//    NSLog(@"post string: %@", postString);
+    NSLog(@"search, urlRequestString: %@", urlRequestString);
+    NSLog(@"post string: %@", postString);
     
     MailchimpAPIHandler *apiHandler = [[MailchimpAPIHandler alloc] init];
     apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
@@ -38,5 +40,11 @@
 -(void)makeMailchimpCallWithEmailDone:(id)obj
 {
 //    NSLog(@"makeMailchimpCallWithEmailDone: %@", obj);
+    
+    NSString* newStr = [[NSString alloc] initWithData:responseData
+                                             encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"makeMailchimpCallWithEmailDone: %@", newStr);
+    
 }
 @end
