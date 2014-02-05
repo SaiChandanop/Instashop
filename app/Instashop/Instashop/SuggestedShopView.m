@@ -11,6 +11,7 @@
 #import "SuggestedStoresViewController.h"
 #import "ImageAPIHandler.h"
 #import "Flurry.h"
+#import "InstagramUserObject.h"
 @implementation SuggestedShopView
 
 @synthesize parentController;
@@ -62,7 +63,11 @@
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.shopViewInstagramID], @"method", nil];
-    [delegate.instagram requestWithParams:params delegate:self];    
+    [delegate.instagram requestWithParams:params delegate:self];
+        
+    
+    if ([self.shopViewInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+        [self.followButton removeFromSuperview];
 }
 
 
