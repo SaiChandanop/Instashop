@@ -106,7 +106,7 @@
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
     
     self.window.rootViewController = self.authenticationViewController;
-    
+    /*
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     NSString *userString = [InstagramUserObject getStoredUserObject].userID;
@@ -116,6 +116,7 @@
        // if (![[keys objectAtIndex:i] isEqualToString:defaultFirstUserKey])
             [defaults removeObjectForKey:[keys objectAtIndex:i]];
     }
+     */
 }
 
 -(void)makeSafariCallWithURL:(NSURL *)theURL
