@@ -13,6 +13,33 @@
 
 @implementation NotificationsAPIHandler
 
++(void)getAllNotificationsCountInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate
+{
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:[NSString stringWithFormat:@"&request_type=%@", @"count"]];
+    [postString appendString:[NSString stringWithFormat:@"&instagram_id=%@", instagramID]];
+    
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/get_notifications.php", ROOT_URI];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"POST";
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NotificationsAPIHandler *apiHandler = [[NotificationsAPIHandler alloc] init];
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    apiHandler.delegate = theDelegate;
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(getAllNotificationsCountInstagramIDFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+}
+
+-(void)getAllNotificationsCountInstagramIDFinished:(id)obj
+{
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    
+    if ([self.delegate conformsToProtocol:@protocol(NotificationsFinishedProtocol)])
+        [(id<NotificationsFinishedProtocol>)self.delegate notificationsCountDidFinishWithDictionary:responseDictionary];
+
+}
+
 +(void)getAllNotificationsWithInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate
 {
  

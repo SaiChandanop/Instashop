@@ -13,7 +13,7 @@
 #import "FirstTimeUserViewController.h"
 #import "AppRootViewController.h"
 #import "NavBarTitleView.h"
-
+#import "InstagramUserObject.h"
 @interface EnterEmailViewController ()
 
 
@@ -63,6 +63,7 @@
     [self.tosButton setTitle:@"off" forState:UIControlStateNormal];
     self.tosButton.selected = NO;
     
+    NSLog(@"videw did load, id: %@", [InstagramUserObject getStoredUserObject].userID);
 }
 
 -(IBAction)tosLinkButtonHit

@@ -16,6 +16,7 @@
 #import "AppDelegate.h"
 #import "ISConstants.h"
 #import "Utils.h"
+#import "NotificationsAPIHandler.h"
 
 @interface HomeViewController ()
 
@@ -79,6 +80,23 @@
     [swipeLeftRight setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [self.view addGestureRecognizer:swipeLeftRight];
     
+    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(makeGetNotificationsCountCall) userInfo:nil repeats:YES];
+        
+}
+
+
+-(void)makeGetNotificationsCountCall
+{
+    NSLog(@"makeGetNotificationsCountCall");
+    if ([InstagramUserObject getStoredUserObject] != nil)
+        if ([InstagramUserObject getStoredUserObject].userID != nil)
+            [NotificationsAPIHandler getAllNotificationsCountInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
+}
+
+
+-(void)notificationsCountDidFinishWithDictionary:(NSDictionary *)theDictionary
+{
+    NSLog(@"notificationsCountDidFinishWithDictionary: %@", theDictionary);
 }
 
 

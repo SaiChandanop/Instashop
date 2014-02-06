@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NotificationsFinishedProtocol.h"
 
 @class AppRootViewController;
-@interface HomeViewController : UIViewController 
+@interface HomeViewController : UIViewController  <NotificationsFinishedProtocol>
 {
     AppRootViewController *parentController;
     UIScrollView *theScrollView;
