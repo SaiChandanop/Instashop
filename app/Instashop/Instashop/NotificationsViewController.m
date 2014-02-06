@@ -117,11 +117,11 @@
         {
             NSLog(@"proceedWith: %@", creatorID);
             NSLog(@"self.referenceCache: %@", self.referenceCache);
-            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", creatorID], @"method", nil];
+/*            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", creatorID], @"method", nil];
             AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
             [appDelegate.instagram requestWithParams:params delegate:self];
             [self.requestedCacheIDs addObject:creatorID];            
-        }
+  */      }
         
     }
 }
