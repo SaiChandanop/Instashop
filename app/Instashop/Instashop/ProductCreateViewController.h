@@ -10,7 +10,6 @@
 #import "ProductSelectTableViewController.h"
 #import "ProductDetailsViewController.h"
 #import "ProductCreateObject.h"
-#import "ProductPreviewViewController.h"
 #import "ProductCreateContainerObject.h"
 #import "ProductCreateContainerProtocol.h"
 #import "CellSelectionOccuredProtocol.h"
