@@ -67,6 +67,8 @@
 @synthesize imagePickButton;
 @synthesize hasAppeared;
 @synthesize editButton;
+@synthesize imagePicker;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -631,11 +633,11 @@
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
     {
-        GKImagePicker *imagePicker = [[GKImagePicker alloc] init];
+        self.imagePicker = [[GKImagePicker alloc] init];
         //        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
-        imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
-        imagePicker.delegate = self;
-        imagePicker.resizeableCropArea = NO;
+        self.imagePicker.cropSize = CGSizeMake(self.backgroundImageView.frame.size.width, self.backgroundImageView.frame.size.height);
+        self.imagePicker.delegate = self;
+        self.imagePicker.resizeableCropArea = NO;
         
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

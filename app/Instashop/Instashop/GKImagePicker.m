@@ -21,6 +21,7 @@
 
 @synthesize cropSize, delegate, resizeableCropArea;
 @synthesize imagePickerController = _imagePickerController;
+@synthesize cropController;
 
 
 #pragma mark -
@@ -70,13 +71,13 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
 
-    GKImageCropViewController *cropController = [[GKImageCropViewController alloc] init];
-    cropController.contentSizeForViewInPopover = picker.contentSizeForViewInPopover;
-    cropController.sourceImage = [info objectForKey:UIImagePickerControllerOriginalImage];
-    cropController.resizeableCropArea = self.resizeableCropArea;
-    cropController.cropSize = self.cropSize;
-    cropController.delegate = self;
-    [picker pushViewController:cropController animated:YES];
+    self.cropController = [[GKImageCropViewController alloc] init];
+    self.cropController.contentSizeForViewInPopover = picker.contentSizeForViewInPopover;
+    self.cropController.sourceImage = [info objectForKey:UIImagePickerControllerOriginalImage];
+    self.cropController.resizeableCropArea = self.resizeableCropArea;
+    self.cropController.cropSize = self.cropSize;
+    self.cropController.delegate = self;
+    [picker pushViewController:self.cropController animated:YES];
     
 }
 

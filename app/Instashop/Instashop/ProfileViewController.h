@@ -58,6 +58,7 @@
     
     UIButton *imagePickButton;
     
+    GKImagePicker *imagePicker;
 }
 
 -(void)loadNavigationControlls;
@@ -118,6 +119,7 @@
 
 @property (nonatomic, assign) BOOL hasAppeared;
 
+@property (nonatomic, strong) GKImagePicker *imagePicker;
 
 
 

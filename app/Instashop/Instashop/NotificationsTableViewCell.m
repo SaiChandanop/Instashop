@@ -56,11 +56,8 @@
                 NSDictionary *dataDictionary = [[AppRootViewController sharedRootViewController].notificationsViewController getDictionaryFromCacheWithID:[theObject.dataDictionary objectForKey:@"creator_id"]];
                 if (dataDictionary != nil)
                 {
-                    if ([[dataDictionary allKeys] count] > 0)
-                        [self loadContentWithDataDictionary:dataDictionary];
-                    
-                    NSLog(@"load from cache!");
-                    loadFromInstagram = NO;
+                    [self loadContentWithDataDictionary:dataDictionary];
+                    loadFromInstagram = NO;                    
                 }
             }
     
