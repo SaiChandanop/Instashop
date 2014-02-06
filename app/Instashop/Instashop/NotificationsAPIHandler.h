@@ -10,6 +10,7 @@
 
 @interface NotificationsAPIHandler : RootAPIHandler
 
++(void)clearAllNotificationsCountInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate;
 +(void)getAllNotificationsCountInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate;
 +(void)getAllNotificationsWithInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate;
 +(void)createUserSocialNotificationWithProductID:(NSString *)productID withInstagramID:(NSString *)instagramID withSocialType:(NSString *)socialType;

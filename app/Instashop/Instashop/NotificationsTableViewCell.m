@@ -46,10 +46,12 @@
     self.profileImageView.layer.masksToBounds = YES;
     self.profileImageView.alpha = 1;
     
+    /*
     NSLog(@"load with message: %@", theObject.message);
     NSLog(@"load with dataDictionary: %@", theObject.dataDictionary);
     NSLog(@" ");
     NSLog(@" ");
+    */
     
     TTTTimeIntervalFormatter *intervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
     intervalFormatter.usesAbbreviatedCalendarUnits = YES;
@@ -79,7 +81,7 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
-    NSLog(@"result: %@", result);
+//    NSLog(@"result: %@", result);
  
     [ImageAPIHandler makeSynchImageRequestWithDelegate:nil withInstagramMediaURLString:[[result objectForKey:@"data"] objectForKey:@"profile_picture"] withImageView:self.profileImageView];
 

@@ -10,6 +10,7 @@
 
 @protocol NotificationsFinishedProtocol <NSObject>
 
+-(void)notificationClearDidFinish;
 -(void)notificationsCountDidFinishWithDictionary:(NSDictionary *)theDictionary;
 -(void)notificationsDidFinishWithArray:(NSArray *)theNotificationsArray;
 

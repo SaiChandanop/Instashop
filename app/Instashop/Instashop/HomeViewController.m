@@ -32,7 +32,7 @@
 @synthesize topBarView;
 @synthesize sellerLabel;
 @synthesize postProductButton;
-
+@synthesize notificationsCountLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -80,8 +80,8 @@
     [swipeLeftRight setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [self.view addGestureRecognizer:swipeLeftRight];
     
-    [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(makeGetNotificationsCountCall) userInfo:nil repeats:YES];
-        
+    
+    [self makeGetNotificationsCountCall];
 }
 
 
@@ -96,6 +96,8 @@
 
 -(void)notificationsCountDidFinishWithDictionary:(NSDictionary *)theDictionary
 {
+    self.notificationsCountLabel.text = [NSString stringWithFormat:@"%d", [[theDictionary objectForKey:@"count"] integerValue]];
+    
     NSLog(@"notificationsCountDidFinishWithDictionary: %@", theDictionary);
 }
 

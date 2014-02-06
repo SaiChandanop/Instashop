@@ -16,7 +16,7 @@
 
 #import "AppDelegate.h"
 #import "AppRootViewController.h"
-
+#import "HomeViewController.h"
 @interface NotificationsViewController ()
 
 @end
@@ -72,13 +72,20 @@
 }
 
 -(void)notificationsDidFinishWithArray:(NSArray *)theNotificationsArray
-{
+{     
     [self.contentArray removeAllObjects];
     [self.contentArray addObjectsFromArray:theNotificationsArray];
     
     [self.theTableView reloadData];
     
 }
+
+-(void)notificationClearDidFinish
+{
+    NSLog(@"notificationClearDidFinish");
+    [[AppRootViewController sharedRootViewController].homeViewController makeGetNotificationsCountCall];
+}
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView

@@ -27,7 +27,7 @@
 #import "AuthenticationViewController.h"
 #import "AppDelegate.h"
 #import "MailchimpAPIHandler.h"
-
+#import "NotificationsAPIHandler.h"
 @implementation AppRootViewController
 
 static AppRootViewController *theSharedRootViewController;
@@ -197,6 +197,8 @@ float transitionTime = .256;
         [self homeButtonHit];
         [self.notificationsViewController loadNotifications];
         [self.feedNavigationController pushViewController:notificationsViewController animated:YES];
+        
+        [NotificationsAPIHandler clearAllNotificationsCountInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self.notificationsViewController];
     }
 }
 

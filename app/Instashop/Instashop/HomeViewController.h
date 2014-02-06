@@ -20,9 +20,10 @@
     
     UIView *topBarView;
     
-    
+    UILabel *notificationsCountLabel;
 }
 
+-(void)makeGetNotificationsCountCall;
 
 -(void)createSellerCancelButtonHit:(UINavigationController *)theNavigationController;
 -(void)createSellerDone:(UINavigationController *)theNavigationController;
@@ -49,4 +50,6 @@
 @property (nonatomic, strong) IBOutlet UIView *logoutView;
 
 @property (nonatomic, strong) IBOutlet UIView *topBarView;
+
+@property (nonatomic, strong) IBOutlet UILabel *notificationsCountLabel;
 @end
