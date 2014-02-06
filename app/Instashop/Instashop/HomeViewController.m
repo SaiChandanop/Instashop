@@ -98,6 +98,16 @@
 {
     self.notificationsCountLabel.text = [NSString stringWithFormat:@"%d", [[theDictionary objectForKey:@"count"] integerValue]];
     
+    if ([[theDictionary objectForKey:@"count"] integerValue] > 0)
+    {
+        //bigger than zero for style.
+    }
+    else
+    {
+        //zero for style
+    }
+    
+    
     NSLog(@"notificationsCountDidFinishWithDictionary: %@", theDictionary);
 }
 
