@@ -27,6 +27,8 @@
 @synthesize contentArray;
 @synthesize referenceCache;
 @synthesize requestedCacheIDs;
+@synthesize cacheQueue;
+@synthesize cacheQueueBegun;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,6 +39,7 @@
         self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.referenceCache = [[NSMutableDictionary alloc] initWithCapacity:0];
         self.requestedCacheIDs = [[NSMutableArray alloc] initWithCapacity:0];
+        self.cacheQueue = [[NSMutableArray alloc] initWithCapacity:0];
         
     }
     return self;
@@ -95,7 +98,7 @@
 
 -(void)notificationsDidFinishWithArray:(NSArray *)theNotificationsArray
 {
-    NSLog(@"notificationsDidFinishWithArray: %@", theNotificationsArray);
+    NSLog(@"notificationsDidFinishWithArray did complete");
     
     [self.contentArray removeAllObjects];
     [self.contentArray addObjectsFromArray:theNotificationsArray];
@@ -115,17 +118,34 @@
         
         if ([self getDictionaryFromCacheWithID:creatorID] == nil && ![self.requestedCacheIDs containsObject:creatorID])
         {
-            NSLog(@"proceedWith: %@", creatorID);
-            NSLog(@"self.referenceCache: %@", self.referenceCache);
-/*            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", creatorID], @"method", nil];
-            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-            [appDelegate.instagram requestWithParams:params delegate:self];
-            [self.requestedCacheIDs addObject:creatorID];            
-  */      }
+            [self.requestedCacheIDs addObject:creatorID];
+            [self.cacheQueue addObject:creatorID];
+            
+        }
         
+    }
+    
+    if (!self.cacheQueueBegun)
+    {
+        self.cacheQueueBegun = YES;
+        [self processCacheQueue];
     }
 }
 
+-(void)processCacheQueue
+{
+    if ([self.cacheQueue count] > 0)
+    {    
+        NSString *creatorID = [self.cacheQueue objectAtIndex:0];
+        [self.cacheQueue removeObjectAtIndex:0];
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", creatorID], @"method", nil];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.instagram requestWithParams:params delegate:self];
+        
+    }
+    else
+        self.cacheQueueBegun = NO;
+}
 
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
@@ -142,7 +162,7 @@
         
     }
     
-    
+    [self processCacheQueue];
     
 }
 

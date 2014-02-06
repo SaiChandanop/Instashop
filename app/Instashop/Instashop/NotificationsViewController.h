@@ -8,13 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import "NotificationsFinishedProtocol.h"
+#import "IGRequest.h"
 
-@interface NotificationsViewController : UIViewController <NotificationsFinishedProtocol, UITableViewDataSource, UITableViewDelegate>
+@interface NotificationsViewController : UIViewController <NotificationsFinishedProtocol, UITableViewDataSource, UITableViewDelegate, IGRequestDelegate>
 {
     UITableView *theTableView;
     NSMutableArray *contentArray;
     NSMutableDictionary *referenceCache;
     NSMutableArray *requestedCacheIDs;
+    NSMutableArray *cacheQueue;
+    BOOL cacheQueueBegun;
 }
 
 -(void)loadNotifications;
@@ -26,4 +29,6 @@
 @property (nonatomic, strong) NSMutableArray *contentArray;
 @property (nonatomic, strong) NSMutableDictionary *referenceCache;
 @property (nonatomic, strong) NSMutableArray *requestedCacheIDs;
+@property (nonatomic, strong) NSMutableArray *cacheQueue;
+@property (nonatomic, assign) BOOL cacheQueueBegun;
 @end
