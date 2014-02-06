@@ -13,11 +13,15 @@
 {
     UITableView *theTableView;
     NSMutableArray *contentArray;
-    
+    NSMutableDictionary *referenceCache;
 }
 
 -(void)loadNotifications;
 
+-(NSDictionary *)getDictionaryFromCacheWithID:(NSString *)theID;
+-(void)setDictionaryIntoCacheWithID:(NSString *)theID withDictionary:(NSDictionary *)theDictionary;
+
 @property (nonatomic, strong) IBOutlet UITableView *theTableView;
 @property (nonatomic, strong) NSMutableArray *contentArray;
+@property (nonatomic, strong) NSMutableDictionary *referenceCache;
 @end

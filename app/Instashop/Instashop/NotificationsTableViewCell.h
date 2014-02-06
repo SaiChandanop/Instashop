@@ -11,6 +11,7 @@
 #import "IGRequest.h"
 #import "NotificationsObject.h"
 
+@class NotificationsViewController;
 @interface NotificationsTableViewCell : UITableViewCell <IGRequestDelegate>
 {
     NotificationsObject *notificationsObject;
@@ -19,6 +20,8 @@
     UILabel *messageLabel;
     UILabel *timeLabel;
     UIImageView *profileImageView;
+    
+    NotificationsViewController *parentController;
 }
 
 -(IBAction)profileButtonHit;
@@ -33,5 +36,7 @@
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UILabel *usernameLabel;
 @property (nonatomic, strong) UIImageView *profileImageView;
+
+@property (nonatomic, strong) NotificationsViewController *parentController;
 @end
  

@@ -18,6 +18,7 @@
 @synthesize messageLabel;
 @synthesize timeLabel;
 @synthesize profileImageView;
+@synthesize parentController;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -46,12 +47,19 @@
     self.profileImageView.layer.masksToBounds = YES;
     self.profileImageView.alpha = 1;
     
-    /*
+    if (theObject != nil)
+        if (theObject.dataDictionary != nil)
+            if ([theObject.dataDictionary objectForKey:@"creator_id"] != nil)
+            {
+                NSDictionary *dataDictionary = [self.parentViewController getDictionaryFromCacheWithID:[theObject.dataDictionary objectForKey:@"creator_id"]];
+//                NSLog(@"dataDictionary: %@", dataDictionary);
+            }
+/*
     NSLog(@"load with message: %@", theObject.message);
     NSLog(@"load with dataDictionary: %@", theObject.dataDictionary);
     NSLog(@" ");
     NSLog(@" ");
-    */
+*/
     
     TTTTimeIntervalFormatter *intervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
     intervalFormatter.usesAbbreviatedCalendarUnits = YES;
@@ -81,13 +89,21 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
-//    NSLog(@"result: %@", result);
- 
-    [ImageAPIHandler makeSynchImageRequestWithDelegate:nil withInstagramMediaURLString:[[result objectForKey:@"data"] objectForKey:@"profile_picture"] withImageView:self.profileImageView];
 
-    self.usernameLabel.text = [[result objectForKey:@"data"] objectForKey:@"username"];
-    self.messageLabel.text = [self.notificationsObject.message stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@ ",self.usernameLabel.text] withString:@""];
-    
+     if (result != nil)
+    {
+        NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        NSLog(@"dataDictionary: %@", dataDictionary);
+        NSLog(@"[dataDictionary objectForKey:@\"id\"]: %@", [dataDictionary objectForKey:@"id"]);
+        NSLog(@"parentController: %@", self.parentController);
+        if ([dataDictionary objectForKey:@"id"] != nil)
+            [self.parentController setDictionaryIntoCacheWithID:[dataDictionary objectForKey:@"id"] withDictionary:[NSDictionary dictionaryWithDictionary:dataDictionary]];
+
+        [ImageAPIHandler makeSynchImageRequestWithDelegate:nil withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.profileImageView];
+
+        self.usernameLabel.text = [dataDictionary objectForKey:@"username"];
+        self.messageLabel.text = [self.notificationsObject.message stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@ ",self.usernameLabel.text] withString:@""];
+    }
     
     
     

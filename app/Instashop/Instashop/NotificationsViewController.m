@@ -25,6 +25,7 @@
 
 @synthesize theTableView;
 @synthesize contentArray;
+@synthesize referenceCache;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,6 +34,7 @@
         
         [self loadNotifications];
         self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
+        self.referenceCache = [[NSMutableDictionary alloc] initWithCapacity:0];
         
     }
     return self;
@@ -70,6 +72,25 @@
                                      action:nil];
     
 }
+
+
+-(NSDictionary *)getDictionaryFromCacheWithID:(NSString *)theID
+{
+    return [self.referenceCache objectForKey:theID];
+}
+
+
+
+-(void)setDictionaryIntoCacheWithID:(NSString *)theID withDictionary:(NSDictionary *)theDictionary
+{
+    if ([self.referenceCache objectForKey:theID] == nil)
+    {
+        [self.referenceCache setObject:theDictionary forKey:theID];
+        NSLog(@"setting %@", theID);
+    }
+}
+
+
 
 -(void)notificationsDidFinishWithArray:(NSArray *)theNotificationsArray
 {     
@@ -115,6 +136,7 @@
     if (cell == nil) {
         cell = [[NotificationsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.backgroundColor = [UIColor clearColor];
+        cell.parentController = self;
     }
     [cell clearSubviews];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
