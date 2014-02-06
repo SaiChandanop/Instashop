@@ -80,7 +80,18 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     NSDate *startDate = [dateFormatter dateFromString:[self.notificationsObject.dataDictionary objectForKey:@"notification_date"]];
-    self.timeLabel.text = [intervalFormatter stringForTimeIntervalFromDate:[NSDate date] toDate:startDate];
+
+    NSDate *now = [NSDate date];
+    now = [now dateByAddingTimeInterval:-60*60];
+    NSTimeInterval theTimeInterval = [now timeIntervalSinceDate:startDate];
+    
+    if (theTimeInterval / 60 < 60 * 60)
+    {
+        int numMins = [[NSNumber numberWithDouble:theTimeInterval / 60] integerValue];
+        self.timeLabel.text = [NSString stringWithFormat:@"%d mins ago", numMins];
+    }
+    else
+        self.timeLabel.text = [intervalFormatter stringForTimeIntervalFromDate:[NSDate date] toDate:startDate];
     
     
 }
