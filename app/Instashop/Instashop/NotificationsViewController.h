@@ -14,6 +14,7 @@
     UITableView *theTableView;
     NSMutableArray *contentArray;
     NSMutableDictionary *referenceCache;
+    NSMutableArray *requestedCacheIDs;
 }
 
 -(void)loadNotifications;
@@ -24,4 +25,5 @@
 @property (nonatomic, strong) IBOutlet UITableView *theTableView;
 @property (nonatomic, strong) NSMutableArray *contentArray;
 @property (nonatomic, strong) NSMutableDictionary *referenceCache;
+@property (nonatomic, strong) NSMutableArray *requestedCacheIDs;
 @end

@@ -26,6 +26,7 @@
 @synthesize theTableView;
 @synthesize contentArray;
 @synthesize referenceCache;
+@synthesize requestedCacheIDs;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -35,6 +36,7 @@
         [self loadNotifications];
         self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.referenceCache = [[NSMutableDictionary alloc] initWithCapacity:0];
+        self.requestedCacheIDs = [[NSMutableArray alloc] initWithCapacity:0];
         
     }
     return self;
@@ -43,7 +45,9 @@
 
 -(void)loadNotifications
 {
-    [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];    
+    [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
+    
+    NSLog(@"notifications view controller load notifications");
 }
 
 - (void)viewDidLoad
@@ -83,23 +87,66 @@
 
 -(void)setDictionaryIntoCacheWithID:(NSString *)theID withDictionary:(NSDictionary *)theDictionary
 {
-    if ([self.referenceCache objectForKey:theID] == nil)
-    {
-        [self.referenceCache setObject:theDictionary forKey:theID];
-        NSLog(@"setting %@", theID);
-    }
+    NSLog(@"setDictionaryIntoCacheWithID: %@", theID);
+    [self.referenceCache setObject:theDictionary forKey:theID];
 }
 
 
 
 -(void)notificationsDidFinishWithArray:(NSArray *)theNotificationsArray
-{     
+{
+    NSLog(@"notificationsDidFinishWithArray: %@", theNotificationsArray);
+    
     [self.contentArray removeAllObjects];
     [self.contentArray addObjectsFromArray:theNotificationsArray];
     
     [self.theTableView reloadData];
     
+    for (int i = 0; i < [theNotificationsArray count]; i++)
+    {
+        NotificationsObject *notificationsObject = [theNotificationsArray objectAtIndex:i];
+        
+        NSString *creatorID = [notificationsObject.dataDictionary objectForKey:@"creator_id"];
+
+        BOOL proceed = NO;
+        
+        if ([self getDictionaryFromCacheWithID:creatorID] == nil)
+            proceed = YES;
+        
+        if ([self getDictionaryFromCacheWithID:creatorID] == nil && ![self.requestedCacheIDs containsObject:creatorID])
+        {
+            NSLog(@"proceedWith: %@", creatorID);
+            NSLog(@"self.referenceCache: %@", self.referenceCache);
+            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", creatorID], @"method", nil];
+            AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+            [appDelegate.instagram requestWithParams:params delegate:self];
+            [self.requestedCacheIDs addObject:creatorID];            
+        }
+        
+    }
 }
+
+
+- (void)request:(IGRequest *)request didLoad:(id)result
+{
+    
+    if (result != nil)
+    {
+        NSDictionary *dataDictionary = [result objectForKey:@"data"];
+        //      NSLog(@"dataDictionary: %@", dataDictionary);
+        NSLog(@"[dataDictionary objectForKey:@\"id\"]: %@", [dataDictionary objectForKey:@"id"]);
+        
+        if ([dataDictionary objectForKey:@"id"] != nil)
+            [self setDictionaryIntoCacheWithID:[dataDictionary objectForKey:@"id"] withDictionary:[NSDictionary dictionaryWithDictionary:dataDictionary]];
+        
+        
+    }
+    
+    
+    
+}
+
+
 
 -(void)notificationClearDidFinish
 {

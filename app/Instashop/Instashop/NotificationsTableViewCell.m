@@ -41,14 +41,13 @@
     self.timeLabel = (UILabel *)[self viewWithTag:4];
     self.profileImageView = (UIImageView *)[self viewWithTag:5];
     
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.notificationsObject.dataDictionary objectForKey:@"creator_id"]], @"method", nil];
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    [appDelegate.instagram requestWithParams:params delegate:self];
+    
     
     self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height /2;
     self.profileImageView.layer.masksToBounds = YES;
     self.profileImageView.alpha = 1;
     
+    BOOL loadFromInstagram = YES;
     if (theObject != nil)
         if (theObject.dataDictionary != nil)
             if ([theObject.dataDictionary objectForKey:@"creator_id"] != nil)
@@ -57,10 +56,21 @@
                 NSDictionary *dataDictionary = [[AppRootViewController sharedRootViewController].notificationsViewController getDictionaryFromCacheWithID:[theObject.dataDictionary objectForKey:@"creator_id"]];
                 if (dataDictionary != nil)
                 {
-                    [self loadContentWithDataDictionary:dataDictionary];
+                    if ([[dataDictionary allKeys] count] > 0)
+                        [self loadContentWithDataDictionary:dataDictionary];
+                    
                     NSLog(@"load from cache!");
+                    loadFromInstagram = NO;
                 }
             }
+    
+    if (loadFromInstagram)
+    {
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.notificationsObject.dataDictionary objectForKey:@"creator_id"]], @"method", nil];
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        [appDelegate.instagram requestWithParams:params delegate:self];
+        
+    }
 /*
     NSLog(@"load with message: %@", theObject.message);
     NSLog(@"load with dataDictionary: %@", theObject.dataDictionary);
