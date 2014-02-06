@@ -97,14 +97,22 @@
 -(void)notificationsCountDidFinishWithDictionary:(NSDictionary *)theDictionary
 {
     self.notificationsCountLabel.text = [NSString stringWithFormat:@"%d", [[theDictionary objectForKey:@"count"] integerValue]];
+    self.notificationsCountLabel.layer.cornerRadius = 6.0;
+    self.notificationsCountLabel.layer.masksToBounds = YES;
+    self.notificationsCountLabel.backgroundColor = [UIColor darkGrayColor];
+    self.notificationsCountLabel.textAlignment = NSTextAlignmentCenter;
     
     if ([[theDictionary objectForKey:@"count"] integerValue] > 0)
     {
         //bigger than zero for style.
+        self.notificationsCountLabel.textColor = [UIColor whiteColor];
+        self.notificationsCountLabel.font = [UIFont boldSystemFontOfSize:12];
     }
     else
     {
         //zero for style
+        self.notificationsCountLabel.textColor = [UIColor lightGrayColor];
+        self.notificationsCountLabel.font = [UIFont systemFontOfSize:12];
     }
     
     
