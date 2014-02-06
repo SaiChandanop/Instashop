@@ -79,12 +79,10 @@
                                    ntohl(tokenBytes[3]), ntohl(tokenBytes[4]), ntohl(tokenBytes[5]),
                                    ntohl(tokenBytes[6]), ntohl(tokenBytes[7])];
 
-	NSLog(@"remote notification occured, push string: %@, instagram user id: %@", self.pushDeviceTokenString, [InstagramUserObject getStoredUserObject].userID);
-    if ([InstagramUserObject getStoredUserObject].userID != nil)
-    {
-        [UserAPIHandler updateUserPushIdentityWithPushID:self.pushDeviceTokenString withInstagramID:[InstagramUserObject getStoredUserObject].userID];
-        [SellersAPIHandler updateSellerPushIDWithPushID:self.pushDeviceTokenString withInstagramID:[InstagramUserObject getStoredUserObject].userID];
-    }
+	NSLog(@"didRegisterForRemoteNotificationsWithDeviceToken, push string: %@, instagram user id: %@", self.pushDeviceTokenString, [InstagramUserObject getStoredUserObject].userID);
+
+    [SellersAPIHandler updateSellerPushIDWithPushID:self.pushDeviceTokenString withInstagramID:[InstagramUserObject getStoredUserObject].userID];
+
 }
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error NS_AVAILABLE_IOS(3_0)
