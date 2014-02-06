@@ -529,8 +529,9 @@
 
 -(void)productContainerCreateFinishedWithProductID:(NSString *)productID withProductCreateContainerObject:(ProductCreateContainerObject *)productCreateContainerObject
 {
-    NSString *flurryString = [NSString stringWithFormat:@"Product created by: %@", [InstagramUserObject getStoredUserObject].userID];
-    [Flurry logEvent:flurryString];
+    NSString *flurryString = [NSString stringWithFormat:@"Product created"];
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:[InstagramUserObject getStoredUserObject].userID, @"user", nil];
+    [Flurry logEvent:flurryString withParameters:params];
     
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;

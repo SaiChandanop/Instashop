@@ -40,14 +40,16 @@
     
     if (self.followButton.selected)
     {
-        NSString *flurryString = [NSString stringWithFormat:@"User unfollowed: %@", self.shopViewInstagramID];
-        [Flurry logEvent:flurryString];
+        NSString *flurryString = [NSString stringWithFormat:@"User unfollowed"];
+        NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:self.shopViewInstagramID, @"userID", nil];
+        [Flurry logEvent:flurryString withParameters:flurryParams];
     }
     else
     {
-        NSString *flurryString = [NSString stringWithFormat:@"User followed: %@", self.shopViewInstagramID];
-        [Flurry logEvent:flurryString];
-
+        
+        NSString *flurryString = [NSString stringWithFormat:@"User followed"];
+        NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:self.shopViewInstagramID, @"userID", nil];
+        [Flurry logEvent:flurryString withParameters:flurryParams];
     }
     
 }

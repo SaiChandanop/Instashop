@@ -168,8 +168,9 @@
                                      action:nil];
     
     
-    NSString *flurryString = [NSString stringWithFormat:@"User viewed: %@", self.requestingProductID];
-    [Flurry logEvent:flurryString];
+    NSString *flurryString = [NSString stringWithFormat:@"User viewed"];
+    NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:self.requestingProductID, @"product_id", nil];
+    [Flurry logEvent:flurryString withParameters:flurryParams];
     
     [self setViewSpacing];
 }
@@ -458,8 +459,10 @@
     
     [NotificationsAPIHandler createUserSavedNotificationWithProductID:[self.requestedProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID];
     
-    NSString *flurryString = [NSString stringWithFormat:@"User saved: %@ ", [self.requestedProductObject objectForKey:@"product_id"]];
-    [Flurry logEvent:flurryString];
+    NSString *flurryString = [NSString stringWithFormat:@"User saved"];
+    NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedProductObject objectForKey:@"product_id"], @"product_id", nil];
+    [Flurry logEvent:flurryString withParameters:flurryParams];
+    
 }
 
 -(void)savedItemsCompleted
@@ -479,9 +482,9 @@
     else
         [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
     
-    NSString *flurryString = [NSString stringWithFormat:@"User bought id: %@, url: %@", [self.requestedProductObject objectForKey:@"product_id"],[self.requestedProductObject objectForKey:@"products_external_url"]];
-    [Flurry logEvent:flurryString];
-    
+    NSString *flurryString = [NSString stringWithFormat:@"User bought"];
+    NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedProductObject objectForKey:@"product_id"], @"product_id", nil];
+    [Flurry logEvent:flurryString withParameters:flurryParams];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -401,24 +401,22 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
         
-        NSString *flurryString = [NSString stringWithFormat:@"User followed: %@", [self.requestedInstagramProfileObject objectForKey:@"id"]];
-        [Flurry logEvent:flurryString];
         
+        NSString *flurryString = [NSString stringWithFormat:@"User followed"];
+        NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedInstagramProfileObject objectForKey:@"id"], @"user", nil];
+        [Flurry logEvent:flurryString withParameters:flurryParams];
     }
     else
     {
-        
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"unfollow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
         
-        NSString *flurryString = [NSString stringWithFormat:@"User unfollowed: %@", [self.requestedInstagramProfileObject objectForKey:@"id"]];
-        [Flurry logEvent:flurryString];
-        
+        NSString *flurryString = [NSString stringWithFormat:@"User unfollowed"];
+        NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedInstagramProfileObject objectForKey:@"id"], @"user", nil];
+        [Flurry logEvent:flurryString withParameters:flurryParams];
     }
-    
-    
-    
 }
+
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
