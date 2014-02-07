@@ -18,6 +18,7 @@
     NSMutableArray *requestedCacheIDs;
     NSMutableArray *cacheQueue;
     BOOL cacheQueueBegun;
+    NSMutableArray *tableCellsArray;
 }
 
 -(void)loadNotifications;
@@ -31,4 +32,5 @@
 @property (nonatomic, strong) NSMutableArray *requestedCacheIDs;
 @property (nonatomic, strong) NSMutableArray *cacheQueue;
 @property (nonatomic, assign) BOOL cacheQueueBegun;
+@property (nonatomic, strong) NSMutableArray *tableCellsArray;
 @end

@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "NotificationsObject.h"
-#import "IGRequest.h"
-#import "NotificationsObject.h"
 
 @class NotificationsViewController;
-@interface NotificationsTableViewCell : UITableViewCell <IGRequestDelegate>
+@interface NotificationsTableViewCell : UITableViewCell
 {
     NotificationsObject *notificationsObject;
     
@@ -27,6 +25,7 @@
 -(IBAction)profileButtonHit;
 -(IBAction)notificationsButtonHit;
 
+-(void)loadContentWithDataDictionary:(NSDictionary *)dataDictionary;
 -(void)loadWithNotificationsObject:(NotificationsObject *)theObject;
 -(void)clearSubviews;
 

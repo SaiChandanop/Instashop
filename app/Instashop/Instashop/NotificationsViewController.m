@@ -29,7 +29,7 @@
 @synthesize requestedCacheIDs;
 @synthesize cacheQueue;
 @synthesize cacheQueueBegun;
-
+@synthesize tableCellsArray;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -40,7 +40,7 @@
         self.referenceCache = [[NSMutableDictionary alloc] initWithCapacity:0];
         self.requestedCacheIDs = [[NSMutableArray alloc] initWithCapacity:0];
         self.cacheQueue = [[NSMutableArray alloc] initWithCapacity:0];
-        
+        self.tableCellsArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -92,6 +92,17 @@
 {
     NSLog(@"setDictionaryIntoCacheWithID: %@", theID);
     [self.referenceCache setObject:theDictionary forKey:theID];
+    
+    for (int i = 0; i < [self.tableCellsArray count]; i++)
+    {
+        NotificationsTableViewCell *theCell = [self.tableCellsArray objectAtIndex:i];
+        if ([[theCell.notificationsObject.dataDictionary objectForKey:@"creator_id"] compare:theID] == NSOrderedSame)
+        {
+            NSLog(@"loading into visible cell");
+            [theCell loadContentWithDataDictionary:theDictionary];
+        }
+    }
+
 }
 
 
@@ -135,8 +146,10 @@
 -(void)processCacheQueue
 {
     if ([self.cacheQueue count] > 0)
-    {    
+    {
+        
         NSString *creatorID = [self.cacheQueue objectAtIndex:0];
+        NSLog(@"processCacheQueue: %@", creatorID);
         [self.cacheQueue removeObjectAtIndex:0];
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", creatorID], @"method", nil];
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -166,6 +179,13 @@
     
 }
 
+- (void)request:(IGRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"request did fail with error: %@", error);
+    
+    [self processCacheQueue];
+    
+}
 
 
 -(void)notificationClearDidFinish
@@ -204,6 +224,7 @@
         cell = [[NotificationsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.backgroundColor = [UIColor clearColor];
         cell.parentController = self;
+        [self.tableCellsArray addObject:cell];
     }
     [cell clearSubviews];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;

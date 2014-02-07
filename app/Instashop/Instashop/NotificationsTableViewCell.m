@@ -47,33 +47,17 @@
     self.profileImageView.layer.masksToBounds = YES;
     self.profileImageView.alpha = 1;
     
-    BOOL loadFromInstagram = YES;
+    
     if (theObject != nil)
         if (theObject.dataDictionary != nil)
             if ([theObject.dataDictionary objectForKey:@"creator_id"] != nil)
             {
-                
                 NSDictionary *dataDictionary = [[AppRootViewController sharedRootViewController].notificationsViewController getDictionaryFromCacheWithID:[theObject.dataDictionary objectForKey:@"creator_id"]];
                 if (dataDictionary != nil)
-                {
                     [self loadContentWithDataDictionary:dataDictionary];
-                    loadFromInstagram = NO;                    
-                }
             }
     
-    if (loadFromInstagram)
-    {
-        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.notificationsObject.dataDictionary objectForKey:@"creator_id"]], @"method", nil];
-        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-        [appDelegate.instagram requestWithParams:params delegate:self];
-        
-    }
-/*
-    NSLog(@"load with message: %@", theObject.message);
-    NSLog(@"load with dataDictionary: %@", theObject.dataDictionary);
-    NSLog(@" ");
-    NSLog(@" ");
-*/
+
     
     TTTTimeIntervalFormatter *intervalFormatter = [[TTTTimeIntervalFormatter alloc] init];
     intervalFormatter.usesAbbreviatedCalendarUnits = YES;
@@ -85,7 +69,7 @@
     now = [now dateByAddingTimeInterval:-60*60];
     NSTimeInterval theTimeInterval = [now timeIntervalSinceDate:startDate];
     
-    if (theTimeInterval / 60 < 60 * 60)
+    if (theTimeInterval / 60 < 60)
     {
         int numMins = [[NSNumber numberWithDouble:theTimeInterval / 60] integerValue];
         self.timeLabel.text = [NSString stringWithFormat:@"%d mins ago", numMins];
@@ -126,9 +110,6 @@
      if (result != nil)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
-  //      NSLog(@"dataDictionary: %@", dataDictionary);
-        NSLog(@"[dataDictionary objectForKey:@\"id\"]: %@", [dataDictionary objectForKey:@"id"]);
-
         if ([dataDictionary objectForKey:@"id"] != nil)
             [[AppRootViewController sharedRootViewController].notificationsViewController setDictionaryIntoCacheWithID:[dataDictionary objectForKey:@"id"] withDictionary:[NSDictionary dictionaryWithDictionary:dataDictionary]];
 
