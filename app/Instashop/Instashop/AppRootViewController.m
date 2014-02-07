@@ -519,10 +519,27 @@ float transitionTime = .256;
 
 -(void) notificationSelectedWithObject:(NotificationsObject *)notificationsObject
 {
+    NSLog(@"notificationsObject.message: %@", notificationsObject.message);
+    NSLog(@"notificationsObject.dataDictionary: %@", notificationsObject.dataDictionary);
+
     
-    PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
-    purchasingViewController.requestingProductID = [notificationsObject.dataDictionary objectForKey:@"product_id"];
-    [self.feedNavigationController pushViewController:purchasingViewController animated:YES];
+    if ([[notificationsObject.dataDictionary objectForKey:@"type"] integerValue] < 4)
+    {
+        PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];
+        purchasingViewController.requestingProductID = [notificationsObject.dataDictionary objectForKey:@"product_id"];
+        [self.feedNavigationController pushViewController:purchasingViewController animated:YES];
+    }
+    else //([[notificationsObject.dataDictionary objectForKey:@"type"] integerValue] == 4)
+    {
+        ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+        profileViewController.profileInstagramID = [notificationsObject.dataDictionary objectForKey:@"creator_id"];
+        [self.feedNavigationController pushViewController:profileViewController animated:YES];
+        [profileViewController loadNavigationControlls];
+
+        
+        
+        
+    }
     
 }
 
