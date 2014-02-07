@@ -81,6 +81,13 @@
     [self.view addGestureRecognizer:swipeLeftRight];
     
     
+    self.notificationsCountLabel.text = [NSString stringWithFormat:@""];
+    self.notificationsCountLabel.layer.cornerRadius = 6.0;
+    self.notificationsCountLabel.layer.masksToBounds = YES;
+    self.notificationsCountLabel.backgroundColor = [UIColor darkGrayColor];
+    self.notificationsCountLabel.textAlignment = NSTextAlignmentCenter;
+    
+    
     [self makeGetNotificationsCountCall];
 }
 
@@ -96,12 +103,8 @@
 
 -(void)notificationsCountDidFinishWithDictionary:(NSDictionary *)theDictionary
 {
-    self.notificationsCountLabel.text = [NSString stringWithFormat:@"%d", [[theDictionary objectForKey:@"count"] integerValue]];
-    self.notificationsCountLabel.layer.cornerRadius = 6.0;
-    self.notificationsCountLabel.layer.masksToBounds = YES;
-    self.notificationsCountLabel.backgroundColor = [UIColor darkGrayColor];
-    self.notificationsCountLabel.textAlignment = NSTextAlignmentCenter;
     
+    self.notificationsCountLabel.text = [NSString stringWithFormat:@"%d", [[theDictionary objectForKey:@"count"] integerValue]];
     if ([[theDictionary objectForKey:@"count"] integerValue] > 0)
     {
         //bigger than zero for style.
