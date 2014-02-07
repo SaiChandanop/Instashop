@@ -69,6 +69,7 @@
     [self.theTableView reloadData];
     
     self.theTableView.backgroundColor = [UIColor clearColor];
+
     
     // Do any additional setup after loading the view from its nib.
     
@@ -239,9 +240,9 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return  82;
+    return  74;
 }
-
+ 
 -(void)backButtonHit
 {
     NSLog(@"backButtonHit");
