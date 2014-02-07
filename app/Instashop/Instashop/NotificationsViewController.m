@@ -91,7 +91,6 @@
 
 -(void)setDictionaryIntoCacheWithID:(NSString *)theID withDictionary:(NSDictionary *)theDictionary
 {
-    NSLog(@"setDictionaryIntoCacheWithID: %@", theID);
     [self.referenceCache setObject:theDictionary forKey:theID];
     
     
@@ -108,8 +107,6 @@
 
 -(void)notificationsDidFinishWithArray:(NSArray *)theNotificationsArray
 {
-    NSLog(@"notificationsDidFinishWithArray did complete");
-    
     [self.contentArray removeAllObjects];
     [self.contentArray addObjectsFromArray:theNotificationsArray];
     
@@ -148,7 +145,6 @@
     {
         
         NSString *creatorID = [self.cacheQueue objectAtIndex:0];
-        NSLog(@"processCacheQueue: %@", creatorID);
         [self.cacheQueue removeObjectAtIndex:0];
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", creatorID], @"method", nil];
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -165,9 +161,6 @@
     if (result != nil)
     {
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
-        //      NSLog(@"dataDictionary: %@", dataDictionary);
-        NSLog(@"[dataDictionary objectForKey:@\"id\"]: %@", [dataDictionary objectForKey:@"id"]);
-        
         if ([dataDictionary objectForKey:@"id"] != nil)
             [self setDictionaryIntoCacheWithID:[dataDictionary objectForKey:@"id"] withDictionary:[NSDictionary dictionaryWithDictionary:dataDictionary]];
         
@@ -180,11 +173,10 @@
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error
 {
-    NSLog(@"request did fail with error: %@, request.url: %@", error, request.url);
     
     NSArray *urlComponentsArray = [request.url componentsSeparatedByString:@"/"];
     NSString *requestedID = [urlComponentsArray objectAtIndex:[urlComponentsArray count] - 1];
-    NSLog(@"requestedID: %@", requestedID);
+
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setObject:@"1" forKey:@"private"];
@@ -198,7 +190,6 @@
 
 -(void)notificationClearDidFinish
 {
-    NSLog(@"notificationClearDidFinish");
     [[AppRootViewController sharedRootViewController].homeViewController makeGetNotificationsCountCall];
 }
 

@@ -116,10 +116,7 @@
         //zero for style
         self.notificationsCountLabel.textColor = [UIColor lightGrayColor];
         self.notificationsCountLabel.font = [UIFont systemFontOfSize:12];
-    }
-    
-    
-    NSLog(@"notificationsCountDidFinishWithDictionary: %@", theDictionary);
+    }        
 }
 
 

@@ -86,9 +86,14 @@
 {
     if (!self.descriptionContentSizeSet)
     {
-        NSLog(@"setViewSpacing, initial");
+        NSLog(@"setViewSpacing, initial, self.view.frame: %@", NSStringFromCGRect(self.view.frame));
         self.descriptionContentSizeSet = YES;
         self.descriptionContentSize = self.descriptionTextView.contentSize;
+        if (self.view.frame.size.height == 480)
+        {
+            self.contentScrollView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - self.bottomView.frame.size.height);
+            self.contentScrollView.contentSize = CGSizeMake(0, self.categoryContainerView.frame.origin.y + self.categoryContainerView.frame.size.height + self.descriptionTextView.frame.size.height + 35);
+        }
     }
     else if (self.descriptionTextView.contentSize.height > self.descriptionContentSize.height)
     {
@@ -122,6 +127,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"self.contentScrollView.frame.size.height: %f", self.contentScrollView.frame.size.height);
+    
+    [Utils conformViewControllerToMaxSize:self];
+    NSLog(@"self.contentScrollView.frame.size.height2: %f", self.contentScrollView.frame.size.height);
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
