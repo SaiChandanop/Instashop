@@ -182,7 +182,16 @@
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error
 {
-    NSLog(@"request did fail with error: %@", error);
+    NSLog(@"request did fail with error: %@, request.url: %@", error, request.url);
+    
+    NSArray *urlComponentsArray = [request.url componentsSeparatedByString:@"/"];
+    NSString *requestedID = [urlComponentsArray objectAtIndex:[urlComponentsArray count] - 1];
+    NSLog(@"requestedID: %@", requestedID);
+    
+    NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
+    [dict setObject:@"1" forKey:@"private"];
+    [dict setObject:requestedID forKey:@"id"];
+    [self setDictionaryIntoCacheWithID:requestedID withDictionary:dict];
     
     [self processCacheQueue];
     

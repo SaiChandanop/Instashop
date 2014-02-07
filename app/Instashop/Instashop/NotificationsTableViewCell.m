@@ -54,7 +54,13 @@
             {
                 NSDictionary *dataDictionary = [[AppRootViewController sharedRootViewController].notificationsViewController getDictionaryFromCacheWithID:[theObject.dataDictionary objectForKey:@"creator_id"]];
                 if (dataDictionary != nil)
-                    [self loadContentWithDataDictionary:dataDictionary];
+                {
+//                    NSLog(@"dataDictionary: %@", dataDictionary);
+                    if ([dataDictionary objectForKey:@"private"] != nil)
+                        [self loadPrivate];
+                    else
+                        [self loadContentWithDataDictionary:dataDictionary];
+                }
             }
     
 
@@ -78,6 +84,17 @@
         self.timeLabel.text = [intervalFormatter stringForTimeIntervalFromDate:[NSDate date] toDate:startDate];
     
     
+}
+
+-(void)loadPrivate
+{
+    self.profileImageView.image = [UIImage imageNamed:@"anonymous.png"];
+    self.usernameLabel.text = @"A Shopsy User";
+    self.messageLabel.text = [self.notificationsObject.message stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@",self.usernameLabel.text] withString:@""];
+    self.messageLabel.text = [self.messageLabel.text substringFromIndex:1];
+    
+    NSLog(@"self.messageLabel.text|%@", self.messageLabel.text);
+    NSLog(@"loadPrivate");
 }
 
 -(void)loadContentWithDataDictionary:(NSDictionary *)dataDictionary
