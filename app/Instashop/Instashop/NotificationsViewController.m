@@ -48,9 +48,9 @@
 
 -(void)loadNotifications
 {
-    [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
-    
     NSLog(@"notifications view controller load notifications");
+    
+    [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
 }
 
 - (void)viewDidLoad
@@ -94,14 +94,12 @@
     NSLog(@"setDictionaryIntoCacheWithID: %@", theID);
     [self.referenceCache setObject:theDictionary forKey:theID];
     
+    
     for (int i = 0; i < [self.tableCellsArray count]; i++)
     {
         NotificationsTableViewCell *theCell = [self.tableCellsArray objectAtIndex:i];
-        if ([[theCell.notificationsObject.dataDictionary objectForKey:@"creator_id"] compare:theID] == NSOrderedSame)
-        {
-            NSLog(@"loading into visible cell");
+        if ([[theCell.notificationsObject.dataDictionary objectForKey:@"creator_id"] integerValue] == [theID integerValue])
             [theCell loadContentWithDataDictionary:theDictionary];
-        }
     }
 
 }
@@ -234,8 +232,13 @@
         cell = [[NotificationsTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
         cell.backgroundColor = [UIColor clearColor];
         cell.parentController = self;
-        [self.tableCellsArray addObject:cell];
+        
+        
     }
+    
+    if (![self.tableCellsArray containsObject:cell])
+        [self.tableCellsArray addObject:cell];
+
     [cell clearSubviews];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
