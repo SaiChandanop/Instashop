@@ -63,6 +63,7 @@
 		2E628CB317C6A19900CB7BE4 /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E628CA917C6A19900CB7BE4 /* iTunesArtwork@2x.png */; };
 		2E6BF27917CE502E008DF460 /* edit_photo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E6BF27817CE502E008DF460 /* edit_photo@2x.png */; };
 		2E714CD017E28CCE00014413 /* search_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E714CCF17E28CCE00014413 /* search_cancel@2x.png */; };
+		2E796F8418A58365003FC3B4 /* anonymous.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E796F8318A58365003FC3B4 /* anonymous.png */; };
 		2E7CFF9717C3A98500657CFC /* gray_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7CFF9617C3A98500657CFC /* gray_x@2x.png */; };
 		2E7D71031893381A00EA648B /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */; };
 		2E8007C217D1631400489639 /* following_btn_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E8007C117D1631400489639 /* following_btn_background@2x.png */; };
@@ -354,6 +355,7 @@
 		2E628CA917C6A19900CB7BE4 /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
 		2E6BF27817CE502E008DF460 /* edit_photo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_photo@2x.png"; sourceTree = "<group>"; };
 		2E714CCF17E28CCE00014413 /* search_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "search_cancel@2x.png"; sourceTree = "<group>"; };
+		2E796F8318A58365003FC3B4 /* anonymous.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anonymous.png; sourceTree = "<group>"; };
 		2E7CFF9617C3A98500657CFC /* gray_x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gray_x@2x.png"; sourceTree = "<group>"; };
 		2E7D71011893381A00EA648B /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
 		2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.3.1.a; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 		2EB259A31767869F0054618D /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2E796F8318A58365003FC3B4 /* anonymous.png */,
 				2E93DF951892D8A900A3EF1A /* FirstTTutorialZero@2x.png */,
 				2ED0CAA51885C6CC00DE6042 /* radio-off@2x.png */,
 				2ED0CAA61885C6CC00DE6042 /* radio-on@2x.png */,
@@ -1901,6 +1904,7 @@
 				7B51EB1917C30F03009FBE91 /* cell_disclosure_new@2x.png in Resources */,
 				2E531F0517C3BF6A006B6FF5 /* cell_separator@2x.png in Resources */,
 				2E9378F3184D224B00476540 /* settings_icon@2x.png in Resources */,
+				2E796F8418A58365003FC3B4 /* anonymous.png in Resources */,
 				7B1072BF175E7CDE00D9DC5D /* ProductDetailsViewController.xib in Resources */,
 				2E628CAC17C6A19900CB7BE4 /* AppIcon40x40.png in Resources */,
 				2E628CB217C6A19900CB7BE4 /* iTunesArtwork.png in Resources */,
@@ -2254,8 +2258,8 @@
 					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				PROVISIONING_PROFILE = "8DA743C9-88D0-4493-ACFA-3C3DEB13739B";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8DA743C9-88D0-4493-ACFA-3C3DEB13739B";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2276,8 +2280,8 @@
 					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "608426A8-65F9-4A98-8B37-B9818C70CB87";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "608426A8-65F9-4A98-8B37-B9818C70CB87";
+				PROVISIONING_PROFILE = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
