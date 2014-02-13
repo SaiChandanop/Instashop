@@ -368,13 +368,9 @@
     NSLog(@"loadViewsWithRequestedProfileObject");
     
     self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
-    
     self.usernameLabel.text = [self.requestedInstagramProfileObject objectForKey:@"full_name"];
     [self setTitleViewText:[self.requestedInstagramProfileObject objectForKey:@"username"]];
-    
-    [self updateProfileView:[self.requestedInstagramProfileObject objectForKey:@"id"]];
-    
-    
+    [self updateProfileView:[self.requestedInstagramProfileObject objectForKey:@"id"]];        
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedInstagramProfileObject objectForKey:@"profile_picture"] withImageView:self.profileImageView];
     
     NSDictionary *countsDictionary = [self.requestedInstagramProfileObject objectForKey:@"counts"];
@@ -387,6 +383,13 @@
     
     self.bioLabel.text = [self.requestedInstagramProfileObject objectForKey:@"bio"];
     [self handleBioLayout];
+    
+    
+    AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", nil];
+    [delegate.instagram requestWithParams:params delegate:self];
+    
+    
     
     
 }
@@ -428,48 +431,28 @@
         {
             
         }
-        else if ([request.url rangeOfString:@"follows"].length > 0)
-        {
-            NSArray *dataArray = [result objectForKey:@"data"];
-                        
-            if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
-                self.followButton.alpha = 1;
-            
-            BOOL doesFollow = NO;
-            
-            for (int i = 0; i < [dataArray count]; i++)
-            {
-                NSString *followID = [[dataArray objectAtIndex:i] objectForKey:@"id"];
-                
-                if ([followID compare:(NSString *)[self.requestedInstagramProfileObject objectForKey:@"id"]] == NSOrderedSame)
-                    doesFollow = YES;
-            }
-            
-            if (doesFollow)
-                self.followButton.selected = YES;
-            else
-                self.followButton.selected = NO;
-        }
         else if ([request.url rangeOfString:@"relationship"].length > 0)
         {
-            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
-            [theAppDelegate.instagram requestWithParams:params delegate:self];
-            
+            NSDictionary *dict = [result objectForKey:@"data"];
+            NSLog(@"relationship, return: %@", [result objectForKey:@"data"]);
+            NSString *outgoingStatus = [dict objectForKey:@"outgoing_status"];
+            NSLog(@"outgoingStatus: %@", outgoingStatus);
+            if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
+                self.followButton.alpha = 0;
+            else
+                self.followButton.alpha = 1;
         }
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
             NSDictionary *dataDictionary = [result objectForKey:@"data"];
             [self loadViewsWithRequestedProfileObject:dataDictionary];
-            
-            NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"/users/self/follows", @"method", nil];
-            [theAppDelegate.instagram requestWithParams:params delegate:self];
         }
     }
 }
 
 - (void)request:(IGRequest *)request didFailWithError:(NSError *)error
 {
-    NSLog(@"request: %@, error: %@", request, error);
+    NSLog(@"request[%@]: error: %@", request.url, error);
 }
 
 
@@ -702,58 +685,7 @@
 
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-        // back button was pressed.  We know this is true because self is no longer
-        // in the navigation stack.
-        NSLog(@"viewWillDisappear: %@", self);
-        
-        /*
-         @property (nonatomic, retain) IBOutlet UIScrollView *enclosingScrollView;
-         
-         @property (nonatomic, retain) NSString *profileInstagramID;
-         
-         @property (nonatomic, retain) IBOutlet UIImageView *backgroundImageView;
-         @property (nonatomic, retain) IBOutlet UIButton *addBackgroundImageButton;
-         
-         @property (nonatomic, retain) IBOutlet UIImageView *profileImageView;
-         @property (nonatomic, retain) IBOutlet UILabel *usernameLabel;
-         
-         @property (nonatomic, retain) IBOutlet UIButton *followersButton;
-         @property (nonatomic, retain) IBOutlet UIButton *followingButton;
-         
-         @property (nonatomic, retain) IBOutlet UIButton *followButton;
-         
-         
-         
-         @property (nonatomic, retain) IBOutlet UIButton *productsButton;
-         @property (nonatomic, retain) IBOutlet UIButton *infoButton;
-         @property (nonatomic, retain) IBOutlet UIButton *favoritesButton;
-         @property (nonatomic, retain) IBOutlet UIView *buttonHighlightView;
-         
-         
-         @property (nonatomic, retain) IBOutlet UIButton *profileBackgroundPhotoButton;
-         
-         
-         
-         @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *productSelectTableViewController;
-         @property (nonatomic, retain) IBOutlet ProductSelectTableViewController *favoritesSelectTableViewController;
-         @property (nonatomic, retain) IBOutlet UITableView *theTableView;
-         
-         @property (nonatomic, retain) UILabel *titleViewLabel;
-         
-         @property (nonatomic, assign) BOOL isSelfProfile;
-         
-         @property (nonatomic, retain) NSDictionary *requestedInstagramProfileObject;
-         
-         @property (nonatomic, retain) IBOutlet UIScrollView *infoContainerScrollView;
-         @property (nonatomic, retain) IBOutlet UILabel *addressLabel;
-         @property (nonatomic, retain) IBOutlet UILabel *emailLabel;
-         @property (nonatomic, retain) IBOutlet UILabel *categoryLabel;
-         @property (nonatomic, retain) IBOutlet UIImageView *bioContainerImageView;
-         @property (nonatomic, retain) IBOutlet UILabel *bioLabel;
-         @property (nonatomic, retain) IBOutlet UITextView *descriptionTextView;
-         @property (nonatomic, retain) IBOutlet UIButton *editButton;
-         @property (nonatomic, retain) IBOutlet UIButton *imagePickButton;
-         */
+
     }
     [super viewWillDisappear:animated];
 }
