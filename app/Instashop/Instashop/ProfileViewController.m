@@ -378,6 +378,28 @@
     [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
     
     
+    UIFont *theFont = self.followersButton.titleLabel.font;
+    while ([[self.followersButton titleForState:UIControlStateNormal] sizeWithAttributes:@{NSFontAttributeName:theFont}].width > followingButton.frame.size.width)
+        theFont = [theFont fontWithSize:theFont.pointSize - 1];
+    if (theFont.pointSize != self.followersButton.titleLabel.font.pointSize)
+        self.followersButton.titleLabel.font = [theFont fontWithSize:theFont.pointSize];
+
+    
+    theFont = self.followingButton.titleLabel.font;
+    while ([[self.followingButton titleForState:UIControlStateNormal] sizeWithAttributes:@{NSFontAttributeName:theFont}].width > followingButton.frame.size.width)
+        theFont = [theFont fontWithSize:theFont.pointSize - 1];
+    if (theFont.pointSize != self.followingButton.titleLabel.font.pointSize)
+        self.followingButton.titleLabel.font = [theFont fontWithSize:theFont.pointSize];
+
+    float minFont = self.followersButton.titleLabel.font.pointSize;
+    if (self.followersButton.titleLabel.font.pointSize < minFont)
+        minFont = self.followersButton.titleLabel.font.pointSize;
+    
+    self.followingButton.titleLabel.font = [theFont fontWithSize:minFont];
+    self.followersButton.titleLabel.font = [theFont fontWithSize:minFont];
+    
+
+    
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
     
     

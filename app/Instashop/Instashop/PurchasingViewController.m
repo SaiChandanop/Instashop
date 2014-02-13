@@ -705,7 +705,7 @@
 {
     
     NSLog(@"likeButtonHit");
-        
+    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     if (self.heartImageView.image == [UIImage imageNamed:@"heart.png"])
