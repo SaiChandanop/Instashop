@@ -85,9 +85,24 @@
     {
         self.objectSelectTableViewController = [[SellerSelectTableViewController alloc] initWithNibName:@"SellerSelectTableViewController" bundle:nil];
         self.objectSelectTableViewController.rowSelectedDelegate = self.parentController;
-        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y);
+        self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y );
         self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, [UIScreen mainScreen].bounds.size.height - origin.y);
+        
+        if ([UIScreen mainScreen].bounds.size.height == 480)
+        {
+            self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
+            self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
+            self.categoriesNavigationController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 288);
+        }
+        else
+        {
+            self.objectSelectTableViewController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 380);
+            self.objectSelectTableViewController.tableView.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 380);
+            self.categoriesNavigationController.view.frame = CGRectMake(0, 0, self.contentContainerView.frame.size.width, 380);
+        }
+        
         self.objectSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
+
         
     }
     else
@@ -126,10 +141,10 @@
 
 -(void)runSearch
 {
-    NSLog(@"runSearch!");
+//    NSLog(@"runSearch!");
     if ([self.freeSearchTextArray count] > 0 || [self.selectedCategoriesArray count] > 0)
     {
-        NSLog(@"self.selectedCategoriesArray: %@", self.selectedCategoriesArray);
+  //      NSLog(@"self.selectedCategoriesArray: %@", self.selectedCategoriesArray);
         
         
         if ([self.objectSelectTableViewController.tableView superview] == nil)

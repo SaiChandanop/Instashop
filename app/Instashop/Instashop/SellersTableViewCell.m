@@ -34,6 +34,7 @@
 
 - (void) loadWithDictionary:(NSDictionary *)theDictionary
 {
+    NSLog(@"loadWithDictionary: %@", theDictionary);
     float sizeValue = self.frame.size.height - self.frame.size.height * .2;
     if (self.sellerImageView == nil)
     {
@@ -50,6 +51,7 @@
         [self addSubview:self.sellerTextLabel];
     }
     
+    self.sellerTextLabel.text = @"";
     self.sellerImageView.image = nil;
     
 //    self.sellerTextLabel.text = [theDictionary objectForKey:@"instagram_username"];
@@ -68,7 +70,7 @@
         NSDictionary *dataDictionary = [result objectForKey:@"data"];
         
         self.sellerTextLabel.text = [dataDictionary objectForKey:@"username"];
-        NSLog(@"dataDictionary: %@", dataDictionary);
+//        NSLog(@"dataDictionary: %@", dataDictionary);
         [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerImageView];
     }
     
