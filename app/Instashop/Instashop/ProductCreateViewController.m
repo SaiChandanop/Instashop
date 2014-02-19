@@ -81,7 +81,8 @@
                                      target:nil
                                      action:nil];
     
-    
+    [self.productSelectTableViewController.refreshControl removeFromSuperview];
+    self.productSelectTableViewController.refreshControl = nil;
 }
 
 -(void)forceRefreshContent
