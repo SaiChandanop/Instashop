@@ -296,7 +296,7 @@
         if (self.preloadedContentView == nil)
         {
             self.preloadedContentView = [[UITextView alloc] initWithFrame:CGRectMake(inset, locationField.frame.origin.y + locationField.frame.size.height + 10, self.view.frame.size.width - 2 * inset, 110)];
-            self.preloadedContentView.text = @"Tell us where to buy the product in the Instagram photo. Go to the website product page and tap \"Save\" in the top right corner of the screen.";
+            self.preloadedContentView.text = @"Go to a store URL (Nike.com, Etsy.com, etc.) \nNavigate directly to where someone can purchase the product. \nTap SAVE in the top right corner of the screen.";
             [self.view addSubview:self.preloadedContentView];
         }
         
