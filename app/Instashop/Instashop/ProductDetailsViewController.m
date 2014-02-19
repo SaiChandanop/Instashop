@@ -639,12 +639,20 @@
 
 -(void)resizeWithTextView:(UITextView *)textView
 {
-    
     CGSize otherSize = [textView.text sizeWithFont:textView.font constrainedToSize:CGSizeMake(textView.frame.size.width, 10000)];
+    
+    NSDictionary *stringAttributes = [NSDictionary dictionaryWithObject:textView.font forKey: NSFontAttributeName];
+    otherSize = [textView.text boundingRectWithSize:CGSizeMake(textView.frame.size.width * .95, 10000)
+                                                     options:NSStringDrawingTruncatesLastVisibleLine|NSStringDrawingUsesLineFragmentOrigin
+                                                  attributes:stringAttributes context:nil].size;
+    
+    
     float verticaloffset = 6;
     
     textView.frame = CGRectMake(textView.frame.origin.x, textView.frame.origin.y, textView.frame.size.width, otherSize.height + 9);
     textView.contentSize = CGSizeMake(textView.contentSize.width, otherSize.height+ 9);
+    
+    
     
     self.descriptionContainerView.frame = CGRectMake(self.descriptionContainerView.frame.origin.x, self.descriptionContainerView.frame.origin.y, self.descriptionContainerView.frame.size.width, textView.frame.size.height + 13);
     
@@ -667,22 +675,16 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    NSLog(@"shouldChangeTextInRange");
-    
     if (textView == self.descriptionTextView)
     {
         if ([text compare:@"\n"] == NSOrderedSame)
             [textView resignFirstResponder];
-
-        NSLog(@"descriptionTextView == textView: %d", descriptionTextView == textView);
         [self resizeWithTextView:textView];
     }
     
-    
-    
     return YES;
-    
 }
+
 
 - (IBAction) urlButtonHit
 {
