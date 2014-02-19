@@ -76,7 +76,8 @@
     
     BOOL descriptionContentSizeSet;
     CGSize descriptionContentSize;
-    
+ 
+    UIView *profileContainerView;
 }
 
 - (IBAction) likeButtonHit;
@@ -154,5 +155,7 @@
 
 @property (nonatomic, assign) BOOL descriptionContentSizeSet;
 @property (nonatomic, assign) CGSize descriptionContentSize;
+
+@property (nonatomic, strong) IBOutlet UIView *profileContainerView;
 
 @end

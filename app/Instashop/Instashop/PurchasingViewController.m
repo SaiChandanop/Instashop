@@ -71,7 +71,7 @@
 @synthesize searchCategoriesArray;
 @synthesize descriptionContentSizeSet;
 @synthesize descriptionContentSize;
-
+@synthesize profileContainerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -428,6 +428,22 @@
     
     self.likesLabel.textColor = [UIColor whiteColor];
     self.likesLabel.alpha = 1;
+}
+
+
+- (void)request:(IGRequest *)request didFailWithError:(NSError *)error
+{
+    NSLog(@"request[%@]: error: %@", request.url, error);
+    
+    if ([request.url rangeOfString:@"users"].length > 0)
+    {
+        self.heartImageView.alpha = 0;
+        self.profileContainerView.alpha = 0;
+        self.sellerProfileImageView.alpha = 0;
+        self.likesLabel.alpha = 0;
+        self.sellerLabel.alpha = 0;
+    }
+    
 }
 
 
