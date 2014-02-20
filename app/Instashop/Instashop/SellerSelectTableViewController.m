@@ -9,7 +9,7 @@
 #import "SellerSelectTableViewController.h"
 #import "SellersTableViewCell.h"
 #import "SearchViewController.h"
-
+#import "AppDelegate.h"
 
 @interface SellerSelectTableViewController ()
 
@@ -17,11 +17,15 @@
 
 @implementation SellerSelectTableViewController
 
+@synthesize searchResultsArray;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        
+        self.searchResultsArray = [[NSMutableArray alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -54,6 +58,67 @@
     if (categoryString != nil)
         [SearchAPIHandler makeSellerCategoryRequestWithDelegate:self withCategoryString:categoryString withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];    
 }
+
+
+-(void)searchReturnedWithArray:(NSArray *)theSearchResultsArray
+{
+    [self.searchResultsArray removeAllObjects];
+    [self.contentArray removeAllObjects];
+    [self.tableView reloadData];
+
+    
+    for (int i = 0; i < [theSearchResultsArray count]; i++)
+    {
+        NSDictionary *dict = [theSearchResultsArray objectAtIndex:i];
+        [self.searchResultsArray addObject:[dict objectForKey:@"instagram_id"]];
+        
+    }
+    
+    NSLog(@"self.searchResultsArray: %@", self.searchResultsArray);
+    
+    
+    if ([self.searchResultsArray count] > 0)
+    {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.searchResultsArray objectAtIndex:0]], @"method", nil];
+        [appDelegate.instagram requestWithParams:params delegate:self];
+    }
+    else
+        [self searchNext];
+
+    
+    
+}
+
+-(void)searchNext
+{
+    [self.searchResultsArray removeObjectAtIndex:0];
+    if ([self.searchResultsArray count] > 0)
+    {
+        AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [self.searchResultsArray objectAtIndex:0]], @"method", nil];
+        [appDelegate.instagram requestWithParams:params delegate:self];
+    }
+    else
+    {
+        [self.tableView reloadData];
+        [self.refreshControl endRefreshing];
+    }
+}
+
+- (void)request:(IGRequest *)request didLoad:(id)result {
+    [self.contentArray addObject:result];
+    [self searchNext];
+}
+
+
+- (void)request:(IGRequest *)request didFailWithError:(NSError *)error
+{
+    [self searchNext];
+}
+
+
+
 
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -99,15 +164,6 @@
 
 
 
--(void)searchReturnedWithArray:(NSArray *)searchResultsArray
-{
-    [self.contentArray removeAllObjects];
-    [self.contentArray addObjectsFromArray:searchResultsArray];
-    [self.tableView reloadData];
-    [self.refreshControl endRefreshing];
-//    [self feedRequestFinishedWithArrray:searchResultsArray];
-    
-}
 
 
 

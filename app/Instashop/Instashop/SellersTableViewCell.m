@@ -34,7 +34,6 @@
 
 - (void) loadWithDictionary:(NSDictionary *)theDictionary
 {
-    NSLog(@"loadWithDictionary: %@", theDictionary);
     float sizeValue = self.frame.size.height - self.frame.size.height * .2;
     if (self.sellerImageView == nil)
     {
@@ -52,30 +51,13 @@
     }
     
     self.sellerTextLabel.text = @"";
-    self.sellerImageView.image = nil;
+    self.sellerImageView.image = nil;    
     
-//    self.sellerTextLabel.text = [theDictionary objectForKey:@"instagram_username"];
-    
-    AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", [theDictionary objectForKey:@"instagram_id"]], @"method", nil];
-    [appDelegate.instagram requestWithParams:params delegate:self];
-    
-    
+    NSDictionary *dataDictionary = [theDictionary objectForKey:@"data"];
+    self.sellerTextLabel.text = [dataDictionary objectForKey:@"username"];
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerImageView];
 }
 
-- (void)request:(IGRequest *)request didLoad:(id)result {
-    
-    if ([request.url rangeOfString:@"users"].length > 0)
-    {
-        NSDictionary *dataDictionary = [result objectForKey:@"data"];
-        
-        self.sellerTextLabel.text = [dataDictionary objectForKey:@"username"];
-//        NSLog(@"dataDictionary: %@", dataDictionary);
-        [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerImageView];
-    }
-    
-    
-}
 
 
 @end

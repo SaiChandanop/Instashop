@@ -9,5 +9,8 @@
 #import "ObjectSelectTableViewController.h"
 
 @interface SellerSelectTableViewController : ObjectSelectTableViewController
-
+{
+    NSMutableArray *searchResultsArray;
+}
+@property (nonatomic, retain) NSMutableArray *searchResultsArray;
 @end
