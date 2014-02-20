@@ -114,6 +114,7 @@
         UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;
+        
     }
     
     
@@ -565,13 +566,13 @@
 {
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
     {
-        self.editButton.alpha = 1;
+        self.editButton.alpha = 0;
         //        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editButtonHit)];
         //        self.navigationItem.rightBarButtonItem = shareButton;
     }
     else
     {
-        self.editButton.alpha = 0;
+        self.editButton.alpha = 1;
         UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;

@@ -51,7 +51,7 @@
     }
     
     self.sellerTextLabel.text = @"";
-    self.sellerImageView.image = nil;    
+    self.sellerImageView.image = nil;
     
     NSDictionary *dataDictionary = [theDictionary objectForKey:@"data"];
     self.sellerTextLabel.text = [dataDictionary objectForKey:@"username"];
