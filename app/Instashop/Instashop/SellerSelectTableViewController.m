@@ -92,7 +92,9 @@
 
 -(void)searchNext
 {
-    [self.searchResultsArray removeObjectAtIndex:0];
+    if ([self.searchResultsArray count] > 0)
+        [self.searchResultsArray removeObjectAtIndex:0];
+    
     if ([self.searchResultsArray count] > 0)
     {
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
