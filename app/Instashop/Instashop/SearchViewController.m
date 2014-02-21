@@ -173,8 +173,9 @@
 
 -(void) rowSelectionOccured:(NSDictionary *)theSelectionObject
 {
+    theSelectionObject = [theSelectionObject objectForKey:@"data"];
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
-    profileViewController.profileInstagramID = [theSelectionObject objectForKey:@"instagram_id"];
+    profileViewController.profileInstagramID = [theSelectionObject objectForKey:@"id"];
     [self.navigationController pushViewController:profileViewController animated:YES];
     
     
