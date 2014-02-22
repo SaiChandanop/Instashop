@@ -86,7 +86,7 @@
 {
     if (!self.descriptionContentSizeSet)
     {
-//        NSLog(@"setViewSpacing, initial, self.view.frame: %@", NSStringFromCGRect(self.view.frame));
+        NSLog(@"setViewSpacing, initial, self.view.frame: %@", NSStringFromCGRect(self.view.frame));
         self.descriptionContentSizeSet = YES;
         self.descriptionContentSize = self.descriptionTextView.contentSize;
         if (self.view.frame.size.height == 480)
@@ -97,8 +97,9 @@
     }
     else if (self.descriptionTextView.contentSize.height > self.descriptionContentSize.height)
     {
-//        NSLog(@"setViewSpacing, do resize");
+        NSLog(@"setViewSpacing, do resize");
  
+        self.descriptionTextView.contentSize = CGSizeMake(0, self.descriptionTextView.contentSize.height+9);
         self.descriptionContentSize = self.descriptionTextView.contentSize;
         self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
         self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
@@ -108,7 +109,7 @@
     }
     else
     {
-//        NSLog(@"setViewSpacing, ignore");
+        NSLog(@"setViewSpacing, ignore");
     }
 }
 
