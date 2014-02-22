@@ -258,6 +258,8 @@
 {
     if (!self.hasAppeared)
     {
+        
+        NSLog(@"viewDidAppear here");
         self.hasAppeared = YES;
         
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;

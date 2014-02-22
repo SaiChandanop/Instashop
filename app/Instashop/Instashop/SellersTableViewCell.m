@@ -63,7 +63,6 @@
 
 -(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
 {
-    NSLog(@"imageReturnedWithURL: %@", url);
     if ([url compare:self.urlString] == NSOrderedSame)
         self.sellerImageView.image = theImage;
 }

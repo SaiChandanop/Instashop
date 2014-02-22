@@ -19,6 +19,7 @@
 
 +(void)getLikedProductsByInstagramIDs:(NSArray *)instagramIDs withDelegate:(id)delegate
 {
+    NSLog(@"getLikedProductsByInstagramIDs!");
     NSMutableString *likedIDsString = [NSMutableString stringWithCapacity:0];
     
     for (int i = 0; i < [instagramIDs count]; i++)
@@ -31,7 +32,7 @@
     likedIDsString = [likedIDsString stringByReplacingOccurrencesOfString:@"null" withString:@""];
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?liked_ids=", likedIDsString];
     
-//    NSLog(@"urlRequestString: %@", urlRequestString);
+    NSLog(@"getLikedProductsByInstagramIDs urlRequestString: %@", urlRequestString);
     
     
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -69,7 +70,7 @@
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?requesting_seller_id=", instagramID];
     
-//    NSLog(@"urlRequestString: %@", urlRequestString);
+    NSLog(@"urlRequestString: %@", urlRequestString);
     
     
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
