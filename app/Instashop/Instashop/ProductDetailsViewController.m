@@ -255,6 +255,10 @@
      UIBarButtonItem *deletBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
      self.navigationItem.rightBarButtonItem = deletBarButtonItem;
      */
+ 
+    
+    if (self.isEdit)
+        [self resizeWithTextView:self.descriptionTextView];
     
     
 }
@@ -606,8 +610,7 @@
     
     NSLog(@"textViewDidBeginEditing!");
     
-    if (textView == self.descriptionTextView)
-        [self resizeWithTextView:textView];
+    
     
     
     
