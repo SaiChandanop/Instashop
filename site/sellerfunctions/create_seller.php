@@ -40,7 +40,7 @@ function createInstashopSeller($zencartID, $instagramID, $push_id)
 function createInstashopSellerAddress($instagramID, $postDictionary)
 {
 	
-	$query = "insert into sellers_addresses values ('". $instagramID ."', '".$postDictionary["instagram_username"] ."', '".$postDictionary["seller_name"] ."', '".$postDictionary["seller_address"] ."','".$postDictionary["seller_city"] ."','".$postDictionary["seller_state"] ."','".$postDictionary["seller_zip"] ."','".$postDictionary["seller_phone"] ."','".$postDictionary["seller_email"] ."','".$postDictionary["seller_website"] ."','".$postDictionary["seller_category"] ."')";
+	$query = "insert into sellers_addresses values ('". $instagramID ."', '".$postDictionary["instagram_username"] ."', '".$postDictionary["seller_name"] ."', '".$postDictionary["seller_address"] ."','".$postDictionary["seller_city"] ."','".$postDictionary["seller_state"] ."','".$postDictionary["seller_zip"] ."','".$postDictionary["seller_phone"] ."','".$postDictionary["seller_email"] ."','".$postDictionary["seller_website"] ."','".$postDictionary["seller_category"] ."', '')";
 
 	$result = mysql_query($query);
 }
@@ -76,6 +76,7 @@ else if ($_POST["action"] == "update_push_id")
 	$query = "update sellers set push_id = ' ". $_POST["push_id"] ."' where instagram_id = '" . $_POST["instagram_id"] . "'";
 	$result = mysql_query($query);
 }
+
 else
 {
 	$zencartID = checkInshashopForInstagramID($_POST["userID"]);

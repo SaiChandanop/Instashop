@@ -40,88 +40,58 @@ function getSellerProducts($sellerID)
 	return $responseArray;
 }
 
+
+
 function getSellersByCategoryAndFreeformText($category, $freeformTextArray)
 {
-	$returnArray = array();
-
-	$idsArray = array();
-
-	if (strlen($category) == 0 && count($freeformTextArray) > 0)
+	$productIDS = array();
+	if (strlen($category) > 0)
 	{
-		for ($i = 0; $i < count($freeformTextArray); $i++)
-		{
-			$query = "select * from sellers_addresses WHERE instagram_username like '%". $freeformTextArray[$i] ."%';";
-			$result = mysql_query($query);
-
-			while ($row = mysql_fetch_assoc($result)) 
-				if (strlen($row["instagram_id"]) > 0)
-					array_push($idsArray, $row["instagram_id"]);	
-		}
-
-	}
-	else if (strlen($category) > 0)
-	{
-		$query = "select * from sellers_addresses where seller_category = '$category';";
+		$query = "select distinct product_id from products_categories_and_sizes where attribute_1 = '$category'";
 		$result = mysql_query($query);
-
 		while ($row = mysql_fetch_assoc($result)) 
-			if (strlen($row["instagram_id"]) > 0)
-			array_push($idsArray, $row["instagram_id"]);	
+			array_push($productIDS, $row["product_id"]);
 
-
-
-		if (count($freeformTextArray) > 0)
-		{
-			$freeFormIDSArray = array();								
-
-			for ($i = 0; $i < count($freeformTextArray); $i++)
-				if (strlen($freeformTextArray[$i]) > 0)
-				{			
-					$searchTerm = $freeformTextArray[$i];
-
-					$query = "select * from sellers_addresses WHERE instagram_username like '%". $searchTerm ."%';";
-					$result = mysql_query($query);
-
-
-					while ($row = mysql_fetch_assoc($result)) 
-					if (strlen($row["instagram_id"]) > 0)
-						array_push($freeFormIDSArray, $row["instagram_id"]);	
-				}
-
-
-			$matching_overlap_array = array();
-
-			for ($i = 0; $i < count($freeFormIDSArray); $i++)
-				if (in_array($freeFormIDSArray[$i], $idsArray))
-					array_push($matching_overlap_array, $freeFormIDSArray[$i]);
-
-			if (count($matching_overlap_array) > 0)
-				{
-					$prioritiesArray = array();
-					for ($i = 0; $i < count($matching_overlap_array); $i++)
-						array_push($prioritiesArray, $matching_overlap_array[$i]);
-
-					for ($i = 0; $i < count($idsArray); $i++)
-					if (!in_array($idsArray[$i], $matching_overlap_array))
-						array_push($prioritiesArray, $idsArray[$i]);
-
-					$idsArray = $prioritiesArray;
-				}
-			
-				
-
-		}
-				
+		
 	}
 
-	for ($i = 0; $i < count($idsArray); $i++)
-		{
-			$query = "select * from sellers_addresses where instagram_id = '$idsArray[$i]';";
-			$result = mysql_query($query);
+	$sellerIDS = array();
+	for ($i = 0; $i < count($productIDS); $i++)
+	{
+		$productID = $productIDS[$i];
 
-			while ($row = mysql_fetch_assoc($result)) 
-				array_push($returnArray, $row);	
+		$query = "select * from sellers_products where product_id = '$productID'";
+		$result = mysql_query($query);
+		while ($row = mysql_fetch_assoc($result)) 
+			array_push($sellerIDS, $row["instagram_id"]);
+	}
+
+
+	if (strlen($category) > 0)
+	{
+		$query = "select instagram_id from sellers_addresses where seller_category like '%$category%'";
+
+		$result = mysql_query($query);
+		while ($row = mysql_fetch_assoc($result)) 
+		{
+			array_push($sellerIDS, $row["instagram_id"]);
 		}
+
+		
+	}
+
+	
+	$idsArray = array_unique($sellerIDS);
+	$keysArray = array_keys($idsArray);
+	$returnArray = array();
+	for ($i = 0; $i < count($keysArray); $i++)
+	{
+		$key = $keysArray[$i];
+		$item = array();
+		$item["instagram_id"] = $idsArray[$key];
+		array_push($returnArray, $item);
+	}
+
 
 	return $returnArray;
 
@@ -133,10 +103,21 @@ function pruneSellersByProducts($sellersArray)
 	for ($i = 0; $i < count($sellersArray); $i++)
 	{	
 		$query = "select * from sellers_products where instagram_id = '".$sellersArray[$i]["instagram_id"] ."'";
-
+		
+//		echo "\nquery: ". $query;
+		
 		$result = mysql_query($query);
-		if ($row = mysql_fetch_assoc($result)) 
-			array_push($returnArray, $sellersArray[$i]);
+		$insert = 0;
+		
+		while ($row = mysql_fetch_assoc($result))
+		{
+		//	if ($row["product_id"] > 246)
+				$insert = 1;
+			
+		} 
+		
+		if ($insert == 1)
+			array_push($returnArray, $sellersArray[$i]);			
 
 	}
 
@@ -151,11 +132,39 @@ if (strlen($_GET["seller_instagram_id"]) > 0)
 	$sellerID = $_GET["seller_instagram_id"];
 	$sellersArray = getSellerProducts($sellerID);
 }
-else if (strlen($_POST["category"]) > 0 || strlen($_POST["freetext_string"]) > 0)
+else if (strlen($_POST["category"]) > 0 && strlen($_POST["freetext_string"]) > 0)
 {
 	$sellersArray = getSellersByCategoryAndFreeformText($_POST["category"], explode("___", $_POST["freetext_string"]));
 	$sellersArray = pruneSellersByProducts($sellersArray);
 	
+}
+else if (strlen($_POST["category"]) > 0)
+{
+	$sellersArray = getSellersByCategoryAndFreeformText($_POST["category"], explode("___", $_POST["freetext_string"]));
+	$sellersArray = pruneSellersByProducts($sellersArray);
+}
+
+else if (strlen($_POST["freetext_string"]) > 0)
+{
+	$freeText = $_POST["freetext_string"];	
+	$freeTextArray = explode("___", $freeText);
+
+	for ($i = 0; $i < count($freeTextArray);  $i++)
+	{		
+		$obj = $freeTextArray[$i];
+		if (strlen($obj) > 0)
+		{
+			$query = "select * from sellers_addresses where instagram_username like '%$obj%'";
+	//		echo "query: " .$query;
+			$address_result = mysql_query($query);
+
+			while ($addressRow = mysql_fetch_assoc($address_result)) 
+			{	
+				if (strlen($addressRow["instagram_id"]) > 0)
+					array_push($sellersArray, $addressRow);	
+			}			
+		}				
+	}
 }
 else
 {	

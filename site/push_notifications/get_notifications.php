@@ -51,19 +51,49 @@ function getMessageStringFromNotification($notificationID)
 		$creatorName = getUsernameFromInstagramID($row["creator_id"]);
 		$productName = getProductNameFromProductID($row["product_id"]);
 
-		if ($row["type"] == 0)
+/*		if ($row["type"] == 0)
 		{			
 			$retVal = "$creatorName liked your product";//$productName";
 		}
 		else if ($row["type"] == 1)
 		{			
-			$retVal = "$creatorName shared your product twitter";// $productName";
+			$retVal = "$creatorName shared your product to twitter";// $productName";
 		}
 		else if ($row["type"] == 2)
 		{			
 			$retVal = "$creatorName shared your product to facebook";// $productName";
 		}
+		else if ($row["type"] == 3)
+		{			
+			$retVal = "$creatorName saved your product";// $productName";
+		}
+		else if ($row["type"] == 4)
+		{			
+			$retVal = "$creatorName joined Shopsy";// $productName";
+		}
+*/
 		
+		if ($row["type"] == 0)
+		{			
+			$retVal = "Liked your product";//$productName";
+		}
+		else if ($row["type"] == 1)
+		{			
+			$retVal = "Shared your product to twitter";// $productName";
+		}
+		else if ($row["type"] == 2)
+		{			
+			$retVal = "Shared your product to facebook";// $productName";
+		}
+		else if ($row["type"] == 3)
+		{			
+			$retVal = "Saved your product";// $productName";
+		}
+		else if ($row["type"] == 4)
+		{			
+			$retVal = "Joined Shopsy";// $productName";
+		}
+
 	}
 
 	return $retVal;
@@ -78,14 +108,40 @@ if (strcmp($_POST["request_type"], "all") == 0)
 
 	while ($row = mysql_fetch_assoc($result)) 
 	{
-
-		$notification_object = array();
-		$notification_object["message"] = getMessageStringFromNotification($row["id"]);
-		$notification_object["data"] = getNotificationArrayFromNotificationID($row["id"]);
+		if (strcmp($row["creator_id"], $_POST["instagram_id"]) != 0)
+		{	
+			$notification_object = array();
+			$notification_object["message"] = getMessageStringFromNotification($row["id"]);
+			$notification_object["data"] = getNotificationArrayFromNotificationID($row["id"]);
 		
-		array_push($retVal, $notification_object);
+			array_push($retVal, $notification_object);
+		}
 	}
 
+	$json = json_encode($retVal);
+	echo $json;
+}
+
+else if (strcmp($_POST["request_type"], "count") == 0)
+{
+	$retVal = array();
+	$instagram_id = $_POST["instagram_id"];
+	$query = "select count(*) from notifications where recipient_id = '$instagram_id' and status = '0'";
+	$result = mysql_query($query);
+	if ($row = mysql_fetch_assoc($result)) 
+	{
+		$retVal["count"] = $row["count(*)"];
+	}
+	$json = json_encode($retVal);
+	echo $json;
+}
+else if (strcmp($_POST["request_type"], "clear") == 0)
+{
+	$instagram_id = $_POST["instagram_id"];
+
+	$query = "update notifications set status = '1' where recipient_id = '$instagram_id'";
+	$result = mysql_query($query);
+	$retVal = array();
 	$json = json_encode($retVal);
 	echo $json;
 }

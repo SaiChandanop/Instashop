@@ -34,6 +34,7 @@ function getProductsByInstagramID($instagramID)
 {
 
 	$query = "select * from sellers_products where instagram_id = '$instagramID'";
+//	echo "query: ". $query;
 	$result = mysql_query($query);
 
 
@@ -103,7 +104,6 @@ function getProductDescriptions($theProductsArray)
 
 			array_push($responseArray, $product);
 		}
-
 	}
 
 	return $responseArray;
@@ -120,14 +120,14 @@ function getProductDetails($theProductsArray)
 		$product_id = $product["product_id"];
 		$query = "select * from products where products_id = '". $product_id ."'";
 		$result = mysql_query($query);
-
+		
 		while ($row = mysql_fetch_assoc($result)) {						
 			$product["products_price"] = $row['products_price'];
 			$product["products_model"] = $row['products_model'];
-			$product["products_date_added"] = $row['products_date_added'];
+			$product["products_date_added"] = $row['products_date_added'];			
 			array_push($responseArray, $product);
 		}
-
+		
 	}
 
 	return $responseArray;
