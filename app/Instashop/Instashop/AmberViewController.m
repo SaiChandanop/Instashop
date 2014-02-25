@@ -49,7 +49,7 @@
     
     NSString *customCSSURLString = @"http://instashop.com/test_custom.css";
     
-    NSString *amberPath = [NSString stringWithFormat:@"https://checkout.twotap.com/?public_token= 286b2ac01d5d6139579eb903306333&unique_token=2388&custom_css_url=%@&callback_url=https://amber.io/workers/proposed_recipes/test_callback&show_tutorial=false&products=%@", [Utils getEscapedStringFromUnescapedString:customCSSURLString], [Utils getEscapedStringFromUnescapedString:self.referenceURLString]];
+    NSString *amberPath = [NSString stringWithFormat:@"https://checkout.twotap.com/?public_token=286b2ac01d5d6139579eb903306333&unique_token=2388&custom_css_url=%@&callback_url=https://amber.io/workers/proposed_recipes/test_callback&show_tutorial=false&products=%@", [Utils getEscapedStringFromUnescapedString:customCSSURLString], [Utils getEscapedStringFromUnescapedString:self.referenceURLString]];
         
 
     
