@@ -100,6 +100,7 @@
 		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
 		5FEE463B18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE463A18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m */; };
 		5FEE463E18E0AA3C00EEE3EB /* PullAccountHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE463D18E0AA3C00EEE3EB /* PullAccountHandler.m */; };
+		5FEE464418E0BF3800EEE3EB /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE464318E0BF3800EEE3EB /* eye.png */; };
 		6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6901344A1836B4E9005CE173 /* SettingsViewController.m */; };
 		6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6901344B1836B4E9005CE173 /* SettingsViewController.xib */; };
 		696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */; };
@@ -396,10 +397,12 @@
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
+		5F63696218E0C2720094B36B /* AnalyticsReportCompleteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsReportCompleteProtocol.h; sourceTree = "<group>"; };
 		5FEE463918E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopsyAnalyticsAPIHandler.h; sourceTree = "<group>"; };
 		5FEE463A18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopsyAnalyticsAPIHandler.m; sourceTree = "<group>"; };
 		5FEE463C18E0AA3C00EEE3EB /* PullAccountHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullAccountHandler.h; sourceTree = "<group>"; };
 		5FEE463D18E0AA3C00EEE3EB /* PullAccountHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullAccountHandler.m; sourceTree = "<group>"; };
+		5FEE464318E0BF3800EEE3EB /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
 		690134491836B4E9005CE173 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		6901344A1836B4E9005CE173 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		6901344B1836B4E9005CE173 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -1130,6 +1133,7 @@
 				7B7A7F8517D651C800247A26 /* SearchReturnedReceiverProtocol.h */,
 				7BA9C2EF183695BB003C2DD5 /* NotificationsFinishedProtocol.h */,
 				7B05032E183FDD2D004EF2C2 /* BitlyResponseHandler.h */,
+				5F63696218E0C2720094B36B /* AnalyticsReportCompleteProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1349,6 +1353,7 @@
 		7B61EE4D174D2162002A483D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FEE464318E0BF3800EEE3EB /* eye.png */,
 				7BAC5BBA187DDEB70077EF50 /* Instagram_share_images */,
 				7B58C3F3183C1C610080E569 /* test.igo.png */,
 				2E628C9517C6A17000CB7BE4 /* Icon */,
@@ -1926,6 +1931,7 @@
 				7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */,
 				7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */,
 				7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */,
+				5FEE464418E0BF3800EEE3EB /* eye.png in Resources */,
 				7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */,
 				7B51EB1917C30F03009FBE91 /* cell_disclosure_new@2x.png in Resources */,
 				2E531F0517C3BF6A006B6FF5 /* cell_separator@2x.png in Resources */,

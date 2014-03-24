@@ -669,6 +669,16 @@
     [SellersAPIHandler uploadProfileImage:image withDelegate:nil];
     
     self.backgroundImageView.image = image;
+    
+    /*
+    UIView *theView = [AppRootViewController sharedRootViewController].view;
+    
+    
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,theView.frame.size.width, theView.frame.size.height)];
+    theImageView.image = image;
+    [theView addSubview:theImageView];
+    */
+    
 }
 
 - (void)imagePickerDidCancel:(GKImagePicker *)imagePicker
@@ -697,7 +707,6 @@
 {
     NSLog(@"loadTheProfileImageViewWithID");
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateProfileView:) userInfo:theID repeats:NO];
-    
     
 }
 

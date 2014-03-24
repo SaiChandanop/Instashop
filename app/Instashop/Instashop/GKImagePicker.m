@@ -72,7 +72,7 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info{
 
     self.cropController = [[GKImageCropViewController alloc] init];
-    self.cropController.contentSizeForViewInPopover = picker.contentSizeForViewInPopover;
+    self.cropController.preferredContentSize = picker.preferredContentSize;
     self.cropController.sourceImage = [info objectForKey:UIImagePickerControllerOriginalImage];
     self.cropController.resizeableCropArea = self.resizeableCropArea;
     self.cropController.cropSize = self.cropSize;
