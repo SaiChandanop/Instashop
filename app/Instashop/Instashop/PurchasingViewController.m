@@ -487,6 +487,13 @@
     NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedProductObject objectForKey:@"product_id"], @"product_id", nil];
     [Flurry logEvent:flurryString withParameters:flurryParams];
     
+    
+    
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
+    [ShopsyAnalyticsAPIHandler makeSavedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
 
 -(void)savedItemsCompleted
@@ -509,6 +516,12 @@
     NSString *flurryString = [NSString stringWithFormat:@"User bought"];
     NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedProductObject objectForKey:@"product_id"], @"product_id", nil];
     [Flurry logEvent:flurryString withParameters:flurryParams];
+    
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
+    [ShopsyAnalyticsAPIHandler makeBoughtAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -746,7 +759,16 @@
         [appDelegate.instagram delRequestWithParams:params delegate:self];
     }
     
+    
+    
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
+    [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
+
+
 
 -(BOOL)likesArrayContainsSelf
 {

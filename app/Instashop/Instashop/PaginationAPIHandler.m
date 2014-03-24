@@ -8,7 +8,7 @@
 
 #import "PaginationAPIHandler.h"
 #import "ProductSelectTableViewController.h"
-
+#import "PullAccountHandler.h"
 
 
 @implementation PaginationAPIHandler
@@ -33,11 +33,12 @@
 //    NSString* newStr = [[[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding] autorelease];
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:self.responseData options:NSJSONReadingAllowFragments error:nil];
     
-//    NSLog(@"makePaginationRequestWithDelegate, responseDictionary: %@", responseDictionary);
+    NSLog(@"makePaginationRequestWithDelegateFinished");
     
     if ([self.delegate isKindOfClass:[ProductSelectTableViewController class]])
         [((ProductSelectTableViewController *)self.delegate)  request:nil didLoad:responseDictionary];
-    
+    else if ([self.delegate isKindOfClass:[PullAccountHandler class]])
+        [((PullAccountHandler *)self.delegate)  request:nil didLoad:responseDictionary];
 }
 
 @end
