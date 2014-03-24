@@ -74,6 +74,13 @@
 @synthesize descriptionContentSize;
 @synthesize profileContainerView;
 
+@synthesize buyAnalyticsLabel;
+@synthesize saveAnalyticsLabel;
+@synthesize viewedAnalyticsLabel;
+@synthesize viewedAnalyticsImageView;
+@synthesize reportDictionary;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -129,6 +136,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.buyAnalyticsLabel.alpha = 0;
+    self.saveAnalyticsLabel.alpha = 0;
+    self.viewedAnalyticsLabel.alpha = 0;
+    self.viewedAnalyticsImageView.alpha = 0;
+
     
     [Utils conformViewControllerToMaxSize:self];
     
@@ -351,6 +364,9 @@
     NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
     
     [ShopsyAnalyticsAPIHandler makeViewedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    
+    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+        [self loadForEdit];
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -363,9 +379,44 @@
 
 -(void)loadForEdit
 {
-    self.isEditable = YES;        
+    self.isEditable = YES;
+    [self presentAnalytics];
 }
 
+-(void)presentAnalytics
+{
+    NSLog(@"presentAnalytics!");
+    
+    [ShopsyAnalyticsAPIHandler makeAnalyticsReportCallWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withDelegate:self];
+}
+
+-(void)reportDidCompleteWithDictionary:(NSDictionary *)dict
+{
+    self.reportDictionary = [[NSDictionary alloc] initWithDictionary:dict];
+    NSLog(@"reportDidCompleteWithDictionary: %@", reportDictionary);
+    
+    self.buyAnalyticsLabel.alpha = 1;
+    self.saveAnalyticsLabel.alpha = 1;
+    self.viewedAnalyticsLabel.alpha = 1;
+    self.viewedAnalyticsImageView.alpha = 1;
+
+    self.buyAnalyticsLabel.text = [self.reportDictionary objectForKey:@"bought"];
+    self.saveAnalyticsLabel.text = [self.reportDictionary objectForKey:@"saved"];
+    self.viewedAnalyticsLabel.text = [self.reportDictionary objectForKey:@"viewed"];
+
+    
+    if ([self.likesLabel.text rangeOfString:@"Likes"].length == 0 && [self.likesLabel.text rangeOfString:@"Likes"].length > 0)
+    {
+        NSLog(@"asdf");
+    }
+    /*
+     [viewed] => 13
+     [saved] => 0
+     [bought] => 1
+     [liked] => 0
+     */
+    
+}
 
 -(void)editButtonHit
 {
@@ -410,8 +461,8 @@
             self.sellerLabel.text = [dataDictionary objectForKey:@"username"];
             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerProfileImageView];
             
-            if ([(NSString *)[dataDictionary objectForKey:@"id"] compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
-                [self loadForEdit];
+//            if ([(NSString *)[dataDictionary objectForKey:@"id"] compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+  //              [self loadForEdit];
         }
     }
     else if ([request.url rangeOfString:@"likes"].length > 0)
@@ -425,6 +476,10 @@
         NSDictionary *dict = [result objectForKey:@"data"];
         NSDictionary *likesDict = [dict objectForKey:@"likes"];
         self.likesLabel.text = [NSString stringWithFormat:@"%d likes", [[likesDict objectForKey:@"count"] integerValue]];
+        
+        if (self.reportDictionary != nil)
+            self.likesLabel.text = [NSString stringWithFormat:@"(+%@) %@ likes", [self.reportDictionary objectForKey:@"liked"], [likesDict objectForKey:@"count"]];
+    
         
         BOOL userHasLiked = [[dict objectForKey:@"user_has_liked"] boolValue];
         

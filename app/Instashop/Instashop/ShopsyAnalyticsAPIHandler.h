@@ -14,4 +14,5 @@
 +(void)makeSavedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID;
 +(void)makeBoughtAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID;
 +(void)makeLikedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID;
++(void)makeAnalyticsReportCallWithProductID:(NSString *)theProductID withDelegate:(id)theDelegate;
 @end

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="4514" systemVersion="13B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PurchasingViewController">
             <connections>
                 <outlet property="bottomView" destination="B12-y8-tzH" id="Z4J-8z-vTz"/>
+                <outlet property="buyAnalyticsLabel" destination="gU6-Tv-pnj" id="5g7-5a-Mfu"/>
                 <outlet property="categoryContainerBottomSeparatorImageView" destination="Y3V-Rd-t51" id="Djd-QW-ega"/>
                 <outlet property="categoryContainerImageView" destination="qJe-ss-inr" id="193-m9-65T"/>
                 <outlet property="categoryContainerView" destination="wmd-nl-kVJ" id="V0B-xY-qE5"/>
@@ -20,10 +21,13 @@
                 <outlet property="likesLabel" destination="upX-2d-e7j" id="7Js-KC-wHx"/>
                 <outlet property="profileContainerView" destination="301" id="so9-jg-LQs"/>
                 <outlet property="purchaseButton" destination="269" id="336"/>
+                <outlet property="saveAnalyticsLabel" destination="mdL-jt-oUW" id="XI4-t0-UDn"/>
                 <outlet property="saveButton" destination="eCG-Zp-39Q" id="GFd-BD-Gap"/>
                 <outlet property="sellerLabel" destination="49" id="262"/>
                 <outlet property="sellerProfileImageView" destination="298" id="302"/>
                 <outlet property="view" destination="1" id="3"/>
+                <outlet property="viewedAnalyticsImageView" destination="diE-eE-vqo" id="BsS-jf-GJ8"/>
+                <outlet property="viewedAnalyticsLabel" destination="eXx-63-dxN" id="CZe-LQ-iga"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -43,9 +47,22 @@
                             <rect key="frame" x="278" y="280" width="30" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="eye.png" id="diE-eE-vqo">
+                            <rect key="frame" x="280" y="239" width="30" height="26"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </imageView>
                         <view contentMode="scaleToFill" id="lDx-78-jMg">
                             <rect key="frame" x="-1" y="0.0" width="321" height="270"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="eXx-63-dxN">
+                                    <rect key="frame" x="203" y="241" width="73" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
                         </view>
                         <view alpha="0.30000001192092896" contentMode="scaleToFill" id="301">
                             <rect key="frame" x="7" y="271" width="306" height="42"/>
@@ -79,7 +96,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="upX-2d-e7j">
-                            <rect key="frame" x="200" y="282" width="73" height="21"/>
+                            <rect key="frame" x="136" y="282" width="137" height="21"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -159,6 +176,20 @@
                                 <action selector="buyButtonHit" destination="-1" eventType="touchUpInside" id="272"/>
                             </connections>
                         </button>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="save value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mdL-jt-oUW">
+                            <rect key="frame" x="10" y="35" width="142" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="buy value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gU6-Tv-pnj">
+                            <rect key="frame" x="169" y="35" width="142" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -176,6 +207,7 @@
     </objects>
     <resources>
         <image name="cell_separator.png" width="320" height="5"/>
+        <image name="eye.png" width="564" height="549"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>

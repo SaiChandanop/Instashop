@@ -7,7 +7,7 @@
 //
 
 #import "ShopsyAnalyticsAPIHandler.h"
-
+#import "AnalyticsReportCompleteProtocol.h"
 @implementation ShopsyAnalyticsAPIHandler
 
 
@@ -126,6 +126,42 @@
     NSLog(@"makeLikedAnalyticsCallWithOwnerInstagramIDComplete: %@", newStr);
 }
 
+
+
+
+
++(void)makeAnalyticsReportCallWithProductID:(NSString *)theProductID withDelegate:(id)theDelegate
+{
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"analytics/analytics.php"];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"POST";
+    
+    NSMutableString *postString = [NSMutableString stringWithCapacity:0];
+    [postString appendString:[NSString stringWithFormat:@"action=%@", @"report"]];
+    [postString appendString:[NSString stringWithFormat:@"&shopsy_product_id=%@", theProductID]];
+    [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    ShopsyAnalyticsAPIHandler *apiHandler = [[ShopsyAnalyticsAPIHandler alloc] init];
+    apiHandler.delegate = theDelegate;
+    apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
+    [apiHandler.theWebRequest addTarget:apiHandler action:@selector(makeAnalyticsReportCallWithProductIDComplete:) forRequestEvents:SMWebRequestEventComplete];
+    [apiHandler.theWebRequest start];
+    
+}
+
+-(void)makeAnalyticsReportCallWithProductIDComplete:(id)obj
+{
+    NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"makeAnalyticsReportCallWithProductIDComplete: %@", newStr);
+    
+    NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
+    
+    
+    if ([self.delegate conformsToProtocol:@protocol(AnalyticsReportCompleteProtocol)])
+        [(id<AnalyticsReportCompleteProtocol>)self.delegate reportDidCompleteWithDictionary:responseDictionary];
+    
+    
+}
 
 
 
