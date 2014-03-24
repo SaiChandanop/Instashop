@@ -28,6 +28,7 @@
 #import "BitlyAPIHandler.h"
 #import "SearchButtonContainerView.h"
 #import "Flurry.h"
+#import "ShopsyAnalyticsAPIHandler.h"
 
 @interface PurchasingViewController ()
 
@@ -340,6 +341,16 @@
         self.saveButton.selected = NO;
     
     [self setViewSpacing];
+    
+    NSLog(@"!!requestedProductObject: %@", self.requestedProductObject);
+ 
+    //-(void)makeViewedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID;
+    
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
+    [ShopsyAnalyticsAPIHandler makeViewedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -347,7 +358,6 @@
     
     //    if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
     //        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
-    
     
 }
 
