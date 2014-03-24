@@ -76,14 +76,13 @@
     
     BOOL showPullInfo = NO;
     
-    /*
+
     if ([username compare:@"shopsy"] == NSOrderedSame)
         showPullInfo = YES;
     else if ([username compare:@"jrb3000"] == NSOrderedSame)
         showPullInfo = YES;
     else if ([username compare:@"jklobe"] == NSOrderedSame)
         showPullInfo = YES;
-    */
     
     
     if (!showPullInfo)
