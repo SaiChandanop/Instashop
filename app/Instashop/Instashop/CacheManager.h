@@ -18,7 +18,7 @@
 -(UIImage *)getImageWithURL:(NSString *)theURL;
 -(void)setCacheObject:(UIImage *)theObject withKey:(NSString *)theKey;
 -(void)precacheWithDataSet:(NSArray *)dataSetArray withIndexPath:(NSIndexPath *)theIndexPath;
-
+-(void)destroyCachedImageWithURL:(NSString *)theURL;
 @property (nonatomic, strong) NSMutableDictionary *mediaCache;
 
 @end

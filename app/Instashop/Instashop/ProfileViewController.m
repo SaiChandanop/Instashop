@@ -22,7 +22,7 @@
 #import <Social/Social.h>
 #import "SocialManager.h"
 #import "Flurry.h"
-
+#import "CacheManager.h"
 @interface ProfileViewController ()
 
 @end
@@ -258,8 +258,6 @@
 {
     if (!self.hasAppeared)
     {
-        
-        NSLog(@"viewDidAppear here");
         self.hasAppeared = YES;
         
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -459,9 +457,7 @@
         else if ([request.url rangeOfString:@"relationship"].length > 0)
         {
             NSDictionary *dict = [result objectForKey:@"data"];
-            NSLog(@"relationship, return: %@", [result objectForKey:@"data"]);
             NSString *outgoingStatus = [dict objectForKey:@"outgoing_status"];
-            NSLog(@"outgoingStatus: %@", outgoingStatus);
             if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
                 self.followButton.alpha = 0;
             else
@@ -663,6 +659,12 @@
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image
 {
     NSLog(@"imagePicker did pick image");
+    
+    
+    NSString *deleteString = [NSString stringWithFormat:@"%@/upload/%@.jpeg", [ROOT_URI stringByReplacingOccurrencesOfString:@"www." withString:@""], [InstagramUserObject getStoredUserObject].userID];
+    [[CacheManager getSharedCacheManager] destroyCachedImageWithURL:deleteString];
+    
+    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
     
@@ -712,10 +714,6 @@
 
 -(void)updateProfileView:(id)object
 {
-    
-
-    
-    NSLog(@"object: %@", object);
     
     if ([object isKindOfClass:[NSTimer class]])
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:[((NSTimer *)object) userInfo]];

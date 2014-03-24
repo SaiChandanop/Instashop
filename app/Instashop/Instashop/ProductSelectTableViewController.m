@@ -246,25 +246,19 @@
     }
     else if (self.productRequestorType > 0)
     {
-        NSLog(@"here2");
         switch (self.productRequestorType) {
             case PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS:
                 [ProductAPIHandler getAllProductsWithDelegate:self];
-                NSLog(@"11");
                 break;
             case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER:
                 [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
-                NSLog(@"22'");
                 break;
             case PRODUCT_REQUESTOR_TYPE_SEARCH:
-                
                 [SearchAPIHandler makeProductSearchRequestWithDelegate:self withSearchCategoriesArray:self.searchRequestObject.searchCategoriesArray withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
-                NSLog(@"33");
                 break;
                 
             case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER:
                 [ProductAPIHandler getSavedProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
-                NSLog(@"44");
                 break;
                 
             default:
