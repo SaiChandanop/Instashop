@@ -28,6 +28,7 @@
 #import "BitlyAPIHandler.h"
 #import "SearchButtonContainerView.h"
 #import "Flurry.h"
+#import "ShopsyAnalyticsAPIHandler.h"
 
 @interface PurchasingViewController ()
 
@@ -73,6 +74,13 @@
 @synthesize descriptionContentSize;
 @synthesize profileContainerView;
 
+@synthesize buyAnalyticsLabel;
+@synthesize saveAnalyticsLabel;
+@synthesize viewedAnalyticsLabel;
+@synthesize viewedAnalyticsImageView;
+@synthesize reportDictionary;
+
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -86,7 +94,7 @@
 {
     if (!self.descriptionContentSizeSet)
     {
-//        NSLog(@"setViewSpacing, initial, self.view.frame: %@", NSStringFromCGRect(self.view.frame));
+        NSLog(@"setViewSpacing, initial, self.view.frame: %@", NSStringFromCGRect(self.view.frame));
         self.descriptionContentSizeSet = YES;
         self.descriptionContentSize = self.descriptionTextView.contentSize;
         if (self.view.frame.size.height == 480)
@@ -97,8 +105,9 @@
     }
     else if (self.descriptionTextView.contentSize.height > self.descriptionContentSize.height)
     {
-//        NSLog(@"setViewSpacing, do resize");
+        NSLog(@"setViewSpacing, do resize");
  
+        self.descriptionTextView.contentSize = CGSizeMake(0, self.descriptionTextView.contentSize.height+9);
         self.descriptionContentSize = self.descriptionTextView.contentSize;
         self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
         self.commentsTableViewController.view.frame = CGRectMake(0, self.commentsTableViewController.view.frame.origin.y, self.commentsTableViewController.view.frame.size.width, 44 * 4);
@@ -108,7 +117,7 @@
     }
     else
     {
-//        NSLog(@"setViewSpacing, ignore");
+        NSLog(@"setViewSpacing, ignore");
     }
 }
 
@@ -127,6 +136,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.buyAnalyticsLabel.alpha = 0;
+    self.saveAnalyticsLabel.alpha = 0;
+    self.viewedAnalyticsLabel.alpha = 0;
+    self.viewedAnalyticsImageView.alpha = 0;
+
     
     [Utils conformViewControllerToMaxSize:self];
     
@@ -339,6 +354,19 @@
         self.saveButton.selected = NO;
     
     [self setViewSpacing];
+    
+    NSLog(@"!!requestedProductObject: %@", self.requestedProductObject);
+ 
+    //-(void)makeViewedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID;
+    
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
+    [ShopsyAnalyticsAPIHandler makeViewedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    
+    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+        [self loadForEdit];
 }
 
 -(void)imageRequestFinished:(UIImageView *)referenceImageView
@@ -347,14 +375,48 @@
     //    if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
     //        [(ISAsynchImageView *)referenceImageView ceaseAnimations];
     
-    
 }
 
 -(void)loadForEdit
 {
-    self.isEditable = YES;        
+    self.isEditable = YES;
+    [self presentAnalytics];
 }
 
+-(void)presentAnalytics
+{
+    NSLog(@"presentAnalytics!");
+    
+    [ShopsyAnalyticsAPIHandler makeAnalyticsReportCallWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withDelegate:self];
+}
+
+-(void)reportDidCompleteWithDictionary:(NSDictionary *)dict
+{
+    self.reportDictionary = [[NSDictionary alloc] initWithDictionary:dict];
+    NSLog(@"reportDidCompleteWithDictionary: %@", reportDictionary);
+    
+    self.buyAnalyticsLabel.alpha = 1;
+    self.saveAnalyticsLabel.alpha = 1;
+    self.viewedAnalyticsLabel.alpha = 1;
+    self.viewedAnalyticsImageView.alpha = 1;
+
+    self.buyAnalyticsLabel.text = [self.reportDictionary objectForKey:@"bought"];
+    self.saveAnalyticsLabel.text = [self.reportDictionary objectForKey:@"saved"];
+    self.viewedAnalyticsLabel.text = [self.reportDictionary objectForKey:@"viewed"];
+
+    
+    if ([self.likesLabel.text rangeOfString:@"Likes"].length == 0 && [self.likesLabel.text rangeOfString:@"Likes"].length > 0)
+    {
+        NSLog(@"asdf");
+    }
+    /*
+     [viewed] => 13
+     [saved] => 0
+     [bought] => 1
+     [liked] => 0
+     */
+    
+}
 
 -(void)editButtonHit
 {
@@ -399,8 +461,8 @@
             self.sellerLabel.text = [dataDictionary objectForKey:@"username"];
             [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerProfileImageView];
             
-            if ([(NSString *)[dataDictionary objectForKey:@"id"] compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
-                [self loadForEdit];
+//            if ([(NSString *)[dataDictionary objectForKey:@"id"] compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+  //              [self loadForEdit];
         }
     }
     else if ([request.url rangeOfString:@"likes"].length > 0)
@@ -414,6 +476,10 @@
         NSDictionary *dict = [result objectForKey:@"data"];
         NSDictionary *likesDict = [dict objectForKey:@"likes"];
         self.likesLabel.text = [NSString stringWithFormat:@"%d likes", [[likesDict objectForKey:@"count"] integerValue]];
+        
+        if (self.reportDictionary != nil)
+            self.likesLabel.text = [NSString stringWithFormat:@"(+%@) %@ likes", [self.reportDictionary objectForKey:@"liked"], [likesDict objectForKey:@"count"]];
+    
         
         BOOL userHasLiked = [[dict objectForKey:@"user_has_liked"] boolValue];
         
@@ -476,6 +542,13 @@
     NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedProductObject objectForKey:@"product_id"], @"product_id", nil];
     [Flurry logEvent:flurryString withParameters:flurryParams];
     
+    
+    
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
+    [ShopsyAnalyticsAPIHandler makeSavedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
 
 -(void)savedItemsCompleted
@@ -498,6 +571,12 @@
     NSString *flurryString = [NSString stringWithFormat:@"User bought"];
     NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedProductObject objectForKey:@"product_id"], @"product_id", nil];
     [Flurry logEvent:flurryString withParameters:flurryParams];
+    
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
+    [ShopsyAnalyticsAPIHandler makeBoughtAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -735,7 +814,16 @@
         [appDelegate.instagram delRequestWithParams:params delegate:self];
     }
     
+    
+    
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
+    [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
+
+
 
 -(BOOL)likesArrayContainsSelf
 {

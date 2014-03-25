@@ -22,6 +22,8 @@
     UIView *termsView;
  
     ABPeoplePickerNavigationController *peoplePicker;
+    
+    UIView *showInfoView;
 }
 
 -(IBAction) inviteButtonHit;
@@ -40,6 +42,7 @@
 -(IBAction) settingsButtonHit;
 -(IBAction) sendFeedbackButtonHit;
 -(IBAction) reportBugButtonHit;
+-(IBAction) pullInfoButtonHit;
 
 @property (nonatomic, strong) AppRootViewController *parentController;
 @property (nonatomic, strong) IBOutlet UIScrollView *theScrollView;
@@ -50,6 +53,8 @@
 @property (nonatomic, strong) IBOutlet UIView *topBarView;
 
 @property (nonatomic, strong) ABPeoplePickerNavigationController *peoplePicker;
+
+@property (nonatomic, strong) IBOutlet UIView *showInfoView;
 
 @end
 

@@ -11,6 +11,7 @@
 #import "AppDelegate.h"
 #import "InstagramUserObject.h"
 #import "SellersAPIHandler.h"
+#import "PullAccountHandler.h"
 @interface SettingsViewController ()
 
 @end
@@ -21,6 +22,7 @@
 @synthesize parentController;
 @synthesize logoutView;
 @synthesize peoplePicker;
+@synthesize showInfoView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -42,7 +44,6 @@
     self.theScrollView.contentSize = CGSizeMake(0, self.logoutView.frame.origin.y + self.logoutView.frame.size.height);
     [self.view addSubview:self.theScrollView];
     
-    NSLog(@"Yes this code did run");
     
     UIView *homeCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 50, 44)];
     
@@ -70,8 +71,25 @@
                                      target:nil
                                      action:nil];
     
+    NSString *username = [InstagramUserObject getStoredUserObject].username;
+    NSLog(@"username: %@", username);
+    
+    BOOL showPullInfo = NO;
+    
+
+    if ([username compare:@"shopsy"] == NSOrderedSame)
+        showPullInfo = YES;
+    else if ([username compare:@"jrb3000"] == NSOrderedSame)
+        showPullInfo = YES;
+    else if ([username compare:@"jklobe"] == NSOrderedSame)
+        showPullInfo = YES;
     
     
+    if (!showPullInfo)
+    {
+        self.showInfoView.alpha = 0;
+        [self.showInfoView removeFromSuperview];
+    }
     
 }
 
@@ -269,6 +287,7 @@
 }
 
 
+
 -(IBAction)privatePolicyButtonHit
 {
     [self.parentController webViewButtonHit:@"http://shopsy.com/privacy" titleName:@"PRIVACY"];
@@ -280,6 +299,11 @@
     NSLog(@"Yes, the terms of Service Button was hit");
 }
 
+
+-(IBAction) pullInfoButtonHit
+{
+    [[PullAccountHandler alloc] pullAccount];
+}
 - (void) backButtonHit {
     NSLog(@"!! back");
     [self.parentController settingsExitButtonHit];

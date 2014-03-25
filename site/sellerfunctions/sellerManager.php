@@ -1,7 +1,7 @@
 <?
 	include_once("../db.php");
 
-echo "hi";
+
 function getSellerDetails($instagramID)
 {
 	$query = "select * from sellers_addresses where instagram_id = '$instagramID'";
@@ -16,12 +16,11 @@ function getSellerDetails($instagramID)
 	return $responseArray;
 }
 
+
 function updateSellerDescription($instagramID, $theDescription)
 {
 	$query = "update sellers_addresses set seller_description = '$theDescription' where instagram_id = '$instagramID'";
 	$result = mysql_query($query);
-
-	echo "query: $query";
 
 	return getSellerDetails($instagramID);
 }
@@ -29,7 +28,6 @@ function updateSellerDescription($instagramID, $theDescription)
 $item = array();
 $action = $_POST["action"];
 
-echo "action: ".$action;
 if ($action == "getSellerDetails")
 {	
 	$item = getSellerDetails($_POST["instagramID"]);
@@ -37,13 +35,11 @@ if ($action == "getSellerDetails")
 }
 else if ($action == "updateSellerDescription")
 {
-	$item = updateSellerDescription($_POST["instagramID"], $_POST["description"]));
+	$item = updateSellerDescription($_POST["instagramID"], $_POST["description"]);
 }
 
-
-
-//$json = json_encode($item);
-//echo $json;
+$json = json_encode($item);
+echo $json;
 
 
 	

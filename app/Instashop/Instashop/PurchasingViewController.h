@@ -19,9 +19,10 @@
 #import "BitlyResponseHandler.h"
 #import "JKProgressView.h"
 #import "SearchViewController.h"
+#import "AnalyticsReportCompleteProtocol.h"
 @class FeedViewController;
 
-@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol, BitlyResponseHandler, FlagManagerProtocol>
+@interface PurchasingViewController : UIViewController <IGRequestDelegate, UIActionSheetDelegate, FeedRequestFinishedProtocol, EditProductCompleteProtocol, BitlyResponseHandler, FlagManagerProtocol, AnalyticsReportCompleteProtocol>
 {
     SizePickerViewViewController *sizePickerViewViewController;
     CommentsTableViewController *commentsTableViewController;
@@ -78,6 +79,14 @@
     CGSize descriptionContentSize;
  
     UIView *profileContainerView;
+    
+    UILabel *buyAnalyticsLabel;
+    UILabel *saveAnalyticsLabel;
+    UILabel *viewedAnalyticsLabel;
+    UIImageView *viewedAnalyticsImageView;
+    
+    NSDictionary *reportDictionary;
+    
 }
 
 - (IBAction) likeButtonHit;
@@ -158,4 +167,11 @@
 
 @property (nonatomic, strong) IBOutlet UIView *profileContainerView;
 
+
+@property (nonatomic, strong) IBOutlet UILabel *buyAnalyticsLabel;
+@property (nonatomic, strong) IBOutlet UILabel *saveAnalyticsLabel;
+@property (nonatomic, strong) IBOutlet UILabel *viewedAnalyticsLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *viewedAnalyticsImageView;
+
+@property (nonatomic, strong) NSDictionary *reportDictionary;
 @end

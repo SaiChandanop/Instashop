@@ -98,6 +98,9 @@
 		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
 		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
+		5FEE463B18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE463A18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m */; };
+		5FEE463E18E0AA3C00EEE3EB /* PullAccountHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE463D18E0AA3C00EEE3EB /* PullAccountHandler.m */; };
+		5FEE464418E0BF3800EEE3EB /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FEE464318E0BF3800EEE3EB /* eye.png */; };
 		6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6901344A1836B4E9005CE173 /* SettingsViewController.m */; };
 		6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6901344B1836B4E9005CE173 /* SettingsViewController.xib */; };
 		696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */; };
@@ -394,6 +397,12 @@
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
+		5F63696218E0C2720094B36B /* AnalyticsReportCompleteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsReportCompleteProtocol.h; sourceTree = "<group>"; };
+		5FEE463918E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopsyAnalyticsAPIHandler.h; sourceTree = "<group>"; };
+		5FEE463A18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopsyAnalyticsAPIHandler.m; sourceTree = "<group>"; };
+		5FEE463C18E0AA3C00EEE3EB /* PullAccountHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullAccountHandler.h; sourceTree = "<group>"; };
+		5FEE463D18E0AA3C00EEE3EB /* PullAccountHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullAccountHandler.m; sourceTree = "<group>"; };
+		5FEE464318E0BF3800EEE3EB /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
 		690134491836B4E9005CE173 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		6901344A1836B4E9005CE173 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		6901344B1836B4E9005CE173 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -889,6 +898,22 @@
 			name = Images;
 			sourceTree = "<group>";
 		};
+		5F6F724818E07AEF0046E3CC /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				5FEE463918E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.h */,
+				5FEE463A18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m */,
+			);
+			name = Analytics;
+			sourceTree = "<group>";
+		};
+		5FEE463F18E0B00500EEE3EB /* CSV */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = CSV;
+			sourceTree = "<group>";
+		};
 		690134451836B47D005CE173 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1108,6 +1133,7 @@
 				7B7A7F8517D651C800247A26 /* SearchReturnedReceiverProtocol.h */,
 				7BA9C2EF183695BB003C2DD5 /* NotificationsFinishedProtocol.h */,
 				7B05032E183FDD2D004EF2C2 /* BitlyResponseHandler.h */,
+				5F63696218E0C2720094B36B /* AnalyticsReportCompleteProtocol.h */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1327,6 +1353,7 @@
 		7B61EE4D174D2162002A483D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				5FEE464318E0BF3800EEE3EB /* eye.png */,
 				7BAC5BBA187DDEB70077EF50 /* Instagram_share_images */,
 				7B58C3F3183C1C610080E569 /* test.igo.png */,
 				2E628C9517C6A17000CB7BE4 /* Icon */,
@@ -1467,6 +1494,7 @@
 		7B7A7449174D4EB8005E90B9 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				5FEE463F18E0B00500EEE3EB /* CSV */,
 				7BE29B95177A20710093BB25 /* Attributes */,
 				7B7A744F174D5052005E90B9 /* DiskManager */,
 				7B7A744A174D4EC3005E90B9 /* User */,
@@ -1495,6 +1523,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				5F6F724818E07AEF0046E3CC /* Analytics */,
 				7BF6903E189327BC0073C691 /* Mailchimp */,
 				7B727C28186DD38600FB9C5E /* CacheManager */,
 				7B18DA5418609F24003FEFFC /* Pagination */,
@@ -1732,6 +1761,8 @@
 				7B989BCA17C267D7003559E0 /* ISAsynchImageView.m */,
 				7B5D624617C5122F00D6C8B1 /* ISConstants.h */,
 				7B5D624717C5122F00D6C8B1 /* ISConstants.m */,
+				5FEE463C18E0AA3C00EEE3EB /* PullAccountHandler.h */,
+				5FEE463D18E0AA3C00EEE3EB /* PullAccountHandler.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1900,6 +1931,7 @@
 				7B7A7F8017D64ACE00247A26 /* SearchViewController.xib in Resources */,
 				7B4D2E19175CFFD2005DE4B6 /* feedtopbar.png in Resources */,
 				7B1072AE175E682700D9DC5D /* selectPhotoHeaderBar.png in Resources */,
+				5FEE464418E0BF3800EEE3EB /* eye.png in Resources */,
 				7B1072B4175E6C8C00D9DC5D /* ProductSelectTableViewController.xib in Resources */,
 				7B51EB1917C30F03009FBE91 /* cell_disclosure_new@2x.png in Resources */,
 				2E531F0517C3BF6A006B6FF5 /* cell_separator@2x.png in Resources */,
@@ -2070,6 +2102,7 @@
 				6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */,
 				038FCD051835BAA800EC50D5 /* NotificationsAPIHandler.m in Sources */,
 				7B7A744D174D4ED9005E90B9 /* InstagramUserObject.m in Sources */,
+				5FEE463E18E0AA3C00EEE3EB /* PullAccountHandler.m in Sources */,
 				7B7A7452174D505D005E90B9 /* GroupDiskManager.m in Sources */,
 				7B7A7459174D52E3005E90B9 /* RootAPIHandler.m in Sources */,
 				0369D26B183338C400AA1C9F /* MediaLikedObject.m in Sources */,
@@ -2138,6 +2171,7 @@
 				7BF9DD8F178C546F005148A8 /* SBJsonStreamTokeniser.m in Sources */,
 				7BF9DD90178C546F005148A8 /* SBJsonStreamWriter.m in Sources */,
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
+				5FEE463B18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,
 				7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */,
 				7BDED696180C7A28001FF165 /* CIALBrowserViewController.m in Sources */,
@@ -2235,8 +2269,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
+				PROVISIONING_PROFILE = "9F11340E-D181-4302-B7E1-D0B4E37907A7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F11340E-D181-4302-B7E1-D0B4E37907A7";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -2258,8 +2292,8 @@
 					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8DA743C9-88D0-4493-ACFA-3C3DEB13739B";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8DA743C9-88D0-4493-ACFA-3C3DEB13739B";
+				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2280,8 +2314,8 @@
 					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "B263C359-8326-4B7F-92BF-856EC90A5FD4";
+				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

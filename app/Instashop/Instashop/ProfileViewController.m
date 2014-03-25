@@ -22,7 +22,7 @@
 #import <Social/Social.h>
 #import "SocialManager.h"
 #import "Flurry.h"
-
+#import "CacheManager.h"
 @interface ProfileViewController ()
 
 @end
@@ -457,9 +457,7 @@
         else if ([request.url rangeOfString:@"relationship"].length > 0)
         {
             NSDictionary *dict = [result objectForKey:@"data"];
-            NSLog(@"relationship, return: %@", [result objectForKey:@"data"]);
             NSString *outgoingStatus = [dict objectForKey:@"outgoing_status"];
-            NSLog(@"outgoingStatus: %@", outgoingStatus);
             if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
                 self.followButton.alpha = 0;
             else
@@ -661,12 +659,28 @@
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image
 {
     NSLog(@"imagePicker did pick image");
+    
+    
+    NSString *deleteString = [NSString stringWithFormat:@"%@/upload/%@.jpeg", [ROOT_URI stringByReplacingOccurrencesOfString:@"www." withString:@""], [InstagramUserObject getStoredUserObject].userID];
+    [[CacheManager getSharedCacheManager] destroyCachedImageWithURL:deleteString];
+    
+    
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     [delegate.appRootViewController dismissViewControllerAnimated:YES completion:nil];
     
     [SellersAPIHandler uploadProfileImage:image withDelegate:nil];
     
     self.backgroundImageView.image = image;
+    
+    /*
+    UIView *theView = [AppRootViewController sharedRootViewController].view;
+    
+    
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,theView.frame.size.width, theView.frame.size.height)];
+    theImageView.image = image;
+    [theView addSubview:theImageView];
+    */
+    
 }
 
 - (void)imagePickerDidCancel:(GKImagePicker *)imagePicker
@@ -696,15 +710,10 @@
     NSLog(@"loadTheProfileImageViewWithID");
     [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(updateProfileView:) userInfo:theID repeats:NO];
     
-    
 }
 
 -(void)updateProfileView:(id)object
 {
-    
-
-    
-    NSLog(@"object: %@", object);
     
     if ([object isKindOfClass:[NSTimer class]])
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:[((NSTimer *)object) userInfo]];

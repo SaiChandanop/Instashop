@@ -28,6 +28,9 @@
 #import "AppDelegate.h"
 #import "MailchimpAPIHandler.h"
 #import "NotificationsAPIHandler.h"
+#import "PullAccountHandler.h"
+
+
 @implementation AppRootViewController
 
 static AppRootViewController *theSharedRootViewController;
@@ -109,7 +112,9 @@ float transitionTime = .256;
     
     //    [self runTutorial];
 
-    [self runTutorialIfAppropriate];    
+    [self runTutorialIfAppropriate];
+    
+//    [[PullAccountHandler alloc] pullAccount];
 }
 
 
@@ -543,6 +548,9 @@ float transitionTime = .256;
     
 }
 
-
+- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0)
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

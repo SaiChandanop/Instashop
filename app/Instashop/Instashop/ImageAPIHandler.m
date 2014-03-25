@@ -12,6 +12,7 @@
 #import "CacheManager.h"
 #import "PurchasingViewController.h"
 #import "ImagesTableViewItem.h"
+#import "SellersTableViewCell.h"
 @implementation ImageAPIHandler
 
 @synthesize theImageView;
@@ -101,6 +102,10 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
         if ([self.delegate isKindOfClass:[ImagesTableViewItem class]])
             [((ImagesTableViewItem *)self.delegate) imageReturnedWithURL:self.contextObject withData:self.responseData];
+    }
+    else if ([self.delegate isKindOfClass:[SellersTableViewCell class]])
+    {
+        [((SellersTableViewCell *)self.delegate) imageReturnedWithURL:self.contextObject withImage:responseImage];
     }
     else if ([self.delegate isKindOfClass:[ImagesTableViewItem class]])
     {
@@ -196,7 +201,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     
     NSString *urlString = [NSString stringWithFormat:@"http://instashop.com/upload/%@.jpeg", instagramID];
     
-//    NSLog(@"makeProfileImageRequestWithReferenceImageView: %@", urlString);
+    NSLog(@"makeProfileImageRequestWithReferenceImageView: %@", urlString);
     
     if (sharedImageAPIHandler == nil)
     {

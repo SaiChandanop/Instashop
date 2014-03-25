@@ -7,7 +7,7 @@ include_once("db.php");
 $dataArray = $_POST;
 
 
-$query = "insert into sellers_addresses values ('".$dataArray["instagram_user_id"]."','".$dataArray["instagram_username"]."', '".$dataArray["name"]."', '".$dataArray["address"]."','".$dataArray["city"]."','".$dataArray["state"]."','".$dataArray["zip"]."','".$dataArray["phone"]."','".$dataArray["email"]."','". $dataArray["web"]."','".$dataArray["category"]."')";
+$query = "insert into sellers_addresses values ('".$dataArray["instagram_user_id"]."','".$dataArray["instagram_username"]."', '".$dataArray["name"]."', '".$dataArray["address"]."','".$dataArray["city"]."','".$dataArray["state"]."','".$dataArray["zip"]."','".$dataArray["phone"]."','".$dataArray["email"]."','". $dataArray["web"]."','".$dataArray["category"]."', '')";
 
 $result = mysql_query($query);
 

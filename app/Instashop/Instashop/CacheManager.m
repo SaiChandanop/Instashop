@@ -57,5 +57,15 @@ static CacheManager *theCacheManager;
 //    NSLog(@"precacheArray: %@", precacheArray);
 }
 
+-(void)destroyCachedImageWithURL:(NSString *)theURL
+{
+    NSLog(@"mediaCache: %@", self.mediaCache);
+    NSLog(@"destroyCachedImageWithURL: %@", theURL);
+    [self.mediaCache removeObjectForKey:theURL];
+    
+    NSLog(@"2mediaCache: %@", self.mediaCache);
+}
+
+
 
 @end

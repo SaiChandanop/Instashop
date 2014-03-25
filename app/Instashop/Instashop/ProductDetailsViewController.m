@@ -255,6 +255,10 @@
      UIBarButtonItem *deletBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:deleteButton];
      self.navigationItem.rightBarButtonItem = deletBarButtonItem;
      */
+ 
+    
+    if (self.isEdit)
+        [self resizeWithTextView:self.descriptionTextView];
     
     
 }
@@ -604,6 +608,8 @@
     self.descriptionTextView.textColor = [UIColor whiteColor];
     self.descriptionTextView.scrollEnabled = YES;
     
+    NSLog(@"textViewDidBeginEditing!");
+    
     
     
     
@@ -675,6 +681,7 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
+    NSLog(@"shouldChangeTextInRange!!!");
     if (textView == self.descriptionTextView)
     {
         if ([text compare:@"\n"] == NSOrderedSame)
@@ -721,6 +728,13 @@
     [self.navigationController popViewControllerAnimated:YES];
     //    [self.navigationController dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    NSLog(@"textFieldDidBeginEditingtextFieldDidBeginEditing textFieldDidBeginEditing");
+}
+
+
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {

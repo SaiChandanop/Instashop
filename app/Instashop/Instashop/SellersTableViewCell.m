@@ -15,6 +15,7 @@
 
 @synthesize sellerImageView;
 @synthesize sellerTextLabel;
+@synthesize urlString;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
 {
@@ -55,8 +56,17 @@
     
     NSDictionary *dataDictionary = [theDictionary objectForKey:@"data"];
     self.sellerTextLabel.text = [dataDictionary objectForKey:@"username"];
-    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[dataDictionary objectForKey:@"profile_picture"] withImageView:self.sellerImageView];
+    self.urlString = [dataDictionary objectForKey:@"profile_picture"];
+    [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.urlString withImageView:self.sellerImageView];
 }
+
+
+-(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
+{
+    if ([url compare:self.urlString] == NSOrderedSame)
+        self.sellerImageView.image = theImage;
+}
+
 
 
 

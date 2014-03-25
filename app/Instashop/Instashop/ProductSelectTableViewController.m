@@ -254,12 +254,13 @@
                 [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
                 break;
             case PRODUCT_REQUESTOR_TYPE_SEARCH:
-                
                 [SearchAPIHandler makeProductSearchRequestWithDelegate:self withSearchCategoriesArray:self.searchRequestObject.searchCategoriesArray withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
                 break;
                 
             case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER:
                 [ProductAPIHandler getSavedProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
+                break;
+                
             default:
                 break;
         }

@@ -89,7 +89,7 @@
 -(void)loadPrivate
 {
     self.profileImageView.image = [UIImage imageNamed:@"anonymous.png"];
-    self.usernameLabel.text = @"A Shopsy User";
+    self.usernameLabel.text = @"Someone on shopsy";
     self.messageLabel.text = [self.notificationsObject.message stringByReplacingOccurrencesOfString:[NSString stringWithFormat:@"%@",self.usernameLabel.text] withString:@""];
 //    self.messageLabel.text = [self.messageLabel.text substringFromIndex:1];
 }

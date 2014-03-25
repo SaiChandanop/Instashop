@@ -13,11 +13,13 @@
 {
     UIImageView *sellerImageView;
     UILabel *sellerTextLabel;
+    NSString *urlString;
 }
 
 - (void) loadWithDictionary:(NSDictionary *)theDictionary;
+- (void) imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage;
 
 @property (nonatomic, strong) UIImageView *sellerImageView;
 @property (nonatomic, strong) UILabel *sellerTextLabel;
-
+@property (nonatomic, strong) NSString *urlString;
 @end

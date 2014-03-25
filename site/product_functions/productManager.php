@@ -12,24 +12,28 @@ function deleteProductWithProductID($productID)
 		mysql_query($query);
 
 		$query = "delete from products_description where products_id = '$productID';";
+		mysql_query($query);
 	}
 }
 
 function editProductWithPost($_POST)
 {
-
-	$query = "update products_description set products_name='".$_POST["object_title"] ."', products_description='".$_POST["object_description"] ."', products_list_price='".$_POST["object_list_price"] ."' where products_id='".$_POST["edit_product_id"] . "'";
 	
-	echo "query: ". $query;
+	$query = "update products_description set products_description='".$_POST["object_description"] ."', products_external_url = '". $_POST["object_external_url"] ."' where products_id='".$_POST["edit_product_id"] . "'";
 	mysql_query($query);
 	
-	$query = "update products set products_price='".$_POST["object_price"] ."' where products_id = ".$_POST["edit_product_id"];
-	mysql_query($query);
 
 	$query = "delete from products_categories_and_sizes where product_id = '". $_POST["edit_product_id"] ."'";
 	mysql_query($query);
 
-	print_r($_POST);
+	
+	$edit_product_id = $_POST["edit_product_id"];
+
+	$categories = explode("!!", $_POST["object_categories"]);
+	print_r($categories);
+	$query = "insert into products_categories_and_sizes values ('','$edit_product_id','$quantity','$size','$categories[0]','$categories[1]','$categories[2]','$categories[3]','$categories[4]','$categories[5]','$categories[6]')";	
+	$result = mysql_query($query);
+
 }
 
 function editProductCategorySize($postObject)
@@ -54,6 +58,7 @@ function editProductCategorySize($postObject)
 
 $action = $_POST["action"];
 
+print_r($_POST);
 
 if ($action == "delete")
 	deleteProductWithProductID($_POST["product_id"]);

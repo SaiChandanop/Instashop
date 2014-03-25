@@ -15,6 +15,10 @@
 		$notification_type = 1;
 	else if (strcmp($_POST["type"], "social_facebook") == 0)
 		$notification_type = 2;
+	else if (strcmp($_POST["type"], "user_saved_product") == 0)
+		$notification_type = 3;
+	else if (strcmp($_POST["type"], "user_joined") == 0)
+		$notification_type = 4;
 
 	$find_instagram_query = "select * from sellers_products where product_id = '".	$_POST["product_id"] ."'";
 	$result = mysql_query($find_instagram_query);
