@@ -127,7 +127,7 @@
     
     
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-//    NSLog(@"getProductsRequestFinished, responseArray: %@", responseArray);
+    NSLog(@"getProductsRequestFinished, responseArray: %@", responseArray);
 
     if (responseArray == nil)
     {
