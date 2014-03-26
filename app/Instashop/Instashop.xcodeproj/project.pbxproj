@@ -7,8 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032E250318E1DF9B000875F9 /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */; };
 		0369D26B183338C400AA1C9F /* MediaLikedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369D26A183338C400AA1C9F /* MediaLikedObject.m */; };
 		038FCD051835BAA800EC50D5 /* NotificationsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 038FCD041835BAA800EC50D5 /* NotificationsAPIHandler.m */; };
+		03FA8C1F18E1E27C00AC6E46 /* InterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FA8C1E18E1E27C00AC6E46 /* InterestsViewController.m */; };
 		193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */; };
 		19D8329B186D45E200F062DD /* EnterEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D8329A186D45E200F062DD /* EnterEmailViewController.m */; };
 		19EE231B1811E5CB0007E475 /* FlagManagerAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 19EE231A1811DA9B0007E475 /* FlagManagerAPIHandler.m */; };
@@ -65,7 +67,6 @@
 		2E714CD017E28CCE00014413 /* search_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E714CCF17E28CCE00014413 /* search_cancel@2x.png */; };
 		2E796F8418A58365003FC3B4 /* anonymous.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E796F8318A58365003FC3B4 /* anonymous.png */; };
 		2E7CFF9717C3A98500657CFC /* gray_x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E7CFF9617C3A98500657CFC /* gray_x@2x.png */; };
-		2E7D71031893381A00EA648B /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */; };
 		2E8007C217D1631400489639 /* following_btn_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E8007C117D1631400489639 /* following_btn_background@2x.png */; };
 		2E9378EB184D200500476540 /* log_out_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9378E4184D200400476540 /* log_out_icon@2x.png */; };
 		2E9378EC184D200500476540 /* bug_icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9378E5184D200400476540 /* bug_icon@2x.png */; };
@@ -301,6 +302,8 @@
 		0369D26A183338C400AA1C9F /* MediaLikedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLikedObject.m; sourceTree = "<group>"; };
 		038FCD031835BAA800EC50D5 /* NotificationsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsAPIHandler.h; sourceTree = "<group>"; };
 		038FCD041835BAA800EC50D5 /* NotificationsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsAPIHandler.m; sourceTree = "<group>"; };
+		03FA8C1D18E1E27C00AC6E46 /* InterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestsViewController.h; sourceTree = "<group>"; };
+		03FA8C1E18E1E27C00AC6E46 /* InterestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestsViewController.m; sourceTree = "<group>"; };
 		193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTimeUserViewController.h; sourceTree = "<group>"; };
 		193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstTimeUserViewController.m; sourceTree = "<group>"; };
 		19D83299186D45E200F062DD /* EnterEmailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnterEmailViewController.h; sourceTree = "<group>"; };
@@ -732,9 +735,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				032E250318E1DF9B000875F9 /* libFlurry_4.3.1.a in Frameworks */,
 				7BF6903D189314DB0073C691 /* Security.framework in Frameworks */,
 				7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */,
-				2E7D71031893381A00EA648B /* libFlurry_4.3.1.a in Frameworks */,
 				7B337F08183AA92800E1BC0C /* AddressBook.framework in Frameworks */,
 				7B337F09183AA92800E1BC0C /* AddressBookUI.framework in Frameworks */,
 				7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */,
@@ -761,9 +764,19 @@
 			name = Notifications;
 			sourceTree = "<group>";
 		};
+		03FA8C1C18E1E25E00AC6E46 /* Interests */ = {
+			isa = PBXGroup;
+			children = (
+				03FA8C1D18E1E27C00AC6E46 /* InterestsViewController.h */,
+				03FA8C1E18E1E27C00AC6E46 /* InterestsViewController.m */,
+			);
+			name = Interests;
+			sourceTree = "<group>";
+		};
 		193433D317E0FCEE007744E6 /* FirstTimeUser */ = {
 			isa = PBXGroup;
 			children = (
+				03FA8C1C18E1E25E00AC6E46 /* Interests */,
 				7B0436AB18777ECD00C67282 /* EnterEmail */,
 				193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */,
 				193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */,
@@ -2116,6 +2129,7 @@
 				7BDED69A180C7A28001FF165 /* ViewBookmarkViewController.m in Sources */,
 				7BFAB83C189D6B2F00951C65 /* LocalNotificationView.m in Sources */,
 				7BE958F21755473400A7E0AB /* ProductAPIHandler.m in Sources */,
+				03FA8C1F18E1E27C00AC6E46 /* InterestsViewController.m in Sources */,
 				7B0691D118201D140083B1D9 /* CommentsTableViewController.m in Sources */,
 				7B989BCB17C267D7003559E0 /* ISAsynchImageView.m in Sources */,
 				7B0D254C17CBA36F00E43FA6 /* GKImageCropViewController.m in Sources */,
@@ -2290,10 +2304,11 @@
 					"$(inherited)",
 					/Users/jklobe/Desktop/Instashop/app/Instashop/Instashop,
 					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
+					"$(PROJECT_DIR)/Instashop",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				PROVISIONING_PROFILE = "9FE4248D-9AC2-4D11-A5A7-823A5FC7AB94";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9FE4248D-9AC2-4D11-A5A7-823A5FC7AB94";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2312,10 +2327,11 @@
 					"$(inherited)",
 					/Users/jklobe/Desktop/Instashop/app/Instashop/Instashop,
 					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
+					"$(PROJECT_DIR)/Instashop",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				PROVISIONING_PROFILE = "9FE4248D-9AC2-4D11-A5A7-823A5FC7AB94";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9FE4248D-9AC2-4D11-A5A7-823A5FC7AB94";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

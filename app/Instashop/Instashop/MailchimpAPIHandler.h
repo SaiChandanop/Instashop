@@ -10,5 +10,5 @@
 
 @interface MailchimpAPIHandler : RootAPIHandler
 
-+(void)makeMailchimpCallWithEmail:(NSString *)theEmail;
++(void)makeMailchimpCallWithEmail:(NSString *)theEmail withCategory:(NSString *)category;
 @end

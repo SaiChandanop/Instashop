@@ -12,7 +12,7 @@
 @implementation MailchimpAPIHandler
 
 
-+(void)makeMailchimpCallWithEmail:(NSString *)theEmail
++(void)makeMailchimpCallWithEmail:(NSString *)theEmail withCategory:(NSString *)category
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"shopsy_mailchimp_receiver.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -22,7 +22,8 @@
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"action=%@", @"submit_email"]];
     [postString appendString:[NSString stringWithFormat:@"&email=%@&", theEmail]];
-    [postString appendString:[NSString stringWithFormat:@"&instagram_username=%@&", [InstagramUserObject getStoredUserObject].username]];
+    [postString appendString:[NSString stringWithFormat:@"&instagram_username=%@", [InstagramUserObject getStoredUserObject].username]];
+    [postString appendString:[NSString stringWithFormat:@"&category=%@", category]];
 
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];

@@ -28,9 +28,9 @@
 @synthesize enterEmailView;
 @synthesize firstTimeUserViewController;
 @synthesize enterEmailTextField;
-@synthesize categoriesViewController;
 @synthesize categoriesLabel;
 @synthesize tosButton;
+@synthesize interestsViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -120,6 +120,7 @@
     [self validateContent];
 }
 
+/*
 -(void)categoriesViewControllerShouldRemove
 {
     [self.categoriesViewController.view removeFromSuperview];
@@ -140,21 +141,40 @@
     
     
 }
+ */
+
+-(void)interestsViewControllerShouldRemove
+{
+    [self.interestsViewController.view removeFromSuperview];
+    self.interestsViewController = nil;
+}
+
+
+-(void)categorySelectionCompleteWithString:(NSString *)theCategory
+{
+    self.categoriesLabel.text = theCategory;
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:.30];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(interestsViewControllerShouldRemove)];
+    self.interestsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.interestsViewController.view.frame.size.width, self.interestsViewController.view.frame.size.height);
+    [UIView commitAnimations];
+    
+    [self validateContent];
+}
 
 -(IBAction)categoriesButtonHit
 {
     [self.enterEmailTextField resignFirstResponder];
     
-    self.categoriesViewController = [[CategoriesViewController alloc] initWithNibName:nil bundle:nil];
-    self.categoriesViewController.categoriesType = CATEGORIES_TYPE_PRODUCT;
-    self.categoriesViewController.potentialCategoriesArray = [[AttributesManager getSharedAttributesManager] getCategoriesWithArray:[NSArray array]];
-    self.categoriesViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
-    self.categoriesViewController.parentController = self;
-    [self.view addSubview:self.categoriesViewController.view];
+    self.interestsViewController = [[InterestsViewController alloc] initWithNibName:nil bundle:nil];
+    self.interestsViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.interestsViewController.theParentController = self;
+    [self.view addSubview:self.interestsViewController.view];
     
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:.30];
-    self.categoriesViewController.view.frame = CGRectMake(0, 0, self.categoriesViewController.view.frame.size.width, self.categoriesViewController.view.frame.size.height);
+    self.interestsViewController.view.frame = CGRectMake(0, 0, self.interestsViewController.view.frame.size.width, self.interestsViewController.view.frame.size.height);
     [UIView commitAnimations];
 
     

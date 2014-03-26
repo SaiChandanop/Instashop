@@ -173,7 +173,7 @@
         if ([self validateEmail:self.enterEmailViewController.enterEmailTextField.text])
         {
             [self closeTutorial];
-            [MailchimpAPIHandler makeMailchimpCallWithEmail:self.enterEmailViewController.enterEmailTextField.text];
+            [MailchimpAPIHandler makeMailchimpCallWithEmail:self.enterEmailViewController.enterEmailTextField.text withCategory:self.enterEmailViewController.categoriesLabel.text];
         }
         else
         {

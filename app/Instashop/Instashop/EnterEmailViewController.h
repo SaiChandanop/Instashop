@@ -8,12 +8,12 @@
 
 #import <UIKit/UIKit.h>
 #import "CategoriesViewController.h"
-
+#import "InterestsViewController.h"
 @class FirstTimeUserViewController;
 
 @interface EnterEmailViewController : UIViewController <UITextFieldDelegate>
 {
-    CategoriesViewController *categoriesViewController;
+    InterestsViewController *interestsViewController;
     UILabel *categoriesLabel;
     UIButton *tosButton;
 }
@@ -21,12 +21,14 @@
 -(IBAction)tosLinkButtonHit;
 -(IBAction)categoriesButtonHit;
 -(IBAction)tosButtonHit;
+-(void)categorySelectionCompleteWithString:(NSString *)theCategory;
 
+
+@property (nonatomic, strong) InterestsViewController *interestsViewController;
 @property (nonatomic, strong) FirstTimeUserViewController *firstTimeUserViewController;
 @property (nonatomic, strong) IBOutlet UIView *enterEmailView;
 @property (nonatomic, strong) IBOutlet UITextField *enterEmailTextField;
 @property (nonatomic, strong) IBOutlet UILabel *categoriesLabel;
 @property (nonatomic, strong) IBOutlet UIButton *tosButton;
-@property (nonatomic, strong) CategoriesViewController *categoriesViewController;
 
 @end
