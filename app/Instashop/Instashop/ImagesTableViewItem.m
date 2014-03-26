@@ -104,7 +104,7 @@
             }
         }
         
-        NSLog(@"self.imageProductURL: %@", self.imageProductURL);
+//        NSLog(@"self.imageProductURL: %@", self.imageProductURL);
         if (self.imageProductURL != nil)
             [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
 //            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:self.contentImageView];

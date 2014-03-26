@@ -16,7 +16,7 @@
 #import "InstagramUserObject.h"
 #import "SearchAPIHandler.h"
 #import "PaginationAPIHandler.h"
-
+#import "ProfileViewController.h"
 #import "CacheManager.h"
 
 @interface ProductSelectTableViewController ()
@@ -25,7 +25,7 @@
 
 @implementation ProductSelectTableViewController
 
-
+@synthesize profileViewController;
 @synthesize checkCountup;
 @synthesize cacheArray;
 @synthesize loaded;
@@ -119,6 +119,9 @@
             [self.refreshControl endRefreshing];
             
         }
+        
+        
+        
     }
     
     
@@ -311,6 +314,9 @@
 //    NSLog(@"contentArray: %@", contentArray);
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
+    
+    if (self.profileViewController != nil)
+        [self.profileViewController tableViewControllerDidLoadWithController:self];
 }
 
 NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {

@@ -70,6 +70,8 @@
 
 -(IBAction)followOnInstagramButtonHit;
 
+-(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController;
+
 @property (nonatomic, strong) IBOutlet UIScrollView *enclosingScrollView;
 
 @property (nonatomic, strong) NSString *profileInstagramID;

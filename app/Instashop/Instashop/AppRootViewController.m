@@ -114,10 +114,7 @@ float transitionTime = .256;
 
     [self runTutorialIfAppropriate];
     
-//    [[PullAccountHandler alloc] pullAccount];
 }
-
-
 
 - (void) runTutorialIfAppropriate {
     

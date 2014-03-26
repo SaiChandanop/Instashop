@@ -10,6 +10,8 @@
 #import "ObjectSelectTableViewController.h"
 #import "JKProgressView.h"
 
+@class ProfileViewController;
+
 @interface ProductSelectTableViewController : ObjectSelectTableViewController
 {
     int checkCountup;
@@ -17,6 +19,7 @@
     BOOL loaded;
     JKProgressView *jkProgressView;
     float offsetJKProgressView;
+    ProfileViewController *profileViewController;
 }
 
 -(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary;
@@ -25,6 +28,6 @@
 @property (nonatomic, strong) NSMutableArray *cacheArray;
 @property (nonatomic, assign) BOOL loaded;
 @property (nonatomic, strong) JKProgressView *jkProgressView;
-
+@property (nonatomic, strong) ProfileViewController *profileViewController;
 @property (nonatomic, assign) float offsetJKProgressView;
 @end

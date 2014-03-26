@@ -151,6 +151,25 @@
     [self.view bringSubviewToFront:self.profileImageView];
 }
 
+-(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
+{
+    NSLog(@"tableViewControllerDidLoadWithController !: %@", theProductSelectTableViewController);
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    int count = [theProductSelectTableViewController.contentArray count];
+    float height = [theProductSelectTableViewController tableView:theProductSelectTableViewController.tableView heightForRowAtIndexPath:indexPath];
+    
+    //NSLog(@"theProductSelectTableViewController.contentArray: %@", theProductSelectTableViewController.contentArray);
+    NSLog(@"count: %d", count);
+    NSLog(@"height: %f", height);
+    
+    theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, count * height);
+    theProductSelectTableViewController.tableView.scrollEnabled = NO;
+    self.enclosingScrollView.contentSize = CGSizeMake(0, theProductSelectTableViewController.tableView.frame.origin.y + theProductSelectTableViewController.tableView.frame.size.height);
+}
+
+
+
 
 -(void)moreButtonHit
 {
@@ -270,12 +289,14 @@
         [appDelegate.instagram requestWithParams:params delegate:self];
         
         self.productSelectTableViewController.cellDelegate = self;
+        self.productSelectTableViewController.profileViewController = self;
         self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
         self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
         [self.productSelectTableViewController refreshContent];
         
         self.favoritesSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
         self.favoritesSelectTableViewController.tableView.frame = self.productSelectTableViewController.tableView.frame;
+        self.favoritesSelectTableViewController.profileViewController = self;
         self.favoritesSelectTableViewController.cellDelegate = self;
         self.favoritesSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
         self.favoritesSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
@@ -517,6 +538,18 @@
     self.favoritesButton.selected = NO;
     
     [self animateSellerButton:self.productsButton];
+    
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    ProductSelectTableViewController *theProductSelectTableViewController = self.productSelectTableViewController;
+    int count = [theProductSelectTableViewController.contentArray count];
+    float height = [theProductSelectTableViewController tableView:theProductSelectTableViewController.tableView heightForRowAtIndexPath:indexPath];
+    
+    theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, count * height);
+    theProductSelectTableViewController.tableView.scrollEnabled = NO;
+    self.enclosingScrollView.contentSize = CGSizeMake(0, theProductSelectTableViewController.tableView.frame.origin.y + theProductSelectTableViewController.tableView.frame.size.height);
+    
+    
 }
 
 
@@ -599,7 +632,7 @@
 
     [self.view bringSubviewToFront:self.editButton];
     
-    
+    self.enclosingScrollView.contentSize = CGSizeMake(0, self.editButton.frame.origin.y + self.editButton.frame.size.height);
 }
 
 -(IBAction)favoritesButtonHit
@@ -633,6 +666,19 @@
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;
     }
+    
+    
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    ProductSelectTableViewController *theProductSelectTableViewController = self.favoritesSelectTableViewController;
+    int count = [theProductSelectTableViewController.contentArray count];
+    float height = [theProductSelectTableViewController tableView:theProductSelectTableViewController.tableView heightForRowAtIndexPath:indexPath];
+    
+    theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, count * height);
+    theProductSelectTableViewController.tableView.scrollEnabled = NO;
+    self.enclosingScrollView.contentSize = CGSizeMake(0, theProductSelectTableViewController.tableView.frame.origin.y + theProductSelectTableViewController.tableView.frame.size.height);
+    
+    
 }
 
 
