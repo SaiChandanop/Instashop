@@ -449,8 +449,9 @@
     
     self.viewsValueLabel.text = [self.reportDictionary objectForKey:@"viewed"];
     self.shopsyValueLabel.text = [self.reportDictionary objectForKey:@"liked"];
-//    self.instagramValueLabel.text = [self.reportDictionary objectForKey:@"liked"];
-//    self.instagramValueLabel.text = @">>>";
+    
+    self.saveAnalyticsLabel.textColor = self.purchaseButton.backgroundColor;
+    self.buyAnalyticsLabel.textColor = self.saveButton.backgroundColor;
     
     
     /*
@@ -459,6 +460,7 @@
      [bought] => 1
      [liked] => 0
      */
+
     
 }
 
