@@ -41,7 +41,7 @@
 
 +(void)makeAmberSupportedSiteCallWithReference:(NSString *)referenceURLString withResponseDelegate:(id)delegate
 {
-    
+    NSLog(@"makeAmberSupportedSiteCallWithReference!!!!");
     NSString *urlRequestString = @"https://api.twotap.com/v1.0/supported_sites";
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     AmberAPIHandler *apiHandler = [[AmberAPIHandler alloc] init];

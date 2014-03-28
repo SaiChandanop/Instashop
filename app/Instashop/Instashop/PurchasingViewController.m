@@ -73,12 +73,22 @@
 @synthesize descriptionContentSizeSet;
 @synthesize descriptionContentSize;
 @synthesize profileContainerView;
-
+@synthesize ownedProfileContainerView;
 @synthesize buyAnalyticsLabel;
 @synthesize saveAnalyticsLabel;
-@synthesize viewedAnalyticsLabel;
-@synthesize viewedAnalyticsImageView;
 @synthesize reportDictionary;
+
+
+@synthesize viewsTitleLabel;
+@synthesize viewsImageView;
+@synthesize viewsValueLabel;
+@synthesize shopsyTitleLabel;
+@synthesize shopsyImageView;
+@synthesize shopsyValueLabel;
+@synthesize instagramTitleLabel;
+@synthesize instagramImageView;
+@synthesize instagramValueLabel;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -139,9 +149,6 @@
     
     self.buyAnalyticsLabel.alpha = 0;
     self.saveAnalyticsLabel.alpha = 0;
-    self.viewedAnalyticsLabel.alpha = 0;
-    self.viewedAnalyticsImageView.alpha = 0;
-
     
     [Utils conformViewControllerToMaxSize:self];
     
@@ -355,10 +362,8 @@
     
     [self setViewSpacing];
     
-    NSLog(@"!!requestedProductObject: %@", self.requestedProductObject);
  
-    //-(void)makeViewedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID;
-    
+
     NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
     NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
     NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
@@ -387,28 +392,67 @@
 {
     NSLog(@"presentAnalytics!");
     
+    
+    self.ownedProfileContainerView.frame = CGRectMake(self.profileContainerView.frame.origin.x, self.profileContainerView.frame.origin.y, self.profileContainerView.frame.size.width, self.profileContainerView.frame.size.height);
+    [self.profileContainerView removeFromSuperview];
+    [self.sellerLabel removeFromSuperview];
+    [self.likesLabel removeFromSuperview];
+    [self.sellerProfileImageView removeFromSuperview];
+    [self.heartImageView removeFromSuperview];
+     
+    [self.contentScrollView addSubview:self.ownedProfileContainerView];
+    
+    
     [ShopsyAnalyticsAPIHandler makeAnalyticsReportCallWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withDelegate:self];
 }
 
 -(void)reportDidCompleteWithDictionary:(NSDictionary *)dict
 {
-    self.reportDictionary = [[NSDictionary alloc] initWithDictionary:dict];
+    
     NSLog(@"reportDidCompleteWithDictionary: %@", reportDictionary);
+    
+    self.reportDictionary = [[NSDictionary alloc] initWithDictionary:dict];
+    
     
     self.buyAnalyticsLabel.alpha = 1;
     self.saveAnalyticsLabel.alpha = 1;
-    self.viewedAnalyticsLabel.alpha = 1;
-    self.viewedAnalyticsImageView.alpha = 1;
-
     self.buyAnalyticsLabel.text = [self.reportDictionary objectForKey:@"bought"];
     self.saveAnalyticsLabel.text = [self.reportDictionary objectForKey:@"saved"];
-    self.viewedAnalyticsLabel.text = [self.reportDictionary objectForKey:@"viewed"];
-
     
-    if ([self.likesLabel.text rangeOfString:@"Likes"].length == 0 && [self.likesLabel.text rangeOfString:@"Likes"].length > 0)
-    {
-        NSLog(@"asdf");
-    }
+    
+    
+    
+    self.viewsTitleLabel.textColor = [UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:1];
+    self.viewsTitleLabel.font = [UIFont systemFontOfSize:20 / 2];
+    
+    self.shopsyTitleLabel.textColor = self.viewsTitleLabel.textColor;
+    self.shopsyTitleLabel.font = self.viewsTitleLabel.font;
+    
+    self.instagramTitleLabel.textColor = self.viewsTitleLabel.textColor;
+    self.instagramTitleLabel.font = self.viewsTitleLabel.font;
+    
+    
+    self.viewsImageView.image = [UIImage imageNamed:@"eye.png"];
+    self.shopsyImageView.image = [UIImage imageNamed:@"greenheart.png"];
+    self.instagramImageView.image = [UIImage imageNamed:@"redheart.png"];
+    
+    
+    self.viewsValueLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1];
+    self.shopsyValueLabel.textColor = self.viewsValueLabel.textColor;
+    self.instagramValueLabel.textColor = self.viewsValueLabel.textColor;
+    
+    self.viewsValueLabel.font = [UIFont systemFontOfSize:28.0f / 2];
+    self.shopsyValueLabel.font = self.viewsValueLabel.font;
+    self.instagramValueLabel.font = self.viewsValueLabel.font;
+    
+    
+    
+    self.viewsValueLabel.text = [self.reportDictionary objectForKey:@"viewed"];
+    self.shopsyValueLabel.text = [self.reportDictionary objectForKey:@"liked"];
+//    self.instagramValueLabel.text = [self.reportDictionary objectForKey:@"liked"];
+//    self.instagramValueLabel.text = @">>>";
+    
+    
     /*
      [viewed] => 13
      [saved] => 0
@@ -470,6 +514,8 @@
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
+        
+        NSLog(@"!@!!!*U(*@&#$(*@&#$(*@&#$(*&@#($*&@#(*$&");
     }
     else if ([request.url rangeOfString:@"media"].length > 0)
     {
@@ -489,6 +535,9 @@
             self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
         
         
+        NSLog(@"[[likesDict objectForKey:@\"count\"]!!!!!: %@", [likesDict objectForKey:@"count"]);
+                                                                 
+        self.instagramValueLabel.text = [NSString stringWithFormat:@"%d", [[likesDict objectForKey:@"count"] integerValue]];
     }
     
     
@@ -561,7 +610,6 @@
 {    
     self.JKProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading..."];
 
-    
     self.isBuying = YES;
     if (self.viglinkString == nil)
         [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
@@ -623,7 +671,7 @@
 -(void)bitlyCallDidRespondWIthShortURLString:(NSString *)shortURLString
 {
     
-//    NSLog(@"bitlyCallDidRespondWIthShortURLString: %@", shortURLString);
+    NSLog(@"bitlyCallDidRespondWIthShortURLString: %@", shortURLString);
     if (shortURLString != nil)
         self.viglinkString = shortURLString;
     

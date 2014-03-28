@@ -82,10 +82,24 @@
     
     UILabel *buyAnalyticsLabel;
     UILabel *saveAnalyticsLabel;
-    UILabel *viewedAnalyticsLabel;
-    UIImageView *viewedAnalyticsImageView;
-    
     NSDictionary *reportDictionary;
+    
+    
+    
+    UIView *ownedProfileContainerView;
+    
+    UILabel *viewsTitleLabel;
+    UIImageView *viewsImageView;
+    UILabel *viewsValueLabel;
+    
+    UILabel *shopsyTitleLabel;
+    UIImageView *shopsyImageView;
+    UILabel *shopsyValueLabel;
+    
+    UILabel *instagramTitleLabel;
+    UIImageView *instagramImageView;
+    UILabel *instagramValueLabel;
+    
     
 }
 
@@ -170,8 +184,21 @@
 
 @property (nonatomic, strong) IBOutlet UILabel *buyAnalyticsLabel;
 @property (nonatomic, strong) IBOutlet UILabel *saveAnalyticsLabel;
-@property (nonatomic, strong) IBOutlet UILabel *viewedAnalyticsLabel;
-@property (nonatomic, strong) IBOutlet UIImageView *viewedAnalyticsImageView;
-
 @property (nonatomic, strong) NSDictionary *reportDictionary;
+
+
+@property (nonatomic, strong) IBOutlet UIView *ownedProfileContainerView;
+
+@property (nonatomic, strong) IBOutlet UILabel *viewsTitleLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *viewsImageView;
+@property (nonatomic, strong) IBOutlet UILabel *viewsValueLabel;
+
+@property (nonatomic, strong) IBOutlet UILabel *shopsyTitleLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *shopsyImageView;
+@property (nonatomic, strong) IBOutlet UILabel *shopsyValueLabel;
+
+@property (nonatomic, strong) IBOutlet UILabel *instagramTitleLabel;
+@property (nonatomic, strong) IBOutlet UIImageView *instagramImageView;
+@property (nonatomic, strong) IBOutlet UILabel *instagramValueLabel;
+
 @end
