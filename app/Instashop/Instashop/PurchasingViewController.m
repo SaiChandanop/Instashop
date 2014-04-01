@@ -1049,7 +1049,9 @@
         
         //UIImage *photoImage = self.imageView.image;
         
-        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsy"];
+        //NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsy"];
+        NSString *postText = [NSString stringWithFormat:@"%@ via %@ %@", @"Find this product on Shopsy", self.viglinkString, @"@shopsy"];
+        
         [facebookController setInitialText:postText];
         //[facebookController addImage:photoImage];
         [facebookController addURL:[NSURL URLWithString:self.viglinkString]];
@@ -1088,7 +1090,10 @@
         UIImage *photoImage = self.imageView.image;
         
         
-        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsyapp"];
+//        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsyapp"];
+        NSString *postText = [NSString stringWithFormat:@"%@ via %@ %@", @"Find this product on Shopsy", self.viglinkString, @"@shopsy"];
+        
+        
         [tweetController setInitialText:postText];
         [tweetController addImage:photoImage];
         [tweetController addURL:[NSURL URLWithString:self.viglinkString]];
