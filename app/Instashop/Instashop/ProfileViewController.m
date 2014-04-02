@@ -155,20 +155,27 @@
 {
     NSLog(@"tableViewControllerDidLoadWithController !: %@", theProductSelectTableViewController);
     
+    [self resizeTableViewWithContentArrayWithController:theProductSelectTableViewController];
+    
+}
+
+-(void)resizeTableViewWithContentArrayWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
+{
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     int count = [theProductSelectTableViewController.contentArray count];
     float height = [theProductSelectTableViewController tableView:theProductSelectTableViewController.tableView heightForRowAtIndexPath:indexPath];
     
-    //NSLog(@"theProductSelectTableViewController.contentArray: %@", theProductSelectTableViewController.contentArray);
-    NSLog(@"count: %d", count);
-    NSLog(@"height: %f", height);
-    
-    theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, count * height);
-    theProductSelectTableViewController.tableView.scrollEnabled = NO;
-    self.enclosingScrollView.contentSize = CGSizeMake(0, theProductSelectTableViewController.tableView.frame.origin.y + theProductSelectTableViewController.tableView.frame.size.height);
+    if (height > self.enclosingScrollView.frame.size.height)
+    {
+        //NSLog(@"theProductSelectTableViewController.contentArray: %@", theProductSelectTableViewController.contentArray);
+        NSLog(@"count: %d", count);
+        NSLog(@"height: %f", height);
+        
+        theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, count * height);
+        theProductSelectTableViewController.tableView.scrollEnabled = NO;
+        self.enclosingScrollView.contentSize = CGSizeMake(0, theProductSelectTableViewController.tableView.frame.origin.y + theProductSelectTableViewController.tableView.frame.size.height);
+    }
 }
-
-
 
 
 -(void)moreButtonHit
@@ -540,16 +547,8 @@
     [self animateSellerButton:self.productsButton];
     
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    ProductSelectTableViewController *theProductSelectTableViewController = self.productSelectTableViewController;
-    int count = [theProductSelectTableViewController.contentArray count];
-    float height = [theProductSelectTableViewController tableView:theProductSelectTableViewController.tableView heightForRowAtIndexPath:indexPath];
-    
-    theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, count * height);
-    theProductSelectTableViewController.tableView.scrollEnabled = NO;
-    self.enclosingScrollView.contentSize = CGSizeMake(0, theProductSelectTableViewController.tableView.frame.origin.y + theProductSelectTableViewController.tableView.frame.size.height);
-    
-    
+    [self resizeTableViewWithContentArrayWithController:self.productSelectTableViewController];
+        
 }
 
 
