@@ -165,7 +165,8 @@
     int count = [theProductSelectTableViewController.contentArray count];
     float height = [theProductSelectTableViewController tableView:theProductSelectTableViewController.tableView heightForRowAtIndexPath:indexPath];
     
-    if (height > self.enclosingScrollView.frame.size.height)
+    if (count > 5)
+//    if (height > self.enclosingScrollView.frame.size.height)
     {
         //NSLog(@"theProductSelectTableViewController.contentArray: %@", theProductSelectTableViewController.contentArray);
         NSLog(@"count: %d", count);
