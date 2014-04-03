@@ -16,8 +16,6 @@
                 <outlet property="enclosingScrollView" destination="s4c-jH-cDN" id="YFl-ew-Ew6"/>
                 <outlet property="favoritesButton" destination="ZNf-Le-k0Y" id="mT8-ig-bxb"/>
                 <outlet property="followButton" destination="Eqt-pa-nKB" id="eaN-xw-iQA"/>
-                <outlet property="followersButton" destination="H1J-CS-VbE" id="fMQ-xa-6Vw"/>
-                <outlet property="followingButton" destination="DYI-p3-sgk" id="9gy-FK-cd3"/>
                 <outlet property="imagePickButton" destination="TvE-Jz-6Ul" id="wZE-kY-wOI"/>
                 <outlet property="infoButton" destination="YZG-hB-owP" id="mIl-gK-fo0"/>
                 <outlet property="infoContainerScrollView" destination="z26-Ac-txH" id="sDF-9T-NOB"/>
@@ -40,7 +38,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover-default.jpg" id="uUu-tP-DTR">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="152"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_shadow.png" id="d5h-vJ-PI0">
@@ -59,40 +57,8 @@
                                 <action selector="imagePickButtonHit" destination="-1" eventType="touchUpInside" id="Xeg-ae-iYH"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" id="qRD-ab-63B" userLabel="View - Followers Following">
-                            <rect key="frame" x="0.0" y="152" width="320" height="40"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Menu_BG.png" id="52k-ZF-ets">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instagram_gray_icon.png" id="6oo-gD-xW5">
-                                    <rect key="frame" x="100" y="-2" width="44" height="44"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                </imageView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="DYI-p3-sgk">
-                                    <rect key="frame" x="232" y="0.0" width="88" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    <state key="normal">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="H1J-CS-VbE">
-                                    <rect key="frame" x="138" y="0.0" width="88" height="40"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                    <state key="normal">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                </button>
-                            </subviews>
-                        </view>
                         <view contentMode="scaleToFill" id="Mg9-br-9gn" userLabel="View - Seller Content Buttons">
-                            <rect key="frame" x="0.0" y="192" width="320" height="52"/>
+                            <rect key="frame" x="0.0" y="112" width="320" height="52"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Menu_BG.png" id="Ru4-Ex-NbS">
@@ -165,13 +131,13 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="RHM-oM-kVi">
-                            <rect key="frame" x="6" y="86" width="98" height="98"/>
+                            <rect key="frame" x="6" y="27" width="98" height="98"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Be8-Z5-0ND">
-                            <rect key="frame" x="112" y="124" width="202" height="26"/>
+                            <rect key="frame" x="112" y="39" width="202" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -180,7 +146,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="z26-Ac-txH">
-                            <rect key="frame" x="0.0" y="239" width="320" height="263"/>
+                            <rect key="frame" x="0.0" y="164" width="320" height="263"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="tmS-DX-g9M">
@@ -231,7 +197,7 @@
                             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                         </scrollView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mlb-xD-ESb">
-                            <rect key="frame" x="0.0" y="244" width="320" height="263"/>
+                            <rect key="frame" x="0.0" y="169" width="320" height="263"/>
                             <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -240,7 +206,7 @@
                             </connections>
                         </tableView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eqt-pa-nKB">
-                            <rect key="frame" x="6" y="61" width="98" height="20"/>
+                            <rect key="frame" x="6" y="2" width="98" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -252,6 +218,11 @@
                                 <action selector="followOnInstagramButtonHit" destination="-1" eventType="touchUpInside" id="Nut-Ut-Hhn"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" id="8To-bo-Eb5">
+                            <rect key="frame" x="112" y="73" width="208" height="31"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        </view>
                     </subviews>
                 </scrollView>
             </subviews>
@@ -270,6 +241,12 @@
                 <outlet property="view" destination="Mlb-xD-ESb" id="hWd-Hc-3Ja"/>
             </connections>
         </tableViewController>
+        <view contentMode="scaleToFill" id="q7L-PC-b2w">
+            <rect key="frame" x="0.0" y="0.0" width="197" height="33"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+        </view>
     </objects>
     <resources>
         <image name="Menu_BG.png" width="320" height="548"/>
@@ -278,7 +255,6 @@
         <image name="edit_photo.png" width="50" height="50"/>
         <image name="follow_btn_background.png" width="98" height="20"/>
         <image name="following_btn_background.png" width="98" height="20"/>
-        <image name="instagram_gray_icon.png" width="44" height="44"/>
         <image name="lightMenuBG.png" width="320" height="548"/>
         <image name="menuDarkBG.png" width="320" height="44"/>
         <image name="menuLightBG.png" width="320" height="44"/>

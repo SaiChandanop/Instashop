@@ -52,8 +52,6 @@
 @synthesize infoContainerScrollView;
 @synthesize productSelectTableViewController;
 @synthesize theTableView;
-@synthesize followersButton;
-@synthesize followingButton;
 @synthesize profileBackgroundPhotoButton;
 @synthesize titleViewLabel;
 @synthesize isSelfProfile;
@@ -454,6 +452,8 @@
 {
     NSLog(@"loadViewsWithRequestedProfileObject");
     
+
+    
     self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
     self.usernameLabel.text = [self.requestedInstagramProfileObject objectForKey:@"full_name"];
     [self setTitleViewText:[self.requestedInstagramProfileObject objectForKey:@"username"]];
@@ -461,10 +461,14 @@
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedInstagramProfileObject objectForKey:@"profile_picture"] withImageView:self.profileImageView];
     
     NSDictionary *countsDictionary = [self.requestedInstagramProfileObject objectForKey:@"counts"];
-    [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
-    [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
+
     
-    
+    NSLog(@"josh set followers value here");
+    NSLog(@"josh set follows value here");
+
+    /*
+     
+     
     UIFont *theFont = self.followersButton.titleLabel.font;
     while ([[self.followersButton titleForState:UIControlStateNormal] sizeWithAttributes:@{NSFontAttributeName:theFont}].width > followingButton.frame.size.width)
         theFont = [theFont fontWithSize:theFont.pointSize - 1];
@@ -485,6 +489,11 @@
     self.followingButton.titleLabel.font = [theFont fontWithSize:minFont];
     self.followersButton.titleLabel.font = [theFont fontWithSize:minFont];
     
+     
+     //    [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
+     //    [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
+
+     */
     
     
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
@@ -532,8 +541,6 @@
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
-    
-    NSLog(@"result: %@", result);
     
     NSDictionary *resultDict = (NSDictionary *)result;
     if (resultDict != nil)

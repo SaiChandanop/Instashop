@@ -28,8 +28,6 @@
 {
     self = [super init];
     
-    
-    NSLog(@"theDict: %@", theDict);
     self.bio = [theDict objectForKey:@"bio"];
     self.counts = [theDict objectForKey:@"counts"];
     self.fullName = [theDict objectForKey:@"full_name"];
