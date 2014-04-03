@@ -16,10 +16,9 @@
     InterestsViewController *interestsViewController;
     FirstTimeUserViewController *firstTimeUserViewController;
     UILabel *categoriesLabel;
+    UITextField *enterNameTextField;
     UIButton *tosButton;
-    
     UISegmentedControl *theSegmentedControl;
-    
     UIView *tosContainerView;
 }
 
@@ -32,6 +31,7 @@
 @property (nonatomic, strong) InterestsViewController *interestsViewController;
 @property (nonatomic, strong) FirstTimeUserViewController *firstTimeUserViewController;
 @property (nonatomic, strong) IBOutlet UIView *enterEmailView;
+@property (nonatomic, strong) IBOutlet UITextField *enterNameTextField;
 @property (nonatomic, strong) IBOutlet UITextField *enterEmailTextField;
 @property (nonatomic, strong) IBOutlet UILabel *categoriesLabel;
 @property (nonatomic, strong) IBOutlet UIButton *tosButton;

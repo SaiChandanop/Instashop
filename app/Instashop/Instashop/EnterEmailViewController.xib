@@ -10,6 +10,8 @@
                 <outlet property="categoriesLabel" destination="rFJ-QM-kfp" id="qTj-cI-FUI"/>
                 <outlet property="enterEmailTextField" destination="dbo-Co-phG" id="oeI-EL-Hw2"/>
                 <outlet property="enterEmailView" destination="Wav-bq-GnA" id="T1g-D8-eIL"/>
+                <outlet property="enterNameTextField" destination="ztr-5B-A0F" id="INb-i3-pMz"/>
+                <outlet property="theSegmentedControl" destination="SWX-YB-sF6" id="Rwg-Ca-GiF"/>
                 <outlet property="tosButton" destination="YZI-3t-wHN" id="xwy-H7-ZDr"/>
                 <outlet property="tosContainerView" destination="yQH-dx-Waq" id="LQZ-kJ-iUF"/>
                 <outlet property="view" destination="1" id="1Xa-S9-8Kn"/>

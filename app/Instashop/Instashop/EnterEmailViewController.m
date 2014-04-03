@@ -33,6 +33,8 @@
 @synthesize interestsViewController;
 @synthesize theSegmentedControl;
 @synthesize tosContainerView;
+@synthesize enterNameTextField;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -54,6 +56,7 @@
 	// Do any additional setup after loading the view.
     
     self.enterEmailTextField.delegate = self;
+    self.enterNameTextField.delegate = self;
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
@@ -241,6 +244,9 @@
 }
 
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.enterEmailTextField resignFirstResponder];
+}
 
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
@@ -251,19 +257,15 @@
 }
 
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.enterEmailTextField resignFirstResponder];
-}
-
 - (void) textFieldDidBeginEditing:(UITextField *)textField {
-    self.enterEmailTextField.placeholder = nil;
+    textField.placeholder = nil;
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
     if ([textField.text length] == 0) {
         [self.enterEmailTextField setPlaceholder:@"Email"];
     }
-    [self.enterEmailTextField endEditing:YES];
+    [textField endEditing:YES];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {

@@ -175,12 +175,14 @@
 
 -(void)nextButtonHit
 {
+    NSLog(@"[self.enterEmailViewController.theSegmentedControl titleForSegmentAtIndex:self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex]: %@", [self.enterEmailViewController.theSegmentedControl titleForSegmentAtIndex:self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex]);
+    NSLog(@"self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex: %d", self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex);
     if (self.emailComplete)
     {
         if ([self validateEmail:self.enterEmailViewController.enterEmailTextField.text])
         {
             [self closeTutorial];
-            [MailchimpAPIHandler makeMailchimpCallWithEmail:self.enterEmailViewController.enterEmailTextField.text withCategory:self.enterEmailViewController.categoriesLabel.text];
+            [MailchimpAPIHandler makeMailchimpCallWithEmail:self.enterEmailViewController.enterEmailTextField.text withCategory:[self.enterEmailViewController.theSegmentedControl titleForSegmentAtIndex:self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex]  withName:self.enterEmailViewController.enterNameTextField.text];
         }
         else
         {
