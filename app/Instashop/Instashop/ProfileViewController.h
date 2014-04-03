@@ -59,6 +59,11 @@
     UIButton *imagePickButton;
     
     GKImagePicker *imagePicker;
+    
+    UIView *infoWebContainerView;
+    UILabel *webLabel;
+    
+    NSString *siteString;
 }
 
 -(void)loadNavigationControlls;
@@ -123,6 +128,9 @@
 
 @property (nonatomic, strong) GKImagePicker *imagePicker;
 
+@property (nonatomic, strong) IBOutlet UIView *infoWebContainerView;
+@property (nonatomic, strong) UILabel *webLabel;
+@property (nonatomic, strong) NSString *siteString;
 
 
 @end

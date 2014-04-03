@@ -8,6 +8,7 @@
 
 #import "ProfileViewController.h"
 #import "AppDelegate.h"
+#import "AppRootViewController.h"
 #import "ImageAPIHandler.h"
 #import "ImagesTableViewCell.h"
 #import "ProductAPIHandler.h"
@@ -23,6 +24,7 @@
 #import "SocialManager.h"
 #import "Flurry.h"
 #import "CacheManager.h"
+
 @interface ProfileViewController ()
 
 @end
@@ -68,6 +70,9 @@
 @synthesize hasAppeared;
 @synthesize editButton;
 @synthesize imagePicker;
+@synthesize infoWebContainerView;
+@synthesize webLabel;
+@synthesize siteString;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -128,27 +133,77 @@
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
-                                      style:UIBarButtonItemStyleBordered
-                                     target:nil
-                                     action:nil];
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
     
     NSLog(@"begin profile view controller");
-
+    
     /*
-    if ([UIScreen mainScreen].bounds.size.height == 480)
-    {
-        [self.editButton removeFromSuperview];
-        self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 64, self.editButton.frame.size.width, self.editButton.frame.size.height);
-        [self.view addSubview:self.editButton];
-        self.editButton.alpha = 0;
-    }
-    NSLog(@"self.editButton: %@", self.editButton);
+     if ([UIScreen mainScreen].bounds.size.height == 480)
+     {
+     [self.editButton removeFromSuperview];
+     self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 64, self.editButton.frame.size.width, self.editButton.frame.size.height);
+     [self.view addSubview:self.editButton];
+     self.editButton.alpha = 0;
+     }
+     NSLog(@"self.editButton: %@", self.editButton);
      */
-  
+    
     
     [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:self.profileInstagramID];
-    
     [self.view bringSubviewToFront:self.profileImageView];
+    
+    self.webLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 100, self.infoWebContainerView.frame.size.height - 2)];
+    self.webLabel.backgroundColor = [UIColor clearColor];
+    self.webLabel.font = self.bioLabel.font;
+    self.webLabel.textColor = [ISConstants getISGreenColor];
+    [self.infoWebContainerView addSubview:self.webLabel];
+    
+    
+    UIButton *siteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    siteButton.frame = CGRectMake(0, 0, self.webLabel.frame.origin.x + self.webLabel.frame.size.width, self.infoWebContainerView.frame.size.height);
+    [siteButton addTarget:self action:@selector(siteButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    siteButton.backgroundColor = [UIColor clearColor];
+    [self.infoWebContainerView addSubview:siteButton];
+    
+    self.infoContainerScrollView.alpha = 0;
+    
+}
+
+-(void)siteButtonHit
+{
+    if (self.siteString != nil)
+    {
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height)];
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.siteString]]];
+        
+        UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0,-20, self.view.frame.size.width, 40)];
+        whiteView.backgroundColor = [UIColor whiteColor];
+        [webView addSubview:whiteView];
+        
+        UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+        containerViewController.view.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height);
+        [containerViewController.view addSubview:webView];
+        
+        UIView *gapView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,40)];
+        gapView.backgroundColor = [UIColor whiteColor];
+        [containerViewController.view addSubview:gapView];
+        
+        UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        exitButton.frame = CGRectMake(0,20, 20, 20);
+        exitButton.backgroundColor = [UIColor redColor];
+        [exitButton addTarget:self action:@selector(exitButtonHit) forControlEvents:UIControlEventTouchUpInside];
+        [gapView addSubview:exitButton];
+        
+        
+        [[AppRootViewController sharedRootViewController] presentViewController:containerViewController animated:YES completion:nil];
+    }
+}
+
+-(void)exitButtonHit
+{
+    [[AppRootViewController sharedRootViewController] dismissViewControllerAnimated:YES completion:nil];
 }
 
 -(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
@@ -166,7 +221,7 @@
     float height = [theProductSelectTableViewController tableView:theProductSelectTableViewController.tableView heightForRowAtIndexPath:indexPath];
     
     if (count > 5)
-//    if (height > self.enclosingScrollView.frame.size.height)
+        //    if (height > self.enclosingScrollView.frame.size.height)
     {
         //NSLog(@"theProductSelectTableViewController.contentArray: %@", theProductSelectTableViewController.contentArray);
         NSLog(@"count: %d", count);
@@ -272,7 +327,7 @@
         
         NSURL *instagramURL = [NSURL URLWithString:@"instagram://"];
         if ([[UIApplication sharedApplication] canOpenURL:instagramURL])
-        {                        
+        {
             [del loadShareCoverViewProfileViewController:self];
         }
     }
@@ -285,6 +340,8 @@
 {
     if (!self.hasAppeared)
     {
+        self.infoContainerScrollView.alpha = 0;
+        
         self.hasAppeared = YES;
         
         AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -292,7 +349,7 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.profileInstagramID], @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
         
-        self.infoContainerScrollView.frame = self.theTableView.frame;
+        self.infoContainerScrollView.frame = CGRectMake(self.theTableView.frame.origin.x, self.theTableView.frame.origin.y, self.theTableView.frame.size.width, self.theTableView.frame.size.height);
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
         
@@ -315,7 +372,7 @@
 
 
 -(void)sellerDetailsResopnseDidOccurWithDictionary:(NSDictionary *)responseDictionary
-{    
+{
     if ([responseDictionary isKindOfClass:[NSDictionary class]])
     {
         NSString *addressString = [NSString stringWithFormat:@"%@ %@ %@", [responseDictionary objectForKey:@"seller_address"], [responseDictionary objectForKey:@"seller_city"], [responseDictionary objectForKey:@"seller_state"]];
@@ -400,7 +457,7 @@
     self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
     self.usernameLabel.text = [self.requestedInstagramProfileObject objectForKey:@"full_name"];
     [self setTitleViewText:[self.requestedInstagramProfileObject objectForKey:@"username"]];
-    [self updateProfileView:[self.requestedInstagramProfileObject objectForKey:@"id"]];        
+    [self updateProfileView:[self.requestedInstagramProfileObject objectForKey:@"id"]];
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedInstagramProfileObject objectForKey:@"profile_picture"] withImageView:self.profileImageView];
     
     NSDictionary *countsDictionary = [self.requestedInstagramProfileObject objectForKey:@"counts"];
@@ -413,14 +470,14 @@
         theFont = [theFont fontWithSize:theFont.pointSize - 1];
     if (theFont.pointSize != self.followersButton.titleLabel.font.pointSize)
         self.followersButton.titleLabel.font = [theFont fontWithSize:theFont.pointSize];
-
+    
     
     theFont = self.followingButton.titleLabel.font;
     while ([[self.followingButton titleForState:UIControlStateNormal] sizeWithAttributes:@{NSFontAttributeName:theFont}].width > followingButton.frame.size.width)
         theFont = [theFont fontWithSize:theFont.pointSize - 1];
     if (theFont.pointSize != self.followingButton.titleLabel.font.pointSize)
         self.followingButton.titleLabel.font = [theFont fontWithSize:theFont.pointSize];
-
+    
     float minFont = self.followersButton.titleLabel.font.pointSize;
     if (self.followersButton.titleLabel.font.pointSize < minFont)
         minFont = self.followersButton.titleLabel.font.pointSize;
@@ -428,7 +485,7 @@
     self.followingButton.titleLabel.font = [theFont fontWithSize:minFont];
     self.followersButton.titleLabel.font = [theFont fontWithSize:minFont];
     
-
+    
     
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
     
@@ -476,7 +533,26 @@
 {
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
-
+    NSLog(@"result: %@", result);
+    
+    NSDictionary *resultDict = (NSDictionary *)result;
+    if (resultDict != nil)
+    {
+        NSDictionary *dataDictionary = [resultDict objectForKey:@"data"];
+        if ([dataDictionary isKindOfClass:[NSDictionary class]])
+            if (dataDictionary != nil)
+            {
+                NSString *websiteString = [dataDictionary objectForKey:@"website"];
+                if (websiteString != nil)
+                {
+                    self.siteString = [NSString stringWithString:websiteString];
+                    websiteString = [websiteString stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+                    websiteString = [websiteString stringByReplacingOccurrencesOfString:@"www." withString:@""];
+                    self.webLabel.text = websiteString;
+                }
+            }
+    }
+    
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
     {
@@ -554,7 +630,7 @@
     
     
     [self resizeTableViewWithContentArrayWithController:self.productSelectTableViewController];
-        
+    
 }
 
 
@@ -579,7 +655,7 @@
         [self.enclosingScrollView setContentOffset:CGPointMake(0, 217) animated:YES];
         
         //if ([self.editButton superview] == self.view)
-            //self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 276, self.editButton.frame.size.width, self.editButton.frame.size.height);
+        //self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 276, self.editButton.frame.size.width, self.editButton.frame.size.height);
     }
     
 }
@@ -600,6 +676,7 @@
 
 -(IBAction) infoButtonHit
 {
+    self.infoContainerScrollView.alpha = 1;
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
     {
         self.editButton.alpha = 0;
@@ -634,7 +711,7 @@
     
     [self animateSellerButton:self.infoButton];
     
-
+    
     [self.view bringSubviewToFront:self.editButton];
     
     self.enclosingScrollView.contentSize = CGSizeMake(0, self.editButton.frame.origin.y + self.editButton.frame.size.height);
@@ -724,13 +801,13 @@
     self.backgroundImageView.image = image;
     
     /*
-    UIView *theView = [AppRootViewController sharedRootViewController].view;
-    
-    
-    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,theView.frame.size.width, theView.frame.size.height)];
-    theImageView.image = image;
-    [theView addSubview:theImageView];
-    */
+     UIView *theView = [AppRootViewController sharedRootViewController].view;
+     
+     
+     UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,theView.frame.size.width, theView.frame.size.height)];
+     theImageView.image = image;
+     [theView addSubview:theImageView];
+     */
     
 }
 
@@ -776,7 +853,7 @@
 
 -(void) viewWillDisappear:(BOOL)animated {
     if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-
+        
     }
     [super viewWillDisappear:animated];
 }
