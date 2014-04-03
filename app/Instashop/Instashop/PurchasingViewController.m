@@ -368,7 +368,8 @@
     NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
     NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
     
-    [ShopsyAnalyticsAPIHandler makeViewedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+        [ShopsyAnalyticsAPIHandler makeViewedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
     
     if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
         [self loadForEdit];
@@ -402,8 +403,8 @@
      
     [self.contentScrollView addSubview:self.ownedProfileContainerView];
     
-    
-    [ShopsyAnalyticsAPIHandler makeAnalyticsReportCallWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withDelegate:self];
+    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+        [ShopsyAnalyticsAPIHandler makeAnalyticsReportCallWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withDelegate:self];
 }
 
 -(void)reportDidCompleteWithDictionary:(NSDictionary *)dict
@@ -599,7 +600,8 @@
     NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
     NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
     
-    [ShopsyAnalyticsAPIHandler makeSavedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+        [ShopsyAnalyticsAPIHandler makeSavedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
 
 -(void)savedItemsCompleted
@@ -626,7 +628,8 @@
     NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
     NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
     
-    [ShopsyAnalyticsAPIHandler makeBoughtAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+        [ShopsyAnalyticsAPIHandler makeBoughtAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -870,7 +873,8 @@
     NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
     NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
     
-    [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+        [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
 }
 
 
