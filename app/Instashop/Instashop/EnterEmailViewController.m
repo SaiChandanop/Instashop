@@ -31,7 +31,8 @@
 @synthesize categoriesLabel;
 @synthesize tosButton;
 @synthesize interestsViewController;
-
+@synthesize theSegmentedControl;
+@synthesize tosContainerView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -64,6 +65,26 @@
     self.tosButton.selected = NO;
     
     NSLog(@"videw did load, id: %@", [InstagramUserObject getStoredUserObject].userID);
+    
+    
+    [self.theSegmentedControl setTitle:@"Publisher/Blogger" forSegmentAtIndex:1];
+    [self.theSegmentedControl setTitle:@"Shopper" forSegmentAtIndex:2];
+    
+
+    [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:83.0f/255.0f green:161.0f/255.0f blue:135.0f/255.0f alpha:1]];
+
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:10], NSFontAttributeName,
+                                                             [UIColor colorWithRed:83.0f/255.0f green:161.0f/255.0f blue:135.0f/255.0f alpha:1], NSForegroundColorAttributeName,
+                                                             [UIColor redColor], NSForegroundColorAttributeName,
+                                                             nil] forState:UIControlStateNormal];
+
+    
+    NSLog(@"self.firstTimeUserViewController.nextButtonFrame.origin.y: %f", self.firstTimeUserViewController.nextButtonFrame.origin.y);
+    
+    self.tosContainerView.frame = CGRectMake(0, self.firstTimeUserViewController.nextButtonFrame.origin.y - self.tosContainerView.frame.size.height, self.tosContainerView.frame.size.width, self.tosContainerView.frame.size.height);
+    
+    
+    
 }
 
 -(IBAction)tosLinkButtonHit

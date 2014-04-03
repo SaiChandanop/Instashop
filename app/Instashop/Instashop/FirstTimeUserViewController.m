@@ -32,6 +32,8 @@
 @synthesize nextButton;
 @synthesize emailComplete;
 @synthesize suggestedButton;
+@synthesize nextButtonFrame;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -101,11 +103,16 @@
         [self.tutorialScrollView addSubview:view];
     }
     
+    float buttonSize = 50.0;
+    self.nextButtonFrame = CGRectMake(screenWidth * 5, self.tutorialScrollView.frame.size.height - buttonSize, screenWidth, buttonSize);
+    
+    NSLog(@"self.nextButtonFrame: %@", NSStringFromCGRect(self.nextButtonFrame));
     // Enter email View Controller
     
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
-    self.enterEmailViewController.view.frame = CGRectMake(0.0, 0, screenWidth, self.tutorialScrollView.frame.size.height);
     self.enterEmailViewController.firstTimeUserViewController = self;
+    self.enterEmailViewController.view.frame = CGRectMake(0.0, 0, screenWidth, self.tutorialScrollView.frame.size.height);
+    
 
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.enterEmailViewController];
@@ -130,8 +137,8 @@
     [self.tutorialScrollView addSubview:navigationController.view];
 
     
-    float buttonSize = 50.0; // Change this number to change the button position.
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, self.tutorialScrollView.frame.size.height - buttonSize, screenWidth, buttonSize)];
+    
+    self.nextButton = [[UIButton alloc] initWithFrame:nextButtonFrame];
     self.nextButton.enabled = NO;
     
     [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];

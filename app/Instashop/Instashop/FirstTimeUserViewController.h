@@ -16,6 +16,7 @@
 @interface FirstTimeUserViewController : UIViewController <UIScrollViewDelegate>
 {
     BOOL emailComplete;
+    CGRect nextButtonFrame;
 }
 - (void) closeTutorial;
 - (void) moveScrollView;
@@ -30,5 +31,6 @@
 @property (nonatomic, retain) UIButton *suggestedButton;
 @property (nonatomic, strong) UIButton *loginTutorialDone;
 @property (nonatomic, assign) BOOL emailComplete;
+@property (nonatomic, assign) CGRect nextButtonFrame;
 
 @end

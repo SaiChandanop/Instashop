@@ -14,8 +14,13 @@
 @interface EnterEmailViewController : UIViewController <UITextFieldDelegate>
 {
     InterestsViewController *interestsViewController;
+    FirstTimeUserViewController *firstTimeUserViewController;
     UILabel *categoriesLabel;
     UIButton *tosButton;
+    
+    UISegmentedControl *theSegmentedControl;
+    
+    UIView *tosContainerView;
 }
 
 -(IBAction)tosLinkButtonHit;
@@ -31,4 +36,6 @@
 @property (nonatomic, strong) IBOutlet UILabel *categoriesLabel;
 @property (nonatomic, strong) IBOutlet UIButton *tosButton;
 
+@property (nonatomic, strong) IBOutlet UISegmentedControl *theSegmentedControl;
+@property (nonatomic, strong) IBOutlet UIView *tosContainerView;
 @end
