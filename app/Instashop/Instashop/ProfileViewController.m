@@ -476,6 +476,7 @@
 {
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
+
     NSDictionary *metaDictionary = [result objectForKey:@"meta"];
     if ([[metaDictionary objectForKey:@"code"] intValue] == 200)
     {
@@ -487,10 +488,14 @@
         {
             NSDictionary *dict = [result objectForKey:@"data"];
             NSString *outgoingStatus = [dict objectForKey:@"outgoing_status"];
-            if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
-                self.followButton.alpha = 0;
-            else
-                self.followButton.alpha = 1;
+            
+            if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+            {
+                if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
+                    self.followButton.alpha = 0;
+                else
+                    self.followButton.alpha = 1;
+            }
         }
         else if ([request.url rangeOfString:@"users"].length > 0)
         {
