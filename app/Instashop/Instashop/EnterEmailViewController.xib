@@ -22,6 +22,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
             <subviews>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="lightMenuBG.png" id="Wav-bq-GnA">
+                    <rect key="frame" x="0.0" y="44" width="320" height="504"/>
+                    <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="avB-80-REN">
                     <rect key="frame" x="0.0" y="175" width="320" height="75"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -72,7 +76,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
+                    <textInputTraits key="textInputTraits"/>
                 </textField>
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" id="SWX-YB-sF6">
                     <rect key="frame" x="20" y="206" width="280" height="29"/>
@@ -135,10 +139,6 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
         </view>
-        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="lightMenuBG.png" id="Wav-bq-GnA">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
-            <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
-        </imageView>
     </objects>
     <resources>
         <image name="lightMenuBG.png" width="320" height="548"/>

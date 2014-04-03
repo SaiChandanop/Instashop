@@ -15,6 +15,8 @@
 #import "NavBarTitleView.h"
 #import "InstagramUserObject.h"
 #import "MailchimpAPIHandler.h"
+#import <QuartzCore/QuartzCore.h>
+
 @interface EnterEmailViewController ()
 
 
@@ -56,6 +58,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    /*
+    UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
+    bgImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    bgImageView.backgroundColor = [UIColor redColor];
+    [self.view insertSubview:bgImageView atIndex:0];
+    [self.view addSubview:bgImageView];
+*/
+    
 	// Do any additional setup after loading the view.
     
     self.enterEmailTextField.delegate = self;
@@ -63,9 +74,9 @@
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
-                                      style:UIBarButtonItemStyleBordered
-                                     target:nil
-                                     action:nil];
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
     
     [self.tosButton setTitle:@"off" forState:UIControlStateNormal];
     self.tosButton.selected = NO;
@@ -76,30 +87,36 @@
     [self.theSegmentedControl setTitle:@"Publisher/Blogger" forSegmentAtIndex:1];
     [self.theSegmentedControl setTitle:@"Shopper" forSegmentAtIndex:2];
     
-
+    
     [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:83.0f/255.0f green:161.0f/255.0f blue:135.0f/255.0f alpha:1]];
-
+    
     [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:10], NSFontAttributeName,
                                                              [UIColor colorWithRed:83.0f/255.0f green:161.0f/255.0f blue:135.0f/255.0f alpha:1], NSForegroundColorAttributeName,
                                                              [UIColor redColor], NSForegroundColorAttributeName,
                                                              nil] forState:UIControlStateNormal];
-
     
     
+    UIView *segmentedBackgroundView = [[UIView alloc] initWithFrame:self.theSegmentedControl.frame];
+    segmentedBackgroundView.backgroundColor = [UIColor whiteColor];
+    segmentedBackgroundView.layer.cornerRadius = 5;
+    segmentedBackgroundView.layer.masksToBounds = YES;
+    [self.view insertSubview:segmentedBackgroundView belowSubview:self.theSegmentedControl];
     
-     float height = 50;
+    self.theSegmentedControl.backgroundColor = [UIColor clearColor];
     
-     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - height, self.view.frame.size.width, height)];
-     self.nextButton.enabled = NO;
-     
-     [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
-     [self.nextButton setTitle:@"Next" forState:UIControlStateDisabled];
-     self.nextButton.titleLabel.textColor = [UIColor whiteColor];
-     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-     [self.nextButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
-     [self.nextButton addTarget:self action:@selector(nextButtonHit) forControlEvents:UIControlEventTouchUpInside];
-     [self.view addSubview:self.nextButton];
+    float height = 50;
+    
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - height, self.view.frame.size.width, height)];
+    self.nextButton.enabled = NO;
+    
+    [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
+    [self.nextButton setTitle:@"Next" forState:UIControlStateDisabled];
+    self.nextButton.titleLabel.textColor = [UIColor whiteColor];
+    self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+    self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
+    [self.nextButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
+    [self.nextButton addTarget:self action:@selector(nextButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.nextButton];
     
     self.tosContainerView.frame = CGRectMake(0, self.nextButton.frame.origin.y - self.tosContainerView.frame.size.height, self.tosContainerView.frame.size.width, self.tosContainerView.frame.size.height);
     
@@ -112,7 +129,7 @@
     
     
     [self.theSegmentedControl addTarget:self action:@selector(segmentedControlChanged) forControlEvents:UIControlEventValueChanged];
-     
+    
 }
 
 -(void)segmentedControlChanged
@@ -145,8 +162,8 @@
     navigationController.navigationBar.translucent = NO;
     
     [webViewController.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"Terms of Service"]];
-
-
+    
+    
     
     webViewController.navigationItem.leftBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@"Close"
@@ -180,26 +197,26 @@
 }
 
 /*
--(void)categoriesViewControllerShouldRemove
-{
-    [self.categoriesViewController.view removeFromSuperview];
-    self.categoriesViewController = nil;
-}
-
--(void)categorySelectionCompleteWithArray:(NSArray *)theArray
-{
-    self.categoriesLabel.text = [theArray objectAtIndex:0];
-    [UIView beginAnimations:nil context:nil];
-    [UIView setAnimationDuration:.30];
-    [UIView setAnimationDelegate:self];
-    [UIView setAnimationDidStopSelector:@selector(categoriesViewControllerShouldRemove)];
-    self.categoriesViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.categoriesViewController.view.frame.size.width, self.categoriesViewController.view.frame.size.height);
-    [UIView commitAnimations];
-
-    [self validateContent];
-    
-    
-}
+ -(void)categoriesViewControllerShouldRemove
+ {
+ [self.categoriesViewController.view removeFromSuperview];
+ self.categoriesViewController = nil;
+ }
+ 
+ -(void)categorySelectionCompleteWithArray:(NSArray *)theArray
+ {
+ self.categoriesLabel.text = [theArray objectAtIndex:0];
+ [UIView beginAnimations:nil context:nil];
+ [UIView setAnimationDuration:.30];
+ [UIView setAnimationDelegate:self];
+ [UIView setAnimationDidStopSelector:@selector(categoriesViewControllerShouldRemove)];
+ self.categoriesViewController.view.frame = CGRectMake(self.view.frame.size.width, 0, self.categoriesViewController.view.frame.size.width, self.categoriesViewController.view.frame.size.height);
+ [UIView commitAnimations];
+ 
+ [self validateContent];
+ 
+ 
+ }
  */
 
 -(void)interestsViewControllerShouldRemove
@@ -235,9 +252,9 @@
     [UIView setAnimationDuration:.30];
     self.interestsViewController.view.frame = CGRectMake(0, 0, self.interestsViewController.view.frame.size.width, self.interestsViewController.view.frame.size.height);
     [UIView commitAnimations];
-
     
-//    [self.navigationController pushViewController:categoriesViewController animated:YES];
+    
+    //    [self.navigationController pushViewController:categoriesViewController animated:YES];
 }
 
 -(NSString *)validateContent
@@ -248,8 +265,8 @@
         errorString = @"Please enter an name";
     else if ([self.enterEmailTextField.text length] == 0)
         errorString = @"Please enter an email";
-//    else if (![self validateEmail:self.enterNameTextField.text])
-  //      errorString = @"Please enter a valid email address";
+    //    else if (![self validateEmail:self.enterNameTextField.text])
+    //      errorString = @"Please enter a valid email address";
     else if ([self.categoriesLabel.text compare:@"Categories"] == NSOrderedSame)
         errorString = @"Please enter a category";
     else if (self.tosButton.selected == NO)
@@ -272,10 +289,10 @@
     if (errorString != nil)
     {
         UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                        message:errorString
-                                                       delegate:nil
-                                              cancelButtonTitle:@"Ok"
-                                              otherButtonTitles:nil];
+                                                            message:errorString
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
         [alertView show];
     }
     else
@@ -285,6 +302,7 @@
 
 - (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.enterEmailTextField resignFirstResponder];
+    [self.enterNameTextField resignFirstResponder];
 }
 
 
@@ -301,23 +319,41 @@
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
+    
+    if (textField == self.enterEmailTextField)
+    {
     if ([textField.text length] == 0) {
-        [self.enterEmailTextField setPlaceholder:@"Email"];
+        [textField setPlaceholder:@"Email"];
+    }
+    }
+    else if (textField == self.enterNameTextField)
+    {
+        if ([textField.text length] == 0) {
+            [textField setPlaceholder:@"Name"];
+        }
+
     }
     [textField endEditing:YES];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-    NSCharacterSet *unacceptedInput = nil;
-    if ([[textField.text componentsSeparatedByString:@"@"] count] > 1) {
-        unacceptedInput = [[NSCharacterSet characterSetWithCharactersInString:[ALPHA_NUMERIC stringByAppendingString:@".-"]] invertedSet];
-        // Method that checks whether or not button should be green now.
-        
-        
-    } else {
-        unacceptedInput = [[NSCharacterSet characterSetWithCharactersInString:[ALPHA_NUMERIC stringByAppendingString:@".!#$%&'*+-/=?^_`{|}~@"]] invertedSet];
+    
+    
+    if (textField == self.enterNameTextField)
+        return YES;
+    else
+    {
+        NSCharacterSet *unacceptedInput = nil;
+        if ([[textField.text componentsSeparatedByString:@"@"] count] > 1) {
+            unacceptedInput = [[NSCharacterSet characterSetWithCharactersInString:[ALPHA_NUMERIC stringByAppendingString:@".-"]] invertedSet];
+            // Method that checks whether or not button should be green now.
+            
+            
+        } else {
+            unacceptedInput = [[NSCharacterSet characterSetWithCharactersInString:[ALPHA_NUMERIC stringByAppendingString:@".!#$%&'*+-/=?^_`{|}~@"]] invertedSet];
+        }
+        return ([[string componentsSeparatedByCharactersInSet:unacceptedInput] count] <= 1);
     }
-    return ([[string componentsSeparatedByCharactersInSet:unacceptedInput] count] <= 1);
 }
 
 
