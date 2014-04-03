@@ -29,9 +29,9 @@
 @synthesize loginTutorialDone;
 @synthesize parentViewController;
 @synthesize enterEmailViewController;
-@synthesize nextButton;
 @synthesize emailComplete;
 @synthesize suggestedButton;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -101,11 +101,12 @@
         [self.tutorialScrollView addSubview:view];
     }
     
-    // Enter email View Controller
+
     
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
-    self.enterEmailViewController.view.frame = CGRectMake(0.0, 0, screenWidth, self.tutorialScrollView.frame.size.height);
     self.enterEmailViewController.firstTimeUserViewController = self;
+    self.enterEmailViewController.view.frame = CGRectMake(0.0, 0, screenWidth, self.tutorialScrollView.frame.size.height);
+    
 
     
     UINavigationController *navigationController = [[UINavigationController alloc] initWithRootViewController:self.enterEmailViewController];
@@ -130,20 +131,6 @@
     [self.tutorialScrollView addSubview:navigationController.view];
 
     
-    float buttonSize = 50.0; // Change this number to change the button position.
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth * 5, self.tutorialScrollView.frame.size.height - buttonSize, screenWidth, buttonSize)];
-    self.nextButton.enabled = NO;
-    
-    [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
-    [self.nextButton setTitle:@"Next" forState:UIControlStateDisabled];
-    self.nextButton.titleLabel.textColor = [UIColor whiteColor];
-    self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-    [self.nextButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
-    [self.nextButton addTarget:self action:@selector(nextButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [self.tutorialScrollView addSubview:self.nextButton];
-    
-  
     
     self.pageControl = [[UIPageControl alloc] init];
     float pageControlHeight = 40.0;
@@ -168,12 +155,14 @@
 
 -(void)nextButtonHit
 {
+    NSLog(@"[self.enterEmailViewController.theSegmentedControl titleForSegmentAtIndex:self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex]: %@", [self.enterEmailViewController.theSegmentedControl titleForSegmentAtIndex:self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex]);
+    NSLog(@"self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex: %d", self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex);
     if (self.emailComplete)
     {
         if ([self validateEmail:self.enterEmailViewController.enterEmailTextField.text])
         {
             [self closeTutorial];
-            [MailchimpAPIHandler makeMailchimpCallWithEmail:self.enterEmailViewController.enterEmailTextField.text withCategory:self.enterEmailViewController.categoriesLabel.text];
+            [MailchimpAPIHandler makeMailchimpCallWithEmail:self.enterEmailViewController.enterEmailTextField.text withCategory:[self.enterEmailViewController.theSegmentedControl titleForSegmentAtIndex:self.enterEmailViewController.theSegmentedControl.selectedSegmentIndex]  withName:self.enterEmailViewController.enterNameTextField.text];
         }
         else
         {
@@ -192,15 +181,6 @@
     
     
 }
-
--(void)emailPageComplete
-{
-    self.emailComplete = YES;
-    self.nextButton.enabled = YES;
-    self.nextButton.backgroundColor = [ISConstants getISGreenColor];
-    [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
-}
-
 
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {

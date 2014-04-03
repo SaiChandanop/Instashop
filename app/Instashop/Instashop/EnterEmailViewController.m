@@ -14,6 +14,7 @@
 #import "AppRootViewController.h"
 #import "NavBarTitleView.h"
 #import "InstagramUserObject.h"
+#import "MailchimpAPIHandler.h"
 @interface EnterEmailViewController ()
 
 
@@ -31,6 +32,11 @@
 @synthesize categoriesLabel;
 @synthesize tosButton;
 @synthesize interestsViewController;
+@synthesize theSegmentedControl;
+@synthesize tosContainerView;
+@synthesize enterNameTextField;
+@synthesize nextCoverButton;
+
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -53,6 +59,7 @@
 	// Do any additional setup after loading the view.
     
     self.enterEmailTextField.delegate = self;
+    self.enterNameTextField.delegate = self;
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
@@ -64,7 +71,59 @@
     self.tosButton.selected = NO;
     
     NSLog(@"videw did load, id: %@", [InstagramUserObject getStoredUserObject].userID);
+    
+    
+    [self.theSegmentedControl setTitle:@"Publisher/Blogger" forSegmentAtIndex:1];
+    [self.theSegmentedControl setTitle:@"Shopper" forSegmentAtIndex:2];
+    
+
+    [[UISegmentedControl appearance] setTintColor:[UIColor colorWithRed:83.0f/255.0f green:161.0f/255.0f blue:135.0f/255.0f alpha:1]];
+
+    [[UISegmentedControl appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:[UIFont systemFontOfSize:10], NSFontAttributeName,
+                                                             [UIColor colorWithRed:83.0f/255.0f green:161.0f/255.0f blue:135.0f/255.0f alpha:1], NSForegroundColorAttributeName,
+                                                             [UIColor redColor], NSForegroundColorAttributeName,
+                                                             nil] forState:UIControlStateNormal];
+
+    
+    
+    
+     float height = 50;
+    
+     self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - height, self.view.frame.size.width, height)];
+     self.nextButton.enabled = NO;
+     
+     [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
+     [self.nextButton setTitle:@"Next" forState:UIControlStateDisabled];
+     self.nextButton.titleLabel.textColor = [UIColor whiteColor];
+     self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
+     self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
+     [self.nextButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
+     [self.nextButton addTarget:self action:@selector(nextButtonHit) forControlEvents:UIControlEventTouchUpInside];
+     [self.view addSubview:self.nextButton];
+    
+    self.tosContainerView.frame = CGRectMake(0, self.nextButton.frame.origin.y - self.tosContainerView.frame.size.height, self.tosContainerView.frame.size.width, self.tosContainerView.frame.size.height);
+    
+    self.nextCoverButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    self.nextCoverButton.frame = self.nextButton.frame;
+    self.nextCoverButton.backgroundColor = [UIColor clearColor];
+    [self.nextCoverButton addTarget:self action:@selector(nextCoverButtonHit) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:nextCoverButton];
+    
+    
+    
+    [self.theSegmentedControl addTarget:self action:@selector(segmentedControlChanged) forControlEvents:UIControlEventValueChanged];
+     
 }
+
+-(void)segmentedControlChanged
+{
+    NSLog(@"segmentedControlChanged");
+    [self.enterEmailTextField resignFirstResponder];
+    [self.enterNameTextField resignFirstResponder];
+}
+
+
+
 
 -(IBAction)tosLinkButtonHit
 {
@@ -185,8 +244,12 @@
 {
     NSString *errorString = nil;
     
-    if ([self.enterEmailTextField.text length] == 0)
+    if ([self.enterNameTextField.text length] == 0)
+        errorString = @"Please enter an name";
+    else if ([self.enterEmailTextField.text length] == 0)
         errorString = @"Please enter an email";
+//    else if (![self validateEmail:self.enterNameTextField.text])
+  //      errorString = @"Please enter a valid email address";
     else if ([self.categoriesLabel.text compare:@"Categories"] == NSOrderedSame)
         errorString = @"Please enter a category";
     else if (self.tosButton.selected == NO)
@@ -196,13 +259,13 @@
     
     if (errorString == nil)
     {
-        [self.firstTimeUserViewController emailPageComplete];
+        [self emailPageComplete];
         
     }
     return errorString;
 }
-- (IBAction) nextButtonHit:(id)sender {
-    
+- (void)nextCoverButtonHit
+{
     [self.enterEmailTextField resignFirstResponder];
     NSString *errorString =[self validateContent];
     
@@ -216,10 +279,13 @@
         [alertView show];
     }
     else
-        [self.firstTimeUserViewController moveScrollView];
+        [self completeView];
 }
 
 
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.enterEmailTextField resignFirstResponder];
+}
 
 
 - (BOOL) textFieldShouldReturn:(UITextField *)textField {
@@ -230,19 +296,15 @@
 }
 
 
-- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    [self.enterEmailTextField resignFirstResponder];
-}
-
 - (void) textFieldDidBeginEditing:(UITextField *)textField {
-    self.enterEmailTextField.placeholder = nil;
+    textField.placeholder = nil;
 }
 
 - (void) textFieldDidEndEditing:(UITextField *)textField {
     if ([textField.text length] == 0) {
         [self.enterEmailTextField setPlaceholder:@"Email"];
     }
-    [self.enterEmailTextField endEditing:YES];
+    [textField endEditing:YES];
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
@@ -257,6 +319,39 @@
     }
     return ([[string componentsSeparatedByCharactersInSet:unacceptedInput] count] <= 1);
 }
+
+
+
+
+
+- (BOOL) validateEmail: (NSString *) candidate {
+    NSString *emailRegex = @"[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}";
+    NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+    
+    NSLog(@"validateEmail: %d", [emailTest evaluateWithObject:candidate]);
+    return [emailTest evaluateWithObject:candidate];
+}
+
+-(void)emailPageComplete
+{
+    self.firstTimeUserViewController.emailComplete = YES;
+    self.nextButton.enabled = YES;
+    self.nextButton.backgroundColor = [ISConstants getISGreenColor];
+    [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
+}
+
+
+
+
+-(void)completeView
+{
+    [self.firstTimeUserViewController closeTutorial];
+    [MailchimpAPIHandler makeMailchimpCallWithEmail:self.enterEmailTextField.text withCategory:[self.theSegmentedControl titleForSegmentAtIndex:self.theSegmentedControl.selectedSegmentIndex]  withName:self.enterNameTextField.text];
+    
+}
+
+
+
 
 
 

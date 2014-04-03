@@ -26,7 +26,6 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 @property (nonatomic, strong) AppRootViewController *parentViewController;
 @property (nonatomic, strong) EnterEmailViewController *enterEmailViewController;
-@property (nonatomic, strong) UIButton *nextButton;
 @property (nonatomic, retain) UIButton *suggestedButton;
 @property (nonatomic, strong) UIButton *loginTutorialDone;
 @property (nonatomic, assign) BOOL emailComplete;
