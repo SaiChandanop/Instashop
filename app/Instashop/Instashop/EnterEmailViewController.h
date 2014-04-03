@@ -20,6 +20,8 @@
     UIButton *tosButton;
     UISegmentedControl *theSegmentedControl;
     UIView *tosContainerView;
+    UIButton *nextCoverButton;
+    UIButton *nextButton;
 }
 
 -(IBAction)tosLinkButtonHit;
@@ -38,4 +40,6 @@
 
 @property (nonatomic, strong) IBOutlet UISegmentedControl *theSegmentedControl;
 @property (nonatomic, strong) IBOutlet UIView *tosContainerView;
+@property (nonatomic, strong) UIButton *nextCoverButton;
+@property (nonatomic, strong) UIButton *nextButton;
 @end

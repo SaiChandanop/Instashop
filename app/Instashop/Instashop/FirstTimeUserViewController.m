@@ -29,10 +29,8 @@
 @synthesize loginTutorialDone;
 @synthesize parentViewController;
 @synthesize enterEmailViewController;
-@synthesize nextButton;
 @synthesize emailComplete;
 @synthesize suggestedButton;
-@synthesize nextButtonFrame;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -103,11 +101,7 @@
         [self.tutorialScrollView addSubview:view];
     }
     
-    float buttonSize = 50.0;
-    self.nextButtonFrame = CGRectMake(screenWidth * 5, self.tutorialScrollView.frame.size.height - buttonSize, screenWidth, buttonSize);
-    
-    NSLog(@"self.nextButtonFrame: %@", NSStringFromCGRect(self.nextButtonFrame));
-    // Enter email View Controller
+
     
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
     self.enterEmailViewController.firstTimeUserViewController = self;
@@ -137,20 +131,6 @@
     [self.tutorialScrollView addSubview:navigationController.view];
 
     
-    
-    self.nextButton = [[UIButton alloc] initWithFrame:nextButtonFrame];
-    self.nextButton.enabled = NO;
-    
-    [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
-    [self.nextButton setTitle:@"Next" forState:UIControlStateDisabled];
-    self.nextButton.titleLabel.textColor = [UIColor whiteColor];
-    self.nextButton.titleLabel.textAlignment = NSTextAlignmentCenter;
-    self.nextButton.titleLabel.font = [UIFont fontWithName:@"Helvetica Neue Light" size:3.0];
-    [self.nextButton setBackgroundColor:[UIColor colorWithWhite:0.0 alpha:0.75]];
-    [self.nextButton addTarget:self action:@selector(nextButtonHit) forControlEvents:UIControlEventTouchUpInside];
-    [self.tutorialScrollView addSubview:self.nextButton];
-    
-  
     
     self.pageControl = [[UIPageControl alloc] init];
     float pageControlHeight = 40.0;
@@ -201,15 +181,6 @@
     
     
 }
-
--(void)emailPageComplete
-{
-    self.emailComplete = YES;
-    self.nextButton.enabled = YES;
-    self.nextButton.backgroundColor = [ISConstants getISGreenColor];
-    [self.nextButton setTitle:@"Next" forState:UIControlStateNormal];
-}
-
 
 
 - (void) scrollViewDidScroll:(UIScrollView *)scrollView {
