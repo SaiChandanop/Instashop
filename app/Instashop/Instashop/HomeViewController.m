@@ -94,7 +94,6 @@
 
 -(void)makeGetNotificationsCountCall
 {
-    NSLog(@"makeGetNotificationsCountCall");
     if ([InstagramUserObject getStoredUserObject] != nil)
         if ([InstagramUserObject getStoredUserObject].userID != nil)
             [NotificationsAPIHandler getAllNotificationsCountInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];

@@ -87,7 +87,7 @@
 
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error NS_AVAILABLE_IOS(3_0)
 {
-    NSLog(@"didFailToRegisterForRemoteNotificationsWithError: %@", error);
+//    NSLog(@"didFailToRegisterForRemoteNotificationsWithError: %@", error);
 }
 
 -(void)userDidLogin

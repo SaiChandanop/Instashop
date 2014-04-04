@@ -24,6 +24,8 @@
 
 -(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary;
 
+
+
 @property (nonatomic, assign) int checkCountup;
 @property (nonatomic, strong) NSMutableArray *cacheArray;
 @property (nonatomic, assign) BOOL loaded;

@@ -284,6 +284,9 @@
     }
 }
 
+
+
+
 -(void)searchReturnedWithArray:(NSArray *)searchResultsArray
 {
     [self hideProgress];
@@ -294,9 +297,7 @@
 {
     [self hideProgress];
     [self.contentArray removeAllObjects];
-    
-    
-    
+            
     if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER)
     {
         if ([self.productRequestorReferenceObject compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)

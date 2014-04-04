@@ -78,6 +78,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+        self.tableDataDictionary = [[NSMutableDictionary alloc] initWithCapacity:0];
     }
     return self;
 }
@@ -98,7 +99,7 @@
     self.productsButton.selected = YES;
     self.infoButton.selected = NO;
     self.favoritesButton.selected = NO;
-
+    
     
     self.followButton.layer.shadowColor = [UIColor blackColor].CGColor;
     self.followButton.layer.shadowOpacity = .2;
@@ -156,9 +157,6 @@
     [self.infoWebContainerView addSubview:siteButton];
     
     self.infoContainerScrollView.alpha = 0;
- 
-    NSLog(@"self.followContainerView: %@", self.followContainerView);
-
     
     self.theTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
     self.theTableViewController.tableView.backgroundColor = [UIColor whiteColor];
@@ -179,9 +177,8 @@
 -(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
 {
     NSLog(@"tableViewControllerDidLoadWithController !: %@", theProductSelectTableViewController);
-    
     [self resizeTableViewWithContentArrayWithController:theProductSelectTableViewController];
-    
+    [self.tableDataDictionary setObject:theProductSelectTableViewController.contentArray forKey:[NSNumber numberWithInt:theProductSelectTableViewController.productRequestorType]];
 }
 
 -(void)resizeTableViewWithContentArrayWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
@@ -193,9 +190,6 @@
     if (count > 5)
         //    if (height > self.enclosingScrollView.frame.size.height)
     {
-
-        NSLog(@"count: %d", count);
-        NSLog(@"height: %f", height);
         
         float totalHeight = (count / 3) * height;
         
@@ -208,12 +202,9 @@
 
 -(void)moreButtonHit
 {
-    NSLog(@"moreButtonHit");
-    
     UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Instagram", nil];
     shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
-    
 }
 
 - (void) actionSheet:(UIActionSheet *)theActionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -417,10 +408,6 @@
 
 -(void)loadViewsWithRequestedProfileObject:(NSDictionary *)theReqeustedProfileObject
 {
-    NSLog(@"loadViewsWithRequestedProfileObject");
-    
-
-    
     self.requestedInstagramProfileObject = [[NSDictionary alloc] initWithDictionary:theReqeustedProfileObject];
     self.usernameLabel.text = [self.requestedInstagramProfileObject objectForKey:@"full_name"];
     [self setTitleViewText:[self.requestedInstagramProfileObject objectForKey:@"username"]];
@@ -428,7 +415,7 @@
     [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:[self.requestedInstagramProfileObject objectForKey:@"profile_picture"] withImageView:self.profileImageView];
     
     NSDictionary *countsDictionary = [self.requestedInstagramProfileObject objectForKey:@"counts"];
-
+    
     
     self.followContainerView.layer.cornerRadius = 5;
     self.followContainerView.alpha = .85;
@@ -448,7 +435,7 @@
     self.followersValueLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"followed_by"] integerValue]];
     self.followingValueLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"follows"] integerValue]];
     
-        
+    
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
     
     
@@ -585,13 +572,31 @@
     self.favoritesButton.selected = NO;
     
     [self animateSellerButton:self.productsButton];
-
-    [self.theTableViewController.contentArray removeAllObjects];
-    [self.theTableViewController.tableView reloadData];
     
-    self.theTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
-    self.theTableViewController.productRequestorReferenceObject = self.profileInstagramID;
-    [self.theTableViewController refreshContent];
+    NSArray *theContentArray = [self.tableDataDictionary objectForKey:[NSNumber numberWithInt:PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER]];
+    
+    NSLog(@"self.tableDataDictionary.allKeys: %@", [self.tableDataDictionary allKeys]);
+    
+    BOOL hardRefresh = YES;
+    if (theContentArray != nil)
+        if ([theContentArray count] > 0)
+        {
+            hardRefresh = NO;
+            NSLog(@"productsButtonHit, theContentArray: %@", theContentArray);
+            self.theTableViewController.contentArray = [[NSMutableArray alloc] initWithArray:theContentArray];
+            [self.theTableViewController.tableView reloadData];
+        }
+    
+    if (hardRefresh)
+    {
+        
+        [self.theTableViewController.contentArray removeAllObjects];
+        [self.theTableViewController.tableView reloadData];
+        
+        self.theTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
+        self.theTableViewController.productRequestorReferenceObject = self.profileInstagramID;
+        [self.theTableViewController refreshContent];
+    }
     
 }
 
@@ -645,7 +650,7 @@
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;
     }
-
+    
     if ([self.theTableViewController.tableView superview] != nil)
         [self.theTableViewController.tableView removeFromSuperview];
     
@@ -692,11 +697,23 @@
         self.navigationItem.rightBarButtonItem = shareButton;
     }
     
-    
-    [self.theTableViewController.contentArray removeAllObjects];
-    [self.theTableViewController.tableView reloadData];
-    self.theTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
-    [self.theTableViewController refreshContent];
+    NSArray *theContentArray = [self.tableDataDictionary objectForKey:[NSNumber numberWithInt:PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER]];
+    NSLog(@"theContentArray: %@", theContentArray);
+    BOOL hardRefresh = YES;
+    if (theContentArray != nil)
+        if ([theContentArray count] > 0)
+        {
+            hardRefresh = NO;
+            self.theTableViewController.contentArray = [[NSMutableArray alloc] initWithArray:theContentArray];
+            [self.theTableViewController.tableView reloadData];
+        }
+    if (hardRefresh)
+    {
+        [self.theTableViewController.contentArray removeAllObjects];
+        [self.theTableViewController.tableView reloadData];
+        self.theTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
+        [self.theTableViewController refreshContent];
+    }
 }
 
 
@@ -813,7 +830,10 @@
 }
 
 
-
+- (void) productSelectTableViewControllerDidLoadData:(ProductSelectTableViewController *)theProductSelectTableViewController
+{
+    
+}
 
 
 

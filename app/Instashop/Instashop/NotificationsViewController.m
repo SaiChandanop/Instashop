@@ -47,9 +47,7 @@
 
 
 -(void)loadNotifications
-{
-    NSLog(@"notifications view controller load notifications");
-    
+{    
     [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
 }
 

@@ -40,25 +40,20 @@
     UIImageView *bioContainerImageView;
     UILabel *bioLabel;
     UITextView *descriptionTextView;
-    
     BOOL isSelfProfile;
     NSDictionary *requestedInstagramProfileObject;
-    
     UIButton *imagePickButton;
-    
     GKImagePicker *imagePicker;
-    
     UIView *infoWebContainerView;
     UILabel *webLabel;
-    
     NSString *siteString;
     UIView *followContainerView;
     UIView *sellerContentButtonsView;
-    
     UILabel *followersTextLabel;
     UILabel *followersValueLabel;
     UILabel *followingTextLabel;
     UILabel *followingValueLabel;
+    NSMutableDictionary *tableDataDictionary;
 }
 
 -(void)loadNavigationControlls;
@@ -70,7 +65,8 @@
 
 -(IBAction)followOnInstagramButtonHit;
 
--(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController;
+- (void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController;
+
 
 @property (nonatomic, strong) ProductSelectTableViewController *theTableViewController;
 @property (nonatomic, strong) IBOutlet UIScrollView *enclosingScrollView;
@@ -104,12 +100,11 @@
 @property (nonatomic, strong) NSString *siteString;
 @property (nonatomic, strong) IBOutlet UIView *followContainerView;
 @property (nonatomic, strong) IBOutlet UIView *sellerContentButtonsView;
-
 @property (nonatomic, strong) IBOutlet UILabel *followersTextLabel;
 @property (nonatomic, strong) IBOutlet UILabel *followersValueLabel;
 @property (nonatomic, strong) IBOutlet UILabel *followingTextLabel;
 @property (nonatomic, strong) IBOutlet UILabel *followingValueLabel;
-
+@property (nonatomic, strong) NSMutableDictionary *tableDataDictionary;
 
 
 

@@ -104,7 +104,6 @@
 {
     if (!self.descriptionContentSizeSet)
     {
-        NSLog(@"setViewSpacing, initial, self.view.frame: %@", NSStringFromCGRect(self.view.frame));
         self.descriptionContentSizeSet = YES;
         self.descriptionContentSize = self.descriptionTextView.contentSize;
         if (self.view.frame.size.height == 480)
@@ -115,8 +114,6 @@
     }
     else if (self.descriptionTextView.contentSize.height > self.descriptionContentSize.height)
     {
-        NSLog(@"setViewSpacing, do resize");
- 
         self.descriptionTextView.contentSize = CGSizeMake(0, self.descriptionTextView.contentSize.height+9);
         self.descriptionContentSize = self.descriptionTextView.contentSize;
         self.descriptionTextView.frame = CGRectMake(self.descriptionTextView.frame.origin.x, self.descriptionTextView.frame.origin.y, self.descriptionTextView.frame.size.width, self.descriptionTextView.contentSize.height);
@@ -125,10 +122,7 @@
         self.contentScrollView.contentSize = CGSizeMake(0, self.categoryContainerView.frame.origin.y + self.categoryContainerView.frame.size.height + self.descriptionTextView.frame.size.height);
 
     }
-    else
-    {
-        NSLog(@"setViewSpacing, ignore");
-    }
+
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -482,8 +476,6 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-    NSLog(@"request did load: %@", request.url);
-    
     if ([request.url rangeOfString:@"comments"].length > 0)
     {
         NSMutableArray *dataArray = [NSMutableArray arrayWithArray:[result objectForKey:@"data"]];
@@ -537,9 +529,6 @@
         else
             self.heartImageView.image = [UIImage imageNamed:@"heart.png"];
         
-        
-        NSLog(@"[[likesDict objectForKey:@\"count\"]!!!!!: %@", [likesDict objectForKey:@"count"]);
-                                                                 
         self.instagramValueLabel.text = [NSString stringWithFormat:@"%d", [[likesDict objectForKey:@"count"] integerValue]];
     }
     
@@ -675,8 +664,6 @@
 
 -(void)bitlyCallDidRespondWIthShortURLString:(NSString *)shortURLString
 {
-    
-    NSLog(@"bitlyCallDidRespondWIthShortURLString: %@", shortURLString);
     if (shortURLString != nil)
         self.viglinkString = shortURLString;
     

@@ -34,7 +34,6 @@
 -(void)makeViewedAnalyticsCallWithInstagramIDComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"makeViewedAnalyticsCallWithInstagramIDComplete: %@", newStr);
 }
 
 
