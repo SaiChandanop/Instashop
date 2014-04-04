@@ -54,6 +54,11 @@
     NSString *siteString;
     UIView *followContainerView;
     UIView *sellerContentButtonsView;
+    
+    UILabel *followersTextLabel;
+    UILabel *followersValueLabel;
+    UILabel *followingTextLabel;
+    UILabel *followingValueLabel;
 }
 
 -(void)loadNavigationControlls;
@@ -99,6 +104,11 @@
 @property (nonatomic, strong) NSString *siteString;
 @property (nonatomic, strong) IBOutlet UIView *followContainerView;
 @property (nonatomic, strong) IBOutlet UIView *sellerContentButtonsView;
+
+@property (nonatomic, strong) IBOutlet UILabel *followersTextLabel;
+@property (nonatomic, strong) IBOutlet UILabel *followersValueLabel;
+@property (nonatomic, strong) IBOutlet UILabel *followingTextLabel;
+@property (nonatomic, strong) IBOutlet UILabel *followingValueLabel;
 
 
 

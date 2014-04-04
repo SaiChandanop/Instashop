@@ -17,6 +17,10 @@
                 <outlet property="favoritesButton" destination="ZNf-Le-k0Y" id="mT8-ig-bxb"/>
                 <outlet property="followButton" destination="Eqt-pa-nKB" id="eaN-xw-iQA"/>
                 <outlet property="followContainerView" destination="8To-bo-Eb5" id="uhi-0k-xm9"/>
+                <outlet property="followersTextLabel" destination="SrY-Bc-evD" id="TaD-jY-pPo"/>
+                <outlet property="followersValueLabel" destination="Oey-yx-YgD" id="wsQ-vQ-0hi"/>
+                <outlet property="followingTextLabel" destination="qH2-RI-Zgp" id="QMN-qe-N83"/>
+                <outlet property="followingValueLabel" destination="uwH-cj-238" id="530-zW-ELQ"/>
                 <outlet property="imagePickButton" destination="TvE-Jz-6Ul" id="wZE-kY-wOI"/>
                 <outlet property="infoButton" destination="YZG-hB-owP" id="mIl-gK-fo0"/>
                 <outlet property="infoContainerScrollView" destination="z26-Ac-txH" id="sDF-9T-NOB"/>
@@ -131,34 +135,68 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Be8-Z5-0ND">
-                            <rect key="frame" x="112" y="39" width="202" height="26"/>
+                            <rect key="frame" x="83" y="65" width="202" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="18"/>
+                            <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                             <color key="shadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eqt-pa-nKB">
-                            <rect key="frame" x="6" y="2" width="98" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <state key="normal" title="Follow" backgroundImage="follow_btn_background.png">
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <state key="selected" title="Following" backgroundImage="following_btn_background.png"/>
-                            <connections>
-                                <action selector="followOnInstagramButtonHit" destination="-1" eventType="touchUpInside" id="Nut-Ut-Hhn"/>
-                            </connections>
-                        </button>
                         <view contentMode="scaleToFill" id="8To-bo-Eb5">
-                            <rect key="frame" x="38" y="73" width="282" height="52"/>
+                            <rect key="frame" x="32" y="92" width="277" height="37"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Eqt-pa-nKB">
+                                    <rect key="frame" x="209" y="6" width="61" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                    <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <state key="normal" backgroundImage="Follow.png">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <state key="selected" backgroundImage="following_btn_background.png"/>
+                                    <connections>
+                                        <action selector="followOnInstagramButtonHit" destination="-1" eventType="touchUpInside" id="Nut-Ut-Hhn"/>
+                                    </connections>
+                                </button>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOLLOWERS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SrY-Bc-evD">
+                                    <rect key="frame" x="66" y="2" width="74" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FOLLOWING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qH2-RI-Zgp">
+                                    <rect key="frame" x="133" y="2" width="74" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3445" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Oey-yx-YgD">
+                                    <rect key="frame" x="75" y="15" width="74" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3445" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uwH-cj-238">
+                                    <rect key="frame" x="142" y="15" width="74" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Instagram.png" id="k3I-2w-KgF">
+                                    <rect key="frame" x="54" y="8" width="13" height="12"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                </imageView>
+                            </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WEP-sW-hAG">
-                            <rect key="frame" x="6" y="41" width="98" height="98"/>
+                            <rect key="frame" x="10" y="70" width="70" height="71"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -228,13 +266,21 @@
             </subviews>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
         </scrollView>
+        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="F0Q-x7-5Jm">
+            <rect key="frame" x="0.0" y="0.0" width="74" height="21"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+            <nil key="highlightedColor"/>
+        </label>
     </objects>
     <resources>
+        <image name="Follow.png" width="140" height="60"/>
+        <image name="Instagram.png" width="24" height="24"/>
         <image name="Menu_BG.png" width="320" height="548"/>
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="cover-default.jpg" width="320" height="135"/>
         <image name="edit_photo.png" width="50" height="50"/>
-        <image name="follow_btn_background.png" width="98" height="20"/>
         <image name="following_btn_background.png" width="98" height="20"/>
         <image name="lightMenuBG.png" width="320" height="548"/>
         <image name="menuDarkBG.png" width="320" height="44"/>

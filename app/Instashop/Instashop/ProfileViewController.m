@@ -68,7 +68,10 @@
 @synthesize siteString;
 @synthesize followContainerView;
 @synthesize sellerContentButtonsView;
-
+@synthesize followersTextLabel;
+@synthesize followersValueLabel;
+@synthesize followingTextLabel;
+@synthesize followingValueLabel;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -95,11 +98,12 @@
     self.productsButton.selected = YES;
     self.infoButton.selected = NO;
     self.favoritesButton.selected = NO;
+
     
     self.followButton.layer.shadowColor = [UIColor blackColor].CGColor;
-    self.followButton.layer.shadowOpacity = .75;
-    self.followButton.layer.shadowRadius = 2.5;
-    self.followButton.layer.shadowOffset = CGSizeMake(0, 0);
+    self.followButton.layer.shadowOpacity = .2;
+    self.followButton.layer.shadowRadius = 3;
+    self.followButton.layer.shadowOffset = CGSizeMake(1, 0);
     //    self.followButton.layer.cornerRadius = 2;
     
     self.followButton.alpha = 0;
@@ -135,12 +139,15 @@
     [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:self.profileInstagramID];
     [self.view bringSubviewToFront:self.profileImageView];
     
-    self.webLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 200, self.infoWebContainerView.frame.size.height - 2)];
+    self.webLabel = [[UILabel alloc] initWithFrame:CGRectMake(29, 0, 200, self.infoWebContainerView.frame.size.height - 2)];
     self.webLabel.backgroundColor = [UIColor clearColor];
     self.webLabel.font = self.bioLabel.font;
     self.webLabel.textColor = [ISConstants getISGreenColor];
     [self.infoWebContainerView addSubview:self.webLabel];
     
+    UIImageView *webImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"URL.png"]];
+    webImageView.frame = CGRectMake(7.5, 4.99, self.infoWebContainerView.frame.size.height - 10, self.infoWebContainerView.frame.size.height - 10);
+    [self.infoWebContainerView addSubview:webImageView];
     
     UIButton *siteButton = [UIButton buttonWithType:UIButtonTypeCustom];
     siteButton.frame = CGRectMake(0, 0, self.webLabel.frame.origin.x + self.webLabel.frame.size.width, self.infoWebContainerView.frame.size.height);
@@ -161,6 +168,10 @@
     float initialPoint = self.sellerContentButtonsView.frame.origin.y + self.sellerContentButtonsView.frame.size.height;
     self.theTableViewController.tableView.frame = CGRectMake(0, initialPoint, self.view.frame.size.width, self.view.frame.size.height - initialPoint);
     [self.view addSubview:self.theTableViewController.tableView];
+    
+    self.followContainerView.alpha = 0;
+    
+    
     
 }
 
@@ -419,39 +430,25 @@
     NSDictionary *countsDictionary = [self.requestedInstagramProfileObject objectForKey:@"counts"];
 
     
-    NSLog(@"josh set followers value here");
-    NSLog(@"josh set follows value here");
-
-    /*
-     
-     
-    UIFont *theFont = self.followersButton.titleLabel.font;
-    while ([[self.followersButton titleForState:UIControlStateNormal] sizeWithAttributes:@{NSFontAttributeName:theFont}].width > followingButton.frame.size.width)
-        theFont = [theFont fontWithSize:theFont.pointSize - 1];
-    if (theFont.pointSize != self.followersButton.titleLabel.font.pointSize)
-        self.followersButton.titleLabel.font = [theFont fontWithSize:theFont.pointSize];
+    self.followContainerView.layer.cornerRadius = 5;
+    self.followContainerView.alpha = .85;
+    
+    self.followersTextLabel.font = [UIFont systemFontOfSize:9];
+    self.followersTextLabel.textColor = [UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:1];
+    
+    self.followingTextLabel.font = self.followersTextLabel.font;
+    self.followingTextLabel.textColor = self.followersTextLabel.textColor;
+    
+    self.followersValueLabel.font = [UIFont systemFontOfSize:11];
+    self.followersValueLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1];
+    self.followingValueLabel.font = self.followersValueLabel.font;
+    self.followingValueLabel.textColor = self.followersValueLabel.textColor;
     
     
-    theFont = self.followingButton.titleLabel.font;
-    while ([[self.followingButton titleForState:UIControlStateNormal] sizeWithAttributes:@{NSFontAttributeName:theFont}].width > followingButton.frame.size.width)
-        theFont = [theFont fontWithSize:theFont.pointSize - 1];
-    if (theFont.pointSize != self.followingButton.titleLabel.font.pointSize)
-        self.followingButton.titleLabel.font = [theFont fontWithSize:theFont.pointSize];
+    self.followersValueLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"followed_by"] integerValue]];
+    self.followingValueLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"follows"] integerValue]];
     
-    float minFont = self.followersButton.titleLabel.font.pointSize;
-    if (self.followersButton.titleLabel.font.pointSize < minFont)
-        minFont = self.followersButton.titleLabel.font.pointSize;
-    
-    self.followingButton.titleLabel.font = [theFont fontWithSize:minFont];
-    self.followersButton.titleLabel.font = [theFont fontWithSize:minFont];
-    
-     
-     //    [self.followersButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"followed_by"] integerValue], @" Followers"] forState:UIControlStateNormal];
-     //    [self.followingButton setTitle:[NSString stringWithFormat:@"%d%@", [[countsDictionary objectForKey:@"follows"] integerValue], @" Following"] forState:UIControlStateNormal];
-
-     */
-    
-    
+        
     [SellersAPIHandler getSellerDetailsWithInstagramID:[self.requestedInstagramProfileObject objectForKey:@"id"] withDelegate:self];
     
     
