@@ -16,13 +16,14 @@
                 <outlet property="enclosingScrollView" destination="s4c-jH-cDN" id="YFl-ew-Ew6"/>
                 <outlet property="favoritesButton" destination="ZNf-Le-k0Y" id="mT8-ig-bxb"/>
                 <outlet property="followButton" destination="Eqt-pa-nKB" id="eaN-xw-iQA"/>
+                <outlet property="followContainerView" destination="8To-bo-Eb5" id="uhi-0k-xm9"/>
                 <outlet property="imagePickButton" destination="TvE-Jz-6Ul" id="wZE-kY-wOI"/>
                 <outlet property="infoButton" destination="YZG-hB-owP" id="mIl-gK-fo0"/>
                 <outlet property="infoContainerScrollView" destination="z26-Ac-txH" id="sDF-9T-NOB"/>
                 <outlet property="infoWebContainerView" destination="tmS-DX-g9M" id="F6n-P4-5ig"/>
                 <outlet property="productSelectTableViewController" destination="7F9-di-1kk" id="dWx-NX-xgu"/>
                 <outlet property="productsButton" destination="Of6-Fq-GtT" id="6cr-zw-KpQ"/>
-                <outlet property="profileImageView" destination="RHM-oM-kVi" id="P34-lA-dJo"/>
+                <outlet property="profileImageView" destination="WEP-sW-hAG" id="hxP-n0-A8a"/>
                 <outlet property="theTableView" destination="Mlb-xD-ESb" id="srm-0a-3lb"/>
                 <outlet property="usernameLabel" destination="Be8-Z5-0ND" id="u7j-pO-ecN"/>
                 <outlet property="view" destination="1" id="3"/>
@@ -38,7 +39,7 @@
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover-default.jpg" id="uUu-tP-DTR">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="112"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="137"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </imageView>
                         <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_shadow.png" id="d5h-vJ-PI0">
@@ -57,8 +58,8 @@
                                 <action selector="imagePickButtonHit" destination="-1" eventType="touchUpInside" id="Xeg-ae-iYH"/>
                             </connections>
                         </button>
-                        <view contentMode="scaleToFill" id="Mg9-br-9gn" userLabel="View - Seller Content Buttons">
-                            <rect key="frame" x="0.0" y="112" width="320" height="52"/>
+                        <view contentMode="scaleToFill" id="Mg9-br-9gn" userLabel="View - S.eller Content Buttons">
+                            <rect key="frame" x="0.0" y="136" width="320" height="52"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Menu_BG.png" id="Ru4-Ex-NbS">
@@ -130,12 +131,6 @@
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="RHM-oM-kVi">
-                            <rect key="frame" x="6" y="27" width="98" height="98"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </imageView>
                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Be8-Z5-0ND">
                             <rect key="frame" x="112" y="39" width="202" height="26"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -146,7 +141,7 @@
                             <size key="shadowOffset" width="1" height="1"/>
                         </label>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="z26-Ac-txH">
-                            <rect key="frame" x="0.0" y="164" width="320" height="263"/>
+                            <rect key="frame" x="0.0" y="219" width="320" height="263"/>
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <view contentMode="scaleToFill" id="tmS-DX-g9M">
@@ -197,7 +192,7 @@
                             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                         </scrollView>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mlb-xD-ESb">
-                            <rect key="frame" x="0.0" y="169" width="320" height="263"/>
+                            <rect key="frame" x="0.0" y="224" width="320" height="263"/>
                             <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
@@ -219,10 +214,16 @@
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" id="8To-bo-Eb5">
-                            <rect key="frame" x="112" y="73" width="208" height="31"/>
+                            <rect key="frame" x="38" y="73" width="282" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="WEP-sW-hAG">
+                            <rect key="frame" x="6" y="27" width="98" height="98"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </imageView>
                     </subviews>
                 </scrollView>
             </subviews>

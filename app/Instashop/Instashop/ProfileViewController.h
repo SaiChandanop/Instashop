@@ -62,6 +62,7 @@
     UILabel *webLabel;
     
     NSString *siteString;
+    UIView *followContainerView;
 }
 
 -(void)loadNavigationControlls;
@@ -107,6 +108,7 @@
 @property (nonatomic, strong) IBOutlet UIView *infoWebContainerView;
 @property (nonatomic, strong) UILabel *webLabel;
 @property (nonatomic, strong) NSString *siteString;
+@property (nonatomic, strong) IBOutlet UIView *followContainerView;
 
 
 

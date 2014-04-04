@@ -71,6 +71,7 @@
 @synthesize infoWebContainerView;
 @synthesize webLabel;
 @synthesize siteString;
+@synthesize followContainerView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -166,6 +167,10 @@
     [self.infoWebContainerView addSubview:siteButton];
     
     self.infoContainerScrollView.alpha = 0;
+ 
+    NSLog(@"self.followContainerView: %@", self.followContainerView);
+//    [self.followContainerView removeFromSuperview];
+  //  [self.view insertSubview:self.followContainerView belowSubview:self.profileImageView];
     
 }
 
