@@ -17,8 +17,8 @@
 #import "Flurry.h"
 #import "LocalNotificationView.h"
 
-#define INSTAGRAM_CLIENT_ID @"d63f114e63814512b820b717a73e3ada"
-#define INSTAGRAM_CLIENT_SECRET @"75cd3c5f8d894ed7a826c4af7f1f085f"
+#define INSTAGRAM_CLIENT_ID @"acb5a39edfff4e4999747f679d2157b2"
+#define INSTAGRAM_CLIENT_SECRET @"604d5c86809a45979d365ac6b647d8ef"
 //WEBSITE URL	http://instashop.com
 //REDIRECT URI	igd63f114e63814512b820b717a73e3ada://authorize
 
