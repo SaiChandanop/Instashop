@@ -36,22 +36,18 @@
 
 #define EDIT_TEXT @"This user has not added a Description."
 
-
+@synthesize theTableViewController;
 @synthesize enclosingScrollView;
 @synthesize profileInstagramID;
-
 @synthesize backgroundImageView;
 @synthesize addBackgroundImageButton;
 @synthesize profileImageView;
 @synthesize usernameLabel;
-
 @synthesize productsButton;
 @synthesize infoButton;
 @synthesize favoritesButton;
 @synthesize buttonHighlightView;
 @synthesize infoContainerScrollView;
-@synthesize productSelectTableViewController;
-@synthesize theTableView;
 @synthesize profileBackgroundPhotoButton;
 @synthesize titleViewLabel;
 @synthesize isSelfProfile;
@@ -63,7 +59,6 @@
 @synthesize categoryLabel;
 @synthesize bioLabel;
 @synthesize descriptionTextView;
-@synthesize favoritesSelectTableViewController;
 @synthesize imagePickButton;
 @synthesize hasAppeared;
 @synthesize editButton;
@@ -72,6 +67,7 @@
 @synthesize webLabel;
 @synthesize siteString;
 @synthesize followContainerView;
+@synthesize sellerContentButtonsView;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -108,8 +104,6 @@
     
     self.followButton.alpha = 0;
     
-    NSLog(@"self.profileInstagramID: %@", self.profileInstagramID);
-    NSLog(@"[InstagramUserObject getStoredUserObject].userID: %@", [InstagramUserObject getStoredUserObject].userID);
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [self.imagePickButton removeFromSuperview];
@@ -136,24 +130,12 @@
                                     target:nil
                                     action:nil];
     
-    NSLog(@"begin profile view controller");
-    
-    /*
-     if ([UIScreen mainScreen].bounds.size.height == 480)
-     {
-     [self.editButton removeFromSuperview];
-     self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 64, self.editButton.frame.size.width, self.editButton.frame.size.height);
-     [self.view addSubview:self.editButton];
-     self.editButton.alpha = 0;
-     }
-     NSLog(@"self.editButton: %@", self.editButton);
-     */
     
     
     [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:self.profileInstagramID];
     [self.view bringSubviewToFront:self.profileImageView];
     
-    self.webLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 100, self.infoWebContainerView.frame.size.height - 2)];
+    self.webLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, 200, self.infoWebContainerView.frame.size.height - 2)];
     self.webLabel.backgroundColor = [UIColor clearColor];
     self.webLabel.font = self.bioLabel.font;
     self.webLabel.textColor = [ISConstants getISGreenColor];
@@ -169,45 +151,19 @@
     self.infoContainerScrollView.alpha = 0;
  
     NSLog(@"self.followContainerView: %@", self.followContainerView);
-//    [self.followContainerView removeFromSuperview];
-  //  [self.view insertSubview:self.followContainerView belowSubview:self.profileImageView];
+
+    
+    self.theTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
+    self.theTableViewController.tableView.backgroundColor = [UIColor whiteColor];
+    self.theTableViewController.cellDelegate = self;
+    self.theTableViewController.profileViewController = self;
+    
+    float initialPoint = self.sellerContentButtonsView.frame.origin.y + self.sellerContentButtonsView.frame.size.height;
+    self.theTableViewController.tableView.frame = CGRectMake(0, initialPoint, self.view.frame.size.width, self.view.frame.size.height - initialPoint);
+    [self.view addSubview:self.theTableViewController.tableView];
     
 }
 
--(void)siteButtonHit
-{
-    if (self.siteString != nil)
-    {
-        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height)];
-        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.siteString]]];
-        
-        UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0,-20, self.view.frame.size.width, 40)];
-        whiteView.backgroundColor = [UIColor whiteColor];
-        [webView addSubview:whiteView];
-        
-        UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
-        containerViewController.view.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height);
-        [containerViewController.view addSubview:webView];
-        
-        UIView *gapView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,40)];
-        gapView.backgroundColor = [UIColor whiteColor];
-        [containerViewController.view addSubview:gapView];
-        
-        UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        exitButton.frame = CGRectMake(0,20, 20, 20);
-        exitButton.backgroundColor = [UIColor redColor];
-        [exitButton addTarget:self action:@selector(exitButtonHit) forControlEvents:UIControlEventTouchUpInside];
-        [gapView addSubview:exitButton];
-        
-        
-        [[AppRootViewController sharedRootViewController] presentViewController:containerViewController animated:YES completion:nil];
-    }
-}
-
--(void)exitButtonHit
-{
-    [[AppRootViewController sharedRootViewController] dismissViewControllerAnimated:YES completion:nil];
-}
 
 -(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
 {
@@ -226,11 +182,13 @@
     if (count > 5)
         //    if (height > self.enclosingScrollView.frame.size.height)
     {
-        //NSLog(@"theProductSelectTableViewController.contentArray: %@", theProductSelectTableViewController.contentArray);
+
         NSLog(@"count: %d", count);
         NSLog(@"height: %f", height);
         
-        theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, count * height);
+        float totalHeight = (count / 3) * height;
+        
+        theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, totalHeight);
         theProductSelectTableViewController.tableView.scrollEnabled = NO;
         self.enclosingScrollView.contentSize = CGSizeMake(0, theProductSelectTableViewController.tableView.frame.origin.y + theProductSelectTableViewController.tableView.frame.size.height);
     }
@@ -352,23 +310,16 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.profileInstagramID], @"method", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
         
-        self.infoContainerScrollView.frame = CGRectMake(self.theTableView.frame.origin.x, self.theTableView.frame.origin.y, self.theTableView.frame.size.width, self.theTableView.frame.size.height);
+        
+        float initialPoint = self.sellerContentButtonsView.frame.origin.y + self.sellerContentButtonsView.frame.size.height;
+        self.theTableViewController.tableView.frame = CGRectMake(0, initialPoint, self.view.frame.size.width, self.view.frame.size.height - initialPoint);
+        [self.enclosingScrollView addSubview:self.theTableViewController.tableView];
+        
+        self.infoContainerScrollView.frame = self.theTableViewController.tableView.frame;
         params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/media/recent", self.profileInstagramID], @"method", @"-1", @"count", nil];
         [appDelegate.instagram requestWithParams:params delegate:self];
         
-        self.productSelectTableViewController.cellDelegate = self;
-        self.productSelectTableViewController.profileViewController = self;
-        self.productSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
-        self.productSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
-        [self.productSelectTableViewController refreshContent];
-        
-        self.favoritesSelectTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
-        self.favoritesSelectTableViewController.tableView.frame = self.productSelectTableViewController.tableView.frame;
-        self.favoritesSelectTableViewController.profileViewController = self;
-        self.favoritesSelectTableViewController.cellDelegate = self;
-        self.favoritesSelectTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
-        self.favoritesSelectTableViewController.productRequestorReferenceObject = self.profileInstagramID;
-        [self.favoritesSelectTableViewController refreshContent];
+        [self productsButtonHit];
     }
     
 }
@@ -624,24 +575,26 @@
         self.navigationItem.rightBarButtonItem = shareButton;
     }
     
-    if (self.favoritesSelectTableViewController != nil)
-        [self.favoritesSelectTableViewController.tableView removeFromSuperview];
-    
-    
-    if ([self.theTableView superview] == nil)
-        [self.enclosingScrollView addSubview:self.theTableView];
-    
     if ([self.infoContainerScrollView superview] != nil)
         [self.infoContainerScrollView removeFromSuperview];
+    
+    if ([self.theTableViewController.tableView superview] == nil)
+        [self.enclosingScrollView addSubview:self.theTableViewController.tableView];
+    
+    
     
     self.productsButton.selected = YES;
     self.infoButton.selected = NO;
     self.favoritesButton.selected = NO;
     
     [self animateSellerButton:self.productsButton];
+
+    [self.theTableViewController.contentArray removeAllObjects];
+    [self.theTableViewController.tableView reloadData];
     
-    
-    [self resizeTableViewWithContentArrayWithController:self.productSelectTableViewController];
+    self.theTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER;
+    self.theTableViewController.productRequestorReferenceObject = self.profileInstagramID;
+    [self.theTableViewController refreshContent];
     
 }
 
@@ -666,8 +619,6 @@
         self.enclosingScrollView.contentSize = CGSizeMake(0, self.enclosingScrollView.frame.size.height);
         [self.enclosingScrollView setContentOffset:CGPointMake(0, 217) animated:YES];
         
-        //if ([self.editButton superview] == self.view)
-        //self.editButton.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height - self.editButton.frame.size.height - 276, self.editButton.frame.size.width, self.editButton.frame.size.height);
     }
     
 }
@@ -677,7 +628,6 @@
     [self.editButton setTitle:@"EDIT" forState:UIControlStateNormal];
     [SellersAPIHandler updateSellerDescriptionWithDelegate:self InstagramID:[InstagramUserObject getStoredUserObject].userID withDescription:self.descriptionTextView.text];
     [self.descriptionTextView resignFirstResponder];
-    //    [self.enclosingScrollView setContentOffset:CGPointMake(0, 0) animated:YES];
     self.enclosingScrollView.contentSize = CGSizeMake(0,0);
     self.descriptionTextView.editable = NO;
     
@@ -690,11 +640,7 @@
 {
     self.infoContainerScrollView.alpha = 1;
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
-    {
         self.editButton.alpha = 0;
-        //        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editButtonHit)];
-        //        self.navigationItem.rightBarButtonItem = shareButton;
-    }
     else
     {
         self.editButton.alpha = 1;
@@ -702,19 +648,12 @@
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;
     }
-    if (self.productSelectTableViewController != nil)
-        [self.productSelectTableViewController.tableView removeFromSuperview];
-    
-    if (self.favoritesSelectTableViewController != nil)
-        [self.favoritesSelectTableViewController.tableView removeFromSuperview];
-    
-    
-    if ([self.theTableView superview] != nil)
-        [self.theTableView removeFromSuperview];
+
+    if ([self.theTableViewController.tableView superview] != nil)
+        [self.theTableViewController.tableView removeFromSuperview];
     
     if ([self.infoContainerScrollView superview] == nil)
         [self.enclosingScrollView addSubview:self.infoContainerScrollView];
-    
     
     
     self.productsButton.selected = NO;
@@ -732,25 +671,20 @@
 -(IBAction)favoritesButtonHit
 {
     NSLog(@"favoritesButtonHit");
-    if (self.productSelectTableViewController != nil)
-        [self.productSelectTableViewController.tableView removeFromSuperview];
     
-    if ([self.theTableView superview] == nil)
-        [self.enclosingScrollView addSubview:self.theTableView];
     
-    if ([self.favoritesSelectTableViewController.tableView superview] == nil)
-        [self.enclosingScrollView addSubview:self.favoritesSelectTableViewController.tableView];
     
     
     if ([self.infoContainerScrollView superview] != nil)
         [self.infoContainerScrollView removeFromSuperview];
     
-    self.favoritesSelectTableViewController.tableView.backgroundColor = [UIColor whiteColor];
+    if ([self.theTableViewController.tableView superview] == nil)
+        [self.enclosingScrollView addSubview:self.theTableViewController.tableView];
+    
     
     self.favoritesButton.selected = YES;
     self.infoButton.selected = NO;
     self.productsButton.selected = NO;
-    
     [self animateSellerButton:self.favoritesButton];
     
     
@@ -762,17 +696,10 @@
     }
     
     
-    
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    ProductSelectTableViewController *theProductSelectTableViewController = self.favoritesSelectTableViewController;
-    int count = [theProductSelectTableViewController.contentArray count];
-    float height = [theProductSelectTableViewController tableView:theProductSelectTableViewController.tableView heightForRowAtIndexPath:indexPath];
-    
-    theProductSelectTableViewController.tableView.frame = CGRectMake(theProductSelectTableViewController.tableView.frame.origin.x, theProductSelectTableViewController.tableView.frame.origin.y, theProductSelectTableViewController.tableView.frame.size.width, count * height);
-    theProductSelectTableViewController.tableView.scrollEnabled = NO;
-    self.enclosingScrollView.contentSize = CGSizeMake(0, theProductSelectTableViewController.tableView.frame.origin.y + theProductSelectTableViewController.tableView.frame.size.height);
-    
-    
+    [self.theTableViewController.contentArray removeAllObjects];
+    [self.theTableViewController.tableView reloadData];
+    self.theTableViewController.productRequestorType = PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER;
+    [self.theTableViewController refreshContent];
 }
 
 
@@ -811,15 +738,6 @@
     [SellersAPIHandler uploadProfileImage:image withDelegate:nil];
     
     self.backgroundImageView.image = image;
-    
-    /*
-     UIView *theView = [AppRootViewController sharedRootViewController].view;
-     
-     
-     UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,theView.frame.size.width, theView.frame.size.height)];
-     theImageView.image = image;
-     [theView addSubview:theImageView];
-     */
     
 }
 
@@ -861,6 +779,45 @@
         [ImageAPIHandler makeProfileImageRequestWithReferenceImageView:self.backgroundImageView withInstagramID:object];
     
 }
+
+-(void)siteButtonHit
+{
+    if (self.siteString != nil)
+    {
+        UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height)];
+        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.siteString]]];
+        
+        UIView *whiteView = [[UIView alloc] initWithFrame:CGRectMake(0,-20, self.view.frame.size.width, 40)];
+        whiteView.backgroundColor = [UIColor whiteColor];
+        [webView addSubview:whiteView];
+        
+        UIViewController *containerViewController = [[UIViewController alloc] initWithNibName:nil bundle:nil];
+        containerViewController.view.frame = CGRectMake(0, 20, self.view.frame.size.width, self.view.frame.size.height);
+        [containerViewController.view addSubview:webView];
+        
+        UIView *gapView = [[UIView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width,40)];
+        gapView.backgroundColor = [UIColor whiteColor];
+        [containerViewController.view addSubview:gapView];
+        
+        UIButton *exitButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        exitButton.frame = CGRectMake(0,20, 20, 20);
+        exitButton.backgroundColor = [UIColor redColor];
+        [exitButton addTarget:self action:@selector(exitButtonHit) forControlEvents:UIControlEventTouchUpInside];
+        [gapView addSubview:exitButton];
+        
+        
+        [[AppRootViewController sharedRootViewController] presentViewController:containerViewController animated:YES completion:nil];
+    }
+}
+
+-(void)exitButtonHit
+{
+    [[AppRootViewController sharedRootViewController] dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+
+
 
 
 -(void) viewWillDisappear:(BOOL)animated {
