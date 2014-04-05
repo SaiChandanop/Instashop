@@ -11,7 +11,7 @@
 #import "SellerExistsResponderProtocol.h"
 #import "JKProgressView.h"
 
-#define  TUTORIAL_COMPLETE  @"TUTORIAL_COMPLETE"
+#define  TUTORIAL_COMPLETE  @"TUTORIAL_COMPLETE1"
 
 
 @interface AuthenticationViewController : UIViewController <IGSessionDelegate, IGRequestDelegate, UIWebViewDelegate, SellerExistsResponderProtocol>
