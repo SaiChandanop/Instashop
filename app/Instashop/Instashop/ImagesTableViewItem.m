@@ -12,6 +12,7 @@
 #import "TableCellAddClass.h"
 #import "AppDelegate.h"
 #import "AppRootViewController.h"
+#import "CacheManager.h"
 
 @implementation ImagesTableViewItem
 
@@ -23,6 +24,7 @@
 @synthesize instagramObjectDictionary;
 @synthesize alreadyExists;
 @synthesize greyCoverView;
+
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -107,15 +109,24 @@
         
 //        NSLog(@"self.imageProductURL: %@", self.imageProductURL);
         if (self.imageProductURL != nil)
-            [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
-//            [ImageAPIHandler makeImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:self.contentImageView];
+        {
+            UIImage *theImage = [[CacheManager getSharedCacheManager] getImageWithURL:self.imageProductURL];
+            if (theImage != nil)
+            {
+                self.contentImageView.image = theImage;
+                self.contentImageView.alpha = 1;
+            }
+            else
+                [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
+
+        }
     }
     
     
 }
+
 -(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
 {
-    NSLog(@"imageReturnedWithURL1");
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = theImage;
     
@@ -129,7 +140,6 @@
 
 -(void)imageReturnedWithURL:(NSString *)url withData:(NSData *)theData
 {
-    NSLog(@"imageReturnedWithURL2");
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = [UIImage imageWithData:theData];
     
@@ -137,8 +147,6 @@
     [UIView setAnimationDuration:0.75];
     self.contentImageView.alpha = 1;
     [UIView commitAnimations];
-
-    
 }
 
 
