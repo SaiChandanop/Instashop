@@ -27,24 +27,21 @@ static ImageAPIHandler *sharedImageAPIHandler;
     {
         sharedImageAPIHandler = [[ImageAPIHandler alloc] init];
     }
-  
-    ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
-    handler.delegate = theDelegate;
-    handler.contextObject = instagramMediaURLString;
-    handler.receivedData = [[NSMutableData alloc] init];
-    handler.theImageView = referenceImageView;
     
+        ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
+        handler.delegate = theDelegate;
+        handler.contextObject = instagramMediaURLString;
+        handler.receivedData = [[NSMutableData alloc] init];
+        handler.theImageView = referenceImageView;
     
-    
-    
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:instagramMediaURLString]
+        NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:instagramMediaURLString]
                                                   cachePolicy:NSURLRequestReturnCacheDataElseLoad timeoutInterval:10.0];
-	NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:handler
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:handler
                                                           startImmediately:NO];
     
-    [connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
-    [connection start];
-    
+        [connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+        [connection start];
+   
 }
 
 

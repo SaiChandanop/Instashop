@@ -56,6 +56,7 @@
 
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary
 {
+    self.contentImageView.alpha = 0;
     self.contentImageView.image = nil;
     if ([theDictionary isKindOfClass:[TableCellAddClass class]])
     {
@@ -114,14 +115,30 @@
 }
 -(void)imageReturnedWithURL:(NSString *)url withImage:(UIImage *)theImage
 {
+    NSLog(@"imageReturnedWithURL1");
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = theImage;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.75];
+    self.contentImageView.alpha = 1;
+    [UIView commitAnimations];
+
+    
 }
 
 -(void)imageReturnedWithURL:(NSString *)url withData:(NSData *)theData
 {
+    NSLog(@"imageReturnedWithURL2");
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = [UIImage imageWithData:theData];
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.75];
+    self.contentImageView.alpha = 1;
+    [UIView commitAnimations];
+
+    
 }
 
 
