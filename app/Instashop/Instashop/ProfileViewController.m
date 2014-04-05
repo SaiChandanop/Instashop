@@ -176,9 +176,11 @@
 
 -(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
 {
-    NSLog(@"tableViewControllerDidLoadWithController !: %@", theProductSelectTableViewController);
+    NSLog(@"tableViewControllerDidLoadWithController[%d}: %@", theProductSelectTableViewController.productRequestorType, theProductSelectTableViewController.contentArray);
     [self resizeTableViewWithContentArrayWithController:theProductSelectTableViewController];
-    [self.tableDataDictionary setObject:theProductSelectTableViewController.contentArray forKey:[NSNumber numberWithInt:theProductSelectTableViewController.productRequestorType]];
+    if ([theProductSelectTableViewController.contentArray count] > 0)
+        if ([[theProductSelectTableViewController.contentArray objectAtIndex:0] isKindOfClass:[NSDictionary class]])
+            [self.tableDataDictionary setObject:[NSArray arrayWithArray:theProductSelectTableViewController.contentArray] forKey:[NSNumber numberWithInt:theProductSelectTableViewController.productRequestorType]];
 }
 
 -(void)resizeTableViewWithContentArrayWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
@@ -573,22 +575,25 @@
     
     [self animateSellerButton:self.productsButton];
     
+    
     NSArray *theContentArray = [self.tableDataDictionary objectForKey:[NSNumber numberWithInt:PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER]];
     
-    NSLog(@"self.tableDataDictionary.allKeys: %@", [self.tableDataDictionary allKeys]);
+    NSLog(@"PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER: %d", PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER);
+    NSLog(@"self.tableDataDictionary: %@", self.tableDataDictionary);
     
     BOOL hardRefresh = YES;
     if (theContentArray != nil)
         if ([theContentArray count] > 0)
         {
+            NSLog(@"count: %d", [theContentArray count]);
             hardRefresh = NO;
-            NSLog(@"productsButtonHit, theContentArray: %@", theContentArray);
             self.theTableViewController.contentArray = [[NSMutableArray alloc] initWithArray:theContentArray];
             [self.theTableViewController.tableView reloadData];
         }
     
     if (hardRefresh)
     {
+        NSLog(@"do hard refresh");
         
         [self.theTableViewController.contentArray removeAllObjects];
         [self.theTableViewController.tableView reloadData];
@@ -697,8 +702,11 @@
         self.navigationItem.rightBarButtonItem = shareButton;
     }
     
+    NSLog(@"PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER: %d", PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER);
+    NSLog(@"self.tableDataDictionary: %@", self.tableDataDictionary);
+    
+    
     NSArray *theContentArray = [self.tableDataDictionary objectForKey:[NSNumber numberWithInt:PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER]];
-    NSLog(@"theContentArray: %@", theContentArray);
     BOOL hardRefresh = YES;
     if (theContentArray != nil)
         if ([theContentArray count] > 0)
