@@ -362,6 +362,9 @@
     NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
     NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
     
+    NSLog(@"owner value: %@", [self.requestedProductObject objectForKey:@"owner_instagram_id"]);
+    NSLog(@"user value: %@", [InstagramUserObject getStoredUserObject].userID);
+    
     if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [ShopsyAnalyticsAPIHandler makeViewedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
     
@@ -395,15 +398,15 @@
     [self.sellerProfileImageView removeFromSuperview];
     [self.heartImageView removeFromSuperview];
      
-    [self.contentScrollView addSubview:self.ownedProfileContainerView];
     
-    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
-        [ShopsyAnalyticsAPIHandler makeAnalyticsReportCallWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withDelegate:self];
+    
+
+    [ShopsyAnalyticsAPIHandler makeAnalyticsReportCallWithProductID:[self.requestedProductObject objectForKey:@"products_id"] withDelegate:self];
 }
 
 -(void)reportDidCompleteWithDictionary:(NSDictionary *)dict
 {
-    
+    [self.contentScrollView addSubview:self.ownedProfileContainerView];
     NSLog(@"reportDidCompleteWithDictionary: %@", reportDictionary);
     
     self.reportDictionary = [[NSDictionary alloc] initWithDictionary:dict];

@@ -13,6 +13,7 @@
 
 +(void)makeViewedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID
 {
+    NSLog(@"makeViewedAnalyticsCallWithOwnerInstagramID");
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"analytics/analytics.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
@@ -34,6 +35,7 @@
 -(void)makeViewedAnalyticsCallWithInstagramIDComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
+    NSLog(@"makeViewedAnalyticsCallWithInstagramIDComplete: %@", newStr);
 }
 
 
@@ -154,7 +156,7 @@
     NSLog(@"makeAnalyticsReportCallWithProductIDComplete: %@", newStr);
     
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    
+    NSLog(@"makeAnalyticsReportCallWithProductIDComplete, dict: %@", responseDictionary);
     
     if ([self.delegate conformsToProtocol:@protocol(AnalyticsReportCompleteProtocol)])
         [(id<AnalyticsReportCompleteProtocol>)self.delegate reportDidCompleteWithDictionary:responseDictionary];

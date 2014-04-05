@@ -1371,7 +1371,6 @@
 				7B7A7449174D4EB8005E90B9 /* Data */,
 				7B7A7454174D52D2005E90B9 /* Net */,
 				7BE3D36F174D74340045C4B4 /* Utils */,
-				7B61EE55174D2162002A483D /* AppDelegate.h */,
 				7B61EE56174D2162002A483D /* AppDelegate.m */,
 			);
 			path = Instashop;
@@ -1782,6 +1781,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7B61EE55174D2162002A483D /* AppDelegate.h */,
 				2E7D71011893381A00EA648B /* Flurry.h */,
 				2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */,
 				7B08B9B7182036020037B033 /* TimeFormatter */,
