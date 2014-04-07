@@ -422,6 +422,7 @@
     self.followContainerView.layer.cornerRadius = 5;
     self.followContainerView.alpha = .85;
     
+    /*
     self.followersTextLabel.font = [UIFont systemFontOfSize:9];
     self.followersTextLabel.textColor = [UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:1];
     
@@ -432,7 +433,7 @@
     self.followersValueLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1];
     self.followingValueLabel.font = self.followersValueLabel.font;
     self.followingValueLabel.textColor = self.followersValueLabel.textColor;
-    
+    */
     
     self.followersValueLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"followed_by"] integerValue]];
     self.followingValueLabel.text = [NSString stringWithFormat:@"%d", [[countsDictionary objectForKey:@"follows"] integerValue]];
