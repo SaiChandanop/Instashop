@@ -100,10 +100,8 @@
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
 		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
 		5F09AF9318E62618009C6E88 /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F09AF9218E62618009C6E88 /* eye.png */; };
-		5F0A71C118E618AF003D5911 /* StatsBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F0A71C018E618AF003D5911 /* StatsBg@2x.png */; };
 		5F0A71C418E61C06003D5911 /* greenheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F0A71C218E61C06003D5911 /* greenheart.png */; };
 		5F0A71C518E61C06003D5911 /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F0A71C318E61C06003D5911 /* redheart.png */; };
-		5FC1576618E5FD7100173AFC /* shittyheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FC1576518E5FD7100173AFC /* shittyheart.png */; };
 		5FE32AF218EF1927008273D1 /* URL.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE32AF018EF1927008273D1 /* URL.png */; };
 		5FE32AF318EF1927008273D1 /* Follow.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE32AF118EF1927008273D1 /* Follow.png */; };
 		5FE32AF518EF1CF7008273D1 /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE32AF418EF1CF7008273D1 /* Instagram.png */; };
@@ -408,11 +406,9 @@
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
 		5F09AF9218E62618009C6E88 /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
-		5F0A71C018E618AF003D5911 /* StatsBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "StatsBg@2x.png"; sourceTree = "<group>"; };
 		5F0A71C218E61C06003D5911 /* greenheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenheart.png; sourceTree = "<group>"; };
 		5F0A71C318E61C06003D5911 /* redheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redheart.png; sourceTree = "<group>"; };
 		5F63696218E0C2720094B36B /* AnalyticsReportCompleteProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnalyticsReportCompleteProtocol.h; sourceTree = "<group>"; };
-		5FC1576518E5FD7100173AFC /* shittyheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = shittyheart.png; sourceTree = "<group>"; };
 		5FE32AF018EF1927008273D1 /* URL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = URL.png; sourceTree = "<group>"; };
 		5FE32AF118EF1927008273D1 /* Follow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Follow.png; sourceTree = "<group>"; };
 		5FE32AF418EF1CF7008273D1 /* Instagram.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Instagram.png; sourceTree = "<group>"; };
@@ -1383,10 +1379,8 @@
 				5FE32AF018EF1927008273D1 /* URL.png */,
 				5FE32AF118EF1927008273D1 /* Follow.png */,
 				5F09AF9218E62618009C6E88 /* eye.png */,
-				5F0A71C018E618AF003D5911 /* StatsBg@2x.png */,
 				5F0A71C218E61C06003D5911 /* greenheart.png */,
 				5F0A71C318E61C06003D5911 /* redheart.png */,
-				5FC1576518E5FD7100173AFC /* shittyheart.png */,
 				7BAC5BBA187DDEB70077EF50 /* Instagram_share_images */,
 				7B58C3F3183C1C610080E569 /* test.igo.png */,
 				2E628C9517C6A17000CB7BE4 /* Icon */,
@@ -1985,7 +1979,6 @@
 				7B0D253A17CBA36300E43FA6 /* PLCameraSheetDoneButtonPressed@2x.png in Resources */,
 				7B3F5219175FBDD800ABF49B /* productpreviewtabbar.png in Resources */,
 				7B0D253817CBA36300E43FA6 /* PLCameraSheetButtonPressed@2x.png in Resources */,
-				5FC1576618E5FD7100173AFC /* shittyheart.png in Resources */,
 				2E38E6AF17CBD28C00A8BD54 /* closebutton_white@2x.png in Resources */,
 				7B602DA217664F1700663A73 /* PurchasingViewController.xib in Resources */,
 				5FE32AF218EF1927008273D1 /* URL.png in Resources */,
@@ -2017,7 +2010,6 @@
 				2E0EAE08176F6E6700B65FC3 /* toolbarShopsyLogo@2x.png in Resources */,
 				2E0EAE09176F6E6700B65FC3 /* toolbarBG@2x.png in Resources */,
 				7B8CCFBE181ABEF6006E01A9 /* FaceBookShare@2x.png in Resources */,
-				5F0A71C118E618AF003D5911 /* StatsBg@2x.png in Resources */,
 				2E9378EB184D200500476540 /* log_out_icon@2x.png in Resources */,
 				2E0EAE0A176F6E6700B65FC3 /* setTwitter_OffIcon@2x.png.png in Resources */,
 				2E0EAE0B176F6E6700B65FC3 /* setTwitter_OnIcon@2x.png.png in Resources */,
@@ -2335,8 +2327,8 @@
 					"$(PROJECT_DIR)/Instashop",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				PROVISIONING_PROFILE = "6B25D3D0-2C13-4721-A195-DEB70A703F36";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6B25D3D0-2C13-4721-A195-DEB70A703F36";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2358,8 +2350,8 @@
 					"$(PROJECT_DIR)/Instashop",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				PROVISIONING_PROFILE = "9F11340E-D181-4302-B7E1-D0B4E37907A7";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "9F11340E-D181-4302-B7E1-D0B4E37907A7";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
