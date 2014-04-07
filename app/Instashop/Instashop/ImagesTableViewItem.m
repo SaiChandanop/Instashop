@@ -131,7 +131,7 @@
         self.contentImageView.image = theImage;
     
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationDuration:0.25];
     self.contentImageView.alpha = 1;
     [UIView commitAnimations];
 
@@ -144,7 +144,7 @@
         self.contentImageView.image = [UIImage imageWithData:theData];
     
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.75];
+    [UIView setAnimationDuration:0.25];
     self.contentImageView.alpha = 1;
     [UIView commitAnimations];
 }
