@@ -420,7 +420,8 @@
     
     
     self.followContainerView.layer.cornerRadius = 5;
-    self.followContainerView.alpha = .85;
+    self.followContainerView.layer.masksToBounds = YES;
+    self.followContainerView.alpha = 1.0;
     
     /*
     self.followersTextLabel.font = [UIFont systemFontOfSize:9];
