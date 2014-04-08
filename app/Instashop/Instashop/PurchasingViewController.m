@@ -392,6 +392,10 @@
     
     
     self.ownedProfileContainerView.frame = CGRectMake(self.profileContainerView.frame.origin.x, self.profileContainerView.frame.origin.y, self.profileContainerView.frame.size.width, self.profileContainerView.frame.size.height);
+
+    self.ownedProfileContainerView.layer.cornerRadius = 3.0f;
+    self.ownedProfileContainerView.layer.masksToBounds = YES;
+
     [self.profileContainerView removeFromSuperview];
     [self.sellerLabel removeFromSuperview];
     [self.likesLabel removeFromSuperview];
@@ -411,47 +415,14 @@
     
     self.reportDictionary = [[NSDictionary alloc] initWithDictionary:dict];
     
-    
     self.buyAnalyticsLabel.alpha = 1;
     self.saveAnalyticsLabel.alpha = 1;
     self.buyAnalyticsLabel.text = [self.reportDictionary objectForKey:@"bought"];
     self.saveAnalyticsLabel.text = [self.reportDictionary objectForKey:@"saved"];
-    
-    
-    
-    
-    self.viewsTitleLabel.textColor = [UIColor colorWithRed:136.0f/255.0f green:136.0f/255.0f blue:136.0f/255.0f alpha:1];
-    self.viewsTitleLabel.font = [UIFont systemFontOfSize:20 / 2];
-    
-    self.shopsyTitleLabel.textColor = self.viewsTitleLabel.textColor;
-    self.shopsyTitleLabel.font = self.viewsTitleLabel.font;
-    
-    self.instagramTitleLabel.textColor = self.viewsTitleLabel.textColor;
-    self.instagramTitleLabel.font = self.viewsTitleLabel.font;
-    
-    
-    self.viewsImageView.image = [UIImage imageNamed:@"eye.png"];
-    self.shopsyImageView.image = [UIImage imageNamed:@"greenheart.png"];
-    self.instagramImageView.image = [UIImage imageNamed:@"redheart.png"];
-    
-    
-    self.viewsValueLabel.textColor = [UIColor colorWithRed:85.0f/255.0f green:85.0f/255.0f blue:85.0f/255.0f alpha:1];
-    self.shopsyValueLabel.textColor = self.viewsValueLabel.textColor;
-    self.instagramValueLabel.textColor = self.viewsValueLabel.textColor;
-    
-    self.viewsValueLabel.font = [UIFont systemFontOfSize:28.0f / 2];
-    self.shopsyValueLabel.font = self.viewsValueLabel.font;
-    self.instagramValueLabel.font = self.viewsValueLabel.font;
-    
-    
-    
+   
     self.viewsValueLabel.text = [self.reportDictionary objectForKey:@"viewed"];
     self.shopsyValueLabel.text = [self.reportDictionary objectForKey:@"liked"];
-    
-    self.saveAnalyticsLabel.textColor = self.purchaseButton.backgroundColor;
-    self.buyAnalyticsLabel.textColor = self.saveButton.backgroundColor;
-    
-    
+
     /*
      [viewed] => 13
      [saved] => 0
