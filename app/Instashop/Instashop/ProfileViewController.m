@@ -460,6 +460,8 @@
 
 -(IBAction)followOnInstagramButtonHit
 {
+    
+    NSLog(@"followOnInstagramButtonHit");
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     if (!self.followButton.selected)
@@ -523,7 +525,10 @@
                 if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
                     self.followButton.selected = YES;
                 else
+                {
+                    self.followButton.selected = NO;
                     self.followButton.alpha = 1;
+                }
             }
         }
         else if ([request.url rangeOfString:@"users"].length > 0)
