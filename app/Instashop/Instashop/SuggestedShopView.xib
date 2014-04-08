@@ -82,7 +82,7 @@
                     <state key="normal" backgroundImage="Follow.png">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
-                    <state key="selected" title="Following" backgroundImage="following_btn_background.png"/>
+                    <state key="selected" backgroundImage="Following.png"/>
                     <connections>
                         <action selector="followButtonHit" destination="DZY-em-fqN" eventType="touchUpInside" id="jBc-N1-2F1"/>
                     </connections>
@@ -100,11 +100,11 @@
     </objects>
     <resources>
         <image name="Follow.png" width="140" height="60"/>
+        <image name="Following.png" width="280" height="120"/>
         <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bottom_shadow.png" width="320" height="50"/>
         <image name="cell_separator.png" width="320" height="5"/>
         <image name="cover-default.jpg" width="320" height="135"/>
-        <image name="following_btn_background.png" width="98" height="20"/>
         <image name="top_shadow.png" width="320" height="50"/>
     </resources>
 </document>

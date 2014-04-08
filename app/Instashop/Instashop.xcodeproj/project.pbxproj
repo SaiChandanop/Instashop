@@ -79,6 +79,7 @@
 		2E9378F5184D231700476540 /* post_product_icon_small@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E9378F4184D231700476540 /* post_product_icon_small@2x.png */; };
 		2E93DF961892D8A900A3EF1A /* FirstTTutorialZero@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E93DF951892D8A900A3EF1A /* FirstTTutorialZero@2x.png */; };
 		2E94EC9618F4B685008CA0D6 /* shopsy-small-gray.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E94EC9518F4B685008CA0D6 /* shopsy-small-gray.png */; };
+		2E94EC9818F4BB10008CA0D6 /* Following.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E94EC9718F4BB10008CA0D6 /* Following.png */; };
 		2EB05556185F5BF400D55F28 /* cover-default@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2EB05555185F5BF400D55F28 /* cover-default@2x.jpg */; };
 		2EB259A1176786970054618D /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB2599E176786970054618D /* TPKeyboardAvoidingScrollView.m */; };
 		2EB259A2176786970054618D /* TPKeyboardAvoidingTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2EB259A0176786970054618D /* TPKeyboardAvoidingTableView.m */; };
@@ -383,6 +384,7 @@
 		2E9378F4184D231700476540 /* post_product_icon_small@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "post_product_icon_small@2x.png"; sourceTree = "<group>"; };
 		2E93DF951892D8A900A3EF1A /* FirstTTutorialZero@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FirstTTutorialZero@2x.png"; sourceTree = "<group>"; };
 		2E94EC9518F4B685008CA0D6 /* shopsy-small-gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shopsy-small-gray.png"; sourceTree = "<group>"; };
+		2E94EC9718F4BB10008CA0D6 /* Following.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Following.png; sourceTree = "<group>"; };
 		2EB05555185F5BF400D55F28 /* cover-default@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "cover-default@2x.jpg"; sourceTree = "<group>"; };
 		2EB2599D176786970054618D /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TPKeyboardAvoidingScrollView.h; path = Instashop/TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		2EB2599E176786970054618D /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TPKeyboardAvoidingScrollView.m; path = Instashop/TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
@@ -1378,6 +1380,7 @@
 		7B61EE4D174D2162002A483D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				2E94EC9718F4BB10008CA0D6 /* Following.png */,
 				5FE32AF418EF1CF7008273D1 /* Instagram.png */,
 				5FE32AF018EF1927008273D1 /* URL.png */,
 				5FE32AF118EF1927008273D1 /* Follow.png */,
@@ -2058,6 +2061,7 @@
 				7B51EB1D17C30FDF009FBE91 /* drop_button_light@2x.png in Resources */,
 				2ED0CAA71885C6CC00DE6042 /* radio-off@2x.png in Resources */,
 				2E0EAE21176F6E6700B65FC3 /* lmNotificationsIcon@2x.png in Resources */,
+				2E94EC9818F4BB10008CA0D6 /* Following.png in Resources */,
 				2E0EAE22176F6E6700B65FC3 /* lmFAQIcon@2x.png in Resources */,
 				2E0EAE23176F6E6700B65FC3 /* lmFeedbackIcon@2x.png in Resources */,
 				2EB05556185F5BF400D55F28 /* cover-default@2x.jpg in Resources */,
