@@ -36,6 +36,7 @@
 @synthesize purchasingViewController;
 @synthesize preloadedContent;
 @synthesize preloadedContentView;
+@synthesize urlString;
 
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url
@@ -545,6 +546,9 @@
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateLoadingStatus) object:nil];
     [self performSelector:@selector(updateLoadingStatus) withObject:nil afterDelay:1.];
+    
+    if ([error code] == 999)
+        [self loadURL:[NSURL URLWithString:self.urlString]];
 }
 
 #pragma mark actions -
@@ -902,6 +906,14 @@
     [navigationBar removeFromSuperview];
     
     
+}
+
+-(void)openWithSavedURLString
+{
+    NSLog(@"openWithSavedURLString");
+    [self loadURL:[NSURL URLWithString:self.urlString]];
+//    webView.frame = CGRectMake(webView.frame.origin.x, navigationBar.frame.origin.y, webView.frame.size.width, webView.frame.size.height + navigationBar.frame.size.height + 5);
+//    [navigationBar removeFromSuperview];
 }
 
 - (void)dismissViewBookmMarkViewController:(ViewBookmarkViewController *)viewController {

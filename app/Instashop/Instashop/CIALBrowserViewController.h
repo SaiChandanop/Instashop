@@ -53,6 +53,8 @@
     NSString *preloadedContent;
     UITextView *preloadedContentView;
     
+    NSString *urlString;
+    
 }
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url;
@@ -69,7 +71,7 @@
 - (id)initWithURL:(NSURL *)url;
 
 - (void)openThisURL:(NSURL *)url;
-
+- (void)openWithSavedURLString;
 - (void)dismissViewBookmMarkViewController:(ViewBookmarkViewController *)viewController;
 - (void)dismissAddBookmMarkViewController:(AddBookmarkViewController *)viewController;
 
@@ -79,4 +81,5 @@
 @property (nonatomic, strong) NSString *preloadedContent;
 @property (nonatomic, strong) UITextView *preloadedContentView;
 
+@property (nonatomic, strong) NSString *urlString;
 @end

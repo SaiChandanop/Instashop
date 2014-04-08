@@ -15,6 +15,7 @@
 #import "SellerDetailResponseProtocol.h"
 #import "ISDarkRowContainerView.h"
 #import "TPKeyboardAvoidingScrollView.h"
+#import "CIALBrowserViewController.h"
 
 @interface ProfileViewController : UIViewController <UIActionSheetDelegate, IGRequestDelegate, CellSelectionOccuredProtocol, UINavigationControllerDelegate, UIImagePickerControllerDelegate, GKImagePickerDelegate, SellerDetailResponseProtocol>
 {
@@ -54,6 +55,7 @@
     UILabel *followingTextLabel;
     UILabel *followingValueLabel;
     NSMutableDictionary *tableDataDictionary;
+    CIALBrowserViewController *cialBrowserViewController;
 }
 
 -(void)loadNavigationControlls;
@@ -105,6 +107,7 @@
 @property (nonatomic, strong) IBOutlet UILabel *followingTextLabel;
 @property (nonatomic, strong) IBOutlet UILabel *followingValueLabel;
 @property (nonatomic, strong) NSMutableDictionary *tableDataDictionary;
+@property (nonatomic, strong) CIALBrowserViewController *cialBrowserViewController;
 
 
 

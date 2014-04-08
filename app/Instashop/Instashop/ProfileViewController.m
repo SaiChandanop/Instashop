@@ -72,6 +72,8 @@
 @synthesize followersValueLabel;
 @synthesize followingTextLabel;
 @synthesize followingValueLabel;
+@synthesize cialBrowserViewController;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -828,7 +830,19 @@
         [gapView addSubview:exitButton];
         
         
-        [[AppRootViewController sharedRootViewController] presentViewController:containerViewController animated:YES completion:nil];
+        
+        
+        
+        self.cialBrowserViewController = [[CIALBrowserViewController alloc] init];
+        self.cialBrowserViewController.urlString = self.siteString;
+        self.cialBrowserViewController.purchasingViewController = self;
+        [self.navigationController pushViewController:cialBrowserViewController animated:YES];
+        [self.cialBrowserViewController openThisURL:[NSURL URLWithString:self.siteString]];
+        [self.cialBrowserViewController loadRightBarItem];
+
+        [NSTimer scheduledTimerWithTimeInterval:2 target:self.cialBrowserViewController selector:@selector(openWithSavedURLString) userInfo:nil repeats:NO];
+        
+//        [[AppRootViewController sharedRootViewController] presentViewController:containerViewController animated:YES completion:nil];
     }
 }
 
