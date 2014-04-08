@@ -419,7 +419,7 @@
     self.saveAnalyticsLabel.alpha = 1;
     self.buyAnalyticsLabel.text = [self.reportDictionary objectForKey:@"bought"];
     self.saveAnalyticsLabel.text = [self.reportDictionary objectForKey:@"saved"];
-    self.saveAnalyticsLabel.frame = CGRectMake(self.saveAnalyticsLabel.frame.origin.x + 6, self.saveAnalyticsLabel.frame.origin.y - .5, self.saveAnalyticsLabel.frame.size.width, self.saveAnalyticsLabel.frame.size.height);
+//    self.saveAnalyticsLabel.frame = CGRectMake(self.saveAnalyticsLabel.frame.origin.x + 6, self.saveAnalyticsLabel.frame.origin.y - .5, self.saveAnalyticsLabel.frame.size.width, self.saveAnalyticsLabel.frame.size.height);
    
     self.viewsValueLabel.text = [self.reportDictionary objectForKey:@"viewed"];
     self.shopsyValueLabel.text = [self.reportDictionary objectForKey:@"liked"];
