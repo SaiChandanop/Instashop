@@ -109,7 +109,7 @@
     self.followButton.layer.shadowOffset = CGSizeMake(1, 0);
     //    self.followButton.layer.cornerRadius = 2;
     
-    self.followButton.alpha = 0;
+    self.followButton.alpha = 1;
     
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
@@ -521,7 +521,7 @@
             if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
             {
                 if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
-                    self.followButton.alpha = 0;
+                    self.followButton.selected = YES;
                 else
                     self.followButton.alpha = 1;
             }
