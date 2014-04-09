@@ -13,6 +13,6 @@
 @interface ShopsAPIHandler : RootAPIHandler
 
 
-+(void)getSuggestedShopsWithDelegate:(id)theDelegate;
++(void)getSuggestedShopsWithDelegate:(id)theDelegate withCategory:(NSString *)categoryString;
 
 @end
