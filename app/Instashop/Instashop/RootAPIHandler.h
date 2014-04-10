@@ -11,7 +11,7 @@
 #import "Utils.h"
 
 //#define ROOT_URI @"http://www.instashopdev.com.php54-1.ord1-1.websitetestlink.com"
-#define ROOT_URI @"http://www.instashop.com"
+#define ROOT_URI @"http://www.shopsy.com/server_source"
 
 @interface RootAPIHandler : NSObject <SMWebRequestDelegate>
 {
