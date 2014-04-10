@@ -100,7 +100,7 @@ float transitionTime = .256;
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-    [DiscoverDataManager getSharedDiscoverDataManager];
+//    [DiscoverDataManager getSharedDiscoverDataManager];
     
     
     self.navigationItem.backBarButtonItem =

@@ -41,7 +41,7 @@
 @synthesize begun;
 @synthesize bgImageView;
 @synthesize spoofTableView;
-//@synthesize refreshControl;
+@synthesize refreshControl;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -111,9 +111,9 @@
     UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 35, 0, 0)];
     [self.view addSubview:refreshView];
     
-    UIRefreshControl *refreshControl = [UIRefreshControl new];
-    [refreshControl addTarget:self action:@selector(viewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
-    [refreshView addSubview:refreshControl];
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+    [refreshView addSubview:self.refreshControl];
     
     
 }
@@ -121,6 +121,7 @@
 -(void)refresh
 {
     NSLog(@"refresh");
+    [ShopsAPIHandler  getSuggestedShopsWithDelegate:self withCategory:@"Brands"];
     
 }
 -(void)segmentedControlValueChanged:(UISegmentedControl *)theControl
@@ -166,6 +167,11 @@
 
 -(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray withCategory:(NSString *)theCategory
 {
+    [self.refreshControl endRefreshing];
+    [self.spoofTableView reloadData];
+    [self.brandsScrollView setContentOffset:CGPointMake(0,0) animated:YES];
+    [self.bloggersScrollView setContentOffset:CGPointMake(0,0) animated:YES];
+    
     NSLog(@"suggestedShopsDidReturn, theCategory: %@",  theCategory);
     
     UIScrollView *theScrollView;
@@ -217,8 +223,6 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
-    NSLog(@"scrollView.contentOffset: %f", scrollView.contentOffset.y);
-//    self.spoofTableView.contentOffset
     [self.spoofTableView setContentOffset:scrollView.contentOffset];
     
     self.segmentedControl.frame = CGRectMake(self.segmentedControl.frame.origin.x, scrollView.contentOffset.y+ 5, self.segmentedControl.frame.size.width, self.segmentedControl.frame.size.height);
@@ -253,6 +257,33 @@
         [self.navigationController pushViewController:profileViewController animated:YES];
     }
 }
+
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    
+    return 0;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    
+    // Return the number of rows in the section.
+    return 0;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    static NSString *CellIdentifier = @"Cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    
+    cell.textLabel.text = @"wrong";
+    // Configure the cell...
+    
+    return cell;
+}
+
+
 
 
 @end

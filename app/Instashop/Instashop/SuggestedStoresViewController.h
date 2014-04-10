@@ -29,6 +29,7 @@
     UITableView *spoofTableView;
     NSMutableArray *shopViewsArray;
     NSMutableArray *followedIDsArray;
+    UIRefreshControl *refreshControl;
     
     BOOL isLaunchedFromMenu;
     BOOL begun;
@@ -52,6 +53,7 @@
 @property (nonatomic, strong) IBOutlet UITableView *spoofTableView;
 @property (nonatomic, strong) NSMutableArray *shopViewsArray;
 @property (nonatomic, strong) NSMutableArray *followedIDsArray;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 
 @property (nonatomic, assign) BOOL isLaunchedFromMenu;
 
