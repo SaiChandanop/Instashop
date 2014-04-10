@@ -31,7 +31,6 @@
 
 @synthesize appRootViewController;
 @synthesize contentScrollView;
-@synthesize selectedShopsIDSArray;
 @synthesize firstTimeUserViewController;
 @synthesize closeTutorialButton;
 @synthesize isLaunchedFromMenu;
@@ -44,7 +43,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.selectedShopsIDSArray = [[NSMutableArray alloc] initWithCapacity:0];
         self.shopViewsArray = [[NSMutableArray alloc] initWithCapacity:0];
         
     }
@@ -76,15 +74,24 @@
     [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
     
     
-
     if (!self.holdBegin)
     {
         self.begun = YES;
-        [ShopsAPIHandler getSuggestedShopsWithDelegate:self];
+        [ShopsAPIHandler  getSuggestedShopsWithDelegate:self withCategory:@"Brands"];
     }
+    
+    [self.segmentedControl addTarget:self
+                              action:@selector(segmentedControlValueChanged:)
+               forControlEvents:UIControlEventValueChanged];
     
 }
 
+-(void)segmentedControlValueChanged:(UISegmentedControl *)theControl
+{
+    int index = theControl.selectedSegmentIndex;
+    
+    NSLog(@"index: %d", index);
+}
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
@@ -105,10 +112,9 @@
 
 
 
--(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray {
-        
-    [self.selectedShopsIDSArray addObjectsFromArray:suggestedShopArray];
-    
+-(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray withCategory:(NSString *)theCategory
+{
+    NSLog(@"suggestedShopsDidReturn, theCategory: %@",  theCategory);
     NSArray *subviewsArray = [self.contentScrollView subviews];
     
     for (int i = 0; i < [subviewsArray count]; i++)
@@ -119,11 +125,11 @@
     
     
     float yPoint = 0;
-    for (int i = 0; i < [self.selectedShopsIDSArray count]; i++)
+    for (int i = 0; i < [suggestedShopArray count]; i++)
     {
         SuggestedShopView *suggestedShopView = [[[NSBundle mainBundle] loadNibNamed:@"SuggestedShopView" owner:self options:nil] objectAtIndex:0];
         suggestedShopView.parentController = self;
-        suggestedShopView.shopViewInstagramID = [self.selectedShopsIDSArray objectAtIndex:i];
+        suggestedShopView.shopViewInstagramID = [suggestedShopArray objectAtIndex:i];
         suggestedShopView.frame = CGRectMake(0, yPoint, self.view.frame.size.width, suggestedShopView.frame.size.height);
         [self.contentScrollView addSubview:suggestedShopView];
         

@@ -11,6 +11,6 @@
 @protocol SuggestedShopReturnProtocol <NSObject>
 
 
--(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray;
+-(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray withCategory:(NSString *)theCategory;
 
 @end

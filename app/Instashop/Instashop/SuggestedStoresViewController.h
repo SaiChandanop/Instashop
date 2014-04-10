@@ -22,8 +22,8 @@
     
     UIScrollView *contentScrollView;
     UIButton *closeTutorialButton;
+    UISegmentedControl *segmentedControl;
     
-    NSMutableArray *selectedShopsIDSArray;
     NSMutableArray *shopViewsArray;
     NSMutableArray *followedIDsArray;
     
@@ -42,8 +42,8 @@
 
 @property (nonatomic, strong) IBOutlet UIScrollView *contentScrollView;
 @property (nonatomic, strong) UIButton *closeTutorialButton;
+@property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
 
-@property (nonatomic, strong) NSMutableArray *selectedShopsIDSArray;
 @property (nonatomic, strong) NSMutableArray *shopViewsArray;
 @property (nonatomic, strong) NSMutableArray *followedIDsArray;
 
