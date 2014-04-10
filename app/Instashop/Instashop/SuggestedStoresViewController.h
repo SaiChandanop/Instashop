@@ -25,7 +25,8 @@
     UIScrollView *bloggersScrollView;
     UIButton *closeTutorialButton;
     UISegmentedControl *segmentedControl;
-    
+    UIImageView *bgImageView;
+    UIRefreshControl *refreshControl;
     NSMutableArray *shopViewsArray;
     NSMutableArray *followedIDsArray;
     
@@ -47,7 +48,8 @@
 @property (nonatomic, strong) UIScrollView *bloggersScrollView;
 @property (nonatomic, strong) UIButton *closeTutorialButton;
 @property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
-
+@property (nonatomic, strong) UIImageView *bgImageView;
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSMutableArray *shopViewsArray;
 @property (nonatomic, strong) NSMutableArray *followedIDsArray;
 

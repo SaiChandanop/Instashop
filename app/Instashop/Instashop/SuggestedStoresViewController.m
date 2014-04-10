@@ -39,6 +39,9 @@
 @synthesize shopViewsArray;
 @synthesize holdBegin;
 @synthesize begun;
+@synthesize bgImageView;
+@synthesize refreshControl;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -60,7 +63,10 @@
     [super viewDidLoad];
     
     self.brandsScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.tempScrollView.frame.origin.x, self.tempScrollView.frame.origin.y, self.tempScrollView.frame.size.width, self.tempScrollView.frame.size.height)];
+//    self.brandsScrollView.backgroundColor = [UIColor blackColor];
     self.bloggersScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.tempScrollView.frame.origin.x, self.tempScrollView.frame.origin.y, self.tempScrollView.frame.size.width, self.tempScrollView.frame.size.height)];
+//    self.bloggersScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cover-default.png"]];
+    
     
     [self.view addSubview:self.brandsScrollView];
     [self.tempScrollView removeFromSuperview];
@@ -74,9 +80,9 @@
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SUGGESTED SHOPS"]];
     
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
-    bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
-    [self.view insertSubview:bgImageView atIndex:0];
+    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
+    self.bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
+    [self.view insertSubview:self.bgImageView atIndex:0];
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
@@ -94,6 +100,10 @@
     
 }
 
+-(void)testRefresh
+{
+    NSLog(@"testRefresh");
+}
 -(void)segmentedControlValueChanged:(UISegmentedControl *)theControl
 {
     int index = theControl.selectedSegmentIndex;
@@ -181,7 +191,22 @@
     
     if ([self.shopViewsArray count] > 0)
         [[self.shopViewsArray objectAtIndex:0] makeIGContentRequest];
+ 
     
+    float width = 40;
+    if (self.refreshControl == nil)
+    {
+        
+//        self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(theScrollView.frame.size.width / 2 - width / 2, theScrollView.frame.origin.y, width, width)];
+//        [self.view insertSubview:self.refreshControl aboveSubview:self.bgImageView];
+    }
+
+    
+    NSLog(@"self.view.subviews: %@", [self.view subviews]);
+                                 
+    
+                                                               
+//UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
 }
 
 
