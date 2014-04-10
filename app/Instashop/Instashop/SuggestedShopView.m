@@ -78,7 +78,7 @@
      NSDictionary *dataDictionary = [result objectForKey:@"data"];
     
 
-//    NSLog(@"request didLoad: %@", self.shopViewInstagramID);
+    NSLog(@"request didLoad: %@", self.shopViewInstagramID);
     
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {

@@ -20,14 +20,15 @@
     AppRootViewController *appRootViewController;
     FirstTimeUserViewController *firstTimeUserViewController;
     
-    UIScrollView *tempScrollView;
-    UIScrollView *brandsScrollView;
-    UIScrollView *bloggersScrollView;
+
+    UITableView *theTableView;
+    
     UIButton *closeTutorialButton;
     UISegmentedControl *segmentedControl;
     UIImageView *bgImageView;
-    UIRefreshControl *refreshControl;
     NSMutableArray *shopViewsArray;
+    NSMutableArray *brandsViewsArray;
+    NSMutableArray *bloggersViewsArray;
     NSMutableArray *followedIDsArray;
     
     BOOL isLaunchedFromMenu;
@@ -43,18 +44,16 @@
 @property (nonatomic, strong) AppRootViewController *appRootViewController;
 @property (nonatomic, strong) FirstTimeUserViewController *firstTimeUserViewController;
 
-@property (nonatomic, strong) IBOutlet UIScrollView *tempScrollView;
-@property (nonatomic, strong) UIScrollView *brandsScrollView;
-@property (nonatomic, strong) UIScrollView *bloggersScrollView;
+@property (nonatomic, strong) IBOutlet UITableView *theTableView;
+
 @property (nonatomic, strong) UIButton *closeTutorialButton;
 @property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIImageView *bgImageView;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
 @property (nonatomic, strong) NSMutableArray *shopViewsArray;
+@property (nonatomic, strong) NSMutableArray *brandsViewsArray;
+@property (nonatomic, strong) NSMutableArray *bloggersViewsArray;
 @property (nonatomic, strong) NSMutableArray *followedIDsArray;
-
 @property (nonatomic, assign) BOOL isLaunchedFromMenu;
-
 @property (nonatomic, assign) BOOL begun;
 @property (nonatomic, assign) BOOL holdBegin;
 
