@@ -7,8 +7,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SuggestedStoresViewController">
             <connections>
-                <outlet property="contentScrollView" destination="ft1-ci-b91" id="2lB-cV-Hyu"/>
                 <outlet property="segmentedControl" destination="ZiO-Fm-lpr" id="YSv-zI-Jg7"/>
+                <outlet property="tempScrollView" destination="ft1-ci-b91" id="SWd-O4-ahc"/>
                 <outlet property="view" destination="1" id="3"/>
             </connections>
         </placeholder>

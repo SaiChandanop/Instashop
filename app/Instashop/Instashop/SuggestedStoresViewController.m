@@ -30,7 +30,8 @@
 @implementation SuggestedStoresViewController
 
 @synthesize appRootViewController;
-@synthesize contentScrollView;
+@synthesize brandsScrollView;
+@synthesize bloggersScrollView;
 @synthesize firstTimeUserViewController;
 @synthesize closeTutorialButton;
 @synthesize isLaunchedFromMenu;
@@ -58,7 +59,14 @@
 {
     [super viewDidLoad];
     
+    self.brandsScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.tempScrollView.frame.origin.x, self.tempScrollView.frame.origin.y, self.tempScrollView.frame.size.width, self.tempScrollView.frame.size.height)];
+    self.bloggersScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.tempScrollView.frame.origin.x, self.tempScrollView.frame.origin.y, self.tempScrollView.frame.size.width, self.tempScrollView.frame.size.height)];
+    
+    [self.view addSubview:self.brandsScrollView];
+    [self.tempScrollView removeFromSuperview];
+    
     [Utils conformViewControllerToMaxSize:self];
+    
     
     [self.navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
@@ -90,7 +98,22 @@
 {
     int index = theControl.selectedSegmentIndex;
     
-    NSLog(@"index: %d", index);
+    if (index == 0)
+    {
+        if ([self.brandsScrollView superview] == nil)
+            [self.view addSubview:self.brandsScrollView];
+        
+        if ([self.bloggersScrollView superview] != nil)
+            [self.bloggersScrollView removeFromSuperview];
+    }
+    else
+    {
+        if ([self.bloggersScrollView superview] == nil)
+            [self.view addSubview:self.bloggersScrollView];
+            
+        if ([self.brandsScrollView superview] != nil)
+            [self.brandsScrollView removeFromSuperview];
+    }
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -115,13 +138,29 @@
 -(void)suggestedShopsDidReturn:(NSArray *)suggestedShopArray withCategory:(NSString *)theCategory
 {
     NSLog(@"suggestedShopsDidReturn, theCategory: %@",  theCategory);
-    NSArray *subviewsArray = [self.contentScrollView subviews];
+    
+    UIScrollView *theScrollView;
+    
+    if ([theCategory compare:@"Brands"] == NSOrderedSame)
+    {
+        theScrollView = self.brandsScrollView;
+        
+        if ([[self.bloggersScrollView subviews] count] == 0)
+        {
+            [ShopsAPIHandler  getSuggestedShopsWithDelegate:self withCategory:@"Bloggers"];
+        }
+    }
+    else
+        theScrollView = self.bloggersScrollView;
+    
+    NSArray *subviewsArray = [theScrollView subviews];
     
     for (int i = 0; i < [subviewsArray count]; i++)
     {
         UIView *subview = [subviewsArray objectAtIndex:i];
         [subview removeFromSuperview];
     }
+    
     
     
     float yPoint = 0;
@@ -131,9 +170,9 @@
         suggestedShopView.parentController = self;
         suggestedShopView.shopViewInstagramID = [suggestedShopArray objectAtIndex:i];
         suggestedShopView.frame = CGRectMake(0, yPoint, self.view.frame.size.width, suggestedShopView.frame.size.height);
-        [self.contentScrollView addSubview:suggestedShopView];
         
-        self.contentScrollView.contentSize = CGSizeMake(0, suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height + 60);
+        [theScrollView addSubview:suggestedShopView];
+        theScrollView.contentSize = CGSizeMake(0, suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height + 60);
         
         yPoint = suggestedShopView.frame.origin.y + suggestedShopView.frame.size.height;
     
@@ -142,6 +181,7 @@
     
     if ([self.shopViewsArray count] > 0)
         [[self.shopViewsArray objectAtIndex:0] makeIGContentRequest];
+    
 }
 
 

@@ -20,7 +20,9 @@
     AppRootViewController *appRootViewController;
     FirstTimeUserViewController *firstTimeUserViewController;
     
-    UIScrollView *contentScrollView;
+    UIScrollView *tempScrollView;
+    UIScrollView *brandsScrollView;
+    UIScrollView *bloggersScrollView;
     UIButton *closeTutorialButton;
     UISegmentedControl *segmentedControl;
     
@@ -40,7 +42,9 @@
 @property (nonatomic, strong) AppRootViewController *appRootViewController;
 @property (nonatomic, strong) FirstTimeUserViewController *firstTimeUserViewController;
 
-@property (nonatomic, strong) IBOutlet UIScrollView *contentScrollView;
+@property (nonatomic, strong) IBOutlet UIScrollView *tempScrollView;
+@property (nonatomic, strong) UIScrollView *brandsScrollView;
+@property (nonatomic, strong) UIScrollView *bloggersScrollView;
 @property (nonatomic, strong) UIButton *closeTutorialButton;
 @property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
 
