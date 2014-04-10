@@ -15,7 +15,7 @@
 
 @class FirstTimeUserViewController;
 
-@interface SuggestedStoresViewController : UIViewController <SuggestedShopReturnProtocol, IGRequestDelegate>
+@interface SuggestedStoresViewController : UITableViewController <SuggestedShopReturnProtocol, IGRequestDelegate, UIScrollViewDelegate>
 {
     AppRootViewController *appRootViewController;
     FirstTimeUserViewController *firstTimeUserViewController;
@@ -26,7 +26,7 @@
     UIButton *closeTutorialButton;
     UISegmentedControl *segmentedControl;
     UIImageView *bgImageView;
-    UIRefreshControl *refreshControl;
+    UITableView *spoofTableView;
     NSMutableArray *shopViewsArray;
     NSMutableArray *followedIDsArray;
     
@@ -49,7 +49,7 @@
 @property (nonatomic, strong) UIButton *closeTutorialButton;
 @property (nonatomic, strong) IBOutlet UISegmentedControl *segmentedControl;
 @property (nonatomic, strong) UIImageView *bgImageView;
-@property (nonatomic, strong) UIRefreshControl *refreshControl;
+@property (nonatomic, strong) IBOutlet UITableView *spoofTableView;
 @property (nonatomic, strong) NSMutableArray *shopViewsArray;
 @property (nonatomic, strong) NSMutableArray *followedIDsArray;
 

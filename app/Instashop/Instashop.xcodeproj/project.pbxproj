@@ -10,6 +10,8 @@
 		032E250318E1DF9B000875F9 /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */; };
 		0369D26B183338C400AA1C9F /* MediaLikedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369D26A183338C400AA1C9F /* MediaLikedObject.m */; };
 		038FCD051835BAA800EC50D5 /* NotificationsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 038FCD041835BAA800EC50D5 /* NotificationsAPIHandler.m */; };
+		03C3A4F818F735C700C4E215 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3A4F618F735C700C4E215 /* TestTableViewController.m */; };
+		03C3A4F918F735C700C4E215 /* TestTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03C3A4F718F735C700C4E215 /* TestTableViewController.xib */; };
 		03FA8C1F18E1E27C00AC6E46 /* InterestsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03FA8C1E18E1E27C00AC6E46 /* InterestsViewController.m */; };
 		193433D617E0FF92007744E6 /* FirstTimeUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 193433D517E0FD93007744E6 /* FirstTimeUserViewController.m */; };
 		19D8329B186D45E200F062DD /* EnterEmailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 19D8329A186D45E200F062DD /* EnterEmailViewController.m */; };
@@ -309,6 +311,9 @@
 		0369D26A183338C400AA1C9F /* MediaLikedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLikedObject.m; sourceTree = "<group>"; };
 		038FCD031835BAA800EC50D5 /* NotificationsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsAPIHandler.h; sourceTree = "<group>"; };
 		038FCD041835BAA800EC50D5 /* NotificationsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsAPIHandler.m; sourceTree = "<group>"; };
+		03C3A4F518F735C700C4E215 /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
+		03C3A4F618F735C700C4E215 /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
+		03C3A4F718F735C700C4E215 /* TestTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewController.xib; sourceTree = "<group>"; };
 		03FA8C1D18E1E27C00AC6E46 /* InterestsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InterestsViewController.h; sourceTree = "<group>"; };
 		03FA8C1E18E1E27C00AC6E46 /* InterestsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InterestsViewController.m; sourceTree = "<group>"; };
 		193433D417E0FD93007744E6 /* FirstTimeUserViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstTimeUserViewController.h; sourceTree = "<group>"; };
@@ -1279,6 +1284,9 @@
 				7B5A56EC17D3D7F8007AABDA /* SuggestedShopView.h */,
 				7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */,
 				7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */,
+				03C3A4F518F735C700C4E215 /* TestTableViewController.h */,
+				03C3A4F618F735C700C4E215 /* TestTableViewController.m */,
+				03C3A4F718F735C700C4E215 /* TestTableViewController.xib */,
 			);
 			name = SuggestedStores;
 			sourceTree = "<group>";
@@ -2023,6 +2031,7 @@
 				2E7CFF9717C3A98500657CFC /* gray_x@2x.png in Resources */,
 				2E0EAE0C176F6E6700B65FC3 /* setShippingIcon@2x.png.png in Resources */,
 				5FE32AF518EF1CF7008273D1 /* Instagram.png in Resources */,
+				03C3A4F918F735C700C4E215 /* TestTableViewController.xib in Resources */,
 				2E41683D17CE7403002850BD /* add_product@2x.png in Resources */,
 				2E1B437B17CFECEA00B28603 /* follow_btn_background@2x.png in Resources */,
 				2E8007C217D1631400489639 /* following_btn_background@2x.png in Resources */,
@@ -2212,6 +2221,7 @@
 				7B08B9BA182036190037B033 /* TTTTimeIntervalFormatter.m in Sources */,
 				7BF9DD8F178C546F005148A8 /* SBJsonStreamTokeniser.m in Sources */,
 				7BF9DD90178C546F005148A8 /* SBJsonStreamWriter.m in Sources */,
+				03C3A4F818F735C700C4E215 /* TestTableViewController.m in Sources */,
 				7BF9DD91178C546F005148A8 /* SBJsonStreamWriterAccumulator.m in Sources */,
 				5FEE463B18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m in Sources */,
 				7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */,

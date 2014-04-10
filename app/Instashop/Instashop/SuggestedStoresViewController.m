@@ -40,7 +40,8 @@
 @synthesize holdBegin;
 @synthesize begun;
 @synthesize bgImageView;
-@synthesize refreshControl;
+@synthesize spoofTableView;
+//@synthesize refreshControl;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -61,16 +62,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SUGGESTED SHOPS"]];
+    self.navigationItem.backBarButtonItem =
+    [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    
+    self.spoofTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    self.spoofTableView.separatorColor = [UIColor clearColor];
+
     
     self.brandsScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.tempScrollView.frame.origin.x, self.tempScrollView.frame.origin.y, self.tempScrollView.frame.size.width, self.tempScrollView.frame.size.height)];
-//    self.brandsScrollView.backgroundColor = [UIColor blackColor];
-    self.bloggersScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.tempScrollView.frame.origin.x, self.tempScrollView.frame.origin.y, self.tempScrollView.frame.size.width, self.tempScrollView.frame.size.height)];
-//    self.bloggersScrollView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"cover-default.png"]];
+    self.brandsScrollView.backgroundColor = [UIColor clearColor];
+
     
+    self.bloggersScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(self.tempScrollView.frame.origin.x, self.tempScrollView.frame.origin.y, self.tempScrollView.frame.size.width, self.tempScrollView.frame.size.height)];
+    self.bloggersScrollView.backgroundColor = [UIColor clearColor];
     
     [self.view addSubview:self.brandsScrollView];
     [self.tempScrollView removeFromSuperview];
-    
     [Utils conformViewControllerToMaxSize:self];
     
     
@@ -78,14 +88,9 @@
     [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     self.navigationController.navigationBar.translucent = NO;
     
-    [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SUGGESTED SHOPS"]];
     
-    self.bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height)];
-    self.bgImageView.image = [UIImage imageNamed:@"Menu_BG"];
-    [self.view insertSubview:self.bgImageView atIndex:0];
     
-    self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
+    
     
     
     if (!self.holdBegin)
@@ -97,12 +102,26 @@
     [self.segmentedControl addTarget:self
                               action:@selector(segmentedControlValueChanged:)
                forControlEvents:UIControlEventValueChanged];
+ 
+//    [self.segmentedControl remof]
+    [self.view addSubview:self.segmentedControl];
+    
+    self.segmentedControl.frame = CGRectMake(self.view.frame.size.width /2 - self.segmentedControl.frame.size.width / 2, 5, self.segmentedControl.frame.size.width, self.segmentedControl.frame.size.height);
+    
+    UIView *refreshView = [[UIView alloc] initWithFrame:CGRectMake(0, 35, 0, 0)];
+    [self.view addSubview:refreshView];
+    
+    UIRefreshControl *refreshControl = [UIRefreshControl new];
+    [refreshControl addTarget:self action:@selector(viewDidBeginRefreshing:) forControlEvents:UIControlEventValueChanged];
+    [refreshView addSubview:refreshControl];
+    
     
 }
 
--(void)testRefresh
+-(void)refresh
 {
-    NSLog(@"testRefresh");
+    NSLog(@"refresh");
+    
 }
 -(void)segmentedControlValueChanged:(UISegmentedControl *)theControl
 {
@@ -192,21 +211,17 @@
     if ([self.shopViewsArray count] > 0)
         [[self.shopViewsArray objectAtIndex:0] makeIGContentRequest];
  
+   
     
-    float width = 40;
-    if (self.refreshControl == nil)
-    {
-        
-//        self.refreshControl = [[UIRefreshControl alloc] initWithFrame:CGRectMake(theScrollView.frame.size.width / 2 - width / 2, theScrollView.frame.origin.y, width, width)];
-//        [self.view insertSubview:self.refreshControl aboveSubview:self.bgImageView];
-    }
+}
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    NSLog(@"scrollView.contentOffset: %f", scrollView.contentOffset.y);
+//    self.spoofTableView.contentOffset
+    [self.spoofTableView setContentOffset:scrollView.contentOffset];
     
-    NSLog(@"self.view.subviews: %@", [self.view subviews]);
-                                 
-    
-                                                               
-//UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    self.segmentedControl.frame = CGRectMake(self.segmentedControl.frame.origin.x, scrollView.contentOffset.y+ 5, self.segmentedControl.frame.size.width, self.segmentedControl.frame.size.height);
 }
 
 
