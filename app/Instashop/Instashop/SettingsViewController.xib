@@ -264,7 +264,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G1o-Hp-4IU">
-                            <rect key="frame" x="0.0" y="-10" width="320" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                             <state key="normal">
@@ -284,19 +284,19 @@
                     <rect key="frame" x="0.0" y="269" width="320" height="44"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuDarkBG.png" id="7G2-ed-LlG">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="menuLightBG.png" id="7G2-ed-LlG">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         </imageView>
-                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="pull is account info" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NtU-o2-f3D">
-                            <rect key="frame" x="52" y="11" width="177" height="23"/>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Download Instagram Users I Follow" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="NtU-o2-f3D">
+                            <rect key="frame" x="52" y="11" width="248" height="23"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="terms_icon.png" id="GOp-hn-uVu">
-                            <rect key="frame" x="0.0" y="1" width="44" height="44"/>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Instagram.png" id="GOp-hn-uVu">
+                            <rect key="frame" x="11" y="12" width="22" height="22"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="cYP-C0-ooy">
@@ -321,6 +321,7 @@
         </scrollView>
     </objects>
     <resources>
+        <image name="Instagram.png" width="60" height="60"/>
         <image name="Menu_BG.png" width="320" height="548"/>
         <image name="bug_icon.png" width="44" height="44"/>
         <image name="cell_separator.png" width="320" height="5"/>
