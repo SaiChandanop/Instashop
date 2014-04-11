@@ -28,6 +28,9 @@
 //    InstagramShareView *instagramShareView;
     InstagramShareViewController *instagramShareViewController;
     UIDocumentInteractionController *dicot;
+    
+    NSMutableArray *masterUsersByIDArray;
+    
 }
 
 - (void) tutorialShown;
@@ -51,4 +54,5 @@
 @property (strong, nonatomic) InstagramShareViewController *instagramShareViewController;
 @property (strong, nonatomic) UIDocumentInteractionController *dicot;
 
+@property (strong, nonatomic) NSMutableArray *masterUsersByIDArray;
 @end

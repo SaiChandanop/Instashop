@@ -922,7 +922,15 @@
     }
     else
     {
+        
         UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", nil];
+        
+        AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
+        NSString *userID = [InstagramUserObject getStoredUserObject].userID;
+        if ([del.masterUsersByIDArray containsObject:userID])
+            shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", @"Delete", nil];
+
+        
         shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [shareActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
     }

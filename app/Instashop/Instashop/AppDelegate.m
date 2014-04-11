@@ -28,12 +28,13 @@
 
 @synthesize instagram, authenticationViewController, appRootViewController;
 @synthesize pushDeviceTokenString, instagramShareViewController;
-
+@synthesize masterUsersByIDArray;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {        
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
+    [self populateMasterList];
     
     [Flurry setCrashReportingEnabled:YES];
     //note: iOS only allows one crash reporting tool per app; if using another, set to: NO
@@ -261,6 +262,16 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+-(void)populateMasterList
+{
+    self.masterUsersByIDArray = [[NSMutableArray alloc] initWithCapacity:0];
+    [self.masterUsersByIDArray addObject:@"688353"];
+    [self.masterUsersByIDArray addObject:@"32336413"];
+    [self.masterUsersByIDArray addObject:@"280421250"];
+    
+    
 }
 
 @end
