@@ -16,6 +16,7 @@
 #import "InstagramUserObject.h"
 #import "MailchimpAPIHandler.h"
 #import <QuartzCore/QuartzCore.h>
+#import "AppDelegate.h"
 
 @interface EnterEmailViewController ()
 
@@ -59,13 +60,10 @@
 {
     [super viewDidLoad];
     
-    /*
-    UIImageView *bgImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"lightMenuBG.png"]];
-    bgImageView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    bgImageView.backgroundColor = [UIColor redColor];
-    [self.view insertSubview:bgImageView atIndex:0];
-    [self.view addSubview:bgImageView];
-*/
+    
+    NSLog(@"!!!!!!!! FRAME: %@", NSStringFromCGRect([[UIScreen mainScreen] applicationFrame]));
+    
+    float screenHeight = [[UIScreen mainScreen] applicationFrame].size.height;
     
 	// Do any additional setup after loading the view.
     
@@ -101,14 +99,16 @@
     segmentedBackgroundView.layer.cornerRadius = 5;
     segmentedBackgroundView.layer.masksToBounds = YES;
     [self.view insertSubview:segmentedBackgroundView belowSubview:self.theSegmentedControl];
+    if (screenHeight < 568)
+        segmentedBackgroundView.frame = CGRectMake(segmentedBackgroundView.frame.origin.x - .5, segmentedBackgroundView.frame.origin.y, segmentedBackgroundView.frame.size.width-1, segmentedBackgroundView.frame.size.height);
+                                                   
     
     self.theSegmentedControl.backgroundColor = [UIColor clearColor];
     
     float height = 50;
     
-    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - height, self.view.frame.size.width, height)];
-    self.nextButton.enabled = NO;
-    
+    self.nextButton = [[UIButton alloc] initWithFrame:CGRectMake(0, screenHeight - height, self.view.frame.size.width, height)];
+    self.nextButton.enabled = NO;    
     [self.nextButton setBackgroundImage:[UIImage imageNamed:@"Menu-BG.png"] forState:UIControlStateDisabled];
     [self.nextButton setTitle:@"Next" forState:UIControlStateDisabled];
     self.nextButton.titleLabel.textColor = [UIColor whiteColor];
