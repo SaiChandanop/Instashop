@@ -62,12 +62,11 @@
 
 -(IBAction) loginButtonHit
 {
- 
     NSLog(@"loginButtonHit");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.instagram.sessionDelegate = self;
     
-    if ([appDelegate.instagram isSessionValid]) {
+    if ([appDelegate.instagram isSessionValid] && [InstagramUserObject getStoredUserObject] != nil) {
         NSLog(@"isValid!");
         [self igDidLogin];
     }
