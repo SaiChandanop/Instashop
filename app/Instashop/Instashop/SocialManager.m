@@ -71,7 +71,7 @@
      return retAR;
 }
 
-+(void)postToTwitterWithString:(NSString *)contentString
++(void)postToTwitterWithString:(NSString *)contentString withImage:(UIImage *)theImage
 {
 
     ACAccountStore *account = [[ACAccountStore alloc] init];
@@ -109,15 +109,22 @@
                      }
                  }
                  
-                 NSDictionary *message = @{@"status": contentString};
+                 NSDictionary *params = @{@"status": contentString};
                  
                  NSURL *requestURL = [NSURL
-                                      URLWithString:@"https://api.twitter.com/1.1/statuses/update.json"];
+                                      URLWithString:@"https://api.twitter.com"
+                                      @"/1.1/statuses/update_with_media.json"];
                  
                  SLRequest *postRequest = [SLRequest
                                            requestForServiceType:SLServiceTypeTwitter
                                            requestMethod:SLRequestMethodPOST
-                                           URL:requestURL parameters:message];
+                                           URL:requestURL parameters:params];
+                 
+                 NSData *imageData = UIImageJPEGRepresentation(theImage, 1.f);
+                 [postRequest addMultipartData:imageData
+                                  withName:@"media[]"
+                                      type:@"image/jpeg"
+                                  filename:@"image.jpg"];
                  
                  postRequest.account = twitterAccount;
                  

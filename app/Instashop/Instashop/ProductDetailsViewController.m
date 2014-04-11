@@ -395,7 +395,7 @@
         //NSString *twitterString = [NSString stringWithFormat:@"%@ via %@ %@", self.descriptionTextView.text, @"@shopsyapp", self.urlLabel.text];
         NSString *twitterString = [NSString stringWithFormat:@"%@ via %@ %@", @"Find this product on Shopsy", @"@shopsyapp", self.urlLabel.text];
         
-        [SocialManager postToTwitterWithString:twitterString];
+        [SocialManager postToTwitterWithString:twitterString withImage:theImageView.image];
         
         [NotificationsAPIHandler createUserSocialNotificationWithProductID:[self.editingProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID withSocialType:@"twitter"];
     }

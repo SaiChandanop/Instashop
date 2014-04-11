@@ -12,7 +12,7 @@
 
 #define SELECTED_TWITTER_ACCOUNT_ID_KEY @"SELECfTfAED_TWITTFER_AFCCOUNT_ID_gKEY"
 +(void)requestInitialFacebookAccess;
-+(void)postToTwitterWithString:(NSString *)contentString;
++(void)postToTwitterWithString:(NSString *)contentString withImage:(UIImage *)theImage;
 +(void)postToFacebookWithString:(NSString *)contentString withImage:(UIImage *)contentImage;
 +(NSArray *)getAllTwitterAccountsWithResponseDelegate:(id)theDelegate;
 @end
