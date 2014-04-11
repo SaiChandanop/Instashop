@@ -95,7 +95,7 @@
     
     
     UIView *segmentedBackgroundView = [[UIView alloc] initWithFrame:self.theSegmentedControl.frame];
-    segmentedBackgroundView.backgroundColor = [UIColor whiteColor];
+    segmentedBackgroundView.backgroundColor = [UIColor colorWithRed:255.0f/255.0f green:255.0f/255.0f blue:255.0f/255.0f alpha:.25];
     segmentedBackgroundView.layer.cornerRadius = 5;
     segmentedBackgroundView.layer.masksToBounds = YES;
     [self.view insertSubview:segmentedBackgroundView belowSubview:self.theSegmentedControl];
