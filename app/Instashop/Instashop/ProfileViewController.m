@@ -565,16 +565,16 @@
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
     {
-        
+        /*
         UIImage *originalImage = [UIImage imageNamed:@"bullhorn.png"];
-        CGSize destinationSize = CGSizeMake(20, 20);
+        CGSize destinationSize = CGSizeMake(44, 44);
         UIGraphicsBeginImageContext(destinationSize);
         [originalImage drawInRect:CGRectMake(0,0,destinationSize.width,destinationSize.height)];
         UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
+        */
         
-        
-        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:newImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
+        UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"bullhorn.png"] style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;
         
     }
