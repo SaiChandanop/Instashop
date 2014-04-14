@@ -30,6 +30,9 @@
 @synthesize cacheArray;
 @synthesize loaded;
 @synthesize jkProgressView;
+@synthesize stifleFlashRefresh;
+
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -178,6 +181,7 @@
         cell = [[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]];
     }
     
+    cell.stifleFlashRefresh = self.stifleFlashRefresh;
     
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray withDelegate:self.cellDelegate];
     

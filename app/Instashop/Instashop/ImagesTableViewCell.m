@@ -16,6 +16,7 @@
 @synthesize itemOne;
 @synthesize itemTwo;
 @synthesize itemThree;
+@synthesize stifleFlashRefresh;
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight
 {
@@ -53,18 +54,21 @@
     if (self.itemOne == nil)
     {
         self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(0, 0, imageWidth, imageWidth)];
+        self.itemOne.stifleFlashRefresh = self.stifleFlashRefresh;
         [self addSubview:self.itemOne];
     }
     
     if (self.itemTwo == nil)
     {
         self.itemTwo = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(self.itemOne.frame.size.width, 0, imageWidth, imageWidth)];
+        self.itemTwo.stifleFlashRefresh = self.stifleFlashRefresh;
         [self addSubview:self.itemTwo];
     }
     
     if (self.itemThree == nil)
     {
         self.itemThree = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(self.itemTwo.frame.origin.x + self.itemTwo.frame.size.width, 0, imageWidth, imageWidth)];
+        self.itemThree.stifleFlashRefresh = self.stifleFlashRefresh;
         [self addSubview:self.itemThree];
     }
     

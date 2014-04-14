@@ -23,6 +23,8 @@
     id delegate;
     
     BOOL alreadyExists;
+    
+    BOOL stifleFlashRefresh;
 }
 
 
@@ -42,4 +44,6 @@
 @property (nonatomic, strong) id delegate;
 
 @property (nonatomic, assign) BOOL alreadyExists;
+
+@property (nonatomic, assign) BOOL stifleFlashRefresh;
 @end

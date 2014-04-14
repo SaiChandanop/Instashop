@@ -24,6 +24,7 @@
 @synthesize instagramObjectDictionary;
 @synthesize alreadyExists;
 @synthesize greyCoverView;
+@synthesize stifleFlashRefresh;
 
 
 - (id)initWithFrame:(CGRect)frame
@@ -107,7 +108,7 @@
             }
         }
         
-//        NSLog(@"self.imageProductURL: %@", self.imageProductURL);
+        //        NSLog(@"self.imageProductURL: %@", self.imageProductURL);
         if (self.imageProductURL != nil)
         {
             UIImage *theImage = [[CacheManager getSharedCacheManager] getImageWithURL:self.imageProductURL];
@@ -118,7 +119,7 @@
             }
             else
                 [ImageAPIHandler makeSynchImageRequestWithDelegate:self withInstagramMediaURLString:self.imageProductURL withImageView:nil];
-
+            
         }
     }
     
@@ -130,11 +131,15 @@
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = theImage;
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25];
-    self.contentImageView.alpha = 1;
-    [UIView commitAnimations];
-
+    if (self.stifleFlashRefresh)
+        self.contentImageView.alpha = 1;
+    else
+    {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.25];
+        self.contentImageView.alpha = 1;
+        [UIView commitAnimations];
+    }
     
 }
 
@@ -143,10 +148,15 @@
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = [UIImage imageWithData:theData];
     
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.25];
-    self.contentImageView.alpha = 1;
-    [UIView commitAnimations];
+    if (self.stifleFlashRefresh)
+        self.contentImageView.alpha = 1;
+    else
+    {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.25];
+        self.contentImageView.alpha = 1;
+        [UIView commitAnimations];
+    }
 }
 
 
@@ -167,7 +177,7 @@
     else
     {
         
-//        NSLog(@"coverbuttonhit, self.delegate: %@", self.delegate);
+        //        NSLog(@"coverbuttonhit, self.delegate: %@", self.delegate);
         if (self.objectDictionary != nil)    {
             if ([self.objectDictionary isKindOfClass:[TableCellAddClass class]])
             {

@@ -14,6 +14,8 @@
     ImagesTableViewItem *itemOne;
     ImagesTableViewItem *itemTwo;
     ImagesTableViewItem *itemThree;
+    
+    BOOL stifleFlashRefresh;
 }
 
 - (id)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier withCellHeight:(float)cellHeight;
@@ -24,4 +26,5 @@
 @property (nonatomic, strong) ImagesTableViewItem *itemTwo;
 @property (nonatomic, strong) ImagesTableViewItem *itemThree;
 
+@property (nonatomic, assign) BOOL stifleFlashRefresh;
 @end

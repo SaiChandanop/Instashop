@@ -20,6 +20,7 @@
     JKProgressView *jkProgressView;
     float offsetJKProgressView;
     ProfileViewController *profileViewController;
+    BOOL stifleFlashRefresh;
 }
 
 -(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary;
@@ -32,4 +33,5 @@
 @property (nonatomic, strong) JKProgressView *jkProgressView;
 @property (nonatomic, strong) ProfileViewController *profileViewController;
 @property (nonatomic, assign) float offsetJKProgressView;
+@property (nonatomic, assign) BOOL stifleFlashRefresh;
 @end
