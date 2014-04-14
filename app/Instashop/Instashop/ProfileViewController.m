@@ -160,8 +160,9 @@
     
     self.infoContainerScrollView.alpha = 0;
     
-    self.theTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];
-    self.theTableViewController.stifleFlashRefresh = YES;
+    
+    NSLog(@"!!!!!!!!!!!!!!!");
+    self.theTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];    
     self.theTableViewController.tableView.backgroundColor = [UIColor whiteColor];
     self.theTableViewController.cellDelegate = self;
     self.theTableViewController.profileViewController = self;

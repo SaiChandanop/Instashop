@@ -181,6 +181,7 @@
         cell = [[ImagesTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier withCellHeight:[self tableView:tableView heightForRowAtIndexPath:indexPath]];
     }
     
+    NSLog(@"self.stifleFlashRefresh: %d", self.stifleFlashRefresh);
     cell.stifleFlashRefresh = self.stifleFlashRefresh;
     
     [cell loadWithIndexPath:indexPath withFeedItemsArray:self.contentArray withDelegate:self.cellDelegate];

@@ -70,6 +70,7 @@
 //    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count", timeIntervalString, @"MIN_TIMESTAMP", nil];
     //NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method", @"-1", @"count",  nil];
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"users/self/media/recent", @"method",  nil];
+    self.productSelectTableViewController.stifleFlashRefresh = YES;
     self.productSelectTableViewController.parentController = self;
     self.productSelectTableViewController.cellDelegate = self;
     self.productSelectTableViewController.contentRequestParameters = [[NSMutableDictionary alloc] initWithDictionary:params];

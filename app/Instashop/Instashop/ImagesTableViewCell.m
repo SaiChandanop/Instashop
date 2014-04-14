@@ -29,28 +29,7 @@
 -(void) handleLayoutWithDelegate:(id)theDelegate
 {
     float imageWidth = self.frame.size.width/3;
- /*
-    if (self.itemOne != nil)
-    {
-        [self.itemOne removeFromSuperview];
-        [self.itemOne release];
-        self.itemOne = nil;
-    }
     
-    if (self.itemTwo != nil)
-    {
-        [self.itemTwo removeFromSuperview];
-        [self.itemTwo release];
-        self.itemTwo = nil;
-    }
-    
-    if (self.itemThree != nil)
-    {
-        [self.itemThree removeFromSuperview];
-        [self.itemThree release];
-        self.itemThree = nil;
-    }
- */   
     if (self.itemOne == nil)
     {
         self.itemOne = [[ImagesTableViewItem alloc] initWithFrame:CGRectMake(0, 0, imageWidth, imageWidth)];

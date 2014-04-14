@@ -59,7 +59,11 @@
 
 - (void) loadContentWithDictionary:(NSDictionary *)theDictionary
 {
-    self.contentImageView.alpha = 0;
+    if (self.stifleFlashRefresh)
+        self.contentImageView.alpha = 1;
+    else
+        self.contentImageView.alpha = 0;
+    
     self.contentImageView.image = nil;
     if ([theDictionary isKindOfClass:[TableCellAddClass class]])
     {
@@ -114,6 +118,7 @@
             UIImage *theImage = [[CacheManager getSharedCacheManager] getImageWithURL:self.imageProductURL];
             if (theImage != nil)
             {
+                NSLog(@"is cached");
                 self.contentImageView.image = theImage;
                 self.contentImageView.alpha = 1;
             }
@@ -145,6 +150,7 @@
 
 -(void)imageReturnedWithURL:(NSString *)url withData:(NSData *)theData
 {
+    NSLog(@"2, stifle: %d", self.stifleFlashRefresh);
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = [UIImage imageWithData:theData];
     

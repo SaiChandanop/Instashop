@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#define PROGRESS_TYPE_LIKED 0
+#define PROGRESS_TYPE_FOLLOWED 1
+
 @interface JKProgressView : UIView
 {
     UIActivityIndicatorView *theIndicatorView;
@@ -15,6 +18,7 @@
 }
 
 +(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText;
++(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText withImageType:(int)type;
 -(void)hideProgressView;
 
 @property (nonatomic, retain) UIActivityIndicatorView *theIndicatorView;

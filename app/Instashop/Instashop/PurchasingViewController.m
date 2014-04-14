@@ -829,6 +829,10 @@
     
     if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    
+    [JKProgressView presentProgressViewInView:self.imageView withText:@"Liked" withImageType:0];
+
+    
 }
 
 

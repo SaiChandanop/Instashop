@@ -28,6 +28,24 @@ static ImageAPIHandler *sharedImageAPIHandler;
         sharedImageAPIHandler = [[ImageAPIHandler alloc] init];
     }
     
+    UIImage *theImage = [[CacheManager getSharedCacheManager] getImageWithURL:instagramMediaURLString];
+    if (theImage != nil)
+    {
+        if ([theDelegate isKindOfClass:[ImagesTableViewItem class]])
+            [theDelegate imageReturnedWithURL:instagramMediaURLString withImage:theImage];
+        else if (referenceImageView != nil)
+        {
+            referenceImageView.image = theImage;
+            referenceImageView.alpha = 1;
+            
+            if ([referenceImageView isKindOfClass:[ISAsynchImageView class]])
+                [(ISAsynchImageView *)referenceImageView ceaseAnimations];
+        }
+        
+    }
+    else
+    {
+        
         ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
         handler.delegate = theDelegate;
         handler.contextObject = instagramMediaURLString;
@@ -41,7 +59,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     
         [connection scheduleInRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
         [connection start];
-   
+    }
 }
 
 

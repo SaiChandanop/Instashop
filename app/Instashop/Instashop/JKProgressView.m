@@ -59,6 +59,36 @@
     return theProgressView;
 }
 
+
++(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText withImageType:(int)type
+{
+    JKProgressView *theProgressView = [[JKProgressView alloc] initWithFrame:CGRectMake(0, 0, referenceView.frame.size.width, referenceView.frame.size.height)];
+    //theProgressView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.2];
+    theProgressView.backgroundColor = [UIColor clearColor];
+    
+    float diameter = 68;
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(referenceView.frame.size.width / 2 - diameter / 2, referenceView.frame.size.height / 2 - diameter /2, diameter, diameter)];
+    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
+    bgView.layer.cornerRadius = 8.0;
+    bgView.layer.masksToBounds = YES;
+    [theProgressView insertSubview:bgView atIndex:0];
+    
+    float inset = bgView.frame.size.width * .08;
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(bgView.frame.size.width / 2 - (bgView.frame.size.width / 2 * inset), inset, bgView.frame.size.width / 2 * inset, bgView.frame.size.width / 2 * inset)];
+    theImageView.image = [UIImage imageNamed:@"heart_red.png"];
+    [bgView addSubview:theImageView];
+ 
+    
+    
+    [referenceView addSubview:theProgressView];
+    return theProgressView;
+}
+
+
+
+
+
 -(void)hideProgressView
 {
     [self removeFromSuperview];
