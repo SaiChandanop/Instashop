@@ -156,9 +156,17 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-
+    NSLog(@"connectionDidFinishLoading");
 
         UIImage *theImage = [UIImage imageWithData:self.receivedData];
+    
+    
+    
+        if (theImage != nil && self.contextObject != nil)
+        {
+            [[CacheManager getSharedCacheManager] setCacheObject:theImage withKey:self.contextObject];
+        }
+    
         if (self.theImageView != nil && theImage != nil)
             self.theImageView.image = theImage;
     

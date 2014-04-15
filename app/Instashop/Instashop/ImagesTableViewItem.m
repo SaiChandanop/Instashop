@@ -118,7 +118,6 @@
             UIImage *theImage = [[CacheManager getSharedCacheManager] getImageWithURL:self.imageProductURL];
             if (theImage != nil)
             {
-                NSLog(@"is cached");
                 self.contentImageView.image = theImage;
                 self.contentImageView.alpha = 1;
             }
