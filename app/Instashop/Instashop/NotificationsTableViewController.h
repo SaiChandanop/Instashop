@@ -1,16 +1,17 @@
 //
-//  NotificationsViewController.h
+//  NotificationsTableViewController.h
 //  Instashop
 //
-//  Created by Josh Klobe on 9/3/13.
-//  Copyright (c) 2013 Josh Klobe. All rights reserved.
+//  Created by Josh Klobe on 4/16/14.
+//  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import "NotificationsFinishedProtocol.h"
 #import "IGRequest.h"
 
-@interface NotificationsViewController : UIViewController <NotificationsFinishedProtocol, UITableViewDataSource, UITableViewDelegate, IGRequestDelegate>
+
+@interface NotificationsTableViewController : UITableViewController <NotificationsFinishedProtocol, UITableViewDataSource, UITableViewDelegate, IGRequestDelegate>
 {
     UITableView *theTableView;
     NSMutableArray *contentArray;

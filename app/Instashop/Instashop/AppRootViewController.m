@@ -14,7 +14,6 @@
 #import "InstagramUserObject.h"
 #import "SuggestedStoresViewController.h"
 #import "SearchViewController.h"
-#import "NotificationsViewController.h"
 #import "DiscoverViewController.h"
 #import "SearchViewController.h"
 #import "FirstTimeUserViewController.h"
@@ -29,6 +28,7 @@
 #import "MailchimpAPIHandler.h"
 #import "NotificationsAPIHandler.h"
 #import "PullAccountHandler.h"
+#import "NotificationsTableViewController.h"
 
 
 @implementation AppRootViewController
@@ -76,7 +76,7 @@ float transitionTime = .256;
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-    self.notificationsViewController = [[NotificationsViewController alloc] initWithNibName:@"NotificationsViewController" bundle:nil];
+    self.notificationsViewController = [[NotificationsTableViewController alloc] initWithNibName:@"NotificationsTableViewController" bundle:nil];
     self.suggestedStoresViewController = [[SuggestedStoresViewController alloc] initWithNibName:@"SuggestedStoresViewController" bundle:nil];
     
     [AttributesManager getSharedAttributesManager];
@@ -92,7 +92,7 @@ float transitionTime = .256;
     self.feedViewController.parentController = self;
     self.feedNavigationController = [[UINavigationController alloc] initWithRootViewController:self.feedViewController];
     self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
-    self.feedNavigationController.view.backgroundColor = [UIColor blueColor];
+    self.feedNavigationController.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG.png"]];
     [self.view addSubview:self.feedNavigationController.view];
     self.feedNavigationController.view.frame = CGRectMake(0,0,self.view.frame.size.width, self.view.frame.size.height);
     

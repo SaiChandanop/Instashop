@@ -11,7 +11,7 @@
 #import "FeedViewController.h"
 #import "HomeViewController.h"
 #import "FirstTimeUserViewController.h"
-#import "NotificationsViewController.h"
+#import "NotificationsTableViewController.h"
 #import "NotificationsObject.h"
 #import "SettingsViewController.h"
 #import "WebViewController.h"
@@ -25,7 +25,7 @@
     HomeViewController *homeViewController;
     SearchViewController *theSearchViewController;
     UINavigationController *searchNavigationController;
-    NotificationsViewController *notificationsViewController;
+    NotificationsTableViewController *notificationsViewController;
     SettingsViewController *settingsViewController;
     UINavigationController *productCreateNavigationController;
     SuggestedStoresViewController *suggestedStoresViewController;
@@ -72,7 +72,7 @@
 @property (strong, nonatomic) SearchViewController *theSearchViewController;
 @property (strong, nonatomic) UINavigationController *searchNavigationController;
 @property (strong, nonatomic) FirstTimeUserViewController *firstTimeUserViewController;
-@property (strong, nonatomic) NotificationsViewController *notificationsViewController;
+@property (strong, nonatomic) NotificationsTableViewController *notificationsViewController;
 @property (strong, nonatomic) SettingsViewController *settingsViewController;
 @property (strong, nonatomic) SuggestedStoresViewController *suggestedStoresViewController;
 @property (strong, nonatomic) WebViewController *webView;

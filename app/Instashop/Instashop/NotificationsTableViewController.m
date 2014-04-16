@@ -1,27 +1,27 @@
 //
-//  NotificationsViewController.m
+//  NotificationsTableViewController.m
 //  Instashop
 //
-//  Created by Josh Klobe on 9/3/13.
-//  Copyright (c) 2013 Josh Klobe. All rights reserved.
+//  Created by Josh Klobe on 4/16/14.
+//  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //
 
-#import "NotificationsViewController.h"
+#import "NotificationsTableViewController.h"
 #import "ISConstants.h"
 #import "NavBarTitleView.h"
 #import "NotificationsAPIHandler.h"
 #import "InstagramUserObject.h"
 #import "NotificationsTableViewCell.h"
 #import "NotificationsObject.h"
-
 #import "AppDelegate.h"
 #import "AppRootViewController.h"
 #import "HomeViewController.h"
-@interface NotificationsViewController ()
+
+@interface NotificationsTableViewController ()
 
 @end
 
-@implementation NotificationsViewController
+@implementation NotificationsTableViewController
 
 @synthesize theTableView;
 @synthesize contentArray;
@@ -47,13 +47,19 @@
 
 
 -(void)loadNotifications
-{    
+{
     [NotificationsAPIHandler getAllNotificationsWithInstagramID:[InstagramUserObject getStoredUserObject].userID withDelegate:self];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    UIImageView *theBackgroundImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+    theBackgroundImageView.backgroundColor = [UIColor redColor];
+    theBackgroundImageView.image = [UIImage imageNamed:@"Menu_BG.png"];
+    [self.view insertSubview:theBackgroundImageView atIndex:0];
+
     
     [Utils conformViewControllerToMaxSize:self];
     
@@ -63,22 +69,32 @@
     self.navigationController.navigationBar.translucent = NO;
     
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"NOTIFICATIONS"]];
-
+    
     [self.theTableView reloadData];
     
     self.theTableView.backgroundColor = [UIColor clearColor];
-
+    
     
     // Do any additional setup after loading the view from its nib.
     
     self.navigationItem.backBarButtonItem =
     [[UIBarButtonItem alloc] initWithTitle:@""
-                                      style:UIBarButtonItemStyleBordered
-                                     target:nil
-                                     action:nil];
+                                     style:UIBarButtonItemStyleBordered
+                                    target:nil
+                                    action:nil];
+    
+
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:self action:@selector(loadNotifications)
+             forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
     
 }
 
+-(void)refreshContent
+{
+    NSLog(@"refreshContent refreshContent");
+}
 
 -(NSDictionary *)getDictionaryFromCacheWithID:(NSString *)theID
 {
@@ -98,13 +114,14 @@
         if ([[theCell.notificationsObject.dataDictionary objectForKey:@"creator_id"] integerValue] == [theID integerValue])
             [theCell loadContentWithDataDictionary:theDictionary];
     }
-
+    
 }
 
 
 
 -(void)notificationsDidFinishWithArray:(NSArray *)theNotificationsArray
 {
+    [self.refreshControl endRefreshing];
     [self.contentArray removeAllObjects];
     [self.contentArray addObjectsFromArray:theNotificationsArray];
     
@@ -115,7 +132,7 @@
         NotificationsObject *notificationsObject = [theNotificationsArray objectAtIndex:i];
         
         NSString *creatorID = [notificationsObject.dataDictionary objectForKey:@"creator_id"];
-
+        
         BOOL proceed = NO;
         
         if ([self getDictionaryFromCacheWithID:creatorID] == nil)
@@ -174,7 +191,7 @@
     
     NSArray *urlComponentsArray = [request.url componentsSeparatedByString:@"/"];
     NSString *requestedID = [urlComponentsArray objectAtIndex:[urlComponentsArray count] - 1];
-
+    
     
     NSMutableDictionary *dict = [NSMutableDictionary dictionaryWithCapacity:0];
     [dict setObject:@"1" forKey:@"private"];
@@ -195,13 +212,13 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-//    [tableView setSeparatorColor:[UIColor clearColor]];
+    //    [tableView setSeparatorColor:[UIColor clearColor]];
     
     self.theTableView.backgroundColor = [UIColor clearColor];
     
     [self.theTableView registerNib:[UINib nibWithNibName:@"NotificationsTableViewCell"
-                                               bundle:[NSBundle mainBundle]]
-         forCellReuseIdentifier:@"NotificationsTableViewCell"];
+                                                  bundle:[NSBundle mainBundle]]
+            forCellReuseIdentifier:@"NotificationsTableViewCell"];
     
     return 1;
 }
@@ -227,7 +244,7 @@
     
     if (![self.tableCellsArray containsObject:cell])
         [self.tableCellsArray addObject:cell];
-
+    
     [cell clearSubviews];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
@@ -243,7 +260,7 @@
 {
     return  74;
 }
- 
+
 -(void)backButtonHit
 {
     NSLog(@"backButtonHit");

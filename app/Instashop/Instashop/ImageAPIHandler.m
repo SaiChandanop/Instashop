@@ -156,7 +156,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
-    NSLog(@"connectionDidFinishLoading");
+//    NSLog(@"connectionDidFinishLoading");
 
         UIImage *theImage = [UIImage imageWithData:self.receivedData];
     

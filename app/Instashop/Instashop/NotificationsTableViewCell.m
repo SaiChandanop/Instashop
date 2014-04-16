@@ -12,7 +12,7 @@
 #import "AppDelegate.h"
 #import "ImageAPIHandler.h"
 #import "AppRootViewController.h"
-#import "NotificationsViewController.h"
+
 @implementation NotificationsTableViewCell
 
 @synthesize notificationsObject;

@@ -112,6 +112,8 @@
 		5FE32AF518EF1CF7008273D1 /* Instagram.png in Resources */ = {isa = PBXBuildFile; fileRef = 5FE32AF418EF1CF7008273D1 /* Instagram.png */; };
 		5FEE463B18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE463A18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m */; };
 		5FEE463E18E0AA3C00EEE3EB /* PullAccountHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FEE463D18E0AA3C00EEE3EB /* PullAccountHandler.m */; };
+		5FFE799E18FEC98D003F2A96 /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FFE799C18FEC98D003F2A96 /* NotificationsTableViewController.m */; };
+		5FFE799F18FEC98D003F2A96 /* NotificationsTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FFE799D18FEC98D003F2A96 /* NotificationsTableViewController.xib */; };
 		6901344C1836B4E9005CE173 /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6901344A1836B4E9005CE173 /* SettingsViewController.m */; };
 		6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6901344B1836B4E9005CE173 /* SettingsViewController.xib */; };
 		696DE146182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 696DE145182AD23D00F78B8E /* Tutorial-Post-Products-Phone.png */; };
@@ -190,8 +192,6 @@
 		7B5A56EE17D3D7F8007AABDA /* SuggestedShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56ED17D3D7F8007AABDA /* SuggestedShopView.m */; };
 		7B5A56F017D3D80C007AABDA /* SuggestedShopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5A56EF17D3D80C007AABDA /* SuggestedShopView.xib */; };
 		7B5A56F417D3DC89007AABDA /* ShopsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5A56F317D3DC89007AABDA /* ShopsAPIHandler.m */; };
-		7B5BFAE417D6945600F82F0B /* NotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */; };
-		7B5BFAE517D6945600F82F0B /* NotificationsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5BFAE317D6945600F82F0B /* NotificationsViewController.xib */; };
 		7B5D624817C5122F00D6C8B1 /* ISConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624717C5122F00D6C8B1 /* ISConstants.m */; };
 		7B5D624E17C5174300D6C8B1 /* ISLightRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D624D17C5174300D6C8B1 /* ISLightRowContainerView.m */; };
 		7B5D625117C5174F00D6C8B1 /* ISDarkRowContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5D625017C5174F00D6C8B1 /* ISDarkRowContainerView.m */; };
@@ -427,6 +427,9 @@
 		5FEE463A18E088E900EEE3EB /* ShopsyAnalyticsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopsyAnalyticsAPIHandler.m; sourceTree = "<group>"; };
 		5FEE463C18E0AA3C00EEE3EB /* PullAccountHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PullAccountHandler.h; sourceTree = "<group>"; };
 		5FEE463D18E0AA3C00EEE3EB /* PullAccountHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PullAccountHandler.m; sourceTree = "<group>"; };
+		5FFE799B18FEC98D003F2A96 /* NotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewController.h; sourceTree = "<group>"; };
+		5FFE799C18FEC98D003F2A96 /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
+		5FFE799D18FEC98D003F2A96 /* NotificationsTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsTableViewController.xib; sourceTree = "<group>"; };
 		690134491836B4E9005CE173 /* SettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsViewController.h; sourceTree = "<group>"; };
 		6901344A1836B4E9005CE173 /* SettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsViewController.m; sourceTree = "<group>"; };
 		6901344B1836B4E9005CE173 /* SettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsViewController.xib; sourceTree = "<group>"; };
@@ -548,9 +551,6 @@
 		7B5A56F217D3DC89007AABDA /* ShopsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShopsAPIHandler.h; sourceTree = "<group>"; };
 		7B5A56F317D3DC89007AABDA /* ShopsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShopsAPIHandler.m; sourceTree = "<group>"; };
 		7B5A56F517D3DD9D007AABDA /* SuggestedShopReturnProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SuggestedShopReturnProtocol.h; sourceTree = "<group>"; };
-		7B5BFAE117D6945600F82F0B /* NotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsViewController.h; sourceTree = "<group>"; };
-		7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsViewController.m; sourceTree = "<group>"; };
-		7B5BFAE317D6945600F82F0B /* NotificationsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NotificationsViewController.xib; sourceTree = "<group>"; };
 		7B5D624617C5122F00D6C8B1 /* ISConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISConstants.h; sourceTree = "<group>"; };
 		7B5D624717C5122F00D6C8B1 /* ISConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISConstants.m; sourceTree = "<group>"; };
 		7B5D624C17C5174300D6C8B1 /* ISLightRowContainerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLightRowContainerView.h; sourceTree = "<group>"; };
@@ -1307,9 +1307,9 @@
 			children = (
 				7BFAB839189D6B1D00951C65 /* LocalNotification */,
 				7BA9C2E3183694D7003C2DD5 /* Obj */,
-				7B5BFAE117D6945600F82F0B /* NotificationsViewController.h */,
-				7B5BFAE217D6945600F82F0B /* NotificationsViewController.m */,
-				7B5BFAE317D6945600F82F0B /* NotificationsViewController.xib */,
+				5FFE799B18FEC98D003F2A96 /* NotificationsTableViewController.h */,
+				5FFE799C18FEC98D003F2A96 /* NotificationsTableViewController.m */,
+				5FFE799D18FEC98D003F2A96 /* NotificationsTableViewController.xib */,
 			);
 			name = Notifications;
 			sourceTree = "<group>";
@@ -1965,6 +1965,7 @@
 				7B61EE5D174D2162002A483D /* Default-568h@2x.png in Resources */,
 				7B676F6F17BC79C7004FC53B /* previewsocialshittyimage.png in Resources */,
 				7B51EB1C17C30FDF009FBE91 /* drop_button_dark@2x.png in Resources */,
+				5FFE799F18FEC98D003F2A96 /* NotificationsTableViewController.xib in Resources */,
 				7B7A7447174D4AA1005E90B9 /* AuthenticationViewController.xib in Resources */,
 				7BDED692180C7A28001FF165 /* CIALBrowser.bundle in Resources */,
 				7BE958F8175548B800A7E0AB /* ProductCreateViewController.xib in Resources */,
@@ -2080,7 +2081,6 @@
 				2EB05556185F5BF400D55F28 /* cover-default@2x.jpg in Resources */,
 				7B0D253D17CBA36300E43FA6 /* PLCameraSheetDoneButton.png in Resources */,
 				2ED0CA90187E1A8700DE6042 /* Instagram-Promo-4.jpg in Resources */,
-				7B5BFAE517D6945600F82F0B /* NotificationsViewController.xib in Resources */,
 				2E9378F0184D200500476540 /* faq_icon@2x.png in Resources */,
 				6901344D1836B4E9005CE173 /* SettingsViewController.xib in Resources */,
 				7B79AE8117E21A900058E774 /* SellerSelectTableViewController.xib in Resources */,
@@ -2191,13 +2191,13 @@
 				2ED0CA8A187E12ED00DE6042 /* InstagramShareViewController.m in Sources */,
 				7B4D2E15175CFCD1005DE4B6 /* HomeViewController.m in Sources */,
 				7B1072B3175E6C8C00D9DC5D /* ProductSelectTableViewController.m in Sources */,
-				7B5BFAE417D6945600F82F0B /* NotificationsViewController.m in Sources */,
 				7B1072BE175E7CDE00D9DC5D /* ProductDetailsViewController.m in Sources */,
 				7B31BD6B17C6D0FF00D24F55 /* NavBarTitleView.m in Sources */,
 				7B3F5211175FAAF400ABF49B /* ProductCreateObject.m in Sources */,
 				7B602DA117664F1700663A73 /* PurchasingViewController.m in Sources */,
 				7BA9C2EE18369513003C2DD5 /* NotificationsObject.m in Sources */,
 				7B337F04183A589B00E1BC0C /* SavedItemsAPIHandler.m in Sources */,
+				5FFE799E18FEC98D003F2A96 /* NotificationsTableViewController.m in Sources */,
 				7BDED693180C7A28001FF165 /* CIALBrowser.m in Sources */,
 				7BC6E7DA182299A300288B68 /* AmberAPIHandler.m in Sources */,
 				7BE66DA217E3523200BE3B64 /* CategoriesAPIHandler.m in Sources */,

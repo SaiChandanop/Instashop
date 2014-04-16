@@ -149,7 +149,6 @@
 
 -(void)imageReturnedWithURL:(NSString *)url withData:(NSData *)theData
 {
-    NSLog(@"2, stifle: %d", self.stifleFlashRefresh);
     if ([url compare:self.imageProductURL] == NSOrderedSame)
         self.contentImageView.image = [UIImage imageWithData:theData];
     
