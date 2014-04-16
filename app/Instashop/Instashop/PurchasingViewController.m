@@ -1061,7 +1061,7 @@
         
         
 //        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsyapp"];
-        NSString *postText = [NSString stringWithFormat:@"%@ via %@ %@", @"Find this product on Shopsy", self.viglinkString, @"@shopsy"];
+        NSString *postText = [NSString stringWithFormat:@"%@ via %@ %@", @"Find the place to shop for this product from Instagram", self.viglinkString, @"@shopsy"];
         
         
         [tweetController setInitialText:postText];
