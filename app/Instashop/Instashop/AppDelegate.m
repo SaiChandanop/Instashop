@@ -102,9 +102,15 @@
 
 -(void)userDidLogout
 {
+    NSLog(@"userDidLogout");
     self.authenticationViewController = [[AuthenticationViewController alloc] initWithNibName:@"AuthenticationViewController" bundle:nil];
     
     self.window.rootViewController = self.authenticationViewController;
+    
+    AppRootViewController *rootVC = [AppRootViewController sharedRootViewController];
+    [rootVC.notificationsViewController.contentArray removeAllObjects];
+    [rootVC.notificationsViewController.theTableView reloadData];
+    
     /*
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     

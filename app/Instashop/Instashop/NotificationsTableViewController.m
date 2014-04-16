@@ -121,6 +121,7 @@
 
 -(void)notificationsDidFinishWithArray:(NSArray *)theNotificationsArray
 {
+    NSLog(@"notificationsDidFinishWithArray!");
     [self.refreshControl endRefreshing];
     [self.contentArray removeAllObjects];
     [self.contentArray addObjectsFromArray:theNotificationsArray];
