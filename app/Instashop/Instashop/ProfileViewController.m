@@ -93,6 +93,9 @@
 
 - (void)viewDidLoad
 {
+    if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
+        self.followButton.enabled = NO;
+    
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
     
     [super viewDidLoad];
@@ -161,7 +164,7 @@
     self.infoContainerScrollView.alpha = 0;
     
     
-    NSLog(@"!!!!!!!!!!!!!!!");
+
     self.theTableViewController = [[ProductSelectTableViewController alloc] initWithNibName:@"ProductSelectTableViewController" bundle:nil];    
     self.theTableViewController.tableView.backgroundColor = [UIColor whiteColor];
     self.theTableViewController.cellDelegate = self;
@@ -180,7 +183,7 @@
 
 -(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
 {
-    NSLog(@"tableViewControllerDidLoadWithController[%d}: %@", theProductSelectTableViewController.productRequestorType, theProductSelectTableViewController.contentArray);
+
     [self resizeTableViewWithContentArrayWithController:theProductSelectTableViewController];
     if ([theProductSelectTableViewController.contentArray count] > 0)
         if ([[theProductSelectTableViewController.contentArray objectAtIndex:0] isKindOfClass:[NSDictionary class]])
