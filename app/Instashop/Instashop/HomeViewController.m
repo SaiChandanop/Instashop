@@ -80,7 +80,7 @@
     [swipeLeftRight setDirection:(UISwipeGestureRecognizerDirectionLeft)];
     [self.view addGestureRecognizer:swipeLeftRight];
     
-    
+    self.notificationsCountLabel.alpha = 0;
     self.notificationsCountLabel.text = [NSString stringWithFormat:@""];
     self.notificationsCountLabel.layer.cornerRadius = 6.0;
     self.notificationsCountLabel.layer.masksToBounds = YES;
@@ -102,7 +102,7 @@
 
 -(void)notificationsCountDidFinishWithDictionary:(NSDictionary *)theDictionary
 {
-    
+    self.notificationsCountLabel.alpha = 1;
     self.notificationsCountLabel.text = [NSString stringWithFormat:@"%d", [[theDictionary objectForKey:@"count"] integerValue]];
     if ([[theDictionary objectForKey:@"count"] integerValue] > 0)
     {
