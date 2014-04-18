@@ -28,6 +28,7 @@
 }
 
 +(DiscoverDataManager *)getSharedDiscoverDataManager;
+-(void)updateData;
 
 @property (nonatomic, strong) NSArray *sellersObjectsArray;
 @property (nonatomic, strong) NSMutableDictionary *unsortedDictionary;

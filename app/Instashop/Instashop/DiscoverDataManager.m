@@ -30,17 +30,25 @@ static DiscoverDataManager *theSharedMan;
     if (theSharedMan == nil)
     {
         theSharedMan = [[DiscoverDataManager alloc] init];
-//        NSLog(@"getSharedDiscoverDataManager!");
+        //        NSLog(@"getSharedDiscoverDataManager!");
         
-        [ProductAPIHandler getAllProductsWithDelegate:theSharedMan];
+        [theSharedMan updateData];
     }
     
     return theSharedMan;
     
 }
 
+-(void)updateData
+{
+    NSLog(@"updateData");
+    
+    [ProductAPIHandler getAllProductsWithDelegate:theSharedMan];
+}
+
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
+    NSLog(@"feedRequestFinishedWithArrray");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     self.likedArray = [[NSMutableArray alloc] initWithCapacity:0];
@@ -63,6 +71,7 @@ static DiscoverDataManager *theSharedMan;
 
 - (void)request:(IGRequest *)request didLoad:(id)result
 {
+    NSLog(@"request");
     self.countup = 0;
     if (self.catchoutTimer == nil)
         self.catchoutTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(catchoutTimerTicked) userInfo:nil repeats:YES];
@@ -77,11 +86,11 @@ static DiscoverDataManager *theSharedMan;
     
     [self.likedArray addObject:likedObject];
     
-//    NSLog(@"[self.likedArray count]: %d", [self.likedArray count]);
-//    NSLog(@"[self.unsortedDictionary allKeys] count]: %d", [[self.unsortedDictionary allKeys] count]);
+    //    NSLog(@"[self.likedArray count]: %d", [self.likedArray count]);
+    //    NSLog(@"[self.unsortedDictionary allKeys] count]: %d", [[self.unsortedDictionary allKeys] count]);
     
-//    if ([self.likedArray count] == [[self.unsortedDictionary allKeys] count] - 1)
-  //      [self sortAndPresent];
+    //    if ([self.likedArray count] == [[self.unsortedDictionary allKeys] count] - 1)
+    //      [self sortAndPresent];
     //    NSLog(@"likedObject.mediaID: %@", likedObject.mediaID);
     //    NSLog(@"likedCount: %d", likedObject.likedCount);
     //    NSLog(@"result: %@", result);
@@ -90,7 +99,7 @@ static DiscoverDataManager *theSharedMan;
 -(void)catchoutTimerTicked
 {
     self.countup++;
-//    NSLog(@"self.countup: %d", self.countup);
+    //    NSLog(@"self.countup: %d", self.countup);
     if (self.countup > 2)
     {
         self.countup = 0;
@@ -102,6 +111,8 @@ static DiscoverDataManager *theSharedMan;
 
 -(void)sortAndPresent
 {
+    NSLog(@"sortAndPresent");
+    
     self.contentArray = [[NSMutableArray alloc] initWithCapacity:0];
     
     [self.likedArray sortUsingComparator:
@@ -126,12 +137,11 @@ static DiscoverDataManager *theSharedMan;
         [self.contentArray addObject:[self.unsortedDictionary objectForKey:obj.mediaID]];
     }
     
-    if (self.referenceTableViewController != nil)
-    {
-        [self.referenceTableViewController.contentArray removeAllObjects];
-        [self.referenceTableViewController.contentArray addObjectsFromArray:self.contentArray];
-        [self.referenceTableViewController doPresentData];
-    }
+    [self.referenceTableViewController.refreshControl endRefreshing];
+    [self.referenceTableViewController.contentArray removeAllObjects];
+    [self.referenceTableViewController.contentArray addObjectsFromArray:self.contentArray];
+    [self.referenceTableViewController doPresentData];
+    
 }
 
 

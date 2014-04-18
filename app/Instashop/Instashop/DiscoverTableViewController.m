@@ -63,9 +63,16 @@ float cellHeight = 151;
 
     if ([[DiscoverDataManager getSharedDiscoverDataManager].contentArray count] == 0)
         self.jkProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading..."];
+ 
+    
+    DiscoverDataManager *theManager = [DiscoverDataManager getSharedDiscoverDataManager];
+    
+    UIRefreshControl *refreshControl = [[UIRefreshControl alloc] init];
+    [refreshControl addTarget:theManager action:@selector(updateData)
+             forControlEvents:UIControlEventValueChanged];
+    self.refreshControl = refreshControl;
     
 }
-
 
 
 -(int)getCount
