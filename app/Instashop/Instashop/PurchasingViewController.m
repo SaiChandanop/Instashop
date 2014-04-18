@@ -814,11 +814,15 @@
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
         [appDelegate.instagram postRequestWithParams:params delegate:self];
+        
+        [JKProgressView presentProgressViewInView:self.imageView withText:@"Liked" withImageType:0];
     }
     else
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
         [appDelegate.instagram delRequestWithParams:params delegate:self];
+        
+        
     }
     
     
@@ -830,7 +834,7 @@
     if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
     
-    [JKProgressView presentProgressViewInView:self.imageView withText:@"Liked" withImageType:0];
+    
 
     
 }
