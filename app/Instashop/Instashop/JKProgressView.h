@@ -18,7 +18,7 @@
 }
 
 +(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText;
-+(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText withImageType:(int)type;
++(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText withImageType:(int)type withNegativeOffset:(float)negativeOffset;
 -(void)hideProgressView;
 
 @property (nonatomic, retain) UIActivityIndicatorView *theIndicatorView;

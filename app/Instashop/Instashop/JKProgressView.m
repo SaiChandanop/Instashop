@@ -60,7 +60,7 @@
 }
 
 
-+(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText withImageType:(int)type
++(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText withImageType:(int)type withNegativeOffset:(float)negativeOffset
 {
     
     JKProgressView *theProgressView = [[JKProgressView alloc] initWithFrame:CGRectMake(0, 0, referenceView.frame.size.width, referenceView.frame.size.height)];
@@ -71,7 +71,7 @@
     
     float diameter = 68;
     
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(referenceView.frame.size.width / 2 - diameter / 2, referenceView.frame.size.height / 2 - diameter /2, diameter, diameter)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(referenceView.frame.size.width / 2 - diameter / 2, referenceView.frame.size.height / 2 - diameter /2 - negativeOffset, diameter, diameter)];
     bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
     bgView.layer.cornerRadius = 8.0;
     bgView.layer.masksToBounds = YES;
@@ -85,15 +85,18 @@
  
     
     bgView.frame = CGRectMake(bgView.frame.origin.x, bgView.frame.origin.y, bgView.frame.size.width, bgView.frame.size.height + 21);
-    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, theImageView.frame.origin.y + theImageView.frame.size.height + 2, bgView.frame.size.width, 15)];
+    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, theImageView.frame.origin.y + theImageView.frame.size.height - 4.1, bgView.frame.size.width, 25)];
     theProgressView.theLabel.textColor = [UIColor whiteColor];
     theProgressView.theLabel.textAlignment = NSTextAlignmentCenter;
     theProgressView.theLabel.backgroundColor = [UIColor clearColor];
     theProgressView.theLabel.text = theText;
-    theProgressView.theLabel.font = [UIFont systemFontOfSize:theProgressView.theLabel.frame.size.height - 4];
+    theProgressView.theLabel.font = [UIFont systemFontOfSize:8];
+    theProgressView.theLabel.numberOfLines = 0;    
     [bgView addSubview:theProgressView.theLabel];
     
     [referenceView addSubview:theProgressView];
+    
+    [referenceView bringSubviewToFront:theProgressView];
     
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.21];

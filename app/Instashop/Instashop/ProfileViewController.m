@@ -479,6 +479,8 @@
         NSString *flurryString = [NSString stringWithFormat:@"User followed"];
         NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedInstagramProfileObject objectForKey:@"id"], @"user", nil];
         [Flurry logEvent:flurryString withParameters:flurryParams];
+    
+        [JKProgressView presentProgressViewInView:self.backgroundImageView withText:@"Followed On Instagram" withImageType:1 withNegativeOffset:+36.5];
     }
     else
     {
@@ -489,6 +491,8 @@
         NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedInstagramProfileObject objectForKey:@"id"], @"user", nil];
         [Flurry logEvent:flurryString withParameters:flurryParams];
     }
+    
+    
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result

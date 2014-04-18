@@ -815,7 +815,7 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
         [appDelegate.instagram postRequestWithParams:params delegate:self];
         
-        [JKProgressView presentProgressViewInView:self.imageView withText:@"Liked" withImageType:0];
+        [JKProgressView presentProgressViewInView:self.imageView withText:@"Liked On Instagram" withImageType:0 withNegativeOffset:0];
     }
     else
     {
