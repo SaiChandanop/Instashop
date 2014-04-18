@@ -805,9 +805,7 @@
 
 -(IBAction)likeButtonHit
 {
-    
     NSLog(@"likeButtonHit");
-    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     if (self.heartImageView.image == [UIImage imageNamed:@"heart.png"])
@@ -821,10 +819,7 @@
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
         [appDelegate.instagram delRequestWithParams:params delegate:self];
-        
-        
     }
-    
     
     
     NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
@@ -833,10 +828,6 @@
     
     if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
-    
-    
-
-    
 }
 
 
