@@ -976,15 +976,28 @@
     else if ([buttonTitle isEqualToString:@"Flag"]) {
         
         [actionSheet dismissWithClickedButtonIndex:2 animated:YES];
-        UIActionSheet *flagActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Inappropriate", @"Incorrect Link", @"Other", nil];
+        UIActionSheet *flagActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Bad Cropping", @"Incorrect Link", @"Low Resolution", @"Inappropriate", nil];
         flagActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [flagActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
     }
     
-    else if ([buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Other"]) {
+    else if ([buttonTitle isEqualToString:@"Bad Cropping"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Low Resolution"] || [buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Other"]) {
+        
+        int complaintId = 0;
+        
+        if ([buttonTitle compare:@"Bad Cropping"] == NSOrderedSame)
+            complaintId = 0;
+        else if ([buttonTitle compare:@"Incorrect Link"] == NSOrderedSame)
+            complaintId = 1;
+        else if ([buttonTitle compare:@"Low Resolution"] == NSOrderedSame)
+            complaintId = 2;
+        else if ([buttonTitle compare:@"Inappropriate"] == NSOrderedSame)
+            complaintId = 3;
+        
+        NSLog(@"HERE !");
         
         NSString *userID = [InstagramUserObject getStoredUserObject].userID;
-        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:buttonTitle andProductID:self.requestingProductID userID: userID delegate:self];
+        [FlagManagerAPIHandler makeFlagDeclarationRequestComplaint:complaintId andProductID:self.requestingProductID userID: userID delegate:self];
     }
     
     else if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
