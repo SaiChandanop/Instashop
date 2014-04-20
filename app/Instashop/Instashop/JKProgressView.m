@@ -81,18 +81,18 @@
     
     float val = .24;
     float inset = bgView.frame.size.width * val;
-    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(inset, inset + 4, bgView.frame.size.width - bgView.frame.size.width * 2 * val, bgView.frame.size.height - bgView.frame.size.height * 2 * val)];
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(inset, inset, bgView.frame.size.width - bgView.frame.size.width * 2 * val, bgView.frame.size.height - bgView.frame.size.height * 2 * val)];
     theImageView.image = [UIImage imageNamed:@"heart_red.png"];
     [bgView addSubview:theImageView];
  
     
     bgView.frame = CGRectMake(bgView.frame.origin.x, bgView.frame.origin.y, bgView.frame.size.width, bgView.frame.size.height + 21);
-    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, theImageView.frame.origin.y + theImageView.frame.size.height - 4.1, bgView.frame.size.width, 25)];
+    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, theImageView.frame.origin.y + theImageView.frame.size.height , bgView.frame.size.width, 25)];
     theProgressView.theLabel.textColor = [UIColor whiteColor];
     theProgressView.theLabel.textAlignment = NSTextAlignmentCenter;
     theProgressView.theLabel.backgroundColor = [UIColor clearColor];
     theProgressView.theLabel.text = theText;
-    theProgressView.theLabel.font = [UIFont systemFontOfSize:8];
+    theProgressView.theLabel.font = [UIFont systemFontOfSize:10];
     theProgressView.theLabel.numberOfLines = 0;    
     [bgView addSubview:theProgressView.theLabel];
     
