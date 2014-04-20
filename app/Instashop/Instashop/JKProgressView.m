@@ -74,7 +74,7 @@
     float diameter = 102;
     
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(referenceView.frame.size.width / 2 - diameter / 2, referenceView.frame.size.height / 2 - diameter /2 - negativeOffset, diameter, diameter)];
-    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
+    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
     bgView.layer.cornerRadius = 8.0;
     bgView.layer.masksToBounds = YES;
     [theProgressView insertSubview:bgView atIndex:0];
