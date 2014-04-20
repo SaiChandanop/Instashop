@@ -64,11 +64,12 @@
     [super viewDidLoad];
 
     [self.navigationItem setTitleView:[NavBarTitleView getTitleViewWithTitleString:@"SUGGESTED SHOPS"]];
-    self.navigationItem.backBarButtonItem =
-    [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@""  style:UIBarButtonItemStyleBordered target:nil  action:nil];
+//    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"lightMenu.png"]];
+    self.view.backgroundColor = [UIColor redColor];
     
-    self.spoofTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"Menu_BG"]];
+    self.spoofTableView.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"lightMenuBG@2x.png"]];
+//    self.spoofTableView.backgroundColor = [UIColor purpleColor];
     self.spoofTableView.separatorColor = [UIColor clearColor];
 
     
