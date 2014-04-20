@@ -56,6 +56,8 @@
     bgView.layer.masksToBounds = YES;
     [theProgressView insertSubview:bgView atIndex:0];
     
+    NSLog(@"bgView: %@", bgView);
+    
     return theProgressView;
 }
 
@@ -69,7 +71,7 @@
     
     theProgressView.alpha = 0;
     
-    float diameter = 68;
+    float diameter = 102;
     
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(referenceView.frame.size.width / 2 - diameter / 2, referenceView.frame.size.height / 2 - diameter /2 - negativeOffset, diameter, diameter)];
     bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
@@ -77,7 +79,7 @@
     bgView.layer.masksToBounds = YES;
     [theProgressView insertSubview:bgView atIndex:0];
     
-    float val = .08;
+    float val = .24;
     float inset = bgView.frame.size.width * val;
     UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(inset, inset + 4, bgView.frame.size.width - bgView.frame.size.width * 2 * val, bgView.frame.size.height - bgView.frame.size.height * 2 * val)];
     theImageView.image = [UIImage imageNamed:@"heart_red.png"];
@@ -105,6 +107,7 @@
   
     [NSTimer scheduledTimerWithTimeInterval:.66 target:theProgressView selector:@selector(hide) userInfo:nil repeats:NO];
     
+    NSLog(@"bgView2: %@", bgView);
     return theProgressView;
 }
 
