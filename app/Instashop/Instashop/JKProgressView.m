@@ -74,30 +74,31 @@
     float diameter = 102;
     
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(referenceView.frame.size.width / 2 - diameter / 2, referenceView.frame.size.height / 2 - diameter /2 - negativeOffset, diameter, diameter)];
-    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:1];
+    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
     bgView.layer.cornerRadius = 8.0;
     bgView.layer.masksToBounds = YES;
     [theProgressView insertSubview:bgView atIndex:0];
     
 
+    
     float diam = 33;
-    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(bgView.frame.size.width / 2 - diam / 2, 28, diam, diam)];
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(bgView.frame.origin.x +  bgView.frame.size.width / 2 - diam / 2, bgView.frame.origin.y + 28, diam, diam)];
     theImageView.image = [UIImage imageNamed:@"heart_red.png"];
-    [bgView addSubview:theImageView];
+    [theProgressView addSubview:theImageView];
  
     
     bgView.frame = CGRectMake(bgView.frame.origin.x, bgView.frame.origin.y, bgView.frame.size.width, bgView.frame.size.height + 21);
-    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(1, 66, bgView.frame.size.width - 4, 31)];
+    
+    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(bgView.frame.origin.x +  1, bgView.frame.origin.y +  66, bgView.frame.size.width - 4, 31)];
     theProgressView.theLabel.textColor = [UIColor whiteColor];
     theProgressView.theLabel.textAlignment = NSTextAlignmentCenter;
     theProgressView.theLabel.backgroundColor = [UIColor clearColor];
     theProgressView.theLabel.text = theText;
     theProgressView.theLabel.font = [UIFont systemFontOfSize:12];
     theProgressView.theLabel.numberOfLines = 0;    
-    [bgView addSubview:theProgressView.theLabel];
+    [theProgressView addSubview:theProgressView.theLabel];
     
     [referenceView addSubview:theProgressView];
-    
     [referenceView bringSubviewToFront:theProgressView];
     
     [UIView beginAnimations:nil context:NULL];
