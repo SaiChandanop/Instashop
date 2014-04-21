@@ -900,8 +900,13 @@
 }
 
 - (void) openActionSheet {
-    self.actionSheetHandlingViewController = self;
-    [self beginActionSheet];
+    if (self.viglinkString != nil)
+    {
+        self.actionSheetHandlingViewController = self;
+        [self beginActionSheet];
+    }
+    else
+        NSLog(@"waiting");
 }
 -(void)openActionSheetFromCallerController:(UIViewController *)callerController
 {
@@ -1022,15 +1027,7 @@
                     break;
             }};
         
-        
-        
-        
-        //UIImage *photoImage = self.imageView.image;
-        
-        //NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsy"];
-        NSString *postText = [NSString stringWithFormat:@"%@ via %@ %@", @"Find this product on Shopsy", self.viglinkString, @"@shopsy"];
-        
-        [facebookController setInitialText:postText];
+        [facebookController setInitialText:[self reportPostText]];
         //[facebookController addImage:photoImage];
         [facebookController addURL:[NSURL URLWithString:self.viglinkString]];
         [facebookController setCompletionHandler:completionHandler];
@@ -1067,12 +1064,9 @@
         
         UIImage *photoImage = self.imageView.image;
         
+
         
-//        NSString *postText = [NSString stringWithFormat:@"%@ via %@", [self.requestedProductObject objectForKey:@"products_description"], @"@shopsyapp"];
-        NSString *postText = [NSString stringWithFormat:@"%@ via %@ %@", @"Find the place to shop for this product from Instagram", self.viglinkString, @"@shopsy"];
-        
-        
-        [tweetController setInitialText:postText];
+        [tweetController setInitialText:[self reportPostText]];
         [tweetController addImage:photoImage];
         [tweetController addURL:[NSURL URLWithString:self.viglinkString]];
         [tweetController setCompletionHandler:completionHandler];
@@ -1109,6 +1103,12 @@
 }
 
 
+-(NSString *)reportPostText
+{
+    NSString *retString = [NSString stringWithFormat:@"Find the place to shop for this product from Instagram via %@ @shopsyapp shopsy.com/download", self.viglinkString];
+    
+    return  retString;
+}
 
 
 
