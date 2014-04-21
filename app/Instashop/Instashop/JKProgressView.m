@@ -81,11 +81,14 @@
     
 
     
-    float diam = 33;
-    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(bgView.frame.origin.x +  bgView.frame.size.width / 2 - diam / 2, bgView.frame.origin.y + 28, diam, diam)];
+    NSLog(@"the Image.size: %@", NSStringFromCGSize([UIImage imageNamed:@"heart_red.png"].size));
+    float diam = 30;
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(bgView.frame.origin.x +  bgView.frame.size.width / 2 - diam / 2, bgView.frame.origin.y + 28, 30, 26)];
+    theImageView.contentMode = UIViewContentModeScaleAspectFit;
     theImageView.image = [UIImage imageNamed:@"heart_red.png"];
     [theProgressView addSubview:theImageView];
  
+    NSLog(@"theImageView: %@", theImageView);
     
     bgView.frame = CGRectMake(bgView.frame.origin.x, bgView.frame.origin.y, bgView.frame.size.width, bgView.frame.size.height + 21);
     
