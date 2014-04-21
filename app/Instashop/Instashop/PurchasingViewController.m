@@ -806,7 +806,12 @@
 -(IBAction)likeButtonHit
 {
     NSLog(@"likeButtonHit");
+    
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
+    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
+    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
+    
     
     if (self.heartImageView.image == [UIImage imageNamed:@"heart.png"])
     {
@@ -814,20 +819,23 @@
         [appDelegate.instagram postRequestWithParams:params delegate:self];
         
         [JKProgressView presentProgressViewInView:self.imageView withText:@"Liked On Instagram" withImageType:0 withNegativeOffset:0];
+        
+        if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+            [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID withLiked:YES];
     }
     else
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"media/%@/likes", [self.requestedProductObject objectForKey:@"products_instagram_id"]], @"method", nil];
         [appDelegate.instagram delRequestWithParams:params delegate:self];
+        
+        if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
+            [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID withLiked:NO];
     }
     
     
-    NSString *ownerInstagramID = [self.requestedProductObject objectForKey:@"owner_instagram_id"];
-    NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
-    NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
     
-    if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
-        [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    
+    
 }
 
 

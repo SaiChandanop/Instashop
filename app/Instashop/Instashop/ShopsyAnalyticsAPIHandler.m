@@ -8,6 +8,7 @@
 
 #import "ShopsyAnalyticsAPIHandler.h"
 #import "AnalyticsReportCompleteProtocol.h"
+#import "InstagramUserObject.h"
 @implementation ShopsyAnalyticsAPIHandler
 
 
@@ -23,6 +24,7 @@
     [postString appendString:[NSString stringWithFormat:@"&owner_instagram_id=%@", ownerInstagramID]];
     [postString appendString:[NSString stringWithFormat:@"&product_instagram_id=%@", productInstagramID]];
     [postString appendString:[NSString stringWithFormat:@"&shopsy_product_id=%@", theProductID]];
+    [postString appendString:[NSString stringWithFormat:@"&sender_instagram_id=%@", [InstagramUserObject getStoredUserObject].userID]];
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
     ShopsyAnalyticsAPIHandler *apiHandler = [[ShopsyAnalyticsAPIHandler alloc] init];
@@ -51,6 +53,7 @@
     [postString appendString:[NSString stringWithFormat:@"&owner_instagram_id=%@", ownerInstagramID]];
     [postString appendString:[NSString stringWithFormat:@"&product_instagram_id=%@", productInstagramID]];
     [postString appendString:[NSString stringWithFormat:@"&shopsy_product_id=%@", theProductID]];
+    [postString appendString:[NSString stringWithFormat:@"&sender_instagram_id=%@", [InstagramUserObject getStoredUserObject].userID]];
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
     ShopsyAnalyticsAPIHandler *apiHandler = [[ShopsyAnalyticsAPIHandler alloc] init];
@@ -79,6 +82,7 @@
     [postString appendString:[NSString stringWithFormat:@"&owner_instagram_id=%@", ownerInstagramID]];
     [postString appendString:[NSString stringWithFormat:@"&product_instagram_id=%@", productInstagramID]];
     [postString appendString:[NSString stringWithFormat:@"&shopsy_product_id=%@", theProductID]];
+    [postString appendString:[NSString stringWithFormat:@"&sender_instagram_id=%@", [InstagramUserObject getStoredUserObject].userID]];
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
     ShopsyAnalyticsAPIHandler *apiHandler = [[ShopsyAnalyticsAPIHandler alloc] init];
@@ -88,8 +92,6 @@
     
 }
 
-
-
 -(void)makeBoughtAnalyticsCallWithOwnerInstagramIDComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
@@ -98,20 +100,23 @@
 
 
 
-
-
-
-+(void)makeLikedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID
++(void)makeLikedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID withLiked:(BOOL)liked
 {
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"analytics/analytics.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
+    
+    
+    NSLog(@"withLiked withLiked withLiked: %d", liked);
+    
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"action=%@", @"liked"]];
     [postString appendString:[NSString stringWithFormat:@"&owner_instagram_id=%@", ownerInstagramID]];
     [postString appendString:[NSString stringWithFormat:@"&product_instagram_id=%@", productInstagramID]];
     [postString appendString:[NSString stringWithFormat:@"&shopsy_product_id=%@", theProductID]];
+    [postString appendString:[NSString stringWithFormat:@"&sender_instagram_id=%@", [InstagramUserObject getStoredUserObject].userID]];
+    [postString appendString:[NSString stringWithFormat:@"&liked=%@", [NSString stringWithFormat:@"%d", liked]]];
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
     ShopsyAnalyticsAPIHandler *apiHandler = [[ShopsyAnalyticsAPIHandler alloc] init];
