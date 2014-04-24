@@ -480,7 +480,9 @@
         NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedInstagramProfileObject objectForKey:@"id"], @"user", nil];
         [Flurry logEvent:flurryString withParameters:flurryParams];
     
-        [JKProgressView presentProgressViewInView:self.backgroundImageView withText:@"Followed On Instagram" withImageType:1 withNegativeOffset:+36.5];
+//        [JKProgressView presentProgressViewInView:self.view withText:@"Followed On Instagram" withImageType:1 withNegativeOffset:+156.5]; This centers it in the top view
+        [JKProgressView presentProgressViewInView:self.view withText:@"Followed On Instagram" withImageType:1 withNegativeOffset:0];  //This centers it in the superview
+        
     }
     else
     {
