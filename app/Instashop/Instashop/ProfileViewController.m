@@ -119,7 +119,7 @@
         [self.imagePickButton removeFromSuperview];
     else
     {
-        UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+        UIImage *shareButtonImage = [UIImage imageNamed:@"bullhorn.png"];
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;
         
@@ -678,8 +678,10 @@
     else
     {
         self.editButton.alpha = 1;
-        UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+        UIImage *shareButtonImage = [UIImage imageNamed:@"bullhorn.png"];
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
+        
+        
         self.navigationItem.rightBarButtonItem = shareButton;
     }
     
@@ -724,7 +726,7 @@
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
     {
-        UIImage *shareButtonImage = [UIImage imageNamed:@"more_button.png"];
+        UIImage *shareButtonImage = [UIImage imageNamed:@"bullhorn.png"];
         UIBarButtonItem *shareButton = [[UIBarButtonItem alloc] initWithImage:shareButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(moreButtonHit)];
         self.navigationItem.rightBarButtonItem = shareButton;
     }
