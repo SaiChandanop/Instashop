@@ -71,20 +71,23 @@
     
     theProgressView.alpha = 0;
     
-    float diameter = 102;
+
+    float width = 102;
+    float height = 85;
     
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(referenceView.frame.size.width / 2 - diameter / 2, referenceView.frame.size.height / 2 - diameter /2 - negativeOffset, diameter, diameter)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(referenceView.frame.size.width / 2 - width / 2, referenceView.frame.size.height / 2 - height /2 - negativeOffset, width, height)];
     bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
     bgView.layer.cornerRadius = 8.0;
     bgView.layer.masksToBounds = YES;
     [theProgressView insertSubview:bgView atIndex:0];
     
 
+    NSLog(@"bgView2: %@", bgView);
     
     UIImage *heartImage = [UIImage imageNamed:@"heart_red.png"];
 
     float diam = heartImage.size.width;
-    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(bgView.frame.origin.x +  bgView.frame.size.width / 2 - diam / 2, bgView.frame.origin.y + 28, heartImage.size.width, heartImage.size.height)];
+    UIImageView *theImageView = [[UIImageView alloc] initWithFrame:CGRectMake(bgView.frame.origin.x +  bgView.frame.size.width / 2 - diam / 2, bgView.frame.origin.y + 22, heartImage.size.width, heartImage.size.height)];
     theImageView.contentMode = UIViewContentModeScaleAspectFit;
     theImageView.image = [UIImage imageNamed:@"heart_red.png"];
     [theProgressView addSubview:theImageView];
@@ -93,7 +96,7 @@
     
     bgView.frame = CGRectMake(bgView.frame.origin.x, bgView.frame.origin.y, bgView.frame.size.width, bgView.frame.size.height + 21);
     
-    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(bgView.frame.origin.x +  1, bgView.frame.origin.y +  66, bgView.frame.size.width - 4, 31)];
+    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(bgView.frame.origin.x +  1, bgView.frame.origin.y +  54, bgView.frame.size.width - 4, 31)];
     theProgressView.theLabel.textColor = [UIColor whiteColor];
     theProgressView.theLabel.textAlignment = NSTextAlignmentCenter;
     theProgressView.theLabel.backgroundColor = [UIColor clearColor];
@@ -110,7 +113,7 @@
     theProgressView.alpha = 1;
     [UIView commitAnimations];
   
-    [NSTimer scheduledTimerWithTimeInterval:.66 target:theProgressView selector:@selector(hide) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:22.89 target:theProgressView selector:@selector(hide) userInfo:nil repeats:NO];
     
     NSLog(@"bgView2: %@", bgView);
     return theProgressView;
