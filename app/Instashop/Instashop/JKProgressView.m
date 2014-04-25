@@ -113,7 +113,7 @@
     theProgressView.alpha = 1;
     [UIView commitAnimations];
   
-    [NSTimer scheduledTimerWithTimeInterval:22.89 target:theProgressView selector:@selector(hide) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:1.2 target:theProgressView selector:@selector(hide) userInfo:nil repeats:NO];
     
     NSLog(@"bgView2: %@", bgView);
     return theProgressView;
