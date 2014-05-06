@@ -1113,7 +1113,7 @@
 
 -(NSString *)reportPostText
 {
-    NSString *retString = [NSString stringWithFormat:@"Find the place to shop for this product from Instagram via @shopsyapp shopsy.com/download"];
+    NSString *retString = [NSString stringWithFormat:@"Shop for this product seen on Instagram via @shopsyapp shopsy.com/download"];
     
     return  retString;
 }
