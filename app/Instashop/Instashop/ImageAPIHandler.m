@@ -221,8 +221,9 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 +(void)makeProfileImageRequestWithReferenceImageView:(UIImageView *)referenceImageView withInstagramID:(NSString *)instagramID
 {
-    NSString *urlString = [NSString stringWithFormat:@"http://instashop.com/upload/%@.jpeg", instagramID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/upload/%@.jpeg", ROOT_URI, instagramID];
     
+    NSLog(@"urlString: %@", urlString);
     if (sharedImageAPIHandler == nil)
     {
         sharedImageAPIHandler = [[ImageAPIHandler alloc] init];
