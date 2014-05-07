@@ -481,7 +481,9 @@
         [Flurry logEvent:flurryString withParameters:flurryParams];
     
 //        [JKProgressView presentProgressViewInView:self.view withText:@"Followed On Instagram" withImageType:1 withNegativeOffset:+156.5]; This centers it in the top view
-        [JKProgressView presentProgressViewInView:self.view withText:@"Followed On Instagram" withImageType:1 withNegativeOffset:0];  //This centers it in the superview
+//        [JKProgressView presentProgressViewInView:self.view withText:@"Followed On Instagram" withImageType:1 withNegativeOffset:0];  //This centers it in the superview
+        
+        [JKProgressView presentPopupTextWithReferenceView:self.backgroundImageView withText:@"Followed On Instagram"];
         
     }
     else
