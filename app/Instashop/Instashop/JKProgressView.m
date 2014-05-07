@@ -24,6 +24,56 @@
 }
 
 
++(JKProgressView *)presentPopupTextWithReferenceView:(UIView *)referenceView withText:(NSString *)theText
+{
+    JKProgressView *theProgressView = [[JKProgressView alloc] initWithFrame:CGRectMake(0, 0, referenceView.frame.size.width, referenceView.frame.size.height)];
+    //theProgressView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.2];
+    theProgressView.backgroundColor = [UIColor clearColor];
+    
+    float boxRadius = 34;
+    
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(theProgressView.theIndicatorView.frame.origin.x + referenceView.frame.size.width / 2 - boxRadius*1.5, referenceView.frame.origin.y + referenceView.frame.size.height / 2 - boxRadius - 64, boxRadius  * 3, boxRadius *1.3)];
+    bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
+    bgView.layer.cornerRadius = 8.0;
+    bgView.layer.masksToBounds = YES;
+    [theProgressView insertSubview:bgView atIndex:0];
+    
+    NSLog(@"referenceView: %@", referenceView);
+    NSLog(@"bgView: %@", bgView);
+    
+    theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, theProgressView.theIndicatorView.frame.origin.y + theProgressView.theIndicatorView.frame.size.height + 4, bgView.frame.size.width, 40)];
+    theProgressView.theLabel.numberOfLines = 0;
+    theProgressView.theLabel.textColor = [UIColor whiteColor];
+    theProgressView.theLabel.textAlignment = NSTextAlignmentCenter;
+    theProgressView.theLabel.backgroundColor = [UIColor clearColor];
+    theProgressView.theLabel.text = theText;
+    theProgressView.theLabel.font = [UIFont systemFontOfSize:theProgressView.theLabel.frame.size.height - 27];
+    [bgView addSubview:theProgressView.theLabel];
+    theProgressView.alpha = 0;
+    
+    [referenceView addSubview:theProgressView];
+    
+    
+    
+    
+    
+    
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationDuration:0.21];
+    theProgressView.alpha = 1;
+    [UIView commitAnimations];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.2 target:theProgressView selector:@selector(hide) userInfo:nil repeats:NO];
+
+    
+    
+    return theProgressView;
+}
+
+
+
+
 +(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText
 {
     JKProgressView *theProgressView = [[JKProgressView alloc] initWithFrame:CGRectMake(0, 0, referenceView.frame.size.width, referenceView.frame.size.height)];
@@ -60,6 +110,8 @@
     
     return theProgressView;
 }
+
+
 
 
 +(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText withImageType:(int)type withNegativeOffset:(float)negativeOffset

@@ -147,6 +147,9 @@
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
 
+        
+        [JKProgressView presentPopupTextWithReferenceView:self.parentController.view withText:@"Followed On Instagram"];
+        
     }
 }
 

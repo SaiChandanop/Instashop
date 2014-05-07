@@ -17,6 +17,7 @@
     UILabel *theLabel;
 }
 
++(JKProgressView *)presentPopupTextWithReferenceView:(UIView *)referenceView withText:(NSString *)theText;
 +(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText;
 +(JKProgressView *)presentProgressViewInView:(UIView *)referenceView withText:(NSString *)theText withImageType:(int)type withNegativeOffset:(float)negativeOffset;
 -(void)hideProgressView;
