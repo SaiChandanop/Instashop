@@ -17,7 +17,7 @@
 {
     
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"shopFunctions.php"];
-    NSLog(@"urlRequestString: %@", urlRequestString);
+    NSLog(@"Make get suggested shops call with request: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     

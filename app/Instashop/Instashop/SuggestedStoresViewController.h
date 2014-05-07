@@ -34,6 +34,9 @@
     BOOL isLaunchedFromMenu;
     BOOL begun;
     BOOL holdBegin;
+    
+    BOOL hasStartedMakingSubviewCalls;
+    
 }
 
 -(void) selectedShopViewDidCompleteRequestWithView:(SuggestedShopView *)theShopView;
@@ -59,6 +62,8 @@
 
 @property (nonatomic, assign) BOOL begun;
 @property (nonatomic, assign) BOOL holdBegin;
+
+@property (nonatomic, assign) BOOL hasStartedMakingSubviewCalls;
 
 @end
 

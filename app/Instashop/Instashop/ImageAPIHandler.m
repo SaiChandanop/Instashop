@@ -87,6 +87,8 @@ static ImageAPIHandler *sharedImageAPIHandler;
     }
     else
     {
+        NSLog(@"make instagram profile picture request: %@", instagramMediaURLString);
+        
         ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
         handler.delegate = theDelegate;
         handler.contextObject = instagramMediaURLString;
@@ -100,8 +102,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 - (void) instagramImageReqeustFinsihed:(id)obj
 {
-    
-    
+    NSLog(@"instagram profile picture request complete: %@", self.contextObject);
     
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
     
@@ -223,7 +224,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
 {
     NSString *urlString = [NSString stringWithFormat:@"%@/upload/%@.jpeg", ROOT_URI, instagramID];
     
-    NSLog(@"urlString: %@", urlString);
+    NSLog(@"Make shopsy profile picture request: %@", urlString);
     if (sharedImageAPIHandler == nil)
     {
         sharedImageAPIHandler = [[ImageAPIHandler alloc] init];
@@ -258,7 +259,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
  
     
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
-//    NSLog(@"makeProfileImageRequestWithReferenceImageViewFinished");
+    NSLog(@"shopsy profile image request finished: %@", self.contextObject);
     
     
     if (responseImage != nil && self.contextObject != nil)

@@ -26,7 +26,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-                
+        
         // Initialization code
         
     }
@@ -61,12 +61,12 @@
 
 -(void) makeIGContentRequest
 {
-//    NSLog(@"makeIGContentRequest: %@", self.shopViewInstagramID);
+    NSLog(@"Make Instagram fetch call for profile data: %@", self.shopViewInstagramID);
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@", self.shopViewInstagramID], @"method", nil];
     [delegate.instagram requestWithParams:params delegate:self];
-        
+    
     
     if ([self.shopViewInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
         [self.followButton removeFromSuperview];
@@ -75,31 +75,31 @@
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
     
-     NSDictionary *dataDictionary = [result objectForKey:@"data"];
+    NSDictionary *dataDictionary = [result objectForKey:@"data"];
     
-
-//    NSLog(@"request didLoad: %@", self.shopViewInstagramID);
+    
+    NSLog(@"Suggested shop view, request did load[%@].didload:  %@", self.shopViewInstagramID, request.url);
     
     if ([request.url rangeOfString:@"relationship"].length > 0)
     {
         if (![dataDictionary isKindOfClass:[NSNull class]])
         {
-        NSString *outgoingStatus = [dataDictionary objectForKey:@"outgoing_status"];
-        if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
-        {
-            self.followButton.selected = YES;
-            [self.parentController.firstTimeUserViewController performSelectorOnMainThread:@selector(shopWasFollowed) withObject:nil waitUntilDone:NO];
-        }
-        else
-        {
-            self.followButton.selected = NO;
-        }
-        
-        self.followButton.alpha = 1;
+            NSString *outgoingStatus = [dataDictionary objectForKey:@"outgoing_status"];
+            if ([outgoingStatus compare:@"follows"] == NSOrderedSame)
+            {
+                self.followButton.selected = YES;
+                [self.parentController.firstTimeUserViewController performSelectorOnMainThread:@selector(shopWasFollowed) withObject:nil waitUntilDone:NO];
+            }
+            else
+            {
+                self.followButton.selected = NO;
+            }
+            
+            self.followButton.alpha = 1;
         }
         
     }
-    else if ([request.url rangeOfString:@"users"].length > 0)
+    else if ([request.url rangeOfString:@"users"].length > 0 && [request.url rangeOfString:@"relationship"].length == 0)
     {
         self.bioLabel.text = [dataDictionary objectForKey:@"bio"];
         self.titleLabel.text = [dataDictionary objectForKey:@"full_name"];
@@ -110,7 +110,7 @@
         
         self.followButton.alpha = 0;
         [self.parentController selectedShopViewDidCompleteRequestWithView:self];
-//        [self.parentController performSelectorOnMainThread:@selector(selectedShopViewDidCompleteRequestWithView:) withObject:self waitUntilDone:NO];
+        //        [self.parentController performSelectorOnMainThread:@selector(selectedShopViewDidCompleteRequestWithView:) withObject:self waitUntilDone:NO];
         
         AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"users/%@/relationship", [dataDictionary objectForKey:@"id"]], @"method", nil];
@@ -128,7 +128,7 @@
 }
 -(void)shopFollowButtonHitWithID:(NSString *)instagramID withIsSelected:(BOOL)isSelected
 {
-//    NSLog(@"shopFollowButtonHitWithID: %@", instagramID);
+    //    NSLog(@"shopFollowButtonHitWithID: %@", instagramID);
     
     AppDelegate *theAppDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
@@ -146,7 +146,7 @@
     {
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", instagramID], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
-
+        
         
         [JKProgressView presentPopupTextWithReferenceView:self withText:@"Followed On Instagram"];
         

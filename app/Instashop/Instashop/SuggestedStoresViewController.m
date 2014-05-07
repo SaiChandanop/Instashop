@@ -215,8 +215,12 @@
         [self.shopViewsArray addObject:suggestedShopView];
     }
     
+    if (!self.hasStartedMakingSubviewCalls)
     if ([self.shopViewsArray count] > 0)
+    {
+        self.hasStartedMakingSubviewCalls = YES;
         [[self.shopViewsArray objectAtIndex:0] makeIGContentRequest];
+    }
  
    
     
@@ -233,6 +237,8 @@
 
 -(void) selectedShopViewDidCompleteRequestWithView:(SuggestedShopView *)theShopView
 {
+    NSLog(@"container vc, remove shop view from call sheet, run next");
+
     [self.shopViewsArray removeObject:theShopView];
     
     if ([self.shopViewsArray count] > 0)
