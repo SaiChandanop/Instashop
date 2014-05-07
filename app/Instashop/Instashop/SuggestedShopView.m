@@ -148,7 +148,7 @@
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
 
         
-        [JKProgressView presentPopupTextWithReferenceView:self.parentController.view withText:@"Followed On Instagram"];
+        [JKProgressView presentPopupTextWithReferenceView:self withText:@"Followed On Instagram"];
         
     }
 }

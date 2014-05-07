@@ -32,7 +32,7 @@
     
     float boxRadius = 34;
     
-    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(theProgressView.theIndicatorView.frame.origin.x + referenceView.frame.size.width / 2 - boxRadius*1.5, referenceView.frame.origin.y + referenceView.frame.size.height / 2 - boxRadius - 64, boxRadius  * 3, boxRadius *1.3)];
+    UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(theProgressView.theIndicatorView.frame.origin.x + referenceView.frame.size.width / 2 - boxRadius*1.5,  referenceView.frame.size.height / 2 - boxRadius - 14, boxRadius  * 3, boxRadius *1.3)];
     bgView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.75];
     bgView.layer.cornerRadius = 8.0;
     bgView.layer.masksToBounds = YES;
