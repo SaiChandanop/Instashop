@@ -16,7 +16,7 @@
 +(void)getSuggestedShopsWithDelegate:(id)theDelegate withCategory:(NSString *)categoryString
 {
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"shopFunctions.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"shopFunctions.php"];
     NSLog(@"Make get suggested shops call with request: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";

@@ -783,7 +783,7 @@
     NSLog(@"imagePicker did pick image");
     
     
-    NSString *deleteString = [NSString stringWithFormat:@"%@/upload/%@.jpeg", [ROOT_URI stringByReplacingOccurrencesOfString:@"www." withString:@""], [InstagramUserObject getStoredUserObject].userID];
+    NSString *deleteString = [NSString stringWithFormat:@"%@/upload/%@.jpeg", [[Utils getRootURI] stringByReplacingOccurrencesOfString:@"www." withString:@""], [InstagramUserObject getStoredUserObject].userID];
     [[CacheManager getSharedCacheManager] destroyCachedImageWithURL:deleteString];
     
     

@@ -14,7 +14,7 @@
 
 +(void)makeMailchimpCallWithEmail:(NSString *)theEmail withCategory:(NSString *)category withName:(NSString *)theName;
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"shopsy_mailchimp_receiver.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"shopsy_mailchimp_receiver.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     

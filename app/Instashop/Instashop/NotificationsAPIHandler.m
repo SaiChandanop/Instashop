@@ -20,7 +20,7 @@
     [postString appendString:[NSString stringWithFormat:@"&request_type=%@", @"clear"]];
     [postString appendString:[NSString stringWithFormat:@"&instagram_id=%@", instagramID]];
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/get_notifications.php", ROOT_URI];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/get_notifications.php", [Utils getRootURI]];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -48,7 +48,7 @@
     [postString appendString:[NSString stringWithFormat:@"&request_type=%@", @"count"]];
     [postString appendString:[NSString stringWithFormat:@"&instagram_id=%@", instagramID]];
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/get_notifications.php", ROOT_URI];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/get_notifications.php", [Utils getRootURI]];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -76,7 +76,7 @@
     [postString appendString:[NSString stringWithFormat:@"&request_type=%@", @"all"]];
     [postString appendString:[NSString stringWithFormat:@"&instagram_id=%@", instagramID]];
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/get_notifications.php", ROOT_URI];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/get_notifications.php", [Utils getRootURI]];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -123,7 +123,7 @@
     [postString appendString:[NSString stringWithFormat:@"&product_id=%@", productID]];
     [postString appendString:[NSString stringWithFormat:@"&instagram_id=%@", instagramID]];
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/push_receiver.php", ROOT_URI];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/push_receiver.php", [Utils getRootURI]];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
@@ -152,7 +152,7 @@
     [postString appendString:[NSString stringWithFormat:@"instagram_push_ids=%@", notificationString]];
     [postString appendString:[NSString stringWithFormat:@"&user_ID=%@", [InstagramUserObject getStoredUserObject].userID]];
 
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/mass_push_receiver.php", ROOT_URI];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/push_notifications/mass_push_receiver.php", [Utils getRootURI]];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];

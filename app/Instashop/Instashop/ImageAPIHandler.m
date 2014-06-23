@@ -222,7 +222,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 +(void)makeProfileImageRequestWithReferenceImageView:(UIImageView *)referenceImageView withInstagramID:(NSString *)instagramID
 {
-    NSString *urlString = [NSString stringWithFormat:@"%@/upload/%@.jpeg", ROOT_URI, instagramID];
+    NSString *urlString = [NSString stringWithFormat:@"%@/upload/%@.jpeg", [Utils getRootURI], instagramID];
     
     NSLog(@"Make shopsy profile picture request: %@", urlString);
     if (sharedImageAPIHandler == nil)
