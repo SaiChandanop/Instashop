@@ -1,7 +1,7 @@
 //
 //  MailchimpAPIHandler.m
 //  Instashop
-//
+//  Used to post a new user's data to Shopsy's storage for use with Shopsy server mailchimp handling
 //  Created by Josh Klobe on 1/24/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //

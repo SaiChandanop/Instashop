@@ -1,7 +1,7 @@
 //
 //  SocialManager.m
 //  Instashop
-//
+//  Handler for Twitter and Facebook access and posting
 //  Created by Josh Klobe on 10/25/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

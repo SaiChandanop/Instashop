@@ -1,7 +1,7 @@
 //
 //  AttributeRankObject.m
 //  Instashop
-//
+//  Container Object for server category object
 //  Created by Josh Klobe on 12/2/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

@@ -1,7 +1,7 @@
 //
 //  PostmasterAPIHandler.m
 //  Instashop
-//
+//  Unused, Vestigal API
 //  Created by Josh Klobe on 7/8/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

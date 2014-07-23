@@ -1,7 +1,7 @@
 //
 //  ProductAPIHandler.m
 //  Instashop
-//
+//  APIHandler for all Product CRUD methods from the app to shopsy server
 //  Created by Josh Klobe on 5/28/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

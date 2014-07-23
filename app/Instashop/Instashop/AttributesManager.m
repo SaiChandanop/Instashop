@@ -1,7 +1,7 @@
 //
 //  AttributesManager.m
 //  Instashop
-//
+//  Used to manage the context of the categories[x].plist that is server fed from Shopsy
 //  Created by Josh Klobe on 6/25/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

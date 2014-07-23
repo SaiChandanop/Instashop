@@ -1,7 +1,7 @@
 //
 //  ISConstants.m
 //  Instashop
-//
+//  Underused constants class
 //  Created by Josh Klobe on 8/21/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

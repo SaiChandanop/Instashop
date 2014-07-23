@@ -1,7 +1,7 @@
 //
 //  NotificationsAPIHandler.m
 //  Instashop
-//
+//  APIHandler to get, create, and clear shopsy created notifications
 //  Created by Josh Klobe on 11/14/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

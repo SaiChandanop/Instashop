@@ -1,7 +1,7 @@
 //
 //  UserAPIHandler.m
 //  Instashop
-//
+//  APIHandler for creation of shopsy buyers and registration of their push IDS for later use
 //  Created by Josh Klobe on 5/22/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

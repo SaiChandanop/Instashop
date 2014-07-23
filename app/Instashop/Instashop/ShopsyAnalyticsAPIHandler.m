@@ -1,7 +1,7 @@
 //
 //  ShopsyAnalyticsAPIHandler.m
 //  Instashop
-//
+//  API Interface to register relevant actions that Shopsy wants to track, such as product viewed, product saved, bought etc.
 //  Created by Josh Klobe on 3/24/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //

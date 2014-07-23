@@ -1,7 +1,7 @@
 //
 //  ImageAPIHandler.m
 //  Instashop
-//
+//  APIHandler to request sync or async images from instagram and shopsy, rolls items into cache manager
 //  Created by Josh Klobe on 5/24/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

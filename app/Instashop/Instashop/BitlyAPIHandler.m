@@ -1,7 +1,7 @@
 //
 //  BitlyAPIHandler.m
 //  Instashop
-//
+//  API Handler to craete shortened bitly strings where necessary
 //  Created by Josh Klobe on 11/22/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

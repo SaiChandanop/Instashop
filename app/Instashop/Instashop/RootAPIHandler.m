@@ -1,7 +1,6 @@
 //
 //  RootAPIHandler.m
-//  HomeTalk
-//
+//  Base class for all APIHandlers
 //  Created by Josh Klobe on 9/25/12.
 //  Copyright (c) 2012 Josh Klobe. All rights reserved.
 //

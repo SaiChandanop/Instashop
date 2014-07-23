@@ -1,7 +1,7 @@
 //
 //  FlagManagerAPIHandler.m
 //  Instashop
-//
+//  APIHandler to flag (complain about) any shopsy product
 //  Created by Susan Yee on 10/18/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

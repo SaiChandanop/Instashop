@@ -1,7 +1,7 @@
 //
 //  SavedItemsAPIHandler.m
 //  Instashop
-//
+//  APIHandler to get user's saved items
 //  Created by Josh Klobe on 11/18/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

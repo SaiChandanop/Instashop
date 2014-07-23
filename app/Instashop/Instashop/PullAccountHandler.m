@@ -1,7 +1,7 @@
 //
 //  PullAccountHandler.m
 //  Instashop
-//
+//  Backdoor handler to get a users follows
 //  Created by Josh Klobe on 3/24/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //

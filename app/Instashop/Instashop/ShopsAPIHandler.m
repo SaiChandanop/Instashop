@@ -1,7 +1,7 @@
 //
 //  ShopsAPIHandler.m
 //  Instashop
-//
+//  APIHandler for suggested shops server acquisition
 //  Created by Josh Klobe on 9/1/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

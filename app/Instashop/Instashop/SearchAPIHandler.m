@@ -1,7 +1,7 @@
 //
 //  SearchAPIHandler.m
 //  Instashop
-//
+//  APIHandler for product and seller search requests
 //  Created by Josh Klobe on 9/3/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
