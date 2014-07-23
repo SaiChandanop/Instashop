@@ -1,7 +1,7 @@
 //
 //  PurchasingCompleteViewController.m
 //  Instashop
-//
+//  Unused, vetigal class from legacy flow
 //  Created by Josh Klobe on 7/17/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

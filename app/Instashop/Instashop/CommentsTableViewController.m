@@ -1,7 +1,7 @@
 //
 //  CommentsTableViewController.m
 //  Instashop
-//
+//  Unused, previously contained comments on product presentation views
 //  Created by Josh Klobe on 10/29/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

@@ -1,7 +1,7 @@
 //
 //  ImagesTableViewItem.m
 //  Instashop
-//
+//  Container object for a product image view cell's content, with background, image view, and reference button
 //  Created by Josh Klobe on 8/22/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

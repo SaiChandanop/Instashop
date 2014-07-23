@@ -1,7 +1,7 @@
 //
 //  LocalNotificationView.m
 //  Instashop
-//
+//  Used to present shopsy system notifications within running app instance
 //  Created by Josh Klobe on 2/1/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //

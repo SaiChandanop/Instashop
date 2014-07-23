@@ -1,7 +1,7 @@
 //
 //  TestTableViewController.m
 //  Instashop
-//
+//  Unused
 //  Created by Josh Klobe on 4/10/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //

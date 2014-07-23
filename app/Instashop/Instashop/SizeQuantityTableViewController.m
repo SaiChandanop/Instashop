@@ -1,7 +1,7 @@
 //
 //  SizeQuantityTableViewController.m
 //  Instashop
-//
+//  Unused, legacy controller used when we handled quantity and sizing within the shopsy domain
 //  Created by Josh Klobe on 7/16/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

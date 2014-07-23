@@ -1,7 +1,7 @@
 //
 //  FeedViewController.m
 //  Instashop
-//
+//  Main view's view controller, shows all products in the database
 //  Created by Josh Klobe on 5/31/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

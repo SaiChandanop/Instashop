@@ -1,7 +1,7 @@
 //
 //  ProfileViewController.m
 //  Instashop
-//
+//  Presentation container for Home -> Profile view (with products / info and saved, profile picture, etc)
 //  Created by Josh Klobe on 8/23/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

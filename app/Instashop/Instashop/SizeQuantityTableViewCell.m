@@ -1,7 +1,7 @@
 //
 //  SizeQuantityTableViewCell.m
 //  Instashop
-//
+//  Unused presentation cell for size quantity
 //  Created by Josh Klobe on 7/16/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

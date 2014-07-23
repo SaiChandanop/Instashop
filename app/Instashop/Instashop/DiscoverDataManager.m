@@ -1,7 +1,7 @@
 //
 //  DiscoverDataManager.m
 //  Instashop
-//
+//  Handles discover data, downloading, categorizing based on likes and sorting
 //  Created by Josh Klobe on 11/22/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

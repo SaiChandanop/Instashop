@@ -1,7 +1,7 @@
 //
 //  NavBarTitleView.m
 //  Instashop
-//
+//  Unused
 //  Created by Josh Klobe on 8/22/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

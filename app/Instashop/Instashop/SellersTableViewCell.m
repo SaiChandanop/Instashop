@@ -1,7 +1,7 @@
 //
 //  SellersTableViewCell.m
 //  Instashop
-//
+//  Table Cell to present a seller in the Search -> Shops view
 //  Created by Josh Klobe on 9/12/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

@@ -1,7 +1,7 @@
 //
 //  CategoriesNavigationViewController.m
 //  Instashop
-//
+//  Unused, vestigal class from no longer used flow
 //  Created by Josh Klobe on 8/7/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

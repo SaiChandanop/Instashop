@@ -1,7 +1,7 @@
 //
 //  HomeViewController.m
 //  Instashop
-//
+//  'Home' container view controller, this is the covered view on the left that provides access to suggested shops, discover, notifications, etc
 //  Created by Josh Klobe on 6/3/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

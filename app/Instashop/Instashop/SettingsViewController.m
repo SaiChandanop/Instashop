@@ -1,7 +1,7 @@
 //
 //  SettingsViewController.m
 //  Instashop
-//
+//  Presentation for Home -> Settings view, containers for external web calls, feedback, etc.
 //  Created by A50 Admin on 11/15/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

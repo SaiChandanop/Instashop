@@ -1,7 +1,7 @@
 //
 //  AppRootViewController.m
 //  Instashop
-//
+//  Master view controller.  Handles transitions between home and feed, handles all modal presentations and modal like presentations.
 //  Created by Josh Klobe on 6/3/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

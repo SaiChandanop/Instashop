@@ -1,7 +1,7 @@
 //
 //  JKProgressView.m
 //  Instashop
-//
+//  Provides a UI Popup View with animated indicator view and text, if appropriate
 //  Created by Josh Klobe on 1/20/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //

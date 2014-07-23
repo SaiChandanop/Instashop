@@ -1,7 +1,7 @@
 //
 //  NotificationsTableViewCell.m
 //  Instashop
-//
+//  Presentation for notification object in notifications view
 //  Created by Josh Klobe on 11/15/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

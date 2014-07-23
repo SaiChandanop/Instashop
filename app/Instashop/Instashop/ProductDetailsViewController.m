@@ -1,7 +1,7 @@
 //
 //  ProductDetailsViewController.m
 //  Instashop
-//
+//  Presentation view controller for shopy product details (image, categories, seller, likes, etc)
 //  Created by Josh Klobe on 6/4/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

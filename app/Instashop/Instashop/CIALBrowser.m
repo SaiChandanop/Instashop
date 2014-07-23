@@ -1,7 +1,7 @@
 //
 //  CIALBrowser.m
 //  CIALBrowser
-//
+//  3rd party container for standard web navigation controller presentation
 //  Created by Sylver Bruneau on 28/03/12.
 //  Copyright 2012 CodeIsALie. All rights reserved.
 //

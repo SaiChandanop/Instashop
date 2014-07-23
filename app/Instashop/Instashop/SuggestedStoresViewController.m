@@ -1,7 +1,7 @@
 //
 //  SuggestedStoresViewController.m
 //  Instashop
-//
+//  Presentation view controller for Home -> Suggested shops (Brands / Bloggers), content acquired from shopsy api.
 //  Created by Josh Klobe on 9/1/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
@@ -22,7 +22,7 @@
 
 @end
 
-// THERE ARE ALOT OF SYNCHRONIZATION PROBLEMS WITH THE CODE IN THE FILE, EVEN BEFORE I HAD STARTED WORKING ON IT - Susan
+
 
 #define kLoginTutorialDone 5
 #define kButtonPosition 515.0 // Change this number to change the button position.

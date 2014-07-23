@@ -1,7 +1,7 @@
 //
 //  SearchViewController.m
 //  Instashop
-//
+//  Presentation container for Search Silo Controllers
 //  Created by Josh Klobe on 9/3/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

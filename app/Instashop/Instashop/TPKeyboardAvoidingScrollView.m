@@ -1,6 +1,6 @@
 //
 //  TPKeyboardAvoidingScrollView.m
-//
+//  3rd party object to ensure a keyboard doesn't obscure relevant content in a scroll view
 //  Created by Michael Tyson on 11/04/2011.
 //  Copyright 2011 A Tasty Pixel. All rights reserved.
 //
