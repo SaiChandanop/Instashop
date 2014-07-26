@@ -5,7 +5,7 @@
 //  Created by Radu Spineanu on 4/25/13.
 //  Copyright (c) 2013 Radu Spineanu. All rights reserved.
 //
-
+#import "AmberAPIHandler.h"
 #import "AmberViewController.h"
 #import "Utils.h"
 #import "SocialManager.h"
@@ -49,14 +49,17 @@
     
     NSString *customCSSURLString = @"http://instashop.com/test_custom.css";
     
+    NSString *amberPath = [AmberAPIHandler getTwoTapURLStringWithReferenceURLString:self.referenceURLString];
+    /*
     NSString *amberPath = [NSString stringWithFormat:@"https://checkout.twotap.com/?public_token=286b2ac01d5d6139579eb903306333&unique_token=2388&custom_css_url=%@&callback_url=https://amber.io/workers/proposed_recipes/test_callback&show_tutorial=false&products=%@", [Utils getEscapedStringFromUnescapedString:customCSSURLString], [Utils getEscapedStringFromUnescapedString:self.referenceURLString]];
-        
+      */
 
     
     NSLog(@"amberPath: %@", amberPath);
     
     NSURL *amberURL = [NSURL URLWithString:amberPath];
-    NSURLRequest *amberRequestObj = [NSURLRequest requestWithURL:amberURL];
+    NSMutableURLRequest *amberRequestObj = [NSMutableURLRequest requestWithURL:amberURL];
+    amberRequestObj.HTTPMethod = @"POST";
     [self.amberWebView loadRequest:amberRequestObj];
     
 
