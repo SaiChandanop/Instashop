@@ -1,7 +1,7 @@
 //
 //  AuthenticationViewController.m
 //  Instashop
-//
+//  Handles presentation and authentication flow for Instagram
 //  Created by Josh Klobe on 5/22/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

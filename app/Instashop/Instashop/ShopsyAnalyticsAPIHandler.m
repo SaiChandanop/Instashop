@@ -1,7 +1,7 @@
 //
 //  ShopsyAnalyticsAPIHandler.m
 //  Instashop
-//
+//  API Interface to register relevant actions that Shopsy wants to track, such as product viewed, product saved, bought etc.
 //  Created by Josh Klobe on 3/24/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //
@@ -15,7 +15,7 @@
 +(void)makeViewedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID
 {
     NSLog(@"makeViewedAnalyticsCallWithOwnerInstagramID");
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"analytics/analytics.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"analytics/analytics.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     
@@ -44,7 +44,7 @@
 
 +(void)makeSavedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"analytics/analytics.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"analytics/analytics.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     
@@ -73,7 +73,7 @@
 
 +(void)makeBoughtAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"analytics/analytics.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"analytics/analytics.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     
@@ -102,7 +102,7 @@
 
 +(void)makeLikedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID withLiked:(BOOL)liked
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"analytics/analytics.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"analytics/analytics.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     
@@ -138,7 +138,7 @@
 
 +(void)makeAnalyticsReportCallWithProductID:(NSString *)theProductID withDelegate:(id)theDelegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"analytics/analytics.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"analytics/analytics.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     

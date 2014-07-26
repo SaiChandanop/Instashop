@@ -1,7 +1,7 @@
 //
 //  ProductCreateViewController.m
 //  Instashop
-//
+//  Presentation view controller for shopsy product creation.  Select instagram image -> create product for shopsy.
 //  Created by Josh Klobe on 5/28/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

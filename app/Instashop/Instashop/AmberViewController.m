@@ -1,7 +1,7 @@
 //
 //  AmberViewController.m
 //  Squashed iOS
-//
+//  3rd party controller for Amber purchasing
 //  Created by Radu Spineanu on 4/25/13.
 //  Copyright (c) 2013 Radu Spineanu. All rights reserved.
 //
@@ -11,6 +11,7 @@
 #import "SocialManager.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
+
 @interface AmberViewController ()
 
 @end

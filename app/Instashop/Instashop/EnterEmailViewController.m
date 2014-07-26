@@ -1,7 +1,7 @@
 //
 //  EnterEmailViewController.m
 //  Instashop
-//
+//  Last page of the first time user setup, used to contain email, categories, TOS, buyer / seller VCS.
 //  Created by Susan Yee on 12/27/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

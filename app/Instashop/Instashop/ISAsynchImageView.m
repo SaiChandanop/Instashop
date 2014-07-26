@@ -1,7 +1,7 @@
 //
 //  ISAsynchImageView.m
 //  Instashop
-//
+//  Container class for an imageview expecting an image to be returned, handles animations and presentation
 //  Created by Josh Klobe on 8/19/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

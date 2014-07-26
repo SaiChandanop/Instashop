@@ -1,7 +1,7 @@
 //
 //  ZenCartAuthenticationAPIHandler.m
 //  Instashop
-//
+//  Unused, defunct
 //  Created by Josh Klobe on 5/27/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

@@ -1,7 +1,7 @@
 //
 //  SavedItemsAPIHandler.m
 //  Instashop
-//
+//  APIHandler to get user's saved items
 //  Created by Josh Klobe on 11/18/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
@@ -14,7 +14,7 @@
 
 +(void)makeSavedItemRequestWithDelegate:(id)theDelegate withInstagramID:(NSString *)instagramID withProductID:(NSString *)productID
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"savedItems.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"savedItems.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
 

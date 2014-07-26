@@ -305,6 +305,7 @@
 		7BF9DD92178C546F005148A8 /* SBJsonStreamWriterState.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD87178C546F005148A8 /* SBJsonStreamWriterState.m */; };
 		7BF9DD93178C546F005148A8 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BF9DD89178C546F005148A8 /* SBJsonWriter.m */; };
 		7BFAB83C189D6B2F00951C65 /* LocalNotificationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BFAB83B189D6B2F00951C65 /* LocalNotificationView.m */; };
+		7ECD29EF19588B5000011FBF /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7ECD29EE19588B5000011FBF /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -749,6 +750,7 @@
 		7BF9DD89178C546F005148A8 /* SBJsonWriter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SBJsonWriter.m; sourceTree = "<group>"; };
 		7BFAB83A189D6B2F00951C65 /* LocalNotificationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocalNotificationView.h; sourceTree = "<group>"; };
 		7BFAB83B189D6B2F00951C65 /* LocalNotificationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocalNotificationView.m; sourceTree = "<group>"; };
+		7ECD29EE19588B5000011FBF /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1408,6 +1410,7 @@
 				7B4D2E17175CFFBE005DE4B6 /* shittyimages */,
 				7B7A7437174D42F2005E90B9 /* instagram-ios-sdk */,
 				7B61EE4E174D2162002A483D /* Instashop-Info.plist */,
+				7ECD29EE19588B5000011FBF /* Settings.bundle */,
 				7B61EE4F174D2162002A483D /* InfoPlist.strings */,
 				7B61EE52174D2162002A483D /* main.m */,
 				7B61EE54174D2162002A483D /* Instashop-Prefix.pch */,
@@ -2119,6 +2122,7 @@
 				2E6BF27917CE502E008DF460 /* edit_photo@2x.png in Resources */,
 				2EFD0A3817FBBB2C00E701B0 /* twitter_on@2x.png in Resources */,
 				7B8BC4D717B2CE80002CEB36 /* cell_background.png in Resources */,
+				7ECD29EF19588B5000011FBF /* Settings.bundle in Resources */,
 				2E9378F1184D200500476540 /* invite_friend_icon@2x.png in Resources */,
 				5F0A71C518E61C06003D5911 /* redheart.png in Resources */,
 				2E9378EE184D200500476540 /* terms_icon@2x.png in Resources */,
@@ -2336,8 +2340,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josh Klobe (V544PARN99)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
@@ -2349,8 +2353,8 @@
 					"$(PROJECT_DIR)/Instashop",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				PROVISIONING_PROFILE = "0ADA3833-7A44-4161-B009-B15D748413CC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0ADA3833-7A44-4161-B009-B15D748413CC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2359,8 +2363,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Josh Klobe (V544PARN99)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Josh Klobe (V544PARN99)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
@@ -2372,8 +2376,8 @@
 					"$(PROJECT_DIR)/Instashop",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				PROVISIONING_PROFILE = "0ADA3833-7A44-4161-B009-B15D748413CC";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0ADA3833-7A44-4161-B009-B15D748413CC";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

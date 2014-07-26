@@ -1,7 +1,7 @@
 //
 //  DiscoverTableViewCell.m
 //  Instashop
-//
+//  Presentation cell for DiscoverTableViewController
 //  Created by Josh Klobe on 11/5/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

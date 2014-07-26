@@ -1,7 +1,7 @@
 //
 //  DiscoverViewController.m
 //  Instashop
-//
+//  Discover Silo's container view controller
 //  Created by Josh Klobe on 9/11/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

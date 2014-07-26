@@ -1,7 +1,7 @@
 //
 //  ViglinkAPIHandler.m
 //  Instashop
-//
+//  APIHandler for viglink calls
 //  Created by Josh Klobe on 9/23/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

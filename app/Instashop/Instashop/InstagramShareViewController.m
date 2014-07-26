@@ -1,7 +1,7 @@
 //
 //  InstagramShareViewController.m
 //  Instashop
-//
+//  Used to share a promotional image to Instagram from Shopsy
 //  Created by Joel Barron on 1/8/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //

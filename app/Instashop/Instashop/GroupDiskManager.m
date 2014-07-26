@@ -1,7 +1,7 @@
 //
 //  GroupDiskManager.m
 //  Calendar
-//
+//  Data Interface to disk storage
 //  Created by Jay Canty on 4/19/12.
 //  Copyright (c) 2012 A 50. All rights reserved.
 //

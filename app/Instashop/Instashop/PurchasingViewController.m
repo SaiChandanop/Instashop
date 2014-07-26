@@ -1,7 +1,7 @@
 //
 //  PurchasingViewController.m
 //  Instashop
-//
+//  Container view controller for presentation and purchasing of products.  
 //  Created by Josh Klobe on 6/10/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

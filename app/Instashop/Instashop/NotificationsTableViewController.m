@@ -1,7 +1,7 @@
 //
 //  NotificationsTableViewController.m
 //  Instashop
-//
+//  Presentation container for Home -> Notifications
 //  Created by Josh Klobe on 4/16/14.
 //  Copyright (c) 2014 Josh Klobe. All rights reserved.
 //

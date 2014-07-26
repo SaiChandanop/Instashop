@@ -1,7 +1,7 @@
 //
 //  SuggestedShopView.m
 //  Instashop
-//
+//  Suggested Shop presentation view used in SuggestedShopsViewController (profile photo, follow button, profile name / description)
 //  Created by Josh Klobe on 9/1/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

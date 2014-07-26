@@ -1,7 +1,7 @@
 //
 //  SearchRequestObject.m
 //  Instashop
-//
+//  Container object populated by search view controller, used in search api call
 //  Created by Josh Klobe on 9/4/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

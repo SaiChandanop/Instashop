@@ -15,4 +15,6 @@
 +(NSString *)getEscapedStringFromUnescapedString:(NSString *)unescaped;
 + (NSString *)urlencode:(NSString *)theString;
 +(void)conformViewControllerToMaxSize:(UIViewController *)theViewController;
++(NSString *)getRootURI;
+
 @end

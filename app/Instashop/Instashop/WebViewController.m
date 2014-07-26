@@ -1,7 +1,7 @@
 //
 //  WebViewController.m
 //  Instashop
-//
+//  Mostly unused web view container view controller. 
 //  Created by A50 Admin on 11/13/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

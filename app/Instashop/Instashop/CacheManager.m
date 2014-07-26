@@ -1,7 +1,7 @@
 //
 //  CacheManager.m
 //  Instashop
-//
+//  Global cache manager, used to in advance precache some images, and hold other media in memory
 //  Created by Josh Klobe on 12/27/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

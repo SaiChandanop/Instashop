@@ -1,7 +1,7 @@
 //
 //  Utils.m
 //  Instashop
-//
+//  Workbench class for random necessary usage
 //  Created by Josh Klobe on 5/22/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
@@ -24,6 +24,21 @@
     return escapedString;
 }
 
+
++(NSString *)getRootURI
+{
+ 
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    BOOL staging = [defaults boolForKey:@"staging_preference"];
+    
+    NSString *retval = @"http://www.shopsy.com/server_source";
+    if (staging)
+        retval = @"http://www.shopsy.com/staging_source";
+    
+    NSLog(@"retval!!: %@", retval);
+    return retval;
+    
+}
 
 
 + (NSString *)urlencode:(NSString *)theString {

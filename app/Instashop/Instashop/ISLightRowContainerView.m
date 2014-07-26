@@ -1,7 +1,7 @@
 //
 //  ISLightRowContainerView.m
 //  Instashop
-//
+//  Used as background for containing content in the product detail view
 //  Created by Josh Klobe on 8/21/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

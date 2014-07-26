@@ -1,7 +1,7 @@
 //
 //  SizePickerViewViewController.m
-//  Instashop
-//
+//  Container picker controller for presentation and selection of products' sizes
+//  Unused, legacy of when there were size definitions
 //  Created by Josh Klobe on 7/16/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

@@ -1,7 +1,7 @@
 //
 //  PaginationAPIHandler.m
 //  Instashop
-//
+//  API handler to manage any pagination call to instagram
 //  Created by Josh Klobe on 12/17/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

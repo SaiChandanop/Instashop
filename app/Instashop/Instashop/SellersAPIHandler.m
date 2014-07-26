@@ -1,7 +1,7 @@
 //
 //  SellersAPIHandler.m
 //  Instashop
-//
+//  APIHandler for seller CRUD requests from api to server
 //  Created by Josh Klobe on 7/8/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
@@ -18,7 +18,7 @@
 
 +(void)makeCheckIfSellerExistsCallWithDelegate:(id)delegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/create_seller.php?action=checkSeller"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"sellerfunctions/create_seller.php?action=checkSeller"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -60,7 +60,7 @@
 
 +(void)updateSellerPushIDWithPushID:(NSString *)pushID withInstagramID:(NSString *)instagramID
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/create_seller.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"sellerfunctions/create_seller.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -91,7 +91,7 @@
 
 +(void)makeCreateSellerRequestWithDelegate:(id)theDelegate withInstagramUserObject:(InstagramUserObject *)instagramUserObject withSellerAddressDictionary:(NSDictionary *)addressDictionary
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/create_seller.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"sellerfunctions/create_seller.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -136,7 +136,7 @@
 
 +(void)makeGetSellersRequestWithDelegate:(id)theDelegate withSellerInstagramID:(NSString *)sellerInstagramID
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"sellerfunctions/get_sellers.php?seller_instagram_id=", sellerInstagramID];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", [Utils getRootURI], @"sellerfunctions/get_sellers.php?seller_instagram_id=", sellerInstagramID];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -162,7 +162,7 @@
 {
     NSLog(@"uploadProfileImage, image: %@, withDelegate: %@", image, theDelegate);
  
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"profile_image_upload.php", @""];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", [Utils getRootURI], @"profile_image_upload.php", @""];
     NSURL *url = [NSURL URLWithString:urlRequestString];
     // encode the image as JPEG
     NSData *imageData = UIImageJPEGRepresentation(image, 0.9);
@@ -250,7 +250,7 @@
 
 +(void)getSellerDetailsWithInstagramID:(NSString *)instagramID withDelegate:(id)theDelegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/sellerManager.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"sellerfunctions/sellerManager.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -283,7 +283,7 @@
 +(void)makeGetAllSellersRequestWithDelegate:(id)theDelegate
 {
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/get_sellers.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"sellerfunctions/get_sellers.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -297,7 +297,7 @@
 
 +(void)updateSellerDescriptionWithDelegate:(id)theDelegate InstagramID:(NSString *)instagramID withDescription:(NSString *)theDescription
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"sellerfunctions/sellerManager.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"sellerfunctions/sellerManager.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
 //    NSLog(@"urlRequestString: %@", urlRequestString);

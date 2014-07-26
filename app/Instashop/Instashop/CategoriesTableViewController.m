@@ -1,7 +1,7 @@
 //
 //  CategoriesTableViewController.m
 //  Instashop
-//
+//  Used in search to present tree of potential categories to search products for
 //  Created by Josh Klobe on 8/7/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

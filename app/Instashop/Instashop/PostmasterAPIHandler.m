@@ -1,7 +1,7 @@
 //
 //  PostmasterAPIHandler.m
 //  Instashop
-//
+//  Unused, Vestigal API
 //  Created by Josh Klobe on 7/8/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
@@ -14,7 +14,7 @@
 
 +(void)makePostmasterRatesCallWithDelegate:(id)theDelegate withFromZip:(NSString *)fromZip withToZip:(NSString *)toZip withWeight:(NSString *)weight withCarrier:(NSString *)carrier
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/postmaster/instashop/getShippingRates.php?from_zip=%@&to_zip=%@&weight=%@&carrier=%@", ROOT_URI, fromZip, toZip, weight, carrier];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/postmaster/instashop/getShippingRates.php?from_zip=%@&to_zip=%@&weight=%@&carrier=%@", [Utils getRootURI], fromZip, toZip, weight, carrier];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     
@@ -46,7 +46,7 @@
 
 +(void)makePostmasterShipRequestCallWithDelegate:(id)theDelegate withFromDictionary:(NSDictionary *)fromDictionary withToDictionary:(NSDictionary *)toDictionary shippingDictionary:(NSDictionary *)shippingDictionary withPackageDictionary:(NSDictionary *)packageDictionary
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/postmaster/instashop/makeShippingRequest.php", ROOT_URI];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/postmaster/instashop/makeShippingRequest.php", [Utils getRootURI]];
     
     
     

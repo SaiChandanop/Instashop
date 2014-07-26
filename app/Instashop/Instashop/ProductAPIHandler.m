@@ -1,7 +1,7 @@
 //
 //  ProductAPIHandler.m
 //  Instashop
-//
+//  APIHandler for all Product CRUD methods from the app to shopsy server
 //  Created by Josh Klobe on 5/28/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
@@ -30,7 +30,7 @@
         
     }
     likedIDsString = [likedIDsString stringByReplacingOccurrencesOfString:@"null" withString:@""];
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?liked_ids=", likedIDsString];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", [Utils getRootURI], @"get_products.php?liked_ids=", likedIDsString];
     
     NSLog(@"getLikedProductsByInstagramIDs urlRequestString: %@", urlRequestString);
     
@@ -50,7 +50,7 @@
 
 +(void)getSavedProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?saved_user_id=", instagramID];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", [Utils getRootURI], @"get_products.php?saved_user_id=", instagramID];
     
 //    NSLog(@"urlRequestString: %@", urlRequestString);
     
@@ -68,7 +68,7 @@
 
 +(void)getProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?requesting_seller_id=", instagramID];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", [Utils getRootURI], @"get_products.php?requesting_seller_id=", instagramID];
         
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"GET";
@@ -86,7 +86,7 @@
 +(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate withInstagramID:(NSString *)instagramID
 {
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, [NSString stringWithFormat:@"get_products.php?requesting_product_id=%@&instagram_id=%@", productID, instagramID]];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], [NSString stringWithFormat:@"get_products.php?requesting_product_id=%@&instagram_id=%@", productID, instagramID]];
     
 //    NSLog(@"urlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -102,7 +102,7 @@
 }
 +(void)getAllProductsWithDelegate:(id)delegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"get_products.php?requesting_seller_id=ALL"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"get_products.php?requesting_seller_id=ALL"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"GET";
         
@@ -149,7 +149,7 @@
 
 +(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withProductCategoryObjectID:(NSString *)productCategoryObjectID withPostmasterDictionary:(NSDictionary *)postmasterDictionary
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"buy_product.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"buy_product.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
 
@@ -196,7 +196,7 @@
 
 +(void)deleteProductWithProductID:(NSString *)productID
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"product_functions/productManager.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"product_functions/productManager.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
 
@@ -246,7 +246,7 @@
     
     
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"product_functions/productManager.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"product_functions/productManager.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     
@@ -313,7 +313,7 @@
 
 +(void)editProductSizeQuantityWithDelegate:(id)delegate withProductObject:(ProductCreateObject *)theProductCreateObject withProductID:(NSString *)productID
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"product_functions/productManager.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"product_functions/productManager.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     
@@ -367,7 +367,7 @@
 
 +(void)makeCheckForExistingProductURLWithDelegate:(id)delegate withProductURL:(NSString *)productURL withDictionary:(NSDictionary *)referenceDictionary
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?check_for_existing_product_url=", [productURL stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", [Utils getRootURI], @"get_products.php?check_for_existing_product_url=", [productURL stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
 //    NSLog(@"urlRequestString: %@", urlRequestString);
     

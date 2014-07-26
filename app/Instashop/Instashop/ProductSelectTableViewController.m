@@ -1,7 +1,7 @@
 //
 //  ProductSelectTableViewController.m
 //  Instashop
-//
+//  Presentation within search container for products
 //  Created by Josh Klobe on 6/4/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

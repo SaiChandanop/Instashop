@@ -1,7 +1,7 @@
 //
 //  SearchButtonContainerView.m
 //  Instashop
-//
+//  UI view to present search terms within the search container (the light grey box with text in it)
 //  Created by Josh Klobe on 9/12/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //

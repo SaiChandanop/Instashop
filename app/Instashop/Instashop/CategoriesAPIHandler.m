@@ -1,7 +1,7 @@
 //
 //  CategoriesAPIHandler.m
 //  Instashop
-//
+//  APIHandler used to download current categories list served by shopsy server
 //  Created by Josh Klobe on 9/13/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
@@ -13,7 +13,7 @@
 
 +(void)makeCategoriesRequest
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"categories3.plist"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"categories3.plist"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     
     

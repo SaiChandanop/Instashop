@@ -1,7 +1,7 @@
 //
 //  CategorySelectCell.h
 //  Instashop
-//
+//  Presentation cell for CategoriesTableViewController
 //  Created by Josh Klobe on 8/7/13.
 //  Copyright (c) 2013 Josh Klobe. All rights reserved.
 //
