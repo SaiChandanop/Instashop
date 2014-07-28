@@ -11,7 +11,7 @@
 #import "SocialManager.h"
 #import <Social/Social.h>
 #import "AppDelegate.h"
-
+#import "TwoTapAPIHandler.h"
 @interface AmberViewController ()
 
 @end
@@ -47,24 +47,7 @@
 
     
     self.referenceURLString = [self.referenceURLString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    
-    NSString *customCSSURLString = @"http://instashop.com/test_custom.css";
-    
-    NSString *amberPath = [AmberAPIHandler getTwoTapURLStringWithReferenceURLString:self.referenceURLString];
-    /*
-    NSString *amberPath = [NSString stringWithFormat:@"https://checkout.twotap.com/?public_token=286b2ac01d5d6139579eb903306333&unique_token=2388&custom_css_url=%@&callback_url=https://amber.io/workers/proposed_recipes/test_callback&show_tutorial=false&products=%@", [Utils getEscapedStringFromUnescapedString:customCSSURLString], [Utils getEscapedStringFromUnescapedString:self.referenceURLString]];
-      */
-
-    
-    NSLog(@"amberPath: %@", amberPath);
-    
-    NSURL *amberURL = [NSURL URLWithString:amberPath];
-    NSMutableURLRequest *amberRequestObj = [NSMutableURLRequest requestWithURL:amberURL];
-    amberRequestObj.HTTPMethod = @"POST";
-    [self.amberWebView loadRequest:amberRequestObj];
-    
-
-    
+    [self.amberWebView loadRequest:[TwoTapAPIHandler getTwoTapURLRequestWithProductURLString:self.referenceURLString]];    
 }
 
 

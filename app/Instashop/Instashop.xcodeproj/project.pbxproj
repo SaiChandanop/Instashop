@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		032E250318E1DF9B000875F9 /* libFlurry_4.3.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */; };
 		0369D26B183338C400AA1C9F /* MediaLikedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0369D26A183338C400AA1C9F /* MediaLikedObject.m */; };
+		037B6C5B1986C4BE00D0EAAA /* TwoTapAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 037B6C5A1986C4BE00D0EAAA /* TwoTapAPIHandler.m */; };
 		038FCD051835BAA800EC50D5 /* NotificationsAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 038FCD041835BAA800EC50D5 /* NotificationsAPIHandler.m */; };
 		03C3A4F818F735C700C4E215 /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 03C3A4F618F735C700C4E215 /* TestTableViewController.m */; };
 		03C3A4F918F735C700C4E215 /* TestTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 03C3A4F718F735C700C4E215 /* TestTableViewController.xib */; };
@@ -311,6 +312,8 @@
 /* Begin PBXFileReference section */
 		0369D269183338C400AA1C9F /* MediaLikedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaLikedObject.h; sourceTree = "<group>"; };
 		0369D26A183338C400AA1C9F /* MediaLikedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaLikedObject.m; sourceTree = "<group>"; };
+		037B6C591986C4BE00D0EAAA /* TwoTapAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoTapAPIHandler.h; sourceTree = "<group>"; };
+		037B6C5A1986C4BE00D0EAAA /* TwoTapAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoTapAPIHandler.m; sourceTree = "<group>"; };
 		038FCD031835BAA800EC50D5 /* NotificationsAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsAPIHandler.h; sourceTree = "<group>"; };
 		038FCD041835BAA800EC50D5 /* NotificationsAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsAPIHandler.m; sourceTree = "<group>"; };
 		03C3A4F518F735C700C4E215 /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
@@ -776,6 +779,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		037B6C581986C4AD00D0EAAA /* TwoTap */ = {
+			isa = PBXGroup;
+			children = (
+				037B6C591986C4BE00D0EAAA /* TwoTapAPIHandler.h */,
+				037B6C5A1986C4BE00D0EAAA /* TwoTapAPIHandler.m */,
+			);
+			name = TwoTap;
+			sourceTree = "<group>";
+		};
 		038FCD021835BA8800EC50D5 /* Notifications */ = {
 			isa = PBXGroup;
 			children = (
@@ -1570,6 +1582,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				037B6C581986C4AD00D0EAAA /* TwoTap */,
 				5F6F724818E07AEF0046E3CC /* Analytics */,
 				7BF6903E189327BC0073C691 /* Mailchimp */,
 				7B727C28186DD38600FB9C5E /* CacheManager */,
@@ -2256,6 +2269,7 @@
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 				69FC1E981834204200A52A90 /* InstashopWebView.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,
+				037B6C5B1986C4BE00D0EAAA /* TwoTapAPIHandler.m in Sources */,
 				7B39EF37188DDA1200EB744B /* JKProgressView.m in Sources */,
 				7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */,
 				7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */,
