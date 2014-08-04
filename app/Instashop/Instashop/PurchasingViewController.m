@@ -362,8 +362,8 @@
     NSString *productsInstagramID = [self.requestedProductObject objectForKey:@"products_instagram_id"];
     NSString *productsID = [self.requestedProductObject objectForKey:@"products_id"];
     
-    NSLog(@"owner value: %@", [self.requestedProductObject objectForKey:@"owner_instagram_id"]);
-    NSLog(@"user value: %@", [InstagramUserObject getStoredUserObject].userID);
+//    NSLog(@"owner value: %@", [self.requestedProductObject objectForKey:@"owner_instagram_id"]);
+//    NSLog(@"user value: %@", [InstagramUserObject getStoredUserObject].userID);
     
     if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [ShopsyAnalyticsAPIHandler makeViewedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
@@ -567,14 +567,24 @@
 
 
 -(IBAction)buyButtonHit
-{    
+{
+    
+    NSLog(@"buyButtonHit------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+    
     self.JKProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading..."];
 
     self.isBuying = YES;
     if (self.viglinkString == nil)
+    {
+        NSLog(@"running viglink rest call");
         [ViglinkAPIHandler makeViglinkRestCallWithDelegate:self withReferenceURLString:[self.requestedProductObject objectForKey:@"products_external_url"]];
+    }
     else
+    {
+        NSLog(@"not running viglink rest call");
         [AmberAPIHandler makeAmberSupportedSiteCallWithReference:[self.requestedProductObject objectForKey:@"products_external_url"] withResponseDelegate:self];
+    }
+    
     
     NSString *flurryString = [NSString stringWithFormat:@"User bought"];
     NSDictionary *flurryParams = [NSDictionary dictionaryWithObjectsAndKeys:[self.requestedProductObject objectForKey:@"product_id"], @"product_id", nil];

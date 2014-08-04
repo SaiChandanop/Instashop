@@ -47,7 +47,10 @@
 
     
     self.referenceURLString = [self.referenceURLString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-    [self.amberWebView loadRequest:[TwoTapAPIHandler getTwoTapURLRequestWithProductURLString:self.referenceURLString]];    
+    NSMutableURLRequest *request = [TwoTapAPIHandler getTwoTapURLRequestWithProductURLString:self.referenceURLString];
+    NSLog(@"run request complete for AmberViewController");
+    [self.amberWebView loadRequest:request];
+    
 }
 
 

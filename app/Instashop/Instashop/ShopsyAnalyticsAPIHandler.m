@@ -14,7 +14,7 @@
 
 +(void)makeViewedAnalyticsCallWithOwnerInstagramID:(NSString *)ownerInstagramID withProductInstagramID:(NSString *)productInstagramID withProductID:(NSString *)theProductID
 {
-    NSLog(@"makeViewedAnalyticsCallWithOwnerInstagramID");
+//    NSLog(@"makeViewedAnalyticsCallWithOwnerInstagramID");
     NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", [Utils getRootURI], @"analytics/analytics.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
@@ -37,7 +37,7 @@
 -(void)makeViewedAnalyticsCallWithInstagramIDComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"makeViewedAnalyticsCallWithInstagramIDComplete: %@", newStr);
+//    NSLog(@"makeViewedAnalyticsCallWithInstagramIDComplete: %@", newStr);
 }
 
 
@@ -67,7 +67,7 @@
 -(void)makeSavedAnalyticsCallWithOwnerInstagramIDComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"makeSavedAnalyticsCallWithOwnerInstagramIDComplete: %@", newStr);
+//    NSLog(@"makeSavedAnalyticsCallWithOwnerInstagramIDComplete: %@", newStr);
 }
 
 
@@ -95,7 +95,7 @@
 -(void)makeBoughtAnalyticsCallWithOwnerInstagramIDComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"makeBoughtAnalyticsCallWithOwnerInstagramIDComplete: %@", newStr);
+ //   NSLog(@"makeBoughtAnalyticsCallWithOwnerInstagramIDComplete: %@", newStr);
 }
 
 
@@ -107,7 +107,7 @@
     URLRequest.HTTPMethod = @"POST";
     
     
-    NSLog(@"withLiked withLiked withLiked: %d", liked);
+//    NSLog(@"withLiked withLiked withLiked: %d", liked);
     
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
@@ -129,7 +129,7 @@
 -(void)makeLikedAnalyticsCallWithOwnerInstagramIDComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"makeLikedAnalyticsCallWithOwnerInstagramIDComplete: %@", newStr);
+//    NSLog(@"makeLikedAnalyticsCallWithOwnerInstagramIDComplete: %@", newStr);
 }
 
 
@@ -158,10 +158,10 @@
 -(void)makeAnalyticsReportCallWithProductIDComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:self.responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"makeAnalyticsReportCallWithProductIDComplete: %@", newStr);
+//    NSLog(@"makeAnalyticsReportCallWithProductIDComplete: %@", newStr);
     
     NSDictionary *responseDictionary = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
-    NSLog(@"makeAnalyticsReportCallWithProductIDComplete, dict: %@", responseDictionary);
+//    NSLog(@"makeAnalyticsReportCallWithProductIDComplete, dict: %@", responseDictionary);
     
     if ([self.delegate conformsToProtocol:@protocol(AnalyticsReportCompleteProtocol)])
         [(id<AnalyticsReportCompleteProtocol>)self.delegate reportDidCompleteWithDictionary:responseDictionary];

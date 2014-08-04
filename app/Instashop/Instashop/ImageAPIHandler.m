@@ -87,7 +87,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
     }
     else
     {
-        NSLog(@"make instagram profile picture request: %@", instagramMediaURLString);
+//        NSLog(@"make instagram profile picture request: %@", instagramMediaURLString);
         
         ImageAPIHandler *handler = [[ImageAPIHandler alloc] init];
         handler.delegate = theDelegate;
@@ -102,7 +102,7 @@ static ImageAPIHandler *sharedImageAPIHandler;
 
 - (void) instagramImageReqeustFinsihed:(id)obj
 {
-    NSLog(@"instagram profile picture request complete: %@", self.contextObject);
+//    NSLog(@"instagram profile picture request complete: %@", self.contextObject);
     
     UIImage *responseImage = [UIImage imageWithData:self.responseData];
     

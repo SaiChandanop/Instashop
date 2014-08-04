@@ -38,8 +38,8 @@
     bgView.layer.masksToBounds = YES;
     [theProgressView insertSubview:bgView atIndex:0];
     
-    NSLog(@"referenceView: %@", referenceView);
-    NSLog(@"bgView: %@", bgView);
+//    NSLog(@"referenceView: %@", referenceView);
+//    NSLog(@"bgView: %@", bgView);
     
     theProgressView.theLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, theProgressView.theIndicatorView.frame.origin.y + theProgressView.theIndicatorView.frame.size.height + 4, bgView.frame.size.width, 40)];
     theProgressView.theLabel.numberOfLines = 0;
@@ -106,7 +106,7 @@
     bgView.layer.masksToBounds = YES;
     [theProgressView insertSubview:bgView atIndex:0];
     
-    NSLog(@"bgView: %@", bgView);
+//    NSLog(@"bgView: %@", bgView);
     
     return theProgressView;
 }
@@ -134,7 +134,7 @@
     [theProgressView insertSubview:bgView atIndex:0];
     
 
-    NSLog(@"bgView2: %@", bgView);
+//    NSLog(@"bgView2: %@", bgView);
     
     UIImage *heartImage = [UIImage imageNamed:@"heart_red.png"];
 
@@ -144,7 +144,7 @@
     theImageView.image = [UIImage imageNamed:@"heart_red.png"];
     [theProgressView addSubview:theImageView];
  
-    NSLog(@"theImageView: %@", theImageView);
+//    NSLog(@"theImageView: %@", theImageView);
     
     bgView.frame = CGRectMake(bgView.frame.origin.x, bgView.frame.origin.y, bgView.frame.size.width, bgView.frame.size.height + 21);
     
@@ -167,14 +167,14 @@
   
     [NSTimer scheduledTimerWithTimeInterval:1.2 target:theProgressView selector:@selector(hide) userInfo:nil repeats:NO];
     
-    NSLog(@"bgView2: %@", bgView);
+//    NSLog(@"bgView2: %@", bgView);
     return theProgressView;
 }
 
 
 -(void)hide
 {
-    NSLog(@"hide!");
+//    NSLog(@"hide!");
     [UIView beginAnimations:nil context:NULL];
     [UIView setAnimationDuration:0.25];
     [UIView setAnimationDelegate:self];

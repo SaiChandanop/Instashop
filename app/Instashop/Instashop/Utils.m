@@ -35,7 +35,7 @@
     if (staging)
         retval = @"http://www.shopsy.com/staging_source";
     
-    NSLog(@"retval!!: %@", retval);
+//    NSLog(@"retval!!: %@", retval);
     return retval;
     
 }
