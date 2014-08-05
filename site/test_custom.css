@@ -1,4 +1,5 @@
-.header-container {background: rgb(63, 137, 109)}
+.header-container {background: rgb(63, 137, 109); display:none;}
+.amber-container {padding-top:0;}
 #sidemenu_button_holder {display: none !important;}
 
 .checkout-info .generic-info .new-link .img-holder .info-shipping-img {background: url(../images/shipping-info.png) left center no-repeat; width: 27px; height: 22px; background-size: 22px 18px;}
@@ -15,68 +16,4 @@
 header .header-button .back-text {top: -2px;}
 }
 
-/*
-
-.waiting-box {width: 90%; margin: auto;background: rgba(255,255,255,.5);}
-
-body { background: url(../images/lightMenuBG@2x.png) 50%; background-size: 320px 568px; min-height: 568px; font-weight: 300;}
-.site-info .site-logo img {
-	max-height: 50px;
-	background: #fff;
-	padding: 5px 5px 5px 5px;
-	border-radius: 2px;
-	}
-
-
-input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input { background-color: rgba(255,255,255, 0); }
-
-.site-info .site-auth-status a {background: rgba(255,255,255,.5);}
-
-.product-fields .product-option-list .table td a {background: url(../images/arrow-mobile-black.png) right 50% no-repeat; background-size: 6px 8px;}
-
-.form-box .field select { -webkit-appearance: none; background: url(../images/arrow-mobile-black.png) right 78% no-repeat; background-size: 6px 8px; }
-
-
-
-
-header {padding-bottom: 0;}
-
-header .one-tap-checkout {
-	font-size: 0%;
-	font-weight: bold;
-	color: #868686;
-	border-top: 1px solid #868686;
-	margin-top: 15px;
-	padding-top: 0px;
-	height: 5px;
-	}
-	
-.container-fluid {padding: 0; }
-
-.product-fields { background: rgba(255,255,255,.5); border: 1px solid #c3c3c3; box-shadow: 0px 0px 0px black; }
-.site-with-products { width: 95%; margin: auto; }
-
-.form-box {width: 95%; margin: auto; border: 1px solid #c3c3c3; box-shadow: 0px 0px 0px black; border-radius: 6px; background: rgba(255,255,255,.5);}
-
-.checkout-info {width: 95%; margin: auto; border: 1px solid #c3c3c3; box-shadow: 0px 0px 0px black; border-radius: 6px; background: rgba(255,255,255,.5);}
-.checkout-info .generic-info { border-bottom: 0;}
-
-.shipping-info { border-bottom: 1px solid #c3c3c3 !important;}
-
-.price-list {width: 95%; margin: auto; }
-
-.site-separator {
-border-top: 1px solid #868686;
-margin-top: 20px;
-padding-bottom: 20px;
-}
-
-.product-image {border-radius: 2px; overflow: hidden;}
-
-.price-desc {font-size: 12px; }
-
-
-
-header .header-button {top: 11px;}
-
-*/
+.checkout-info .generic-info .new-link .img-holder {color: rgb(63, 137, 109);}
