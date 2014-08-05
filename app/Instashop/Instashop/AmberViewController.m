@@ -100,6 +100,17 @@
     return YES;
 }
 
+-(void)addCloseButton{
+    UIButton *closeAmberViewButton = [[UIButton alloc] initWithFrame:CGRectMake(280, 33, 30, 30)];
+    [closeAmberViewButton setTitle:@"✕" forState:UIControlStateNormal];
+    closeAmberViewButton.titleLabel.font = [UIFont systemFontOfSize:20.0f];
+    [closeAmberViewButton addTarget:self action:@selector(closeAmberView) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:closeAmberViewButton];
+}
+
+-(void)closeAmberView{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 -(void)openActionSheet
 {

@@ -17,6 +17,7 @@
     UIImage *referenceImage;
 }
 -(void)run;
+-(void)addCloseButton;
 
 @property (nonatomic, strong) IBOutlet UIWebView *amberWebView;
 @property (nonatomic, strong) IBOutlet UIView *loadingView;
