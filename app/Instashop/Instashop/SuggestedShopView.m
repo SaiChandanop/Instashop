@@ -117,6 +117,8 @@
         [delegate.instagram requestWithParams:params delegate:self];
         
     }
+    // for refresh to work
+    self.parentController.hasStartedMakingSubviewCalls = NO;
     
 }
 

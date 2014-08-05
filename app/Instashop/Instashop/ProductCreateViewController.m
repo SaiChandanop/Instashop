@@ -15,6 +15,12 @@
 #import "NavBarTitleView.h"
 #import "ProductAPIHandler.h"
 #import "SellersAPIHandler.h"
+
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface ProductCreateViewController ()
 
 @end
@@ -48,7 +54,7 @@
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton_white.png"]];
-    cancelImageView.frame = CGRectMake(0,0,44,44);
+    cancelImageView.frame = CGRectMake(8,0,44,44);
     [cancelCustomView addSubview:cancelImageView];
     
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -86,6 +92,13 @@
     self.productSelectTableViewController.refreshControl = nil;
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"ProductCreate Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 -(void)forceRefreshContent
 {
     NSLog(@"forceRefreshContent");
@@ -101,6 +114,11 @@
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProductCreateView"
+                                                                                      action:@"productSelected"
+                                                                                       label:[theSelectionObject objectForKey:@"id"]
+                                                                                       value:nil] build]];
+    
     NSLog(@"theSelectionObject: %@", theSelectionObject);
     NSLog(@"self.navigationController: %@", self.navigationController);
 

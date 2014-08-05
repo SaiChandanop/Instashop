@@ -12,6 +12,12 @@
 #import "InstagramUserObject.h"
 #import "SellersAPIHandler.h"
 #import "PullAccountHandler.h"
+
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface SettingsViewController ()
 
 @end
@@ -93,7 +99,12 @@
     
 }
 
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Settings Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
 
 - (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error __OSX_AVAILABLE_STARTING(__MAC_NA,__IPHONE_3_0);
 {
@@ -103,6 +114,11 @@
 
 - (IBAction)sendFeedbackButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SettingsView"
+                                                                                      action:@"sendFeedbackButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
     [controller setToRecipients:[NSArray arrayWithObject:@"hello@shopsy.com"]];
@@ -117,6 +133,7 @@
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
+    
     switch (result) {
         case MessageComposeResultCancelled:
             NSLog(@"MFMessageComposeViewController: MessageComposeResultCancelled");
@@ -222,12 +239,22 @@
 
 -(IBAction) faqButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SettingsView"
+                                                                                      action:@"faqButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
     [self.parentController webViewButtonHit:@"http://www.shopsy.com/faq" titleName:@"FAQ"];
 }
 
 
 - (IBAction)inviteButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SettingsView"
+                                                                                      action:@"inviteButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
     NSLog(@"inviteButtonHit");
     
     self.peoplePicker = [[ABPeoplePickerNavigationController alloc] init];
@@ -258,6 +285,11 @@
 
 -(IBAction)logOutButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SettingsView"
+                                                                                      action:@"logoutButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
     [self backButtonHit];
     
     NSLog(@"!!updateSellerPushIDWithPushID updateSellerPushIDWithPushID !!");
@@ -275,7 +307,12 @@
 }
 
 - (IBAction) reportBugButtonHit {
- 
+    
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SettingsView"
+                                                                                      action:@"logoutButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
     MFMailComposeViewController* controller = [[MFMailComposeViewController alloc] init];
     controller.mailComposeDelegate = self;
     [controller setToRecipients:[NSArray arrayWithObject:@"support@shopsy.com"]];
@@ -290,10 +327,31 @@
 
 -(IBAction)privatePolicyButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SettingsView"
+                                                                                      action:@"privacyButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
     [self.parentController webViewButtonHit:@"http://shopsy.com/privacy" titleName:@"PRIVACY"];
     NSLog(@"privatePolicyButtonHit");
 }
+
+-(IBAction)bestPracticeButtonHit
+{
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SettingsView"
+                                                                                      action:@"bestPracticesButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
+    [self.parentController webViewButtonHit:@"http://www.shopsy.com/shopsy-best-practices/" titleName:@"BEST PRACTICES"];
+    NSLog(@"bestPracticeButtonHit");
+}
+
 - (IBAction) termsOfServiceButtonHit {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SettingsView"
+                                                                                      action:@"termsButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
     
     [self.parentController webViewButtonHit:@"http://shopsy.com/terms" titleName:@"TERMS"];
     NSLog(@"Yes, the terms of Service Button was hit");

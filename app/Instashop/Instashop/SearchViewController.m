@@ -16,6 +16,11 @@
 #import "AttributesManager.h"
 #import "CategoriesViewController.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface SearchViewController ()
 
 
@@ -56,7 +61,7 @@
     UIView *cancelCustomView = [[UIView alloc] initWithFrame:CGRectMake(0,0, 44, 44)];
     
     UIImageView *cancelImageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"closebutton_white.png"]];
-    cancelImageView.frame = CGRectMake(0,0,44,44);
+    cancelImageView.frame = CGRectMake(8,0,44,44);
     [cancelCustomView addSubview:cancelImageView];
     
     UIButton *cancelButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -117,6 +122,13 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Search Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 -(void)backButtonHit
 {
     NSLog(@"self.navigationController!: %@", self.navigationController);
@@ -147,6 +159,11 @@
 
 -(IBAction)shopsButtonHit:(UIButton *)theButton
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SearchView"
+                                                                                      action:@"shopsButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
     [self moveHighlightToButton:theButton];
 
     self.productSearchViewController.view.alpha = 0;
@@ -155,6 +172,10 @@
 
 -(IBAction)productsButtonHit:(UIButton *)theButton
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SearchView"
+                                                                                      action:@"productsButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
 
     [self moveHighlightToButton:theButton];
     

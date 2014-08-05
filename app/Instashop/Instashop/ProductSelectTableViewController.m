@@ -86,18 +86,21 @@
         
         [self.contentArray addObjectsFromArray:mutableDataArray];
         
-        NSString *nextURLString = nil;
+        nextURLString = nil;
         NSDictionary *paginationDictionary = [result objectForKey:@"pagination"];
         if (paginationDictionary != nil)
-            if ([paginationDictionary objectForKey:@"next_url"] != nil)
+            if ([paginationDictionary objectForKey:@"next_url"] != nil){
                 nextURLString = [paginationDictionary objectForKey:@"next_url"];
-        
+            }
+        fetchingAPI = NO;
+//        [self reloadTable];
+
         NSLog(@"nextURLString");
-        
         if (nextURLString != nil)
         {
             NSLog(@"make pagination request");
-//            NSLog(@"paginationDictionary: %@", paginationDictionary);
+            //            NSLog(@"paginationDictionary: %@", paginationDictionary);
+            fetchingAPI = YES;
             [PaginationAPIHandler makePaginationRequestWithDelegate:self withRequestURLString:nextURLString];
             
             if (self.referenceTableView != nil)
@@ -111,9 +114,7 @@
         else
         {
             NSLog(@"Done");
-            
-            NSLog(@"DONE");
-            
+            fetchingAPI = NO;
             if (self.referenceTableView != nil)
                 [self.referenceTableView reloadData];
             else
@@ -122,14 +123,60 @@
             [self.refreshControl endRefreshing];
             
         }
-        
-        
-        
+ 
     }
-    
-    
 }
 
+-(void)reloadTable{
+    if (self.referenceTableView != nil)
+        [self.referenceTableView reloadData];
+    else
+        [self.tableView reloadData];
+    
+    [self.refreshControl endRefreshing];
+}
+
+-(void)paginationIG{
+    if (nextURLString != nil)
+    {
+        NSLog(@"make pagination request");
+        //            NSLog(@"paginationDictionary: %@", paginationDictionary);
+        fetchingAPI = YES;
+        [PaginationAPIHandler makePaginationRequestWithDelegate:self withRequestURLString:nextURLString];
+        
+        [self reloadTable];
+        
+    }
+    else
+    {
+        NSLog(@"Done");
+        fetchingAPI = NO;
+        [self reloadTable];
+        
+    }
+}
+/*
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [self checkScrollPosition];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self checkScrollPosition];
+    }
+}
+
+- (void) checkScrollPosition{
+    float position = self.tableView.contentSize.height - self.tableView.contentOffset.y - self.view.frame.size.height;
+//    NSLog(@"Position: %f", position);
+    if (position < 400  && self.productRequestorType > 0){
+        [self paginateFeed];
+    } else if(position < 200 && !fetchingAPI && nextURLString){
+        [self paginationIG];
+    }
+}
+*/
 -(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary
 {
     NSLog(@"checkFinishedWithBoolValue");
@@ -241,7 +288,8 @@
                 NSDictionary *myDictionary = (NSDictionary*) [NSKeyedUnarchiver unarchiveObjectWithData:myData];
                 [self.contentArray addObject:myDictionary];
                 
-                [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[myDictionary objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:myDictionary];
+                [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[myDictionary objectForKey:@"images"] objectForKey:@"thumbnail"] objectForKey:@"url"] withDictionary:myDictionary];
+            //    [ProductAPIHandler makeCheckForExistingProductURLWithDelegate:self withProductURL:[[[myDictionary objectForKey:@"images"] objectForKey:@"standard_resolution"] objectForKey:@"url"] withDictionary:myDictionary];
              
                 [self.tableView reloadData];
 //                [self.contentArray removeAllObjects];
@@ -301,7 +349,8 @@
 {
     [self hideProgress];
     [self.contentArray removeAllObjects];
-            
+
+/* Removed + add image
     if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER)
     {
         if ([self.productRequestorReferenceObject compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
@@ -310,13 +359,41 @@
             [self.contentArray addObject:addClass];
         }
     }
-    
+*/
     
     NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
-    
     [self.contentArray addObjectsFromArray:sorted];
     
-//    NSLog(@"contentArray: %@", contentArray);
+//    fullArray = [[NSMutableArray alloc] init];
+//    [fullArray addObjectsFromArray:sorted];
+//    [self.contentArray addObjectsFromArray:[self paginatedArray]];
+    
+    NSLog(@"contentArray count: %ld", [contentArray count]);
+    [self.refreshControl endRefreshing];
+    [self.tableView reloadData];
+    
+    if (self.profileViewController != nil)
+        [self.profileViewController tableViewControllerDidLoadWithController:self];
+}
+
+-(NSArray*)paginatedArray{
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    int remaining = 20;
+    if([fullArray count] < 20){
+        remaining = [fullArray count];
+    }
+    for (int i = 0; i < remaining; i++){
+        [newArray addObject:[fullArray objectAtIndex:i]];
+        [fullArray removeObjectAtIndex:i];
+    }
+//    NSLog(@"newArray Count: %ld", [newArray count]);
+    return newArray;
+}
+
+-(void) paginateFeed{
+    [self.contentArray addObjectsFromArray:[self paginatedArray]];
+    
+//    NSLog(@"contentArray count: %ld", [contentArray count]);
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
     

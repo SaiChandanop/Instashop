@@ -13,6 +13,11 @@
 #import "PurchasingViewController.h"
 #import "ISConstants.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 
 @interface FeedViewController ()
 
@@ -100,6 +105,13 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Feed Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 -(IBAction)homeButtonHit
 {
     [self.parentController homeButtonHit];
@@ -122,6 +134,11 @@
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"FeedView"
+                                                                                      action:@"feedProductSelected"
+                                                                                       label:[theSelectionObject objectForKey:@"product_id"]
+                                                                                       value:nil] build]];
+    
     if (self.navigationController.view.frame.origin.x == 0)
     {
         self.selectedObject = theSelectionObject;

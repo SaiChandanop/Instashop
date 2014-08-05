@@ -14,6 +14,7 @@
 #import "UserAPIHandler.h"
 #import "CategoriesAPIHandler.h"
 #import "ProfileViewController.h"
+#import "GAI.h"
 #import "Flurry.h"
 #import "LocalNotificationView.h"
 
@@ -35,6 +36,9 @@
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 
     [self populateMasterList];
+    
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    [[GAI sharedInstance] trackerWithTrackingId:@"UA-45285940-1"];
     
     [Flurry setCrashReportingEnabled:YES];
     //note: iOS only allows one crash reporting tool per app; if using another, set to: NO

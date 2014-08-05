@@ -18,6 +18,11 @@
 #import "Utils.h"
 #import "NotificationsAPIHandler.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface HomeViewController ()
 
 @end
@@ -89,6 +94,13 @@
     
     
     [self makeGetNotificationsCountCall];
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Home Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 

@@ -13,6 +13,12 @@
 #import "GroupDiskManager.h"
 #import "SellersAPIHandler.h"
 #import "JKProgressView.h"
+
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface AuthenticationViewController ()
 
 @end
@@ -56,12 +62,23 @@
                                      action:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Authentication Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
 }
 
 -(IBAction) loginButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AuthenticationView"
+                                                                                      action:@"loginButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSLog(@"loginButtonHit");
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     appDelegate.instagram.sessionDelegate = self;
@@ -78,6 +95,11 @@
 
 -(IBAction) downloadButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AuthenticationView"
+                                                                                      action:@"downloadButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSURL *webURL = [NSURL URLWithString:@"https://itunes.apple.com/us/app/instagram/id389801252"];
     [[UIApplication sharedApplication] openURL: webURL];
 }
@@ -163,7 +185,6 @@
 
 -(void)igDidLogin
 {
-    
     [self.progressView hideProgressView];
     
     
@@ -192,6 +213,12 @@
     [sellerButton setTitle:@"seller" forState:UIControlStateNormal];
     [sellerButton addTarget:self action:@selector(sellerButtonHit) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:sellerButton];
+    
+    NSString *igUid = [[appDelegate.instagram.accessToken componentsSeparatedByString:@"."] objectAtIndex:0];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AuthenticationView"
+                                                                                      action:@"igDidLogin"
+                                                                                       label:igUid
+                                                                                       value:nil] build]];
 }
 
 

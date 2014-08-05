@@ -18,6 +18,11 @@
 #import "InstagramUserObject.h"
 #import "ProfileViewController.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface SuggestedStoresViewController ()
 
 @end
@@ -117,6 +122,13 @@
     [refreshView addSubview:self.refreshControl];
     
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"SuggestedStores Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 -(void)refresh
@@ -221,8 +233,6 @@
         self.hasStartedMakingSubviewCalls = YES;
         [[self.shopViewsArray objectAtIndex:0] makeIGContentRequest];
     }
- 
-   
     
 }
 
@@ -257,6 +267,11 @@
 
 -(void)shopViewButtonHitWithID:(NSString *)instagramID
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"SuggestedShopsView"
+                                                                                      action:@"shopViewButtonHit"
+                                                                                       label:instagramID
+                                                                                       value:nil] build]];
+    
     if (self.isLaunchedFromMenu)
     {
         ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];

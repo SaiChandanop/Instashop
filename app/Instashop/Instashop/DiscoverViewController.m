@@ -16,6 +16,11 @@
 #import "PurchasingViewController.h"
 #import "JKProgressView.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface DiscoverViewController ()
 
 @end
@@ -61,10 +66,20 @@
 }
 
 
-
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Discover Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
 
 -(void) cellSelectionOccured:(NSDictionary *)theSelectionObject
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"DiscoverView"
+                                                                                      action:@"discoverProductSelected"
+                                                                                       label:[theSelectionObject objectForKey:@"product_id"]
+                                                                                       value:nil] build]];
+    
     NSLog(@"%@ theSelectionObject: %@", self, theSelectionObject);
     
     PurchasingViewController *purchasingViewController = [[PurchasingViewController alloc] initWithNibName:@"PurchasingViewController" bundle:nil];

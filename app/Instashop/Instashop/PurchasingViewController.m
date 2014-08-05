@@ -30,6 +30,11 @@
 #import "Flurry.h"
 #import "ShopsyAnalyticsAPIHandler.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface PurchasingViewController ()
 
 @property (nonatomic, strong) NSDictionary *requestedProductObject;
@@ -127,6 +132,10 @@
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Purchasing Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+    
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(likeButtonHit)];
     tapGestureRecognizer.numberOfTapsRequired = 2;
     [self.doubleTapView addGestureRecognizer:tapGestureRecognizer];
@@ -199,6 +208,11 @@
 
 -(void)searchButtonContainerHit:(SearchButtonContainerView *)theButton
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"searchButtonContainerHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     if (self.searchViewControllerDelegate != nil)
     {
         [self.searchViewControllerDelegate purchasingViewControllerSearchFiredWithString:theButton.searchLabel.text withCategoriesArray:self.searchCategoriesArray];
@@ -428,6 +442,11 @@
 
 -(void)editButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"editButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSLog(@"editButtonHit");
     
     ProductDetailsViewController *productDetailsViewController = [[ProductDetailsViewController alloc] initWithNibName:@"ProductDetailsViewController" bundle:nil];
@@ -542,6 +561,11 @@
 
 - (IBAction) saveButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"saveButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     [SavedItemsAPIHandler makeSavedItemRequestWithDelegate:self withInstagramID:[InstagramUserObject getStoredUserObject].userID withProductID:[self.requestedProductObject objectForKey:@"product_id"]];
     
     [NotificationsAPIHandler createUserSavedNotificationWithProductID:[self.requestedProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID];
@@ -558,6 +582,12 @@
     
     if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [ShopsyAnalyticsAPIHandler makeSavedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    
+    NSString *label = [NSString stringWithFormat:@"productIG: %@, productID: %@, brandID: %@, userID: %@", productsInstagramID, productsID, ownerInstagramID, [InstagramUserObject getStoredUserObject].userID];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:productsID
+                                                                                      action:@"Save"
+                                                                                       label:label
+                                                                                       value:nil] build]];
 }
 
 -(void)savedItemsCompleted
@@ -567,7 +597,12 @@
 
 
 -(IBAction)buyButtonHit
-{    
+{
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"shopButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     self.JKProgressView = [JKProgressView presentProgressViewInView:self.view withText:@"Loading..."];
 
     self.isBuying = YES;
@@ -586,6 +621,12 @@
     
     if ([[self.requestedProductObject objectForKey:@"owner_instagram_id"] compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         [ShopsyAnalyticsAPIHandler makeBoughtAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID];
+    
+    NSString *label = [NSString stringWithFormat:@"productIG: %@, productID: %@, brandID: %@, userID: %@", productsInstagramID, productsID, ownerInstagramID, [InstagramUserObject getStoredUserObject].userID];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:productsID
+                                                                                      action:@"Shop"
+                                                                                       label:label
+                                                                                       value:nil] build]];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -619,6 +660,7 @@
     else
     {
         self.cialBrowserViewController = [[CIALBrowserViewController alloc] init];
+        self.cialBrowserViewController.hideUrl = YES;
         self.cialBrowserViewController.purchasingViewController = self;
         [self.navigationController pushViewController:cialBrowserViewController animated:YES];
         [self.cialBrowserViewController openThisURL:[NSURL URLWithString:self.viglinkString]];
@@ -645,7 +687,8 @@
 {
     self.viglinkString = urlString;
 //    NSLog(@"viglinkCallReturned: %@", self.viglinkString);
-    [BitlyAPIHandler makeBitlyRequestWithDelegate:self withReferenceURL:self.viglinkString];
+//    remove bitly
+//    [BitlyAPIHandler makeBitlyRequestWithDelegate:self withReferenceURL:self.viglinkString];
     
 }
 
@@ -655,6 +698,11 @@
 
 -(IBAction)sizeButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"sizeButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     
     BOOL proceed = YES;
@@ -706,6 +754,11 @@
 
 -(IBAction)quantityButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"quantityButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSArray *sizeQuantityArray = [self.requestedProductObject objectForKey:@"size_quantity"];
     
     BOOL isSingleSize = NO;
@@ -781,6 +834,11 @@
 
 -(void)pickerSaveButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"pickerSaveButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     if (self.actionSheet)
         [self.actionSheet dismissWithClickedButtonIndex:0 animated:YES];
     
@@ -805,6 +863,11 @@
 
 -(IBAction)likeButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"likeButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSLog(@"likeButtonHit");
     
     AppDelegate *appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
@@ -832,7 +895,11 @@
             [ShopsyAnalyticsAPIHandler makeLikedAnalyticsCallWithOwnerInstagramID:ownerInstagramID withProductInstagramID:productsInstagramID withProductID:productsID withLiked:NO];
     }
     
-    
+    NSString *label = [NSString stringWithFormat:@"productIG: %@, productID: %@, brandID: %@, userID: %@", productsInstagramID, productsID, ownerInstagramID, [InstagramUserObject getStoredUserObject].userID];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:productsID
+                                                                                      action:@"Like"
+                                                                                       label:label
+                                                                                       value:nil] build]];
     
     
     
@@ -861,6 +928,11 @@
 
 - (IBAction) profileButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"profileButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     if (self.requestedProductObject != nil)
         if ([self.requestedProductObject objectForKey:@"owner_instagram_id"] != nil)
         {
@@ -924,23 +996,27 @@
 
 - (void) beginActionSheet {
     
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                      action:@"beginActionSheet"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
     
 
     if (self.isEditable)
     {
-        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Edit", @"Delete", nil];
+        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in Instagram", @"Facebook", @"Twitter", @"Edit", @"Delete", nil];
         shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
         [shareActionSheet showFromRect:CGRectMake(0,self.actionSheetHandlingViewController.view.frame.size.height, self.actionSheetHandlingViewController.view.frame.size.width,self.actionSheetHandlingViewController.view.frame.size.width) inView:self.actionSheetHandlingViewController.view animated:YES];
     }
     else
     {
         
-        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", nil];
+        UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in Instagram", @"Facebook", @"Twitter", @"Flag", nil];
         
         AppDelegate *del = (AppDelegate *)[UIApplication sharedApplication].delegate;
         NSString *userID = [InstagramUserObject getStoredUserObject].userID;
         if ([del.masterUsersByIDArray containsObject:userID])
-            shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Flag", @"Delete", nil];
+            shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in Instagram", @"Facebook", @"Twitter", @"Flag", @"Delete", nil];
 
         
         shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
@@ -974,6 +1050,11 @@
     }
     else if ([buttonTitle isEqualToString:@"Delete"])
     {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                          action:@"deleteActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
+        
         NSLog(@"delete");
         
         
@@ -988,6 +1069,11 @@
     }
     else if ([buttonTitle isEqualToString:@"Flag"]) {
         
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                          action:@"flagActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
+        
         [actionSheet dismissWithClickedButtonIndex:2 animated:YES];
         UIActionSheet *flagActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Bad Cropping", @"Incorrect Link", @"Low Resolution", @"Inappropriate", nil];
         flagActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
@@ -995,6 +1081,11 @@
     }
     
     else if ([buttonTitle isEqualToString:@"Bad Cropping"] || [buttonTitle isEqualToString:@"Incorrect Link"] || [buttonTitle isEqualToString:@"Low Resolution"] || [buttonTitle isEqualToString:@"Inappropriate"] || [buttonTitle isEqualToString:@"Other"]) {
+        
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                          action:buttonTitle
+                                                                                           label:@""
+                                                                                           value:nil] build]];
         
         int complaintId = 0;
         
@@ -1015,6 +1106,11 @@
     
     else if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
     {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                          action:@"facebookActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
+        
         [SocialManager requestInitialFacebookAccess];
         
         SLComposeViewController *facebookController = [SLComposeViewController
@@ -1034,10 +1130,13 @@
                     [NotificationsAPIHandler createUserSocialNotificationWithProductID:[self.requestedProductObject objectForKey:@"product_id"] withInstagramID:[InstagramUserObject getStoredUserObject].userID withSocialType:@"facebook"];
                     break;
             }};
+        UIImage *photoImage = self.imageView.image;
         
-        [facebookController setInitialText:[self reportPostText]];
-        //[facebookController addImage:photoImage];
-        [facebookController addURL:[NSURL URLWithString:self.viglinkString]];
+        //[facebookController setInitialText:[self reportPostText]];
+        [facebookController setInitialText:@"Find this product from Instagram via @ShopsyApp"];
+        [facebookController addImage:photoImage];
+        //[facebookController addURL:[NSURL URLWithString:self.viglinkString]];
+        [facebookController addURL:[NSURL URLWithString:@"http://shopsy.com/download"]];
         [facebookController setCompletionHandler:completionHandler];
         
         
@@ -1049,6 +1148,11 @@
     
     else if ([buttonTitle compare:@"Twitter"] == NSOrderedSame)
     {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                          action:@"twitterActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
+        
         SLComposeViewController *tweetController = [SLComposeViewController
                                                     composeViewControllerForServiceType:SLServiceTypeTwitter];
         
@@ -1074,14 +1178,34 @@
         
 
         
-        [tweetController setInitialText:[self reportPostText]];
+        //[tweetController setInitialText:[self reportPostText]];
+        [tweetController setInitialText:@"Find this product from Instagram via @ShopsyApp"];
         [tweetController addImage:photoImage];
-        [tweetController addURL:[NSURL URLWithString:self.viglinkString]];
+        //[tweetController addURL:[NSURL URLWithString:self.viglinkString]];
+        [tweetController addURL:[NSURL URLWithString:@"http://shopsy.com/download"]];
         [tweetController setCompletionHandler:completionHandler];
         
         
         [[AppRootViewController sharedRootViewController] presentViewController:tweetController animated:YES completion:nil];
         
+    }
+    
+    else if ([buttonTitle compare:@"Open in Instagram"] == NSOrderedSame)
+    {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"PurchasingView"
+                                                                                          action:@"instagramActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
+        
+        NSLog(@"Open in Instagram : %@", [self.requestedProductObject objectForKey:@"product_id"]);
+        
+        NSURL *instagramURL = [NSURL URLWithString: [NSString stringWithFormat: @"instagram://media?id=%@", [self.requestedProductObject objectForKey:@"products_instagram_id"]] ];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+            [[UIApplication sharedApplication] openURL:instagramURL];
+        } else {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"instagram://app"]];
+        }
     }
     
     

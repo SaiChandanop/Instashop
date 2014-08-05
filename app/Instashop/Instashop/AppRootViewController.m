@@ -30,6 +30,11 @@
 #import "PullAccountHandler.h"
 #import "NotificationsTableViewController.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 
 @implementation AppRootViewController
 
@@ -116,6 +121,12 @@ float transitionTime = .256;
     
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"AppRoot Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 - (void) runTutorialIfAppropriate {
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:TUTORIAL_COMPLETE] == nil)
@@ -156,6 +167,11 @@ float transitionTime = .256;
 }
 -(void)homeButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"homeButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     if (!self.areViewsTransitioning)
     {
         
@@ -194,6 +210,11 @@ float transitionTime = .256;
 
 -(void)notificationsButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"notificationsButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     if (!self.areViewsTransitioning)
     {
         [self homeButtonHit];
@@ -206,6 +227,11 @@ float transitionTime = .256;
 
 -(void)discoverButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"discoverButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSLog(@"discoverButtonHit!");
     
     if (!self.areViewsTransitioning)
@@ -221,6 +247,11 @@ float transitionTime = .256;
 
 -(void)createProductButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"createProductButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     if (!self.areViewsTransitioning)
     {
         self.areViewsTransitioning = YES;
@@ -307,6 +338,11 @@ float transitionTime = .256;
 
 - (IBAction) profileButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"profileButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSLog(@"profileButtonHit");
     [self homeButtonHit];
     ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
@@ -319,6 +355,11 @@ float transitionTime = .256;
 
 -(void)suggestedShopButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"suggestedShopButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     NSLog(@"root suggestedShopButtonHit");
     
     [self homeButtonHit];
@@ -331,6 +372,11 @@ float transitionTime = .256;
 
 -(void)searchButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"searchButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     if (self.theSearchViewController == nil)
     {
         self.theSearchViewController = [[SearchViewController alloc] initWithNibName:@"SearchViewController" bundle:nil];
@@ -434,6 +480,11 @@ float transitionTime = .256;
 
 - (void) settingsButtonHit {
     
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"settingsButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     self.settingsViewController = [[SettingsViewController alloc] initWithNibName:@"SettingsViewController" bundle:nil];
     self.settingsViewController.parentController = self;
     
@@ -457,6 +508,11 @@ float transitionTime = .256;
 
 
 - (void) webViewButtonHit: (NSString *) websiteName titleName: (NSString *) title {
+    
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppRoot"
+                                                                                      action:@"webViewButtonHit"
+                                                                                       label:websiteName
+                                                                                       value:nil] build]];
     
     // Might want to pretty it up by making background color the same color.
     self.webView = [[WebViewController alloc] initWithWebView:websiteName title:title];

@@ -15,8 +15,16 @@
 @synthesize supportedSitesArray;
 
 
-+(void)makeAmberCall
++(NSString *)getTwoTapURLStringWithReferenceURLString:(NSString *)referenceURLString
 {
+    NSString *customCSSURLString = @"http://instashop.com/test_custom.css";
+    
+    NSString *urlRequestString = [NSString stringWithFormat:@"https://checkout.twotap.com/?public_token=%@&unique_token=2388&callback_url=https://amber.io/workers/proposed_recipes/test_callback&custom_css_url=%@&show_tutorial=false&products=%@", TWO_TAP_Public_token, customCSSURLString, referenceURLString];
+    
+    return urlRequestString;
+}
+
++(void)makeAmberCall {
     NSString *originURL = @"http://www.nastygal.com/clothes-tops/soft-curve-knit-black";
     originURL = [originURL stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     

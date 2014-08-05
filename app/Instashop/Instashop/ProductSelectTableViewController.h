@@ -12,7 +12,7 @@
 
 @class ProfileViewController;
 
-@interface ProductSelectTableViewController : ObjectSelectTableViewController
+@interface ProductSelectTableViewController : ObjectSelectTableViewController<UIScrollViewDelegate>
 {
     int checkCountup;
     NSMutableArray *cacheArray;
@@ -21,6 +21,11 @@
     float offsetJKProgressView;
     ProfileViewController *profileViewController;
     BOOL stifleFlashRefresh;
+    
+    NSString *nextURLString;
+    BOOL fetchingAPI;
+    NSMutableArray *fullArray;
+    
 }
 
 -(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary;

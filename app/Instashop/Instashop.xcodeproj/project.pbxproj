@@ -104,6 +104,11 @@
 		2EFD0A3917FBBB2C00E701B0 /* twitter_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */; };
 		2EFD0A3A17FBBB2C00E701B0 /* facebook_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */; };
 		2EFD0A3B17FBBB2C00E701B0 /* facebook_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */; };
+		57BAE3A3198704C900EADE38 /* TwoTapAPIHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 57BAE3A2198704C900EADE38 /* TwoTapAPIHandler.m */; };
+		57C8B6AA197E327600A60011 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C8B6A9197E327600A60011 /* libGoogleAnalyticsServices.a */; };
+		57C8B6AC197E328E00A60011 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C8B6AB197E328E00A60011 /* libz.dylib */; };
+		57C8B6AE197E329800A60011 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C8B6AD197E329800A60011 /* AdSupport.framework */; };
+		57C8B6B0197E329F00A60011 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57C8B6AF197E329F00A60011 /* CoreData.framework */; };
 		5F09AF9318E62618009C6E88 /* eye.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F09AF9218E62618009C6E88 /* eye.png */; };
 		5F0A71C418E61C06003D5911 /* greenheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F0A71C218E61C06003D5911 /* greenheart.png */; };
 		5F0A71C518E61C06003D5911 /* redheart.png in Resources */ = {isa = PBXBuildFile; fileRef = 5F0A71C318E61C06003D5911 /* redheart.png */; };
@@ -416,6 +421,22 @@
 		2EFD0A3517FBBB2C00E701B0 /* twitter_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "twitter_off@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3617FBBB2C00E701B0 /* facebook_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_on@2x.png"; sourceTree = "<group>"; };
 		2EFD0A3717FBBB2C00E701B0 /* facebook_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook_off@2x.png"; sourceTree = "<group>"; };
+		57BAE3A1198704C900EADE38 /* TwoTapAPIHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwoTapAPIHandler.h; sourceTree = "<group>"; };
+		57BAE3A2198704C900EADE38 /* TwoTapAPIHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwoTapAPIHandler.m; sourceTree = "<group>"; };
+		57C8B6A3197E327600A60011 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		57C8B6A4197E327600A60011 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		57C8B6A5197E327600A60011 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		57C8B6A6197E327600A60011 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		57C8B6A7197E327600A60011 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		57C8B6A8197E327600A60011 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		57C8B6A9197E327600A60011 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		57C8B6AB197E328E00A60011 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		57C8B6AD197E329800A60011 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		57C8B6AF197E329F00A60011 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		57C8B6B1197E900500A60011 /* GAIEcommerceFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceFields.h; sourceTree = "<group>"; };
+		57C8B6B2197E900500A60011 /* GAIEcommerceProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProduct.h; sourceTree = "<group>"; };
+		57C8B6B3197E900500A60011 /* GAIEcommerceProductAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommerceProductAction.h; sourceTree = "<group>"; };
+		57C8B6B4197E900500A60011 /* GAIEcommercePromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIEcommercePromotion.h; sourceTree = "<group>"; };
 		5F09AF9218E62618009C6E88 /* eye.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eye.png; sourceTree = "<group>"; };
 		5F0A71C218E61C06003D5911 /* greenheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = greenheart.png; sourceTree = "<group>"; };
 		5F0A71C318E61C06003D5911 /* redheart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redheart.png; sourceTree = "<group>"; };
@@ -756,9 +777,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57C8B6B0197E329F00A60011 /* CoreData.framework in Frameworks */,
+				57C8B6AE197E329800A60011 /* AdSupport.framework in Frameworks */,
+				57C8B6AC197E328E00A60011 /* libz.dylib in Frameworks */,
 				032E250318E1DF9B000875F9 /* libFlurry_4.3.1.a in Frameworks */,
 				7BF6903D189314DB0073C691 /* Security.framework in Frameworks */,
 				7BF69036189311850073C691 /* SystemConfiguration.framework in Frameworks */,
+				57C8B6AA197E327600A60011 /* libGoogleAnalyticsServices.a in Frameworks */,
 				7B337F08183AA92800E1BC0C /* AddressBook.framework in Frameworks */,
 				7B337F09183AA92800E1BC0C /* AddressBookUI.framework in Frameworks */,
 				7B7FEF2118199D1E00C58944 /* Social.framework in Frameworks */,
@@ -931,6 +956,33 @@
 				2E0EADE2176F6E6700B65FC3 /* welcome5@2x.png */,
 			);
 			name = Images;
+			sourceTree = "<group>";
+		};
+		57BAE3A01987048600EADE38 /* TwoTap */ = {
+			isa = PBXGroup;
+			children = (
+				57BAE3A1198704C900EADE38 /* TwoTapAPIHandler.h */,
+				57BAE3A2198704C900EADE38 /* TwoTapAPIHandler.m */,
+			);
+			name = TwoTap;
+			sourceTree = "<group>";
+		};
+		57C8B6A2197E327600A60011 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				57C8B6B1197E900500A60011 /* GAIEcommerceFields.h */,
+				57C8B6B2197E900500A60011 /* GAIEcommerceProduct.h */,
+				57C8B6B3197E900500A60011 /* GAIEcommerceProductAction.h */,
+				57C8B6B4197E900500A60011 /* GAIEcommercePromotion.h */,
+				57C8B6A3197E327600A60011 /* GAI.h */,
+				57C8B6A4197E327600A60011 /* GAIDictionaryBuilder.h */,
+				57C8B6A5197E327600A60011 /* GAIFields.h */,
+				57C8B6A6197E327600A60011 /* GAILogger.h */,
+				57C8B6A7197E327600A60011 /* GAITrackedViewController.h */,
+				57C8B6A8197E327600A60011 /* GAITracker.h */,
+				57C8B6A9197E327600A60011 /* libGoogleAnalyticsServices.a */,
+			);
+			path = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		5F6F724818E07AEF0046E3CC /* Analytics */ = {
@@ -1359,6 +1411,9 @@
 		7B61EE45174D2162002A483D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57C8B6AF197E329F00A60011 /* CoreData.framework */,
+				57C8B6AD197E329800A60011 /* AdSupport.framework */,
+				57C8B6AB197E328E00A60011 /* libz.dylib */,
 				7BF6903C189314DB0073C691 /* Security.framework */,
 				7BF69035189311850073C691 /* SystemConfiguration.framework */,
 				7B337F06183AA92800E1BC0C /* AddressBook.framework */,
@@ -1567,6 +1622,7 @@
 		7B7A7454174D52D2005E90B9 /* Net */ = {
 			isa = PBXGroup;
 			children = (
+				57BAE3A01987048600EADE38 /* TwoTap */,
 				5F6F724818E07AEF0046E3CC /* Analytics */,
 				7BF6903E189327BC0073C691 /* Mailchimp */,
 				7B727C28186DD38600FB9C5E /* CacheManager */,
@@ -1792,6 +1848,7 @@
 		7BE3D36F174D74340045C4B4 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				57C8B6A2197E327600A60011 /* GoogleAnalytics */,
 				7B61EE55174D2162002A483D /* AppDelegate.h */,
 				2E7D71011893381A00EA648B /* Flurry.h */,
 				2E7D71021893381A00EA648B /* libFlurry_4.3.1.a */,
@@ -2252,6 +2309,7 @@
 				7B15B30217B2AB5A00173752 /* CategoriesTableViewController.m in Sources */,
 				69FC1E981834204200A52A90 /* InstashopWebView.m in Sources */,
 				7B8BC4D417B2CCBF002CEB36 /* CategorySelectCell.m in Sources */,
+				57BAE3A3198704C900EADE38 /* TwoTapAPIHandler.m in Sources */,
 				7B39EF37188DDA1200EB744B /* JKProgressView.m in Sources */,
 				7B376ECC17C7A35000F4D5D8 /* ProfileViewController.m in Sources */,
 				7B8BC4DC17B364B4002CEB36 /* SizeQuantityTableViewController.m in Sources */,
@@ -2336,8 +2394,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
@@ -2347,10 +2405,11 @@
 					/Users/jklobe/Desktop/Instashop/app/Instashop/Instashop,
 					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
 					"$(PROJECT_DIR)/Instashop",
+					"$(PROJECT_DIR)/Instashop/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				PROVISIONING_PROFILE = "08B7DFE8-5A76-4C60-930C-D60F069AD0BD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08B7DFE8-5A76-4C60-930C-D60F069AD0BD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -2359,8 +2418,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: William Mauro (5CC5E9GS6A)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: William Mauro (5CC5E9GS6A)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: William Mauro (4F9UB96YRZ)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Instashop/Instashop-Prefix.pch";
 				INFOPLIST_FILE = "Instashop/Instashop-Info.plist";
@@ -2370,10 +2429,11 @@
 					/Users/jklobe/Desktop/Instashop/app/Instashop/Instashop,
 					/Users/joelbarron/Apps/Instashop/app/Instashop/Instashop,
 					"$(PROJECT_DIR)/Instashop",
+					"$(PROJECT_DIR)/Instashop/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8C87492F-CFCF-4DA5-9C05-15BAE8E2D4E9";
+				PROVISIONING_PROFILE = "08B7DFE8-5A76-4C60-930C-D60F069AD0BD";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "08B7DFE8-5A76-4C60-930C-D60F069AD0BD";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

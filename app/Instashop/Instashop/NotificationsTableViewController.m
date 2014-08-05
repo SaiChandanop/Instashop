@@ -17,6 +17,11 @@
 #import "AppRootViewController.h"
 #import "HomeViewController.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface NotificationsTableViewController ()
 
 @end
@@ -89,6 +94,13 @@
              forControlEvents:UIControlEventValueChanged];
     self.refreshControl = refreshControl;
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Notification Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 -(void)refreshContent

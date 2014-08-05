@@ -25,6 +25,11 @@
 #import "Flurry.h"
 #import "CacheManager.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface ProfileViewController ()
 
 @end
@@ -175,11 +180,8 @@
     [self.view addSubview:self.theTableViewController.tableView];
     
     self.followContainerView.alpha = 0;
-    
-    
-    
-}
 
+}
 
 -(void)tableViewControllerDidLoadWithController:(ProductSelectTableViewController *)theProductSelectTableViewController
 {
@@ -211,6 +213,12 @@
 
 -(void)moreButtonHit
 {
+    
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                      action:@"moreButtonHit"
+                                                                                       label:@""
+                                                                                       value:nil] build]];
+    
     UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Facebook", @"Twitter", @"Instagram", nil];
     shareActionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [shareActionSheet showFromRect:CGRectMake(0,self.view.frame.size.height, self.view.frame.size.width,self.view.frame.size.width) inView:self.view animated:YES];
@@ -222,6 +230,10 @@
     
     if ([buttonTitle compare:@"Facebook"] == NSOrderedSame)
     {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                          action:@"facebookActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
         
         NSString *flurryString = [NSString stringWithFormat:@"Prmoted on Facebook"];
         [Flurry logEvent:flurryString];
@@ -260,6 +272,11 @@
     
     else if ([buttonTitle compare:@"Twitter"] == NSOrderedSame)
     {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                          action:@"twitterActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
+        
         NSString *flurryString = [NSString stringWithFormat:@"Prmoted on Twitter"];
         [Flurry logEvent:flurryString];
         SLComposeViewController *tweetController = [SLComposeViewController
@@ -292,6 +309,10 @@
     
     else if ([buttonTitle compare:@"Instagram"] == NSOrderedSame)
     {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                          action:@"instagramActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
         
         NSString *flurryString = [NSString stringWithFormat:@"Prmoted on Instagram"];
         [Flurry logEvent:flurryString];
@@ -303,13 +324,34 @@
             [del loadShareCoverViewProfileViewController:self];
         }
     }
-    
+    else if ([buttonTitle compare:@"Open in Instagram"] == NSOrderedSame)
+    {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                          action:@"instagramActionSheet"
+                                                                                           label:@""
+                                                                                           value:nil] build]];
+        
+        NSLog(@"Open in Instagram : %@", [self.requestedInstagramProfileObject objectForKey:@"username"]);
+        
+        NSURL *instagramURL = [NSURL URLWithString: [NSString stringWithFormat: @"instagram://user?username=%@", [self.requestedInstagramProfileObject objectForKey:@"username"]]];
+        
+        if ([[UIApplication sharedApplication] canOpenURL:instagramURL]) {
+            [[UIApplication sharedApplication] openURL:instagramURL];
+        } else {
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"instagram://app"]];
+        }
+    }
+
 }
 
 
 
 - (void)viewDidAppear:(BOOL)animated
 {
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Profile Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+
     if (!self.hasAppeared)
     {
         self.infoContainerScrollView.alpha = 0;
@@ -471,6 +513,10 @@
     
     if (!self.followButton.selected)
     {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                          action:@"followButtonHit"
+                                                                                           label:[self.requestedInstagramProfileObject objectForKey:@"id"]
+                                                                                           value:nil] build]];
         
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"follow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
@@ -488,6 +534,11 @@
     }
     else
     {
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                          action:@"unfollowButtonHit"
+                                                                                           label:[self.requestedInstagramProfileObject objectForKey:@"id"]
+                                                                                           value:nil] build]];
+        
         NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"/users/%@/relationship", [self.requestedInstagramProfileObject objectForKey:@"id"]], @"method", @"unfollow", @"action", nil];
         [theAppDelegate.instagram postRequestWithParams:params delegate:self];
         
@@ -574,6 +625,11 @@
 
 -(IBAction) productsButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                      action:@"productsButtonHit"
+                                                                                       label:self.profileInstagramID
+                                                                                       value:nil] build]];
+    
     self.editButton.alpha = 0;
     
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] == NSOrderedSame)
@@ -639,6 +695,11 @@
 
 -(IBAction)editButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                      action:@"editButtonHit"
+                                                                                       label:self.profileInstagramID
+                                                                                       value:nil] build]];
+    
     NSLog(@"editButtonHit");
     if ([self.descriptionTextView isFirstResponder])
     {
@@ -663,6 +724,11 @@
 
 -(void)saveButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                      action:@"saveEditButtonHit"
+                                                                                       label:self.profileInstagramID
+                                                                                       value:nil] build]];
+    
     [self.editButton setTitle:@"EDIT" forState:UIControlStateNormal];
     [SellersAPIHandler updateSellerDescriptionWithDelegate:self InstagramID:[InstagramUserObject getStoredUserObject].userID withDescription:self.descriptionTextView.text];
     [self.descriptionTextView resignFirstResponder];
@@ -676,6 +742,11 @@
 
 -(IBAction) infoButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                      action:@"infoButtonHit"
+                                                                                       label:self.profileInstagramID
+                                                                                       value:nil] build]];
+    
     self.infoContainerScrollView.alpha = 1;
     if ([self.profileInstagramID compare:[InstagramUserObject getStoredUserObject].userID] != NSOrderedSame)
         self.editButton.alpha = 0;
@@ -705,11 +776,16 @@
     
     [self.view bringSubviewToFront:self.editButton];
     
-    self.enclosingScrollView.contentSize = CGSizeMake(0, self.editButton.frame.origin.y + self.editButton.frame.size.height);
+//    self.enclosingScrollView.contentSize = CGSizeMake(0, self.editButton.frame.origin.y + self.editButton.frame.size.height);
 }
 
 -(IBAction)favoritesButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                      action:@"favoritesButtonHit"
+                                                                                       label:self.profileInstagramID
+                                                                                       value:nil] build]];
+    
     NSLog(@"favoritesButtonHit");
     
     
@@ -778,6 +854,14 @@
     
 }
 
+-(IBAction) profileButtonHit
+{
+    UIActionSheet *shareActionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in Instagram", nil];
+    [shareActionSheet showInView:self.view];
+    
+}
+
+
 - (void)imagePicker:(GKImagePicker *)imagePicker pickedImage:(UIImage *)image
 {
     NSLog(@"imagePicker did pick image");
@@ -837,6 +921,11 @@
 
 -(void)siteButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProfilView"
+                                                                                      action:@"siteButtonHit"
+                                                                                       label:self.profileInstagramID
+                                                                                       value:nil] build]];
+    
     if (self.siteString != nil)
     {
         UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, self.view.frame.size.height)];

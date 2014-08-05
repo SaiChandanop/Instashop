@@ -107,7 +107,8 @@
             NSDictionary *imagesDictionary = [self.objectDictionary objectForKey:@"images"];
             if (imagesDictionary != nil)
             {
-                NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
+                NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"thumbnail"];
+            //    NSDictionary *standardResolutionDictionary = [imagesDictionary objectForKey:@"standard_resolution"];
                 self.imageProductURL = [standardResolutionDictionary objectForKey:@"url"];
             }
         }

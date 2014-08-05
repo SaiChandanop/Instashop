@@ -13,6 +13,11 @@
 #import "ISConstants.h"
 #import "PurchasingViewController.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface CIALBrowserViewController ()
 - (void)addBookmark;
 - (void)updateLoadingStatus;
@@ -37,6 +42,8 @@
 @synthesize preloadedContent;
 @synthesize preloadedContentView;
 @synthesize urlString;
+@synthesize urlLoaded;
+@synthesize hideUrl;
 
 
 + (CIALBrowserViewController *)modalBrowserViewControllerWithURL:(NSURL *)url
@@ -191,7 +198,9 @@
         locationField.rightView = stopReloadButton;
         locationField.rightViewMode = UITextFieldViewModeUnlessEditing;
         
-        navigationItem.titleView = locationField;
+        if(!hideUrl){
+            navigationItem.titleView = locationField;
+        }
         
         if (self.isModal) {
             NSString *closeTitle = CIALBrowserLocalizedString(@"Close", nil);
@@ -199,7 +208,11 @@
             navigationItem.rightBarButtonItem = closeButtonItem;
         }
         
-        navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+        if(hideUrl){
+            navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 0)];
+        } else {
+            navigationBar = [[UINavigationBar alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 44)];
+        }
         navigationBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
         [navigationBar setItems:[NSArray arrayWithObject:navigationItem]];
         [self.view addSubview:navigationBar];
@@ -381,9 +394,21 @@
     }
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Browser Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 #pragma mark -
 
 - (void)loadURL:(NSURL *)url {
+    
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"BrowserView"
+                                                                                      action:@"loadURL"
+                                                                                       label:url.absoluteString
+                                                                                       value:nil] build]];
     
     if (!webView) {
         [self setURL:url];
@@ -516,6 +541,7 @@
     
     [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(updateLoadingStatus) object:nil];
     [self performSelector:@selector(updateLoadingStatus) withObject:nil afterDelay:1.];
+    self.urlLoaded = TRUE;
 }
 
 - (void) webView:(UIWebView *)sender didFailLoadWithError:(NSError *) error {

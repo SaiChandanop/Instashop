@@ -26,6 +26,11 @@
 #import <Accounts/Accounts.h>
 #import <Social/Social.h>
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 
 @interface ProductDetailsViewController ()
 
@@ -158,6 +163,13 @@
                                     action:nil];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"ProductDetail Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 -(void)setDoneButtonState
 {
     if ([self validateContentWithDoAlert:NO])
@@ -259,11 +271,6 @@
     
     if (self.isEdit)
         [self resizeWithTextView:self.descriptionTextView];
-    
-    
-}
-
-- (void)viewDidAppear:(BOOL)animated {
     
     
 }
@@ -451,6 +458,12 @@
 
 -(IBAction)previewButtonHit
 {
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"ProductDetailsView"
+                                                                                      action:@"previewButtonHit"
+                                                                                       label:nil
+                                                                                       value:nil] build]];
+    
+    self.nextButton.enabled = NO;
     ProductCreateContainerObject *productCreateContainerObject = [[ProductCreateContainerObject alloc] init];
     
     int totalQuantity = 0;
@@ -544,6 +557,7 @@
     AppDelegate *delegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
     AppRootViewController  *rootVC = delegate.appRootViewController;
     [rootVC productDidCreateWithNavigationController:self.navigationController];
+    self.nextButton.enabled = YES;
 }
 
 -(void)editProductComplete
@@ -717,6 +731,26 @@
 -(void)browserSaveHit
 {
     NSLog(@"self.browserViewController.locationField.url: %@", self.browserViewController.url);
+    if([[self.browserViewController.url absoluteString] rangeOfString:@"://"].location == NSNotFound || !self.browserViewController.urlLoaded ){
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"Please make sure product page is loaded correctly before saving."
+                                                           delegate:nil
+                                                  cancelButtonTitle:@"Ok"
+                                                  otherButtonTitles:nil];
+        [alertView show];
+    } else {
+        self.urlLabel.text = [self.browserViewController.url absoluteString];
+        [self linkSelectedWithURLString:[self.browserViewController.url absoluteString]];
+        
+        if (!self.isEdit)
+            [self setDoneButtonState];
+    }
+    
+}
+/*
+-(void)browserSaveHit
+{
+    NSLog(@"self.browserViewController.locationField.url: %@", self.browserViewController.url);
     
     self.urlLabel.text = [self.browserViewController.url absoluteString];
     [self linkSelectedWithURLString:[self.browserViewController.url absoluteString]];
@@ -725,6 +759,8 @@
         [self setDoneButtonState];
     
 }
+*/
+
 -(void) linkSelectedWithURLString:(NSString *)theURLString
 {
     NSLog(@"theURLString: %@", theURLString);

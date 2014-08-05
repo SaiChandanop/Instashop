@@ -67,6 +67,8 @@
 @property (nonatomic, strong) UIWebView *webView;
 @property (getter = isModal) BOOL modal;
 @property BOOL enabledSafari;
+@property BOOL urlLoaded;
+@property BOOL hideUrl;
 
 - (id)initWithURL:(NSURL *)url;
 

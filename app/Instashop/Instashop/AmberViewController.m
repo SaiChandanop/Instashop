@@ -6,6 +6,8 @@
 //  Copyright (c) 2013 Radu Spineanu. All rights reserved.
 //
 
+#import "TwoTapAPIHandler.h"
+#import "AmberAPIHandler.h"
 #import "AmberViewController.h"
 #import "Utils.h"
 #import "SocialManager.h"
@@ -36,6 +38,7 @@
 
 -(void)run
 {
+/*
     NSLog(@"referenceURLString: %@", self.referenceURLString);
     NSLog(@"[self.referenceURLString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]: %@", [self.referenceURLString stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]);
     NSLog(@"[Utils getEscapedStringFromUnescapedString:self.referenceURLString];: %@", [Utils getEscapedStringFromUnescapedString:self.referenceURLString]);
@@ -49,18 +52,21 @@
     
     NSString *customCSSURLString = @"http://instashop.com/test_custom.css";
     
+    NSString *amberPath = [AmberAPIHandler getTwoTapURLStringWithReferenceURLString:self.referenceURLString];
+
     NSString *amberPath = [NSString stringWithFormat:@"https://checkout.twotap.com/?public_token=286b2ac01d5d6139579eb903306333&unique_token=2388&custom_css_url=%@&callback_url=https://amber.io/workers/proposed_recipes/test_callback&show_tutorial=false&products=%@", [Utils getEscapedStringFromUnescapedString:customCSSURLString], [Utils getEscapedStringFromUnescapedString:self.referenceURLString]];
-        
+
 
     
     NSLog(@"amberPath: %@", amberPath);
     
     NSURL *amberURL = [NSURL URLWithString:amberPath];
-    NSURLRequest *amberRequestObj = [NSURLRequest requestWithURL:amberURL];
+    //NSURLRequest *amberRequestObj = [NSURLRequest requestWithURL:amberURL];
+    NSMutableURLRequest *amberRequestObj = [NSMutableURLRequest requestWithURL:amberURL];
+    amberRequestObj.HTTPMethod = @"POST";
     [self.amberWebView loadRequest:amberRequestObj];
-    
-
-    
+*/
+    [self.amberWebView loadRequest:[TwoTapAPIHandler getTwoTapURLRequestWithProductURLString:self.referenceURLString]];
 }
 
 
@@ -130,10 +136,12 @@
                     break;
             }};
         
-        NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
-        [facebookController setInitialText:postText];
+        //NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
+        //[facebookController setInitialText:postText];
+        [facebookController setInitialText:@"Find this product from Instagram via @ShopsyApp"];
         [facebookController addImage:referenceImage];
-        [facebookController addURL:[NSURL URLWithString:self.viglinkString]];
+        //[facebookController addURL:[NSURL URLWithString:self.viglinkString]];
+        [facebookController addURL:[NSURL URLWithString:@"http://shopsy.com/download"]];
         [facebookController setCompletionHandler:completionHandler];
         
         
@@ -162,10 +170,12 @@
                     break;
             }};
         
-        NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
-        [tweetController setInitialText:postText];
+        //NSString *postText = [NSString stringWithFormat:@"Checkout @shopsy, the place to shop for products discovered on Instagram"];
+        //[tweetController setInitialText:postText];
+        [tweetController setInitialText:@"Find this product from Instagram via @ShopsyApp"];
         [tweetController addImage:referenceImage];
-        [tweetController addURL:[NSURL URLWithString:self.viglinkString]];
+        //[tweetController addURL:[NSURL URLWithString:self.viglinkString]];
+        [tweetController addURL:[NSURL URLWithString:@"http://shopsy.com/download"]];
         [tweetController setCompletionHandler:completionHandler];
         
         

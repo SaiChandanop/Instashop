@@ -12,6 +12,11 @@
 #import "ProductDetailsViewController.h"
 #import "EnterEmailViewController.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface CategoriesViewController ()
 
 @end
@@ -74,6 +79,13 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"Categories Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
+}
+
 -(void)setTheTitleWithString:(NSString *)theString withVC:(UIViewController *)theVC
 {
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectZero];
@@ -98,7 +110,10 @@
 
 -(void)categorySelected:(NSString *)theCategory withCallingController:(CategoriesTableViewController *)callingController
 {
-    
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"CategoriesView"
+                                                                                      action:@"categorySelected"
+                                                                                       label:theCategory
+                                                                                       value:nil] build]];
     
     if ([self.selectedCategoriesArray count] > callingController.positionIndex)
         [self.selectedCategoriesArray removeObjectsInRange:NSMakeRange(callingController.positionIndex, [self.selectedCategoriesArray count] - callingController.positionIndex)];

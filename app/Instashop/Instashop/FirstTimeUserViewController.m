@@ -13,6 +13,12 @@
 #import "ISConstants.h"
 #import "ShopsAPIHandler.h"
 #import "MailchimpAPIHandler.h"
+
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 @interface FirstTimeUserViewController ()
 
 @end
@@ -74,7 +80,7 @@
     NSArray *arrayOfStringLabels = [[NSArray alloc] initWithObjects:zeroString, firstString, secondString, thirdString, fourthString, nil];
     NSArray *arrayOfImages = [[NSArray alloc] initWithObjects:@"FirstTTutorialZero.png", @"FirstTTutorialOne.png", @"FirstTTutorialTwo.png", @"FirstTTutorialThree.png", @"FirstTTutorialFour.png", nil];
     
-    
+/*
     for (int p = 0; p < [arrayOfImages count]; p++) {
         
         UIView *view = [[UIView alloc] initWithFrame:CGRectMake(p * screenWidth, 0.0, screenWidth, self.tutorialScrollView.frame.size.height)];
@@ -100,7 +106,7 @@
     
         [self.tutorialScrollView addSubview:view];
     }
-    
+ */
 
     
     self.enterEmailViewController = [[EnterEmailViewController alloc] initWithNibName:@"EnterEmailViewController" bundle:nil];
@@ -113,7 +119,8 @@
     [navigationController.navigationBar setBarTintColor:[ISConstants getISGreenColor]];
     [navigationController.navigationBar setTintColor:[UIColor whiteColor]];
     navigationController.navigationBar.translucent = NO;
-    navigationController.view.frame = CGRectMake(screenWidth * 5, 0.0, self.view.frame.size.width, self.tutorialScrollView.frame.size.height);
+    //navigationController.view.frame = CGRectMake(screenWidth * 5, 0.0, self.view.frame.size.width, self.tutorialScrollView.frame.size.height);
+    navigationController.view.frame = CGRectMake(screenWidth * 0, 0.0, self.view.frame.size.width, self.tutorialScrollView.frame.size.height);
     [navigationController.view addSubview:self.enterEmailViewController.view];
 
     
@@ -131,7 +138,7 @@
     [self.tutorialScrollView addSubview:navigationController.view];
 
     
-    
+/*
     self.pageControl = [[UIPageControl alloc] init];
     float pageControlHeight = 40.0;
     self.pageControl.frame = CGRectMake(0.0, screenHeight - pageControlHeight, screenWidth, pageControlHeight);
@@ -139,11 +146,18 @@
     self.pageControl.numberOfPages = [arrayOfImages count];
     self.pageControl.currentPage = 0;
     [self.view addSubview:self.pageControl];
-    
+*/
     
     
     self.tutorialScrollView.contentSize = CGSizeMake(navigationController.view.frame.origin.x + navigationController.view.frame.size.width, 33.3);
     
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    [[GAI sharedInstance].defaultTracker set:kGAIScreenName value:@"FirstTimeUser Screen"];
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createAppView] build]];
 }
 
 - (BOOL) validateEmail: (NSString *) candidate {
