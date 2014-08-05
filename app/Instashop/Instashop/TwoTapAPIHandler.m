@@ -36,7 +36,7 @@
     NSDictionary *product = [NSDictionary dictionaryWithObjectsAndKeys:productURLString, @"url", nil];
     NSArray *products = [NSArray arrayWithObject:product];
     
-    NSDictionary *postDict = [NSDictionary dictionaryWithObjectsAndKeys:TWO_TAP_Public_token, @"public_token", @"2388", @"unique_token", @"https://amber.io/workers/proposed_recipes/test_callback", @"callback_url", customCSSURLString, @"custom_css_url", @"false", @"show_tutorial", products, @"products", nil];
+    NSDictionary *postDict = [NSDictionary dictionaryWithObjectsAndKeys:TWO_TAP_Public_token, @"public_token", @"2388", @"unique_token", @"http://shopsy.com/server_source/callback/handler.php", @"callback_url", customCSSURLString, @"custom_css_url", @"false", @"show_tutorial", products, @"products", nil];
     
     NSError *error;
     NSData *postData = [NSJSONSerialization dataWithJSONObject:postDict options:0 error:&error];
