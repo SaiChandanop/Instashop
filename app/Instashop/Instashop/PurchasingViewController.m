@@ -653,9 +653,14 @@
         amberViewController.referenceImage = self.imageView.image;
         amberViewController.referenceURLString = expandedURLString;//[self.requestedProductObject objectForKey:@"products_external_url"];
         amberViewController.viglinkString = self.viglinkString;
-        [self.navigationController pushViewController:amberViewController animated:YES];
-        [amberViewController loadView];
-        [amberViewController run];
+    //    [self.navigationController pushViewController:amberViewController animated:YES];
+    //    [amberViewController loadView];
+    //    [amberViewController run];
+        [self presentViewController:amberViewController animated:YES completion:^() {
+            [amberViewController loadView];
+            [amberViewController addCloseButton];
+            [amberViewController run];
+        }];
     }
     else
     {
