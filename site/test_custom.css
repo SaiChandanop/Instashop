@@ -1,5 +1,5 @@
-.header-container {background: rgb(63, 137, 109); display:none;}
-.amber-container {padding-top:0;}
+.header-container {background: rgb(82, 162, 135);padding-top:20px}
+/*.amber-container {padding-top:0;}*/
 #sidemenu_button_holder {display: none !important;}
 
 .checkout-info .generic-info .new-link .img-holder .info-shipping-img {background: url(../images/shipping-info.png) left center no-repeat; width: 27px; height: 22px; background-size: 22px 18px;}
@@ -12,8 +12,8 @@
 .btn-blue {background: rgba(83,162,135,1) !important;}
 .btn-holder-right {text-align: center;}
 
-.back-img {display: none;}
-header .header-button .back-text {top: -2px;}
-}
+.back-img, .back-text {display: none;}
+/*header .header-button .back-text {top: -2px;}*/
 
-.checkout-info .generic-info .new-link .img-holder {color: rgb(63, 137, 109);}
+
+.checkout-info .generic-info .new-link .img-holder {color: rgb(82, 162, 135);}
