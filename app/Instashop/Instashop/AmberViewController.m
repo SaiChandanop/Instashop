@@ -101,7 +101,7 @@
 }
 
 -(void)addCloseButton{
-    UIButton *closeAmberViewButton = [[UIButton alloc] initWithFrame:CGRectMake(280, 33, 30, 30)];
+    UIButton *closeAmberViewButton = [[UIButton alloc] initWithFrame:CGRectMake(270, 26, 44, 44)];
     [closeAmberViewButton setTitle:@"✕" forState:UIControlStateNormal];
     closeAmberViewButton.titleLabel.font = [UIFont systemFontOfSize:20.0f];
     [closeAmberViewButton addTarget:self action:@selector(closeAmberView) forControlEvents:UIControlEventTouchUpInside];
