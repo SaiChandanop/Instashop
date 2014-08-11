@@ -45,7 +45,7 @@
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
 
-    
+    NSLog(@"API Call: %@", urlRequestString);
 }
 
 +(void)getSavedProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate
@@ -63,6 +63,8 @@
     productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
+    
+    NSLog(@"API Call: %@", urlRequestString);
 
 }
 
@@ -80,7 +82,7 @@
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
 
-    
+    NSLog(@"API Call: %@", urlRequestString);
 }
 
 +(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate withInstagramID:(NSString *)instagramID
@@ -98,6 +100,8 @@
     productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
+    
+    NSLog(@"API Call: %@", urlRequestString);
 
 }
 +(void)getAllProductsWithDelegate:(id)delegate
@@ -113,7 +117,7 @@
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
     
-
+    NSLog(@"API Call: %@", urlRequestString);
 }
 
 
@@ -177,7 +181,7 @@
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(productPurchasedComplete:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
 
-    
+    NSLog(@"API Call: %@ [ %@ ]", urlRequestString, postString);
 }
 
 -(void)productPurchasedComplete:(id)obj
@@ -213,6 +217,7 @@
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(productDeleteComplete:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
     
+    NSLog(@"API Call: %@ [ %@ ]", urlRequestString, postString);
 }
 
 
@@ -280,6 +285,7 @@
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(editContainerFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
     
+    NSLog(@"API Call: %@ [ %@ ]", urlRequestString, postString);
 }
 
 
@@ -351,6 +357,8 @@
     productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(editSizeQuantityFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
+    
+    NSLog(@"API Call: %@ [ %@ ]", urlRequestString, postString);
 }
 
 
@@ -382,6 +390,8 @@
     productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
     [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(makeCheckForExistingProductURLFinished:) forRequestEvents:SMWebRequestEventComplete];
     [productAPIHandler.theWebRequest start];
+    
+    NSLog(@"API Call: %@", urlRequestString);
 }
 
 -(void)makeCheckForExistingProductURLFinished:(id)object

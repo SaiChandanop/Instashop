@@ -52,6 +52,7 @@
     [apiHandler.theWebRequest addTarget:apiHandler action:@selector(searchRequestComplete:) forRequestEvents:SMWebRequestEventComplete];
     [apiHandler.theWebRequest start];
     
+    NSLog(@"API Call: %@ [ %@ ]", urlRequestString, postString);
 }
 
 +(void)makeSellerCategoryRequestWithDelegate:(id)delegate withCategoryString:(NSString *)categoryString withFreeformTextArray:(NSArray *)freeformTextArray
@@ -79,6 +80,8 @@
     apiHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:apiHandler context:NULL];
     [apiHandler.theWebRequest addTarget:apiHandler action:@selector(searchRequestComplete:) forRequestEvents:SMWebRequestEventComplete];
     [apiHandler.theWebRequest start];
+    
+    NSLog(@"API Call: %@ [ %@ ]", urlRequestString, postString);
 }
 
 
