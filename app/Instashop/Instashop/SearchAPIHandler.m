@@ -14,7 +14,7 @@
 
 +(void)makeProductSearchRequestWithDelegate:(id)delegate withSearchCategoriesArray:(NSArray *)searchCategoriesArray withFreeformTextArray:(NSArray *)freeformTextArray
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"search/search.php"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"search/search_new.php"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"POST";
     
@@ -38,8 +38,8 @@
     
     NSMutableString *postString = [NSMutableString stringWithCapacity:0];
     [postString appendString:[NSString stringWithFormat:@"search_type=%@", @"products"]];
-    [postString appendString:[NSString stringWithFormat:@"&categories_string=%@&", categoriesPostString]];
-    [postString appendString:[NSString stringWithFormat:@"&freetext_string=%@&", freeTextPostString]];
+    [postString appendString:[NSString stringWithFormat:@"&categories_string=%@", categoriesPostString]];
+    [postString appendString:[NSString stringWithFormat:@"&freetext_string=%@", freeTextPostString]];
     
     [URLRequest setHTTPBody:[postString dataUsingEncoding:NSUTF8StringEncoding]];
     
@@ -89,7 +89,7 @@
 -(void)searchRequestComplete:(id)obj
 {
     NSString* newStr = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
-    NSLog(@"newStr: %@", newStr);
+    //NSLog(@"newStr: %@", newStr);
     NSArray *responseArray = [NSJSONSerialization JSONObjectWithData:responseData options:NSJSONReadingAllowFragments error:nil];
     
     if ([self.delegate conformsToProtocol:@protocol(SearchReturnedReceiverProtocol)])

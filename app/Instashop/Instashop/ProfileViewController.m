@@ -666,7 +666,7 @@
     NSArray *theContentArray = [self.tableDataDictionary objectForKey:[NSNumber numberWithInt:PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER]];
     
     NSLog(@"PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER: %d", PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER);
-    NSLog(@"self.tableDataDictionary: %@", self.tableDataDictionary);
+//    NSLog(@"self.tableDataDictionary: %@", self.tableDataDictionary);
     
     BOOL hardRefresh = YES;
     if (theContentArray != nil)
@@ -812,7 +812,7 @@
     }
     
     NSLog(@"PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER: %d", PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER);
-    NSLog(@"self.tableDataDictionary: %@", self.tableDataDictionary);
+//    NSLog(@"self.tableDataDictionary: %@", self.tableDataDictionary);
     
     
     NSArray *theContentArray = [self.tableDataDictionary objectForKey:[NSNumber numberWithInt:PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER]];

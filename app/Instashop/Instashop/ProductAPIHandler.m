@@ -30,7 +30,7 @@
         
     }
     likedIDsString = [likedIDsString stringByReplacingOccurrencesOfString:@"null" withString:@""];
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?liked_ids=", likedIDsString];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products_new.php?liked_ids=", likedIDsString];
     
     NSLog(@"getLikedProductsByInstagramIDs urlRequestString: %@", urlRequestString);
     
@@ -50,7 +50,7 @@
 
 +(void)getSavedProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?saved_user_id=", instagramID];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products_new.php?saved_user_id=", instagramID];
     
 //    NSLog(@"urlRequestString: %@", urlRequestString);
     
@@ -70,7 +70,7 @@
 
 +(void)getProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?requesting_seller_id=", instagramID];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products_new.php?requesting_seller_id=", instagramID];
         
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"GET";
@@ -88,7 +88,7 @@
 +(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate withInstagramID:(NSString *)instagramID
 {
     
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, [NSString stringWithFormat:@"get_products.php?requesting_product_id=%@&instagram_id=%@", productID, instagramID]];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, [NSString stringWithFormat:@"get_products_new.php?requesting_product_id=%@&instagram_id=%@", productID, instagramID]];
     
 //    NSLog(@"urlRequestString: %@", urlRequestString);
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
@@ -106,7 +106,8 @@
 }
 +(void)getAllProductsWithDelegate:(id)delegate
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"get_products.php?requesting_seller_id=ALL"];
+//    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"get_products.php?requesting_seller_id=ALL"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"get_products_new.php?pagination_id=0"];
     NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
     URLRequest.HTTPMethod = @"GET";
         
@@ -120,6 +121,22 @@
     NSLog(@"API Call: %@", urlRequestString);
 }
 
++(void)getAllProductsWithDelegate:(id)delegate withPaginationID:(NSString *)paginationID
+{
+    //    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@", ROOT_URI, @"get_products.php?requesting_seller_id=ALL"];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@?pagination_id=%@", ROOT_URI, @"get_products_new.php", paginationID];
+    NSMutableURLRequest *URLRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:urlRequestString]];
+    URLRequest.HTTPMethod = @"GET";
+    
+    
+    ProductAPIHandler *productAPIHandler = [[ProductAPIHandler alloc] init];
+    productAPIHandler.delegate = delegate;
+    productAPIHandler.theWebRequest = [SMWebRequest requestWithURLRequest:URLRequest delegate:productAPIHandler context:NULL];
+    [productAPIHandler.theWebRequest addTarget:productAPIHandler action:@selector(getProductsRequestFinished:) forRequestEvents:SMWebRequestEventComplete];
+    [productAPIHandler.theWebRequest start];
+    
+    NSLog(@"API Call: %@", urlRequestString);
+}
 
 -(void)getProductsRequestFinished:(id)obj
 {
@@ -375,7 +392,7 @@
 
 +(void)makeCheckForExistingProductURLWithDelegate:(id)delegate withProductURL:(NSString *)productURL withDictionary:(NSDictionary *)referenceDictionary
 {
-    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products.php?check_for_existing_product_url=", [productURL stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+    NSString *urlRequestString = [NSString stringWithFormat:@"%@/%@%@", ROOT_URI, @"get_products_new.php?check_for_existing_product_url=", [productURL stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
     
 //    NSLog(@"urlRequestString: %@", urlRequestString);
     

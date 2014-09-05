@@ -17,6 +17,7 @@
 +(void)getProductsWithInstagramID:(NSString *)instagramID withDelegate:(id)delegate;
 +(void)getProductWithID:(NSString *)productID withDelegate:(id)delegate withInstagramID:(NSString *)instagramID;
 +(void)getAllProductsWithDelegate:(id)delegate;
++(void)getAllProductsWithDelegate:(id)delegate withPaginationID:(NSString *)paginationID;
 
 +(void)productPurchasedWithDelegate:(id)delegate withStripeDictionary:(NSDictionary *)stripeDictionary withProductObject:(NSDictionary *)productObject withProductCategoryObjectID:(NSString *)productCategoryObjectID withPostmasterDictionary:(NSDictionary *)postmasterDictionary;
 +(void)getLikedProductsByInstagramIDs:(NSArray *)instagramIDs withDelegate:(id)delegate;
