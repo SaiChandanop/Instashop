@@ -110,7 +110,7 @@
                forControlEvents:UIControlEventValueChanged];
  
 //    [self.segmentedControl remof]
-    [self.view addSubview:self.segmentedControl];
+//    [self.view addSubview:self.segmentedControl];
     
     self.segmentedControl.frame = CGRectMake(self.view.frame.size.width /2 - self.segmentedControl.frame.size.width / 2, 5, self.segmentedControl.frame.size.width, self.segmentedControl.frame.size.height);
     
