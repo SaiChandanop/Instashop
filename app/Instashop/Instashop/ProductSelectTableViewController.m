@@ -53,7 +53,7 @@
                                       style:UIBarButtonItemStyleBordered
                                      target:nil
                                      action:nil];
-    
+    paginationId = 0;
 }
 
 - (void)request:(IGRequest *)request didLoad:(id)result {
@@ -136,6 +136,81 @@
     [self.refreshControl endRefreshing];
 }
 
+// PAGINATION ON SCROLL - START //
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+    [self checkScrollPosition];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    if (!decelerate) {
+        [self checkScrollPosition];
+    }
+}
+
+- (void) checkScrollPosition{
+    if(self.productRequestorType ==  PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS){
+        float position = self.tableView.contentSize.height - self.tableView.contentOffset.y - self.view.frame.size.height;
+    //    NSLog(@"Position: %f", position);
+        if (position < 400  && !fetchingAPI && paginationId !=0 && self.productRequestorType > 0){
+            [self paginateFeed];
+        } else if(position < 400 && !fetchingAPI && nextURLString){
+            [self paginationIG];
+        }
+    }
+}
+
+-(NSArray*)paginatedArray{
+    NSMutableArray *newArray = [[NSMutableArray alloc] init];
+    int remaining = 20;
+    if([fullArray count] < 20){
+        remaining = [fullArray count];
+    }
+    for (int i = 0; i < remaining; i++){
+        [newArray addObject:[fullArray objectAtIndex:i]];
+        [fullArray removeObjectAtIndex:i];
+    }
+    //    NSLog(@"newArray Count: %ld", [newArray count]);
+    return newArray;
+}
+
+-(void) paginateFeed{
+// //   [self.contentArray addObjectsFromArray:[self paginatedArray]];
+//    
+//    //    NSLog(@"contentArray count: %ld", [contentArray count]);
+//    [self.refreshControl endRefreshing];
+//    [self.tableView reloadData];
+//    
+//    if (self.profileViewController != nil)
+//        [self.profileViewController tableViewControllerDidLoadWithController:self];
+    
+    if (self.productRequestorType > 0)
+    {
+        switch (self.productRequestorType) {
+            case PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS:
+                fetchingAPI = YES;
+                [spinnerFooter startAnimating];
+                [ProductAPIHandler getAllProductsWithDelegate:self withPaginationID:paginationId];
+                break;
+            case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER:
+                [ProductAPIHandler getProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
+                break;
+            case PRODUCT_REQUESTOR_TYPE_SEARCH:
+                [SearchAPIHandler makeProductSearchRequestWithDelegate:self withSearchCategoriesArray:self.searchRequestObject.searchCategoriesArray withFreeformTextArray:self.searchRequestObject.searchFreeTextArray];
+                break;
+                
+            case PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_BUYER:
+                [ProductAPIHandler getSavedProductsWithInstagramID:self.productRequestorReferenceObject withDelegate:self];
+                break;
+                
+            default:
+                break;
+        }
+    }
+    
+}
+
 -(void)paginationIG{
     if (nextURLString != nil)
     {
@@ -155,28 +230,9 @@
         
     }
 }
-/*
--(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
-    [self checkScrollPosition];
-}
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
-{
-    if (!decelerate) {
-        [self checkScrollPosition];
-    }
-}
+// PAGINATION ON SCROLL - END//
 
-- (void) checkScrollPosition{
-    float position = self.tableView.contentSize.height - self.tableView.contentOffset.y - self.view.frame.size.height;
-//    NSLog(@"Position: %f", position);
-    if (position < 400  && self.productRequestorType > 0){
-        [self paginateFeed];
-    } else if(position < 200 && !fetchingAPI && nextURLString){
-        [self paginationIG];
-    }
-}
-*/
 -(void)checkFinishedWithBoolValue:(BOOL)exists withDictionary:(NSMutableDictionary *)referenceDictionary
 {
     NSLog(@"checkFinishedWithBoolValue");
@@ -221,6 +277,13 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Cell";
+    
+    UIView *tableViewFooter = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
+    spinnerFooter = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    spinnerFooter.center = CGPointMake(160, 20);
+    spinnerFooter.hidesWhenStopped = YES;
+    [tableViewFooter addSubview:spinnerFooter];
+    tableView.tableFooterView = tableViewFooter;
     
     ImagesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
@@ -348,7 +411,11 @@
 -(void)feedRequestFinishedWithArrray:(NSArray *)theArray
 {
     [self hideProgress];
-    [self.contentArray removeAllObjects];
+    if(self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_PRODUCTS){
+        // do not clear array, append on pagination
+    } else {
+        [self.contentArray removeAllObjects];
+    }
 
 /* Removed + add image
     if (self.productRequestorType == PRODUCT_REQUESTOR_TYPE_FEED_INSTAGRAM_SELLER)
@@ -361,44 +428,28 @@
     }
 */
     
-    NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
-    [self.contentArray addObjectsFromArray:sorted];
+//    NSArray *sorted = [theArray sortedArrayUsingFunction:dateSort context:nil];
+//    [self.contentArray addObjectsFromArray:sorted];
+    [self.contentArray addObjectsFromArray:theArray];
     
 //    fullArray = [[NSMutableArray alloc] init];
 //    [fullArray addObjectsFromArray:sorted];
 //    [self.contentArray addObjectsFromArray:[self paginatedArray]];
     
     NSLog(@"contentArray count: %ld", [contentArray count]);
+    if([contentArray count]){
+        paginationId = [[self.contentArray objectAtIndex:[self.contentArray count]-1] valueForKey:@"product_id"];
+        NSLog(@"pagination_id: %@", paginationId);
+    }
+    
     [self.refreshControl endRefreshing];
     [self.tableView reloadData];
     
     if (self.profileViewController != nil)
         [self.profileViewController tableViewControllerDidLoadWithController:self];
-}
-
--(NSArray*)paginatedArray{
-    NSMutableArray *newArray = [[NSMutableArray alloc] init];
-    int remaining = 20;
-    if([fullArray count] < 20){
-        remaining = [fullArray count];
-    }
-    for (int i = 0; i < remaining; i++){
-        [newArray addObject:[fullArray objectAtIndex:i]];
-        [fullArray removeObjectAtIndex:i];
-    }
-//    NSLog(@"newArray Count: %ld", [newArray count]);
-    return newArray;
-}
-
--(void) paginateFeed{
-    [self.contentArray addObjectsFromArray:[self paginatedArray]];
     
-//    NSLog(@"contentArray count: %ld", [contentArray count]);
-    [self.refreshControl endRefreshing];
-    [self.tableView reloadData];
-    
-    if (self.profileViewController != nil)
-        [self.profileViewController tableViewControllerDidLoadWithController:self];
+    fetchingAPI = NO;
+    [spinnerFooter stopAnimating];
 }
 
 NSComparisonResult dateSort(NSDictionary *s1, NSDictionary *s2, void *context) {

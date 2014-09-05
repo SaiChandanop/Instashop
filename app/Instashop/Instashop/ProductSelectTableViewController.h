@@ -24,7 +24,9 @@
     
     NSString *nextURLString;
     BOOL fetchingAPI;
+    UIActivityIndicatorView *spinnerFooter;
     NSMutableArray *fullArray;
+    NSString *paginationId;
     
 }
 
