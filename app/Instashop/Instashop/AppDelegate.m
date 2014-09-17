@@ -18,6 +18,11 @@
 #import "Flurry.h"
 #import "LocalNotificationView.h"
 
+#import "GAI.h"
+#import "GAIFields.h"
+#import "GAITracker.h"
+#import "GAIDictionaryBuilder.h"
+
 #define INSTAGRAM_CLIENT_ID @"acb5a39edfff4e4999747f679d2157b2"
 #define INSTAGRAM_CLIENT_SECRET @"604d5c86809a45979d365ac6b647d8ef"
 //WEBSITE URL	http://instashop.com
@@ -140,17 +145,68 @@
 }
 
 // YOU NEED TO CAPTURE igAPPID:// schema
+//-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+//    
+//    NSLog(@"application: %@, handleOpenURL: %@", application, url);
+//    
+//    return [self.instagram handleOpenURL:url];
+//}
+
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    NSLog(@"url recieved: %@", url);
+    NSLog(@"query string: %@", [url query]);
+    NSLog(@"host: %@", [url host]);
+    NSLog(@"url path: %@", [url path]);
+    NSDictionary *dict = [self parseQueryString:[url query]];
+    NSLog(@"query dict: %@", dict);
+    return YES;
+}
+
+- (NSDictionary *)parseQueryString:(NSString *)query {
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] initWithCapacity:6];
+    NSArray *pairs = [query componentsSeparatedByString:@"&"];
     
-    NSLog(@"application: %@, handleOpenURL: %@", application, url);
-    
-    return [self.instagram handleOpenURL:url];
+    for (NSString *pair in pairs) {
+        NSArray *elements = [pair componentsSeparatedByString:@"="];
+        NSString *key = [[elements objectAtIndex:0] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        NSString *val = [[elements objectAtIndex:1] stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        
+        [dict setObject:val forKey:key];
+    }
+    return dict;
 }
 
 -(BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
     
+    [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppDelegate"
+                                                                                      action:@"openCustomURL"
+                                                                                       label:[NSString stringWithFormat:@"%@",url]
+                                                                                       value:nil] build]];
+    
     NSLog(@"application: %@, handleOpenURL: %@, sourceApplication %@, annotation: %@", application, url, sourceApplication, annotation);
-    return [self.instagram handleOpenURL:url];
+    NSLog(@"url recieved: %@", url);
+    NSLog(@"query string: %@", [url query]);
+    NSLog(@"host: %@", [url host]);
+    NSLog(@"url path: %@", [url path]);
+//    NSDictionary *dict = [self parseQueryString:[url query]];
+//    NSLog(@"query dict: %@", dict);
+    
+    if([[url host] isEqualToString:@"profile"]){
+        NSString *userId = [[[url path] componentsSeparatedByString:@"/"] objectAtIndex:1];
+        ProfileViewController *profileViewController = [[ProfileViewController alloc] initWithNibName:@"ProfileViewController" bundle:nil];
+        profileViewController.profileInstagramID = userId;
+        NSLog(@"profile id: %@", userId);
+        [[GAI sharedInstance].defaultTracker send:[[GAIDictionaryBuilder createEventWithCategory:@"AppDelegate"
+                                                                                          action:@"profileURL"
+                                                                                           label:userId
+                                                                                           value:nil] build]];
+        [self.appRootViewController.feedNavigationController pushViewController:profileViewController animated:YES];
+        [profileViewController loadNavigationControlls];
+    } else {
+        NSLog(@"Unknown URL request");
+    }
+    
+    return YES;
 }
 
 
@@ -273,6 +329,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
 
 -(void)populateMasterList
 {
